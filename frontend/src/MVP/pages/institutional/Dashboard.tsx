@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import MockDataBadge from '../../components/MockDataBadge';
@@ -26,6 +27,7 @@ interface PoolPosition {
 }
 
 const InstitutionalDashboard: React.FC = () => {
+  const navigate = useNavigate();
   // Mock data for demo
   const portfolioValue = 5_000_000; // 5M UJEUR
   const totalYield = 125_000; // 125K UJEUR
@@ -230,6 +232,15 @@ const InstitutionalDashboard: React.FC = () => {
                 <p className="text-gray-600 mt-1">Manage your investments</p>
               </div>
               <div className="flex gap-3">
+                <button
+                  onClick={() => navigate('/investors-room/reinvestment-settings')}
+                  className="px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-[#023D7A] hover:from-[#008f8f] hover:to-[#012d5c] text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                  Reinvestment Settings
+                </button>
                 <button className="px-6 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white font-medium rounded-lg transition-colors flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
