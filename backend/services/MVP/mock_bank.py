@@ -1,5 +1,5 @@
 """
-Mock Bank Service - MVP-2 Testnet
+Mock Bank Service - MVP Testnet
 
 Simulates bank escrow accounts for investor funds.
 Interface compatible with production BIICBankService.
@@ -8,7 +8,7 @@ Interface compatible with production BIICBankService.
 @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.3
 @reference backend/config/MVP_config.py
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
 from typing import Dict, List, Optional
@@ -21,7 +21,7 @@ import uuid
 class TransactionStatus(Enum):
     """Transaction status enum"""
     PENDING = "PENDING"
-    COMPLETED_MVP2 = "COMPLETED_MVP2"  # Testnet only
+    COMPLETED_MVP = "COMPLETED_MVP"  # Testnet only
     FAILED = "FAILED"
 
 
@@ -94,7 +94,7 @@ class IBankService:
 
 class MockBankService(IBankService):
     """
-    MVP-2 Mock Bank Service
+    MVP Mock Bank Service
     
     Simulates BIIC/MCB bank operations for testnet.
     Interface compatible with production BIICBankService.
@@ -135,9 +135,9 @@ class MockBankService(IBankService):
             investor_id=investor_id,
             balance=self.initial_balance,
             currency="UJEUR_TEST",
-            status="ACTIVE_MVP2",
+            status="ACTIVE_MVP",
             created_at=datetime.utcnow().isoformat(),
-            bank_name="Mock Bank (MVP-2 Testnet)"
+            bank_name="Mock Bank (MVP Testnet)"
         )
         
         self.transactions[account_id] = []
@@ -174,7 +174,7 @@ class MockBankService(IBankService):
             account_id=account_id,
             type=TransactionType.DEPOSIT,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=datetime.utcnow().isoformat(),
             description=f"Mock deposit (testnet only)"
         )
@@ -219,7 +219,7 @@ class MockBankService(IBankService):
             account_id=account_id,
             type=TransactionType.WITHDRAWAL,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=datetime.utcnow().isoformat(),
             description=f"Mock withdrawal (testnet only)"
         )
@@ -338,7 +338,7 @@ class MockBankService(IBankService):
             account_id=from_account,
             type=TransactionType.WIRE_TRANSFER,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=timestamp,
             description=description or "Mock wire transfer",
             counterparty_account=to_account
@@ -351,7 +351,7 @@ class MockBankService(IBankService):
             account_id=to_account,
             type=TransactionType.WIRE_TRANSFER,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=timestamp,
             description=description or "Mock wire transfer received",
             counterparty_account=from_account
@@ -397,7 +397,7 @@ class MockBankService(IBankService):
             account_id=to_account,
             type=TransactionType.INCOMING_WIRE,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=timestamp,
             description=description or f"Incoming wire: {external_reference}"
         )
@@ -450,7 +450,7 @@ class MockBankService(IBankService):
             account_id=from_account,
             type=TransactionType.OUTGOING_WIRE,
             amount=amount,
-            status=TransactionStatus.COMPLETED_MVP2,
+            status=TransactionStatus.COMPLETED_MVP,
             timestamp=timestamp,
             description=description or f"Outgoing wire: {external_reference}"
         )
@@ -474,7 +474,7 @@ class MockBankService(IBankService):
             "total_balance": total_balance,
             "total_balance_formatted": f"{total_balance / 10**18:,.2f} UJEUR",
             "total_transactions": total_transactions,
-            "bank_name": "Mock Bank (MVP-2 Testnet)",
+            "bank_name": "Mock Bank (MVP Testnet)",
             "is_testnet": True
         }
 
@@ -487,7 +487,7 @@ def get_bank_service() -> IBankService:
     """
     Factory function to get appropriate bank service.
     
-    MVP-2: Returns MockBankService
+    MVP: Returns MockBankService
     Production: Returns BIICBankService (when implemented)
     
     Usage:

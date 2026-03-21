@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
  * @title MockEscrow
- * @notice Simulated bank escrow accounts for MVP-2 testnet
+ * @notice Simulated bank escrow accounts for MVP testnet
  * @dev Interface designed for easy swap with real BIIC/MCB bank integration
  * 
  * Features:
@@ -26,7 +26,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * @reference SRS v2.0 Section 4.3, 5.12
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.1
  * 
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice All balances and transfers are SIMULATED only.
  */
 contract MockEscrow is AccessControl, ReentrancyGuard {
@@ -45,14 +45,14 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
     bytes32 public constant BANK_OPERATOR_ROLE = keccak256("BANK_OPERATOR_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
     /**
      * @notice Mock bank name
      */
-    string public constant BANK_NAME = "Mock Bank (MVP-2 Testnet)";
+    string public constant BANK_NAME = "Mock Bank (MVP Testnet)";
 
     /**
      * @notice Initial balance for demo accounts (10M UJEUR)
@@ -438,7 +438,7 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
             toAccount: toAccount,
             amount: amount,
             timestamp: block.timestamp,
-            status: "COMPLETED_MVP2",
+            status: "COMPLETED_MVP",
             description: description
         }));
 
@@ -488,7 +488,7 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
             toAccount: toAccount,
             amount: amount,
             timestamp: block.timestamp,
-            status: "COMPLETED_MVP2",
+            status: "COMPLETED_MVP",
             description: description
         }));
 
@@ -542,7 +542,7 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
             toAccount: "EXTERNAL",
             amount: amount,
             timestamp: block.timestamp,
-            status: "COMPLETED_MVP2",
+            status: "COMPLETED_MVP",
             description: description
         }));
 
@@ -755,7 +755,7 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**

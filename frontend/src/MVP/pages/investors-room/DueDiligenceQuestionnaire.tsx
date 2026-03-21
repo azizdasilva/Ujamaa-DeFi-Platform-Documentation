@@ -114,7 +114,7 @@ const DueDiligenceQuestionnaire: React.FC = () => {
         <section id="financial" className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">5. Financial Information</h2>
           <DDQTable rows={[
-            { q: 'Current AUM', a: '€0 (MVP-2 testnet)' },
+            { q: 'Current AUM', a: '€0 (MVP testnet)' },
             { q: 'Target AUM (Year 1)', a: '€100M' },
             { q: 'Revenue Model', a: '2% management fee + 20% performance fee' },
             { q: 'Projected Revenue (Year 1)', a: '€3.3M (at €100M AUM)' },

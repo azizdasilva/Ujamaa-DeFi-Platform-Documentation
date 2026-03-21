@@ -1,12 +1,12 @@
 """
-Risk Scorer - MVP-2 Testnet
+Risk Scorer - MVP Testnet
 
 Asset risk score calculation engine (ALG-04-01-01, ALG-04-01-02).
 
 @reference docs/09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md Section 3
 @reference SRS v2.0 EPIC-4, User Story 4.1
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
 from typing import Dict, List, Optional, Tuple
@@ -331,7 +331,7 @@ class RiskScorer:
 
     def _load_default_benchmarks(self) -> Dict:
         """Load default benchmark data"""
-        # Mock benchmark data for MVP-2
+        # Mock benchmark data for MVP
         # In production, this would load from PostgreSQL
         return {
             'INVOICE': {

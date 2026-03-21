@@ -30,7 +30,7 @@ import "./GuaranteeToken.sol";
  * @reference SRS v2.0 Section 5.12, EPIC-10, User Story 10.3
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5
  * 
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract LiquidityPool is AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;
@@ -74,7 +74,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     bytes32 public constant COMPLIANCE_OFFICER_ROLE = keccak256("COMPLIANCE_OFFICER_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
@@ -454,7 +454,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
             try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
                 financingToGuaranteeToken[financingId] = tokenId;
             } catch {
-                // If minting fails, continue without UGT (MVP-2 fallback)
+                // If minting fails, continue without UGT (MVP fallback)
             }
         }
 
@@ -789,7 +789,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**

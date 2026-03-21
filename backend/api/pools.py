@@ -1,12 +1,12 @@
 """
-Pool Manager API - MVP-2 Testnet
+Pool Manager API - MVP Testnet
 
 FastAPI endpoints for liquidity pool management.
 
 @reference SRS v2.0 Section 5.12
 @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, Query, Header
@@ -233,13 +233,13 @@ async def verify_auth(
     """
     Verify authentication token.
     
-    MVP-2: Simplified auth for testnet
+    MVP: Simplified auth for testnet
     Production: Full JWT validation
     """
     if credentials is None:
         return None
     
-    # MVP-2: Accept any token for testing
+    # MVP: Accept any token for testing
     return credentials.credentials
 
 

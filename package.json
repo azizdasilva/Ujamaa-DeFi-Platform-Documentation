@@ -1,7 +1,7 @@
 {
   "name": "ujamaa-mvp-tests",
   "version": "2.0.0",
-  "description": "Ujamaa DeFi Platform MVP-2 - Test Configurations",
+  "description": "Ujamaa DeFi Platform MVP - Test Configurations",
   "private": true,
   "scripts": {
     "test:smart-contracts": "forge test -vvv",

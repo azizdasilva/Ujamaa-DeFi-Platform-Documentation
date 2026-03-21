@@ -1,5 +1,5 @@
 """
-Yield Calculator - MVP-2 Testnet
+Yield Calculator - MVP Testnet
 
 Real financial math for yield calculation (not mocked).
 Used by both testnet and production.

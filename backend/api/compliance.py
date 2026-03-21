@@ -1,12 +1,12 @@
 """
-Compliance API - MVP-2 Testnet
+Compliance API - MVP Testnet
 
 FastAPI endpoints for jurisdiction compliance and investor verification.
 
 @reference SRS v2.0 Sections 1.2, 1.3, 10
 @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.3
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, Query
@@ -94,7 +94,7 @@ class InvestorRegistration(BaseModel):
     jurisdiction: str
     name: str
     entity_type: str = "INDIVIDUAL"
-    kyc_provider: str = "MOCK_KYC_MVP2"
+    kyc_provider: str = "MOCK_KYC_MVP"
 
 
 class KYBRequest(BaseModel):
@@ -369,7 +369,7 @@ async def register_investor(request: InvestorRegistration) -> InvestorCompliance
         kyc_status = "PENDING_REVIEW"
     else:
         status = ComplianceStatusEnum.ALLOWED
-        kyc_status = "APPROVED_MVP2"
+        kyc_status = "APPROVED_MVP"
     
     # Create compliance record
     compliance_record = {
@@ -379,7 +379,7 @@ async def register_investor(request: InvestorRegistration) -> InvestorCompliance
         "status": status.value,
         "is_approved": not requires_review,
         "kyc_status": kyc_status,
-        "accreditation_status": "PENDING_MVP2",
+        "accreditation_status": "PENDING_MVP",
         "name": request.name,
         "entity_type": request.entity_type,
         "kyc_provider": request.kyc_provider,
@@ -394,7 +394,7 @@ async def register_investor(request: InvestorRegistration) -> InvestorCompliance
     mock_kyc_records[investor_id] = {
         "investor_id": investor_id,
         "provider": request.kyc_provider,
-        "status": "APPROVED_MVP2" if is_allowed else "PENDING_REVIEW",
+        "status": "APPROVED_MVP" if is_allowed else "PENDING_REVIEW",
         "verified_at": datetime.utcnow().isoformat(),
         "is_testnet": True
     }
@@ -425,7 +425,7 @@ async def approve_investor(
     """
     Approve investor (compliance officer only).
     
-    MVP-2: Simplified approval for testnet
+    MVP: Simplified approval for testnet
     Production: Requires compliance officer authentication
     """
     if investor_id not in mock_investor_compliance:
@@ -446,8 +446,8 @@ async def approve_investor(
     # Update record
     record["is_approved"] = True
     record["status"] = ComplianceStatusEnum.ALLOWED.value
-    record["kyc_status"] = "APPROVED_MVP2"
-    record["accreditation_status"] = "ACCREDITED_MVP2"
+    record["kyc_status"] = "APPROVED_MVP"
+    record["accreditation_status"] = "ACCREDITED_MVP"
     record["approved_by"] = approved_by
     record["approved_at"] = datetime.utcnow().isoformat()
     
@@ -508,7 +508,7 @@ async def perform_kyb_check(request: KYBRequest) -> Dict:
     - Corporate entities
     - High-risk jurisdictions (review required)
     
-    MVP-2: Mock KYB for testnet
+    MVP: Mock KYB for testnet
     Production: Integration with Sumsub/Onfido
     """
     investor_id = request.investor_id
@@ -531,7 +531,7 @@ async def perform_kyb_check(request: KYBRequest) -> Dict:
         "success": True,
         "investor_id": investor_id,
         "company_name": request.company_name,
-        "kyb_status": "APPROVED_MVP2",
+        "kyb_status": "APPROVED_MVP",
         "risk_level": "LOW",
         "beneficial_owners_verified": len(request.beneficial_owners),
         "registration_verified": True,

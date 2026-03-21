@@ -34,7 +34,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  * @reference SRS v2.0 Sections 1.2, 1.3, 10
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.3
  * 
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract JurisdictionCompliance is AccessControl {
     // =========================================================================
@@ -52,7 +52,7 @@ contract JurisdictionCompliance is AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
@@ -512,7 +512,7 @@ contract JurisdictionCompliance is AccessControl {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**

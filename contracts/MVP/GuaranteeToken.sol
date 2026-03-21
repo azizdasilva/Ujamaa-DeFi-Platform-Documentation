@@ -24,7 +24,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * 8. [DEFAULT] If industrial defaults: UGT liquidated via auction
  *
  * @reference SRS v2.0 Section 1.2 - Ujamaa Guarantee Token (UGT) Specification
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     // =========================================================================
@@ -42,7 +42,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     bytes32 public constant POOL_MANAGER_ROLE = keccak256("POOL_MANAGER_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
@@ -359,11 +359,11 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // ERC-3643 COMPLIANCE (Simplified for MVP-2)
+    // ERC-3643 COMPLIANCE (Simplified for MVP)
     // =========================================================================
 
     /**
-     * @notice Check if address is verified (MVP-2 simplified)
+     * @notice Check if address is verified (MVP simplified)
      * @param addr Address to check
      * @return isVerified Always true for testnet
      */
@@ -372,7 +372,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     }
 
     /**
-     * @notice Override transfer to enforce compliance (MVP-2 simplified)
+     * @notice Override transfer to enforce compliance (MVP simplified)
      * @dev Only Pool and Industrial Gateway can transfer
      */
     function _update(address to, uint256 tokenId, address auth) internal override returns (address) {
@@ -383,7 +383,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
             return super._update(to, tokenId, auth);
         }
 
-        // Allow transfers to/from Pool or Industrial Gateway (simplified for MVP-2)
+        // Allow transfers to/from Pool or Industrial Gateway (simplified for MVP)
         Guarantee memory guarantee = s_guarantees[tokenId];
         if (
             to == guarantee.poolAddress ||
@@ -398,7 +398,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**
@@ -419,7 +419,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
             block.timestamp + (365 days), // 1 year expiry
             keccak256(abi.encodePacked("test-stock-", s_nextTokenId)),
             description,
-            "MVP-2 Test Warehouse"
+            "MVP Test Warehouse"
         );
     }
 }

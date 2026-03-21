@@ -1,5 +1,5 @@
 """
-Mock GDIZ Service - MVP-2 Testnet
+Mock GDIZ Service - MVP Testnet
 
 Simulates GDIZ (Grand Défi Industriel de Zinc) industrial gateway integration.
 Interface compatible with production GDIZGateway.
@@ -7,7 +7,7 @@ Interface compatible with production GDIZGateway.
 @reference SRS v2.0 Section 5.3
 @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.4
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
 from typing import Dict, List, Optional
@@ -142,7 +142,7 @@ class IGDIZService:
 
 class MockGDIZService(IGDIZService):
     """
-    MVP-2 Mock GDIZ Service
+    MVP Mock GDIZ Service
     
     Simulates GDIZ industrial gateway for testnet.
     Interface compatible with production GDIZGateway.
@@ -173,8 +173,8 @@ class MockGDIZService(IGDIZService):
                 "name": "Zara Textiles Manufacturing (Demo)",
                 "asset_class": AssetClass.MANUFACTURING,
                 "jurisdiction": "MU",
-                "kyc_status": "APPROVED_MVP2",
-                "accreditation_status": "ACCREDITED_MVP2",
+                "kyc_status": "APPROVED_MVP",
+                "accreditation_status": "ACCREDITED_MVP",
                 "gdiz_certified": True
             },
             {
@@ -182,8 +182,8 @@ class MockGDIZService(IGDIZService):
                 "name": "Cocoa Cooperative Côte d'Ivoire (Demo)",
                 "asset_class": AssetClass.AGRICULTURE,
                 "jurisdiction": "CI",
-                "kyc_status": "APPROVED_MVP2",
-                "accreditation_status": "ACCREDITED_MVP2",
+                "kyc_status": "APPROVED_MVP",
+                "accreditation_status": "ACCREDITED_MVP",
                 "gdiz_certified": True
             },
             {
@@ -191,8 +191,8 @@ class MockGDIZService(IGDIZService):
                 "name": "Solar Energy Kenya (Demo)",
                 "asset_class": AssetClass.ENERGY,
                 "jurisdiction": "KE",
-                "kyc_status": "APPROVED_MVP2",
-                "accreditation_status": "ACCREDITED_MVP2",
+                "kyc_status": "APPROVED_MVP",
+                "accreditation_status": "ACCREDITED_MVP",
                 "gdiz_certified": True
             }
         ]
@@ -237,9 +237,9 @@ class MockGDIZService(IGDIZService):
             name=partner_data.get("name", f"Industrial Partner {partner_id}"),
             asset_class=asset_class,
             jurisdiction=partner_data.get("jurisdiction", "MU"),
-            kyc_status=partner_data.get("kyc_status", "PENDING_MVP2"),
+            kyc_status=partner_data.get("kyc_status", "PENDING_MVP"),
             accreditation_status=partner_data.get(
-                "accreditation_status", "PENDING_MVP2"
+                "accreditation_status", "PENDING_MVP"
             ),
             created_at=datetime.utcnow().isoformat(),
             is_active=True,
@@ -301,7 +301,7 @@ class MockGDIZService(IGDIZService):
                 "stock_hash", 
                 f"Qm{uuid.uuid4().hex[:40]}"  # Mock IPFS hash
             ),
-            verifier="Mock GDIZ Verifier (MVP-2 Testnet)"
+            verifier="Mock GDIZ Verifier (MVP Testnet)"
         )
         
         self.certificates[certificate_id] = certificate
@@ -360,7 +360,7 @@ class MockGDIZService(IGDIZService):
             duration_days=request_data.get("duration_days", 365),
             interest_rate=request_data.get("interest_rate", 1000),  # 10%
             purpose=request_data.get("purpose", "Working capital"),
-            status="PENDING_MVP2",
+            status="PENDING_MVP",
             created_at=datetime.utcnow().isoformat()
         )
         
@@ -530,7 +530,7 @@ class MockGDIZService(IGDIZService):
             "total_certificates": len(self.certificates),
             "total_financing_requests": len(self.financing_requests),
             "total_yield_reports": len(self.yield_reports),
-            "service_name": "Mock GDIZ Service (MVP-2 Testnet)",
+            "service_name": "Mock GDIZ Service (MVP Testnet)",
             "is_testnet": True
         }
 
@@ -543,7 +543,7 @@ def get_gdiz_service() -> IGDIZService:
     """
     Factory function to get appropriate GDIZ service.
     
-    MVP-2: Returns MockGDIZService
+    MVP: Returns MockGDIZService
     Production: Returns GDIZGateway (when implemented)
     
     Usage:

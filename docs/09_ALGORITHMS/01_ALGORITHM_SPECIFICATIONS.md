@@ -13,7 +13,7 @@
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 1.0 | March 17, 2026 | Aziz Da Silva - Lead Architect | Initial release with MVP-2 algorithms |
+| 1.0 | March 17, 2026 | Aziz Da Silva - Lead Architect | Initial release with MVP algorithms |
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## 1. Overview
 
-This document specifies all computational algorithms used in the Ujamaa DeFi Platform MVP-2. Each algorithm is traceable to requirements in the Software Requirements Specification (SRS) v2.0 and follows the platform's numbering convention aligned with the EPIC/User Story structure.
+This document specifies all computational algorithms used in the Ujamaa DeFi Platform MVP. Each algorithm is traceable to requirements in the Software Requirements Specification (SRS) v2.0 and follows the platform's numbering convention aligned with the EPIC/User Story structure.
 
 ### 1.1 Purpose
 
@@ -1397,7 +1397,7 @@ function createFinancing(
         try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
             financingToGuaranteeToken[financingId] = tokenId;
         } catch {
-            // Fallback: continue without UGT (MVP-2)
+            // Fallback: continue without UGT (MVP)
         }
     }
 
@@ -1449,7 +1449,7 @@ function _update(address to, uint256 tokenId, uint256 auth) internal override re
 
 ---
 
-### 6.9 MVP-2 Testnet Utilities
+### 6.9 MVP Testnet Utilities
 
 **Algorithm ID:** `ALG-05-03-09`
 **SRS Reference:** SRS v2.0 Section 5.3
@@ -1473,7 +1473,7 @@ function mintTestGuarantee(
         block.timestamp + (365 days),
         keccak256(abi.encodePacked("test-stock-", s_nextTokenId)),
         description,
-        "MVP-2 Test Warehouse"
+        "MVP Test Warehouse"
     );
 }
 ```
@@ -1495,7 +1495,7 @@ function createTestCertificate(
         value,
         1000, // quantity
         "units",
-        "MVP-2 Test Warehouse",
+        "MVP Test Warehouse",
         keccak256(abi.encodePacked("test-", block.timestamp)),
         description,
         365 // validity days
@@ -2029,7 +2029,7 @@ contract PriceAggregator {
 **Algorithm ID:** `ALG-10-05-01`
 **SRS Reference:** EPIC 10, User Story 10.5 (Bank Escrow Integration)
 **Purpose:** Manage escrow account logic for investor funds
-**Implementation:** Solidity (MockEscrow for MVP-2), Python (Production bank API)
+**Implementation:** Solidity (MockEscrow for MVP), Python (Production bank API)
 
 #### 10.1.1 Escrow Account Management
 
@@ -2116,7 +2116,7 @@ class EscrowAccount:
         return amount
 ```
 
-#### 10.1.2 MVP-2 Testnet Mock
+#### 10.1.2 MVP Testnet Mock
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -2124,7 +2124,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title MockEscrow
- * @dev Mock escrow for MVP-2 testnet (no real bank integration)
+ * @dev Mock escrow for MVP testnet (no real bank integration)
  */
 contract MockEscrow {
     struct Escrow {
@@ -2766,8 +2766,8 @@ class LRUCache:
 | ALG-04-01-01 | Risk Score Calculation | ✅ Complete | `risk_scorer.py` | 85% | Pending |
 | ALG-04-01-02 | Rating Modifier | ✅ Complete | `risk_scorer.py` | 85% | Pending |
 | ALG-04-04-01 | Benchmark Comparison | ✅ Complete | `risk_scorer.py` | 80% | Pending |
-| ALG-07-01-01 | Anomaly Detection | ✅ MVP-2 | `fraud_detector.py` (rule-based) | 75% | Pending |
-| ALG-07-02-01 | Wash Trading Detection | ✅ MVP-2 | `fraud_detector.py` (rule-based) | 75% | Pending |
+| ALG-07-01-01 | Anomaly Detection | ✅ MVP | `fraud_detector.py` (rule-based) | 75% | Pending |
+| ALG-07-02-01 | Wash Trading Detection | ✅ MVP | `fraud_detector.py` (rule-based) | 75% | Pending |
 | ALG-07-03-01 | Structuring Detection | ✅ Complete | `fraud_detector.py` | 85% | Pending |
 | ALG-10-01-01 | NAV Calculation | ✅ Complete | `UPTToken.sol`, `yield_calculator.py` | 95% | Pending |
 | ALG-10-04-01 | Yield Accrual | ✅ Complete | `UPTToken.sol`, `yield_calculator.py` | 95% | Pending |
@@ -2786,14 +2786,14 @@ class LRUCache:
 | ALG-04-03-01 | Suitability Check | ✅ Complete | `compliance.py` | 85% | Pending |
 | ALG-04-03-02 | Jurisdiction Filter | ✅ Complete | `JurisdictionCompliance.sol`, `compliance.py` | 95% | Pending |
 | ALG-03-01-01 | Price Aggregation | ⏳ Pending | N/A | 0% | Not Started |
-| ALG-10-05-01 | Bank Escrow Logic | ✅ MVP-2 | `MockEscrow.sol` | 80% | Pending |
+| ALG-10-05-01 | Bank Escrow Logic | ✅ MVP | `MockEscrow.sol` | 80% | Pending |
 | ALG-11-01-01 | Merkle Tree | ⏳ Pending | N/A | 0% | Not Started |
 | ALG-09-01-01 | LRU Cache | ⏳ Pending | N/A | 0% | Not Started |
 | ALG-09-02-01 | Kubernetes Autoscaling | ⏳ Pending | N/A | 0% | Not Started |
 
 ### Implementation Summary by Category
 
-| Category | Total | Complete | MVP-2 | Pending | Coverage |
+| Category | Total | Complete | MVP | Pending | Coverage |
 |----------|-------|----------|-------|---------|----------|
 | **Risk Assessment (EPIC-4)** | 4 | 3 | 0 | 1 | 75% |
 | **Fraud Detection (EPIC-7)** | 3 | 0 | 3 | 0 | 100% |
@@ -2810,11 +2810,11 @@ class LRUCache:
 ### Legend
 
 - ✅ **Complete**: Implementation and testing complete
-- ✅ **MVP-2**: Rule-based MVP-2 implementation (ML versions pending for production)
+- ✅ **MVP**: Rule-based MVP implementation (ML versions pending for production)
 - ⏳ **Pending**: Not yet started (0% implementation)
 - N/A: ML models (audited via validation, not formal audit)
 
-### Files Created (MVP-2)
+### Files Created (MVP)
 
 **Backend Services (Python):**
 - `backend/services/MVP/yield_calculator.py` - Yield and NAV calculations
@@ -2829,7 +2829,7 @@ class LRUCache:
 - `contracts/MVP/UPTToken.sol` - Ujamaa Pool Token
 - `contracts/MVP/LiquidityPool.sol` - Multi-pool manager
 - `contracts/MVP/JurisdictionCompliance.sol` - Jurisdiction filtering
-- `contracts/MVP/MockEscrow.sol` - Bank escrow mock (MVP-2)
+- `contracts/MVP/MockEscrow.sol` - Bank escrow mock (MVP)
 
 ---
 

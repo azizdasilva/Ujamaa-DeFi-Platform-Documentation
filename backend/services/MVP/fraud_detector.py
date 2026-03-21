@@ -1,16 +1,16 @@
 """
-Fraud Detection - MVP-2 Testnet
+Fraud Detection - MVP Testnet
 
 Fraud detection algorithms for transaction monitoring.
 
 @reference docs/09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md Section 4
 @reference SRS v2.0 EPIC-7
 
-@notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+@notice MVP TESTNET: This is a testnet deployment. No real funds.
 
 Algorithms Implemented:
 - ALG-07-01-01: Anomaly Detection (Isolation Forest)
-- ALG-07-02-01: Wash Trading Detection (Rule-based for MVP-2)
+- ALG-07-02-01: Wash Trading Detection (Rule-based for MVP)
 - ALG-07-03-01: Structuring Detection (Rule-based)
 """
 
@@ -91,7 +91,7 @@ class FraudDetector:
 
     Reference: docs/09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md Section 4
 
-    MVP-2 Note: Uses rule-based detection (simpler than ML models).
+    MVP Note: Uses rule-based detection (simpler than ML models).
     Production: Will use Scikit-learn Isolation Forest and PyTorch LSTM.
     """
 
@@ -201,7 +201,7 @@ class FraudDetector:
         """
         Detect anomalous transactions using statistical methods.
 
-        MVP-2: Simplified statistical anomaly detection.
+        MVP: Simplified statistical anomaly detection.
         Production: Will use Scikit-learn Isolation Forest.
 
         Algorithm: ALG-07-01-01
@@ -419,7 +419,7 @@ class FraudDetector:
         """
         Detect wash trading patterns.
 
-        MVP-2: Simplified rule-based detection.
+        MVP: Simplified rule-based detection.
         Production: Will use PyTorch LSTM.
 
         Algorithm: ALG-07-02-01

@@ -101,7 +101,7 @@ const InvestorPitchDeck: React.FC = () => {
             />
           </div>
           <div className="mt-8 p-6 bg-[#F3F8FA] rounded-lg">
-            <h4 className="font-bold text-[#023D7A] mb-2">Target Market (MVP-2)</h4>
+            <h4 className="font-bold text-[#023D7A] mb-2">Target Market (MVP)</h4>
             <ul className="space-y-2 text-[#333333]">
               <li>• <strong>Industrial Sector:</strong> €50M pool (manufacturing, equipment)</li>
               <li>• <strong>Agriculture:</strong> €30M pool (cocoa, cotton, cashews)</li>
@@ -139,7 +139,7 @@ const InvestorPitchDeck: React.FC = () => {
 
         {/* Slide 6: Traction */}
         <section className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-[#023D7A] mb-6">🚀 Traction (MVP-2)</h2>
+          <h2 className="text-3xl font-bold text-[#023D7A] mb-6">🚀 Traction (MVP)</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <TractionCard metric="3" label="Pools Launched" />
             <TractionCard metric="€100M" label="Target AUM" />
@@ -192,7 +192,7 @@ const InvestorPitchDeck: React.FC = () => {
           <div className="space-y-4">
             <RoadmapItem 
               quarter="Q1 2026"
-              title="MVP-2 Testnet Launch"
+              title="MVP Testnet Launch"
               status="completed"
               items={['Smart contracts deployed', 'Frontend live', 'Documentation complete']}
             />

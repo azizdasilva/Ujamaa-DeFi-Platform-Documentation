@@ -23,7 +23,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5
  * @reference 09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md
  * 
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice Network: Polygon Amoy (Chain ID: 80002)
  */
 contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
@@ -47,7 +47,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     bytes32 public constant REDEEMER_ROLE = keccak256("REDEEMER_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      * @dev Always returns true for testnet deployment
      */
     bool public constant IS_MVP_TESTNET = true;
@@ -599,7 +599,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**

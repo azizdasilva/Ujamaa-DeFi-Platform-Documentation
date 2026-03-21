@@ -86,7 +86,7 @@ This folder contains **algorithm specifications** and computational documentatio
 | ALG-10-04-02 | Yield Distribution | NAV model | Via NAV increase |
 | ALG-10-03-01 | Diversification Check | `LiquidityPool.sol` | `_checkDiversificationLimits()` |
 | ALG-04-03-02 | Jurisdiction Filter | `JurisdictionCompliance.sol` | Full contract |
-| ALG-10-05-01 | Bank Escrow Logic | `MockEscrow.sol` | Mock for MVP-2 |
+| ALG-10-05-01 | Bank Escrow Logic | `MockEscrow.sol` | Mock for MVP |
 
 #### Backend Services (Python)
 

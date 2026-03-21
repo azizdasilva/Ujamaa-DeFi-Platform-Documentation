@@ -1,7 +1,7 @@
 """
 MVP Configuration - Testnet Release
 
-This configuration module controls all MVP-2 testnet behavior.
+This configuration module controls all MVP testnet behavior.
 All features are labeled as testnet-only with no real funds.
 
 @reference SRS v2.0 Section 4.3
@@ -46,7 +46,7 @@ class Jurisdiction:
 @dataclass
 class MVPConfig:
     """
-    MVP-2 Configuration Object
+    MVP Configuration Object
     
     All settings for testnet deployment.
     Production swap via factory pattern - no code changes needed.
@@ -266,7 +266,7 @@ class MVPConfig:
     DISCLAIMER_MODAL: str = """
 ⚠️ TESTNET DISCLAIMER
 
-This is the Ujamaa DeFi Platform MVP-2 running on Polygon Amoy testnet.
+This is the Ujamaa DeFi Platform MVP running on Polygon Amoy testnet.
 
 • NO REAL MONEY is involved
 • All tokens are TEST TOKENS only
@@ -367,7 +367,7 @@ def get_bank_service():
     """
     Factory function to get appropriate bank service.
     
-    MVP-2: Returns MockBankService
+    MVP: Returns MockBankService
     Production: Returns BIICBankService
     
     Usage:
@@ -388,7 +388,7 @@ def get_gdiz_service():
     """
     Factory function to get appropriate GDIZ service.
     
-    MVP-2: Returns MockGDIZService
+    MVP: Returns MockGDIZService
     Production: Returns GDIZGateway
     
     Usage:

@@ -1303,7 +1303,7 @@ struct Certificate {
 
 # 🧪 Testnet Utilities (ALG-05-03-09)
 
-## Fonctions de Test pour MVP-2
+## Fonctions de Test pour MVP
 
 ** mintTestGuarantee() :**
 ```solidity
@@ -1321,7 +1321,7 @@ function mintTestGuarantee(
         block.timestamp + (365 days),
         keccak256(abi.encodePacked("test-stock-", s_nextTokenId)),
         description,
-        "MVP-2 Test Warehouse"
+        "MVP Test Warehouse"
     );
 }
 ```
@@ -1342,7 +1342,7 @@ function createTestCertificate(
         value,
         1000, // quantity
         "units",
-        "MVP-2 Test Warehouse",
+        "MVP Test Warehouse",
         keccak256(abi.encodePacked("test-", block.timestamp)),
         description,
         365 // validity days

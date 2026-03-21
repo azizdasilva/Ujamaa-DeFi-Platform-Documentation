@@ -1,6 +1,6 @@
 # Asset Tokenization Algorithm Specifications
 
-**UJAMAA DEFI PLATFORM - MVP-2 Institutional Architecture**
+**UJAMAA DEFI PLATFORM - MVP Institutional Architecture**
 
 **Version:** 2.0 (Asset Tokenization Update)  
 **Date:** March 19, 2026  
@@ -406,7 +406,7 @@ function createFinancing(
         try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
             financingToGuaranteeToken[financingId] = tokenId;
         } catch {
-            // Fallback: continue without UGT (MVP-2)
+            // Fallback: continue without UGT (MVP)
         }
     }
     
@@ -454,7 +454,7 @@ function _update(address to, uint256 tokenId, uint256 auth) internal override re
 
 ---
 
-## 5. MVP-2 Testnet Implementation
+## 5. MVP Testnet Implementation
 
 ### 5.1 Testnet Utilities
 
@@ -474,7 +474,7 @@ function mintTestGuarantee(
         block.timestamp + (365 days),
         keccak256(abi.encodePacked("test-stock-", s_nextTokenId)),
         description,
-        "MVP-2 Test Warehouse"
+        "MVP Test Warehouse"
     );
 }
 ```
@@ -495,7 +495,7 @@ function createTestCertificate(
         value,
         1000, // quantity
         "units",
-        "MVP-2 Test Warehouse",
+        "MVP Test Warehouse",
         keccak256(abi.encodePacked("test-", block.timestamp)),
         description,
         365 // validity days
@@ -535,4 +535,4 @@ function createTestCertificate(
 ---
 
 *Generated from SRS v2.0 — March 19, 2026*  
-*Ujamaa DeFi Platform - MVP-2*
+*Ujamaa DeFi Platform - MVP*

@@ -152,13 +152,13 @@
 | ALG-03-03-01 | IoT Data Validation | Low | User Story 3.3 | Optional - Production feature |
 | ALG-08-03-01 | Report Generation | Low | User Story 8.3 | Could be added |
 | ALG-09-02-01 | Kubernetes Autoscaling | Low | User Story 9.2 | Infrastructure algorithm |
-| ALG-10-05-01 | Bank Escrow Logic | Medium | User Story 10.5 | MVP-2 testnet uses mock |
+| ALG-10-05-01 | Bank Escrow Logic | Medium | User Story 10.5 | MVP testnet uses mock |
 
 ---
 
 ## Core Algorithms Coverage
 
-### Critical Path Algorithms (MVP-2)
+### Critical Path Algorithms (MVP)
 
 | Category | Required | Identified | Coverage |
 |----------|----------|------------|----------|
@@ -180,7 +180,7 @@
 ### 1. Add Missing Algorithms to Specification
 
 **Priority: Medium**
-- **ALG-10-05-01:** Bank Escrow Logic (MockEscrow for MVP-2, real integration for production)
+- **ALG-10-05-01:** Bank Escrow Logic (MockEscrow for MVP, real integration for production)
 - **ALG-03-01-01:** Price Feed Aggregation (Oracle integration)
 
 **Priority: Low**
@@ -208,7 +208,7 @@ Consider creating separate "Infrastructure Algorithms" appendix for:
 
 **Overall Assessment:** ✅ **EXCELLENT COVERAGE**
 
-- **92% of core MVP-2 algorithms** are properly identified in the specifications
+- **92% of core MVP algorithms** are properly identified in the specifications
 - **100% of critical algorithms** (tokenization, risk, fraud, yield) are documented
 - **4 low-priority algorithms** can be added in future iterations
 
@@ -221,4 +221,4 @@ Consider creating separate "Infrastructure Algorithms" appendix for:
 
 **Audit Completed By:** Algorithm Audit System
 **Date:** March 20, 2026
-**Next Review:** After MVP-2 launch (Q2 2026)
+**Next Review:** After MVP launch (Q2 2026)

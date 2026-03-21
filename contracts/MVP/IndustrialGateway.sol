@@ -21,7 +21,7 @@ import "./GuaranteeToken.sol";
  *
  * @reference SRS v2.0 Section 1.2 - Industrial Gateway
  * @reference SRS v2.0 Section 5.3 - Industrial Gateway Specification
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract IndustrialGateway is AccessControl, ReentrancyGuard {
     // =========================================================================
@@ -39,7 +39,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     bytes32 public constant POOL_MANAGER_ROLE = keccak256("POOL_MANAGER_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
@@ -354,7 +354,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**
@@ -374,7 +374,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
             value,
             1000, // quantity
             "units", // unit
-            "MVP-2 Test Warehouse",
+            "MVP Test Warehouse",
             keccak256(abi.encodePacked("test-", block.timestamp)),
             description,
             365 // validity days

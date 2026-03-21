@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
  * @title MockFiatRamp
- * @notice Simulated fiat on/off ramp for MVP-2 testnet
+ * @notice Simulated fiat on/off ramp for MVP testnet
  * @dev Mints test UJEUR for demo purposes, simulates EUR ↔ UJEUR conversion
  * 
  * Features:
@@ -30,7 +30,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * @reference SRS v2.0 Section 4.3
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.2
  * 
- * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
+ * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice All tokens minted are TEST TOKENS only.
  */
 contract MockFiatRamp is AccessControl, ReentrancyGuard {
@@ -51,7 +51,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
     bytes32 public constant FEE_MANAGER_ROLE = keccak256("FEE_MANAGER_ROLE");
 
     /**
-     * @notice MVP-2 Testnet flag
+     * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
 
@@ -365,7 +365,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
             fee: fee,
             timestamp: block.timestamp,
             isOnRamp: true,
-            status: "COMPLETED_MVP2",
+            status: "COMPLETED_MVP",
             wireReference: wireReference
         }));
 
@@ -448,7 +448,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
             fee: fee,
             timestamp: block.timestamp,
             isOnRamp: false,
-            status: "COMPLETED_MVP2",
+            status: "COMPLETED_MVP",
             wireReference: wireReference
         }));
 
@@ -634,7 +634,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
-    // MVP-2 TESTNET UTILITIES
+    // MVP TESTNET UTILITIES
     // =========================================================================
 
     /**
@@ -647,7 +647,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
         string memory currency
     ) {
         return (
-            "Mock Fiat Ramp (MVP-2 Testnet)",
+            "Mock Fiat Ramp (MVP Testnet)",
             IS_MVP_TESTNET,
             FX_FEE_BP,
             "UJEUR_TEST"

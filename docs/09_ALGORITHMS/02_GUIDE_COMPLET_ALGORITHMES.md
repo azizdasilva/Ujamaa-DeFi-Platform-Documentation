@@ -1352,7 +1352,7 @@ function _update(address to, uint256 tokenId, uint256 auth) internal override re
 
 ---
 
-### 6.7 MVP-2 Testnet Utilities (ALG-05-03-09)
+### 6.7 MVP Testnet Utilities (ALG-05-03-09)
 
 #### 🎯 Le But
 
@@ -1360,7 +1360,7 @@ Fournir des fonctions simplifiées pour tester la tokenisation sur le réseau de
 
 #### 📝 En Termes Simples
 
-Pour faciliter les tests pendant la phase MVP-2, on a créé des versions simplifiées des fonctions de minting et de certification. Ces fonctions ne fonctionnent QUE sur le réseau de test (pas sur le réseau principal).
+Pour faciliter les tests pendant la phase MVP, on a créé des versions simplifiées des fonctions de minting et de certification. Ces fonctions ne fonctionnent QUE sur le réseau de test (pas sur le réseau principal).
 
 #### 🔢 Comment ça Marche
 
@@ -1380,7 +1380,7 @@ function mintTestGuarantee(
         block.timestamp + (365 days),
         keccak256(abi.encodePacked("test-stock-", s_nextTokenId)),
         description,
-        "MVP-2 Test Warehouse"
+        "MVP Test Warehouse"
     );
 }
 ```
@@ -1401,7 +1401,7 @@ function createTestCertificate(
         value,
         1000, // quantity
         "units",
-        "MVP-2 Test Warehouse",
+        "MVP Test Warehouse",
         keccak256(abi.encodePacked("test-", block.timestamp)),
         description,
         365 // validity days
@@ -1422,7 +1422,7 @@ mintTestGuarantee(
 
 → Token UGT #1 minté
 → Valable 365 jours
-→ Entrepôt : "MVP-2 Test Warehouse"
+→ Entrepôt : "MVP Test Warehouse"
 ```
 
 #### ⚡ Performance
@@ -1681,7 +1681,7 @@ Sans cache :
 | **Tokenisation** | Cert→Token | ALG-05-03-06 | Du certificat au token UGT | < 1 ms |
 | **Tokenisation** | Flux Complet | ALG-05-03-07 | Tokenisation end-to-end | < 5 s |
 | **Tokenisation** | Compliance UGT | ALG-05-03-08 | Restrictions de transfert | < 1 ms |
-| **Tokenisation** | Testnet Utils | ALG-05-03-09 | Fonctions de test MVP-2 | < 1 ms |
+| **Tokenisation** | Testnet Utils | ALG-05-03-09 | Fonctions de test MVP | < 1 ms |
 | **Conformité** | Admissibilité | ALG-04-03-01 | Protéger investisseurs | < 1 ms |
 | **Conformité** | Juridiction | ALG-04-03-02 | Respecter sanctions | < 1 ms |
 | **Oracle** | Agrégation de prix | ALG-03-01-01 | Prix fiables | < 100 ms |
@@ -1807,7 +1807,7 @@ Sans cache :
 
 **Légende:**
 - ✅ Complet : Implémentation et tests terminés
-- ⚠️ Partiel : Implémentation MVP-2 terminée, version production en attente
+- ⚠️ Partiel : Implémentation MVP terminée, version production en attente
 - ⏳ En Attente : Non encore implémenté
 
 ---
