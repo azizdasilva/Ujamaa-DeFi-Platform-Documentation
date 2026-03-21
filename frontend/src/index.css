@@ -1,0 +1,468 @@
+/**
+ * Global Styles - Ujamaa DeFi Platform
+ * MVP Testnet Release
+ * 
+ * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md Section 2 (Design Tokens)
+ */
+
+@import 'tailwindcss';
+
+/* =============================================================================
+   CUSTOM PROPERTIES (CSS VARIABLES)
+   ============================================================================= */
+
+:root {
+  /* =============================================================================
+     UJAMAA DEFI - MODERN BLUE THEME
+     Professional, clean, trustworthy financial platform aesthetic
+     ============================================================================= */
+
+  /* Primary: Deep Blue #023D7A - Trust, professionalism, depth */
+  --color-primary-50: #e6f0f7;
+  --color-primary-100: #cce1f0;
+  --color-primary-200: #99c3e0;
+  --color-primary-300: #66a5d0;
+  --color-primary-400: #3387c0;
+  --color-primary-500: #0269aa;
+  --color-primary-600: #023D7A;  /* ✓ Ujamaa Deep Blue */
+  --color-primary-700: #012d5c;
+  --color-primary-800: #011d3d;
+  --color-primary-900: #000d1f;
+
+  /* Secondary: Teal #00A8A8 - Modern, fresh, action */
+  --color-secondary-50: #e6f5f5;
+  --color-secondary-100: #ccebeb;
+  --color-secondary-200: #99d7d7;
+  --color-secondary-300: #66c3c3;
+  --color-secondary-400: #33afaf;
+  --color-secondary-500: #009b9b;
+  --color-secondary-600: #00A8A8;  /* ✓ Ujamaa Teal */
+  --color-secondary-700: #008f8f;
+  --color-secondary-800: #007676;
+  --color-secondary-900: #005d5d;
+
+  /* Accent: Orange #D57028 - Energy, highlights, CTAs */
+  --color-accent-50: #fdf6f0;
+  --color-accent-100: #faede0;
+  --color-accent-200: #f5dbc0;
+  --color-accent-300: #efc59a;
+  --color-accent-400: #e8a86e;
+  --color-accent-500: #e08a4a;
+  --color-accent-600: #D57028;  /* ✓ Ujamaa Orange */
+  --color-accent-700: #c05a1e;
+  --color-accent-800: #a04a19;
+  --color-accent-900: #823d16;
+
+  /* Support: Light Blue #48A9F0 - Charts, UI elements */
+  --color-support-50: #f0f8ff;
+  --color-support-100: #e1f2ff;
+  --color-support-200: #c3e5ff;
+  --color-support-300: #9ad3ff;
+  --color-support-400: #6bbfff;
+  --color-support-500: #48A9F0;  /* ✓ Ujamaa Light Blue */
+  --color-support-600: #3a8fcc;
+  --color-support-700: #2d75a8;
+  --color-support-800: #205b84;
+  --color-support-900: #134160;
+
+  /* Background: Off-White #F3F8FA - Clean, modern UI base */
+  --color-background-50: #ffffff;
+  --color-background-100: #f9fbfc;
+  --color-background-200: #F3F8FA;  /* ✓ Ujamaa Off-White */
+  --color-background-300: #e8f0f5;
+  --color-background-400: #dde5ed;
+  --color-background-500: #d2dae5;
+  --color-background-600: #c7cfdc;
+  --color-background-700: #bcc9d3;
+  --color-background-800: #b1c3ca;
+  --color-background-900: #a6bdc1;
+
+  /* Semantic Colors */
+  --color-success: #00A8A8;
+  --color-warning: #D57028;
+  --color-error: #dc2626;
+  --color-info: #023D7A;
+
+  /* Neutrals */
+  --color-dark: #333333;
+  --color-light: #F3F8FA;
+
+  /* Typography */
+  --font-family-sans: 'Inter', 'Roboto', 'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-family-heading: 'Inter', 'Roboto', 'Poppins', system-ui, sans-serif;
+  --font-family-mono: 'Fira Code', 'JetBrains Mono', monospace;
+  
+  /* Font Sizes (Responsive) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.875rem, 4vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 5vw, 3rem);
+  --text-5xl: clamp(3rem, 6vw, 4rem);
+  
+  /* Spacing Scale */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  
+  /* Shadows (Design System Spec Section 2.3) */
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-soft-lg: 0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  --shadow-glow-primary: 0 0 20px rgba(22, 163, 74, 0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(13, 148, 136, 0.3);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-dark);
+  background-color: var(--color-background-200);
+}
+
+/* =============================================================================
+   TYPOGRAPHY
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+}
+
+/* =============================================================================
+   ANIMATIONS (Design System Spec Section 2.4)
+   ============================================================================= */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes gradient-y {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: center top;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: center bottom;
+  }
+}
+
+/* Animation Utility Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.4s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 20s ease infinite;
+}
+
+.animate-gradient-y {
+  animation: gradient-y 25s ease infinite;
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-600) 100%);
+}
+
+.bg-gradient-mvp {
+  background: linear-gradient(135deg, #16a34a 0%, #0d9488 50%, #06b6d4 100%);
+}
+
+.bg-gradient-sunset {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(31, 41, 55, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Focus States */
+.focus-ring {
+  transition: box-shadow var(--transition-fast);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-400);
+}
+
+/* =============================================================================
+   RESPONSIVE UTILITIES
+   ============================================================================= */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary-600);
+  color: white;
+  padding: var(--spacing-2) var(--spacing-4);
+  z-index: var(--z-tooltip);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "ujamaa-mvp-tests",
+  "version": "2.0.0",
+  "description": "Ujamaa DeFi Platform MVP-2 - Test Configurations",
+  "private": true,
+  "scripts": {
+    "test:smart-contracts": "forge test -vvv",
+    "test:smart-contracts:gas": "forge test --gas-report",
+    "test:smart-contracts:coverage": "forge coverage",
+    "test:backend": "cd backend && pytest tests/ -v",
+    "test:backend:coverage": "cd backend && pytest tests/ --cov=. --cov-report=html",
+    "test:load": "k6 run --vus 100 --duration 5m backend/tests/load_test.js",
+    "test:load:stress": "k6 run --vus 500 --duration 10m backend/tests/load_test.js",
+    "security:slither": "slither . --config-file slither.config.json",
+    "security:audit": "npm run security:slither && npm run security:npm && npm run security:pip",
+    "security:npm": "npm audit --audit-level=high",
+    "security:pip": "pip-audit",
+    "test:all": "npm run test:smart-contracts && npm run test:backend && npm run security:audit"
+  },
+  "devDependencies": {
+    "foundry": "^0.2.0",
+    "k6": "^0.52.0"
+  },
+  "dependencies": {
+    "forge-std": "^1.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Ujamaa DeFi Platform",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ujamaa/defi-platform"
+  }
+}
