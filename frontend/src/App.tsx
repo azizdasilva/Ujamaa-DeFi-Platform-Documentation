@@ -70,6 +70,15 @@ import IRNAVStatements from './MVP/pages/investors-room/NAVStatements';
 import IRTermSheetTemplate from './MVP/pages/investors-room/TermSheetTemplate';
 import IRInvestmentAgreement from './MVP/pages/investors-room/InvestmentAgreement';
 import IRSubscriptionForm from './MVP/pages/investors-room/SubscriptionForm';
+// New Investors Room Pages
+import IRDocumentationIndex from './MVP/pages/investors-room/DocumentationIndex';
+import IRDocumentationNavigator from './MVP/pages/investors-room/InvestorDocumentationNavigator';
+import IRPitchDeck from './MVP/pages/investors-room/InvestorPitchDeck';
+import IRDDQ from './MVP/pages/investors-room/DueDiligenceQuestionnaire';
+import IRCaseStudies from './MVP/pages/investors-room/InvestmentCaseStudies';
+import IRImpactReport from './MVP/pages/investors-room/ImpactReport';
+import IRFAQ from './MVP/pages/investors-room/InvestorFAQ';
+import IRTokenComparison from './MVP/pages/investors-room/TokenComparisonGuide';
 
 // Query Client
 const queryClient = new QueryClient({
@@ -149,7 +158,15 @@ const App: React.FC = () => {
             <Route path="/investors-room" element={<InvestorsRoom />} />
             <Route path="/investors-room/white-paper" element={<IRWhitePaper />} />
             <Route path="/investors-room/executive-summary" element={<IRExecutiveSummary />} />
+            <Route path="/investors-room/documentation-index" element={<IRDocumentationIndex />} />
+            <Route path="/investors-room/investor-documentation-navigator" element={<IRDocumentationNavigator />} />
+            <Route path="/investors-room/investor-pitch-deck" element={<IRPitchDeck />} />
             <Route path="/investors-room/investment-memorandum" element={<IRInvestmentMemorandum />} />
+            <Route path="/investors-room/due-diligence-questionnaire" element={<IRDDQ />} />
+            <Route path="/investors-room/investment-case-studies" element={<IRCaseStudies />} />
+            <Route path="/investors-room/impact-report" element={<IRImpactReport />} />
+            <Route path="/investors-room/investor-faq" element={<IRFAQ />} />
+            <Route path="/investors-room/token-comparison-guide" element={<IRTokenComparison />} />
             <Route path="/investors-room/terms-of-service" element={<IRTermsOfService />} />
             <Route path="/investors-room/privacy-policy" element={<IRPrivacyPolicy />} />
             <Route path="/investors-room/investor-information-memorandum" element={<IRInvestorInformationMemorandum />} />
@@ -340,7 +357,7 @@ const RoleSelection: React.FC = () => {
               href="/investors-room"
               className="px-6 py-3 bg-[#F3F8FA] border border-[#48A9F0]/30 rounded-lg text-[#023D7A] font-bold hover:bg-[#023D7A]/5 transition-colors"
             >
-              📄 Investors Room (22 Docs)
+              📄 Investors Room (30+ Docs)
             </a>
           </div>
         </div>
