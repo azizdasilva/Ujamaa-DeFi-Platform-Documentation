@@ -233,7 +233,7 @@ const OriginatorDashboard: React.FC = () => {
                   href="/originator/assets/certificates"
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
-                  📜 View Certificates & Mint UJG
+                  📜 View Certificates & Mint UGT
                 </a>
                 <a
                   href="/originator/financings"

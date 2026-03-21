@@ -9,21 +9,21 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
- * @title GuaranteeToken (UJG - Ujamaa Guarantee)
+ * @title GuaranteeToken (UGT - Ujamaa Guarantee Token Token)
  * @notice ERC-3643NFT (ERC-721 + ERC-3643 compliance) representing certified merchandise/collateral
  * @dev Represents certified stock/merchandise backing a financing operation
- * 
- * UJG Lifecycle (SRS v2.0 Section 1.2):
+ *
+ * UGT Lifecycle (SRS v2.0 Section 1.2):
  * 1. Industrial receives order (e.g., ZARA €2M contract)
  * 2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
- * 3. UJG minted (ERC-3643NFT with metadata + compliance)
+ * 3. UGT minted (ERC-3643NFT with metadata + compliance)
  * 4. Pool deploys funds to Industrial
- * 5. Pool holds UJG (collateral/security)
+ * 5. Pool holds UGT (collateral/security)
  * 6. Industrial repays (principal + interest)
- * 7. UJG transferred back to Industrial (via forcedTransfer)
- * 8. [DEFAULT] If industrial defaults: UJG liquidated via auction
- * 
- * @reference SRS v2.0 Section 1.2 - Ujamaa Guarantee (UJG) Specification
+ * 7. UGT transferred back to Industrial (via forcedTransfer)
+ * 8. [DEFAULT] If industrial defaults: UGT liquidated via auction
+ *
+ * @reference SRS v2.0 Section 1.2 - Ujamaa Guarantee Token (UGT) Specification
  * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
  */
 contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
@@ -159,7 +159,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     /**
      * @notice Initialize GuaranteeToken contract
      */
-    constructor() ERC721("Ujamaa Guarantee", "UJG") {
+    constructor() ERC721("Ujamaa Guarantee Token Token", "UGT") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender); // Industrial Gateway
         _grantRole(POOL_MANAGER_ROLE, msg.sender); // Pool manager
@@ -394,7 +394,7 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
         }
 
         // Revert for unauthorized transfers
-        revert("UJG: Transfer not allowed - compliance restriction");
+        revert("UGT: Transfer not allowed - compliance restriction");
     }
 
     // =========================================================================

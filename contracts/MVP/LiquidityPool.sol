@@ -218,12 +218,12 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     uint256 public totalYieldEarned;
 
     /**
-     * @notice Guarantee Token contract (UJG)
+     * @notice Guarantee Token contract (UGT)
      */
     GuaranteeToken public guaranteeToken;
 
     /**
-     * @notice Financing ID to UJG token ID mapping
+     * @notice Financing ID to UGT token ID mapping
      */
     mapping(uint256 => uint256) public financingToGuaranteeToken;
 
@@ -299,7 +299,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
      * @notice Initialize LiquidityPool
      * @param _uptToken UPT token contract address
      * @param _ujeurToken UJEUR token contract address
-     * @param _guaranteeToken Guarantee Token (UJG) contract address
+     * @param _guaranteeToken Guarantee Token (UGT) contract address
      */
     constructor(address _uptToken, address _ujeurToken, address _guaranteeToken) {
         if (_uptToken == address(0) || _ujeurToken == address(0)) {
@@ -385,14 +385,14 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice Create a new industrial financing with UJG collateral
+     * @notice Create a new industrial financing with UGT collateral
      * @param poolFamily Pool family
      * @param assetClass Asset class name (e.g., "Manufacturing", "Coffee")
      * @param industrial Industrial company address
      * @param principal Principal amount (18 decimals)
      * @param interestRate Interest rate (basis points)
      * @param durationDays Financing duration in days
-     * @param certificateId Industrial Gateway certificate ID (for UJG minting)
+     * @param certificateId Industrial Gateway certificate ID (for UGT minting)
      * @return financingId Created financing ID
      * 
      * Requirements:
@@ -449,12 +449,12 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
             isDefaulted: false
         });
 
-        // Mint UJG as collateral if certificate provided
+        // Mint UGT as collateral if certificate provided
         if (certificateId > 0 && address(guaranteeToken) != address(0)) {
             try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
                 financingToGuaranteeToken[financingId] = tokenId;
             } catch {
-                // If minting fails, continue without UJG (MVP-2 fallback)
+                // If minting fails, continue without UGT (MVP-2 fallback)
             }
         }
 

@@ -10,15 +10,15 @@ import "./GuaranteeToken.sol";
 
 /**
  * @title IndustrialGateway
- * @notice Certifies industrial assets/stock and mints Guarantee Tokens (UJG)
+ * @notice Certifies industrial assets/stock and mints Guarantee Tokens (UGT)
  * @dev Formerly known as AssetProof (SRS v2.0 Section 1.3)
- * 
+ *
  * Industrial Gateway Functions (SRS v2.0 Section 5.3):
  * - Certify stock/merchandise existence
  * - Verify production data
- * - Mint Guarantee Tokens (UJG) as collateral
+ * - Mint Guarantee Tokens (UGT) as collateral
  * - Track certificate lifecycle
- * 
+ *
  * @reference SRS v2.0 Section 1.2 - Industrial Gateway
  * @reference SRS v2.0 Section 5.3 - Industrial Gateway Specification
  * @notice MVP-2 TESTNET: This is a testnet deployment. No real funds.
@@ -62,7 +62,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
      * @param description Asset description
      * @param isVerified Whether certificate is verified
      * @param isRevoked Whether certificate is revoked
-     * @param guaranteeTokenId Associated UJG token ID (0 if not minted)
+     * @param guaranteeTokenId Associated UGT token ID (0 if not minted)
      */
     struct Certificate {
         uint256 certificateId;
@@ -223,7 +223,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
             description: description,
             isVerified: true, // Auto-verified by certifier
             isRevoked: false,
-            guaranteeTokenId: 0 // Will be set when UJG is minted
+            guaranteeTokenId: 0 // Will be set when UGT is minted
         });
 
         // Add to industrial's certificates
@@ -240,7 +240,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice Mint Guarantee Token (UJG) for verified certificate
+     * @notice Mint Guarantee Token (UGT) for verified certificate
      * @param certificateId Certificate ID
      * @return tokenId Guarantee Token ID
      * 

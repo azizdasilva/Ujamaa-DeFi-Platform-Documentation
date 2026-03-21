@@ -90,6 +90,8 @@ logs/
 
 # Documentation (excluded per request)
 docs/
+!frontend/src/MVP/pages/docs/
+!frontend/docs/
 
 # Tests
 test/

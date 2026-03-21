@@ -1,7 +1,7 @@
 /**
- * Asset Certificates Page - View & Mint UJG
+ * Asset Certificates Page - View & Mint UGT
  * 
- * View all certified assets and mint Ujamaa Guarantee (UJG) tokens as collateral.
+ * View all certified assets and mint Ujamaa Guarantee Token (UGT) tokens as collateral.
  * 
  * Route: /originator/assets/certificates
  * 
@@ -27,7 +27,7 @@ interface Certificate {
   description: string;
   status: 'pending' | 'verified' | 'revoked';
   submittedAt: string;
-  ujgTokenId?: string;
+  ugtTokenId?: string;
   financingId?: string;
 }
 
@@ -51,7 +51,7 @@ const AssetCertificates: React.FC = () => {
         description: '1000 cotton bales, Grade A, harvested 2026',
         status: 'verified',
         submittedAt: '2026-03-15T10:30:00Z',
-        ujgTokenId: 'UJG-001',
+        ugtTokenId: 'UGT-001',
         financingId: 'FIN-001',
       },
       {
@@ -64,7 +64,7 @@ const AssetCertificates: React.FC = () => {
         description: 'ZARA textile order Q2 2026',
         status: 'verified',
         submittedAt: '2026-03-10T14:20:00Z',
-        ujgTokenId: 'UJG-002',
+        ugtTokenId: 'UGT-002',
         financingId: 'FIN-002',
       },
     ];
@@ -106,10 +106,10 @@ const AssetCertificates: React.FC = () => {
   const handleMintUJG = (certificateId: string) => {
     setMintingId(certificateId);
     
-    // Simulate UJG minting (MVP testnet)
+    // Simulate UGT minting (MVP testnet)
     setTimeout(() => {
       setMintingId(null);
-      alert(`UJG minted successfully for certificate ${certificateId}!`);
+      alert(`UGT minted successfully for certificate ${certificateId}!`);
     }, 2000);
   };
 
@@ -131,7 +131,7 @@ const AssetCertificates: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Asset Certificates</h1>
-              <p className="text-gray-600 mt-1">View certified assets and mint UJG collateral</p>
+              <p className="text-gray-600 mt-1">View certified assets and mint UGT collateral</p>
             </div>
             <div className="flex items-center gap-3">
               <Button
@@ -251,8 +251,8 @@ const AssetCertificates: React.FC = () => {
                       >
                         {cert.status.toUpperCase()}
                       </Badge>
-                      {cert.ujgTokenId && (
-                        <Badge variant="info" size="sm">UJG: {cert.ujgTokenId}</Badge>
+                      {cert.ugtTokenId && (
+                        <Badge variant="info" size="sm">UGT: {cert.ugtTokenId}</Badge>
                       )}
                     </div>
 
@@ -294,18 +294,18 @@ const AssetCertificates: React.FC = () => {
                   </div>
 
                   <div className="ml-6 flex flex-col gap-2">
-                    {cert.status === 'verified' && !cert.ujgTokenId && (
+                    {cert.status === 'verified' && !cert.ugtTokenId && (
                       <Button
                         variant="primary"
                         size="md"
                         onClick={() => handleMintUJG(cert.certificateId)}
                         isLoading={mintingId === cert.certificateId}
                       >
-                        Mint UJG
+                        Mint UGT
                       </Button>
                     )}
 
-                    {cert.ujgTokenId ? (
+                    {cert.ugtTokenId ? (
                       <Button
                         variant="outline"
                         size="md"
@@ -345,9 +345,9 @@ const AssetCertificates: React.FC = () => {
                 <li>Submit asset details for certification</li>
                 <li>GDIZ/SIPI verifies and certifies the asset (1-2 days)</li>
                 <li>Certificate created with unique ID</li>
-                <li>Mint UJG (Ujamaa Guarantee) token as collateral</li>
-                <li>Use UJG to secure financing from Liquidity Pool</li>
-                <li>Repay financing → UJG returned to you</li>
+                <li>Mint UGT (Ujamaa Guarantee Token) token as collateral</li>
+                <li>Use UGT to secure financing from Liquidity Pool</li>
+                <li>Repay financing → UGT returned to you</li>
               </ol>
             </div>
           </div>

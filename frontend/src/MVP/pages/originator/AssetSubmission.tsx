@@ -354,8 +354,8 @@ const AssetSubmission: React.FC = () => {
                       <li>Asset submitted to Industrial Gateway</li>
                       <li>GDIZ/SIPI certifies the asset (1-2 business days)</li>
                       <li>Certificate created with unique ID</li>
-                      <li>Mint UJG (Ujamaa Guarantee) as collateral</li>
-                      <li>Use UJG to secure financing from Liquidity Pool</li>
+                      <li>Mint UGT (Ujamaa Guarantee Token) as collateral</li>
+                      <li>Use UGT to secure financing from Liquidity Pool</li>
                     </ol>
                   </div>
                 </div>
@@ -408,7 +408,7 @@ const AssetSubmission: React.FC = () => {
             <div>
               <h4 className="font-semibold text-blue-900 mb-1">Need Help?</h4>
               <p className="text-sm text-blue-700">
-                Asset tokenization allows you to unlock capital from your assets. After certification, you can mint UJG tokens as collateral and access financing from our liquidity pools.
+                Asset tokenization allows you to unlock capital from your assets. After certification, you can mint UGT tokens as collateral and access financing from our liquidity pools.
               </p>
             </div>
           </div>

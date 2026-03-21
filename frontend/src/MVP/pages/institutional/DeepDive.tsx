@@ -477,7 +477,7 @@ const DeepDive: React.FC = () => {
                         },
                         { 
                           name: 'GuaranteeToken.sol', 
-                          desc: 'ERC-721 NFT collateral (UJG)', 
+                          desc: 'ERC-721 NFT collateral (UGT)', 
                           lines: '~426',
                           color: 'from-[#D57028] to-[#F59E0B]',
                           features: ['Collateral NFTs', 'Forced transfer', 'Liquidation support']
