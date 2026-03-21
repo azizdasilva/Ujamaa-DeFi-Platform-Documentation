@@ -292,7 +292,7 @@ const UnderstandingERC3643: React.FC = () => {
 
         {/* Summary */}
         <section className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
-          <h2 className="text-2xl font-bold mb-4">Why ERC-3643 for Ujamaa?</h2>
+          <h2 className="text-2xl font-bold mb-4">Why ERC-3643 for Ujamaa DeFi Platform?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <h3 className="font-bold mb-2">🔐 Security</h3>
