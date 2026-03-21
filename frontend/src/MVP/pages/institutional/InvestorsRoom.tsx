@@ -306,7 +306,7 @@ const allDocuments: Document[] = [
     isFeatured: false,
   },
   
-  // Educational (9)
+  // Educational (10)
   {
     id: 'DOC-016',
     title: 'Tokenization Guide',
@@ -326,6 +326,16 @@ const allDocuments: Document[] = [
     size: '892 KB',
     tags: ['defi', 'basics', 'education', 'introduction'],
     isFeatured: false,
+  },
+  {
+    id: 'DOC-033',
+    title: 'Understanding ERC-3643',
+    category: 'educational',
+    description: 'Technical guide to ERC-3643 token standard for regulated securities.',
+    date: '2026-03-21',
+    size: '2.1 MB',
+    tags: ['erc-3643', 'token-standard', 'compliance', 'technical', 'education'],
+    isFeatured: true,
   },
   {
     id: 'DOC-018',
@@ -517,6 +527,7 @@ const InvestorsRoom: React.FC = () => {
     // Educational
     'DeFi Basics': '/investors-room/defi-basics',
     'Tokenization Guide': '/investors-room/tokenization',
+    'Understanding ERC-3643': '/investors-room/understanding-erc3643',
     'Risk Management Guide': '/investors-room/risk-management',
     'Token Comparison Guide': '/investors-room/token-comparison-guide',
     'Investor FAQ': '/investors-room/investor-faq',

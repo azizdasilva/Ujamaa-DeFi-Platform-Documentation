@@ -79,6 +79,7 @@ import IRCaseStudies from './MVP/pages/investors-room/InvestmentCaseStudies';
 import IRImpactReport from './MVP/pages/investors-room/ImpactReport';
 import IRFAQ from './MVP/pages/investors-room/InvestorFAQ';
 import IRTokenComparison from './MVP/pages/investors-room/TokenComparisonGuide';
+import IREthereumERC3643 from './MVP/pages/investors-room/UnderstandingERC3643';
 
 // Query Client
 const queryClient = new QueryClient({
@@ -179,6 +180,7 @@ const App: React.FC = () => {
             <Route path="/investors-room/fees" element={<IRFeeSchedule />} />
             <Route path="/investors-room/defi-basics" element={<IRDeFiBasics />} />
             <Route path="/investors-room/tokenization" element={<IRTokenizationGuide />} />
+            <Route path="/investors-room/understanding-erc3643" element={<IREthereumERC3643 />} />
             <Route path="/investors-room/risk-management" element={<IRRiskManagementGuide />} />
             <Route path="/investors-room/q1-2026-report" element={<IRQ12026QuarterlyReport />} />
             <Route path="/investors-room/annual-report-2025" element={<IRAnnualReport2025 />} />
