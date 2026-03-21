@@ -20,6 +20,31 @@ const Navigation: React.FC = () => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Search results - all searchable pages
+  const searchResults = [
+    { title: 'Pool Marketplace', href: '/institutional/pools', category: 'Invest', tags: ['pools', 'invest', 'marketplace'] },
+    { title: 'Deep Dive Documentation', href: '/deep-dive', category: 'Learn', tags: ['technical', 'docs', 'documentation'] },
+    { title: 'Investors Room', href: '/investors-room', category: 'Documents', tags: ['documents', 'investor', 'reports'] },
+    { title: 'Token Comparison Guide', href: '/investors-room/token-comparison-guide', category: 'Documents', tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison'] },
+    { title: 'Investor FAQ', href: '/investors-room/investor-faq', category: 'Documents', tags: ['faq', 'questions', 'help'] },
+    { title: 'White Paper', href: '/investors-room/white-paper', category: 'Documents', tags: ['whitepaper', 'technical'] },
+    { title: 'Documentation Index', href: '/investors-room/documentation-index', category: 'Documents', tags: ['index', 'catalog'] },
+    { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'] },
+    { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'] },
+    { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'] },
+    { title: 'Onboarding', href: '/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register'] },
+  ];
+
+  // Filter search results based on query
+  const filteredResults = searchResults.filter(result => {
+    const query = searchQuery.toLowerCase();
+    return (
+      result.title.toLowerCase().includes(query) ||
+      result.tags.some(tag => tag.toLowerCase().includes(query)) ||
+      result.category.toLowerCase().includes(query)
+    );
+  });
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -312,14 +337,14 @@ const Navigation: React.FC = () => {
         <div className="fixed inset-0 z-[60]">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSearchOpen(false)} />
           <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl mx-4">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden animate-scaleIn">
-              <div className="flex items-center gap-3 px-4 py-3 border-b border-[#48A9F0]/30">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden animate-scaleIn max-h-[70vh] flex flex-col">
+              <div className="flex items-center gap-3 px-4 py-3 border-b border-[#48A9F0]/30 flex-shrink-0">
                 <svg className="w-5 h-5 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search pools, assets, documents..."
+                  placeholder="Search pages, documents, features... (⌘K)"
                   autoFocus
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -327,34 +352,55 @@ const Navigation: React.FC = () => {
                 />
                 <kbd className="px-2 py-1 text-xs text-[#333333]/60 bg-[#F3F8FA] rounded">ESC</kbd>
               </div>
-              <div className="p-4">
-                <p className="text-xs text-[#333333] mb-2">Quick Links</p>
-                <div className="space-y-1">
-                  <a href="/originator/assets/submit" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                    <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
-                    Submit Asset for Tokenization
-                  </a>
-                  <a href="/institutional/pools" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                    <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                    Pool Marketplace
-                  </a>
-                  <a href="/deep-dive" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                    <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
-                    </svg>
-                    Technical Documentation
-                  </a>
-                  <a href="/docs/glossary" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                    <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
-                    </svg>
-                    📖 Glossary
-                  </a>
-                </div>
+              <div className="p-4 overflow-y-auto flex-1">
+                {searchQuery === '' ? (
+                  <>
+                    <p className="text-xs text-[#333333] mb-2">Quick Links</p>
+                    <div className="space-y-1">
+                      <a href="/institutional/pools" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
+                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                        Pool Marketplace
+                      </a>
+                      <a href="/investors-room" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
+                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Investors Room (35 docs)
+                      </a>
+                      <a href="/originator/assets/submit" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
+                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Submit Asset for Tokenization
+                      </a>
+                      <a href="/docs/glossary" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
+                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
+                        </svg>
+                        📖 Glossary
+                      </a>
+                    </div>
+                  </>
+                ) : filteredResults.length > 0 ? (
+                  <>
+                    <p className="text-xs text-[#333333] mb-2">Search Results ({filteredResults.length})</p>
+                    <div className="space-y-1">
+                      {filteredResults.map((result, idx) => (
+                        <a key={idx} href={result.href} className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
+                          <span className="text-xs px-2 py-0.5 bg-[#00A8A8]/10 text-[#00A8A8] rounded font-medium">{result.category}</span>
+                          <span className="flex-1">{result.title}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-[#333333]">No results found for "<span className="font-bold">{searchQuery}</span>"</p>
+                    <p className="text-xs text-[#333333]/60 mt-2">Try different keywords or browse quick links</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
