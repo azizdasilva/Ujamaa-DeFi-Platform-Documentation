@@ -105,8 +105,49 @@ const categories: Category[] = [
   },
 ];
 
-// All documents (22 total)
+// All documents (35 total)
 const allDocuments: Document[] = [
+  // Executive (8)
+  {
+    id: 'DOC-026',
+    title: 'Investor Pitch Deck',
+    category: 'offerings',
+    description: 'Investment presentation deck for institutional investors and family offices.',
+    date: '2026-03-21',
+    size: '4.5 MB',
+    tags: ['pitch', 'presentation', 'investment', 'institutional'],
+    isFeatured: true,
+  },
+  {
+    id: 'DOC-027',
+    title: 'Due Diligence Questionnaire',
+    category: 'offerings',
+    description: 'Standard DDQ for institutional investors conducting due diligence.',
+    date: '2026-03-21',
+    size: '3.2 MB',
+    tags: ['ddq', 'due-diligence', 'institutional', 'questionnaire'],
+    isFeatured: true,
+  },
+  {
+    id: 'DOC-028',
+    title: 'Investment Case Studies',
+    category: 'offerings',
+    description: 'Real-world investment examples and performance case studies.',
+    date: '2026-03-21',
+    size: '2.4 MB',
+    tags: ['case-studies', 'examples', 'performance'],
+    isFeatured: false,
+  },
+  {
+    id: 'DOC-029',
+    title: 'Impact Report',
+    category: 'reporting',
+    description: 'Social and economic impact report on African SME financing.',
+    date: '2026-03-21',
+    size: '5.6 MB',
+    tags: ['impact', 'esg', 'social', 'africa'],
+    isFeatured: true,
+  },
   // Onboarding (5)
   {
     id: 'DOC-001',
@@ -265,7 +306,7 @@ const allDocuments: Document[] = [
     isFeatured: false,
   },
   
-  // Educational (5)
+  // Educational (9)
   {
     id: 'DOC-016',
     title: 'Tokenization Guide',
@@ -314,6 +355,46 @@ const allDocuments: Document[] = [
     date: '2026-03-10',
     size: '567 KB',
     tags: ['executive', 'summary', 'overview'],
+    isFeatured: false,
+  },
+  {
+    id: 'DOC-024',
+    title: 'Token Comparison Guide',
+    category: 'educational',
+    description: 'Complete comparison of UAT, UPT, and UGT tokens - understand the differences and choose the right token.',
+    date: '2026-03-21',
+    size: '2.8 MB',
+    tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison', 'education'],
+    isFeatured: true,
+  },
+  {
+    id: 'DOC-025',
+    title: 'Investor FAQ',
+    category: 'educational',
+    description: 'Frequently asked questions about investing in Ujamaa DeFi Platform.',
+    date: '2026-03-21',
+    size: '1.2 MB',
+    tags: ['faq', 'questions', 'answers', 'investor'],
+    isFeatured: true,
+  },
+  {
+    id: 'DOC-031',
+    title: 'Documentation Index',
+    category: 'educational',
+    description: 'Complete index of all investor documents available on the platform.',
+    date: '2026-03-21',
+    size: '456 KB',
+    tags: ['index', 'catalog', 'documents'],
+    isFeatured: false,
+  },
+  {
+    id: 'DOC-032',
+    title: 'Documentation Navigator',
+    category: 'educational',
+    description: 'Find the right document for your investment stage and needs.',
+    date: '2026-03-21',
+    size: '678 KB',
+    tags: ['navigator', 'guide', 'decision-tree'],
     isFeatured: false,
   },
 
@@ -408,11 +489,17 @@ const InvestorsRoom: React.FC = () => {
 
   // Document to route mapping - matches actual document component titles
   const documentRoutes: Record<string, string> = {
-    // Investor Resources
+    // Executive & Core
     'White Paper': '/investors-room/white-paper',
     'Executive Summary': '/investors-room/executive-summary',
     'Investment Memorandum': '/investors-room/investment-memorandum',
-    
+    'Investor Pitch Deck': '/investors-room/investor-pitch-deck',
+    'Due Diligence Questionnaire': '/investors-room/due-diligence-questionnaire',
+    'Investment Case Studies': '/investors-room/investment-case-studies',
+    'Impact Report': '/investors-room/impact-report',
+    'Documentation Index': '/investors-room/documentation-index',
+    'Documentation Navigator': '/investors-room/investor-documentation-navigator',
+
     // Legal & Compliance
     'Terms of Service': '/investors-room/terms-of-service',
     'Privacy Policy': '/investors-room/privacy-policy',
@@ -423,20 +510,22 @@ const InvestorsRoom: React.FC = () => {
     'Sanctions Declaration': '/investors-room/sanctions-declaration',
     'Accreditation Requirements': '/investors-room/accreditation',
     'Jurisdiction Eligibility Guide': '/investors-room/jurisdiction',
-    
+
     // Fees & Schedule
     'Fee Schedule': '/investors-room/fees',
-    
+
     // Educational
     'DeFi Basics': '/investors-room/defi-basics',
     'Tokenization Guide': '/investors-room/tokenization',
     'Risk Management Guide': '/investors-room/risk-management',
-    
+    'Token Comparison Guide': '/investors-room/token-comparison-guide',
+    'Investor FAQ': '/investors-room/investor-faq',
+
     // Reports
     'Q1 2026 Quarterly Report': '/investors-room/q1-2026-report',
     'Annual Report 2025': '/investors-room/annual-report-2025',
     'NAV Statements': '/investors-room/nav-statements',
-    
+
     // Templates & Forms
     'Term Sheet Template': '/investors-room/term-sheet',
     'Investment Agreement Template': '/investors-room/investment-agreement',
@@ -477,7 +566,7 @@ const InvestorsRoom: React.FC = () => {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Investors Room</h1>
-              <p className="text-gray-600 mt-1">Document Portal - 23 Documents Across 6 Categories</p>
+              <p className="text-gray-600 mt-1">Document Portal - 35 Documents Across 6 Categories</p>
             </div>
             <TestnetNotice variant="badge" />
           </div>
