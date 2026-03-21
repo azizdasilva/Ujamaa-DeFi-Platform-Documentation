@@ -1,7 +1,7 @@
 # Educational Materials
 
-**Version:** 7.0  
-**Last Updated:** March 19, 2026  
+**Version:** 8.0
+**Last Updated:** March 21, 2026
 
 ---
 
@@ -19,7 +19,7 @@ This folder contains **educational materials** to help investors understand toke
 | 02 | [Understanding ERC-3643](02_UNDERSTANDING_ERC3643.md) | ERC-3643 |
 | 03 | [Wallet Setup Guide](03_WALLET_SETUP_GUIDE.md) | Wallet setup |
 | 04 | [Investor FAQ](04_INVESTOR_FAQ.md) | FAQ |
-| 05 | [UAT vs UPT Comparison](05_UAT_VS_UPT_COMPARISON.md) | Tokens |
+| 05 | [Token Comparison Guide](05_TOKEN_COMPARISON_GUIDE.md) | UAT vs UPT vs UGT |
 
 ---
 
@@ -33,10 +33,10 @@ This folder contains **educational materials** to help investors understand toke
 
 ### For Technical Investors
 1. [Understanding ERC-3643](02_UNDERSTANDING_ERC3643.md)
-2. [UAT vs UPT Comparison](05_UAT_VS_UPT_COMPARISON.md)
+2. [Token Comparison Guide](05_TOKEN_COMPARISON_GUIDE.md)
 3. [Deep Dive](../../06_MVP_EXECUTION/08_DEEP_DIVE_INVESTORS_ROOM.md)
 
 ---
 
-**Parent:** [Investors Room](../README.md)  
-**Last Reviewed:** March 19, 2026
+**Parent:** [Investors Room](../README.md)
+**Last Reviewed:** March 21, 2026

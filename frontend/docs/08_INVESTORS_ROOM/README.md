@@ -132,7 +132,7 @@ Welcome to the **UJAMAA DeFi Investors Room** - your comprehensive documentation
 | 02 | [Understanding ERC-3643](14_EDUCATIONAL/02_UNDERSTANDING_ERC3643.md) | ERC-3643 |
 | 03 | [Wallet Setup Guide](14_EDUCATIONAL/03_WALLET_SETUP_GUIDE.md) | Wallet setup |
 | 04 | [Investor FAQ](14_EDUCATIONAL/04_INVESTOR_FAQ.md) | FAQ |
-| 05 | [UAT vs UPT Comparison](14_EDUCATIONAL/05_UAT_VS_UPT_COMPARISON.md) | Tokens |
+| 05 | [Token Comparison Guide](14_EDUCATIONAL/05_TOKEN_COMPARISON_GUIDE.md) | UAT vs UPT vs UGT |
 
 ---
 

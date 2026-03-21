@@ -28,7 +28,7 @@ Start with these documents in order:
 | 4 | KYC/AML Guide | 01_ONBOARDING/02 | 15 min |
 | 5 | Wallet Setup Guide | 05_EDUCATIONAL/03 | 20 min |
 | 6 | Investor FAQ | 05_EDUCATIONAL/04 | Reference |
-| 7 | UAT vs UPT Comparison 🆕 | 05_EDUCATIONAL/05 | 25 min |
+| 7 | Token Comparison Guide 🆕 | 05_EDUCATIONAL/05 | 25 min |
 
 ## 🟡 For Active Investors
 
@@ -530,23 +530,24 @@ Start with these documents in order:
 
 ---
 
-### 05_UAT_vs_UPT_Comparison.md 🆕
+### 05_TOKEN_COMPARISON_GUIDE.md 🆕
 
 | Attribute | Details |
 |-----------|---------|
-| **Purpose** | Explain difference between UAT and UPT tokens |
-| **Audience** | All investors making investment decisions |
-| **When to Use** | Before choosing which tokens to invest in |
-| **Key Contents** | UAT vs UPT comparison, risk profiles, return profiles, portfolio examples, decision matrix |
+| **Purpose** | Explain all UJAMAA tokens (UAT, UPT, UGT) and their differences |
+| **Audience** | All investors making investment decisions, Originators |
+| **When to Use** | Before choosing which tokens to invest in or mint |
+| **Key Contents** | UAT vs UPT vs UGT comparison, risk profiles, return profiles, portfolio examples, decision matrix |
 | **Legal Status** | Educational material |
 | **Update Frequency** | As new token types emerge |
 | **Related Documents** | How Tokenization Works, Investor FAQ, Term Sheet |
 
 **What You'll Learn:**
-- The difference between UAT and UPT tokens
+- The difference between UAT, UPT, and UGT tokens
 - Which token type fits your investment profile
 - Risk/return trade-offs
 - Real-world portfolio examples
+- When to mint UGT (for Originators)
 
 **What You'll Learn:**
 - Quick answers to common questions
