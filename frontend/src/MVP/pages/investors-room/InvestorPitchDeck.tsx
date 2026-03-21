@@ -226,10 +226,10 @@ const InvestorPitchDeck: React.FC = () => {
               role="Lead Architect"
               bio="Blockchain architect, 10+ years in fintech"
             />
-            <TeamMember 
+            <TeamMember
               name="[CFO]"
               role="Chief Financial Officer"
-              bio"Former investment banker, emerging markets expert"
+              bio="Former investment banker, emerging markets expert"
             />
             <TeamMember 
               name="[CCO]"
