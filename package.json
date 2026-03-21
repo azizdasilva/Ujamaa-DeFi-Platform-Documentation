@@ -15,7 +15,9 @@
     "security:audit": "npm run security:slither && npm run security:npm && npm run security:pip",
     "security:npm": "npm audit --audit-level=high",
     "security:pip": "pip-audit",
-    "test:all": "npm run test:smart-contracts && npm run test:backend && npm run security:audit"
+    "test:all": "npm run test:smart-contracts && npm run test:backend && npm run security:audit",
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "cd frontend && npm run dev"
   },
   "devDependencies": {
     "foundry": "^0.2.0",
