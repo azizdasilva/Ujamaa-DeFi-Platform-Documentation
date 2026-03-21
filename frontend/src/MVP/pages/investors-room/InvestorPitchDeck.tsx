@@ -221,20 +221,20 @@ const InvestorPitchDeck: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">👥 Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <TeamMember 
-              name="Aziz Da Silva"
-              role="Lead Architect"
-              bio="Blockchain architect, 10+ years in fintech"
+            <TeamMember
+              name="Lead Architect"
+              role="10+ years blockchain, fintech expert"
+              bio="Former major financial institution"
             />
             <TeamMember
-              name="[CFO]"
-              role="Chief Financial Officer"
-              bio="Former investment banker, emerging markets expert"
+              name="Chief Financial Officer"
+              role="Ex-investment banker"
+              bio="Emerging markets expert"
             />
-            <TeamMember 
-              name="[CCO]"
-              role="Chief Compliance Officer"
-              bio="Ex-regulator, Mauritius FSC licensed"
+            <TeamMember
+              name="Chief Compliance Officer"
+              role="Former regulator"
+              bio="Mauritius FSC licensed"
             />
           </div>
         </section>
@@ -361,7 +361,7 @@ const RoadmapItem: React.FC<{ quarter: string; title: string; status: string; it
 const TeamMember: React.FC<{ name: string; role: string; bio: string }> = ({ name, role, bio }) => (
   <div className="text-center p-6 bg-[#F3F8FA] rounded-lg">
     <div className="w-24 h-24 bg-[#023D7A] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">
-      {name.charAt(0)}
+      {name.split(' ').map(n => n[0]).join('').substring(0, 2)}
     </div>
     <p className="font-bold text-[#023D7A]">{name}</p>
     <p className="text-[#00A8A8] font-bold text-sm mb-2">{role}</p>
