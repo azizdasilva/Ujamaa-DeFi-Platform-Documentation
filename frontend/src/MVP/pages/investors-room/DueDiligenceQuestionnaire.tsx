@@ -57,9 +57,9 @@ const DueDiligenceQuestionnaire: React.FC = () => {
           
           <h3 className="text-2xl font-bold text-[#023D7A] mt-6 mb-4">Key Personnel</h3>
           <div className="space-y-4">
-            <KeyPerson name="Aziz Da Silva" role="Lead Architect" background="10+ years blockchain, former [Company]" />
-            <KeyPerson name="[CFO]" role="Chief Financial Officer" background="Ex-investment banker, emerging markets" />
-            <KeyPerson name="[CCO]" role="Chief Compliance Officer" background="Former regulator, Mauritius FSC" />
+            <KeyPerson name="Lead Architect" role="10+ years blockchain" background="Former major financial institution" />
+            <KeyPerson name="Chief Financial Officer" role="Ex-investment banker" background="Emerging markets expert" />
+            <KeyPerson name="Chief Compliance Officer" role="Former regulator" background="Mauritius FSC licensed" />
           </div>
         </section>
 
