@@ -643,7 +643,7 @@ A: Smart contracts carry risk but are mitigated through:
 | **Smart Contract** | Self-executing code on blockchain |
 | **Token** | Digital representation of assets/rights |
 | **ERC-3643** | Token standard for regulated securities |
-| **SPV** | Special Purpose Vehicle (bankruptcy-remote entity) |
+| **SPV** | Special Purpose Vehicle (bankruLPcy-remote entity) |
 | **KYC** | Know Your Customer (identity verification) |
 | **AML** | Anti-Money Laundering |
 | **NAV** | Net Asset Value |

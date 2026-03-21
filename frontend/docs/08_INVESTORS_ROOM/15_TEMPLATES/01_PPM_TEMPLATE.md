@@ -205,9 +205,9 @@ The net proceeds from the sale of Tokens will be used as follows:
 
 [Description of corporate structure and SPV arrangements]
 
-## 4.3 Bankruptcy Remote Features
+## 4.3 BankruLPcy Remote Features
 
-The Issuer is structured as a bankruptcy-remote special purpose vehicle.
+The Issuer is structured as a bankruLPcy-remote special purpose vehicle.
 
 ---
 

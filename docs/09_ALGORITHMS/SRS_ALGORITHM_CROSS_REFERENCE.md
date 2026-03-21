@@ -134,8 +134,8 @@
 
 | User Story | Description | Algorithm Required | Algorithm ID | Status |
 |------------|-------------|-------------------|--------------|--------|
-| 10.1 | Ujamaa Pool Token (UPT) Deposit | NAV Calculation | ALG-10-01-01 | ✅ Identified |
-| 10.2 | Ujamaa Pool Token (UPT) Redemption | NAV Redemption | ALG-10-01-01 | ✅ Identified |
+| 10.1 | Ujamaa Pool Token (uLP) Deposit | NAV Calculation | ALG-10-01-01 | ✅ Identified |
+| 10.2 | Ujamaa Pool Token (uLP) Redemption | NAV Redemption | ALG-10-01-01 | ✅ Identified |
 | 10.3 | Liquidity Pool Creation | Diversification Check | ALG-10-03-01 | ✅ Identified |
 | 10.4 | Yield Accrual | Yield Calculation | ALG-10-04-01 | ✅ Identified |
 | 10.5 | Bank Escrow Integration | Escrow Logic | ALG-10-05-01 | ⚠️ Not in Spec |

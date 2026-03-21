@@ -9,24 +9,24 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
- * @title UPTToken (Ujamaa Pool Token)
+ * @title ULPToken (Ujamaa Liquidity Provider Token)
  * @notice ERC-3643 compliant yield-bearing liquidity pool token
  * @dev Value-accrual model: balance remains constant, NAV per share increases with yield
- * 
+ *
  * This contract implements a yield-bearing token where:
- * - Users deposit UJEUR and receive UPT shares at current NAV
- * - Users redeem UPT shares and receive UJEUR at current NAV
+ * - Users deposit UJEUR and receive uLP shares at current NAV
+ * - Users redeem uLP shares and receive UJEUR at current NAV
  * - Yield accrues to the pool, increasing NAV per share
  * - Token balance remains constant; value grows via NAV appreciation
- * 
+ *
  * @reference SRS v2.0 Section 1.2, EPIC-10, User Stories 10.1-10.2
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5
  * @reference 09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice Network: Polygon Amoy (Chain ID: 80002)
  */
-contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
+contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
     // =========================================================================
     // CONSTANTS
     // =========================================================================
@@ -37,12 +37,12 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     bytes32 public constant POOL_MANAGER_ROLE = keccak256("POOL_MANAGER_ROLE");
 
     /**
-     * @notice Role for minters (can mint UPT on deposit)
+     * @notice Role for minters (can mint uLP on deposit)
      */
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     /**
-     * @notice Role for redeemers (can burn UPT on redemption)
+     * @notice Role for redeemers (can burn uLP on redemption)
      */
     bytes32 public constant REDEEMER_ROLE = keccak256("REDEEMER_ROLE");
 
@@ -117,10 +117,10 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice Emitted when UJEUR is deposited and UPT minted
+     * @notice Emitted when UJEUR is deposited and uLP minted
      * @param investor Investor address
      * @param ujeurAmount Amount of UJEUR deposited (18 decimals)
-     * @param uptMinted Amount of UPT minted (18 decimals)
+     * @param uptMinted Amount of uLP minted (18 decimals)
      * @param nav NAV per share at time of deposit
      */
     event Deposit(
@@ -131,9 +131,9 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     );
 
     /**
-     * @notice Emitted when UPT is redeemed and UJEUR withdrawn
+     * @notice Emitted when uLP is redeemed and UJEUR withdrawn
      * @param investor Investor address
-     * @param uptBurned Amount of UPT burned (18 decimals)
+     * @param uptBurned Amount of uLP burned (18 decimals)
      * @param ujeurAmount Amount of UJEUR withdrawn (18 decimals)
      * @param nav NAV per share at time of redemption
      */
@@ -193,9 +193,9 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     error ZeroRedemption();
 
     /**
-     * @notice Error when insufficient UPT for redemption
+     * @notice Error when insufficient uLP for redemption
      */
-    error InsufficientUPT();
+    error InsufficientULP();
 
     /**
      * @notice Error when insufficient UJEUR in pool
@@ -233,7 +233,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
         uint256 _managementFeeRate,
         uint256 _performanceFeeRate,
         uint256 _hurdleRate
-    ) ERC20("Ujamaa Pool Token", "UPT") {
+    ) ERC20("Ujamaa Liquidity Provider Token", "uLP") {
         if (_ujeurToken == address(0)) {
             revert UJEURTokenNotSet();
         }
@@ -263,11 +263,11 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice Deposit UJEUR and mint UPT shares
-     * @dev Calculates UPT amount based on current NAV
+     * @notice Deposit UJEUR and mint uLP shares
+     * @dev Calculates uLP amount based on current NAV
      *      New shares = ujeurAmount / NAV_per_share
      * @param ujeurAmount Amount of UJEUR to deposit (18 decimals)
-     * @return uptMinted Amount of UPT shares minted (18 decimals)
+     * @return uptMinted Amount of uLP shares minted (18 decimals)
      * 
      * Requirements:
      * - Caller must have MINTER_ROLE
@@ -279,7 +279,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
             revert ZeroDeposit();
         }
 
-        // Calculate UPT to mint based on current NAV
+        // Calculate uLP to mint based on current NAV
         uint256 uptMinted = ujeurAmount / s_navPerShare;
 
         // Handle first deposit (NAV = 1.00)
@@ -290,7 +290,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
         // Update pool state
         s_totalPoolValue += ujeurAmount;
 
-        // Mint UPT to investor
+        // Mint uLP to investor
         _mint(msg.sender, uptMinted);
 
         // Transfer UJEUR from investor to pool
@@ -302,16 +302,16 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     }
 
     /**
-     * @notice Redeem UPT shares for UJEUR
+     * @notice Redeem uLP shares for UJEUR
      * @dev Calculates UJEUR amount based on current NAV
      *      ujeurAmount = uptAmount * NAV_per_share
-     * @param uptAmount Amount of UPT to redeem (18 decimals)
+     * @param uptAmount Amount of uLP to redeem (18 decimals)
      * @return ujeurAmount Amount of UJEUR received (18 decimals)
      * 
      * Requirements:
      * - Caller must have REDEEMER_ROLE
      * - uptAmount must be > 0
-     * - Caller must have sufficient UPT balance
+     * - Caller must have sufficient uLP balance
      * - Pool must have sufficient UJEUR
      */
     function redeem(uint256 uptAmount) external nonReentrant returns (uint256) {
@@ -320,7 +320,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
         }
 
         if (balanceOf(msg.sender) < uptAmount) {
-            revert InsufficientUPT();
+            revert InsufficientULP();
         }
 
         // Calculate UJEUR to return based on current NAV
@@ -333,7 +333,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
         // Update pool state
         s_totalPoolValue -= ujeurAmount;
 
-        // Burn UPT from investor
+        // Burn uLP from investor
         _burn(msg.sender, uptAmount);
 
         // Transfer UJEUR from pool to investor
@@ -507,7 +507,7 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     /**
      * @notice Get pool statistics
      * @return totalPoolValue Total pool value in UJEUR (18 decimals)
-     * @return totalShares Total UPT shares outstanding (18 decimals)
+     * @return totalShares Total uLP shares outstanding (18 decimals)
      * @return navPerShare NAV per share (18 decimals)
      * @return accumulatedYield Accumulated yield (18 decimals)
      */
@@ -603,12 +603,12 @@ contract UPTToken is ERC20, AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice Mint test UPT for demo purposes (TESTNET ONLY)
+     * @notice Mint test uLP for demo purposes (TESTNET ONLY)
      * @dev Only available on testnet, for demo accounts
      * @param to Recipient address
      * @param amount Amount to mint (18 decimals)
      */
-    function mintTestUPT(address to, uint256 amount) external {
+    function mintTestULP(address to, uint256 amount) external {
         require(IS_MVP_TESTNET, "Only on testnet");
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Admin only");
         _mint(to, amount);

@@ -111,10 +111,10 @@ Investment in the uLP Token involves significant risks, including the potential 
 **Risk Description:**
 
 Industrial borrowers may fail to repay their financings due to:
-- Business failure or bankruptcy
+- Business failure or bankruLPcy
 - Cash flow problems
 - Off-taker non-payment (e.g., ZARA doesn't pay invoice)
-- Production issues (equipment failure, supply chain disruption)
+- Production issues (equipment failure, supply chain disruLPion)
 - Force majeure (natural disasters, pandemics, political unrest)
 
 **Expected Impact:**
@@ -245,7 +245,7 @@ Polygon/Ethereum network issues could affect:
 
 **Mitigation:**
 
-- Polygon PoS (established network, 99.9% uptime)
+- Polygon PoS (established network, 99.9% uLPime)
 - Ethereum settlement layer (highest security)
 - Gas price monitoring and optimization
 - Multi-chain deployment (future)
@@ -257,7 +257,7 @@ Polygon/Ethereum network issues could affect:
 Smart contract upgrades could:
 - Introduce new bugs
 - Change economic terms (if governance compromised)
-- Cause temporary service disruption
+- Cause temporary service disruLPion
 
 **Mitigation:**
 
@@ -431,7 +431,7 @@ Rising interest rates could:
 **Risk Description:**
 
 Technology failures could cause:
-- Service disruption (cannot invest/redeem)
+- Service disruLPion (cannot invest/redeem)
 - Data loss (investor records)
 - Incorrect calculations (NAV, distributions)
 - Security breaches (unauthorized access)
@@ -441,7 +441,7 @@ Technology failures could cause:
 - Multi-region cloud deployment (AWS + GCP)
 - Daily backups (off-site)
 - Redundant systems (failover)
-- 99.9% uptime SLA
+- 99.9% uLPime SLA
 
 ### 6.2 Cyber Attack Risk
 
@@ -451,7 +451,7 @@ Cyber attacks could result in:
 - Data breach (investor PII)
 - Fund theft (hacker access)
 - Ransomware (system lockdown)
-- DDoS (service disruption)
+- DDoS (service disruLPion)
 
 **Historical Precedents:**
 
@@ -479,7 +479,7 @@ Cyber attacks could result in:
 **Risk Description:**
 
 Departure of key personnel could:
-- Disrupt operations
+- DisruLP operations
 - Affect investor confidence
 - Trigger key person clause
 - Require succession planning
@@ -604,7 +604,7 @@ Although uLP is EURC-denominated:
 
 EURC is the denomination currency:
 - De-pegging risk (EURC loses €1.00 peg)
-- Issuer risk (Circle bankruptcy)
+- Issuer risk (Circle bankruLPcy)
 - Reserve risk (insufficient backing)
 
 **Mitigation:**
@@ -692,7 +692,7 @@ Claims of positive impact could be:
 Financed industrials could:
 - Violate labor standards
 - Cause environmental damage
-- Engage in corruption
+- Engage in corruLPion
 
 **Impact:**
 

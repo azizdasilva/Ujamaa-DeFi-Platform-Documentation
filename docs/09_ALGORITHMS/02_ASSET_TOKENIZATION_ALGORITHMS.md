@@ -72,7 +72,7 @@ struct Guarantee {
 │          ↓                                                   │
 │  8. [DEFAULT SCENARIO] If industrial defaults:              │
 │      → UGT liquidated via approved auction                  │
-│      → Proceeds distributed to UPT holders                  │
+│      → Proceeds distributed to uLP holders                  │
 │      → Default recorded in compliance audit trail           │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
@@ -200,7 +200,7 @@ function mintGuarantee(
 3. Emit event:
    - GuaranteeLiquidated(tokenId, auctionWinner, liquidationAmount)
 
-4. Distribute proceeds to UPT holders (via LiquidityPool)
+4. Distribute proceeds to uLP holders (via LiquidityPool)
 ```
 
 ---
@@ -376,7 +376,7 @@ struct Certificate {
 │  • Pool marks UGT as defaulted                              │
 │  • Auction conducted                                        │
 │  • UGT liquidated to auction winner                         │
-│  • Proceeds distributed to UPT holders                      │
+│  • Proceeds distributed to uLP holders                      │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```

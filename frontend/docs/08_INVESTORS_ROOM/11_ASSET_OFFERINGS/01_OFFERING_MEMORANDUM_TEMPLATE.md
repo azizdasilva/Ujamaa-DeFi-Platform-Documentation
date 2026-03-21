@@ -169,7 +169,7 @@ This Offering Memorandum contains forward-looking statements within the meaning 
 │        │ [X]% Equity                                             │
 │        ▼                                                         │
 │  ┌──────────────────┐                                           │
-│  │  [SPV NAME]      │ ← Bankruptcy Remote                       │
+│  │  [SPV NAME]      │ ← BankruLPcy Remote                       │
 │  │  (The Issuer)    │                                           │
 │  └────────┬─────────┘                                           │
 │           │                                                      │
@@ -184,15 +184,15 @@ This Offering Memorandum contains forward-looking statements within the meaning 
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## 2.3 Bankruptcy Remote Features
+## 2.3 BankruLPcy Remote Features
 
-The Issuer is structured as a bankruptcy-remote special purpose vehicle with the following features:
+The Issuer is structured as a bankruLPcy-remote special purpose vehicle with the following features:
 
 | Feature | Description |
 |---------|-------------|
 | **Separate Legal Entity** | Distinct from sponsor/operator |
 | **Limited Purpose** | Only authorized to hold specified asset |
-| **Independent Director** | At least one independent director required for bankruptcy filings |
+| **Independent Director** | At least one independent director required for bankruLPcy filings |
 | **No Additional Debt** | Restricted from incurring debt beyond specified limits |
 | **Separate Accounts** | Funds held separately from sponsor |
 

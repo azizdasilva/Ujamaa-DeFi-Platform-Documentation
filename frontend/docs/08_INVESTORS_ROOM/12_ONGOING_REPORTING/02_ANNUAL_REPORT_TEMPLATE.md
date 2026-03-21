@@ -514,7 +514,7 @@ _______________________________________________
 |---------------|-------|------------|---------|
 | **Property Insurance** | $[AMT] | $[AMT] | $[AMT] |
 | **Liability Insurance** | $[AMT] | $[AMT] | $[AMT] |
-| **Business Interruption** | $[AMT] | $[AMT] | $[AMT] |
+| **Business InterruLPion** | $[AMT] | $[AMT] | $[AMT] |
 | **Cyber Insurance** | $[AMT] | $[AMT] | $[AMT] |
 
 ## 7.4 Litigation and Claims

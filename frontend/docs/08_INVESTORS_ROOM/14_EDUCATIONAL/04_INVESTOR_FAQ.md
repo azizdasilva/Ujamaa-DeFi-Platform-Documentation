@@ -79,7 +79,7 @@ Check individual offering documents for specific minimums.
 
 ## Q: How are investments structured?
 
-**A:** Each investment is held in a bankruptcy-remote Special Purpose Vehicle (SPV). Tokens represent shares or beneficial ownership in the SPV, which owns the underlying asset.
+**A:** Each investment is held in a bankruLPcy-remote Special Purpose Vehicle (SPV). Tokens represent shares or beneficial ownership in the SPV, which owns the underlying asset.
 
 ## Q: What due diligence is performed?
 
@@ -421,7 +421,7 @@ Resubmit with corrected documents.
 |------|------------|
 | **KYC** | Know Your Customer - identity verification process |
 | **AML** | Anti-Money Laundering - financial crime prevention |
-| **SPV** | Special Purpose Vehicle - bankruptcy-remote entity |
+| **SPV** | Special Purpose Vehicle - bankruLPcy-remote entity |
 | **NAV** | Net Asset Value - per-token asset value |
 | **IRR** | Internal Rate of Return - annualized return metric |
 | **Lock-up** | Period during which tokens cannot be transferred |

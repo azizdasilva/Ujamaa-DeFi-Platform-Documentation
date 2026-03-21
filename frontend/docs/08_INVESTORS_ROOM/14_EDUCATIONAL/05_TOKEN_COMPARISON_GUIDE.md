@@ -1,4 +1,4 @@
-# UAT vs UPT vs UGT - Complete Token Comparison Guide
+# UAT vs uLP vs UGT - Complete Token Comparison Guide
 
 ## Understanding All UJAMAA Token Types
 
@@ -15,12 +15,12 @@
 | Token | What It Is | Best For |
 |-------|------------|----------|
 | **UAT** | Single asset investment (like buying one stock) | Sophisticated investors who want specific asset exposure |
-| **UPT** | Diversified pool investment (like an ETF) | Most investors who want diversified, lower-risk exposure |
+| **uLP** | Diversified pool investment (like an ETF) | Most investors who want diversified, lower-risk exposure |
 | **UGT** | Collateral token representing certified merchandise | Originators securing financing (NOT an investment token) |
 
 ---
 
-## **1. What Are UAT, UPT, and UGT Tokens?**
+## **1. What Are UAT, uLP, and UGT Tokens?**
 
 ### **UAT — Ujamaa Asset Token**
 
@@ -37,14 +37,14 @@
 
 ---
 
-### **UPT — Ujamaa Pool Token**
+### **uLP — Ujamaa Pool Token**
 
 **Definition:** A token that represents ownership in a **diversified pool of many assets**.
 
 **Examples:**
-- `UPT-IND` → Industrial Pool (50+ factories)
-- `UPT-HRV` → Harvest Pool (100+ farms)
-- `UPT-TRD` → Trade Finance Pool (200+ invoices)
+- `uLP-IND` → Industrial Pool (50+ factories)
+- `uLP-HRV` → Harvest Pool (100+ farms)
+- `uLP-TRD` → Trade Finance Pool (200+ invoices)
 
 **Think of it like:** Buying an ETF or index fund (diversified across many companies)
 
@@ -69,11 +69,11 @@
 
 ## **2. Key Differences at a Glance**
 
-| Feature | UAT | UPT | UGT |
+| Feature | UAT | uLP | UGT |
 |---------|-----|-----|-----|
 | **Full Name** | Ujamaa Asset Token | Ujamaa Pool Token | Ujamaa Guarantee Token |
 | **Token Standard** | ERC-3643 (fungible) | ERC-3643 (fungible) | ERC-721 + ERC-3643 (NFT) |
-| **Symbol** | `UAT-XXX` | `UPT-XXX` | `UGT-XXX` |
+| **Symbol** | `UAT-XXX` | `uLP-XXX` | `UGT-XXX` |
 | **What You Own** | Share in ONE asset | Share in MANY assets | Certified collateral (merchandise) |
 | **Diversification** | ❌ None (single asset) | ✅ Yes (multiple assets) | ❌ N/A (collateral, not investment) |
 | **Risk Level** | Higher (concentrated) | Lower (diversified) | N/A (not an investment token) |
@@ -89,7 +89,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    UAT vs UPT vs UGT STRUCTURE                   │
+│                    UAT vs uLP vs UGT STRUCTURE                   │
 │                                                                  │
 │  UAT (Ujamaa Asset Token)                                       │
 │  ┌────────────────────────────────────────────────────────────┐ │
@@ -100,14 +100,14 @@
 │  │  INVESTOR holds UAT → Earns returns from THIS asset        │ │
 │  └────────────────────────────────────────────────────────────┘ │
 │                                                                  │
-│  UPT (Ujamaa Pool Token)                                        │
+│  uLP (Ujamaa Pool Token)                                        │
 │  ┌────────────────────────────────────────────────────────────┐ │
-│  │  UPT-IND (Ujamaa Pool Token - Industrial)                  │ │
+│  │  uLP-IND (Ujamaa Pool Token - Industrial)                  │ │
 │  │         ↓ backed by                                        │ │
 │  │  [Factory A] + [Factory B] + [Factory C] + ... [50+]       │ │
 │  │  ← DIVERSIFIED POOL                                        │ │
 │  │         ↓                                                  │ │
-│  │  INVESTOR holds UPT → Earns returns from 50+ factories     │ │
+│  │  INVESTOR holds uLP → Earns returns from 50+ factories     │ │
 │  └────────────────────────────────────────────────────────────┘ │
 │                                                                  │
 │  UGT (Ujamaa Guarantee Token)                                   │
@@ -140,14 +140,14 @@
 
 ---
 
-### **UPT Lifecycle (Investment Token)**
+### **uLP Lifecycle (Investment Token)**
 
 ```
 1. Pool manager creates diversified pool
 2. Investor completes KYC/KYB
-3. Investor buys UPT tokens
-4. Pool assets generate income → quarterly distributions to UPT holders
-5. Investor redeems UPT (after lock-up) OR sells on secondary market
+3. Investor buys uLP tokens
+4. Pool assets generate income → quarterly distributions to uLP holders
+5. Investor redeems uLP (after lock-up) OR sells on secondary market
 ```
 
 **Who Profits:** Investor (from pooled returns)
@@ -187,7 +187,7 @@
 
 ---
 
-### **UPT Risk Profile**
+### **uLP Risk Profile**
 
 | Risk | Level | Why |
 |------|-------|-----|
@@ -196,7 +196,7 @@
 | **Liquidity Risk** | 🟢 Low | Pool tokens more liquid |
 | **Valuation Risk** | 🟢 Low | Pool NAV averages out individual variations |
 
-**Example:** If you buy `UPT-IND` and one factory has problems, the other 50+ factories continue performing.
+**Example:** If you buy `uLP-IND` and one factory has problems, the other 50+ factories continue performing.
 
 ---
 
@@ -228,7 +228,7 @@
 
 ---
 
-### **UPT Returns (For Investors)**
+### **uLP Returns (For Investors)**
 
 | Aspect | Description |
 |--------|-------------|
@@ -237,7 +237,7 @@
 | **Distribution** | Quarterly (from pooled income) |
 | **Volatility** | Lower (diversification smooths returns) |
 
-**Example:** `UPT-HRV` returns ~10% consistently because good harvests offset bad ones across 100+ farms.
+**Example:** `uLP-HRV` returns ~10% consistently because good harvests offset bad ones across 100+ farms.
 
 ---
 
@@ -259,12 +259,12 @@
 | Token | Minimum | Typical Amount |
 |-------|---------|----------------|
 | **UAT** | Varies by asset (€10K-€100K+) | €50,000+ |
-| **UPT** | €1,000 (standard) | €10,000-€100,000 |
+| **uLP** | €1,000 (standard) | €10,000-€100,000 |
 | **UGT** | N/A (not for investment) | N/A |
 
 **Why the difference?**
 - UAT: Single asset requires larger minimum to make deployment worthwhile
-- UPT: Pool structure allows smaller minimums through diversification
+- uLP: Pool structure allows smaller minimums through diversification
 - UGT: Not an investment - collateral value matches financing amount
 
 ---
@@ -284,7 +284,7 @@ You (or your advisor) should review:
 
 ---
 
-### **UPT Due Diligence (For Investors)**
+### **uLP Due Diligence (For Investors)**
 
 You (or your advisor) should review:
 - ✅ Pool strategy and criteria
@@ -328,7 +328,7 @@ Pool managers review:
 
 ---
 
-### **Choose UPT If:**
+### **Choose uLP If:**
 
 - ✅ You want diversified exposure
 - ✅ You prefer lower risk through diversification
@@ -337,11 +337,11 @@ Pool managers review:
 - ✅ You want easier due diligence (pool-level vs. asset-level)
 - ✅ You want lower minimum investment (€1,000)
 
-**Typical UPT Investors:**
+**Typical uLP Investors:**
 - Institutional investors (pension funds, insurance companies)
 - Family offices (diversified allocation)
 - Accredited individuals
-- Retail investors (via UPT-HRV with €100 minimum)
+- Retail investors (via uLP-HRV with €100 minimum)
 
 ---
 
@@ -369,10 +369,10 @@ Pool managers review:
 ┌─────────────────────────────────────────────────────────────────┐
 │                    SAMPLE INVESTOR PORTFOLIO                     │
 │                                                                  │
-│  70% UPT (Core Holdings)                                        │
-│  ├── 30% UPT-IND (Industrial Pool)                              │
-│  ├── 25% UPT-HRV (Harvest Pool)                                 │
-│  └── 15% UPT-TRD (Trade Finance Pool)                           │
+│  70% uLP (Core Holdings)                                        │
+│  ├── 30% uLP-IND (Industrial Pool)                              │
+│  ├── 25% uLP-HRV (Harvest Pool)                                 │
+│  └── 15% uLP-TRD (Trade Finance Pool)                           │
 │                                                                  │
 │  30% UAT (Satellite Holdings)                                   │
 │  ├── 15% UAT-LGREIT (Specific Lagos property they know)         │
@@ -405,9 +405,9 @@ Year 1 Outcomes:
 Risk: All eggs in one basket
 ```
 
-#### **Option B: 100% UPT (Diversified Pool)**
+#### **Option B: 100% uLP (Diversified Pool)**
 ```
-Investment: €100,000 in UPT-IND (50+ Factories)
+Investment: €100,000 in uLP-IND (50+ Factories)
 
 Year 1 Outcomes:
 ├─ Best Case: Pool performs well → 12% return = €12,000
@@ -419,7 +419,7 @@ Risk: Diversified across 50+ assets
 
 #### **Option C: 70/30 Split (Balanced)**
 ```
-Investment: €70,000 UPT-IND + €30,000 UAT-LGREIT
+Investment: €70,000 uLP-IND + €30,000 UAT-LGREIT
 
 Year 1 Outcomes:
 ├─ Best Case: 12.8% return = €12,800
@@ -453,14 +453,14 @@ Result:
 
 ## **12. Frequently Asked Questions**
 
-### **Q: Can I convert UAT to UPT (or vice versa)?**
+### **Q: Can I convert UAT to uLP (or vice versa)?**
 
 **A:** No direct conversion. You would need to:
 1. Sell UAT on secondary market (when available)
-2. Use proceeds to buy UPT
+2. Use proceeds to buy uLP
 
 Or:
-1. Redeem UPT (subject to lock-up)
+1. Redeem uLP (subject to lock-up)
 2. Use proceeds to buy UAT
 
 ---
@@ -472,13 +472,13 @@ Or:
 - Is held by Liquidity Pools as security
 - Is returned to Originator when financing repaid
 
-Investors buy UAT or UPT for returns, NOT UGT.
+Investors buy UAT or uLP for returns, NOT UGT.
 
 ---
 
 ### **Q: Which is more liquid?**
 
-**A:** UPT tokens are generally more liquid because:
+**A:** uLP tokens are generally more liquid because:
 - Larger investor base (lower minimums)
 - More standardized (pool vs. unique asset)
 - Easier to value (NAV vs. asset appraisal)
@@ -496,9 +496,9 @@ UGT is NOT liquid - it's collateral, not tradable.
 
 ---
 
-### **Q: Can I hold UAT and UPT in the same wallet?**
+### **Q: Can I hold UAT and uLP in the same wallet?**
 
-**A:** Yes! Both UAT and UPT are ERC-3643 tokens and can be held in the same compatible wallet.
+**A:** Yes! Both UAT and uLP are ERC-3643 tokens and can be held in the same compatible wallet.
 
 **Can I hold UGT in my wallet?** Only if you're an Originator with certified merchandise. Investors don't hold UGT.
 
@@ -507,14 +507,14 @@ UGT is NOT liquid - it's collateral, not tradable.
 ### **Q: Do all tokens have the same compliance requirements?**
 
 **A:** 
-- **UAT & UPT:** Yes, both require KYC verification, KYB for investments ≥€100,000, jurisdiction restrictions
+- **UAT & uLP:** Yes, both require KYC verification, KYB for investments ≥€100,000, jurisdiction restrictions
 - **UGT:** Different - requires Industrial Gateway certification, merchandise verification, warehouse confirmation
 
 ---
 
 ### **Q: What happens to UGT if the Originator defaults?**
 
-**A:** The Pool liquidates the collateral (merchandise represented by UGT) to recover the financing. This is why UGT is security - it protects the Pool and, indirectly, UPT holders.
+**A:** The Pool liquidates the collateral (merchandise represented by UGT) to recover the financing. This is why UGT is security - it protects the Pool and, indirectly, uLP holders.
 
 ---
 
@@ -522,11 +522,11 @@ UGT is NOT liquid - it's collateral, not tradable.
 
 | Your Profile | Recommended | Why |
 |--------------|-------------|-----|
-| **Retail Investor (<€100K)** | UPT | Lower minimums, diversification |
-| **Accredited Investor (€100K-€1M)** | UPT or 70/30 Split | Flexibility based on expertise |
-| **Institutional Investor (€1M+)** | UPT (core) + UAT (satellite) | Diversification + targeted bets |
+| **Retail Investor (<€100K)** | uLP | Lower minimums, diversification |
+| **Accredited Investor (€100K-€1M)** | uLP or 70/30 Split | Flexibility based on expertise |
+| **Institutional Investor (€1M+)** | uLP (core) + UAT (satellite) | Diversification + targeted bets |
 | **Sector Expert** | UAT in your expertise area | Leverage your knowledge |
-| **First-Time Investor** | UPT | Easier due diligence, lower risk |
+| **First-Time Investor** | uLP | Easier due diligence, lower risk |
 | **Experienced RWA Investor** | Mix based on strategy | Flexibility |
 | **Originator with Merchandise** | Mint UGT | Access financing using collateral |
 | **Industrial SME** | Mint UGT | Working capital against inventory |
@@ -541,18 +541,18 @@ UGT is NOT liquid - it's collateral, not tradable.
 │                                                                  │
 │  INVESTORS                                                       │
 │  ├── Buy UAT → Direct investment in single asset                │
-│  └── Buy UPT → Diversified investment in pool                   │
+│  └── Buy uLP → Diversified investment in pool                   │
 │                                                                  │
 │  ORIGINATORS/INDUSTRIALS                                         │
 │  └── Mint UGT → Collateral for financing (NOT investment)       │
 │                                                                  │
 │  LIQUIDITY POOLS                                                 │
 │  ├── Hold assets from UAT investments                           │
-│  ├── Hold diversified assets for UPT                            │
+│  ├── Hold diversified assets for uLP                            │
 │  └── Hold UGT as collateral security                            │
 │                                                                  │
 │  FLOW:                                                           │
-│  Investor → UAT/UPT → Pool → Financing → Originator             │
+│  Investor → UAT/uLP → Pool → Financing → Originator             │
 │  Originator → UGT (collateral) → Pool → Security                │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -561,8 +561,8 @@ UGT is NOT liquid - it's collateral, not tradable.
 
 ## **15. Next Steps**
 
-### **If You Choose UPT:**
-1. Review pool factsheets (UPT-IND, UPT-HRV, UPT-TRD, etc.)
+### **If You Choose uLP:**
+1. Review pool factsheets (uLP-IND, uLP-HRV, uLP-TRD, etc.)
 2. Understand pool strategy and diversification
 3. Complete KYC/KYB
 4. Subscribe via investor portal
@@ -598,7 +598,7 @@ UGT is NOT liquid - it's collateral, not tradable.
 
 ## **17. Contact**
 
-**For questions about UAT/UPT (Investments):**
+**For questions about UAT/uLP (Investments):**
 - **Email:** investors@ujamaa.defi
 - **Investor Portal:** www.ujamaa.defi/investors
 - **Phone:** +230 XXX XXXX

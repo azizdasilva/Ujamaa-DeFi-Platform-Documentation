@@ -13,7 +13,7 @@
 
 The UJAMAA DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, UJAMAA enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.
 
-This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the UPT Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
+This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
 
 ---
 
@@ -53,7 +53,7 @@ Simultaneously, institutional investors face a scarcity of attractive, compliant
 
 UJAMAA DeFi Platform bridges this gap through blockchain-based tokenization of African industrial financing:
 
-**Core Innovation:** Diversified liquidity pools of SME financings, represented by yield-bearing ERC-3643 tokens (UPT Tokens) accessible to institutional investors.
+**Core Innovation:** Diversified liquidity pools of SME financings, represented by yield-bearing ERC-3643 tokens (uLP Tokens) accessible to institutional investors.
 
 **Key Features:**
 - **ERC-3643 Compliance:** On-chain identity verification, transfer restrictions, regulatory enforcement
@@ -86,7 +86,7 @@ This white paper is organized as follows:
 
 - **Section 2:** Market analysis (TAM, SAM, SOM, competitive landscape)
 - **Section 3:** System architecture (layers, components, integrations)
-- **Section 4:** Token economics (UPT Token, Guarantee Token, fee structure)
+- **Section 4:** Token economics (uLP Token, Guarantee Token, fee structure)
 - **Section 5:** Smart contract design (specifications, upgrade mechanism)
 - **Section 6:** Compliance framework (ERC-3643, AML/KYC, regulatory)
 - **Section 7:** Security model (audits, custody, risk management)
@@ -218,7 +218,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 │                           ▼                                     │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  SMART CONTRACT LAYER (Polygon/Ethereum)                │   │
-│  │  • UPT Token (ERC-3643, Yield-Bearing)                  │   │
+│  │  • uLP Token (ERC-3643, Yield-Bearing)                  │   │
 │  │  • Guarantee Token (ERC-3643 NFT, Collateral)           │   │
 │  │  • Liquidity Pool Manager                               │   │
 │  │  • Identity Registry (T-REX)                            │   │
@@ -245,7 +245,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 **React Investor Dashboard:**
 
 - **Portfolio View:** Allocation by pool, industrial, geography
-- **Yield Tracking:** Accrued yield, distribution history, NAV per UPT
+- **Yield Tracking:** Accrued yield, distribution history, NAV per uLP
 - **Proof of Reserves:** On-chain attestation of pool backing
 - **Document Center:** Downloadable statements (PDF), tax reports
 - **Compliance Portal:** KYB submission, accreditation verification
@@ -285,7 +285,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 
 | Contract | Standard | Purpose |
 |----------|----------|---------|
-| **UPT Token** | ERC-3643 (Fungible) | Yield-bearing pool ownership |
+| **uLP Token** | ERC-3643 (Fungible) | Yield-bearing pool ownership |
 | **Guarantee Token** | ERC-3643 (NFT) | Collateral representation |
 | **Identity Registry** | T-REX | On-chain identity verification |
 | **Compliance Module** | T-REX | Transfer restriction enforcement |
@@ -296,7 +296,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 |----------|---------|
 | **Liquidity Pool** | Receives investor funds, deploys to industrials |
 | **Asset Proof (Industrial Gateway)** | Certifies merchandise, mints Guarantee Tokens |
-| **Yield Distributor** | Calculates and distributes yield to UPT holders |
+| **Yield Distributor** | Calculates and distributes yield to uLP holders |
 | **Oracle Aggregator** | Aggregates Chainlink price feeds |
 
 #### 3.2.4 Infrastructure Layer
@@ -340,7 +340,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 5. ONCHAINID Claim Issuer signs verification → On-chain claim
 6. Identity Registry updated → Investor wallet verified
 7. Accreditation confirmed → Institutional status (≥€100K)
-8. Investor approved → UPT Token purchase enabled
+8. Investor approved → uLP Token purchase enabled
 ```
 
 #### 3.3.2 Financing Flow
@@ -357,28 +357,28 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
    - Principal + Interest → Pool
    - Surplus → Industrial
    - Guarantee Token → Redeemed to Industrial
-9. Yield accrued → UPT NAV increases
-10. Quarterly distribution → Ujamaa Euro (UJEUR) to UPT holders
+9. Yield accrued → uLP NAV increases
+10. Quarterly distribution → Ujamaa Euro (UJEUR) to uLP holders
 ```
 
 ---
 
 ## 4. TOKEN ECONOMICS
 
-### 4.1 UPT Token (Yield-Bearing ERC-3643)
+### 4.1 uLP Token (Yield-Bearing ERC-3643)
 
 #### 4.1.1 Token Specification
 
 | Attribute | Value |
 |-----------|-------|
 | **Token Name** | UJAMAA Liquidity Provider Token |
-| **Token Symbol** | UPT-[POOL] (e.g., UPT-IND for Pool Industrie) |
+| **Token Symbol** | uLP-[POOL] (e.g., uLP-IND for Pool Industrie) |
 | **Token Standard** | ERC-3643 (Fungible, Permissioned) |
 | **Blockchain** | Polygon (Primary), Ethereum (Settlement) |
 | **Decimals** | 18 |
 | **Yield Mechanism** | Value accrual (NAV increases, balance constant) |
 | **Denomination** | Ujamaa Euro (UJEUR) (Euro-pegged Stablecoin) |
-| **Minimum Investment** | €100,000 (100,000 UPT at NAV=€1.00) |
+| **Minimum Investment** | €100,000 (100,000 uLP at NAV=€1.00) |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
 | **Redemption** | 30-day notice after lock-up |
 | **Transferability** | ERC-3643 restricted (verified wallets only) |
@@ -387,9 +387,9 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 
 **Value Accrual Model:**
 
-Unlike traditional rebasing tokens (balance increases), UPT Tokens use a value accrual model:
+Unlike traditional rebasing tokens (balance increases), uLP Tokens use a value accrual model:
 
-- **Token Balance:** Constant (e.g., 100,000 UPT)
+- **Token Balance:** Constant (e.g., 100,000 uLP)
 - **NAV per Token:** Increases over time (e.g., €1.00 → €1.10)
 - **Total Value:** Balance × NAV (e.g., 100,000 × €1.10 = €110,000)
 
@@ -401,16 +401,16 @@ Unlike traditional rebasing tokens (balance increases), UPT Tokens use a value a
 **NAV Calculation:**
 
 ```
-NAV per UPT = Total Pool Value / Total UPT Supply
+NAV per uLP = Total Pool Value / Total uLP Supply
 
 Where:
 Total Pool Value = Σ (Financing Principal + Accrued Interest - Provision)
-Total UPT Supply = Constant (after initial minting)
+Total uLP Supply = Constant (after initial minting)
 ```
 
 **Example:**
 
-| Time | Pool Value | UPT Supply | NAV per UPT | Investor Value (100K UPT) |
+| Time | Pool Value | uLP Supply | NAV per uLP | Investor Value (100K uLP) |
 |------|------------|------------|-------------|---------------------------|
 | T0 | €50M | 50M | €1.00 | €100,000 |
 | T1 (Quarter 1) | €51.25M | 50M | €1.025 | €102,500 |
@@ -425,12 +425,12 @@ Total UPT Supply = Constant (after initial minting)
 ```
 1. Investor wires Ujamaa Euro (UJEUR) to BIIC Escrow
 2. Smart Contract receives Ujamaa Euro (UJEUR)
-3. UPT Tokens minted at current NAV
-4. UPT deposited to investor wallet
+3. uLP Tokens minted at current NAV
+4. uLP deposited to investor wallet
 
-UPT Minted = Ujamaa Euro (UJEUR) Amount / NAV per UPT
+uLP Minted = Ujamaa Euro (UJEUR) Amount / NAV per uLP
 
-Example: €100,000 / €1.00 = 100,000 UPT
+Example: €100,000 / €1.00 = 100,000 uLP
 ```
 
 **Redemption (After Lock-up):**
@@ -439,11 +439,11 @@ Example: €100,000 / €1.00 = 100,000 UPT
 1. Investor submits redemption request (30-day notice)
 2. Smart Contract calculates redemption value
 3. Ujamaa Euro (UJEUR) transferred from Pool to investor
-4. UPT Tokens burned
+4. uLP Tokens burned
 
-Ujamaa Euro (UJEUR) Received = UPT Amount × NAV per UPT
+Ujamaa Euro (UJEUR) Received = uLP Amount × NAV per uLP
 
-Example: 100,000 UPT × €1.10 = €110,000
+Example: 100,000 uLP × €1.10 = €110,000
 ```
 
 **Early Redemption Penalty:**
@@ -616,20 +616,20 @@ contract ULPToken is ERC3643 {
     // Pool-specific data
     string public poolName;      // e.g., "Pool Industrie"
     uint256 public poolValue;    // Total pool value in Ujamaa Euro (UJEUR) (18 decimals)
-    uint256 public totalShares;  // Total UPT supply
+    uint256 public totalShares;  // Total uLP supply
     
     // NAV tracking
-    uint256 public navPerShare;  // NAV per UPT token
+    uint256 public navPerShare;  // NAV per uLP token
     uint256 public lastNavUpdate;
     
     // Roles
     bytes32 public constant POOL_MANAGER_ROLE = keccak256("POOL_MANAGER");
     
     /**
-     * @notice Mint UPT tokens to investor
+     * @notice Mint uLP tokens to investor
      * @param investor Investor wallet address
      * @param amount Ujamaa Euro (UJEUR) amount invested
-     * @return UPT tokens minted
+     * @return uLP tokens minted
      */
     function mint(address investor, uint256 amount) 
         external 
@@ -644,9 +644,9 @@ contract ULPToken is ERC3643 {
     }
     
     /**
-     * @notice Burn UPT tokens on redemption
+     * @notice Burn uLP tokens on redemption
      * @param investor Investor wallet address
-     * @param shares UPT tokens to burn
+     * @param shares uLP tokens to burn
      * @return Ujamaa Euro (UJEUR) amount to redeem
      */
     function burn(address investor, uint256 shares) 
@@ -1002,7 +1002,7 @@ UJAMAA implements the ERC-3643 T-REX (Token for Regulated Exchanges) protocol fo
 │     • Wallet address linked to ONCHAINID                        │
 │     • Transfer restrictions enabled                             │
 │                                                                 │
-│  5. INVESTOR CAN ACQUIRE/TRANSFER UPT TOKENS                    │
+│  5. INVESTOR CAN ACQUIRE/TRANSFER uLP TOKENS                    │
 │     • ERC-3643 compliance check on every transfer               │
 │     • Blocked if not verified                                   │
 │                                                                 │
@@ -1209,7 +1209,7 @@ def erase_pii(investor_id):
 | **Segregated Accounts** | Investor funds ring-fenced from operational funds |
 | **Multi-Sig Withdrawal** | 3-of-5 for amounts >€1M |
 | **FATF Travel Rule** | Originator/beneficiary info for transfers >€1,000 |
-| **Monthly Reconciliation** | Escrow balance vs. UPT supply |
+| **Monthly Reconciliation** | Escrow balance vs. uLP supply |
 | **Audit Rights** | Quarterly third-party audits |
 
 ### 7.3 Infrastructure Security
@@ -1244,7 +1244,7 @@ def erase_pii(investor_id):
 |----------|-------------|---------------|
 | **Critical** | Fund loss, smart contract exploit | Immediate (<15 min) |
 | **High** | Data breach, custody compromise | <1 hour |
-| **Medium** | Service disruption, performance degradation | <4 hours |
+| **Medium** | Service disruLPion, performance degradation | <4 hours |
 | **Low** | Minor bugs, cosmetic issues | <24 hours |
 
 #### 7.4.2 Response Process
@@ -1356,14 +1356,14 @@ def erase_pii(investor_id):
 
 | Function | Current | Future |
 |----------|---------|--------|
-| **Upgrades** | Multisig | Token-weighted vote (UPT holders) |
+| **Upgrades** | Multisig | Token-weighted vote (uLP holders) |
 | **Fee Changes** | Multisig | Governance proposal + vote |
 | **Pool Creation** | Team | Community proposals |
 | **Treasury** | Team | Community-controlled DAO |
 
 **Governance Token (Future):**
 
-- **Separate from UPT:** Governance token (voting) vs. UPT (yield)
+- **Separate from uLP:** Governance token (voting) vs. uLP (yield)
 - **Distribution:** Team, investors, community rewards
 - **Voting Mechanism:** Quadratic voting (prevent whale dominance)
 
@@ -1403,12 +1403,12 @@ def erase_pii(investor_id):
 
 | Feature | Description | Timeline |
 |---------|-------------|----------|
-| **Secondary Market** | Peer-to-peer UPT trading (ERC-3643 compliant) | Q4 2027 |
+| **Secondary Market** | Peer-to-peer uLP trading (ERC-3643 compliant) | Q4 2027 |
 | **Retail Tranche** | €10K minimum for accredited individuals | Q2 2028 |
 | **Cross-Chain** | Deploy on Avalanche, BSC for lower fees | Q4 2028 |
 | **Governance Token** | Community governance for protocol upgrades | Q2 2029 |
 | **Insurance Pool** | Mutualized insurance for default protection | Q4 2029 |
-| **Derivatives** | Options, futures on UPT Tokens | Q2 2030 |
+| **Derivatives** | Options, futures on uLP Tokens | Q2 2030 |
 
 ---
 
@@ -1418,7 +1418,7 @@ The UJAMAA DeFi Platform represents a paradigm shift in African SME financing. B
 
 **Key Innovations:**
 
-1. **Yield-Bearing UPT Token:** Value accrual model for tax-efficient yield distribution
+1. **Yield-Bearing uLP Token:** Value accrual model for tax-efficient yield distribution
 2. **Guarantee Token Collateral:** ERC-3643 NFT representing certified merchandise
 3. **Diversified Liquidity Pools:** Risk mitigation through 40+ financings per pool
 4. **Institutional Infrastructure:** Fireblocks, BIIC/MCB, ERC-3643 compliance

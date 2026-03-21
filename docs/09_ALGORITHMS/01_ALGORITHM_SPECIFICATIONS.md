@@ -619,8 +619,8 @@ def detect_structuring(transactions: DataStream) -> DataStream:
 ### 5.1 NAV Per Share Calculation
 
 **Algorithm ID:** `ALG-10-01-01`
-**SRS Reference:** EPIC 10, User Story 10.1 (Ujamaa Pool Token (UPT) Deposit)
-**Purpose:** Calculate Net Asset Value per Ujamaa Pool Token (UPT) share
+**SRS Reference:** EPIC 10, User Story 10.1 (Ujamaa Pool Token (uLP) Deposit)
+**Purpose:** Calculate Net Asset Value per Ujamaa Pool Token (uLP) share
 **Implementation:** Solidity (on-chain), Python (off-chain verification)
 
 #### 5.1.1 On-Chain Calculation (Solidity)
@@ -631,7 +631,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title NAVCalculator
- * @dev Calculate NAV per Ujamaa Pool Token (UPT) share (18 decimal precision)
+ * @dev Calculate NAV per Ujamaa Pool Token (uLP) share (18 decimal precision)
  */
 contract NAVCalculator {
     using SafeMath for uint256;
@@ -642,10 +642,10 @@ contract NAVCalculator {
     /**
      * @dev Calculate NAV per share
      *
-     * Formula: NAV = Total Pool Value / Total UPT Shares
+     * Formula: NAV = Total Pool Value / Total uLP Shares
      *
      * @param totalPoolValue Total value of pool assets (in Ujamaa Euro (UJEUR), 18 decimals)
-     * @param totalShares Total UPT tokens in circulation (18 decimals)
+     * @param totalShares Total uLP tokens in circulation (18 decimals)
      * @return navPerShare Net Asset Value per share (18 decimals)
      */
     function calculateNAVPerShare(
@@ -661,13 +661,13 @@ contract NAVCalculator {
     }
 
     /**
-     * @dev Calculate UPT tokens to mint on deposit
+     * @dev Calculate uLP tokens to mint on deposit
      *
-     * Formula: UPT Amount = Ujamaa Euro (UJEUR) Deposit / NAV Per Share
+     * Formula: uLP Amount = Ujamaa Euro (UJEUR) Deposit / NAV Per Share
      *
      * @param eurcAmount Ujamaa Euro (UJEUR) deposit amount (18 decimals)
      * @param navPerShare Current NAV per share (18 decimals)
-     * @return ulpAmount UPT tokens to mint (18 decimals)
+     * @return ulpAmount uLP tokens to mint (18 decimals)
      */
     function calculateULPMintAmount(
         uint256 eurcAmount,
@@ -675,7 +675,7 @@ contract NAVCalculator {
     ) external pure returns (uint256 ulpAmount) {
         require(navPerShare > 0, "Invalid NAV");
 
-        // UPT = (Ujamaa Euro (UJEUR) * PRECISION) / NAV
+        // uLP = (Ujamaa Euro (UJEUR) * PRECISION) / NAV
         ulpAmount = eurcAmount.mul(PRECISION).div(navPerShare);
 
         return ulpAmount;
@@ -684,9 +684,9 @@ contract NAVCalculator {
     /**
      * @dev Calculate Ujamaa Euro (UJEUR) to receive on redemption
      *
-     * Formula: Ujamaa Euro (UJEUR) = UPT Shares * NAV Per Share
+     * Formula: Ujamaa Euro (UJEUR) = uLP Shares * NAV Per Share
      *
-     * @param ulpAmount UPT tokens to redeem (18 decimals)
+     * @param ulpAmount uLP tokens to redeem (18 decimals)
      * @param navPerShare Current NAV per share (18 decimals)
      * @return eurcAmount Ujamaa Euro (UJEUR) to receive (18 decimals)
      */
@@ -694,7 +694,7 @@ contract NAVCalculator {
         uint256 ulpAmount,
         uint256 navPerShare
     ) external pure returns (uint256 eurcAmount) {
-        // Ujamaa Euro (UJEUR) = (UPT * NAV) / PRECISION
+        // Ujamaa Euro (UJEUR) = (uLP * NAV) / PRECISION
         eurcAmount = ulpAmount.mul(navPerShare).div(PRECISION);
 
         return eurcAmount;
@@ -714,11 +714,11 @@ def calculate_nav_per_share(
     total_shares: int
 ) -> int:
     """
-    Calculate NAV per Ujamaa Pool Token (UPT) share.
+    Calculate NAV per Ujamaa Pool Token (uLP) share.
 
     Args:
         total_pool_value: Total pool value in Ujamaa Euro (UJEUR) (18 decimals)
-        total_shares: Total UPT shares outstanding (18 decimals)
+        total_shares: Total uLP shares outstanding (18 decimals)
 
     Returns:
         NAV per share (18 decimals)
@@ -739,14 +739,14 @@ def calculate_ulp_mint_amount(
     nav_per_share: int
 ) -> int:
     """
-    Calculate UPT tokens to mint on Ujamaa Euro (UJEUR) deposit.
+    Calculate uLP tokens to mint on Ujamaa Euro (UJEUR) deposit.
 
     Args:
         eurc_amount: Ujamaa Euro (UJEUR) deposit (18 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
-        UPT tokens to mint (18 decimals)
+        uLP tokens to mint (18 decimals)
     """
     if nav_per_share == 0:
         raise ValueError("Invalid NAV")
@@ -754,9 +754,9 @@ def calculate_ulp_mint_amount(
     Ujamaa Euro (UJEUR) = Decimal(eurc_amount)
     nav = Decimal(nav_per_share)
 
-    UPT = (Ujamaa Euro (UJEUR) * PRECISION) / nav
+    uLP = (Ujamaa Euro (UJEUR) * PRECISION) / nav
 
-    return int(UPT.quantize(Decimal('1'), rounding=ROUND_DOWN))
+    return int(uLP.quantize(Decimal('1'), rounding=ROUND_DOWN))
 
 
 def calculate_eurc_redemption(
@@ -764,19 +764,19 @@ def calculate_eurc_redemption(
     nav_per_share: int
 ) -> int:
     """
-    Calculate Ujamaa Euro (UJEUR) to receive on UPT redemption.
+    Calculate Ujamaa Euro (UJEUR) to receive on uLP redemption.
 
     Args:
-        ulp_amount: UPT tokens to redeem (18 decimals)
+        ulp_amount: uLP tokens to redeem (18 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
         Ujamaa Euro (UJEUR) to receive (18 decimals)
     """
-    UPT = Decimal(ulp_amount)
+    uLP = Decimal(ulp_amount)
     nav = Decimal(nav_per_share)
 
-    Ujamaa Euro (UJEUR) = (UPT * nav) / PRECISION
+    Ujamaa Euro (UJEUR) = (uLP * nav) / PRECISION
 
     return int(Ujamaa Euro (UJEUR).quantize(Decimal('1'), rounding=ROUND_DOWN))
 ```
@@ -786,16 +786,16 @@ def calculate_eurc_redemption(
 ```
 Initial State:
   - Total Pool Value: 1,000,000 Ujamaa Euro (UJEUR) (€1M)
-  - Total UPT Shares: 1,000,000 (1M shares)
+  - Total uLP Shares: 1,000,000 (1M shares)
   - NAV Per Share: 1.000000000000000000 Ujamaa Euro (UJEUR)
 
 After Yield Accrual (5% APY, 1 year):
   - Total Pool Value: 1,050,000 Ujamaa Euro (UJEUR) (€1.05M)
-  - Total UPT Shares: 1,000,000 (unchanged)
+  - Total uLP Shares: 1,000,000 (unchanged)
   - NAV Per Share: 1.050000000000000000 Ujamaa Euro (UJEUR) (+5%)
 
 Investor Redemption:
-  - Investor holds: 10,000 UPT shares
+  - Investor holds: 10,000 uLP shares
   - Ujamaa Euro (UJEUR) Received: 10,000 × 1.05 = 10,500 Ujamaa Euro (UJEUR)
   - Yield Earned: €500 (5% return)
 ```
@@ -904,14 +904,14 @@ def calculate_pool_yield(
 
 **Algorithm ID:** `ALG-10-04-02`
 **SRS Reference:** EPIC 10, User Story 10.4
-**Purpose:** Calculate pro-rata yield distribution to UPT holders
+**Purpose:** Calculate pro-rata yield distribution to uLP holders
 **Implementation:** Solidity
 
 #### 5.3.1 Distribution Logic
 
 ```solidity
 /**
- * @dev Distribute yield to UPT holders (via NAV increase)
+ * @dev Distribute yield to uLP holders (via NAV increase)
  *
  * In the value-accrual model, yield is NOT distributed as additional tokens.
  * Instead, NAV per share increases, benefiting all holders proportionally.
@@ -939,8 +939,8 @@ function distributeYield(
 /**
  * @dev Calculate individual investor's yield share
  *
- * @param investorShares Investor's UPT balance (18 decimals)
- * @param totalShares Total UPT shares outstanding (18 decimals)
+ * @param investorShares Investor's uLP balance (18 decimals)
+ * @param totalShares Total uLP shares outstanding (18 decimals)
  * @param navPerShareBefore NAV before yield (18 decimals)
  * @param navPerShareAfter NAV after yield (18 decimals)
  * @return investorYield Investor's share of yield (Ujamaa Euro (UJEUR), 18 decimals)
@@ -1021,7 +1021,7 @@ struct Guarantee {
 │          ↓                                                   │
 │  8. [DEFAULT SCENARIO] If industrial defaults:              │
 │      → UGT liquidated via approved auction                  │
-│      → Proceeds distributed to UPT holders                  │
+│      → Proceeds distributed to uLP holders                  │
 │      → Default recorded in compliance audit trail           │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
@@ -1174,7 +1174,7 @@ function mintGuarantee(
 3. Emit event:
    - GuaranteeLiquidated(tokenId, auctionWinner, liquidationAmount)
 
-4. Distribute proceeds to UPT holders (via LiquidityPool)
+4. Distribute proceeds to uLP holders (via LiquidityPool)
 ```
 
 ---
@@ -1367,7 +1367,7 @@ struct Certificate {
 │  • Pool marks UGT as defaulted                              │
 │  • Auction conducted                                        │
 │  • UGT liquidated to auction winner                         │
-│  • Proceeds distributed to UPT holders                      │
+│  • Proceeds distributed to uLP holders                      │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -2769,8 +2769,8 @@ class LRUCache:
 | ALG-07-01-01 | Anomaly Detection | ✅ MVP | `fraud_detector.py` (rule-based) | 75% | Pending |
 | ALG-07-02-01 | Wash Trading Detection | ✅ MVP | `fraud_detector.py` (rule-based) | 75% | Pending |
 | ALG-07-03-01 | Structuring Detection | ✅ Complete | `fraud_detector.py` | 85% | Pending |
-| ALG-10-01-01 | NAV Calculation | ✅ Complete | `UPTToken.sol`, `yield_calculator.py` | 95% | Pending |
-| ALG-10-04-01 | Yield Accrual | ✅ Complete | `UPTToken.sol`, `yield_calculator.py` | 95% | Pending |
+| ALG-10-01-01 | NAV Calculation | ✅ Complete | `uLPToken.sol`, `yield_calculator.py` | 95% | Pending |
+| ALG-10-04-01 | Yield Accrual | ✅ Complete | `uLPToken.sol`, `yield_calculator.py` | 95% | Pending |
 | ALG-10-04-02 | Yield Distribution | ✅ Complete | NAV model | 95% | Pending |
 | ALG-05-03-01 | UGT Token Specification | ✅ Complete | `GuaranteeToken.sol` | 90% | Pending |
 | ALG-05-03-02 | UGT Minting | ✅ Complete | `GuaranteeToken.sol` | 90% | Pending |
@@ -2826,7 +2826,7 @@ class LRUCache:
 **Smart Contracts (Solidity):**
 - `contracts/MVP/GuaranteeToken.sol` - UGT collateral token
 - `contracts/MVP/IndustrialGateway.sol` - Asset certification
-- `contracts/MVP/UPTToken.sol` - Ujamaa Pool Token
+- `contracts/MVP/uLPToken.sol` - Ujamaa Pool Token
 - `contracts/MVP/LiquidityPool.sol` - Multi-pool manager
 - `contracts/MVP/JurisdictionCompliance.sol` - Jurisdiction filtering
 - `contracts/MVP/MockEscrow.sol` - Bank escrow mock (MVP)

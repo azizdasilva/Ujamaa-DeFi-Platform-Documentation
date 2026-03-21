@@ -59,7 +59,7 @@ This folder contains **algorithm specifications** and computational documentatio
 | EPIC 7 | Fraud Detection | 3 | 3 | 100% ✅ |
 | EPIC 8 | Dashboard | 3 | 0 | 0% ⏳ |
 | EPIC 9 | Security & Scalability | 3 | 2 | 67% ⚠️ |
-| EPIC 10 | UPT & Liquidity Pool | 6+ | 6 | 100% ✅ |
+| EPIC 10 | uLP & Liquidity Pool | 6+ | 6 | 100% ✅ |
 | **TOTAL** | **10 EPICs** | **33** | **27** | **100%** ✅ |
 
 ---
@@ -81,8 +81,8 @@ This folder contains **algorithm specifications** and computational documentatio
 | ALG-05-03-07 | Asset Tokenization Flow | Multi-contract | Orchestration |
 | ALG-05-03-08 | UGT Compliance | `GuaranteeToken.sol` | `_update()` |
 | ALG-05-03-09 | Testnet Utilities | Both contracts | Test functions |
-| ALG-10-01-01 | NAV Calculation | `UPTToken.sol` | `calculateNAV()` |
-| ALG-10-04-01 | Yield Accrual | `UPTToken.sol` | `addYield()`, `accrueFees()` |
+| ALG-10-01-01 | NAV Calculation | `uLPToken.sol` | `calculateNAV()` |
+| ALG-10-04-01 | Yield Accrual | `uLPToken.sol` | `addYield()`, `accrueFees()` |
 | ALG-10-04-02 | Yield Distribution | NAV model | Via NAV increase |
 | ALG-10-03-01 | Diversification Check | `LiquidityPool.sol` | `_checkDiversificationLimits()` |
 | ALG-04-03-02 | Jurisdiction Filter | `JurisdictionCompliance.sol` | Full contract |
@@ -149,9 +149,9 @@ This folder contains **algorithm specifications** and computational documentatio
 
 **Mathematical Formulas:**
 ```
-Investor_Value(t) = UPT_Balance × NAV_per_share(t)
+Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 
-NAV_per_share(t) = Total_Asset_Value(t) / Total_UPT_Supply
+NAV_per_share(t) = Total_Asset_Value(t) / Total_uLP_Supply
 
 Yield_Accrual = (Pool_Yield × Time_Elapsed) / 365
 
@@ -181,7 +181,7 @@ backend/services/MVP/
 contracts/MVP/
 ├── GuaranteeToken.sol                  # ALG-05-03-01 to 05-03-09
 ├── IndustrialGateway.sol               # ALG-05-03-05, 05-03-06
-├── UPTToken.sol                        # ALG-10-01-01, 10-04-01, 10-04-02
+├── uLPToken.sol                        # ALG-10-01-01, 10-04-01, 10-04-02
 ├── LiquidityPool.sol                   # ALG-10-03-01
 └── JurisdictionCompliance.sol          # ALG-04-03-02
 ```

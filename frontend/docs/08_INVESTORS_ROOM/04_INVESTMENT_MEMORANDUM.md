@@ -867,7 +867,7 @@ Global RWA Tokenization AUM:
 |--------|--------|
 | **Risk** | Bug or exploit in smart contract code |
 | **Probability** | Low (audited, battle-tested ERC-3643) |
-| **Impact** | Loss of funds, platform disruption |
+| **Impact** | Loss of funds, platform disruLPion |
 | **Mitigation** | • CertiK/OpenZeppelin audits<br>• Formal verification<br>• Bug bounty ($100K-1M)<br>• Multisig governance<br>• Timelock upgrades (7-day delay)<br>• Emergency pause mechanism |
 
 #### 10.2.3 FX Risk

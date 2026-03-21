@@ -433,11 +433,11 @@ Chaque transaction < 3 000 €
 
 #### 🎯 Le But
 
-Calculer la **valeur réelle** de chaque part (token UPT) que possèdent les investisseurs dans le pool de liquidité.
+Calculer la **valeur réelle** de chaque part (token uLP) que possèdent les investisseurs dans le pool de liquidité.
 
 #### 📝 En Termes Simples
 
-Imaginez un gâteau (le pool de liquidité) coupé en parts égales (les tokens UPT). La **NAV** (Net Asset Value = Valeur Nette d'Actif), c'est la valeur de chaque part.
+Imaginez un gâteau (le pool de liquidité) coupé en parts égales (les tokens uLP). La **NAV** (Net Asset Value = Valeur Nette d'Actif), c'est la valeur de chaque part.
 
 **Formule simple :**
 ```
@@ -450,7 +450,7 @@ Si le gâteau grandit (grâce aux rendements), chaque part vaut plus cher !
 
 **Données nécessaires :**
 - `ValeurTotalePool` : La valeur totale de tous les actifs dans le pool (en euros)
-- `NombreTotalParts` : Le nombre total de tokens UPT en circulation
+- `NombreTotalParts` : Le nombre total de tokens uLP en circulation
 
 **Calcul :**
 ```
@@ -473,21 +473,21 @@ Montant reçu = Nombre de tokens × NAV
 
 ```
 Valeur du pool : 1 000 000 €
-Nombre de tokens UPT : 1 000 000
+Nombre de tokens uLP : 1 000 000
 
 NAV = 1 000 000 / 1 000 000 = 1,00 € par token
 ```
 
 **Marie investit 10 000 € :**
 ```
-Tokens reçus = 10 000 / 1,00 = 10 000 UPT
+Tokens reçus = 10 000 / 1,00 = 10 000 uLP
 ```
 
 **Après 1 an (avec 5% de rendement) :**
 
 ```
 Valeur du pool : 1 050 000 € (les investissements ont rapporté)
-Nombre de tokens UPT : 1 010 000 (Marie a investi)
+Nombre de tokens uLP : 1 010 000 (Marie a investi)
 
 NAV = 1 050 000 / 1 010 000 = 1,0396 € par token
 
@@ -565,7 +565,7 @@ Intérêts accumulés = 9 250 €
 
 #### 🎯 Le But
 
-Répartir équitablement les rendements entre tous les détenteurs de tokens UPT.
+Répartir équitablement les rendements entre tous les détenteurs de tokens uLP.
 
 #### 📝 En Termes Simples
 
@@ -598,7 +598,7 @@ Gain de l'investisseur = Nombre de tokens × (NouvelleNAV - AncienneNAV)
 
 ```
 Valeur initiale du pool : 2 000 000 €
-Nombre de tokens UPT : 2 000 000
+Nombre de tokens uLP : 2 000 000
 NAV initiale : 1,00 €
 
 Rendements du mois : 15 000 €
@@ -607,7 +607,7 @@ Nouvelle valeur du pool : 2 015 000 €
 Nouvelle NAV : 2 015 000 / 2 000 000 = 1,0075 €
 ```
 
-**Investisseur : Fatima (possède 50 000 UPT)**
+**Investisseur : Fatima (possède 50 000 uLP)**
 
 ```
 Valeur initiale : 50 000 × 1,00 = 50 000 €
@@ -1190,7 +1190,7 @@ Si l'entreprise ne rembourse pas, le token UGT (qui représente les marchandises
 3. Émettre l'événement :
    - GuaranteeLiquidated(tokenId, auctionWinner, liquidationAmount)
 
-4. Distribuer les proceeds aux détenteurs de tokens UPT
+4. Distribuer les proceeds aux détenteurs de tokens uLP
 ```
 
 #### 📊 Exemple Concret
@@ -1206,7 +1206,7 @@ Enchères :
 
 Résultat :
 - Token UGT #123 transféré à AuctionHouse
-- 450 000 € distribués aux investisseurs UPT
+- 450 000 € distribués aux investisseurs uLP
 - Perte restante : 50 000 € (prise en charge par le fonds de garantie)
 ```
 
@@ -1495,7 +1495,7 @@ C'est le **parcours complet** d'un financement, comme un film qui montre toutes 
 │  • Le pool marque le token UGT comme en défaut              │
 │  • Enchères conduites                                       │
 │  • Token UGT vendu au gagnant                               │
-│  • Proceeds distribués aux détenteurs de tokens UPT         │
+│  • Proceeds distribués aux détenteurs de tokens uLP         │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -1711,7 +1711,7 @@ Sans cache :
 | **NAV (Net Asset Value)** | Valeur Nette d'Actif, prix d'une part du pool |
 | **Oracle** | Source de données externe qui fournit des informations à la blockchain |
 | **Pool de liquidité** | Ensemble d'actifs regroupés pour l'investissement |
-| **Token UPT** | Token représentant une part dans le pool de liquidité |
+| **Token uLP** | Token représentant une part dans le pool de liquidité |
 | **Wash trading** | Fausses transactions pour créer une illusion d'activité |
 | **Structuring** | Division de transactions pour éviter les déclarations obligatoires |
 | **Arbre de Merkle** | Structure cryptographique pour vérifier l'intégrité des données |
@@ -1757,8 +1757,8 @@ Sans cache :
 | ALG-05-03-07 | Flux de Tokenisation | Multi-contrats | ✅ Implémenté |
 | ALG-05-03-08 | Compliance UGT | `GuaranteeToken.sol::_update()` | ✅ Implémenté |
 | ALG-05-03-09 | Utilitaires Testnet | Les deux contrats | ✅ Implémenté |
-| ALG-10-01-01 | Calcul NAV | `UPTToken.sol::calculateNAV()` | ✅ Implémenté |
-| ALG-10-04-01 | Accumulation Rendement | `UPTToken.sol::addYield()` | ✅ Implémenté |
+| ALG-10-01-01 | Calcul NAV | `uLPToken.sol::calculateNAV()` | ✅ Implémenté |
+| ALG-10-04-01 | Accumulation Rendement | `uLPToken.sol::addYield()` | ✅ Implémenté |
 | ALG-10-04-02 | Distribution Rendement | Modèle NAV | ✅ Implémenté |
 | ALG-10-03-01 | Vérification Diversification | `LiquidityPool.sol` | ✅ Implémenté |
 | ALG-04-03-02 | Filtrage Juridiction | `JurisdictionCompliance.sol` | ✅ Implémenté |

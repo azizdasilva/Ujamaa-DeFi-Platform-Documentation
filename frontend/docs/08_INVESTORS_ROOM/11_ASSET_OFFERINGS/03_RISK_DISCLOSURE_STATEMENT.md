@@ -72,7 +72,7 @@
 
 **Risk:** Political instability may affect investment performance.
 
-**Description:** Changes in government, policy shifts, civil unrest, corruption, and geopolitical tensions can impact business operations and asset values.
+**Description:** Changes in government, policy shifts, civil unrest, corruLPion, and geopolitical tensions can impact business operations and asset values.
 
 **Specific Concerns:**
 - Election-related uncertainty
@@ -132,7 +132,7 @@
 |------|-------------|------------------|
 | **Commodity Price** | Price volatility | 30–70% revenue volatility |
 | **Resource Depletion** | Reserve exhaustion | Asset value decline |
-| **Operational Risk** | Mining accidents, disruptions | Production halt; liability |
+| **Operational Risk** | Mining accidents, disruLPions | Production halt; liability |
 | **Environmental Liability** | Remediation obligations | 10–50% of asset value |
 | **Permitting Risk** | License revocation or non-renewal | Operations halt |
 
@@ -305,7 +305,7 @@
 - Minimum trade sizes may apply
 - Bid-ask spreads may be wide
 
-## 5.4 Market Disruption Risk
+## 5.4 Market DisruLPion Risk
 
 **Risk:** Market conditions may prevent transactions.
 
@@ -344,7 +344,7 @@
 - Legal counsel
 - Technology providers
 
-Failure of any provider could disrupt operations.
+Failure of any provider could disruLP operations.
 
 ## 6.3 Fraud Risk
 
@@ -363,7 +363,7 @@ Failure of any provider could disrupt operations.
 
 ## 6.4 Force Majeure Risk
 
-**Risk:** Unforeseeable events may disrupt operations.
+**Risk:** Unforeseeable events may disruLP operations.
 
 **Description:**
 - Natural disasters

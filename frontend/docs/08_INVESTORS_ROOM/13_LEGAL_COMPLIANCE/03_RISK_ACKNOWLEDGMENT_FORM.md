@@ -110,7 +110,7 @@
 - [ ] Debtors may default on invoice payments
 - [ ] Fraud risk exists in trade finance
 - [ ] Currency fluctuations may affect returns
-- [ ] Political events may disrupt trade
+- [ ] Political events may disruLP trade
 
 **Initial:** _____ (N/A if not investing in trade finance)
 

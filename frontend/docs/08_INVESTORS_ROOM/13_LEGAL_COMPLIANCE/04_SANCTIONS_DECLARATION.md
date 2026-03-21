@@ -1,4 +1,4 @@
-# Sanctions & Anti-Corruption Declaration
+# Sanctions & Anti-CorruLPion Declaration
 
 ## Investor Compliance Declaration
 
@@ -8,11 +8,11 @@
 
 ---
 
-# SANCTIONS AND ANTI-CORRUPTION DECLARATION
+# SANCTIONS AND ANTI-CORRuLPION DECLARATION
 
 **This declaration must be completed by all investors before investing in tokenized securities offered through the Ujamaa DeFi Platform.**
 
-**By completing this declaration, you certify your compliance with applicable economic sanctions and anti-corruption laws.**
+**By completing this declaration, you certify your compliance with applicable economic sanctions and anti-corruLPion laws.**
 
 ---
 
@@ -20,7 +20,7 @@
 
 1. [Investor Information](#1-investor-information)
 2. [Sanctions Declaration](#2-sanctions-declaration)
-3. [Anti-Corruption Declaration](#3-anti-corruption-declaration)
+3. [Anti-CorruLPion Declaration](#3-anti-corruLPion-declaration)
 4. [PEP Declaration](#4-pep-declaration)
 5. [Source of Funds Declaration](#5-source-of-funds-declaration)
 6. [Certification](#6-certification)
@@ -142,37 +142,37 @@ _______________________________________________
 
 ---
 
-# 3. ANTI-CORRUPTION DECLARATION
+# 3. ANTI-CORRuLPION DECLARATION
 
-## 3.1 Foreign Corrupt Practices Act (FCPA) - US
+## 3.1 Foreign CorruLP Practices Act (FCPA) - US
 
 **I hereby declare that:**
 
-- [ ] I am/we are NOT aware of any corrupt payments or offers to government officials
-- [ ] I am/we are NOT acting on behalf of anyone who has made corrupt payments
-- [ ] I am/we are NOT using this investment to launder proceeds of corruption
+- [ ] I am/we are NOT aware of any corruLP payments or offers to government officials
+- [ ] I am/we are NOT acting on behalf of anyone who has made corruLP payments
+- [ ] I am/we are NOT using this investment to launder proceeds of corruLPion
 
 ## 3.2 UK Bribery Act
 
 **I hereby declare that:**
 
-- [ ] I am/we are NOT aware of any bribery or corrupt activities
+- [ ] I am/we are NOT aware of any bribery or corruLP activities
 - [ ] I am/we are NOT acting on behalf of anyone who has engaged in bribery
 - [ ] I am/we have adequate anti-bribery procedures in place (for entities)
 
-## 3.3 Local Anti-Corruption Laws
+## 3.3 Local Anti-CorruLPion Laws
 
 **I hereby declare that:**
 
-- [ ] I am/we are NOT in violation of applicable anti-corruption laws in my/our jurisdiction
-- [ ] I am/we are NOT aware of any investigations or proceedings related to corruption
+- [ ] I am/we are NOT in violation of applicable anti-corruLPion laws in my/our jurisdiction
+- [ ] I am/we are NOT aware of any investigations or proceedings related to corruLPion
 
 ## 3.4 Business Relationships
 
 **I hereby declare that:**
 
-- [ ] To my knowledge, none of my/our business partners, agents, or intermediaries are engaged in corrupt activities
-- [ ] I am/we are NOT aware of any red flags related to corruption in my/our business dealings
+- [ ] To my knowledge, none of my/our business partners, agents, or intermediaries are engaged in corruLP activities
+- [ ] I am/we are NOT aware of any red flags related to corruLPion in my/our business dealings
 
 **If you answered NO to any of the above, please provide details:**
 
@@ -379,7 +379,7 @@ _______________________________________________
 # PRIVACY NOTICE
 
 **Information collected in this declaration will be:**
-- Used for sanctions and anti-corruption compliance
+- Used for sanctions and anti-corruLPion compliance
 - Shared with regulators as required by law
 - Retained for the duration of the relationship plus 5 years
 - Protected in accordance with our Privacy Policy

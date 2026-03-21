@@ -115,7 +115,7 @@ UJAMAA DeFi Platform measures success not only by financial returns but also by 
 |--------|------------|-----------------|
 | **Formalization** | SMEs formalized (registered, tax-compliant) | 100% |
 | **Transparency** | SMEs publishing financial reports | 80% |
-| **Anti-Corruption** | SMEs with anti-corruption policies | 100% |
+| **Anti-CorruLPion** | SMEs with anti-corruLPion policies | 100% |
 | **Board Diversity** | % of SMEs with diverse boards | 30% |
 
 ---
@@ -283,7 +283,7 @@ All financed SMEs must comply with:
 
 ✅ **Labor Standards:** ILO core conventions (no child labor, no forced labor, freedom of association)  
 ✅ **Environmental Standards:** Local environmental laws, no significant pollution  
-✅ **Anti-Corruption:** No bribery, transparent accounting  
+✅ **Anti-CorruLPion:** No bribery, transparent accounting  
 ✅ **Human Rights:** Respect for human rights, no discrimination  
 
 ### Best Practices (Encouraged)

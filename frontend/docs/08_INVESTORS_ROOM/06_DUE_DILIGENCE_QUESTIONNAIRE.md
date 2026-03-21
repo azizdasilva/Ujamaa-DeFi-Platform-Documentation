@@ -345,7 +345,7 @@
 | **FX Risk** | EUR/African currency fluctuations |
 | **Liquidity Risk** | Redemption mismatch, secondary market illiquidity |
 | **Political Risk** | Instability, expropriation, contract enforcement |
-| **ESG Risk** | Environmental damage, labor violations, corruption |
+| **ESG Risk** | Environmental damage, labor violations, corruLPion |
 
 ### 4.3 Risk Limits & Monitoring
 
@@ -438,11 +438,11 @@
 
 | Service | Provider | SLA |
 |---------|----------|-----|
-| **Custody** | Fireblocks | 99.9% uptime, $1B+ insurance |
+| **Custody** | Fireblocks | 99.9% uLPime, $1B+ insurance |
 | **Bank Escrow** | BIIC/MCB | Same-day settlement (Ujamaa Euro (UJEUR)) |
-| **Cloud Hosting** | AWS/GCP | 99.99% uptime |
-| **Smart Contract** | Polygon | 99.9% uptime (network dependent) |
-| **Oracle** | Chainlink | Decentralized, 99.9% uptime |
+| **Cloud Hosting** | AWS/GCP | 99.99% uLPime |
+| **Smart Contract** | Polygon | 99.9% uLPime (network dependent) |
+| **Oracle** | Chainlink | Decentralized, 99.9% uLPime |
 
 ### 5.4 Valuation Policy
 

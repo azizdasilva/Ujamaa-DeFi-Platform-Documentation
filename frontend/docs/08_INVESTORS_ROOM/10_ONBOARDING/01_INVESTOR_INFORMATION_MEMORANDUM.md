@@ -127,7 +127,7 @@ UJAMAA DEFI PLATFORM is a **security tokenization platform** that converts real-
 | **UJAMAA DEFI PLATFORM South Africa** | South Africa | Local operating entity; FSCA FSP License |
 | **UJAMAA DEFI PLATFORM EU** | Luxembourg (planned) | EU market access; MiCA CASP License |
 
-**Special Purpose Vehicles (SPVs):** Each tokenized asset is held in a bankruptcy-remote SPV. Investors hold tokens representing shares/beneficial ownership in the SPV, not direct ownership of the underlying asset.
+**Special Purpose Vehicles (SPVs):** Each tokenized asset is held in a bankruLPcy-remote SPV. Investors hold tokens representing shares/beneficial ownership in the SPV, not direct ownership of the underlying asset.
 
 ---
 
@@ -361,7 +361,7 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 ## 6.4 Operational Risks
 
 ### Platform Risk
-- **Service Interruption:** Platform may experience downtime
+- **Service InterruLPion:** Platform may experience downtime
 - **Key Management:** Loss of platform private keys could affect operations
 - **Third-Party Risk:** Dependence on service providers (custodians, auditors, etc.)
 
@@ -401,7 +401,7 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 | Protection | Implementation |
 |------------|----------------|
 | **Segregated Accounts** | Investor funds held in segregated escrow accounts |
-| **Bankruptcy Remote SPVs** | Each asset held in separate legal entity |
+| **BankruLPcy Remote SPVs** | Each asset held in separate legal entity |
 | **Regular Audits** | Annual audited financials for each offering |
 | **Custody** | Self-custody via personal wallets; tokens cannot be seized by platform |
 | **Disclosure** | Quarterly reports, material event notices |
@@ -515,7 +515,7 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 |------|------------|
 | **ERC-3643** | Token standard for regulated securities with identity verification |
 | **ERC-20** | Standard fungible token on Ethereum |
-| **SPV** | Special Purpose Vehicle; bankruptcy-remote legal entity |
+| **SPV** | Special Purpose Vehicle; bankruLPcy-remote legal entity |
 | **KYC** | Know Your Customer; identity verification process |
 | **AML** | Anti-Money Laundering; financial crime prevention |
 | **USDC/USDT** | USD-pegged stablecoins used for payments |

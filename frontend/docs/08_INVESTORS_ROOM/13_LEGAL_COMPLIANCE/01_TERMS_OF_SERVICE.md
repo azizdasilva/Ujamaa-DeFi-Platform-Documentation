@@ -75,7 +75,7 @@ UJAMAA DEFI PLATFORM is a tokenization platform that enables:
 
 ## 2.3 Service Availability
 
-We strive to maintain Platform availability but do not guarantee uninterrupted access. Service may be suspended for maintenance, upgrades, or security reasons.
+We strive to maintain Platform availability but do not guarantee uninterruLPed access. Service may be suspended for maintenance, upgrades, or security reasons.
 
 ---
 
@@ -370,7 +370,7 @@ WE DISCLAIM ALL WARRANTIES, INCLUDING:
 - Fitness for particular purpose
 - Non-infringement
 - Accuracy of information
-- Uninterrupted service
+- UninterruLPed service
 
 ## 11.3 Investment Disclaimer
 
@@ -385,7 +385,7 @@ WE DISCLAIM ALL WARRANTIES, INCLUDING:
 We do not warrant that:
 - Platform will be error-free
 - Vulnerabilities will not exist
-- Service will be uninterrupted
+- Service will be uninterruLPed
 - Results will be achieved
 
 ---

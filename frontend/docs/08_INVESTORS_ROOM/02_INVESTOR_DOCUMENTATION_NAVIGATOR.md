@@ -415,17 +415,17 @@ Start with these documents in order:
 
 | Attribute | Details |
 |-----------|---------|
-| **Purpose** | Certify compliance with economic sanctions and anti-corruption laws |
+| **Purpose** | Certify compliance with economic sanctions and anti-corruLPion laws |
 | **Audience** | All investors (required before investing) |
 | **When to Use** | During onboarding; updated as needed |
-| **Key Contents** | Sanctions declarations, anti-corruption declarations, PEP status, source of funds |
+| **Key Contents** | Sanctions declarations, anti-corruLPion declarations, PEP status, source of funds |
 | **Legal Status** | Legal attestation; regulatory requirement |
 | **Update Frequency** | As sanctions lists change |
 | **Related Documents** | KYC/AML Guide, Risk Acknowledgment |
 
 **What You'll Learn:**
 - Sanctions compliance requirements
-- Anti-corruption obligations
+- Anti-corruLPion obligations
 - PEP disclosure requirements
 - Source of funds documentation
 
@@ -534,16 +534,16 @@ Start with these documents in order:
 
 | Attribute | Details |
 |-----------|---------|
-| **Purpose** | Explain all UJAMAA tokens (UAT, UPT, UGT) and their differences |
+| **Purpose** | Explain all UJAMAA tokens (UAT, uLP, UGT) and their differences |
 | **Audience** | All investors making investment decisions, Originators |
 | **When to Use** | Before choosing which tokens to invest in or mint |
-| **Key Contents** | UAT vs UPT vs UGT comparison, risk profiles, return profiles, portfolio examples, decision matrix |
+| **Key Contents** | UAT vs uLP vs UGT comparison, risk profiles, return profiles, portfolio examples, decision matrix |
 | **Legal Status** | Educational material |
 | **Update Frequency** | As new token types emerge |
 | **Related Documents** | How Tokenization Works, Investor FAQ, Term Sheet |
 
 **What You'll Learn:**
-- The difference between UAT, UPT, and UGT tokens
+- The difference between UAT, uLP, and UGT tokens
 - Which token type fits your investment profile
 - Risk/return trade-offs
 - Real-world portfolio examples

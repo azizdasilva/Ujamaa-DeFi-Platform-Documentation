@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "./UPTToken.sol";
+import "./ULPToken.sol";
 import "./GuaranteeToken.sol";
 
 /**
@@ -170,9 +170,9 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     // =========================================================================
 
     /**
-     * @notice UPT token contract
+     * @notice uLP token contract
      */
-    UPTToken public uptToken;
+    ULPToken public ULPToken;
 
     /**
      * @notice UJEUR token contract
@@ -270,7 +270,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     event FundsDeployed(uint256 indexed financingId, uint256 amount);
 
     /**
-     * @notice Emitted when yield is distributed to UPT holders
+     * @notice Emitted when yield is distributed to uLP holders
      * @param poolFamily Pool family
      * @param yieldAmount Yield amount (18 decimals)
      */
@@ -297,16 +297,16 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
 
     /**
      * @notice Initialize LiquidityPool
-     * @param _uptToken UPT token contract address
+     * @param _ULPToken uLP token contract address
      * @param _ujeurToken UJEUR token contract address
      * @param _guaranteeToken Guarantee Token (UGT) contract address
      */
-    constructor(address _uptToken, address _ujeurToken, address _guaranteeToken) {
-        if (_uptToken == address(0) || _ujeurToken == address(0)) {
+    constructor(address _ULPToken, address _ujeurToken, address _guaranteeToken) {
+        if (_ULPToken == address(0) || _ujeurToken == address(0)) {
             revert ZeroAddress();
         }
 
-        uptToken = UPTToken(_uptToken);
+        ULPToken = ULPToken(_ULPToken);
         ujeurToken = IERC20(_ujeurToken);
         guaranteeToken = GuaranteeToken(_guaranteeToken);
 
@@ -542,12 +542,12 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
             );
         }
 
-        // Add yield to UPT token
+        // Add yield to uLP token
         uint256 yieldPortion = amount > financing.principal ? 
             amount - financing.principal : 0;
         if (yieldPortion > 0) {
             totalYieldEarned += yieldPortion;
-            uptToken.addYield(yieldPortion, string.concat("Financing #", _uint2str(financingId)));
+            ULPToken.addYield(yieldPortion, string.concat("Financing #", _uint2str(financingId)));
         }
 
         emit RepaymentRecorded(financingId, amount, isFullyRepaid);

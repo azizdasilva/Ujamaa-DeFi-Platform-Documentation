@@ -38,7 +38,7 @@ app = FastAPI(
 
 ### Features
 - **Liquidity Pools:** 5 pool families (Industrie, Agriculture, Trade Finance, Renewable Energy, Real Estate)
-- **Yield-Bearing Tokens:** UPT (Ujamaa Pool Token) with value-accrual model
+- **Yield-Bearing Tokens:** uLP (Ujamaa Pool Token) with value-accrual model
 - **Compliance:** Jurisdiction verification (12 blocked countries)
 - **Mock Services:** Bank escrow, GDIZ integration, fiat ramps
 

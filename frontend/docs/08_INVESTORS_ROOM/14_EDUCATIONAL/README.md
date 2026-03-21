@@ -19,7 +19,7 @@ This folder contains **educational materials** to help investors understand toke
 | 02 | [Understanding ERC-3643](02_UNDERSTANDING_ERC3643.md) | ERC-3643 |
 | 03 | [Wallet Setup Guide](03_WALLET_SETUP_GUIDE.md) | Wallet setup |
 | 04 | [Investor FAQ](04_INVESTOR_FAQ.md) | FAQ |
-| 05 | [Token Comparison Guide](05_TOKEN_COMPARISON_GUIDE.md) | UAT vs UPT vs UGT |
+| 05 | [Token Comparison Guide](05_TOKEN_COMPARISON_GUIDE.md) | UAT vs uLP vs UGT |
 
 ---
 
