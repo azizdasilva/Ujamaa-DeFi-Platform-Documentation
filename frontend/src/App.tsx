@@ -96,6 +96,7 @@ import IRReinvestmentSettings from './MVP/pages/investors-room/ReinvestmentSetti
 import InvestorPortfolio from './MVP/pages/investor/Portfolio';
 import InvestorReturns from './MVP/pages/investor/Returns';
 import InvestorRecurringInvestment from './MVP/pages/investor/RecurringInvestment';
+import TestnetGuide from './MVP/pages/TestnetGuide';
 
 // Query Client
 const queryClient = new QueryClient({
@@ -225,6 +226,9 @@ const App: React.FC = () => {
             <Route path="/investors-room/term-sheet" element={<IRTermSheetTemplate />} />
             <Route path="/investors-room/investment-agreement" element={<IRInvestmentAgreement />} />
             <Route path="/investors-room/subscription-form" element={<IRSubscriptionForm />} />
+            
+            {/* Testnet Guide */}
+            <Route path="/testnet-guide" element={<TestnetGuide />} />
           </Routes>
 
           {/* Global Footer */}
