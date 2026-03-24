@@ -216,7 +216,7 @@ Welcome to the **UJAMAA DeFi Investors Room** - your comprehensive documentation
 ## Related Documentation
 
 ### MVP Execution
-- [Deep Dive & Investors Room](../06_MVP_EXECUTION/08_DEEP_DIVE_INVESTORS_ROOM.md)
+- [Deep Dive & Investors Room](../06_MVP_EXECUTION/12_DEEP_DIVE_INVESTORS_ROOM.md)
 - [Role Workflow Analysis](../06_MVP_EXECUTION/11_ROLE_WORKFLOW_COVERAGE_ANALYSIS.md)
 
 ### Specifications
@@ -256,7 +256,7 @@ Welcome to the **UJAMAA DeFi Investors Room** - your comprehensive documentation
 - Response time: 24-48 hours
 
 **Technical Questions:**
-- Check [Deep Dive](../06_MVP_EXECUTION/08_DEEP_DIVE_INVESTORS_ROOM.md)
+- Check [Deep Dive](../06_MVP_EXECUTION/12_DEEP_DIVE_INVESTORS_ROOM.md)
 - Check [Technical Guides](../02_TECHNICAL_GUIDES/)
 
 ---

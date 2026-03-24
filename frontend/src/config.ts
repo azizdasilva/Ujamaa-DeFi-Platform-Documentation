@@ -2,7 +2,7 @@
  * Ujamaa DeFi Platform - Frontend Configuration
  * MVP Testnet Release
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  */
 
 export const config = {

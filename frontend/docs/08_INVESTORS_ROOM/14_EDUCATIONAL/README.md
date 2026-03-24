@@ -34,7 +34,7 @@ This folder contains **educational materials** to help investors understand toke
 ### For Technical Investors
 1. [Understanding ERC-3643](02_UNDERSTANDING_ERC3643.md)
 2. [Token Comparison Guide](05_TOKEN_COMPARISON_GUIDE.md)
-3. [Deep Dive](../../06_MVP_EXECUTION/08_DEEP_DIVE_INVESTORS_ROOM.md)
+3. [Deep Dive](../../06_MVP_EXECUTION/12_DEEP_DIVE_INVESTORS_ROOM.md)
 
 ---
 

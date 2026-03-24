@@ -31,13 +31,13 @@ const OnboardingComplete: React.FC = () => {
   const getReviewTime = () => {
     switch (type) {
       case 'retail':
-        return '24-48 hours';
+        return '24 hours';
       case 'institutional':
-        return '3-5 business days';
+        return '24 hours';
       case 'originator':
-        return '5-7 business days';
+        return '24 hours';
       default:
-        return '24-48 hours';
+        return '24 hours';
     }
   };
 

@@ -25,10 +25,10 @@ const ComplianceDashboard: React.FC = () => {
   };
 
   const pendingApprovals = [
-    { id: 'INV-001', name: 'Logic Capital Ltd', type: 'KYB', jurisdiction: 'MU', amount: '€500,000', submitted: '2026-03-18' },
-    { id: 'INV-002', name: 'John Doe', type: 'KYC', jurisdiction: 'KE', amount: '€50,000', submitted: '2026-03-18' },
-    { id: 'INV-003', name: 'Green Energy Fund', type: 'KYB', jurisdiction: 'ZA', amount: '€1,000,000', submitted: '2026-03-17' },
-    { id: 'INV-004', name: 'Jane Smith', type: 'KYC', jurisdiction: 'NG', amount: '€25,000', submitted: '2026-03-17' },
+    { id: 'INV-001', name: 'Logic Capital Ltd', type: 'KYB', jurisdiction: 'MU', submitted: '2026-03-18' },
+    { id: 'INV-002', name: 'John Doe', type: 'KYC', jurisdiction: 'KE', submitted: '2026-03-18' },
+    { id: 'INV-003', name: 'Green Energy Fund', type: 'KYB', jurisdiction: 'ZA', submitted: '2026-03-17' },
+    { id: 'INV-004', name: 'Jane Smith', type: 'KYC', jurisdiction: 'NG', submitted: '2026-03-17' },
   ];
 
   const flaggedTransactions = [
@@ -112,7 +112,7 @@ const ComplianceDashboard: React.FC = () => {
               header={
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-[#103b5b]">Pending Approvals</h2>
-                  <a href="/compliance/approvals" className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium">
+                  <a href="/compliance/kyc-review" className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium">
                     View All →
                   </a>
                 </div>
@@ -126,7 +126,7 @@ const ComplianceDashboard: React.FC = () => {
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Name</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Type</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Jurisdiction</th>
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">Amount</th>
+                      <th className="text-left py-3 font-semibold text-[#103b5b]">Submitted</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Actions</th>
                     </tr>
                   </thead>
@@ -141,12 +141,12 @@ const ComplianceDashboard: React.FC = () => {
                           </Badge>
                         </td>
                         <td className="py-3 text-[#8b5b3d]">{approval.jurisdiction}</td>
-                        <td className="py-3 font-medium text-[#103b5b]">{approval.amount}</td>
+                        <td className="py-3 text-[#8b5b3d]">{approval.submitted}</td>
                         <td className="py-3">
                           <div className="flex gap-2">
                             <a
                               href={`/compliance/approvals/${approval.id}/review`}
-                              className="px-3 py-1 bg-[#103b5b] hover:bg-[#0d3352] text-white text-xs font-medium rounded transition-colors"
+                              className="px-3 py-1 bg-[#103b5b] hover:bg-[#0d3352] text-white !text-white text-xs font-bold rounded transition-colors"
                             >
                               Review
                             </a>
@@ -201,7 +201,7 @@ const ComplianceDashboard: React.FC = () => {
                       <div className="flex gap-2 mt-2">
                         <a
                           href={`/compliance/transactions/${txn.id}/review`}
-                          className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-medium rounded transition-colors"
+                          className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white !text-white text-xs font-bold rounded transition-colors"
                         >
                           Review
                         </a>
@@ -225,29 +225,29 @@ const ComplianceDashboard: React.FC = () => {
             <Card header={<h2 className="text-xl font-bold text-gray-900">Quick Actions</h2>}>
               <div className="space-y-3">
                 <a
-                  href="/compliance/approvals"
+                  href="/compliance/kyc-review"
                   className="block w-full px-4 py-3 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors text-center"
                 >
                   ✓ Review Pending Approvals
                 </a>
-                <a
-                  href="/compliance/transactions"
+                <button
+                  onClick={() => alert('🚀 MVP TESTNET: Transaction Monitor coming in production. This feature will provide real-time transaction monitoring and anomaly detection.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   🔍 Transaction Monitor
-                </a>
-                <a
-                  href="/compliance/reports"
+                </button>
+                <button
+                  onClick={() => alert('🚀 MVP TESTNET: Generate Reports coming in production. This feature will generate compliance reports for regulatory submissions.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   📊 Generate Reports
-                </a>
-                <a
-                  href="/compliance/jurisdictions"
+                </button>
+                <button
+                  onClick={() => alert('🚀 MVP TESTNET: Jurisdiction List coming in production. This feature will display and manage allowed/blocked jurisdictions.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   🌍 Jurisdiction List
-                </a>
+                </button>
               </div>
             </Card>
 

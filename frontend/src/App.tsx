@@ -2,7 +2,7 @@
  * Ujamaa DeFi Platform - Main Application
  * MVP Testnet Release
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
@@ -38,9 +38,19 @@ import OnboardingDocuments from './MVP/pages/onboarding/Documents';
 import OnboardingReview from './MVP/pages/onboarding/Review';
 import OnboardingComplete from './MVP/pages/onboarding/Complete';
 
+// Industrial Operator Pages
+import IndustrialOperatorWelcome from './MVP/pages/industrial-operator/OnboardingWelcome';
+import IndustrialOperatorFinancings from './MVP/pages/industrial-operator/Financings';
+
 // Asset Tokenization (Originator)
 import AssetSubmission from './MVP/pages/originator/AssetSubmission';
 import AssetCertificates from './MVP/pages/originator/AssetCertificates';
+
+// Compliance Pages
+import ComplianceKYCReview from './MVP/pages/compliance/KYCReview';
+
+// Pool Dashboard
+import PoolDashboard from './MVP/pages/pool/Dashboard';
 
 // Documentation Pages
 import DocsHome from './MVP/pages/docs/DocsHome';
@@ -81,6 +91,11 @@ import IRFAQ from './MVP/pages/investors-room/InvestorFAQ';
 import IRTokenComparison from './MVP/pages/investors-room/TokenComparisonGuide';
 import IREthereumERC3643 from './MVP/pages/investors-room/UnderstandingERC3643';
 import IRReinvestmentSettings from './MVP/pages/investors-room/ReinvestmentSettings';
+
+// Investor Pages
+import InvestorPortfolio from './MVP/pages/investor/Portfolio';
+import InvestorReturns from './MVP/pages/investor/Returns';
+import InvestorRecurringInvestment from './MVP/pages/investor/RecurringInvestment';
 
 // Query Client
 const queryClient = new QueryClient({
@@ -123,26 +138,46 @@ const App: React.FC = () => {
             <Route path="/retail/dashboard" element={<RetailDashboard />} />
             <Route path="/retail/pools" element={<PoolMarketplace />} />
             
-            {/* Asset Originator Routes */}
+            {/* Industrial Operator Routes */}
             <Route path="/originator/dashboard" element={<OriginatorDashboard />} />
             <Route path="/originator/assets/submit" element={<AssetSubmission />} />
             <Route path="/originator/assets/certificates" element={<AssetCertificates />} />
             
             {/* Compliance Officer Routes */}
             <Route path="/compliance/dashboard" element={<ComplianceDashboard />} />
-            
+            <Route path="/compliance/kyc-review" element={<ComplianceKYCReview />} />
+
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            
+
             {/* Regulator Routes (Read-Only) */}
             <Route path="/regulator/dashboard" element={<RegulatorDashboard />} />
-            
+
+            {/* Investor Routes */}
+            <Route path="/investor/portfolio" element={<InvestorPortfolio />} />
+            <Route path="/investor/returns" element={<InvestorReturns />} />
+            <Route path="/investor/recurring-investment" element={<InvestorRecurringInvestment />} />
+            <Route path="/pool/dashboard" element={<PoolDashboard />} />
+
+            {/* Industrial Operator Routes */}
+            <Route path="/industrial-operator/onboarding" element={<IndustrialOperatorWelcome />} />
+            <Route path="/industrial-operator/financings" element={<IndustrialOperatorFinancings />} />
+
             {/* P1 Features - Deep Dive & Investors Room */}
             <Route path="/deep-dive" element={<DeepDive />} />
             <Route path="/investors-room" element={<InvestorsRoom />} />
             
             {/* Onboarding Flow (5 steps) */}
             <Route path="/onboarding" element={<OnboardingWelcome />} />
+            <Route path="/investor/onboarding" element={<OnboardingWelcome />} />
+            <Route path="/investor/onboarding/:type/personal" element={<OnboardingPersonal />} />
+            <Route path="/investor/onboarding/:type/documents" element={<OnboardingDocuments />} />
+            <Route path="/investor/onboarding/:type/review" element={<OnboardingReview />} />
+            <Route path="/investor/onboarding/:type/complete" element={<OnboardingComplete />} />
+            <Route path="/industrial-operator/onboarding/:type/company" element={<OnboardingPersonal />} />
+            <Route path="/industrial-operator/onboarding/:type/documents" element={<OnboardingDocuments />} />
+            <Route path="/industrial-operator/onboarding/:type/review" element={<OnboardingReview />} />
+            <Route path="/industrial-operator/onboarding/:type/complete" element={<OnboardingComplete />} />
             <Route path="/onboarding/:type/personal" element={<OnboardingPersonal />} />
             <Route path="/onboarding/:type/documents" element={<OnboardingDocuments />} />
             <Route path="/onboarding/:type/review" element={<OnboardingReview />} />
@@ -226,7 +261,7 @@ const RoleSelection: React.FC = () => {
     },
     {
       id: 'originator',
-      title: 'Asset Originator',
+      title: 'Industrial Operator',
       description: 'Industrial companies seeking financing',
       features: ['Access Capital', 'GDIZ Certified', 'Flexible Terms'],
       color: 'from-amber-500 to-orange-500',

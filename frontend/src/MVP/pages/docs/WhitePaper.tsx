@@ -38,7 +38,7 @@ const WhitePaper: React.FC = () => {
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white border-2 border-[#48A9F0]/30 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-[#023D7A] mb-3">🏦 Ujamaa Pool Token (UPT)</h3>
+              <h3 className="text-xl font-bold text-[#023D7A] mb-3">🏦 Ujamaa Liquidity Provider Token (uLP)</h3>
               <p className="text-[#333333]">Yield-bearing ERC-3643 token representing pool ownership with automatic yield distribution.</p>
             </div>
             <div className="bg-white border-2 border-[#48A9F0]/30 rounded-xl p-6">

@@ -26,14 +26,14 @@ const InvestmentCaseStudies: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] p-6 text-white">
             <h3 className="text-2xl font-bold">Case Study #1: Cotton Exporter Financing</h3>
-            <p className="opacity-90">UPT-IND Pool Investment | Q1 2026</p>
+            <p className="opacity-90">uLP-IND Pool Investment | Q1 2026</p>
           </div>
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <h4 className="font-bold text-[#023D7A] mb-2">Investment Details</h4>
                 <CaseStudyDetail label="Asset" value="€2M cotton inventory" />
-                <CaseStudyDetail label="Pool" value="UPT-IND (Industrial)" />
+                <CaseStudyDetail label="Pool" value="uLP-IND (Industrial)" />
                 <CaseStudyDetail label="Tenor" value="180 days" />
                 <CaseStudyDetail label="Interest Rate" value="10% APR" />
               </div>
@@ -90,13 +90,13 @@ const InvestmentCaseStudies: React.FC = () => {
 
         {/* Comparison */}
         <section className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-2xl font-bold text-[#023D7A] mb-6">UPT vs UAT Performance Comparison</h3>
+          <h3 className="text-2xl font-bold text-[#023D7A] mb-6">uLP vs UAT Performance Comparison</h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#023D7A] text-white">
                 <tr>
                   <th className="px-4 py-3 text-left">Metric</th>
-                  <th className="px-4 py-3 text-left">UPT (Pool)</th>
+                  <th className="px-4 py-3 text-left">uLP (Pool)</th>
                   <th className="px-4 py-3 text-left">UAT (Single)</th>
                 </tr>
               </thead>
@@ -135,10 +135,10 @@ const InvestmentCaseStudies: React.FC = () => {
         <section className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
           <h3 className="text-2xl font-bold mb-6">Investor Testimonials</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Testimonial 
-              quote="UPT provides steady returns with peace of mind. The diversification across 50+ assets means I sleep well at night."
+            <Testimonial
+              quote="uLP provides steady returns with peace of mind. The diversification across 50+ assets means I sleep well at night."
               author="Family Office, Switzerland"
-              investment="€250,000 in UPT-IND"
+              investment="€250,000 in uLP-IND"
             />
             <Testimonial 
               quote="I invested in UAT-COCOA because I know the Ivory Coast cocoa market. Higher returns for my expertise."

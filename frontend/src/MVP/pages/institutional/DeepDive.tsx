@@ -4,7 +4,7 @@
  * Comprehensive technical documentation for the Ujamaa DeFi Platform MVP.
  * Includes 6 sections: Architecture, Smart Contracts, Backend, API, Security, Performance.
  *
- * @reference 08_DEEP_DIVE_INVESTORS_ROOM.md Section 1
+ * @reference 09_DEEP_DIVE_INVESTORS_ROOM.md Section 1
  * @reference 02_MVP_IMPLEMENTATION_PLAN.md Phase 4
  * @reference SRS v2.0
  *

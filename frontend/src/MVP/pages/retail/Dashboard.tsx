@@ -66,7 +66,7 @@ const RetailDashboard: React.FC = () => {
               <h3 className="font-semibold text-[#023D7A]">New to DeFi?</h3>
               <p className="text-sm text-[#333333] mt-1">
                 Start with as little as €1,000. Learn about tokenized real-world assets and earn yield from African industries.
-                <a href="/educational" className="underline ml-2 font-medium text-[#00A8A8] hover:text-[#D57028]">Learn more →</a>
+                <a href="/investors-room/defi-basics" className="underline ml-2 font-medium text-[#00A8A8] hover:text-[#D57028]">Learn more →</a>
               </p>
             </div>
           </div>
@@ -184,21 +184,27 @@ const RetailDashboard: React.FC = () => {
               <div className="space-y-3">
                 <a
                   href="/retail/pools"
-                  className="block w-full px-4 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white font-medium rounded-lg transition-colors text-center"
+                  className="block w-full px-4 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white !text-white font-bold rounded-lg transition-colors text-center"
                 >
                   📈 Browse Pools
                 </a>
                 <a
-                  href="/retail/how-it-works"
-                  className="block w-full px-4 py-3 border border-[#103b5b]/30 hover:bg-[#F9F6ED] text-[#103b5b] font-medium rounded-lg transition-colors text-center"
+                  href="/investors-room/reinvestment-settings"
+                  className="block w-full px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg transition-colors text-center"
                 >
-                  📚 How It Works
+                  💰 Reinvestment Settings
                 </a>
                 <a
-                  href="/retail/calculator"
+                  href="/investors-room/tokenization"
                   className="block w-full px-4 py-3 border border-[#103b5b]/30 hover:bg-[#F9F6ED] text-[#103b5b] font-medium rounded-lg transition-colors text-center"
                 >
-                  🧮 Yield Calculator
+                  📚 How Tokenization Works
+                </a>
+                <a
+                  href="/investors-room/fees"
+                  className="block w-full px-4 py-3 border border-[#103b5b]/30 hover:bg-[#F9F6ED] text-[#103b5b] font-medium rounded-lg transition-colors text-center"
+                >
+                  🧮 View Fees & Returns
                 </a>
                 <a
                   href="/investors-room"

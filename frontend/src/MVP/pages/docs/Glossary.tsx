@@ -81,12 +81,12 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     platformContext: 'Ujamaa offers exposure to multiple asset classes: agriculture, industry, trade finance, renewable energy, and real estate.',
   },
   {
-    term: 'Asset Originator',
+    term: 'Industrial Operator',
     partOfSpeech: 'noun',
-    definition: 'An entity that creates, develops, or brings forth assets for investment purposes. In structured finance, originators are typically companies seeking financing for their assets or projects.',
+    definition: 'An industrial company that seeks financing through asset tokenization. Industrial operators tokenize their assets (invoices, inventory, production) to access capital from investors.',
     category: 'Ujamaa Platform',
-    relatedTerms: ['Sponsor', 'Borrower', 'Pool'],
-    platformContext: 'Asset Originators on Ujamaa are African industrial companies seeking financing through tokenized pools.',
+    relatedTerms: ['Borrower', 'Manufacturer', 'Producer'],
+    platformContext: 'Industrial Operators on Ujamaa are African industrial companies seeking financing through tokenized pools.',
   },
   {
     term: 'African Continental Free Trade Area (AfCFTA)',
@@ -236,7 +236,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'A comprehensive investigation or audit of a potential investment or business opportunity to confirm facts, assess risks, and verify information before making a decision.',
     category: 'Investment',
     relatedTerms: ['Risk Assessment', 'KYC', 'Compliance'],
-    platformContext: 'Ujamaa conducts thorough due diligence on all asset originators and their collateral.',
+    platformContext: 'Ujamaa conducts thorough due diligence on all Industrial Operators and their collateral.',
   },
   // ============================================================================
   // E
@@ -331,7 +331,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'A certification or guarantee program that validates industrial projects in Africa, providing additional security and credibility for investors.',
     category: 'African Finance',
     relatedTerms: ['Guarantee', 'Industrial Zone', 'Certification'],
-    platformContext: 'Ujamaa partners with GDIZ to certify asset originators and reduce investment risk.',
+    platformContext: 'Ujamaa partners with GDIZ to certify Industrial Operators and reduce investment risk.',
   },
   {
     term: 'Governance',
@@ -436,7 +436,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'A verification process similar to KYC but for business entities. KYB confirms the legitimacy of a company, its ownership structure, and beneficial owners.',
     category: 'Compliance',
     relatedTerms: ['KYC', 'Due Diligence', 'Corporate Verification'],
-    platformContext: 'Institutional investors and asset originators on Ujamaa must complete KYB verification.',
+    platformContext: 'Institutional investors and Industrial Operators on Ujamaa must complete KYB verification.',
   },
   {
     term: 'KYC/AML',
@@ -565,9 +565,9 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
   {
     term: 'Originator',
     partOfSpeech: 'noun',
-    definition: 'See Asset Originator. The entity that creates or brings assets to be financed or securitized.',
+    definition: 'See Industrial Operator. The industrial company that tokenizes assets to access financing from investors.',
     category: 'Ujamaa Platform',
-    relatedTerms: ['Asset Originator', 'Sponsor', 'Borrower'],
+    relatedTerms: ['Industrial Operator', 'Borrower', 'Manufacturer'],
   },
   // ============================================================================
   // P
@@ -667,7 +667,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'An individual investor who buys and sells securities for personal accounts, typically in smaller amounts than institutional investors.',
     category: 'Investment',
     relatedTerms: ['Individual Investor', 'Institutional Investor', 'Accredited Investor'],
-    platformContext: 'Ujamaa retail investors can invest between €1,000 and €50,000.',
+    platformContext: 'Ujamaa retail investors can invest between €1,000 and €99,999.',
   },
   {
     term: 'Risk Management',

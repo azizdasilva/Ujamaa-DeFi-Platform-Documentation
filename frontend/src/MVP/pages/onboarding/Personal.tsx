@@ -28,13 +28,13 @@ const OnboardingPersonal: React.FC = () => {
     phone: '',
     dateOfBirth: '',
     nationality: '',
-    
+
     // Address
     address: '',
     city: '',
     postalCode: '',
     country: '',
-    
+
     // Business Info (for institutional/originator)
     companyName: '',
     registrationNumber: '',
@@ -42,29 +42,31 @@ const OnboardingPersonal: React.FC = () => {
     businessAddress: '',
     website: '',
     industry: '',
-    
+
     // Investment Info
     investmentAmount: '',
     investmentSource: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Countries with phone codes and flag images (using flagcdn.com for reliable display)
   const countries = [
-    { code: 'MU', name: 'Mauritius' },
-    { code: 'NG', name: 'Nigeria' },
-    { code: 'KE', name: 'Kenya' },
-    { code: 'ZA', name: 'South Africa' },
-    { code: 'GH', name: 'Ghana' },
-    { code: 'CI', name: 'Côte d\'Ivoire' },
-    { code: 'SN', name: 'Senegal' },
-    { code: 'TG', name: 'Togo' },
-    { code: 'BJ', name: 'Benin' },
-    { code: 'UAE', name: 'United Arab Emirates' },
-    { code: 'UK', name: 'United Kingdom' },
-    { code: 'EU', name: 'European Union' },
-    { code: 'SG', name: 'Singapore' },
-    { code: 'US', name: 'United States' },
+    { code: 'MU', name: 'Mauritius', phoneCode: '+230', flag: 'https://flagcdn.com/w40/mu.png' },
+    { code: 'NG', name: 'Nigeria', phoneCode: '+234', flag: 'https://flagcdn.com/w40/ng.png' },
+    { code: 'KE', name: 'Kenya', phoneCode: '+254', flag: 'https://flagcdn.com/w40/ke.png' },
+    { code: 'ZA', name: 'South Africa', phoneCode: '+27', flag: 'https://flagcdn.com/w40/za.png' },
+    { code: 'GH', name: 'Ghana', phoneCode: '+233', flag: 'https://flagcdn.com/w40/gh.png' },
+    { code: 'CI', name: 'Côte d\'Ivoire', phoneCode: '+225', flag: 'https://flagcdn.com/w40/ci.png' },
+    { code: 'SN', name: 'Senegal', phoneCode: '+221', flag: 'https://flagcdn.com/w40/sn.png' },
+    { code: 'TG', name: 'Togo', phoneCode: '+228', flag: 'https://flagcdn.com/w40/tg.png' },
+    { code: 'BJ', name: 'Benin', phoneCode: '+229', flag: 'https://flagcdn.com/w40/bj.png' },
+    { code: 'UAE', name: 'United Arab Emirates', phoneCode: '+971', flag: 'https://flagcdn.com/w40/ae.png' },
+    { code: 'UK', name: 'United Kingdom', phoneCode: '+44', flag: 'https://flagcdn.com/w40/gb.png' },
+    { code: 'EU', name: 'European Union', phoneCode: '+33', flag: 'https://flagcdn.com/w40/eu.png' },
+    { code: 'SG', name: 'Singapore', phoneCode: '+65', flag: 'https://flagcdn.com/w40/sg.png' },
+    { code: 'US', name: 'United States', phoneCode: '+1', flag: 'https://flagcdn.com/w40/us.png' },
   ];
 
   const blockedCountries = [
@@ -82,10 +84,81 @@ const OnboardingPersonal: React.FC = () => {
     { code: 'BF', name: 'Burkina Faso' },
   ];
 
+  // Get country by code
+  const getCountry = (code: string) => countries.find(c => c.code === code);
+
+  // Get phone code for selected nationality
+  const getPhoneCode = () => {
+    const country = getCountry(formData.nationality);
+    return country?.phoneCode || '+230';
+  };
+
+  // Get flag for nationality
+  const getFlag = (code: string) => {
+    const country = getCountry(code);
+    return country?.flag || 'https://flagcdn.com/w40/mu.png'; // Default to Mauritius flag
+  };
+
+  // Postal code patterns by country - relaxed validation for African countries
+  const postalPatterns: Record<string, { pattern: RegExp; minDigits: number }> = {
+    MU: { pattern: /^[0-9]{2,5}$/, minDigits: 2 },
+    NG: { pattern: /^[0-9]{2,6}$/, minDigits: 2 },
+    KE: { pattern: /^[0-9]{2,5}$/, minDigits: 2 },
+    ZA: { pattern: /^[0-9]{2,4}$/, minDigits: 2 },
+    GH: { pattern: /^[A-Z0-9\-]{2,15}$/, minDigits: 2 },
+    CI: { pattern: /^[0-9A-Z]{2,15}$/, minDigits: 2 },
+    SN: { pattern: /^[0-9]{2,5}$/, minDigits: 2 },
+    TG: { pattern: /^[0-9A-Z]{2,15}$/, minDigits: 2 },
+    BJ: { pattern: /^[0-9A-Z]{2,15}$/, minDigits: 2 },
+    UAE: { pattern: /^[0-9]{2,5}$/, minDigits: 2 },
+    UK: { pattern: /^[A-Z0-9\s]{2,10}$/, minDigits: 2 },
+    EU: { pattern: /^[0-9]{2,5}$/, minDigits: 2 },
+    SG: { pattern: /^[0-9]{2,6}$/, minDigits: 2 },
+    US: { pattern: /^[0-9]{2,10}$/, minDigits: 2 },
+  };
+
+  // Industry dropdown options
+  const industries = [
+    { code: 'MFG', name: 'Manufacturing' },
+    { code: 'AGR', name: 'Agriculture & Agribusiness' },
+    { code: 'TEXT', name: 'Textiles & Garments' },
+    { code: 'FOOD', name: 'Food Processing' },
+    { code: 'CHEM', name: 'Chemicals & Pharmaceuticals' },
+    { code: 'ENERGY', name: 'Energy & Utilities' },
+    { code: 'CONST', name: 'Construction & Materials' },
+    { code: 'TECH', name: 'Technology & Electronics' },
+    { code: 'AUTO', name: 'Automotive' },
+    { code: 'LOGIS', name: 'Logistics & Transportation' },
+    { code: 'TRADE', name: 'Trading & Distribution' },
+    { code: 'MINING', name: 'Mining & Natural Resources' },
+    { code: 'HEALTH', name: 'Healthcare & Medical' },
+    { code: 'EDU', name: 'Education & Training' },
+    { code: 'FIN', name: 'Financial Services' },
+    { code: 'REAL', name: 'Real Estate & Property' },
+    { code: 'TOURISM', name: 'Tourism & Hospitality' },
+    { code: 'OTHER', name: 'Other' },
+  ];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
     
+    // Handle nationality change - auto-update phone country code
+    if (name === 'nationality' && value) {
+      const country = getCountry(value);
+      if (country) {
+        // Remove old country code from phone, keep only the number
+        let newPhone = formData.phone.replace(/^\+?\d{1,4}/, '');
+        setFormData(prev => ({
+          ...prev,
+          nationality: value,
+          phone: newPhone
+        }));
+        return;
+      }
+    }
+    
+    setFormData(prev => ({ ...prev, [name]: value }));
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => {
@@ -96,19 +169,73 @@ const OnboardingPersonal: React.FC = () => {
     }
   };
 
+  // Get full phone number for database storage (country code + number)
+  const getFullPhoneNumber = () => {
+    const code = getPhoneCode();
+    const number = formData.phone.replace(/^\+?\d{1,4}/, '');
+    return `${code}${number}`;
+  };
+
+  // Validate phone number format (numbers only, 7-15 digits)
+  const validatePhone = (phone: string): boolean => {
+    const phonePattern = /^[0-9]{7,15}$/;
+    return phonePattern.test(phone);
+  };
+
+  // Validate postal code by country - relaxed validation
+  const validatePostalCode = (postalCode: string, countryCode: string): boolean => {
+    const config = postalPatterns[countryCode];
+    if (!config) return postalCode.length >= 2;
+    const digits = postalCode.replace(/\D/g, '').length;
+    return digits >= config.minDigits && config.pattern.test(postalCode);
+  };
+
+  // Validate user is at least 18 years old
+  const validateAge = (dateOfBirth: string): boolean => {
+    if (!dateOfBirth) return false;
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age >= 18;
+  };
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    // Personal info validation
-    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    // Personal info validation - different for retail vs institutional/originator
+    if (type === 'retail') {
+      // Retail: require firstName and lastName
+      if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+      if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    } else {
+      // Institutional/Originator: require companyName instead
+      if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required';
+    }
+    
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email format';
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Invalid phone number (7-15 digits required)';
+    }
+    
+    // Retail-specific: Date of Birth validation
+    if (type === 'retail') {
+      if (!formData.dateOfBirth) {
+        newErrors.dateOfBirth = 'Date of birth is required';
+      } else if (!validateAge(formData.dateOfBirth)) {
+        newErrors.dateOfBirth = 'You must be at least 18 years old to invest';
+      }
+    }
+    
     if (!formData.nationality) newErrors.nationality = 'Nationality is required';
 
     // Check if nationality is blocked
@@ -120,14 +247,28 @@ const OnboardingPersonal: React.FC = () => {
     // Address validation
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     if (!formData.city.trim()) newErrors.city = 'City is required';
-    if (!formData.postalCode.trim()) newErrors.postalCode = 'Postal code is required';
+    if (!formData.postalCode.trim()) {
+      newErrors.postalCode = 'Postal code is required';
+    } else if (!validatePostalCode(formData.postalCode, formData.country)) {
+      const examples: Record<string, string> = {
+        MU: 'e.g., 72201',
+        NG: 'e.g., 100001',
+        KE: 'e.g., 00100',
+        ZA: 'e.g., 8001',
+        UK: 'e.g., SW1A 1AA',
+        US: 'e.g., 10001 or 10001-1234',
+        EU: 'e.g., 75001',
+        SG: 'e.g., 018956',
+      };
+      newErrors.postalCode = `Invalid postal code format ${examples[formData.country] || ''}`;
+    }
     if (!formData.country) newErrors.country = 'Country is required';
 
-    // Business info for institutional/originator
+    // Additional business info for institutional/originator
     if (type === 'institutional' || type === 'originator') {
-      if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required';
       if (!formData.registrationNumber.trim()) newErrors.registrationNumber = 'Registration number is required';
       if (!formData.taxId.trim()) newErrors.taxId = 'Tax ID is required';
+      if (!formData.industry.trim()) newErrors.industry = 'Industry is required';
     }
 
     // Investment info
@@ -135,8 +276,8 @@ const OnboardingPersonal: React.FC = () => {
       newErrors.investmentAmount = 'Investment amount is required';
     } else {
       const amount = parseFloat(formData.investmentAmount.replace(/,/g, ''));
-      if (type === 'retail' && (amount < 1000 || amount > 50000)) {
-        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €50,000';
+      if (type === 'retail' && (amount < 1000 || amount > 99999)) {
+        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €99,999';
       }
       if (type === 'institutional' && amount < 100000) {
         newErrors.investmentAmount = 'Institutional investment minimum is €100,000';
@@ -148,10 +289,123 @@ const OnboardingPersonal: React.FC = () => {
   };
 
   const handleContinue = () => {
-    if (validateForm()) {
-      // Store data in sessionStorage for later steps
-      sessionStorage.setItem('onboardingData', JSON.stringify(formData));
-      navigate(`/onboarding/${type}/documents`);
+    const newErrors: Record<string, string> = {};
+
+    // Personal info validation - different for retail vs institutional/originator
+    if (type === 'retail') {
+      // Retail: require firstName and lastName
+      if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+      if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    } else {
+      // Institutional/Originator: require companyName instead
+      if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Invalid phone number (7-15 digits required)';
+    }
+    
+    // Retail-specific: Date of Birth validation
+    if (type === 'retail') {
+      if (!formData.dateOfBirth) {
+        newErrors.dateOfBirth = 'Date of birth is required';
+      } else if (!validateAge(formData.dateOfBirth)) {
+        newErrors.dateOfBirth = 'You must be at least 18 years old to invest';
+      }
+    }
+    
+    if (!formData.nationality) newErrors.nationality = 'Nationality is required';
+
+    // Check if nationality is blocked
+    const isBlocked = blockedCountries.some(c => c.code === formData.nationality);
+    if (isBlocked) {
+      newErrors.nationality = 'Unfortunately, we cannot accept investors from this jurisdiction';
+    }
+
+    // Address validation
+    if (!formData.address.trim()) newErrors.address = 'Address is required';
+    if (!formData.city.trim()) newErrors.city = 'City is required';
+    if (!formData.postalCode.trim()) {
+      newErrors.postalCode = 'Postal code is required';
+    } else if (!validatePostalCode(formData.postalCode, formData.country)) {
+      const examples: Record<string, string> = {
+        MU: 'e.g., 72201',
+        NG: 'e.g., 100001',
+        KE: 'e.g., 00100',
+        ZA: 'e.g., 8001',
+        UK: 'e.g., SW1A 1AA',
+        US: 'e.g., 10001 or 10001-1234',
+        EU: 'e.g., 75001',
+        SG: 'e.g., 018956',
+      };
+      newErrors.postalCode = `Invalid postal code format ${examples[formData.country] || ''}`;
+    }
+    if (!formData.country) newErrors.country = 'Country is required';
+
+    // Additional business info for institutional/originator
+    if (type === 'institutional' || type === 'originator') {
+      if (!formData.registrationNumber.trim()) newErrors.registrationNumber = 'Registration number is required';
+      if (!formData.taxId.trim()) newErrors.taxId = 'Tax ID is required';
+      if (!formData.industry.trim()) newErrors.industry = 'Industry is required';
+    }
+
+    // Investment info
+    if (!formData.investmentAmount.trim()) {
+      newErrors.investmentAmount = 'Investment amount is required';
+    } else {
+      const amount = parseFloat(formData.investmentAmount.replace(/,/g, ''));
+      if (type === 'retail' && (amount < 1000 || amount > 99999)) {
+        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €99,999';
+      }
+      if (type === 'institutional' && amount < 100000) {
+        newErrors.investmentAmount = 'Institutional investment minimum is €100,000';
+      }
+    }
+
+    setErrors(newErrors);
+
+    console.log('=== FORM VALIDATION DEBUG ===');
+    console.log('Type:', type);
+    console.log('Form Data:', formData);
+    console.log('Errors:', newErrors);
+    console.log('Error count:', Object.keys(newErrors).length);
+    console.log('=============================');
+
+    if (Object.keys(newErrors).length === 0) {
+      setIsSubmitting(true);
+      try {
+        // Store data with full phone number (country code + number) for database
+        const formDataWithFullPhone = {
+          ...formData,
+          phone: getFullPhoneNumber() // Store as +2301234567 format
+        };
+        sessionStorage.setItem('onboardingData', JSON.stringify(formDataWithFullPhone));
+        console.log('Navigating to documents step with full phone:', formDataWithFullPhone.phone);
+        navigate(`/onboarding/${type}/documents`);
+      } catch (error) {
+        console.error('Error during navigation:', error);
+        setIsSubmitting(false);
+      }
+    } else {
+      // Scroll to first error
+      const firstErrorField = Object.keys(newErrors)[0];
+      if (firstErrorField) {
+        const element = document.querySelector(`[name="${firstErrorField}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Focus the element if it's an input
+          if (element instanceof HTMLElement) {
+            element.focus();
+          }
+        }
+      }
     }
   };
 
@@ -173,6 +427,25 @@ const OnboardingPersonal: React.FC = () => {
           </div>
         </div>
       </header>
+
+      {/* Validation Error Banner */}
+      {Object.keys(errors).length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg mx-4 mt-6 p-4">
+          <div className="flex items-start gap-3">
+            <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div className="flex-1">
+              <h4 className="font-semibold text-red-900">Please fix {Object.keys(errors).length} error(s)</h4>
+              <ul className="text-sm text-red-700 mt-2 space-y-1">
+                {Object.entries(errors).map(([field, message]) => (
+                  <li key={field}>• {message}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Progress Bar */}
       <div className="bg-white border-b border-gray-200">
@@ -284,34 +557,37 @@ const OnboardingPersonal: React.FC = () => {
                     error={errors.taxId}
                     fullWidth
                   />
-                  <Input
-                    label="Industry"
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleChange}
-                    fullWidth
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Industry *
+                    </label>
+                    <select
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      className="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    >
+                      <option value="">Select industry</option>
+                      {industries.map(ind => (
+                        <option key={ind.code} value={ind.code}>{ind.name}</option>
+                      ))}
+                    </select>
+                  </div>
                 </>
               )}
 
-              <Input
-                label="Email Address *"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                error={errors.email}
-                fullWidth
-              />
-              <Input
-                label="Phone Number *"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                error={errors.phone}
-                fullWidth
-              />
+              {/* Email - Full Width Row */}
+              <div className="md:col-span-2">
+                <Input
+                  label="Email Address *"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  error={errors.email}
+                  fullWidth
+                />
+              </div>
 
               {type === 'retail' && (
                 <Input
@@ -325,40 +601,97 @@ const OnboardingPersonal: React.FC = () => {
                 />
               )}
 
+              {/* Nationality */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Nationality / Country of Incorporation *
                 </label>
-                <select
-                  name="nationality"
-                  value={formData.nationality}
-                  onChange={handleChange}
-                  className={`block w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-offset-0 ${
-                    errors.nationality
-                      ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
-                  }`}
-                >
-                  <option value="">Select country</option>
-                  <optgroup label="Allowed African Markets">
-                    {countries.filter(c => ['MU', 'NG', 'KE', 'ZA', 'GH', 'CI', 'SN', 'TG', 'BJ'].includes(c.code)).map(c => (
-                      <option key={c.code} value={c.code}>{c.name}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Allowed International">
-                    {countries.filter(c => ['UAE', 'UK', 'EU', 'SG', 'US'].includes(c.code)).map(c => (
-                      <option key={c.code} value={c.code}>{c.name}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Blocked Jurisdictions">
-                    {blockedCountries.map(c => (
-                      <option key={c.code} value={c.code} disabled>{c.name} (Blocked)</option>
-                    ))}
-                  </optgroup>
-                </select>
+                <div className="relative">
+                  <select
+                    name="nationality"
+                    value={formData.nationality}
+                    onChange={handleChange}
+                    className={`block w-full px-4 py-2.5 border-2 rounded-lg focus:ring-2 focus:ring-offset-0 appearance-none bg-white ${
+                      errors.nationality
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                        : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
+                    }`}
+                  >
+                    <option value="">Select country</option>
+                    <optgroup label="Allowed African Markets">
+                      {countries.filter(c => ['MU', 'NG', 'KE', 'ZA', 'GH', 'CI', 'SN', 'TG', 'BJ'].includes(c.code)).map(c => (
+                        <option key={c.code} value={c.code}>{c.name}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Allowed International">
+                      {countries.filter(c => ['UAE', 'UK', 'EU', 'SG', 'US'].includes(c.code)).map(c => (
+                        <option key={c.code} value={c.code}>{c.name}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Blocked Jurisdictions">
+                      {blockedCountries.map(c => (
+                        <option key={c.code} value={c.code} disabled>{c.name} (Blocked)</option>
+                      ))}
+                    </optgroup>
+                  </select>
+                  {/* Flag Display */}
+                  {formData.nationality && (
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center gap-2">
+                      <img
+                        src={countries.find(c => c.code === formData.nationality)?.flag}
+                        alt={formData.nationality}
+                        className="w-5 h-3.5 object-cover"
+                        style={{ display: 'inline-block' }}
+                      />
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
                 {errors.nationality && (
                   <p className="mt-1 text-sm text-red-600">{errors.nationality}</p>
                 )}
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Phone Number *
+                </label>
+                <div className="flex items-stretch">
+                  {/* Country Code Display */}
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 border-2 border-r-0 border-gray-300 rounded-l-lg min-w-[110px] flex-shrink-0">
+                    <img
+                      src={getFlag(formData.nationality)}
+                      alt={formData.nationality || 'flag'}
+                      className="w-5 h-3.5 object-cover"
+                      style={{ display: 'inline-block' }}
+                    />
+                    <span className="text-sm font-semibold text-gray-700">{getPhoneCode()}</span>
+                  </div>
+                  {/* Phone Input */}
+                  <input
+                    name="phone"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={formData.phone}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^0-9]/g, '');
+                      setFormData(prev => ({ ...prev, phone: value }));
+                    }}
+                    placeholder="1234567"
+                    maxLength={15}
+                    className="flex-1 block min-w-[150px] px-4 py-2.5 border-2 border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors duration-200 focus:outline-none"
+                  />
+                </div>
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                )}
+                <p className="text-xs text-gray-500 mt-1">
+                  Code: {getPhoneCode()} | Full: {getFullPhoneNumber()}
+                </p>
               </div>
             </div>
           </Card>
@@ -499,7 +832,7 @@ const OnboardingPersonal: React.FC = () => {
                     type === 'retail' ? 'text-blue-700' : 'text-green-700'
                   } mt-1`}>
                     {type === 'retail' 
-                      ? 'Minimum: €1,000 • Maximum: €50,000 • Daily withdrawal limit: €500,000'
+                      ? 'Minimum: €1,000 • Maximum: €99,999 • Daily withdrawal limit: €500,000'
                       : 'Minimum: €100,000 • No maximum limit • Enhanced KYB required'
                     }
                   </p>
@@ -514,6 +847,7 @@ const OnboardingPersonal: React.FC = () => {
               type="button"
               onClick={() => navigate(`/onboarding`)}
               className="text-gray-600 hover:text-gray-900 font-medium"
+              disabled={isSubmitting}
             >
               ← Back
             </button>
@@ -521,8 +855,19 @@ const OnboardingPersonal: React.FC = () => {
               type="submit"
               variant="primary"
               size="lg"
+              disabled={isSubmitting}
             >
-              Continue to Documents →
+              {isSubmitting ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Saving...
+                </span>
+              ) : (
+                'Continue to Documents →'
+              )}
             </Button>
           </div>
         </form>

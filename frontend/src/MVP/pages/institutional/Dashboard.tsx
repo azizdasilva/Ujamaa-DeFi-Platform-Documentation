@@ -75,6 +75,74 @@ const InstitutionalDashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
+        {/* Quick Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <button
+            onClick={() => navigate('/investors-room/reinvestment-settings')}
+            className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-200 hover:shadow-lg transition-all cursor-pointer text-left"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-gray-900 text-sm truncate">Reinvestment Settings</h3>
+                <p className="text-xs text-gray-600 truncate">Yield distribution</p>
+              </div>
+            </div>
+          </button>
+          <a
+            href="/pool/dashboard"
+            className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border-2 border-blue-200 hover:shadow-lg transition-all cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-gray-900 text-sm truncate">Pool Dashboard</h3>
+                <p className="text-xs text-gray-600 truncate">View all 18 KPIs</p>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/investor/portfolio"
+            className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-200 hover:shadow-lg transition-all cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-gray-900 text-sm truncate">My Portfolio</h3>
+                <p className="text-xs text-gray-600 truncate">View holdings</p>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/institutional/pools"
+            className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-all cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-gray-900 text-sm truncate">Browse Pools</h3>
+                <p className="text-xs text-gray-600 truncate">Invest in pools</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatsCard
@@ -129,7 +197,10 @@ const InstitutionalDashboard: React.FC = () => {
               header={
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-gray-900">Pool Positions</h2>
-                  <button className="text-[#103b5b] hover:text-[#0d3352] text-sm font-medium">
+                  <button 
+                    onClick={() => navigate('/investor/portfolio')}
+                    className="text-[#103b5b] hover:text-[#0d3352] text-sm font-medium hover:underline"
+                  >
                     View All →
                   </button>
                 </div>
@@ -153,10 +224,18 @@ const InstitutionalDashboard: React.FC = () => {
                         {formatCurrency(position.value)}
                       </div>
                       <div className="flex gap-2">
-                        <button className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors">
+                        <button 
+                          onClick={() => navigate(`/institutional/pools?pool=${position.poolId}`)}
+                          className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
+                        >
                           Add
                         </button>
-                        <button className="px-4 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded-lg transition-colors">
+                        <button 
+                          onClick={() => {
+                            alert(`🚀 MVP TESTNET: Redeem functionality for ${position.poolName} will be available in production. This would initiate a redemption request for your UPT shares.`);
+                          }}
+                          className="px-4 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded-lg transition-colors"
+                        >
                           Redeem
                         </button>
                       </div>
@@ -221,41 +300,6 @@ const InstitutionalDashboard: React.FC = () => {
               </div>
             </Card>
           </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="mt-8">
-          <Card>
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900">Quick Actions</h2>
-                <p className="text-gray-600 mt-1">Manage your investments</p>
-              </div>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => navigate('/investors-room/reinvestment-settings')}
-                  className="px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-[#023D7A] hover:from-[#008f8f] hover:to-[#012d5c] text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                  Reinvestment Settings
-                </button>
-                <button className="px-6 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white font-medium rounded-lg transition-colors flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  New Investment
-                </button>
-                <button className="px-6 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download Statement
-                </button>
-              </div>
-            </div>
-          </Card>
         </div>
       </main>
 

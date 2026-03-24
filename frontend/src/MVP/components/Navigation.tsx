@@ -23,6 +23,7 @@ const Navigation: React.FC = () => {
   // Search results - all searchable pages
   const searchResults = [
     { title: 'Pool Marketplace', href: '/institutional/pools', category: 'Invest', tags: ['pools', 'invest', 'marketplace'] },
+    { title: 'Pool Dashboard', href: '/pool/dashboard', category: 'Invest', tags: ['pool', 'kpi', 'dashboard', 'metrics'] },
     { title: 'Deep Dive Documentation', href: '/deep-dive', category: 'Learn', tags: ['technical', 'docs', 'documentation'] },
     { title: 'Investors Room', href: '/investors-room', category: 'Documents', tags: ['documents', 'investor', 'reports'] },
     { title: 'Token Comparison Guide', href: '/investors-room/token-comparison-guide', category: 'Documents', tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison'] },
@@ -32,7 +33,8 @@ const Navigation: React.FC = () => {
     { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'] },
     { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'] },
     { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'] },
-    { title: 'Onboarding', href: '/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register'] },
+    { title: 'Investor Onboarding', href: '/investor/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'] },
+    { title: 'Industrial Operator Onboarding', href: '/industrial-operator/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'operator', 'industrial'] },
   ];
 
   // Filter search results based on query
@@ -169,18 +171,51 @@ const Navigation: React.FC = () => {
 
                 {quickActionsOpen && (
                   <>
-                    <div className="fixed inset-0 z-40" onClick={() => setQuickActionsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-50 animate-scaleIn">
+                    <div className="fixed inset-0 z-[9999]" onClick={() => setQuickActionsOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn">
                       <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
                         <p className="text-sm font-bold text-[#023D7A]">Quick Actions</p>
                         <p className="text-xs text-[#333333] mt-1">Access key platform features</p>
                       </div>
                       <div className="p-4">
-                        <a href="/onboarding" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30">
+                        {/* Clear Demo Data - TOP of menu */}
+                        <button
+                          onClick={() => {
+                            if (confirm('Clear ALL demo data? This will remove:\n\n• All submitted assets & certificates\n• All onboarding data (investor & operator)\n• All uploaded documents\n• All form submissions\n\nThis cannot be undone.')) {
+                              sessionStorage.removeItem('submittedAsset');
+                              sessionStorage.removeItem('onboardingData');
+                              sessionStorage.removeItem('onboardingDocs');
+                              sessionStorage.removeItem('onboardingSubmitted');
+                              sessionStorage.removeItem('onboardingSubmitTime');
+                              alert('✓ All demo data cleared!\n\n• Submitted assets: CLEARED\n• Onboarding data: CLEARED\n• Uploaded documents: CLEARED\n• Form submissions: CLEARED\n\nRefreshing page...');
+                              window.location.reload();
+                            }
+                          }}
+                          className="flex items-center gap-3 w-full px-3 py-2 text-sm text-red-700 font-bold hover:bg-red-50 rounded-lg transition-colors border border-red-200 bg-red-50 mb-2"
+                        >
+                          <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                          Clear Demo Data
+                        </button>
+                        
+                        <a href="/pool/dashboard" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30">
+                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                          Pool Dashboard (KPIs)
+                        </a>
+                        <a href="/investor/onboarding" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
                           <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                           </svg>
                           Investor Onboarding
+                        </a>
+                        <a href="/industrial-operator/onboarding" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
+                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                          </svg>
+                          Industrial Operator Onboarding
                         </a>
                         <a href="/originator/assets/submit" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
                           <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -235,8 +270,8 @@ const Navigation: React.FC = () => {
                 
                 {notificationsOpen && (
                   <>
-                    <div className="fixed inset-0 z-40" onClick={() => setNotificationsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 z-50 animate-scaleIn">
+                    <div className="fixed inset-0 z-[9999]" onClick={() => setNotificationsOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 z-[10000] animate-scaleIn">
                       <div className="px-4 py-3 border-b border-[#48A9F0]/30">
                         <div className="flex items-center justify-between">
                           <h3 className="font-semibold text-[#023D7A]">Notifications</h3>
@@ -261,7 +296,15 @@ const Navigation: React.FC = () => {
                         ))}
                       </div>
                       <div className="px-4 py-3 border-t border-[#48A9F0]/30 text-center">
-                        <a href="#" className="text-sm text-[#023D7A] hover:text-[#012d5c]">View all notifications</a>
+                        <button 
+                          onClick={() => {
+                            setNotificationsOpen(false);
+                            alert('🚀 MVP TESTNET: Full notifications center coming in production. All notifications are shown above.');
+                          }} 
+                          className="text-sm text-[#023D7A] hover:text-[#012d5c] font-medium"
+                        >
+                          View all notifications
+                        </button>
                       </div>
                     </div>
                   </>
@@ -291,8 +334,8 @@ const Navigation: React.FC = () => {
 
                 {profileOpen && (
                   <>
-                    <div className="fixed inset-0 z-40" onClick={() => setProfileOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-50 animate-scaleIn">
+                    <div className="fixed inset-0 z-[9999]" onClick={() => setProfileOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn">
                       <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
                         <p className="text-sm font-bold text-[#023D7A]">Select Your Role</p>
                         <p className="text-xs text-[#333333] mt-1">Choose a dashboard or switch roles</p>
@@ -319,9 +362,15 @@ const Navigation: React.FC = () => {
                       
                       {/* Sign Out */}
                       <div className="border-t border-[#48A9F0]/30 mt-2 pt-2">
-                        <a href="#" className="block px-4 py-2 text-sm text-red-600 font-bold hover:bg-red-50">
+                        <button 
+                          onClick={() => {
+                            setProfileOpen(false);
+                            alert('🚀 MVP TESTNET: Sign out functionality will be connected to wallet disconnection in production.');
+                          }} 
+                          className="block w-full text-left px-4 py-2 text-sm text-red-600 font-bold hover:bg-red-50"
+                        >
                           🚪 Sign Out
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </>
@@ -334,7 +383,7 @@ const Navigation: React.FC = () => {
 
       {/* Search Modal */}
       {searchOpen && (
-        <div className="fixed inset-0 z-[60]">
+        <div className="fixed inset-0 z-[10001]">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSearchOpen(false)} />
           <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl mx-4">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden animate-scaleIn max-h-[70vh] flex flex-col">

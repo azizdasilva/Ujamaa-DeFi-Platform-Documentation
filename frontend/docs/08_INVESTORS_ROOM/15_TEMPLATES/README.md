@@ -25,7 +25,7 @@ This folder contains **legal and investment templates** for private placement me
 
 These templates are for:
 - Legal teams drafting documents
-- Asset originators preparing offerings
+- Industrial Operators preparing offerings
 - Investors reviewing terms
 
 **Note:** Always have legal counsel review before use.

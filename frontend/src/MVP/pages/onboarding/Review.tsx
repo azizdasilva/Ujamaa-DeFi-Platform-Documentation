@@ -109,7 +109,7 @@ const OnboardingReview: React.FC = () => {
               <h3 className="font-semibold text-green-900">Ready to Submit</h3>
               <p className="text-sm text-green-700 mt-1">
                 Please review all your information carefully before submitting. 
-                Once submitted, our compliance team will review your application within 24-48 hours.
+                Once submitted, our compliance team will review your application within 24 hours.
               </p>
             </div>
           </div>
@@ -128,40 +128,44 @@ const OnboardingReview: React.FC = () => {
               Edit →
             </button>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4 text-sm">
             {type === 'retail' ? (
               <>
                 <div>
                   <p className="text-gray-500">Full Name</p>
-                  <p className="font-medium text-gray-900">{personalData.firstName} {personalData.lastName}</p>
+                  <p className="font-medium text-gray-900">{personalData.firstName || 'N/A'} {personalData.lastName || ''}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Email</p>
-                  <p className="font-medium text-gray-900">{personalData.email}</p>
+                  <p className="font-medium text-gray-900">{personalData.email || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Phone</p>
-                  <p className="font-medium text-gray-900">{personalData.phone}</p>
+                  <p className="font-medium text-gray-900">{personalData.phone || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Nationality</p>
-                  <p className="font-medium text-gray-900">{personalData.nationality}</p>
+                  <p className="font-medium text-gray-900">{personalData.nationality || 'N/A'}</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Date of Birth</p>
+                  <p className="font-medium text-gray-900">{personalData.dateOfBirth || 'N/A'}</p>
                 </div>
               </>
             ) : (
               <>
                 <div>
                   <p className="text-gray-500">Company Name</p>
-                  <p className="font-medium text-gray-900">{personalData.companyName}</p>
+                  <p className="font-medium text-gray-900">{personalData.companyName || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Registration Number</p>
-                  <p className="font-medium text-gray-900">{personalData.registrationNumber}</p>
+                  <p className="font-medium text-gray-900">{personalData.registrationNumber || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Tax ID</p>
-                  <p className="font-medium text-gray-900">{personalData.taxId}</p>
+                  <p className="font-medium text-gray-900">{personalData.taxId || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Industry</p>
@@ -171,7 +175,11 @@ const OnboardingReview: React.FC = () => {
             )}
             <div className="col-span-2">
               <p className="text-gray-500">Address</p>
-              <p className="font-medium text-gray-900">{personalData.address}, {personalData.city}, {personalData.postalCode}, {personalData.country}</p>
+              <p className="font-medium text-gray-900">
+                {[personalData.address, personalData.city, personalData.postalCode, personalData.country]
+                  .filter(Boolean)
+                  .join(', ') || 'N/A'}
+              </p>
             </div>
           </div>
         </Card>
@@ -187,15 +195,19 @@ const OnboardingReview: React.FC = () => {
               Edit →
             </button>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <p className="text-gray-500">Investment Amount</p>
-              <p className="font-medium text-gray-900 text-lg">{formatCurrency(personalData.investmentAmount)}</p>
+              <p className="font-medium text-gray-900 text-lg">
+                {personalData.investmentAmount ? formatCurrency(personalData.investmentAmount) : 'N/A'}
+              </p>
             </div>
             <div>
               <p className="text-gray-500">Source of Funds</p>
-              <p className="font-medium text-gray-900 capitalize">{personalData.investmentSource?.replace('_', ' ')}</p>
+              <p className="font-medium text-gray-900 capitalize">
+                {personalData.investmentSource ? personalData.investmentSource.replace(/_/g, ' ') : 'N/A'}
+              </p>
             </div>
             <div>
               <p className="text-gray-500">Investor Type</p>
@@ -223,22 +235,26 @@ const OnboardingReview: React.FC = () => {
               Edit →
             </button>
           </div>
-          
+
           <div className="space-y-2">
-            {Object.entries(documents).map(([docId, doc]: [string, any]) => (
-              <div key={docId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div>
-                    <p className="font-medium text-gray-900">{doc.name}</p>
-                    <p className="text-xs text-gray-500">{doc.size}</p>
+            {Object.keys(documents).length > 0 ? (
+              Object.entries(documents).map(([docId, doc]: [string, any]) => (
+                <div key={docId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-medium text-gray-900">{doc.name}</p>
+                      <p className="text-xs text-gray-500">{doc.size}</p>
+                    </div>
                   </div>
+                  <Badge variant="success" size="sm">Uploaded</Badge>
                 </div>
-                <Badge variant="success" size="sm">Uploaded</Badge>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p className="text-sm text-gray-500 text-center py-4">No documents uploaded</p>
+            )}
           </div>
         </Card>
 

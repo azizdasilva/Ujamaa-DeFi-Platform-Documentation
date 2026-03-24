@@ -3,7 +3,7 @@
  * 
  * All MVP reusable components.
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 1.2
  */
 

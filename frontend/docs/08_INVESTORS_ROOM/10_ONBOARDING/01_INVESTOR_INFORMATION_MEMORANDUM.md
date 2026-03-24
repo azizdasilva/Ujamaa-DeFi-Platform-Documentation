@@ -97,7 +97,7 @@ UJAMAA DEFI PLATFORM is a **security tokenization platform** that converts real-
 │                    UJAMAA DEFI PLATFORM ECOSYSTEM                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
-│  ASSET ORIGINATORS       PLATFORM           INVESTORS           │
+│  INDUSTRIAL OPERATORS      PLATFORM           INVESTORS           │
 │  ┌─────────────────┐    ┌──────────┐    ┌─────────────────┐    │
 │  │ • Real Estate   │    │          │    │ • Pension Funds │    │
 │  │   Developers    │───▶│  UJAMAA  │───▶│ • Family Offices│    │
@@ -325,7 +325,7 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 - **Redemption Restrictions:** Redemptions may be suspended during market stress
 
 ### Credit Risk
-- **Counterparty Default:** Asset originators or operators may default on obligations
+- **Counterparty Default:** Industrial Operators or operators may default on obligations
 - **Tenant Default:** Real estate tenants may fail to pay rent
 - **Buyer Default:** Trade finance counterparties may fail to pay invoices
 

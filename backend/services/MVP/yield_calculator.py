@@ -60,6 +60,33 @@ class PoolYield:
     nav_start: int  # 18 decimals
     nav_end: int  # 18 decimals
     apy: float  # Annual percentage yield
+    
+    # Phase 1 KPIs - Financial
+    net_apy: float = 0.0  # Net APY after all fees
+    yield_variance: float = 0.0  # Difference from projected yield
+    expense_ratio: float = 0.0  # Total fees as % of TVL
+    
+    # Phase 1 KPIs - Liquidity
+    tvl: int = 0  # Total Value Locked
+    utilization_rate: float = 0.0  # % of capital deployed
+    cash_drag: float = 0.0  # Yield impact from un-deployed capital
+    redemption_liquidity: int = 0  # Available for immediate exit
+    
+    # Phase 2 KPIs - Risk (placeholders)
+    default_rate: float = 0.0  # NPL ratio
+    concentration_risk: float = 0.0  # Largest exposure
+    credit_rating: str = "N/A"  # Weighted avg rating
+    collateralization_ratio: float = 0.0  # UGT vs deployed
+    
+    # Phase 2 KPIs - Compliance (placeholders)
+    kyc_coverage: float = 100.0  # % verified investors
+    whitelisted_wallets: int = 0  # Count of verified wallets
+    jurisdiction_count: int = 0  # Unique countries
+    
+    # Phase 3 KPIs - Impact (placeholders)
+    industrial_growth: float = 0.0  # Capacity increase %
+    value_add_ratio: float = 0.0  # Processed vs raw value
+    jobs_per_million: int = 0  # Jobs per €1M financing
 
 
 class YieldCalculator:
@@ -595,6 +622,277 @@ def calculate_compound_yield(
     )
     
     return int(total)
+
+
+# =============================================================================
+# KPI CALCULATION METHODS - PHASE 1
+# =============================================================================
+
+def calculate_net_apy(
+    gross_yield: int,
+    management_fee: int,
+    performance_fee: int,
+    tvl: int,
+    days: int
+) -> float:
+    """
+    Calculate Net APY (after all fees).
+    
+    Formula: Net APY = ((Gross Yield - Fees) / TVL) × (365 / days) × 100
+    
+    Args:
+        gross_yield: Total yield earned (18 decimals)
+        management_fee: Management fee amount (18 decimals)
+        performance_fee: Performance fee amount (18 decimals)
+        tvl: Total Value Locked (18 decimals)
+        days: Number of days in period
+        
+    Returns:
+        Net APY as percentage (e.g., 10.5 for 10.5%)
+    """
+    if tvl == 0 or days == 0:
+        return 0.0
+    
+    gross_yield_d = Decimal(gross_yield)
+    fees_d = Decimal(management_fee) + Decimal(performance_fee)
+    tvl_d = Decimal(tvl)
+    days_d = Decimal(days)
+    
+    net_yield_d = gross_yield_d - fees_d
+    net_apy_d = (net_yield_d / tvl_d) * (Decimal(365) / days_d) * Decimal(100)
+    
+    return float(net_apy_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+
+
+def calculate_yield_variance(projected_yield: int, actual_yield: int) -> float:
+    """
+    Calculate yield variance (difference between projected and actual).
+    
+    Formula: Variance = |Projected - Actual| / Projected × 100
+    
+    Args:
+        projected_yield: Projected yield amount (18 decimals)
+        actual_yield: Actual yield amount (18 decimals)
+        
+    Returns:
+        Yield variance as percentage (e.g., 0.23 for 0.23%)
+    """
+    if projected_yield == 0:
+        return 0.0
+    
+    projected_d = Decimal(projected_yield)
+    actual_d = Decimal(actual_yield)
+    
+    variance_d = abs(projected_d - actual_d) / projected_d * Decimal(100)
+    
+    return float(variance_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+
+
+def calculate_expense_ratio(
+    management_fee: int,
+    performance_fee: int,
+    tvl: int,
+    days: int
+) -> float:
+    """
+    Calculate expense ratio (total fees as % of TVL, annualized).
+    
+    Formula: Expense Ratio = (Total Fees / TVL) × (365 / days) × 100
+    
+    Args:
+        management_fee: Management fee (18 decimals)
+        performance_fee: Performance fee (18 decimals)
+        tvl: Total Value Locked (18 decimals)
+        days: Number of days in period
+        
+    Returns:
+        Expense ratio as percentage (e.g., 2.1 for 2.1%)
+    """
+    if tvl == 0 or days == 0:
+        return 0.0
+    
+    total_fees_d = Decimal(management_fee) + Decimal(performance_fee)
+    tvl_d = Decimal(tvl)
+    days_d = Decimal(days)
+    
+    expense_ratio_d = (total_fees_d / tvl_d) * (Decimal(365) / days_d) * Decimal(100)
+    
+    return float(expense_ratio_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+
+
+def calculate_utilization_rate(deployed_amount: int, total_pool_value: int) -> float:
+    """
+    Calculate utilization rate (% of capital deployed).
+    
+    Formula: Utilization = Deployed / Total Pool Value × 100
+    
+    Target: 85-92%
+    
+    Args:
+        deployed_amount: Amount deployed to industrials (18 decimals)
+        total_pool_value: Total pool value (18 decimals)
+        
+    Returns:
+        Utilization rate as percentage (e.g., 87.5 for 87.5%)
+    """
+    if total_pool_value == 0:
+        return 0.0
+    
+    deployed_d = Decimal(deployed_amount)
+    total_d = Decimal(total_pool_value)
+    
+    utilization_d = (deployed_d / total_d) * Decimal(100)
+    
+    return float(utilization_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+
+
+def calculate_cash_drag(
+    undeployed_capital: int,
+    target_apy: float,
+    tvl: int,
+    days: int
+) -> float:
+    """
+    Calculate cash drag (yield impact from un-deployed capital).
+    
+    Formula: Cash Drag = (Undeployed × Target APY × days/365) / TVL × 100
+    
+    Target: <0.75% yield impact
+    
+    Args:
+        undeployed_capital: Un-deployed capital (18 decimals)
+        target_apy: Target APY (e.g., 0.10 for 10%)
+        tvl: Total Value Locked (18 decimals)
+        days: Number of days
+        
+    Returns:
+        Cash drag as percentage yield impact
+    """
+    if tvl == 0 or days == 0:
+        return 0.0
+    
+    undeployed_d = Decimal(undeployed_capital)
+    tvl_d = Decimal(tvl)
+    apy_d = Decimal(str(target_apy))
+    days_d = Decimal(days)
+    
+    lost_yield_d = undeployed_d * apy_d * (days_d / Decimal(365))
+    cash_drag_d = (lost_yield_d / tvl_d) * Decimal(100)
+    
+    return float(cash_drag_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+
+
+def calculate_pool_kpis(
+    pool_id: str,
+    total_pool_value: int,
+    deployed_amount: int,
+    gross_yield: int,
+    management_fee: int,
+    performance_fee: int,
+    total_shares: int,
+    days: int = 30,
+    projected_yield: int = 0,
+    target_apy: float = 0.10
+) -> PoolYield:
+    """
+    Calculate all Phase 1 KPIs for a pool.
+    
+    Args:
+        pool_id: Pool identifier
+        total_pool_value: Total pool value (18 decimals)
+        deployed_amount: Amount deployed (18 decimals)
+        gross_yield: Gross yield earned (18 decimals)
+        management_fee: Management fee (18 decimals)
+        performance_fee: Performance fee (18 decimals)
+        total_shares: Total uLP shares outstanding (18 decimals)
+        days: Days in period
+        projected_yield: Projected yield for variance calc (18 decimals)
+        target_apy: Target APY for cash drag calculation
+        
+    Returns:
+        PoolYield object with all KPIs populated
+    """
+    from datetime import datetime
+    
+    # Calculate NAV
+    nav = calculate_nav_per_share(total_pool_value, total_shares)
+    
+    # Calculate APY
+    apy = calculate_apy_from_yield(gross_yield, total_pool_value, days)
+    
+    # Calculate Net APY
+    net_apy = calculate_net_apy(
+        gross_yield, management_fee, performance_fee,
+        total_pool_value, days
+    )
+    
+    # Calculate Yield Variance
+    yield_variance = 0.0
+    if projected_yield > 0:
+        yield_variance = calculate_yield_variance(projected_yield, gross_yield)
+    
+    # Calculate Expense Ratio
+    expense_ratio = calculate_expense_ratio(
+        management_fee, performance_fee, total_pool_value, days
+    )
+    
+    # Calculate Utilization Rate
+    utilization_rate = calculate_utilization_rate(deployed_amount, total_pool_value)
+    
+    # Calculate Cash Drag
+    undeployed = total_pool_value - deployed_amount
+    cash_drag = calculate_cash_drag(undeployed, target_apy, total_pool_value, days)
+    
+    # Calculate Redemption Liquidity (same as undeployed for simplicity)
+    redemption_liquidity = undeployed
+    
+    return PoolYield(
+        pool_id=pool_id,
+        period_start=(datetime.now() - timedelta(days=days)).isoformat(),
+        period_end=datetime.now().isoformat(),
+        total_value_start=total_pool_value,  # Simplified
+        total_value_end=total_pool_value,
+        total_yield=gross_yield,
+        management_fee=management_fee,
+        performance_fee=performance_fee,
+        net_yield_to_investors=gross_yield - management_fee - performance_fee,
+        nav_start=nav,  # Simplified
+        nav_end=nav,
+        apy=apy,
+        net_apy=net_apy,
+        yield_variance=yield_variance,
+        expense_ratio=expense_ratio,
+        tvl=total_pool_value,
+        utilization_rate=utilization_rate,
+        cash_drag=cash_drag,
+        redemption_liquidity=redemption_liquidity
+    )
+
+
+def calculate_apy_from_yield(yield_earned: int, principal: int, days: int) -> float:
+    """
+    Calculate APY from yield earned over a period.
+    
+    Formula: APY = (Yield / Principal) × (365 / days) × 100
+    
+    Args:
+        yield_earned: Yield earned (18 decimals)
+        principal: Principal amount (18 decimals)
+        days: Days in period
+        
+    Returns:
+        APY as percentage
+    """
+    if principal == 0 or days == 0:
+        return 0.0
+    
+    yield_d = Decimal(yield_earned)
+    principal_d = Decimal(principal)
+    days_d = Decimal(days)
+    
+    apy_d = (yield_d / principal_d) * (Decimal(365) / days_d) * Decimal(100)
+    
+    return float(apy_d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
 
 
 # =============================================================================

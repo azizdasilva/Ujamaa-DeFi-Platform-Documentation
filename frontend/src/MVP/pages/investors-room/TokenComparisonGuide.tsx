@@ -1,6 +1,6 @@
 /**
  * Token Comparison Guide
- * Comprehensive comparison of UAT, UPT, and UGT tokens
+ * Comprehensive comparison of uLP, UAT, and UGT tokens
  */
 
 import React from 'react';
@@ -24,15 +24,16 @@ const TokenComparisonGuide: React.FC = () => {
                 <tr>
                   <th className="px-6 py-4 text-left">Feature</th>
                   <th className="px-6 py-4 text-left">UAT</th>
-                  <th className="px-6 py-4 text-left">UPT</th>
+                  <th className="px-6 py-4 text-left">uLP</th>
                   <th className="px-6 py-4 text-left">UGT</th>
                 </tr>
               </thead>
               <tbody>
-                <ComparisonRow feature="Full Name" uat="Ujamaa Asset Token" upt="Ujamaa Pool Token" ugt="Ujamaa Guarantee Token" />
-                <ComparisonRow feature="Token Standard" uat="ERC-3643" upt="ERC-3643" ugt="ERC-721 + ERC-3643" />
-                <ComparisonRow feature="What You Own" uat="Single asset" upt="Diversified pool" ugt="Collateral (not investment)" />
-                <ComparisonRow feature="Risk Level" uat="🔴 High" upt="🟢 Low" ugt="N/A" />
+                <ComparisonRow feature="Full Name" uat="Ujamaa Asset Token" upt="Ujamaa Liquidity Provider Token" ugt="Ujamaa Guarantee Token" />
+                <ComparisonRow feature="Token Standard" uat="ERC-3643" upt="ERC-3643 (Fungible)" ugt="ERC-721 + ERC-3643 (NFT)" />
+                <ComparisonRow feature="What You Own" uat="Single asset" upt="Diversified pool share" ugt="Collateral (not investment)" />
+                <ComparisonRow feature="Value Model" uat="Fixed nominal value" upt="NAV appreciates over time" ugt="Collateral value" />
+                <ComparisonRow feature="Risk Level" uat="🔴 High (single asset)" upt="🟢 Low (diversified)" ugt="N/A" />
                 <ComparisonRow feature="Expected Return" uat="8-15%" upt="8-12% APR" ugt="N/A" />
                 <ComparisonRow feature="Minimum" uat="€50,000+" upt="€1,000" ugt="N/A" />
                 <ComparisonRow feature="For" uat="Sophisticated investors" upt="All investors" ugt="Originators only" />
@@ -43,38 +44,76 @@ const TokenComparisonGuide: React.FC = () => {
 
         {/* What Are They */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <TokenCard 
+          <TokenCard
             symbol="UAT"
             name="Ujamaa Asset Token"
-            description="Single asset investment"
+            description="Single asset investment token"
             example="UAT-LGREIT → Lagos property"
             analogy="Like buying Apple stock"
             color="from-blue-500 to-blue-600"
           />
-          <TokenCard 
-            symbol="UPT"
-            name="Ujamaa Pool Token"
-            description="Diversified pool investment"
-            example="UPT-IND → 50+ factories"
+          <TokenCard
+            symbol="uLP"
+            name="Ujamaa Liquidity Provider Token"
+            description="Diversified pool investment (yield-bearing)"
+            example="uLP-IND → 50+ factories pool"
             analogy="Like an S&P 500 ETF"
             color="from-[#00A8A8] to-[#023D7A]"
             featured
           />
-          <TokenCard 
+          <TokenCard
             symbol="UGT"
             name="Ujamaa Guarantee Token"
-            description="Collateral token (NFT)"
+            description="Collateral NFT for originators"
             example="UGT-001 → 1,000 cotton bales"
             analogy="Like a warehouse receipt"
             color="from-purple-500 to-purple-600"
           />
         </section>
 
+        {/* Token Mechanics */}
+        <section className="bg-gradient-to-br from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
+          <h2 className="text-3xl font-bold mb-6">🪙 How uLP Works (Value-Accrual Model)</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <h3 className="font-bold text-xl mb-4">📈 NAV Appreciation</h3>
+              <p className="text-white/90 mb-4">
+                Unlike traditional tokens, uLP uses a <strong>value-accrual model</strong> where the token balance stays constant but the NAV (Net Asset Value) per token increases over time.
+              </p>
+              <div className="bg-white/20 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2">Initial: 1,000 uLP × €1.00 = €1,000</p>
+                <p className="mb-2">After 1 year: 1,000 uLP × €1.10 = €1,100</p>
+                <p className="text-green-300">Gain: +€100 (+10%) without selling</p>
+              </div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <h3 className="font-bold text-xl mb-4">💰 Yield Distribution</h3>
+              <p className="text-white/90 mb-4">
+                Yield from underlying assets (loan repayments, interest) increases the pool's total value, which increases NAV per share.
+              </p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                  <span>Interest from industrial loans</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                  <span>Principal repayments</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                  <span>UGT collateral liquidations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Risk Comparison */}
         <section className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">Risk Comparison</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <RiskProfile 
+            <RiskProfile
               token="UAT"
               risks={[
                 { name: 'Default Risk', level: 'high', reason: 'Single asset exposure' },
@@ -83,8 +122,8 @@ const TokenComparisonGuide: React.FC = () => {
                 { name: 'Volatility', level: 'high', reason: 'Single asset performance' },
               ]}
             />
-            <RiskProfile 
-              token="UPT"
+            <RiskProfile
+              token="uLP"
               risks={[
                 { name: 'Default Risk', level: 'low', reason: 'Diversified across 50+ assets' },
                 { name: 'Concentration', level: 'low', reason: 'Spread across pool' },
@@ -93,7 +132,7 @@ const TokenComparisonGuide: React.FC = () => {
               ]}
               featured
             />
-            <RiskProfile 
+            <RiskProfile
               token="UGT"
               risks={[
                 { name: 'Collateral Loss', level: 'high', reason: 'Default = lose merchandise' },
@@ -109,18 +148,19 @@ const TokenComparisonGuide: React.FC = () => {
         <section className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
           <h2 className="text-3xl font-bold mb-6">Which Should YOU Choose?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ChooseCard 
-              title="Choose UPT If..."
+            <ChooseCard
+              title="Choose uLP If..."
               items={[
                 'You want diversified exposure',
                 'You prefer lower risk',
                 'You want stable 8-12% returns',
                 'You\'re a retail or institutional investor',
                 'Minimum €1,000 works for you',
+                'You want NAV to appreciate over time',
               ]}
               recommended
             />
-            <ChooseCard 
+            <ChooseCard
               title="Choose UAT If..."
               items={[
                 'You\'re a sophisticated investor',
@@ -128,12 +168,60 @@ const TokenComparisonGuide: React.FC = () => {
                 'You want potentially higher returns (12-15%)',
                 'You accept concentration risk',
                 'Minimum €50,000+ is acceptable',
+                'You prefer single-asset exposure',
               ]}
             />
           </div>
-          <div className="mt-8 p-6 bg-white/10 rounded-lg">
+          <div className="mt-8 p-6 bg-white/10 rounded-lg backdrop-blur-sm">
             <h3 className="font-bold mb-2">⚠️ About UGT</h3>
-            <p>UGT is NOT an investment token. It's for originators who need financing and have merchandise to pledge as collateral. Investors do NOT buy UGT.</p>
+            <p>UGT is NOT an investment token. It's an NFT collateral for originators who need financing. Investors do NOT buy UGT.</p>
+          </div>
+        </section>
+
+        {/* Pool Families */}
+        <section className="bg-white rounded-xl shadow-lg p-8">
+          <h2 className="text-3xl font-bold text-[#023D7A] mb-6">🏛️ uLP Pool Families</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <PoolFamilyCard
+              name="Pool Industry"
+              icon="🏭"
+              apy="10-12%"
+              lockup="365 days"
+              assets="Manufacturing, GDIZ partners"
+              color="from-blue-500 to-blue-600"
+            />
+            <PoolFamilyCard
+              name="Pool Agriculture"
+              icon="🌱"
+              apy="12-15%"
+              lockup="180 days"
+              assets="Coffee, cocoa, cotton, cashews"
+              color="from-green-500 to-emerald-600"
+            />
+            <PoolFamilyCard
+              name="Pool Trade Finance"
+              icon="📦"
+              apy="8-10%"
+              lockup="90 days"
+              assets="Invoice tokenization"
+              color="from-purple-500 to-purple-600"
+            />
+            <PoolFamilyCard
+              name="Pool Renewable Energy"
+              icon="⚡"
+              apy="9-11%"
+              lockup="730 days"
+              assets="Solar, wind, hydro projects"
+              color="from-cyan-500 to-cyan-600"
+            />
+            <PoolFamilyCard
+              name="Pool Real Estate"
+              icon="🏢"
+              apy="8-12%"
+              lockup="1095 days"
+              assets="Commercial & residential"
+              color="from-amber-500 to-orange-600"
+            />
           </div>
         </section>
 
@@ -141,20 +229,20 @@ const TokenComparisonGuide: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">Sample Portfolios</h2>
           <div className="space-y-6">
-            <PortfolioExample 
+            <PortfolioExample
               title="Conservative Investor"
-              allocation={[{ token: 'UPT', percentage: 100 }]}
-              rationale="100% UPT provides diversification and stable returns with minimal risk."
+              allocation={[{ token: 'uLP', percentage: 100 }]}
+              rationale="100% uLP provides instant diversification across 50+ assets with stable returns and minimal risk."
             />
-            <PortfolioExample 
+            <PortfolioExample
               title="Balanced Investor"
-              allocation={[{ token: 'UPT', percentage: 70 }, { token: 'UAT', percentage: 30 }]}
-              rationale="70/30 split balances stable core returns with targeted high-conviction bets."
+              allocation={[{ token: 'uLP', percentage: 70 }, { token: 'UAT', percentage: 30 }]}
+              rationale="70/30 split balances stable core returns with targeted high-conviction bets in specific assets."
             />
-            <PortfolioExample 
+            <PortfolioExample
               title="Sophisticated Investor"
-              allocation={[{ token: 'UPT', percentage: 50 }, { token: 'UAT', percentage: 50 }]}
-              rationale="Equal split for investors with sector expertise seeking higher returns."
+              allocation={[{ token: 'uLP', percentage: 50 }, { token: 'UAT', percentage: 50 }]}
+              rationale="Equal split for investors with sector expertise seeking higher returns while maintaining core diversification."
             />
           </div>
         </section>
@@ -163,21 +251,29 @@ const TokenComparisonGuide: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#023D7A] mb-6">Common Questions</h2>
           <div className="space-y-4">
-            <FAQItem 
-              q="Can I hold both UAT and UPT?"
-              a="Yes! Many investors use a barbell approach: UPT for core holdings, UAT for targeted bets."
+            <FAQItem
+              q="How does uLP value increase?"
+              a="As the underlying pool earns yield from loan repayments and interest, the total pool value increases. Since the number of uLP tokens stays constant, the NAV (Net Asset Value) per token increases. Your token balance stays the same, but each token is worth more."
             />
-            <FAQItem 
-              q="Can I convert UAT to UPT?"
-              a="No direct conversion. Sell UAT on secondary market and buy UPT, or wait for maturity."
+            <FAQItem
+              q="Can I hold both UAT and uLP?"
+              a="Yes! Many investors use a barbell approach: uLP for diversified core holdings, UAT for targeted high-conviction bets on specific assets."
             />
-            <FAQItem 
+            <FAQItem
+              q="Can I convert UAT to uLP?"
+              a="No direct conversion exists. You would need to sell UAT on the secondary market (or wait for maturity) and then use proceeds to buy uLP."
+            />
+            <FAQItem
               q="Can investors buy UGT?"
-              a="No. UGT is collateral for originators, not an investment product."
+              a="No. UGT is an NFT collateral token for originators only. It's not an investment product and cannot be purchased by investors."
             />
-            <FAQItem 
+            <FAQItem
               q="Which is more liquid?"
-              a="UPT is more liquid due to lower minimums and larger investor base."
+              a="uLP is more liquid due to lower minimums (€1,000 vs €50,000+), larger investor base, and diversified appeal. UAT liquidity depends on the specific asset."
+            />
+            <FAQItem
+              q="How do I redeem uLP?"
+              a="Submit a redemption request through the platform. Redemptions are processed quarterly, subject to pool liquidity and any applicable lock-up periods."
             />
           </div>
         </section>
@@ -213,6 +309,28 @@ const TokenCard: React.FC<{ symbol: string; name: string; description: string; e
           <p className="text-xs text-[#333333]/60">Think of it like</p>
           <p className="font-bold text-[#00A8A8]">{analogy}</p>
         </div>
+      </div>
+    </div>
+  </div>
+);
+
+const PoolFamilyCard: React.FC<{ name: string; icon: string; apy: string; lockup: string; assets: string; color: string }> = ({ name, icon, apy, lockup, assets, color }) => (
+  <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200 hover:shadow-lg transition-all">
+    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center text-3xl mb-4 shadow-lg`}>
+      {icon}
+    </div>
+    <h3 className="text-lg font-bold text-[#103b5b] mb-2">{name}</h3>
+    <div className="space-y-2 text-sm">
+      <div className="flex items-center justify-between">
+        <span className="text-gray-600">Target APY</span>
+        <span className="font-bold text-green-600">{apy}</span>
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-gray-600">Lock-up</span>
+        <span className="font-bold text-gray-900">{lockup}</span>
+      </div>
+      <div className="pt-2 border-t border-gray-200">
+        <p className="text-gray-600">{assets}</p>
       </div>
     </div>
   </div>

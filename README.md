@@ -141,9 +141,9 @@ Ujamaa DeFi Platform/
 |----------|---------|---------|
 | [SRS v2.0](docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md) | **v2.0** | **Complete software requirements** |
 | [Architecture Spec](docs/01_SPECIFICATIONS/02_ARCHITECTURE_SPECIFICATION.md) | v1.0 | System architecture |
-| [Smart Contract Spec](docs/01_SPECIFICATIONS/03_SMART_CONTRACT_SPECIFICATION.md) | v1.0 | Smart contract design |
-| [API Spec](docs/01_SPECIFICATIONS/04_API_SPECIFICATION.md) | v1.0 | REST & gRPC APIs |
-| [Compliance Framework](docs/01_SPECIFICATIONS/05_COMPLIANCE_FRAMEWORK.md) | v1.0 | Regulatory compliance |
+| [Smart Contract Spec](docs/01_SPECIFICATIONS/05_SMART_CONTRACT_SPECIFICATION.md) | v1.0 | Smart contract design |
+| [API Spec](docs/01_SPECIFICATIONS/06_API_SPECIFICATION.md) | v1.0 | REST & gRPC APIs |
+| [Compliance Framework](docs/01_SPECIFICATIONS/10_COMPLIANCE_FRAMEWORK.md) | v1.0 | Regulatory compliance |
 
 ### MVP Execution
 

@@ -126,7 +126,7 @@ const ImpactReport: React.FC = () => {
             <div className="bg-white/10 rounded-lg p-6">
               <h3 className="text-xl font-bold mb-4">Financial Returns</h3>
               <ul className="space-y-2">
-                <li className="flex justify-between"><span>UPT Average Return:</span><span className="font-bold">10.2% APR</span></li>
+                <li className="flex justify-between"><span>uLP Average Return:</span><span className="font-bold">10.2% APR</span></li>
                 <li className="flex justify-between"><span>UAT Average Return:</span><span className="font-bold">12.5% APR</span></li>
                 <li className="flex justify-between"><span>Default Rate:</span><span className="font-bold">0.2%</span></li>
               </ul>

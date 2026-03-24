@@ -102,7 +102,7 @@ const LandingPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-bold text-[#023D7A] mb-3">Yield-Bearing Tokens</h3>
               <p className="text-[#333333]">
-                Earn 8-15% APY from real industrial assets. Automatic yield distribution via UPT tokens.
+                Earn 8-15% APY from real industrial assets. Automatic yield distribution via uLP tokens.
               </p>
             </div>
 

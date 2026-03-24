@@ -789,6 +789,108 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     }
 
     // =========================================================================
+    // KPI FUNCTIONS - PHASE 2
+    // =========================================================================
+
+    /**
+     * @notice Get pool utilization rate
+     * @return Utilization rate in basis points (10000 = 100%)
+     */
+    function getUtilizationRate() external view returns (uint256) {
+        if (totalPoolValue == 0) {
+            return 0;
+        }
+        uint256 deployed = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (!financings[i].isRepaid && !financings[i].isDefaulted) {
+                deployed += financings[i].principal - financings[i].amountRepaid;
+            }
+        }
+        return (deployed * BASIS_POINTS) / totalPoolValue;
+    }
+
+    /**
+     * @notice Get pool default rate
+     * @return Default rate in basis points
+     */
+    function getDefaultRate() external view returns (uint256) {
+        if (totalPoolValue == 0) {
+            return 0;
+        }
+        uint256 defaulted = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (financings[i].isDefaulted) {
+                defaulted += financings[i].principal;
+            }
+        }
+        return (defaulted * BASIS_POINTS) / totalPoolValue;
+    }
+
+    /**
+     * @notice Get concentration risk for largest industrial
+     * @param poolFamily Pool family to check
+     * @return Concentration in basis points
+     */
+    function getConcentrationRisk(PoolFamily poolFamily) external view returns (uint256) {
+        if (totalPoolValue == 0) {
+            return 0;
+        }
+        uint256 maxAllocation = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (financings[i].poolFamily == poolFamily && !financings[i].isRepaid) {
+                bytes32 key = keccak256(abi.encode(poolFamily, financings[i].industrial));
+                uint256 allocation = allocationPerIndustrial[key];
+                if (allocation > maxAllocation) {
+                    maxAllocation = allocation;
+                }
+            }
+        }
+        return (maxAllocation * BASIS_POINTS) / totalPoolValue;
+    }
+
+    /**
+     * @notice Get collateralization ratio (UGT value / deployed)
+     * @return Collateralization ratio in basis points
+     */
+    function getCollateralizationRatio() external view returns (uint256) {
+        uint256 deployed = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (!financings[i].isRepaid) {
+                deployed += financings[i].principal;
+            }
+        }
+        if (deployed == 0) {
+            return 0;
+        }
+        // Simplified: assume UGT value equals principal
+        return (deployed * BASIS_POINTS) / deployed;
+    }
+
+    /**
+     * @notice Get comprehensive pool health status
+     * @return utilizationRate Utilization rate (basis points)
+     * @return defaultRate Default rate (basis points)
+     * @return collateralization Collateralization ratio (basis points)
+     * @return isHealthy Whether pool is healthy
+     */
+    function getPoolHealth() external view returns (
+        uint256 utilizationRate,
+        uint256 defaultRate,
+        uint256 collateralization,
+        bool isHealthy
+    ) {
+        utilizationRate = this.getUtilizationRate();
+        defaultRate = this.getDefaultRate();
+        collateralization = this.getCollateralizationRatio();
+
+        // Health check: utilization 85-92%, default <2%, collateral >125%
+        isHealthy = utilizationRate >= 8500 &&
+                    utilizationRate <= 9200 &&
+                    defaultRate < 200 &&
+                    collateralization >= 12500;
+    }
+
+    // =========================================================================
     // MVP TESTNET UTILITIES
     // =========================================================================
 

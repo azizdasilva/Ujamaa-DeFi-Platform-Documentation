@@ -2,7 +2,7 @@
  * Custom React Hooks - Ujamaa DeFi Platform
  * MVP Testnet Release
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  */
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';

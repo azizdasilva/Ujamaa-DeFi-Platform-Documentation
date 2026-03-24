@@ -166,7 +166,7 @@ const KYCAMLGuide: React.FC = () => {
               <div className="flex-1 bg-white border-2 border-[#48A9F0]/30 rounded-xl p-6">
                 <h3 className="text-lg font-bold text-[#023D7A] mb-2">Compliance Review</h3>
                 <p className="text-[#333333]">Manual review by compliance team if required</p>
-                <p className="text-sm text-gray-500 mt-2">Time: 24-48 hours</p>
+                <p className="text-sm text-gray-500 mt-2">Time: 24 hours</p>
               </div>
             </div>
             <div className="flex items-start gap-4">

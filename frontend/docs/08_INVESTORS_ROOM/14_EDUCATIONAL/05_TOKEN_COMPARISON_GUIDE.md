@@ -129,7 +129,7 @@
 ### **UAT Lifecycle (Investment Token)**
 
 ```
-1. Asset Originator tokenizes single asset
+1. Industrial Operator tokenizes single asset
 2. Investor completes KYC/KYB
 3. Investor buys UAT tokens
 4. Asset generates income → distributions to UAT holders

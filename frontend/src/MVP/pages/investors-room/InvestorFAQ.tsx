@@ -42,7 +42,7 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="Who can invest?"
-              answer="Accredited investors, family offices, and institutional investors from eligible jurisdictions. Minimum investment starts at €1,000 for UPT tokens. All investors must complete KYC verification."
+              answer="Accredited investors, family offices, and institutional investors from eligible jurisdictions. Minimum investment starts at €1,000 for uLP tokens. All investors must complete KYC verification."
             />
             <FAQItem 
               question="Where is Ujamaa based?"
@@ -50,11 +50,11 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="What are the minimum investments?"
-              answer="UPT (Pool Token): €1,000 minimum. UAT (Single Asset): €50,000+ depending on the asset. UGT is not an investment token—it's collateral for originators."
+              answer="uLP (Pool Token): €1,000 minimum. UAT (Single Asset): €50,000+ depending on the asset. UGT is not an investment token—it's collateral for originators."
             />
             <FAQItem 
               question="How do I get started?"
-              answer="1) Complete KYC/KYB verification, 2) Review investment documents, 3) Choose UPT or UAT tokens, 4) Subscribe via the investor portal, 5) Receive tokens in your wallet."
+              answer="1) Complete KYC/KYB verification, 2) Review investment documents, 3) Choose uLP or UAT tokens, 4) Subscribe via the investor portal, 5) Receive tokens in your wallet."
             />
           </section>
         )}
@@ -64,7 +64,7 @@ const InvestorFAQ: React.FC = () => {
           <section className="space-y-4">
             <FAQItem 
               question="What returns can I expect?"
-              answer="UPT (Pool tokens): 8-12% APR, diversified and stable. UAT (Single asset): 8-15% APR, varies by asset performance. Returns are paid quarterly in EURC stablecoin."
+              answer="uLP (Pool tokens): 8-12% APR, diversified and stable. UAT (Single asset): 8-15% APR, varies by asset performance. Returns are paid quarterly in EURC stablecoin."
             />
             <FAQItem 
               question="What are the fees?"
@@ -80,11 +80,11 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="What happens if a borrower defaults?"
-              answer="For UPT: The pool absorbs the loss; diversification protects investors. UGT collateral is liquidated to recover funds. For UAT: You bear the loss directly (higher risk, higher return)."
+              answer="For uLP: The pool absorbs the loss; diversification protects investors. UGT collateral is liquidated to recover funds. For UAT: You bear the loss directly (higher risk, higher return)."
             />
             <FAQItem 
               question="Can I reinvest my returns?"
-              answer="Yes! You can automatically reinvest distributions into additional UPT/UAT tokens compound your returns."
+              answer="Yes! You can automatically reinvest distributions into additional uLP/UAT tokens to compound your returns."
             />
           </section>
         )}
@@ -93,8 +93,8 @@ const InvestorFAQ: React.FC = () => {
         {openCategory === 'tokens' && (
           <section className="space-y-4">
             <FAQItem 
-              question="What is the difference between UAT, UPT, and UGT?"
-              answer="UAT (Ujamaa Asset Token): Single asset investment, like buying one stock. UPT (Ujamaa Pool Token): Diversified pool investment, like an ETF. UGT (Ujamaa Guarantee Token): Collateral token for originators, NOT an investment."
+              question="What is the difference between UAT, uLP, and UGT?"
+              answer="UAT (Ujamaa Asset Token): Single asset investment, like buying one stock. uLP (Ujamaa Liquidity Provider Token): Diversified pool investment, like an ETF. UGT (Ujamaa Guarantee Token): Collateral token for originators, NOT an investment."
             />
             <FAQItem 
               question="What blockchain are tokens on?"
@@ -109,8 +109,8 @@ const InvestorFAQ: React.FC = () => {
               answer="Any ERC-3643 compatible wallet: MetaMask (with compliance module), Fireblocks (institutional), or our native Ujamaa wallet (coming Q3 2026)."
             />
             <FAQItem 
-              question="Can I convert UAT to UPT?"
-              answer="No direct conversion. You would need to sell UAT on the secondary market and buy UPT, or wait for maturity and reinvest."
+              question="Can I convert UAT to uLP?"
+              answer="No direct conversion. You would need to sell UAT on the secondary market and buy uLP, or wait for maturity and reinvest."
             />
           </section>
         )}
@@ -173,7 +173,7 @@ const InvestorFAQ: React.FC = () => {
           <div className="space-y-2">
             <p><strong>Investor Relations:</strong> investors@ujamaa.defi</p>
             <p><strong>Support:</strong> support@ujamaa.defi</p>
-            <p><strong>Response Time:</strong> 24-48 hours</p>
+            <p><strong>Response Time:</strong> 24 hours</p>
             <a href="/investors-room/contact" className="inline-block mt-4 px-6 py-3 bg-white text-[#023D7A] rounded-lg font-bold hover:bg-[#F3F8FA] transition-colors">
               Schedule a Call
             </a>

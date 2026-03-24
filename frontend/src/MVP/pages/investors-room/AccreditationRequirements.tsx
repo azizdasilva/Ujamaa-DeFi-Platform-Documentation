@@ -113,7 +113,7 @@ const AccreditationRequirements: React.FC = () => {
           <div className="space-y-4">
             {[
               { step: '1', title: 'Submit Application', desc: 'Complete accreditation questionnaire and upload supporting documents', time: '15-20 minutes' },
-              { step: '2', title: 'Document Review', desc: 'Compliance team reviews submitted documentation', time: '24-48 hours' },
+              { step: '2', title: 'Document Review', desc: 'Compliance team reviews submitted documentation', time: '24 hours' },
               { step: '3', title: 'Third-Party Verification', desc: 'Independent verification of income/net worth by licensed professional', time: '2-5 business days' },
               { step: '4', title: 'Approval Notification', desc: 'Receive accreditation approval and account activation', time: 'Immediate' },
             ].map((item) => (

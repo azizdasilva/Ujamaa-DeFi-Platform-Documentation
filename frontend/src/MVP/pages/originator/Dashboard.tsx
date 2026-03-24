@@ -1,10 +1,10 @@
 /**
- * Asset Originator Dashboard
- * 
- * Dashboard for industrial companies and asset originators to submit assets, track raises, and manage repayments.
- * 
+ * Industrial Operator Dashboard
+ *
+ * Dashboard for industrial companies to submit assets, track raises, and manage repayments.
+ *
  * Route: /originator/dashboard
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
@@ -49,7 +49,7 @@ const OriginatorDashboard: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-[#103b5b]">Asset Originator Dashboard</h1>
+              <h1 className="text-3xl font-bold text-[#103b5b]">Industrial Operator Dashboard</h1>
               <p className="text-[#8b5b3d] mt-1">GDIZ Industries (Demo)</p>
             </div>
             <div className="flex items-center gap-3">
@@ -114,7 +114,7 @@ const OriginatorDashboard: React.FC = () => {
               header={
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-[#103b5b]">Active Financings</h2>
-                  <a href="/originator/financings" className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium">
+                  <a href="/industrial-operator/financings" className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium">
                     View All →
                   </a>
                 </div>
@@ -159,14 +159,14 @@ const OriginatorDashboard: React.FC = () => {
 
                     <div className="flex gap-2">
                       <a
-                        href={`/originator/financings/${financing.id}`}
+                        href={`/industrial-operator/financings/${financing.id}`}
                         className="px-4 py-2 bg-[#F3F8FA] border border-[#48A9F0]/30 hover:bg-[#E2E8F0] text-[#023D7A] text-sm font-bold rounded-lg transition-colors"
                       >
                         View Details
                       </a>
                       {financing.status === 'active' && (
                         <a
-                          href={`/originator/financings/${financing.id}/repay`}
+                          href={`/industrial-operator/financings/${financing.id}/repay`}
                           className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
                         >
                           Make Repayment
@@ -236,17 +236,17 @@ const OriginatorDashboard: React.FC = () => {
                   📜 View Certificates & Mint UGT
                 </a>
                 <a
-                  href="/originator/financings"
+                  href="/industrial-operator/financings"
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   💰 My Financings
                 </a>
-                <a
-                  href="/originator/repayments"
+                <button
+                  onClick={() => alert('🚀 MVP TESTNET: Make Repayment coming in production. This feature will allow you to make loan repayments directly from your dashboard.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   💳 Make Repayment
-                </a>
+                </button>
               </div>
             </Card>
 
@@ -326,7 +326,7 @@ const OriginatorDashboard: React.FC = () => {
       <footer className="mt-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <p className="text-center text-sm text-gray-500">
-            🚀 MVP: Asset Originator Portal - Testnet Release • Polygon Amoy (Chain ID: 80002)
+            🚀 MVP: Industrial Operator Portal - Testnet Release • Polygon Amoy (Chain ID: 80002)
           </p>
         </div>
       </footer>

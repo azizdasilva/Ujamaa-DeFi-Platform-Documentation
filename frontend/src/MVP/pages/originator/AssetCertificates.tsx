@@ -105,7 +105,7 @@ const AssetCertificates: React.FC = () => {
 
   const handleMintUJG = (certificateId: string) => {
     setMintingId(certificateId);
-    
+
     // Simulate UGT minting (MVP testnet)
     setTimeout(() => {
       setMintingId(null);

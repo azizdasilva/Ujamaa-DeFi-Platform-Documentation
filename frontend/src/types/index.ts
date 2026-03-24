@@ -3,7 +3,7 @@
  * MVP Testnet Release
  * 
  * @reference SRS v2.0
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  */
 
 // =============================================================================
@@ -11,7 +11,7 @@
 // =============================================================================
 
 export type PoolFamily = 
-  | 'POOL_INDUSTRIE'
+  | 'POOL_INDUSTRY'
   | 'POOL_AGRICULTURE'
   | 'POOL_TRADE_FINANCE'
   | 'POOL_RENEWABLE_ENERGY'
@@ -99,10 +99,10 @@ export interface Financing {
 
 export type InvestorType = 'retail' | 'institutional' | 'originator';
 
-export type InvestorRole = 
+export type InvestorRole =
   | 'INSTITUTIONAL_INVESTOR'
   | 'RETAIL_INVESTOR'
-  | 'ASSET_ORIGINATOR'
+  | 'INDUSTRIAL_OPERATOR'
   | 'COMPLIANCE_OFFICER'
   | 'ADMIN'
   | 'REGULATOR';

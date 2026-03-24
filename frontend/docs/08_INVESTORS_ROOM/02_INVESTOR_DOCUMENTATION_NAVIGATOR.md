@@ -51,7 +51,7 @@ Start with these documents in order:
 | **Sanctions compliance** | Sanctions Declaration | 04_LEGAL_COMPLIANCE/04 |
 | **Regulatory framework** | Compliance Framework | 04_LEGAL_COMPLIANCE/05 |
 
-## 🔵 For Asset Originators
+## 🔵 For Industrial Operators
 
 | Need | Document | Location |
 |------|----------|----------|
@@ -431,7 +431,7 @@ Start with these documents in order:
 
 ---
 
-### 05_COMPLIANCE_FRAMEWORK.md
+### 10_COMPLIANCE_FRAMEWORK.md
 
 | Attribute | Details |
 |-----------|---------|
@@ -563,7 +563,7 @@ Start with these documents in order:
 | Attribute | Details |
 |-----------|---------|
 | **Purpose** | Template for Private Placement Memorandum |
-| **Audience** | Asset originators; legal teams |
+| **Audience** | Industrial Operators; legal teams |
 | **When to Use** | When creating new offering |
 | **Key Contents** | Full PPM structure with all required sections |
 | **Legal Status** | Template; requires customization and legal review |
@@ -577,7 +577,7 @@ Start with these documents in order:
 | Attribute | Details |
 |-----------|---------|
 | **Purpose** | Template for investment term sheet |
-| **Audience** | Asset originators; legal teams |
+| **Audience** | Industrial Operators; legal teams |
 | **When to Use** | When creating new offering |
 | **Key Contents** | Standard term sheet structure |
 | **Legal Status** | Template; requires customization |
@@ -591,7 +591,7 @@ Start with these documents in order:
 | Attribute | Details |
 |-----------|---------|
 | **Purpose** | Template for subscription agreement |
-| **Audience** | Asset originators; legal teams |
+| **Audience** | Industrial Operators; legal teams |
 | **When to Use** | When creating new offering |
 | **Key Contents** | Standard subscription agreement structure |
 | **Legal Status** | Template; requires legal review |

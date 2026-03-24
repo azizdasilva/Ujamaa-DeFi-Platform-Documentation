@@ -4,7 +4,7 @@
  * Document portal with 23 documents across 6 categories.
  * Features: Full-text search, category filtering, featured documents, document modal.
  *
- * @reference 08_DEEP_DIVE_INVESTORS_ROOM.md Section 2
+ * @reference 12_DEEP_DIVE_INVESTORS_ROOM.md Section 2
  * @reference 02_MVP_IMPLEMENTATION_PLAN.md Phase 4
  *
  * Route: /investors-room
@@ -371,10 +371,10 @@ const allDocuments: Document[] = [
     id: 'DOC-024',
     title: 'Token Comparison Guide',
     category: 'educational',
-    description: 'Complete comparison of UAT, UPT, and UGT tokens - understand the differences and choose the right token.',
+    description: 'Complete comparison of UAT, uLP, and UGT tokens - understand the differences and choose the right token.',
     date: '2026-03-21',
     size: '2.8 MB',
-    tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison', 'education'],
+    tags: ['tokens', 'uat', 'ulp', 'ugt', 'comparison', 'education'],
     isFeatured: true,
   },
   {
@@ -609,136 +609,174 @@ const InvestorsRoom: React.FC = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Featured Documents */}
-        {!searchQuery && selectedCategory === 'all' && (
-          <section className="mb-12">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Featured Documents</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredDocuments.map((doc) => (
-                <div
-                  key={doc.id}
-                  onClick={() => handleDocumentClick(doc)}
-                  className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border border-green-200 cursor-pointer hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <Badge variant="success" size="sm">Featured</Badge>
-                    <span className="text-xs text-gray-500">{doc.size}</span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{doc.title}</h3>
-                  <p className="text-sm text-gray-600 line-clamp-2">{doc.description}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs text-gray-500">{doc.date}</span>
-                    <span className="text-green-600 text-sm font-medium">View Details →</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Category Cards */}
-        {!searchQuery && (
-          <section className="mb-12">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Browse by Category</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(selectedCategory === category.id ? 'all' : category.id)}
-                  className={`
-                    p-4 rounded-xl border-2 transition-all
-                    ${
-                      selectedCategory === category.id
-                        ? getCategoryColor(category.color) + ' border-current'
-                        : 'bg-white border-gray-200 hover:border-gray-300'
-                    }
-                  `}
-                >
-                  <div className={`mb-2 ${selectedCategory === category.id ? '' : 'text-gray-400'}`}>
-                    {category.icon}
-                  </div>
-                  <p className="font-medium text-sm">{category.name}</p>
-                  <p className="text-xs text-gray-500 mt-1">{categoryCounts[category.id]} documents</p>
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Documents List */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">
-              {selectedCategory === 'all' ? 'All Documents' : categories.find(c => c.id === selectedCategory)?.name}
-            </h2>
-            <span className="text-sm text-gray-500">
-              {filteredDocuments.length} document{filteredDocuments.length !== 1 ? 's' : ''}
-            </span>
-          </div>
-
-          {filteredDocuments.length === 0 ? (
-            <Card>
-              <div className="text-center py-12">
-                <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <p className="text-gray-500">No documents found</p>
-                <button
-                  onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
-                  className="mt-4 text-green-600 hover:text-green-700 font-medium"
-                >
-                  Clear filters
-                </button>
-              </div>
-            </Card>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {filteredDocuments.map((doc) => (
-                <Card
-                  key={doc.id}
-                  hover
-                  onClick={() => handleDocumentClick(doc)}
-                  className="cursor-pointer"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <Badge
-                      variant={
-                        doc.category === 'onboarding' ? 'primary' :
-                        doc.category === 'offerings' ? 'success' :
-                        doc.category === 'reporting' ? 'info' :
-                        doc.category === 'legal' ? 'warning' :
-                        'secondary'
-                      }
-                      size="sm"
+        <div className="flex gap-8">
+          {/* Sidebar - Category Navigation */}
+          <aside className="w-64 flex-shrink-0">
+            <div className="sticky top-8">
+              <Card className="p-4">
+                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  Categories
+                </h3>
+                <nav className="space-y-2">
+                  <button
+                    onClick={() => setSelectedCategory('all')}
+                    className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      selectedCategory === 'all'
+                        ? 'bg-green-100 text-green-700'
+                        : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>All Documents</span>
+                      <span className="text-xs text-gray-500">{allDocuments.length}</span>
+                    </div>
+                  </button>
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        selectedCategory === category.id
+                          ? getCategoryColor(category.color)
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
                     >
-                      {categories.find(c => c.id === doc.category)?.name}
-                    </Badge>
-                    {doc.isFeatured && <Badge variant="success" size="sm">Featured</Badge>}
-                  </div>
-                  
-                  <h3 className="font-semibold text-gray-900 mb-2">{doc.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">{doc.description}</p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <span>{doc.date}</span>
-                      <span>•</span>
-                      <span>{doc.size}</span>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className={selectedCategory === category.id ? '' : 'text-gray-400'}>
+                            {category.icon}
+                          </span>
+                          <span>{category.name}</span>
+                        </div>
+                        <span className={`text-xs ${selectedCategory === category.id ? 'opacity-70' : 'text-gray-500'}`}>
+                          {categoryCounts[category.id]}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </nav>
+
+                {/* Clear Filters */}
+                {(selectedCategory !== 'all' || searchQuery) && (
+                  <button
+                    onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
+                    className="w-full mt-4 px-3 py-2 text-sm text-green-600 hover:bg-green-50 rounded-lg font-medium transition-colors"
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </Card>
+            </div>
+          </aside>
+
+          {/* Main Content - Documents */}
+          <main className="flex-1">
+            {/* Featured Documents */}
+            {!searchQuery && selectedCategory === 'all' && (
+              <section className="mb-12">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Featured Documents</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {featuredDocuments.map((doc) => (
+                    <div
+                      key={doc.id}
+                      onClick={() => handleDocumentClick(doc)}
+                      className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border border-green-200 cursor-pointer hover:shadow-lg transition-shadow"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <Badge variant="success" size="sm">Featured</Badge>
+                        <span className="text-xs text-gray-500">{doc.size}</span>
+                      </div>
+                      <h3 className="font-semibold text-gray-900 mb-2">{doc.title}</h3>
+                      <p className="text-sm text-gray-600 line-clamp-2">{doc.description}</p>
+                      <div className="mt-4 flex items-center justify-between">
+                        <span className="text-xs text-gray-500">{doc.date}</span>
+                        <span className="text-green-600 text-sm font-medium">View Details →</span>
+                      </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); handleDocumentClick(doc); }}
-                        className="text-green-600 hover:text-green-700 text-sm font-medium"
-                      >
-                        View
-                      </button>
-                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Documents List */}
+            <section>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-gray-900">
+                  {selectedCategory === 'all' ? 'All Documents' : categories.find(c => c.id === selectedCategory)?.name}
+                </h2>
+                <span className="text-sm text-gray-500">
+                  {filteredDocuments.length} document{filteredDocuments.length !== 1 ? 's' : ''}
+                </span>
+              </div>
+
+              {filteredDocuments.length === 0 ? (
+                <Card>
+                  <div className="text-center py-12">
+                    <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <p className="text-gray-500">No documents found</p>
+                    <button
+                      onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
+                      className="mt-4 text-green-600 hover:text-green-700 font-medium"
+                    >
+                      Clear filters
+                    </button>
                   </div>
                 </Card>
-              ))}
-            </div>
-          )}
-        </section>
+              ) : (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {filteredDocuments.map((doc) => (
+                    <Card
+                      key={doc.id}
+                      hover
+                      onClick={() => handleDocumentClick(doc)}
+                      className="cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <Badge
+                          variant={
+                            doc.category === 'onboarding' ? 'primary' :
+                            doc.category === 'offerings' ? 'success' :
+                            doc.category === 'reporting' ? 'info' :
+                            doc.category === 'legal' ? 'warning' :
+                            'secondary'
+                          }
+                          size="sm"
+                        >
+                          {categories.find(c => c.id === doc.category)?.name}
+                        </Badge>
+                        {doc.isFeatured && <Badge variant="success" size="sm">Featured</Badge>}
+                      </div>
+
+                      <h3 className="font-semibold text-gray-900 mb-2">{doc.title}</h3>
+                      <p className="text-sm text-gray-600 mb-4 line-clamp-2">{doc.description}</p>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <span>{doc.date}</span>
+                          <span>•</span>
+                          <span>{doc.size}</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleDocumentClick(doc); }}
+                            className="text-green-600 hover:text-green-700 text-sm font-medium"
+                          >
+                            View
+                          </button>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </section>
+          </main>
+        </div>
       </div>
 
       {/* Document Modal */}

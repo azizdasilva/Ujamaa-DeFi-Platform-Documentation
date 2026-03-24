@@ -4,7 +4,7 @@
  * Status badge with multiple variants.
  * Follows Design System Specification v2.0 Section 4.2
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md Section 4.2
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md Section 4.2
  */
 
 import React from 'react';

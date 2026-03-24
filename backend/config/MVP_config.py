@@ -309,7 +309,7 @@ Production deployment will use:
     """Demo retail investor balance"""
     
     DEMO_ORIGINATOR_BALANCE: int = 1_000_000 * 10 ** 18  # 1M UJEUR
-    """Demo asset originator balance"""
+    """Demo industrial operator balance"""
     
     # =========================================================================
     # RATE LIMITING

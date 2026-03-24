@@ -4,7 +4,7 @@
  * Form input with label, error state, and helper text.
  * Follows Design System Specification v2.0 Section 4.4
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md Section 4.4
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md Section 4.4
  */
 
 import React, { forwardRef } from 'react';

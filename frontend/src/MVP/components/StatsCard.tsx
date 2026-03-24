@@ -4,7 +4,7 @@
  * Statistics display card with icon, label, value, and optional trend.
  * Follows Design System Specification v2.0 Section 4.5
  * 
- * @reference 03_DESIGN_SYSTEM_SPECIFICATION.md Section 4.5
+ * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md Section 4.5
  */
 
 import React from 'react';

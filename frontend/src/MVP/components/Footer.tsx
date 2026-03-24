@@ -57,8 +57,18 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/onboarding" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
-                  Onboarding
+                <a href="/pool/dashboard" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
+                  📊 Pool Dashboard (KPIs)
+                </a>
+              </li>
+              <li>
+                <a href="/investor/onboarding" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
+                  🚀 Investor Onboarding
+                </a>
+              </li>
+              <li>
+                <a href="/industrial-operator/onboarding" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
+                  🏭 Industrial Operator Onboarding
                 </a>
               </li>
             </ul>

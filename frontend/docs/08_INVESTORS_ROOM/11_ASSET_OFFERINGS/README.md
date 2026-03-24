@@ -26,7 +26,7 @@ This folder contains **asset offering documents** including templates for offeri
 ## Usage
 
 These templates are for:
-- Asset originators preparing offerings
+- Industrial Operators preparing offerings
 - Legal teams drafting documents
 - Investors reviewing terms
 
