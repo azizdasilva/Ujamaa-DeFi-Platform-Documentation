@@ -134,8 +134,8 @@ class MVPConfig:
     
     INSTITUTIONAL_MIN: int = 100_000 * 10 ** 18  # 100K UJEUR
     """Minimum for institutional investors (KYB threshold)"""
-    
-    RETAIL_MAX: int = 50_000 * 10 ** 18  # 50K UJEUR
+
+    RETAIL_MAX: int = 99_999 * 10 ** 18  # 99,999 UJEUR
     """Maximum for retail investors"""
     
     # =========================================================================

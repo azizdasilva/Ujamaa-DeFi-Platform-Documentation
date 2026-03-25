@@ -62,7 +62,7 @@ export const MVP_CONFIG = {
     MIN_DEPOSIT: 1_000n * 10n ** 18n,          // 1K UJEUR
     DAILY_WITHDRAWAL: 500_000n * 10n ** 18n,   // 500K UJEUR
     INSTITUTIONAL_MIN: 100_000n * 10n ** 18n,  // 100K UJEUR (KYB threshold)
-    RETAIL_MAX: 50_000n * 10n ** 18n,          // 50K UJEUR
+    RETAIL_MAX: 99_999n * 10n ** 18n,          // 99,999 UJEUR
   },
 
   /**

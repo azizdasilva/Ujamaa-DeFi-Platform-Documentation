@@ -134,7 +134,7 @@ class ComplianceTracker:
     KYC_REQUIREMENTS = {
         'retail': {
             'min_investment': 1_000,
-            'max_investment': 50_000,
+            'max_investment': 99_999,
             'kyc_level': 'standard',
             'documents': ['national_id', 'proof_of_address'],
         },

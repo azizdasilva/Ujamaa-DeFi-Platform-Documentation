@@ -39,7 +39,7 @@ export const config = {
     MAX_DEPOSIT: 1_000_000,
     DAILY_WITHDRAWAL: 500_000,
     INSTITUTIONAL_MIN: 100_000,
-    RETAIL_MAX: 50_000,
+    RETAIL_MAX: 99_999,
   },
   
   // Pool Families

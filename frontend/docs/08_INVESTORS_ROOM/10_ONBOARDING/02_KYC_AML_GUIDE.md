@@ -115,7 +115,7 @@ UJAMAA DEFI PLATFORM operates as a regulated securities platform. We are legally
 
 ## 2.2 KYC Level 2 — Enhanced Verification
 
-**Required for:** Retail investments up to $50,000 annually
+**Required for:** Retail investments up to $99,999 annually
 
 | Requirement | Details |
 |-------------|---------|
