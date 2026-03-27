@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -447,7 +447,7 @@ resource &quot;aws_eks_cluster&quot; &quot;ujamaa_prod&quot; {
 
   tags = {
     Environment = &quot;production&quot;
-    Project     = &quot;ujamaa-defi&quot;
+    Project     = &quot;Ujamaa DeFi Platform&quot;
   }
 
   depends_on = [aws_iam_role_policy_attachment.eks_cluster_policy]
@@ -611,7 +611,7 @@ spec:
         effect: &quot;NO_SCHEDULE&quot;
       containers:
       - name: assets-service
-        image: ghcr.io/ujamaa-defi/assets-service:v1.0.0
+        image: ghcr.io/Ujamaa DeFi Platform/assets-service:v1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
@@ -753,7 +753,7 @@ metadata:
   namespace: ujamaa-production
 spec:
   hosts:
-  - &quot;api.ujamaa-defi.com&quot;
+  - &quot;api.Ujamaa DeFi Platform.com&quot;
   gateways:
   - ujamaa-gateway
   http:
@@ -1274,7 +1274,7 @@ metadata:
 spec:
   project: ujamaa
   source:
-    repoURL: https://github.com/ujamaa-defi/infrastructure.git
+    repoURL: https://github.com/Ujamaa DeFi Platform/infrastructure.git
     targetRevision: HEAD
     path: k8s
   destination:
@@ -1344,7 +1344,7 @@ data:
   RATE_LIMIT_BURST: &quot;30&quot;
 
   # CORS
-  CORS_ORIGINS: &quot;https://ujamaa-defi.com,https://app.ujamaa-defi.com&quot;
+  CORS_ORIGINS: &quot;https://Ujamaa DeFi Platform.com,https://app.Ujamaa DeFi Platform.com&quot;
   CORS_ALLOW_CREDENTIALS: &quot;true&quot;
 
   # Security

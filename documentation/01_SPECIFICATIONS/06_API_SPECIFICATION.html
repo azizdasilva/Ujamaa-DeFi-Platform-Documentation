@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -368,8 +368,8 @@ plugins:
   - name: cors
     config:
       origins:
-        - https://ujamaa-defi.com
-        - https://app.ujamaa-defi.com
+        - https://Ujamaa DeFi Platform.com
+        - https://app.Ujamaa DeFi Platform.com
       methods:
         - GET
         - POST
@@ -406,7 +406,7 @@ HSTS: max-age=31536000; includeSubDomains; preload
 </section>
 <h1>3. Assets Service</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Overview</h2>
-<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/assets</code><br />
+<p><strong>Base URL:</strong> <code>https://api.Ujamaa DeFi Platform.com/api/v1/assets</code><br />
 <strong>Port:</strong> 8000<br />
 <strong>Description:</strong> Asset origination, tokenization, and lifecycle management</p>
 </section>
@@ -818,7 +818,7 @@ Authorization: Bearer {jwt_token}
 </section>
 <h1>4. Investors Service</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Overview</h2>
-<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/investors</code><br />
+<p><strong>Base URL:</strong> <code>https://api.Ujamaa DeFi Platform.com/api/v1/investors</code><br />
 <strong>Port:</strong> 8001<br />
 <strong>Description:</strong> Investor onboarding, KYC/AML verification, portfolio management</p>
 </section>
@@ -1115,7 +1115,7 @@ Authorization: Bearer {jwt_token}
 </section>
 <h1>5. Trades Service</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Overview</h2>
-<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/trades</code><br />
+<p><strong>Base URL:</strong> <code>https://api.Ujamaa DeFi Platform.com/api/v1/trades</code><br />
 <strong>Port:</strong> 8002<br />
 <strong>Description:</strong> Primary market issuance and secondary market trading</p>
 </section>
@@ -1320,7 +1320,7 @@ Authorization: Bearer {jwt_token}
 </section>
 <h1>6. Compliance Service</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Overview</h2>
-<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/compliance</code><br />
+<p><strong>Base URL:</strong> <code>https://api.Ujamaa DeFi Platform.com/api/v1/compliance</code><br />
 <strong>Port:</strong> 8003<br />
 <strong>Description:</strong> KYC/AML verification, transfer restrictions, regulatory audit</p>
 </section>
@@ -1515,7 +1515,7 @@ Authorization: Bearer {jwt_token}
 </section>
 <h1>7. Reporting Service</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Overview</h2>
-<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/reports</code><br />
+<p><strong>Base URL:</strong> <code>https://api.Ujamaa DeFi Platform.com/api/v1/reports</code><br />
 <strong>Port:</strong> 8004<br />
 <strong>Description:</strong> Regulatory reports, analytics dashboards, data exports</p>
 </section>
@@ -1694,7 +1694,7 @@ syntax = &quot;proto3&quot;;
 
 package gateway.v1;
 
-option go_package = &quot;github.com/ujamaa-defi/gateway/pkg/proto&quot;;
+option go_package = &quot;github.com/Ujamaa DeFi Platform/gateway/pkg/proto&quot;;
 
 // Gateway Service
 service Gateway {
@@ -2009,9 +2009,9 @@ Response:
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 JWT Token Structure</h2>
 <div class="docs-pre"><code>{
-  &quot;iss&quot;: &quot;ujamaa-defi-auth&quot;,
+  &quot;iss&quot;: &quot;Ujamaa DeFi Platform-auth&quot;,
   &quot;sub&quot;: &quot;inv_001&quot;,
-  &quot;aud&quot;: &quot;ujamaa-defi-api&quot;,
+  &quot;aud&quot;: &quot;Ujamaa DeFi Platform-api&quot;,
   &quot;exp&quot;: 1709049600,
   &quot;iat&quot;: 1709046000,
   &quot;jti&quot;: &quot;jwt_abc123&quot;,
@@ -2110,7 +2110,7 @@ Response:
     &quot;request_id&quot;: &quot;req_abc123&quot;,
     &quot;timestamp&quot;: &quot;2026-02-27T12:00:00Z&quot;,
     &quot;_links&quot;: {
-      &quot;documentation&quot;: &quot;https://docs.ujamaa-defi.com/errors/COMPLIANCE_CHECK_FAILED&quot;
+      &quot;documentation&quot;: &quot;https://docs.Ujamaa DeFi Platform.com/errors/COMPLIANCE_CHECK_FAILED&quot;
     }
   }
 }

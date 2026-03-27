@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -129,24 +129,24 @@
 <div class="docs-pre"><code>git remote -v
 </code></div>
 <p>Typical output shows <code>origin</code> (your primary repo):</p>
-<div class="docs-pre"><code>origin  https://github.com/azizdasilva/UJAMAA-DeFi.git (fetch)
-origin  https://github.com/azizdasilva/UJAMAA-DeFi.git (push)
+<div class="docs-pre"><code>origin  https://github.com/azizdasilva/Ujamaa DeFi Platform.git (fetch)
+origin  https://github.com/azizdasilva/Ujamaa DeFi Platform.git (push)
 </code></div>
 <h3>2. Add a Second Remote</h3>
 <p>Add the second repository with a descriptive name (e.g., <code>ujamaa</code> for the org repo):</p>
-<div class="docs-pre"><code>git remote add ujamaa git@github.com:Ujamaa-DeFi/MVP-R1.git
+<div class="docs-pre"><code>git remote add ujamaa git@github.com:Ujamaa DeFi Platform/MVP-R1.git
 </code></div>
 <p>Or use HTTPS (recommended for multi-account setups):</p>
-<div class="docs-pre"><code>git remote add ujamaa https://github.com/Ujamaa-DeFi/MVP-R1.git
+<div class="docs-pre"><code>git remote add ujamaa https://github.com/Ujamaa DeFi Platform/MVP-R1.git
 </code></div>
 <h3>3. Verify Remotes</h3>
 <div class="docs-pre"><code>git remote -v
 </code></div>
 <p>You should now see both:</p>
-<div class="docs-pre"><code>origin   https://github.com/azizdasilva/UJAMAA-DeFi.git (fetch)
-origin   https://github.com/azizdasilva/UJAMAA-DeFi.git (push)
-upstream https://github.com/Ujamaa-DeFi/MVP-R1.git (fetch)
-upstream https://github.com/Ujamaa-DeFi/MVP-R1.git (push)
+<div class="docs-pre"><code>origin   https://github.com/azizdasilva/Ujamaa DeFi Platform.git (fetch)
+origin   https://github.com/azizdasilva/Ujamaa DeFi Platform.git (push)
+upstream https://github.com/Ujamaa DeFi Platform/MVP-R1.git (fetch)
+upstream https://github.com/Ujamaa DeFi Platform/MVP-R1.git (push)
 </code></div>
 <h3>4. Push to the Second Remote</h3>
 <div class="docs-pre"><code>git push -u ujamaa main
@@ -210,14 +210,14 @@ Host github.com-org
     IdentityFile ~/.ssh/id_ed25519_org
 </code></div>
 <p>Then use corresponding URLs:</p>
-<div class="docs-pre"><code>git remote add origin git@github.com-personal:azizdasilva/UJAMAA-DeFi.git
-git remote add ujamaa git@github.com-org:Ujamaa-DeFi/MVP-R1.git
+<div class="docs-pre"><code>git remote add origin git@github.com-personal:azizdasilva/Ujamaa DeFi Platform.git
+git remote add ujamaa git@github.com-org:Ujamaa DeFi Platform/MVP-R1.git
 </code></div>
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Troubleshooting</h2>
 <h3>Permission Denied (publickey)</h3>
 <p>Switch from SSH to HTTPS:</p>
-<div class="docs-pre"><code>git remote set-url ujamaa https://github.com/Ujamaa-DeFi/MVP-R1.git
+<div class="docs-pre"><code>git remote set-url ujamaa https://github.com/Ujamaa DeFi Platform/MVP-R1.git
 git push ujamaa main
 </code></div>
 <h3>Check Remote URL</h3>

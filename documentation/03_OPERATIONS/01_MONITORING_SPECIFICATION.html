@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -417,7 +417,7 @@
 │  │  │                    Grafana Service                                │  │ │
 │  │  │                                                                   │  │ │
 │  │  │  ClusterIP: 10.100.50.11:3000                                     │  │ │
-│  │  │  Ingress: monitoring.ujamaa-defi.com                              │  │ │
+│  │  │  Ingress: monitoring.Ujamaa DeFi Platform.com                              │  │ │
 │  │  │                                                                   │  │ │
 │  │  │  Authentication:                                                  │  │ │
 │  │  │  • OAuth2 (Google SSO)                                            │  │ │
@@ -429,7 +429,7 @@
 │  │  │                    Alertmanager Service                           │  │ │
 │  │  │                                                                   │  │ │
 │  │  │  ClusterIP: 10.100.50.12:9093                                     │  │ │
-│  │  │  Ingress: alertmanager.ujamaa-defi.com                            │  │ │
+│  │  │  Ingress: alertmanager.Ujamaa DeFi Platform.com                            │  │ │
 │  │  │                                                                   │  │ │
 │  │  │  Receivers:                                                       │  │ │
 │  │  │  • PagerDuty (critical)                                           │  │ │
@@ -719,10 +719,10 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
     - targets:
-      - https://api.ujamaa-defi.com/health/live
-      - https://api.ujamaa-defi.com/health/ready
-      - https://monitoring.ujamaa-defi.com
-      - https://app.ujamaa-defi.com
+      - https://api.Ujamaa DeFi Platform.com/health/live
+      - https://api.Ujamaa DeFi Platform.com/health/ready
+      - https://monitoring.Ujamaa DeFi Platform.com
+      - https://app.Ujamaa DeFi Platform.com
     relabel_configs:
     - source_labels: [__address__]
       target_label: __param_target
@@ -812,7 +812,7 @@ spec:
         - --web.enable-lifecycle
         - --web.enable-admin-api
         - --web.route-prefix=/
-        - --web.external-url=https://prometheus.ujamaa-defi.com
+        - --web.external-url=https://prometheus.Ujamaa DeFi Platform.com
         - --storage.tsdb.min-block-duration=2h
         - --storage.tsdb.max-block-duration=2h
         - --log.level=info
@@ -1510,8 +1510,8 @@ groups:
     annotations:
       summary: &quot;Node {{ $labels.node }} is down&quot;
       description: &quot;Node {{ $labels.node }} has been unreachable for more than 2 minutes.&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-down&quot;
-      dashboard: &quot;https://grafana.ujamaa-defi.com/d/node-overview&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/node-down&quot;
+      dashboard: &quot;https://grafana.Ujamaa DeFi Platform.com/d/node-overview&quot;
 
   - alert: NodeCPUHigh
     expr: |
@@ -1523,7 +1523,7 @@ groups:
     annotations:
       summary: &quot;High CPU usage on {{ $labels.instance }}&quot;
       description: &quot;CPU usage is {{ $value | humanize }}% on node {{ $labels.instance }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-cpu-high&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/node-cpu-high&quot;
 
   - alert: NodeMemoryHigh
     expr: |
@@ -1535,7 +1535,7 @@ groups:
     annotations:
       summary: &quot;High memory usage on {{ $labels.instance }}&quot;
       description: &quot;Memory usage is {{ $value | humanize }}% on node {{ $labels.instance }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-memory-high&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/node-memory-high&quot;
 
   - alert: NodeDiskFull
     expr: |
@@ -1547,7 +1547,7 @@ groups:
     annotations:
       summary: &quot;Disk space critical on {{ $labels.instance }}&quot;
       description: &quot;Disk space is {{ $value | humanize }}% available on {{ $labels.instance }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-disk-full&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/node-disk-full&quot;
 
   - alert: NodeNetworkUnreachable
     expr: |
@@ -1559,7 +1559,7 @@ groups:
     annotations:
       summary: &quot;Network endpoint unreachable: {{ $labels.instance }}&quot;
       description: &quot;Endpoint {{ $labels.instance }} has been unreachable for 2 minutes&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/network-unreachable&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/network-unreachable&quot;
 
 ---
 # monitoring/prometheus/rules/alerts/kubernetes.yml
@@ -1579,7 +1579,7 @@ groups:
     annotations:
       summary: &quot;Pod {{ $labels.pod }} is crash looping&quot;
       description: &quot;Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has restarted {{ $value }} times in the last hour&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/pod-crash-looping&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/pod-crash-looping&quot;
 
   - alert: PodPending
     expr: |
@@ -1591,7 +1591,7 @@ groups:
     annotations:
       summary: &quot;Pod {{ $labels.pod }} is pending&quot;
       description: &quot;Pod {{ $labels.pod }} has been in Pending state for more than 15 minutes&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/pod-pending&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/pod-pending&quot;
 
   - alert: DeploymentReplicasMismatch
     expr: |
@@ -1603,7 +1603,7 @@ groups:
     annotations:
       summary: &quot;Deployment {{ $labels.deployment }} replicas mismatch&quot;
       description: &quot;Deployment {{ $labels.deployment }} has {{ $value }} available replicas, expected {{ kube_deployment_spec_replicas }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/deployment-replicas-mismatch&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/deployment-replicas-mismatch&quot;
 
   - alert: HPOMaxReplicas
     expr: |
@@ -1615,7 +1615,7 @@ groups:
     annotations:
       summary: &quot;HPA {{ $labels.horizontalpodautoscaler }} at max replicas&quot;
       description: &quot;HPA {{ $labels.horizontalpodautoscaler }} is at maximum replicas ({{ $value }})&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/hpa-max-replicas&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/hpa-max-replicas&quot;
 
 ---
 # monitoring/prometheus/rules/alerts/application.yml
@@ -1635,7 +1635,7 @@ groups:
     annotations:
       summary: &quot;Service {{ $labels.service }} is down&quot;
       description: &quot;Service {{ $labels.service }} (pod: {{ $labels.pod }}) has been down for more than 2 minutes&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/service-down&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/service-down&quot;
 
   - alert: HighErrorRate
     expr: |
@@ -1651,7 +1651,7 @@ groups:
     annotations:
       summary: &quot;High error rate for {{ $labels.service }}&quot;
       description: &quot;Service {{ $labels.service }} has {{ $value | humanize }}% error rate (5m average)&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-error-rate&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/high-error-rate&quot;
 
   - alert: HighLatency
     expr: |
@@ -1665,7 +1665,7 @@ groups:
     annotations:
       summary: &quot;High latency for {{ $labels.service }}&quot;
       description: &quot;Service {{ $labels.service }} 95th percentile latency is {{ $value }}s&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-latency&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/high-latency&quot;
 
   - alert: HighLatencyP99
     expr: |
@@ -1679,7 +1679,7 @@ groups:
     annotations:
       summary: &quot;Critical latency for {{ $labels.service }}&quot;
       description: &quot;Service {{ $labels.service }} 99th percentile latency is {{ $value }}s&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-latency-p99&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/high-latency-p99&quot;
 
   - alert: DatabaseConnectionsHigh
     expr: |
@@ -1691,7 +1691,7 @@ groups:
     annotations:
       summary: &quot;Database connections high for {{ $labels.service }}&quot;
       description: &quot;{{ $value | humanize }}% of database connections in use&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/db-connections-high&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/db-connections-high&quot;
 
   - alert: CacheHitRateLow
     expr: |
@@ -1707,7 +1707,7 @@ groups:
     annotations:
       summary: &quot;Low cache hit rate for {{ $labels.service }}&quot;
       description: &quot;Cache hit rate is {{ $value | humanize }}% for {{ $labels.service }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/cache-hit-rate-low&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/cache-hit-rate-low&quot;
 
 ---
 # monitoring/prometheus/rules/alerts/kafka.yml
@@ -1727,7 +1727,7 @@ groups:
     annotations:
       summary: &quot;High Kafka consumer lag&quot;
       description: &quot;Consumer group {{ $labels.consumer_group }} has lag of {{ $value }} messages on topic {{ $labels.topic }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-consumer-lag&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/kafka-consumer-lag&quot;
 
   - alert: KafkaConsumerLagCritical
     expr: |
@@ -1739,7 +1739,7 @@ groups:
     annotations:
       summary: &quot;Critical Kafka consumer lag&quot;
       description: &quot;Consumer group {{ $labels.consumer_group }} has critical lag of {{ $value }} messages&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-consumer-lag-critical&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/kafka-consumer-lag-critical&quot;
 
   - alert: KafkaBrokerDown
     expr: |
@@ -1751,7 +1751,7 @@ groups:
     annotations:
       summary: &quot;Kafka broker {{ $labels.broker }} is down&quot;
       description: &quot;Kafka broker {{ $labels.broker }} has been down for more than 2 minutes&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-broker-down&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/kafka-broker-down&quot;
 
 ---
 # monitoring/prometheus/rules/alerts/blockchain.yml
@@ -1771,7 +1771,7 @@ groups:
     annotations:
       summary: &quot;Blockchain sync behind on {{ $labels.blockchain }}&quot;
       description: &quot;{{ $labels.blockchain }} is {{ $value }} blocks behind&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/blockchain-sync-behind&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/blockchain-sync-behind&quot;
 
   - alert: BlockchainGasPriceHigh
     expr: |
@@ -1783,7 +1783,7 @@ groups:
     annotations:
       summary: &quot;High gas price on {{ $labels.blockchain }}&quot;
       description: &quot;Gas price is {{ $value }} Gwei on {{ $labels.blockchain }}&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/gas-price-high&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/gas-price-high&quot;
 
   - alert: SmartContractPaused
     expr: |
@@ -1795,7 +1795,7 @@ groups:
     annotations:
       summary: &quot;Smart contract paused: {{ $labels.contract }}&quot;
       description: &quot;Smart contract {{ $labels.contract }} is paused&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/smart-contract-paused&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/smart-contract-paused&quot;
 
   - alert: BridgeTransferDelayed
     expr: |
@@ -1807,7 +1807,7 @@ groups:
     annotations:
       summary: &quot;Bridge transfer delayed&quot;
       description: &quot;Bridge transfer from {{ $labels.source_chain }} to {{ $labels.destination_chain }} taking {{ $value }}s&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/bridge-transfer-delayed&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/bridge-transfer-delayed&quot;
 
 ---
 # monitoring/prometheus/rules/alerts/business.yml
@@ -1827,7 +1827,7 @@ groups:
     annotations:
       summary: &quot;High KYC application backlog&quot;
       description: &quot;{{ $value }} KYC applications pending review&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kyc-backlog&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/kyc-backlog&quot;
 
   - alert: ComplianceAlertsSpike
     expr: |
@@ -1839,7 +1839,7 @@ groups:
     annotations:
       summary: &quot;Spike in compliance alerts&quot;
       description: &quot;{{ $value }} new compliance alerts in the last hour&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/compliance-alerts-spike&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/compliance-alerts-spike&quot;
 
   - alert: AUMDrop
     expr: |
@@ -1853,7 +1853,7 @@ groups:
     annotations:
       summary: &quot;AUM dropped significantly&quot;
       description: &quot;AUM dropped by {{ $value | humanize }}% in the last 24 hours&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/aum-drop&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/aum-drop&quot;
 
   - alert: TransactionVolumeAnomaly
     expr: |
@@ -1867,7 +1867,7 @@ groups:
     annotations:
       summary: &quot;Transaction volume anomaly&quot;
       description: &quot;Transaction volume is {{ $value | humanize }}% lower than last week&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/transaction-volume-anomaly&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/transaction-volume-anomaly&quot;
 </code></div>
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Recording Rules</h2>
@@ -3304,7 +3304,7 @@ groups:
     annotations:
       summary: &quot;Assets API critical burn rate&quot;
       description: &quot;Error budget will be exhausted in 2 hours at current burn rate ({{ $value }}x)&quot;
-      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/slo-burn-rate&quot;
+      runbook_url: &quot;https://runbooks.Ujamaa DeFi Platform.com/alerts/slo-burn-rate&quot;
 
   # High: Burn rate &gt; 6x (error budget exhausted in 6 hours)
   - alert: AssetsAPIHighBurnRate
@@ -3577,7 +3577,7 @@ A FastAPI service pod has been unreachable for more than 2 minutes.
 
 ### Step 1: Check Dashboard
 
-1. Open Grafana: https://grafana.ujamaa-defi.com/d/service-performance
+1. Open Grafana: https://grafana.Ujamaa DeFi Platform.com/d/service-performance
 2. Check which service is affected
 3. Check error rate and latency panels
 
@@ -3664,7 +3664,7 @@ kubectl exec {pod-name} -n ujamaa-production -- kafka-topics --bootstrap-server 
 <li>
 <p>Check health endpoint:<br />
 <code>bash
-   curl https://api.ujamaa-defi.com/health/ready</code></p>
+   curl https://api.Ujamaa DeFi Platform.com/health/ready</code></p>
 </li>
 <li>
 <p>Monitor for 5 minutes to ensure stability</p>
@@ -3712,7 +3712,7 @@ Blockchain node is more than 20 blocks behind the network tip.
 
 ### Step 1: Check Blockchain Dashboard
 
-1. Open: https://grafana.ujamaa-defi.com/d/blockchain
+1. Open: https://grafana.Ujamaa DeFi Platform.com/d/blockchain
 2. Check:
    - Current block number
    - Sync lag trend
@@ -3849,7 +3849,7 @@ receivers:
 
 - name: email-digest
   email_configs:
-  - to: platform-team@ujamaa-defi.com
+  - to: platform-team@Ujamaa DeFi Platform.com
     send_resolved: false
     headers:
       Subject: '[UJAMAA Daily Alert Digest]'
@@ -3981,7 +3981,7 @@ inhibit_rules:
 </ul>
 <p><strong>Runbooks Repository</strong></p>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li><code>https://github.com/ujamaa-defi/runbooks</code></li>
+<li><code>https://github.com/Ujamaa DeFi Platform/runbooks</code></li>
 </ul>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">

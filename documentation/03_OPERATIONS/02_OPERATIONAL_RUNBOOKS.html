@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -491,7 +491,7 @@ kubectl logs {pod-name} -n ujamaa-production | grep -i &quot;error\|exception\|p
 </code></div>
 <h4>Step 4: Check Grafana</h4>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li>Open: https://grafana.ujamaa-defi.com/d/service-performance</li>
+<li>Open: https://grafana.Ujamaa DeFi Platform.com/d/service-performance</li>
 <li>Check panels:<br />
    - Request rate (should be &gt;0)<br />
    - Error rate (should be 0%)<br />
@@ -525,7 +525,7 @@ kubectl scale nodegroup {nodegroup-name} --nodes=+1
 kubectl describe pod {pod-name} | grep -A 5 &quot;Image&quot;
 
 # Verify image exists in registry
-docker pull ghcr.io/ujamaa-defi/{service-name}:{tag}
+docker pull ghcr.io/Ujamaa DeFi Platform/{service-name}:{tag}
 
 # Check image pull secrets
 kubectl get secret {registry-secret} -n ujamaa-production
@@ -546,7 +546,7 @@ kubectl apply -f k8s/services/{service-name}.yaml
 kubectl get pods -n ujamaa-production -l app={service-name}
 
 # Health check passes
-curl https://api.ujamaa-defi.com/health/ready
+curl https://api.Ujamaa DeFi Platform.com/health/ready
 
 # Check metrics in Grafana
 # - Error rate should be 0%
@@ -1541,11 +1541,11 @@ kubectl get events -n ujamaa-production --sort-by='.lastTimestamp'
 <h3>Resolution</h3>
 <h4>If Image Pull Error</h4>
 <div class="docs-pre"><code># Verify image exists
-docker pull ghcr.io/ujamaa-defi/{service}:{tag}
+docker pull ghcr.io/Ujamaa DeFi Platform/{service}:{tag}
 
 # Fix image tag
 kubectl set image deployment/{service-name} \
-  {service-name}=ghcr.io/ujamaa-defi/{service}:{correct-tag} \
+  {service-name}=ghcr.io/Ujamaa DeFi Platform/{service}:{correct-tag} \
   -n ujamaa-production
 </code></div>
 <h4>If Resource Issues</h4>
@@ -1650,7 +1650,7 @@ gcloud sql instances promote-replica ujamaa-dr
 <h3>Steps</h3>
 <h4>Step 1: Pre-Renewal Check</h4>
 <div class="docs-pre"><code># Check current cert expiry
-openssl s_client -connect api.ujamaa-defi.com:443 \
+openssl s_client -connect api.Ujamaa DeFi Platform.com:443 \
   | openssl x509 -noout -dates
 </code></div>
 <h4>Step 2: Renew Certificate</h4>
@@ -1666,7 +1666,7 @@ kubectl rollout restart deployment/ingress-nginx -n ingress-nginx
 </code></div>
 <h4>Step 4: Verify</h4>
 <div class="docs-pre"><code># Check new cert
-openssl s_client -connect api.ujamaa-defi.com:443 \
+openssl s_client -connect api.Ujamaa DeFi Platform.com:443 \
   | openssl x509 -noout -dates
 
 # Verify in browser
@@ -1730,7 +1730,7 @@ ANALYZE;
 </ul>
 <p><strong>Runbooks Repository</strong></p>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>https://github.com/ujamaa-defi/runbooks</li>
+<li>https://github.com/Ujamaa DeFi Platform/runbooks</li>
 </ul>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">

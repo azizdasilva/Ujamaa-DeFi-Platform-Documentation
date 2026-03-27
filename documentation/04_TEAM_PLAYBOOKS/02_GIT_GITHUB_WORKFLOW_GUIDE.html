@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -245,7 +245,7 @@ sudo apt install git -y
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Initial Configuration</h2>
 <div class="docs-pre"><code># Set your identity (appears on every commit)
 git config --global user.name &quot;Aziz Da Silva&quot;
-git config --global user.email &quot;aziz@ujamaa-defi.com&quot;
+git config --global user.email &quot;aziz@Ujamaa DeFi Platform.com&quot;
 
 # Use main as default branch
 git config --global init.defaultBranch main
@@ -269,7 +269,7 @@ git config --list
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.3 SSH Key Setup (Required for GitHub)</h2>
 <div class="docs-pre"><code># Generate new SSH key
-ssh-keygen -t ed25519 -C &quot;aziz@ujamaa-defi.com&quot;
+ssh-keygen -t ed25519 -C &quot;aziz@Ujamaa DeFi Platform.com&quot;
 
 # Press Enter to accept default location (~/.ssh/id_ed25519)
 # Enter a secure passphrase (remember it!)
@@ -325,44 +325,44 @@ ssh -T git@github.com
 </thead>
 <tbody>
 <tr>
-<td><strong>ujamaa-defi/backend</strong></td>
+<td><strong>Ujamaa DeFi Platform/backend</strong></td>
 <td>FastAPI backend services</td>
-<td>github.com/ujamaa-defi/backend</td>
+<td>github.com/Ujamaa DeFi Platform/backend</td>
 </tr>
 <tr>
-<td><strong>ujamaa-defi/frontend</strong></td>
+<td><strong>Ujamaa DeFi Platform/frontend</strong></td>
 <td>React TypeScript frontend</td>
-<td>github.com/ujamaa-defi/frontend</td>
+<td>github.com/Ujamaa DeFi Platform/frontend</td>
 </tr>
 <tr>
-<td><strong>ujamaa-defi/contracts</strong></td>
+<td><strong>Ujamaa DeFi Platform/contracts</strong></td>
 <td>Solidity smart contracts</td>
-<td>github.com/ujamaa-defi/contracts</td>
+<td>github.com/Ujamaa DeFi Platform/contracts</td>
 </tr>
 <tr>
-<td><strong>ujamaa-defi/infrastructure</strong></td>
+<td><strong>Ujamaa DeFi Platform/infrastructure</strong></td>
 <td>Terraform, Kubernetes configs</td>
-<td>github.com/ujamaa-defi/infrastructure</td>
+<td>github.com/Ujamaa DeFi Platform/infrastructure</td>
 </tr>
 <tr>
-<td><strong>ujamaa-defi/docs</strong></td>
+<td><strong>Ujamaa DeFi Platform/docs</strong></td>
 <td>Documentation (SRS, architecture, etc.)</td>
-<td>github.com/ujamaa-defi/docs</td>
+<td>github.com/Ujamaa DeFi Platform/docs</td>
 </tr>
 </tbody>
 </table></div>
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Cloning Repositories</h2>
 <div class="docs-pre"><code># Create project directory
-mkdir ~/ujamaa-defi
-cd ~/ujamaa-defi
+mkdir ~/Ujamaa DeFi Platform
+cd ~/Ujamaa DeFi Platform
 
 # Clone all repositories
-git clone git@github.com:ujamaa-defi/backend.git
-git clone git@github.com:ujamaa-defi/frontend.git
-git clone git@github.com:ujamaa-defi/contracts.git
-git clone git@github.com:ujamaa-defi/infrastructure.git
-git clone git@github.com:ujamaa-defi/docs.git
+git clone git@github.com:Ujamaa DeFi Platform/backend.git
+git clone git@github.com:Ujamaa DeFi Platform/frontend.git
+git clone git@github.com:Ujamaa DeFi Platform/contracts.git
+git clone git@github.com:Ujamaa DeFi Platform/infrastructure.git
+git clone git@github.com:Ujamaa DeFi Platform/docs.git
 
 # Verify clone
 cd backend
@@ -371,7 +371,7 @@ git status
 </code></div>
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 Repository Layout</h2>
-<div class="docs-pre"><code>ujamaa-defi/
+<div class="docs-pre"><code>Ujamaa DeFi Platform/
 ├── backend/
 │   ├── .git/              # Git metadata (don't touch!)
 │   ├── src/               # Source code
@@ -503,7 +503,7 @@ asdfasdf                   # Just don't
 <h1>5. Daily Git Workflow</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Starting Your Work Day</h2>
 <div class="docs-pre"><code># 1. Navigate to your project
-cd ~/ujamaa-defi/backend
+cd ~/Ujamaa DeFi Platform/backend
 
 # 2. Switch to main branch
 git checkout main
@@ -560,7 +560,7 @@ git checkout main
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.4 Complete Workflow Example</h2>
 <div class="docs-pre"><code># Monday Morning: Start new feature
-cd ~/ujamaa-defi/backend
+cd ~/Ujamaa DeFi Platform/backend
 git checkout main
 git pull origin main
 git checkout -b feature/password-reset
@@ -731,7 +731,7 @@ Closes #456
 </code></div>
 <h3>Step 2: Go to GitHub</h3>
 <div class="docs-pre"><code>1. Open browser
-2. Navigate to github.com/ujamaa-defi/[repo]
+2. Navigate to github.com/Ujamaa DeFi Platform/[repo]
 3. Click &quot;Pull requests&quot; tab
 4. Click &quot;New pull request&quot;
 5. Select your branch
@@ -1257,7 +1257,7 @@ git rebase -i HEAD~3
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.4 "I Need to Sync Fork with Upstream"</h2>
 <div class="docs-pre"><code># Add upstream remote (first time only)
-git remote add upstream git@github.com:ujamaa-defi/backend.git
+git remote add upstream git@github.com:Ujamaa DeFi Platform/backend.git
 
 # Fetch upstream
 git fetch upstream

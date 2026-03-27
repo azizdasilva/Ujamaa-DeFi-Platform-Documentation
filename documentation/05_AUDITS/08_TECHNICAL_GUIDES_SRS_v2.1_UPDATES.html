@@ -15,7 +15,7 @@
 <body>
   <div class="docs-container">
     <aside class="docs-sidebar">
-      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
       <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
       <nav class="docs-nav">
         <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
@@ -169,7 +169,7 @@
        spec:
          containers:
          - name: fireblocks-service
-           image: ujamaa-defi/fireblocks-service:v2.1
+           image: Ujamaa DeFi Platform/fireblocks-service:v2.1
            env:
            - name: FIREBLOCKS_API_KEY
              valueFrom:
@@ -263,7 +263,7 @@
        spec:
          containers:
          - name: bank-integration-service
-           image: ujamaa-defi/bank-integration-service:v2.1
+           image: Ujamaa DeFi Platform/bank-integration-service:v2.1
            env:
            - name: BIIC_API_URL
              valueFrom:
@@ -481,7 +481,7 @@ async function login(wallet: string, signer: ethers.Signer) {
   const siweMessage = new SiweMessage({
     domain: 'ujamaa.defi',
     address: wallet,
-    statement: 'Sign in to UJAMAA DeFi',
+    statement: 'Sign in to Ujamaa DeFi Platform',
     uri: 'https://ujamaa.defi',
     version: '1',
     chainId: 80002,  // Polygon Amoy
@@ -1018,7 +1018,7 @@ export function SIWESigner() {
       const siweMessage = new SiweMessage({
         domain: 'ujamaa.defi',
         address: address,
-        statement: 'Sign in to UJAMAA DeFi',
+        statement: 'Sign in to Ujamaa DeFi Platform',
         uri: 'https://ujamaa.defi',
         version: '1',
         chainId: 80002,  // Polygon Amoy
