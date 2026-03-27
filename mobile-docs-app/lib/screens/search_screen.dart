@@ -15,6 +15,7 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   List<dynamic> _searchResults = [];
   bool _isSearching = false;
+  bool _hasSearched = false;
 
   @override
   void dispose() {
@@ -27,6 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
       setState(() {
         _searchResults = [];
         _isSearching = false;
+        _hasSearched = false;
       });
       return;
     }
@@ -37,29 +39,41 @@ class _SearchScreenState extends State<SearchScreen> {
 
     final docService = Provider.of<DocumentationService>(context, listen: false);
     
-    // Use local search (Fuse search can be enabled if needed)
     final results = docService.searchLocally(query);
     
     setState(() {
       _searchResults = results;
       _isSearching = false;
+      _hasSearched = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
     return Scaffold(
       appBar: AppBar(
         title: TextField(
           controller: _searchController,
           autofocus: true,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
           decoration: InputDecoration(
-            hintText: 'Search documentation...',
+            hintText: 'Search...',
+            hintStyle: theme.textTheme.titleMedium?.copyWith(
+              color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+              fontWeight: FontWeight.w700,
+            ),
             border: InputBorder.none,
             suffixIcon: _searchController.text.isNotEmpty
                 ? IconButton(
-                    icon: const Icon(Icons.clear),
+                    icon: Icon(
+                      Icons.clear_rounded,
+                      color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                    ),
                     onPressed: () {
                       _searchController.clear();
                       _performSearch('');
@@ -71,81 +85,337 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: _isSearching
-          ? const Center(child: CircularProgressIndicator())
-          : _searchResults.isEmpty
-              ? _buildEmptyState()
-              : _buildResultsList(),
+          ? const _SearchLoadingState()
+          : !_hasSearched
+              ? _SearchPrompt()
+              : _searchResults.isEmpty
+                  ? _SearchEmptyState(query: _searchController.text)
+                  : _SearchResults(results: _searchResults),
     );
   }
+}
 
-  Widget _buildEmptyState() {
-    if (_searchController.text.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.search, size: 64, color: Colors.grey.shade400),
-            const SizedBox(height: 16),
-            Text(
-              'Search Documentation',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Find articles, guides, and specifications',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.grey.shade600,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+class _SearchLoadingState extends StatelessWidget {
+  const _SearchLoadingState();
 
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.search_off, size: 64, color: Colors.grey.shade400),
-          const SizedBox(height: 16),
-          Text(
-            'No results found',
-            style: Theme.of(context).textTheme.headlineSmall,
+          SizedBox(
+            width: 48,
+            height: 48,
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                theme.colorScheme.primary,
+              ),
+            ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 20),
           Text(
-            'Try different keywords',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey.shade600,
+            'Searching...',
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildResultsList() {
+class _SearchPrompt extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                gradient: AppTheme.primaryGradient,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppTheme.primary.withOpacity(0.3),
+                    blurRadius: 20,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: const Icon(
+                Icons.search_rounded,
+                color: AppTheme.white,
+                size: 40,
+              ),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              'Search Documentation',
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Find articles, guides, and specifications\nacross 151 documents',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: 32),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              alignment: WrapAlignment.center,
+              children: [
+                _SearchChip(label: 'EUROD', icon: Icons.currency_exchange),
+                _SearchChip(label: 'Liquidity Pools', icon: Icons.pool),
+                _SearchChip(label: 'Smart Contracts', icon: Icons.code),
+                _SearchChip(label: 'Compliance', icon: Icons.verified),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SearchChip extends StatelessWidget {
+  final String label;
+  final IconData icon;
+
+  const _SearchChip({
+    required this.label,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    return ActionChip(
+      avatar: Icon(
+        icon,
+        size: 18,
+        color: isDark ? theme.colorScheme.primary : AppTheme.primary,
+      ),
+      label: Text(
+        label,
+        style: theme.textTheme.labelLarge?.copyWith(
+          color: isDark ? theme.colorScheme.primary : AppTheme.primary,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      backgroundColor: isDark
+          ? theme.colorScheme.primaryContainer.withOpacity(0.15)
+          : AppTheme.primary50,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: isDark
+              ? theme.colorScheme.primaryContainer
+              : AppTheme.primary.withOpacity(0.2),
+        ),
+      ),
+      onPressed: () {
+        final searchController = context.findAncestorStateOfType<_SearchScreenState>();
+        searchController?._searchController.text = label;
+        searchController?._performSearch(label);
+      },
+    );
+  }
+}
+
+class _SearchEmptyState extends StatelessWidget {
+  final String query;
+
+  const _SearchEmptyState({required this.query});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                color: isDark ? AppTheme.slate800 : AppTheme.slate100,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.search_off_rounded,
+                size: 40,
+                color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+              ),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              'No results found',
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'No documents match "$query"\nTry different keywords',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SearchResults extends StatelessWidget {
+  final List<dynamic> results;
+
+  const _SearchResults({required this.results});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            '${_searchResults.length} result${_searchResults.length != 1 ? 's' : ''} found',
-            style: Theme.of(context).textTheme.titleMedium,
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primaryContainer.withOpacity(0.1),
+            border: Border(
+              bottom: BorderSide(
+                color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+                width: 1,
+              ),
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                Icons.check_circle_rounded,
+                color: theme.colorScheme.primary,
+                size: 20,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                '${results.length} result${results.length != 1 ? 's' : ''} found',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+            ],
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: _searchResults.length,
+          child: ListView.separated(
+            padding: const EdgeInsets.all(16),
+            itemCount: results.length,
+            separatorBuilder: (context, index) => const SizedBox(height: 8),
             itemBuilder: (context, index) {
-              final document = _searchResults[index];
-              return DocumentCard(document: document);
+              final document = results[index];
+              return FadeInUp(
+                delay: Duration(milliseconds: index * 30),
+                child: DocumentCard(document: document),
+              );
             },
           ),
         ),
       ],
+    );
+  }
+}
+
+class FadeInUp extends StatefulWidget {
+  final Widget child;
+  final Duration delay;
+
+  const FadeInUp({
+    super.key,
+    required this.child,
+    this.delay = Duration.zero,
+  });
+
+  @override
+  State<FadeInUp> createState() => _FadeInUpState();
+}
+
+class _FadeInUpState extends State<FadeInUp> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    
+    _fadeAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut,
+    );
+    
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut,
+    ));
+    
+    Future.delayed(widget.delay, () {
+      if (mounted) {
+        _controller.forward();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: widget.child,
+      ),
     );
   }
 }

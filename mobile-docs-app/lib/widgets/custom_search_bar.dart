@@ -6,47 +6,97 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Card(
+        elevation: 0,
+        shadowColor: isDark ? Colors.black26 : Colors.black12,
         child: InkWell(
           onTap: () => context.push('/search'),
-          borderRadius: BorderRadius.circular(12),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
+          borderRadius: BorderRadius.circular(14),
+          splashColor: theme.colorScheme.primaryContainer.withOpacity(0.2),
+          highlightColor: theme.colorScheme.primaryContainer.withOpacity(0.1),
+          child: Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: isDark ? AppTheme.slate800 : AppTheme.white,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(
+                color: isDark ? AppTheme.slate700 : AppTheme.slate200,
+                width: 1,
+              ),
+            ),
             child: Row(
               children: [
-                Icon(
-                  Icons.search,
-                  color: Colors.grey.shade600,
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  'Search documentation...',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey.shade600,
+                Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    gradient: AppTheme.primaryGradient,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.search_rounded,
+                    color: AppTheme.white,
+                    size: 20,
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Search documentation...',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Search 151 documents',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(6),
+                    color: isDark
+                        ? theme.colorScheme.primaryContainer.withOpacity(0.2)
+                        : AppTheme.primary50,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: isDark
+                          ? theme.colorScheme.primaryContainer
+                          : AppTheme.primary.withOpacity(0.2),
+                      width: 1,
+                    ),
                   ),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
-                        Icons.keyboard,
+                        Icons.keyboard_rounded,
                         size: 14,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: isDark
+                            ? theme.colorScheme.primary
+                            : AppTheme.primary,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         'K',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.bold,
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: isDark
+                              ? theme.colorScheme.primary
+                              : AppTheme.primary,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ],
