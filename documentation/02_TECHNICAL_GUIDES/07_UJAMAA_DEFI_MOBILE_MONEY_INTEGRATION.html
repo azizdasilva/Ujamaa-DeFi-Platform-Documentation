@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration - UJAMAA Documentation</title>
+  <title>Ujamaa DeFi Platform — Mobile Money Payment Integration - Ujamaa Documentation</title>
   <link rel="stylesheet" href="../assets/styles.css">
   
 
@@ -111,13 +111,13 @@
       </nav>
     </aside>
     <main class="docs-main">
-      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</span></nav></header>
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform — Mobile Money Payment Integration</span></nav></header>
       <div class="docs-content">
-        <h1 class="docs-title">UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</h1>
+        <h1 class="docs-title">Ujamaa DeFi Platform — Mobile Money Payment Integration</h1>
         <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
         <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned) | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> Backend Engineers, Smart Contract Developers, Integration Partners</p></div>
 
-        <h1>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</h1>
+        <h1>Ujamaa DeFi Platform — Mobile Money Payment Integration</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Technical Specification &amp; Implementation Guide</h2>
 <p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned)<br />
 <strong>Date:</strong> March 17, 2026<br />
@@ -128,7 +128,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Overview &amp; Rationale</h2>
-<p>UJAMAA DEFI PLATFORM is an institutional-grade tokenization platform enabling fractional ownership of African real-world assets (RWAs) through <strong>ERC-3643 compliant blockchain-based digital securities</strong>. To maximize financial inclusion across African markets, the platform supports two parallel payment rails:</p>
+<p>Ujamaa DeFi Platform is an institutional-grade tokenization platform enabling fractional ownership of African real-world assets (RWAs) through <strong>ERC-3643 compliant blockchain-based digital securities</strong>. To maximize financial inclusion across African markets, the platform supports two parallel payment rails:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Web3 wallets</strong> with stablecoins (USDC/USDT/EURC) for crypto-native users</li>
 <li><strong>Mobile money</strong> for the majority of African users who do not hold a Web3 wallet but actively use MTN MoMo, Orange Money, Airtel Money, M-Pesa, and similar services</li>
@@ -278,11 +278,11 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Why Flutterwave</h2>
-<p>Flutterwave is the chosen payment gateway for UJAMAA for the following reasons:</p>
+<p>Flutterwave is the chosen payment gateway for Ujamaa for the following reasons:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Pan-African coverage</strong> — supports MTN MoMo, Orange Money, Airtel Money, M-Pesa, Vodafone Cash and more through a single unified API, eliminating the need for separate operator agreements</li>
 <li><strong>Multi-currency</strong> — natively handles XOF, NGN, KES, GHS, ZAR, XAF and 30+ African currencies, enabling local currency investing without manual conversion on the user side</li>
-<li><strong>Proven infrastructure</strong> — trusted by large enterprises across Africa with built-in KYC/AML compliance that aligns with UJAMAA's regulatory obligations</li>
+<li><strong>Proven infrastructure</strong> — trusted by large enterprises across Africa with built-in KYC/AML compliance that aligns with Ujamaa's regulatory obligations</li>
 <li><strong>Simple API</strong> — a single REST API call initiates a mobile money charge, keeping backend integration lean and maintainable</li>
 <li><strong>Bidirectional payments</strong> — Flutterwave handles both collections (investments) and disbursements (dividends, returns) back to mobile money wallets, making it a complete payment loop for an investment platform</li>
 <li><strong>Webhook Support</strong> — Real-time payment confirmations enable instant token minting on Polygon</li>
@@ -333,7 +333,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Why Polygon</h2>
-<p>Polygon is the chosen blockchain layer for UJAMAA for the following reasons:</p>
+<p>Polygon is the chosen blockchain layer for Ujamaa for the following reasons:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Low transaction fees</strong> — gas fees are fractions of a cent ($0.001-$0.01), making micro-investments economically viable for low-income users across Africa</li>
 <li><strong>EVM compatibility</strong> — full compatibility with Ethereum smart contract standards, including <strong>ERC-3643</strong> for regulated security tokens</li>
@@ -398,13 +398,13 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 </code></div>
 <h3>5.2 Smart Contract Integration</h3>
-<p>The systems — Flutterwave and Polygon — are connected at the UJAMAA backend layer through smart contracts:</p>
+<p>The systems — Flutterwave and Polygon — are connected at the Ujamaa backend layer through smart contracts:</p>
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
 │                    SMART CONTRACT INTEGRATION LAYER                          │
 │                                                                              │
 │  Flutterwave Webhook (payment confirmed)                                    │
 │          ↓                                                                    │
-│  UJAMAA Backend (FastAPI + PostgreSQL)                                      │
+│  Ujamaa Backend (FastAPI + PostgreSQL)                                      │
 │          ↓                                                                    │
 │  Compliance Check (OFFCHAIN)                                                │
 │    • Verify user KYC status in database                                     │
@@ -460,7 +460,7 @@
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
 │  STEP-BY-STEP: MOBILE MONEY INVESTMENT                                      │
 │                                                                              │
-│  1. User opens the UJAMAA app and selects an asset                         │
+│  1. User opens the Ujamaa app and selects an asset                         │
 │     • Asset displayed with local currency minimum (e.g., 5,000 XOF)        │
 │     • ERC-3643 compliance badge visible (regulated security token)         │
 │                                                                              │
@@ -483,7 +483,7 @@
 │     • MTN, Orange, Airtel, M-Pesa, etc.                                    │
 │     • PIN entry on operator USSD interface                                 │
 │                                                                              │
-│  6. Flutterwave confirms payment and fires webhook to UJAMAA backend       │
+│  6. Flutterwave confirms payment and fires webhook to Ujamaa backend       │
 │     • Payment ID, transaction reference, timestamp                         │
 │     • Webhook signature verified for authenticity                          │
 │                                                                              │
@@ -530,7 +530,7 @@
 │     • Transaction fee deducted from distribution amount                    │
 │                                                                              │
 │  5. User receives SMS confirmation from mobile operator                    │
-│     • &quot;You received X XOF from UJAMAA DEFI PLATFORM - Investment Return&quot;            │
+│     • &quot;You received X XOF from Ujamaa DeFi Platform - Investment Return&quot;            │
 │     • Transaction reference included                                       │
 │                                                                              │
 │  6. Backend updates distribution status in PostgreSQL                      │
@@ -543,7 +543,7 @@
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
 │  ERC-3643 TRANSFER WITH COMPLIANCE ENFORCEMENT                              │
 │                                                                              │
-│  1. Seller initiates transfer on UJAMAA marketplace                        │
+│  1. Seller initiates transfer on Ujamaa marketplace                        │
 │     • Selects tokens to sell                                               │
 │     • Sets price in local currency or USDC                                 │
 │                                                                              │
@@ -649,7 +649,7 @@ The user selects their mobile money operator from a dynamically filtered list ba
 <p><strong>Step 3 — Mobile Number Confirmation</strong><br />
 The user confirms or enters the mobile money number to be charged. If provided at registration, this field is pre-filled. A plain-language note reads: <em>"You will receive a payment confirmation on this number."</em></p>
 <p><strong>Step 4 — Payment Prompt &amp; Confirmation</strong><br />
-Flutterwave initiates the mobile money charge. The user receives a USSD push or in-app prompt from their operator. The UJAMAA app displays a waiting screen: <em>"Waiting for your confirmation on [operator name]..."</em> with a timeout indicator (typically 5 minutes).</p>
+Flutterwave initiates the mobile money charge. The user receives a USSD push or in-app prompt from their operator. The Ujamaa app displays a waiting screen: <em>"Waiting for your confirmation on [operator name]..."</em> with a timeout indicator (typically 5 minutes).</p>
 <p><strong>Step 5 — Processing Screen</strong><br />
 Once Flutterwave confirms payment, the backend silently handles:<br />
 - Fiat-to-USDC conversion via Onafriq/Circle<br />
@@ -715,7 +715,7 @@ The confirmation screen displays:<br />
 │     • Processing time: 1-5 minutes (typically instant)                     │
 │                                                                              │
 │  5. User receives operator SMS confirming receipt                          │
-│     • &quot;You received X XOF from UJAMAA DEFI PLATFORM&quot;                                │
+│     • &quot;You received X XOF from Ujamaa DeFi Platform&quot;                                │
 │     • Transaction reference included                                       │
 │                                                                              │
 │  6. Withdrawal complete                                                    │
@@ -763,7 +763,7 @@ The confirmation screen displays:<br />
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
 │  ONCHAINID IDENTITY VERIFICATION FLOW                                       │
 │                                                                              │
-│  1. User submits KYC documents via UJAMAA frontend                         │
+│  1. User submits KYC documents via Ujamaa frontend                         │
 │     • Documents encrypted and stored off-chain (IPFS/encrypted S3)         │
 │     • PII never stored on blockchain                                       │
 │                                                                              │
@@ -806,13 +806,13 @@ The confirmation screen displays:<br />
 <li>Mobile money flow screens use <strong>simple, conversational language</strong> with no financial or technical jargon</li>
 <li>Font sizes and tap targets are optimized for <strong>mid-range Android devices</strong>, which are dominant across African markets</li>
 <li>Every critical action triggers an <strong>SMS fallback confirmation</strong> for users in low-connectivity environments</li>
-<li><strong>USSD Support:</strong> For feature phone users, basic investment functions available via USSD codes (e.g., <code>*123*UJAMAA#</code>)</li>
+<li><strong>USSD Support:</strong> For feature phone users, basic investment functions available via USSD codes (e.g., <code>*123*Ujamaa#</code>)</li>
 </ul>
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Regulatory Context</h2>
 <h3>10.1 African Continental Free Trade Area (AfCFTA)</h3>
-<p>The African Continental Free Trade Area adopted its <strong>Protocol on Digital Trade</strong> in February 2024, introducing harmonized rules for digital payments across member states and calling for interoperability between digital payment systems. This regulatory direction is favorable for a pan-African platform like UJAMAA.</p>
+<p>The African Continental Free Trade Area adopted its <strong>Protocol on Digital Trade</strong> in February 2024, introducing harmonized rules for digital payments across member states and calling for interoperability between digital payment systems. This regulatory direction is favorable for a pan-African platform like Ujamaa.</p>
 <h3>10.2 Regional Regulatory Frameworks</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -908,7 +908,7 @@ POST https://api.flutterwave.com/v3/charges?type=mobile_money_franchise
     &quot;email&quot;: &quot;user@example.com&quot;,
     &quot;phone_number&quot;: &quot;+22912345678&quot;,
     &quot;network&quot;: &quot;MTN&quot;,
-    &quot;tx_ref&quot;: &quot;UJAMAA_INV_12345&quot;,
+    &quot;tx_ref&quot;: &quot;Ujamaa_INV_12345&quot;,
     &quot;redirect_url&quot;: &quot;https://Ujamaa DeFi Platform.com/investment/success&quot;,
     &quot;meta&quot;: {
         &quot;user_id&quot;: &quot;user_123&quot;,
@@ -935,7 +935,7 @@ from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com'))
 
 # Load contract
-contract = w3.eth.contract(address=UJAMAA_TOKENIZER_ADDRESS, abi=ABI)
+contract = w3.eth.contract(address=Ujamaa_TOKENIZER_ADDRESS, abi=ABI)
 
 # Mint tokens
 tx = contract.functions.mint(
@@ -1111,7 +1111,7 @@ receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
           <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

@@ -1,4 +1,4 @@
-# 🎨 UJAMAA Documentation Design System 2026
+# 🎨 Ujamaa Documentation Design System 2026
 
 **Version:** 2.0  
 **Last Updated:** March 27, 2026  
@@ -8,7 +8,7 @@
 
 ## 📋 Overview
 
-The UJAMAA Documentation Design System is a comprehensive, professional design framework built on extensive research of modern documentation best practices and 2026 design trends.
+The Ujamaa Documentation Design System is a comprehensive, professional design framework built on extensive research of modern documentation best practices and 2026 design trends.
 
 ### Research Sources
 
@@ -413,4 +413,4 @@ Already supported via `prefers-color-scheme`:
 
 ---
 
-**© 2026 UJAMAA DeFi Platform. All rights reserved.**
+**© 2026 Ujamaa DeFi Platform. All rights reserved.**

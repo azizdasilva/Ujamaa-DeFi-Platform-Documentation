@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Smart Contract Integration Guide - UJAMAA Documentation</title>
+  <title>Smart Contract Integration Guide - Ujamaa Documentation</title>
   <link rel="stylesheet" href="../assets/styles.css">
   
 
@@ -279,7 +279,7 @@ POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
 POLYGON_CHAIN_ID=80002
 
 # Contract Addresses (from Week 2 deployment)
-UJAMAA_TOKEN_ADDRESS=0x...
+Ujamaa_TOKEN_ADDRESS=0x...
 IDENTITY_REGISTRY_ADDRESS=0x...
 COMPLIANCE_MODULE_ADDRESS=0x...
 ASSET_PROOF_ADDRESS=0x...
@@ -315,7 +315,7 @@ class BlockchainService:
 
         # Initialize contract instances
         self.token_contract = self.w3.eth.contract(
-            address=os.getenv('UJAMAA_TOKEN_ADDRESS'),
+            address=os.getenv('Ujamaa_TOKEN_ADDRESS'),
             abi=self.token_abi
         )
 
@@ -742,7 +742,7 @@ export const EXPLORER_URL = 'https://amoy.polygonscan.com/tx/';
 <h3>File: <code>frontend/src/hooks/useUjamaaToken.ts</code></h3>
 <div class="docs-pre"><code>import { useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
 import { useQueryClient } from '@tanstack/react-query';
-import UJAMAA_TOKEN_ABI from '../abi/UjamaaToken.json';
+import Ujamaa_TOKEN_ABI from '../abi/UjamaaToken.json';
 import { CONTRACT_ADDRESSES } from '../web3/addresses';
 
 export function useUjamaaToken() {
@@ -752,7 +752,7 @@ export function useUjamaaToken() {
 
   const { data: balance, refetch: refetchBalance } = useContractRead({
     address: CONTRACT_ADDRESSES.UjamaaToken,
-    abi: UJAMAA_TOKEN_ABI,
+    abi: Ujamaa_TOKEN_ABI,
     functionName: 'balanceOf',
     args: [userAddress], // From useAccount()
     watch: true, // Auto-refetch on block change
@@ -760,13 +760,13 @@ export function useUjamaaToken() {
 
   const { data: totalSupply } = useContractRead({
     address: CONTRACT_ADDRESSES.UjamaaToken,
-    abi: UJAMAA_TOKEN_ABI,
+    abi: Ujamaa_TOKEN_ABI,
     functionName: 'totalSupply',
   });
 
   const { data: navPerShare } = useContractRead({
     address: CONTRACT_ADDRESSES.UjamaaToken,
-    abi: UJAMAA_TOKEN_ABI,
+    abi: Ujamaa_TOKEN_ABI,
     functionName: 'getNavPerShare',
   });
 
@@ -779,7 +779,7 @@ export function useUjamaaToken() {
     error: mintError,
   } = useContractWrite({
     address: CONTRACT_ADDRESSES.UjamaaToken,
-    abi: UJAMAA_TOKEN_ABI,
+    abi: Ujamaa_TOKEN_ABI,
     functionName: 'mint',
   });
 
@@ -1317,7 +1317,7 @@ async def create_investment(request: Request, ...):
           <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

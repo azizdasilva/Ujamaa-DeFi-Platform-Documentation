@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Deployment Guide - UJAMAA Documentation</title>
+  <title>Deployment Guide - Ujamaa Documentation</title>
   <link rel="stylesheet" href="../assets/styles.css">
   
 
@@ -118,7 +118,7 @@
         <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned) | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> DevOps Engineers, SREs, Platform Engineers</p></div>
 
         <h1>Deployment Guide</h1>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>UJAMAA DEFI PLATFORM Infrastructure &amp; Operations</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform Infrastructure &amp; Operations</h2>
 <p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
 <strong>Version:</strong> 2.0 (SRS v2.0 Aligned)<br />
 <strong>Date:</strong> March 17, 2026<br />
@@ -143,7 +143,7 @@
 <hr />
 <h1>1. Executive Summary</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Deployment Overview</h2>
-<p>UJAMAA DEFI PLATFORM is deployed as a cloud-native, containerized application using:</p>
+<p>Ujamaa DeFi Platform is deployed as a cloud-native, containerized application using:</p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -532,7 +532,7 @@ metadata:
     name: production
     istio-injection: enabled
   annotations:
-    description: &quot;UJAMAA DEFI PLATFORM Production Environment&quot;
+    description: &quot;Ujamaa DeFi Platform Production Environment&quot;
 ---
 apiVersion: v1
 kind: Namespace
@@ -1559,7 +1559,7 @@ resource &quot;vault_kubernetes_auth_backend_role&quot; &quot;ujamaa&quot; {
 resource &quot;vault_mount&quot; &quot;secrets&quot; {
   path        = &quot;ujamaa-secrets&quot;
   type        = &quot;kv-v2&quot;
-  description = &quot;UJAMAA DEFI PLATFORM secrets&quot;
+  description = &quot;Ujamaa DeFi Platform secrets&quot;
 }
 
 resource &quot;vault_kv_secret_v2&quot; &quot;database&quot; {
@@ -1846,7 +1846,7 @@ resource &quot;aws_db_instance&quot; &quot;main&quot; {
           <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>
