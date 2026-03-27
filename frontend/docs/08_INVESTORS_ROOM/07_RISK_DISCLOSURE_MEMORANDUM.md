@@ -507,7 +507,7 @@ Departure of key personnel could:
 
 Service provider failures could affect:
 - Custody (Fireblocks)
-- Banking (BIIC/MCB)
+- Banking (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - Auditing (Big Four)
 - Legal (counsel)
 
@@ -637,7 +637,7 @@ Fireblocks provides MPC custody:
 
 **Risk Description:**
 
-BIIC/MCB hold escrow accounts:
+BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB hold escrow accounts:
 - Bank failure risk (though regulated)
 - Operational errors (wire mistakes)
 - Regulatory seizure (in extreme cases)

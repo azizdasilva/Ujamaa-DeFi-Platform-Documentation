@@ -60,7 +60,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 
 **Regulatory Moat:** Mauritius FSC CIS Manager License (application Q2 2026), ERC-3643 compliant, OHADA legal framework
 
-**Institutional Infrastructure:** Fireblocks custody (integration in progress), BIIC/MCB escrow (account opening in progress), bank-grade security
+**Institutional Infrastructure:** Fireblocks custody (integration in progress), BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow (account opening in progress), bank-grade security
 
 **First-Mover Advantage:** First ERC-3643 African RWA tokenization platform
 
@@ -85,7 +85,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 ### 1.6 Investment Highlights
 
 ✓ **Attractive Risk-Adjusted Returns:** 10-15% APR, diversified pool, collateralized  
-✓ **Institutional-Grade Infrastructure:** Fireblocks, BIIC/MCB, ERC-3643  
+✓ **Institutional-Grade Infrastructure:** Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, ERC-3643  
 ✓ **Regulatory Clarity:** Mauritius FSC, OHADA, MiCA compliant  
 ✓ **Measurable Impact:** 5,000+ jobs created (5-year target), UN SDG alignment  
 ✓ **Experienced Team:** Ex-Goldman Sachs, BlackRock, Coinbase, HSBC  
@@ -135,7 +135,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 | **CIS Manager License (Cat. 1)** | Mauritius FSC | Application | Q2 2026 |
 | **ONCHAINID Claim Issuer** | Ethereum/Polygon | Pending | Q2 2026 |
 | **Fireblocks Institutional** | Global | Approved | Active |
-| **BIIC/MCB Escrow** | Mauritius | Pending | Q2 2026 |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow** | Mauritius | Pending | Q2 2026 |
 
 ### 2.4 History & Mission
 
@@ -197,7 +197,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 | **Liquidity Pools** | Diversified pools (Industrie, Agriculture, Trade Finance, Renewable Energy) | Risk diversification, sector specialization |
 | **Guarantee Token** | ERC-3643 NFT representing certified collateral | Secured lending, automatic release |
 | **Fireblocks Custody** | Institutional MPC custody | Bank-grade security, insurance |
-| **Bank Escrow** | BIIC/MCB regulated accounts | Fiat on/off ramps, regulatory compliance |
+| **Bank Escrow** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB regulated accounts | Fiat on/off ramps, regulatory compliance |
 
 #### 3.2.2 How It Works
 
@@ -209,7 +209,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 │  INVESTORS                                                      │
 │  (Pension Funds, Family Offices, DFIs)                         │
 │       │                                                         │
-│       │ EUROD Wire to BIIC Escrow                                │
+│       │ EUROD Wire to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow                                │
 │       ▼                                                         │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │              LIQUIDITY POOL (Smart Contract)            │   │
@@ -256,7 +256,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 | **Yield-Bearing uLP Token** | Value accrual model (NAV increases, balance constant) | Simpler accounting, tax efficiency |
 | **Guarantee Token Collateral** | ERC-3643 NFT representing certified merchandise | Enforceable security interest, OHADA law |
 | **Diversified Pool Model** | 40+ financings per pool | Single-name risk mitigation |
-| **Bank Escrow Integration** | Direct BIIC/MCB API integration | Fiat on/off ramps, regulatory compliance |
+| **Bank Escrow Integration** | Direct BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration | Fiat on/off ramps, regulatory compliance |
 | **Mobile Money On-Ramp** | M-Pesa, MTN, Airtel integration | African retail access (Phase 2) |
 
 ---
@@ -410,7 +410,7 @@ Global RWA Tokenization AUM:
 │  │  • FastAPI Microservices (Python)                       │   │
 │  │  • REST API + WebSocket (Real-time updates)             │   │
 │  │  • Fireblocks API Integration                           │   │
-│  │  • BIIC/MCB Bank API Integration                        │   │
+│  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Bank API Integration                        │   │
 │  │  • Mobile Money API (M-Pesa, MTN, Airtel)               │   │
 │  │  • Chainlink Oracle Integration                         │   │
 │  └─────────────────────────────────────────────────────────┘   │
@@ -447,7 +447,7 @@ Global RWA Tokenization AUM:
 │  INFRASTRUCTURE                                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  • Fireblocks MPC Custody                               │   │
-│  │  • BIIC/MCB Escrow Accounts                             │   │
+│  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Accounts                             │   │
 │  │  • PostgreSQL (Primary Database)                        │   │
 │  │  • Redis (Caching Layer)                                │   │
 │  │  • Kafka (Event Streaming)                              │   │
@@ -554,7 +554,7 @@ Global RWA Tokenization AUM:
 |---------------|--------------|-------------|
 | **Audit & Attestation** | 2% | Smart contract audits, proof of reserves |
 | **Custody Fees** | 0.5% | Fireblocks MPC custody |
-| **Bank Fees** | 0.3% | BIIC/MCB escrow accounts |
+| **Bank Fees** | 0.3% | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow accounts |
 | **Regulatory Fees** | 0.2% | FSC filings, compliance |
 | **Total Variable** | **3%** | |
 
@@ -630,7 +630,7 @@ Global RWA Tokenization AUM:
 
 | Channel | Strategy | Target Contribution |
 |---------|----------|---------------------|
-| **Private Banks** | BIIC, MCB private banking divisions | 15% of raise |
+| **Private Banks** | BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB private banking divisions | 15% of raise |
 | **Family Office Advisors** | Campden Wealth, Family Office Network | 10% of raise |
 
 #### 7.2.3 Digital Marketing
@@ -704,7 +704,7 @@ Global RWA Tokenization AUM:
 | **Q3 2025** | Smart contract development initiated | ✓ Complete |
 | **Q4 2025** | Transaction structure validated (market research) | ✓ Complete |
 | **Q1 2026** | Fireblocks integration | In progress |
-| **Q1 2026** | BIIC/MCB escrow account opening | In progress |
+| **Q1 2026** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow account opening | In progress |
 
 ### 8.2 Pipeline (Q2-Q4 2026)
 
@@ -1137,7 +1137,7 @@ Investors must acknowledge the following risks before investing:
 │                                                                 │
 │  STEP 5: FUND WIRE & TOKEN MINTING                              │
 │  ──────────────────────────────────                             │
-│  • EUROD Wire to BIIC/MCB Escrow                                 │
+│  • EUROD Wire to BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow                                 │
 │  • Confirm Receipt                                              │
 │  • uLP Tokens Minted to Investor Wallet                         │
 │  • Welcome Package Sent                                         │
@@ -1247,7 +1247,7 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 **Forward-Looking Statements:** This document contains forward-looking statements regarding:
 - Future performance and AUM targets (€50M → €1.5B)
 - Expected yields and returns (10-15% APR target, not guaranteed)
-- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC/MCB — all in various stages of discussion/integration)
+- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
 - Regulatory approvals (Mauritius FSC CIS Manager License — application expected Q2 2026)
 - Technology development (smart contract audits, integrations)
 - Impact metrics (jobs created, GDP contribution — targets, not achievements)
@@ -1260,7 +1260,7 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 - GDIZ (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
 - SIPI: Target partner (no agreement signed)
 - Fireblocks: Integration in progress (not yet approved)
-- BIIC/MCB: Bank account opening in progress
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB: Bank account opening in progress
 
 **Confidentiality:** This document is confidential and intended solely for the recipient. Distribution to unauthorized parties is prohibited.
 

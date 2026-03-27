@@ -212,7 +212,7 @@ The representative transaction structures in this document are based on:
 - ✅ Smart contract audit completion (Q2 2026)
 - 📋 GDIZ partnership agreement execution
 - 📋 SIPI partnership agreement execution
-- 📋 BIIC/MCB escrow account opening
+- 📋 BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow account opening
 - 📋 Mauritius FSC license approval
 
 ---
@@ -268,7 +268,7 @@ The representative transaction structures in this document are based on:
 | **Mauritius FSC License** | Application preparation | Q2 2026 |
 | **Smart Contract Audits** | Auditor selection | Q2 2026 |
 | **GDIZ Partnership** | Discussions ongoing | Q2 2026 |
-| **BIIC/MCB Accounts** | Application preparation | Q2 2026 |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Accounts** | Application preparation | Q2 2026 |
 | **Fireblocks Integration** | Onboarding in progress | Q2 2026 |
 | **First Close (€20M)** | Investor outreach | Q3 2026 |
 | **First Transaction** | Pipeline conversion | Q3-Q4 2026 |

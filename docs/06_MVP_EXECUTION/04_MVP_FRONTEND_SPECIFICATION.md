@@ -1223,7 +1223,7 @@ Step 3: Funding Source
 │  ○ Ondo EUROD (EUROD) Wallet (0x1234...5678)          │
 │    Balance: €2,450,000                  │
 │                                         │
-│  ○ Bank Escrow (BIIC)                   │
+│  ○ Bank Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce))                   │
 │    Wire transfer instructions           │
 │                                         │
 │  [Continue →]                           │

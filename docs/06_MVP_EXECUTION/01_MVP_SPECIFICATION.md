@@ -22,7 +22,7 @@
 - ✅ SIWE authentication (replacing ad-hoc wallet signature)
 - ✅ RBAC authorization matrix (10+ roles)
 - ✅ Fireblocks custody integration (platform treasury)
-- ✅ Bank escrow integration (BIIC/MCB, mock for MVP)
+- ✅ Bank escrow integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, mock for MVP)
 - ✅ KYB threshold (€100K enhanced due diligence)
 
 **New Sections:**
@@ -75,7 +75,7 @@ MVP is the **second iteration** of the Ujamaa DeFi Platform, introducing institu
 - Mock banking (testnet-only)
 
 **Production:** Full institutional platform
-- Real bank integration (BIIC/MCB)
+- Real bank integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - Mauritius entity (CIS Manager License)
 - OHADA compliance
 - Mainnet deployment
@@ -444,7 +444,7 @@ Simulates escrow accounts for testnet. Interface designed for easy swap with rea
 - No real money moves
 
 **Production (Real):**
-- BIIC/MCB API integration
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration
 - Real escrow accounts
 - Actual wire transfers
 
@@ -473,7 +473,7 @@ class MockBankService(BankService):
 # Production Implementation (real)
 class BIICBankService(BankService):
     def create_escrow_account(self, investor_id: str) -> str:
-        # Real BIIC API integration
+        # Real BIIC (Banque Internationale pour l'Industrie et le Commerce) API integration
 ```
 
 ---
@@ -925,7 +925,7 @@ Footer Navigation:
 |-----------|-------|------------|--------|
 | **uLPToken** | Testnet deployment | Mainnet deployment + audit | 1 week |
 | **LiquidityPool** | Testnet deployment | Mainnet deployment + audit | 1 week |
-| **MockEscrow** | Mock bank service | Real BIIC/MCB API | 2-3 weeks |
+| **MockEscrow** | Mock bank service | Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API | 2-3 weeks |
 | **MockFiatRamp** | Mock fiat service | Real Ondo Finance/bank API | 2-3 weeks |
 | **Mock GDIZ** | Mock service | Real GDIZ integration | 2-3 weeks |
 | **Yield Calculation** | Same (real math) | Same (real data) | 0 weeks |
@@ -946,7 +946,7 @@ Before mainnet deployment:
 
 1. ✅ **Security Audit** - Third-party audit (CertiK/Trail of Bits)
 2. ✅ **Mauritius Entity** - CIS Manager License
-3. ✅ **Bank Partnerships** - BIIC/MCB escrow accounts
+3. ✅ **Bank Partnerships** - BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow accounts
 4. ✅ **Legal Review** - OHADA compliance, securities law
 5. ✅ **Compliance Officers** - AML/CFT officer appointed
 6. ✅ **Governance Approval** - Multi-sig for mainnet deployment
@@ -958,7 +958,7 @@ MVP (Testnet)                    Production (Mainnet)
 ─────────────────                  ────────────────────
 Week 8: MVP launch               Week 9-16: Parallel tracks
                                    ├── Legal (Mauritius entity)
-                                   ├── Banking (BIIC/MCB partnership)
+                                   ├── Banking (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB partnership)
                                    ├── Audit (third-party security)
                                    └── Compliance (officers hired)
 

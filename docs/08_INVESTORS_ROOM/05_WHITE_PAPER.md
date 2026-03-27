@@ -14,7 +14,7 @@
 
 The UJAMAA DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, UJAMAA enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.
 
-This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
+This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
 
 ---
 
@@ -61,7 +61,7 @@ UJAMAA DeFi Platform bridges this gap through blockchain-based tokenization of A
 - **Yield-Bearing Tokens:** Value accrual model (NAV increases, balance constant) for tax efficiency
 - **Collateralized Lending:** Guarantee Token (ERC-3643 NFT) represents certified merchandise
 - **Institutional Custody:** Fireblocks MPC technology with $1B+ insurance
-- **Bank Integration:** BIIC/MCB Mauritius escrow accounts for fiat on/off ramps
+- **Bank Integration:** BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius escrow accounts for fiat on/off ramps
 - **Regulatory License:** Mauritius FSC CIS Manager (Category 1)
 
 ### 1.3 Pilot Validation
@@ -211,7 +211,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 │  │  API LAYER (FastAPI Microservices)                      │   │
 │  │  • REST API + WebSocket                                 │   │
 │  │  • Fireblocks API Integration                           │   │
-│  │  • BIIC/MCB Bank API Integration                        │   │
+│  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Bank API Integration                        │   │
 │  │  • Mobile Money API (M-Pesa, MTN, Airtel)               │   │
 │  │  • Chainlink Oracle Integration                         │   │
 │  └─────────────────────────────────────────────────────────┘   │
@@ -230,7 +230,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  INFRASTRUCTURE                                         │   │
 │  │  • Fireblocks MPC Custody                               │   │
-│  │  • BIIC/MCB Escrow Accounts                             │   │
+│  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Accounts                             │   │
 │  │  • PostgreSQL + Redis                                   │   │
 │  │  • Kafka Event Streaming                                │   │
 │  │  • Kubernetes Orchestration                             │   │
@@ -275,7 +275,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 | Integration | Purpose | Protocol |
 |-------------|---------|----------|
 | **Fireblocks API** | Custody, MPC wallet management | REST + Webhooks |
-| **BIIC/MCB API** | Escrow accounts, wire transfers | ISO 20022 + REST |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API** | Escrow accounts, wire transfers | ISO 20022 + REST |
 | **M-Pesa/MTN/Airtel** | Mobile Money on/off ramps | REST API |
 | **Chainlink** | Price feeds, proof of reserves | Decentralized Oracle |
 | **ONCHAINID** | Identity verification, claims | Smart Contract |
@@ -307,7 +307,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 | Component | Provider | Function |
 |-----------|----------|----------|
 | **MPC Custody** | Fireblocks | Digital asset storage, transaction signing |
-| **Escrow Accounts** | BIIC/MCB Mauritius | Fiat deposits, wire transfers |
+| **Escrow Accounts** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius | Fiat deposits, wire transfers |
 | **Mobile Money** | M-Pesa/MTN/Airtel | African retail on/off ramps |
 
 **Data Infrastructure:**
@@ -353,7 +353,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 4. Liquidity Pool deploys Ondo EUROD (EUROD) → Industrial wallet
 5. Guarantee Token held by Pool → Collateral security
 6. Industrial produces goods → Sales to off-taker (e.g., ZARA)
-7. Off-taker pays → Repayment Escrow (BIIC)
+7. Off-taker pays → Repayment Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce))
 8. Smart contract distributes:
    - Principal + Interest → Pool
    - Surplus → Industrial
@@ -424,7 +424,7 @@ Total uLP Supply = Constant (after initial minting)
 **Minting (Initial Investment):**
 
 ```
-1. Investor wires Ondo EUROD (EUROD) to BIIC Escrow
+1. Investor wires Ondo EUROD (EUROD) to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow
 2. Smart Contract receives Ondo EUROD (EUROD)
 3. uLP Tokens minted at current NAV
 4. uLP deposited to investor wallet
@@ -1129,7 +1129,7 @@ def erase_pii(investor_id):
 | **CIS Manager License (Cat. 1)** | Mauritius FSC | Application Q2 2026 | $25K capital, compliance officer, auditor |
 | **ONCHAINID Claim Issuer** | Ethereum/Polygon | Pending | Identity verification capability |
 | **Fireblocks Institutional** | Global | Approved | KYB, AML program |
-| **BIIC/MCB Escrow** | Mauritius | Pending | FSC license, escrow agreement |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow** | Mauritius | Pending | FSC license, escrow agreement |
 
 ---
 
@@ -1201,7 +1201,7 @@ def erase_pii(investor_id):
 | **Withdrawal Limits** | €1M/day (auto), >€1M (manual) |
 | **Whitelist** | Pre-approved addresses only |
 
-#### 7.2.2 Bank Escrow (BIIC/MCB)
+#### 7.2.2 Bank Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 
 **Security Measures:**
 
@@ -1422,7 +1422,7 @@ The UJAMAA DeFi Platform represents a paradigm shift in African SME financing. B
 1. **Yield-Bearing uLP Token:** Value accrual model for tax-efficient yield distribution
 2. **Guarantee Token Collateral:** ERC-3643 NFT representing certified merchandise
 3. **Diversified Liquidity Pools:** Risk mitigation through 40+ financings per pool
-4. **Institutional Infrastructure:** Fireblocks, BIIC/MCB, ERC-3643 compliance
+4. **Institutional Infrastructure:** Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, ERC-3643 compliance
 5. **Regulatory License:** Mauritius FSC CIS Manager (Category 1)
 
 **Market Opportunity:**

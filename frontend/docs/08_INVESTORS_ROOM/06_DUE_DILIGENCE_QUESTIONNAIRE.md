@@ -82,7 +82,7 @@
 | **Legal Counsel (Mauritius)** | [TBD] | Selection Q2 2026 |
 | **Legal Counsel (OHADA)** | [TBD] | Selection Q2 2026 |
 | **Custodian** | Fireblocks | Approved |
-| **Bank** | BIIC / MCB Mauritius | Pending |
+| **Bank** | BIIC (Banque Internationale pour l'Industrie et le Commerce) / MCB Mauritius | Pending |
 | **Smart Contract Auditor** | CertiK + OpenZeppelin | Q2 2026 |
 | **Compliance Officer** | [TBD - In-house] | Hiring Q2 2026 |
 
@@ -439,7 +439,7 @@
 | Service | Provider | SLA |
 |---------|----------|-----|
 | **Custody** | Fireblocks | 99.9% uLPime, $1B+ insurance |
-| **Bank Escrow** | BIIC/MCB | Same-day settlement (Ondo EUROD (EUROD)) |
+| **Bank Escrow** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB | Same-day settlement (Ondo EUROD (EUROD)) |
 | **Cloud Hosting** | AWS/GCP | 99.99% uLPime |
 | **Smart Contract** | Polygon | 99.9% uLPime (network dependent) |
 | **Oracle** | Chainlink | Decentralized, 99.9% uLPime |
@@ -471,7 +471,7 @@
 | **Tax Residence** | Mauritius | Complete | Active |
 | **ONCHAINID Claim Issuer** | Ethereum/Polygon | Pending | Q2 2026 |
 | **Fireblocks Institutional** | Global | Approved | Active |
-| **BIIC/MCB Escrow** | Mauritius | Pending | Q2 2026 |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow** | Mauritius | Pending | Q2 2026 |
 
 ### 6.2 AML/KYC Program
 
@@ -616,7 +616,7 @@
 | Provider | Role | Status | Contact |
 |----------|------|--------|---------|
 | **Fireblocks** | Digital Asset Custody | Approved | institutional@fireblocks.com |
-| **BIIC Mauritius** | Bank Escrow | Pending | [TBD] |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius** | Bank Escrow | Pending | [TBD] |
 | **MCB Mauritius** | Bank Escrow | Pending | [TBD] |
 | **CertiK** | Smart Contract Auditor | Q2 2026 | audits@certik.com |
 | **OpenZeppelin** | Smart Contract Auditor | Q2 2026 | audits@openzeppelin.com |
@@ -636,7 +636,7 @@
 | Provider | Due Diligence Status |
 |----------|---------------------|
 | **Fireblocks** | Complete (SOC 2 Type II, $1B+ insurance, MPC technology) |
-| **BIIC/MCB** | In progress (regulatory review, escrow agreement) |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB** | In progress (regulatory review, escrow agreement) |
 | **CertiK/OpenZeppelin** | In progress (engagement letter, scope definition) |
 | **Administrator/Auditor** | RFP process (Q2 2026) |
 
@@ -691,8 +691,8 @@
 
 | Account | Purpose | Signatories |
 |---------|---------|-------------|
-| **Operating Account (BIIC)** | Operating expenses | CEO + CFO (2-of-2) |
-| **Escrow Account (BIIC/MCB)** | Investor funds | CEO + CFO + Custodian (2-of-3) |
+| **Operating Account (BIIC (Banque Internationale pour l'Industrie et le Commerce))** | Operating expenses | CEO + CFO (2-of-2) |
+| **Escrow Account (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)** | Investor funds | CEO + CFO + Custodian (2-of-3) |
 | **Fireblocks Vault** | Digital assets | CTO + CFO + CEO (3-of-5 multisig) |
 
 ---

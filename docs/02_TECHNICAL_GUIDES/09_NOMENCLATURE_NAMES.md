@@ -171,7 +171,7 @@ UJAMAA Gateways provide off-chain data to smart contracts in a secure and decent
 │                                                                  │
 │  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐    │
 │  │  Bank API    │     │  Chainlink   │     │  GDIZ/SIPI   │    │
-│  │  (BIIC/MCB)  │     │  Price Feeds │     │  Industrial  │    │
+│  │  (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)  │     │  Price Feeds │     │  Industrial  │    │
 │  └──────┬───────┘     └──────┬───────┘     └──────┬───────┘    │
 │         │                    │                    │             │
 │         ▼                    ▼                    ▼             │
@@ -197,7 +197,7 @@ UJAMAA Gateways provide off-chain data to smart contracts in a secure and decent
 
 | Data | Source | Frequency | Contract |
 |------|--------|-----------|----------|
-| Escrow account balance | Bank API (BIIC/MCB) | Daily | `ReserveGateway.sol` |
+| Escrow account balance | Bank API (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB) | Daily | `ReserveGateway.sol` |
 | Stablecoin reserves | Blockchain (on-chain) | Real-time | `ReserveGateway.sol` |
 | Reserve ratio | Calculated | Daily | `ReserveGateway.sol` |
 
@@ -217,7 +217,7 @@ interface IReserveGateway {
 # services/gateway/reserve_gateway.py
 class ReserveGateway:
     def fetch_bank_balance(self, escrow_account: str) -> int:
-        """Fetches bank balance from BIIC/MCB API."""
+        """Fetches bank balance from BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API."""
         pass
 
     def fetch_stablecoin_reserves(self, token_address: str) -> int:
@@ -630,7 +630,7 @@ frontend/src/
 
 | Service | Name | File | Role |
 |---------|------|------|------|
-| **Bank Integration** | `bank_integration.py` | `services/production/bank_integration.py` | BIIC/MCB integration |
+| **Bank Integration** | `bank_integration.py` | `services/production/bank_integration.py` | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration |
 | **Escrow Service** | `escrow_service.py` | `services/production/escrow_service.py` | Real escrow account management |
 | **GDIZ Integration** | `gdiz_integration.py` | `services/production/gdiz_integration.py` | GDIZ/SIPI API |
 | **Compliance Service** | `compliance_service.py` | `services/production/compliance_service.py` | Institutional KYB/KYC |

@@ -622,7 +622,7 @@ export const MVP_CONFIG = {
       - Regulatory approved
       - Mainnet deployed
 
-      **For Production:** Requires Mauritius FSC license, BIIC/MCB partnership
+      **For Production:** Requires Mauritius FSC license, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB partnership
     `,
   },
 
@@ -2945,7 +2945,7 @@ The Frontend Specification provides complete guidance for:
 2. **Proof Above the Fold:**
    - Key metrics (TVL, investors, countries)
    - Security badges (ERC-3643, audits)
-   - Partner logos (Polygon, BIIC, etc.)
+   - Partner logos (Polygon, BIIC (Banque Internationale pour l'Industrie et le Commerce), etc.)
 
 3. **Clear Value Proposition:**
    - Conversational tone (not institutional)

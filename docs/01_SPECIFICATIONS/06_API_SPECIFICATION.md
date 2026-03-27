@@ -24,7 +24,7 @@
 - RBAC middleware for all institutional endpoints
 - Session management (Redis-backed)
 - Fireblocks custody integration endpoints
-- Bank escrow integration endpoints (BIIC/MCB)
+- Bank escrow integration endpoints (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 
 **New Endpoints:**
 - `/api/v1/auth/*` - SIWE authentication (nonce, login, refresh, logout)
@@ -1847,14 +1847,14 @@ Response:
 
 **GET /api/v1/bank-escrow/accounts**
 ```
-Description: List escrow accounts (BIIC/MCB)
+Description: List escrow accounts (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 Auth: JWT (Pool Manager, Compliance Officer)
 Response:
 {
   "accounts": [
     {
       "accountId": "escrow_001",
-      "bank": "BIIC",
+      "bank": "BIIC (Banque Internationale pour l'Industrie et le Commerce)",
       "accountNumber": "MU23BIIC01234567890123456",
       "type": "INVESTOR_ESCROW",
       "poolId": "pool_industrie_001",
@@ -1911,7 +1911,7 @@ Response:
   "amount": "1000000.00",
   "currency": "EUR",
   "completedAt": "2026-03-26T09:45:00Z",
-  "bankReference": "BIIC-REF-20260326-001"
+  "bankReference": "BIIC (Banque Internationale pour l'Industrie et le Commerce)-REF-20260326-001"
 }
 ```
 
@@ -1939,7 +1939,7 @@ Response:
 
 **MVP vs Production:**
 - **MVP (Testnet):** MockBankEscrowService simulates wire transfers
-- **Production:** Real BIIC/MCB API integration + Mobile Money providers
+- **Production:** Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration + Mobile Money providers
 
 ---
 

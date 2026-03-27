@@ -129,7 +129,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'A financial arrangement where a third-party bank holds and regulates payment of funds or assets for the primary parties involved in a transaction. The escrow agent releases funds only when predetermined conditions are met.',
     category: 'Banking',
     relatedTerms: ['Escrow Agent', 'Custody', 'Security'],
-    platformContext: 'Ujamaa partners with regulated banks (e.g., BIIC, MCB) to hold investor funds in escrow accounts.',
+    platformContext: 'Ujamaa partners with regulated banks (e.g., BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB) to hold investor funds in escrow accounts.',
   },
   {
     term: 'Base Rate',

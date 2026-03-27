@@ -44,7 +44,7 @@ This document tracks the progress of updating all UJAMAA DeFi Platform documenta
 - SIWE + JWT authentication
 - RBAC authorization matrix
 - Fireblocks custody integration
-- Bank escrow (BIIC/MCB)
+- Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 
 **2. Liquidity Pool Layer (NEW Section 4.2)**
 - Complete liquidity pool architecture
@@ -114,7 +114,7 @@ This document tracks the progress of updating all UJAMAA DeFi Platform documenta
 
 **8. Bank Escrow Integration (NEW)**
 - MVP vs Production comparison
-- BIIC/MCB account structure
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB account structure
 - Mobile Money integration (M-Pesa, MTN, Airtel)
 
 #### Files Modified:
@@ -125,7 +125,7 @@ This document tracks the progress of updating all UJAMAA DeFi Platform documenta
 - ✅ Section 1.2.2 (Authorization Matrix)
 - ✅ Section 1.2.3 (OWASP Top 10 Mitigations)
 - ✅ Section 1.2 (uLP Token, Liquidity Pool, Fireblocks, Bank Escrow)
-- ✅ Section 2.1 (Ecosystem Position - Fireblocks, BIIC/MCB)
+- ✅ Section 2.1 (Ecosystem Position - Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 
 ---
 
@@ -684,7 +684,7 @@ For each updated document:
 - [ ] RBAC roles consistent across docs
 - [ ] NAV formula consistent
 - [ ] Yield calculation consistent
-- [ ] Bank names consistent (BIIC, MCB)
+- [ ] Bank names consistent (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB)
 - [ ] Fireblocks scope consistent (platform treasury only)
 
 ---

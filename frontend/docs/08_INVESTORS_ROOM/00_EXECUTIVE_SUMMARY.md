@@ -28,7 +28,7 @@
 | **Performance Fee** | 20% (with 8% preferred return hurdle) |
 | **Distribution Currency** | EUROD (Euro-pegged Stablecoin) |
 | **Custody** | Fireblocks (Institutional MPC) |
-| **Escrow Bank** | BIIC / MCB Mauritius |
+| **Escrow Bank** | BIIC (Banque Internationale pour l'Industrie et le Commerce) / MCB Mauritius |
 | **Regulatory License** | Mauritius FSC CIS Manager License |
 
 ---
@@ -60,7 +60,7 @@
 | **Guarantee Token** | Non-transferable ERC-3643 NFT representing certified merchandise/collateral |
 | **Liquidity Pools** | Diversified pools (Pool Industrie, Pool Agriculture, etc.) with automated yield distribution |
 | **Fireblocks Custody** | Institutional-grade MPC custody for all digital assets |
-| **Bank Escrow** | BIIC/MCB Mauritius regulated escrow accounts for fiat on/off ramps |
+| **Bank Escrow** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius regulated escrow accounts for fiat on/off ramps |
 
 ### How It Works (Representative Example)
 
@@ -71,13 +71,13 @@
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
 │  1. INSTITUTIONAL INVESTOR invests €10M → uLP Tokens (Pool Industrie)  │
-│     EUROD wired to BIIC Escrow → uLP minted to investor wallet          │
+│     EUROD wired to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow → uLP minted to investor wallet          │
 │                                                                         │
 │  2. GDIZ PARTNER receives €2M financing for export order production    │
 │     Guarantee Token minted (certified merchandise collateral)          │
 │     Pool holds Guarantee Token until repayment                         │
 │                                                                         │
-│  3. Off-taker pays €2M + 12% interest → Repayment Escrow (BIIC)       │
+│  3. Off-taker pays €2M + 12% interest → Repayment Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce))       │
 │     Smart contract automatically distributes:                          │
 │     - €1.8M to Pool (principal + interest)                             │
 │     - €0.2M surplus to Industrial partner                              │
@@ -168,7 +168,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 |-----------|-------------|
 | **Fireblocks Custody** | Institutional MPC security (FSC compliant) |
 | **Guarantee Token** | Proprietary ERC-3643 NFT collateral mechanism |
-| **Bank Escrow Integration** | Direct BIIC/MCB API integration |
+| **Bank Escrow Integration** | Direct BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration |
 | **Mobile Money On-Ramp** | M-Pesa, MTN, Airtel integration |
 
 ### Partnership Moat
@@ -177,7 +177,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 |---------|--------|-------|
 | **GDIZ (Benin)** | Partnership in discussion | Industrial network, deal origination |
 | **SIPI** | Target partner | Stock certification, Guarantee Token minting |
-| **BIIC/MCB** | Account opening in progress | Regulated escrow, fiat on/off ramps |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB** | Account opening in progress | Regulated escrow, fiat on/off ramps |
 | **Chainlink** | Planned integration | Oracle price feeds, proof of reserves |
 
 ---
@@ -373,7 +373,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 2. **KYB Due Diligence** → Submit corporate documents, UBO identification
 3. **Accreditation Verification** → Confirm institutional status (≥€100K)
 4. **Subscription Agreement** → Sign LPA, subscription documents
-5. **Fund Wire** → EUROD to BIIC/MCB escrow account
+5. **Fund Wire** → EUROD to BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow account
 6. **uLP Token Minting** → Tokens deposited to investor wallet
 7. **Yield Distribution** → Quarterly EUROD distributions
 
@@ -398,7 +398,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 | **CIS Manager License (Category 1)** | Mauritius FSC | Application Q2 2026 |
 | **ONCHAINID Claim Issuer** | Ethereum/Polygon | Pending |
 | **Fireblocks Institutional** | Global | Approved |
-| **BIIC/MCB Escrow Accounts** | Mauritius | Pending |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Accounts** | Mauritius | Pending |
 
 ### Compliance Framework
 
@@ -419,7 +419,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 | Benefit | Description |
 |---------|-------------|
 | **Attractive Risk-Adjusted Returns** | 10-15% APR, diversified pool, collateralized |
-| **Institutional-Grade Infrastructure** | Fireblocks custody, BIIC escrow, ERC-3643 compliance |
+| **Institutional-Grade Infrastructure** | Fireblocks custody, BIIC (Banque Internationale pour l'Industrie et le Commerce) escrow, ERC-3643 compliance |
 | **Regulatory Clarity** | Mauritius FSC licensed, OHADA legal framework |
 | **Impact Alignment** | UN SDGs, African development, job creation |
 | **First-Mover Advantage** | First ERC-3643 African RWA platform |
@@ -465,7 +465,7 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 **Forward-Looking Statements:** This document contains forward-looking statements regarding:
 - Future performance and AUM targets (€50M → €1.5B)
 - Expected yields and returns (10-15% APR target, not guaranteed)
-- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC/MCB — all in various stages of discussion/integration)
+- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
 - Regulatory approvals (Mauritius FSC CIS Manager License — application expected Q2 2026)
 - Technology development (smart contract audits, integrations)
 - Impact metrics (jobs created, GDP contribution — targets, not achievements)
@@ -476,7 +476,7 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 - GDIZ (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
 - SIPI: Target partner (no agreement signed)
 - Fireblocks: Integration in progress (not yet approved)
-- BIIC/MCB: Bank account opening in progress
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB: Bank account opening in progress
 
 **Transaction Examples:** The transaction structures shown (e.g., €2M export order financing) are representative examples based on market research and GDIZ benchmarking. Actual transactions will vary based on industrial, off-taker, and market conditions.
 

@@ -137,7 +137,7 @@
 - RBAC middleware for all institutional endpoints<br />
 - Session management (Redis-backed)<br />
 - Fireblocks custody integration endpoints<br />
-- Bank escrow integration endpoints (BIIC/MCB)</p>
+- Bank escrow integration endpoints (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)</p>
 <p><strong>New Endpoints:</strong><br />
 - <code>/api/v1/auth/*</code> - SIWE authentication (nonce, login, refresh, logout)<br />
 - <code>/api/v1/pools/*</code> - Liquidity pool operations<br />
@@ -1882,14 +1882,14 @@ Response:
 <strong>Authorization:</strong> Pool Manager, Compliance Officer  </p>
 <h3>8.8.1 Escrow Account Management</h3>
 <p><strong>GET /api/v1/bank-escrow/accounts</strong></p>
-<div class="docs-pre"><code>Description: List escrow accounts (BIIC/MCB)
+<div class="docs-pre"><code>Description: List escrow accounts (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 Auth: JWT (Pool Manager, Compliance Officer)
 Response:
 {
   &quot;accounts&quot;: [
     {
       &quot;accountId&quot;: &quot;escrow_001&quot;,
-      &quot;bank&quot;: &quot;BIIC&quot;,
+      &quot;bank&quot;: &quot;BIIC (Banque Internationale pour l'Industrie et le Commerce)&quot;,
       &quot;accountNumber&quot;: &quot;MU23BIIC01234567890123456&quot;,
       &quot;type&quot;: &quot;INVESTOR_ESCROW&quot;,
       &quot;poolId&quot;: &quot;pool_industrie_001&quot;,
@@ -1941,7 +1941,7 @@ Response:
   &quot;amount&quot;: &quot;1000000.00&quot;,
   &quot;currency&quot;: &quot;EUR&quot;,
   &quot;completedAt&quot;: &quot;2026-03-26T09:45:00Z&quot;,
-  &quot;bankReference&quot;: &quot;BIIC-REF-20260326-001&quot;
+  &quot;bankReference&quot;: &quot;BIIC (Banque Internationale pour l'Industrie et le Commerce)-REF-20260326-001&quot;
 }
 </code></div>
 <h3>8.8.3 Mobile Money Integration (Production)</h3>
@@ -1965,7 +1965,7 @@ Response:
 </code></div>
 <p><strong>MVP vs Production:</strong><br />
 - <strong>MVP (Testnet):</strong> MockBankEscrowService simulates wire transfers<br />
-- <strong>Production:</strong> Real BIIC/MCB API integration + Mobile Money providers</p>
+- <strong>Production:</strong> Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration + Mobile Money providers</p>
 <hr />
 </section>
 <h1>9. Authentication &amp; Authorization (SRS v2.1)</h1>

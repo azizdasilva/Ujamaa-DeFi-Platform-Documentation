@@ -42,7 +42,7 @@ This report confirms the **completion of all P0 critical and P1 high-priority do
 - SIWE Authentication (8-step flow)
 - RBAC Authorization Matrix (10+ roles)
 - Fireblocks Custody Integration
-- Bank Escrow Integration (BIIC/MCB)
+- Bank Escrow Integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - OWASP Top 10 (2025) Mitigations
 
 ### ✅ 2. Smart Contract Specification
@@ -93,7 +93,7 @@ This report confirms the **completion of all P0 critical and P1 high-priority do
 
 **1. Deployment Guide Updates:**
 - Fireblocks deployment (vault setup, multisig policy)
-- Bank escrow deployment (MockEscrow for MVP, BIIC/MCB for production)
+- Bank escrow deployment (MockEscrow for MVP, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB for production)
 - uLP/UJG contract deployment scripts
 - Environment configuration (institutional variables)
 
@@ -235,7 +235,7 @@ This report confirms the **completion of all P0 critical and P1 high-priority do
 
 **Institutional Integrations:**
 - ✅ Fireblocks custody (MPC, 3-of-5 multisig, $1B insurance)
-- ✅ Bank escrow (BIIC/MCB, mock for MVP)
+- ✅ Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, mock for MVP)
 - ✅ Mobile Money (M-Pesa, MTN, Airtel)
 
 **Compliance:**
@@ -558,7 +558,7 @@ This report confirms the **completion of all P0 critical and P1 high-priority do
 - [x] RBAC roles consistent across all docs
 - [x] NAV formula consistent
 - [x] Yield calculation consistent
-- [x] Bank names consistent (BIIC, MCB)
+- [x] Bank names consistent (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB)
 - [x] Fireblocks scope consistent (platform treasury only)
 - [x] KYB threshold consistent (€100K)
 - [x] Jurisdiction list consistent (OFAC+UN+EU+FATF)

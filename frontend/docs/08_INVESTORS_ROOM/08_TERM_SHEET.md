@@ -209,7 +209,7 @@
 | • CertiK Audit | |
 | • OpenZeppelin Audit | |
 | **Fireblocks Integration** | Before launch |
-| **BIIC/MCB Escrow Accounts** | Before first close |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Accounts** | Before first close |
 | **PPM Finalized** | Before first close |
 | **Insurance Policies** | Before launch |
 
@@ -320,7 +320,7 @@
 | **Legal Fees** | Fund |
 | **Regulatory Fees** | Fund |
 | **Custody Fees (Fireblocks)** | Fund |
-| **Bank Fees (BIIC/MCB)** | Fund |
+| **Bank Fees (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)** | Fund |
 | **Insurance** | Fund |
 | **Marketing & IR** | Fund |
 

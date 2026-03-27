@@ -672,16 +672,16 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
 <h3>Bank Escrow Integration</h3>
 <div class="docs-pre"><code># backend/services/bank_escrow.py
 class BankEscrowService:
-    &quot;&quot;&quot;BIIC/MCB escrow integration for EUR fiat on/off ramps&quot;&quot;&quot;
+    &quot;&quot;&quot;BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow integration for EUR fiat on/off ramps&quot;&quot;&quot;
 
     SUPPORTED_CURRENCIES = [&quot;EUR&quot;, &quot;XOF&quot;, &quot;XAF&quot;]
     DEFAULT_CURRENCY = &quot;EUR&quot;
 
     async def deposit(self, investor_wallet: str, amount: Decimal) -&gt; str:
         &quot;&quot;&quot;
-        Wire EUR to BIIC escrow → mint EUROD on-chain
+        Wire EUR to BIIC (Banque Internationale pour l'Industrie et le Commerce) escrow → mint EUROD on-chain
         &quot;&quot;&quot;
-        # 1. Receive EUR wire (BIIC account)
+        # 1. Receive EUR wire (BIIC (Banque Internationale pour l'Industrie et le Commerce) account)
         # 2. Verify investor KYC/KYB
         # 3. Mint equivalent EUROD (Ondo Finance API or wrap)
         # 4. Transfer EUROD to investor wallet

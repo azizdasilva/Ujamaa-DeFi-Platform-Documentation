@@ -78,9 +78,9 @@ MVP operates on **testnet only** (Polygon Amoy) with **mock services** simulatin
 
 | Mock Service | Production Counterpart | SRS v2.0 Reference |
 |--------------|------------------------|-------------------|
-| **MockEscrow.sol** | BIIC/MCB Escrow Integration | Section 4.3, 5.12 |
+| **MockEscrow.sol** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Integration | Section 4.3, 5.12 |
 | **MockFiatRamp.sol** | Real Fiat On/Off Ramp | Section 4.3 |
-| **MockBankService** | BIIC/MCB Bank API | Section 4.3 |
+| **MockBankService** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Bank API | Section 4.3 |
 | **MockGDIZService** | GDIZ Industrial Gateway | Section 5.3 |
 | **Test Ondo EUROD (EUROD)** | Real Ondo EUROD (EUROD) (Ondo Finance) | Section 4.3 |
 | **Mock KYB** | Real KYB Verification | Section 7.3 |
@@ -227,7 +227,7 @@ class MockBankService:
 
 # Production implementation (same interface)
 class BIICBankService:
-    """Production BIIC bank integration."""
+    """Production BIIC (Banque Internationale pour l'Industrie et le Commerce) bank integration."""
     
     def __init__(self, api_key: str, base_url: str):
         self.api_key = api_key
@@ -235,7 +235,7 @@ class BIICBankService:
         self.session = requests.Session()
     
     def create_escrow_account(self, investor_id: str) -> str:
-        # Real BIIC API call
+        # Real BIIC (Banque Internationale pour l'Industrie et le Commerce) API call
         response = self.session.post(
             f"{self.base_url}/api/v1/escrow/create",
             headers={'Authorization': f'Bearer {self.api_key}'},
@@ -555,7 +555,7 @@ pragma solidity ^0.8.20;
 /**
  * @title MockEscrow
  * @dev Simulates bank escrow accounts for MVP testnet.
- *      Interface designed for easy swap with real BIIC/MCB integration.
+ *      Interface designed for easy swap with real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration.
  */
 contract MockEscrow {
     // Events
@@ -657,7 +657,7 @@ class MockBankService:
     """
     MVP Mock Bank Service
     
-    Simulates BIIC/MCB bank operations for testnet.
+    Simulates BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank operations for testnet.
     Interface compatible with production BIICBankService.
     """
     
@@ -931,7 +931,7 @@ function DashboardPage() {
 - ❌ Mainnet deployed
 
 ### For Production
-Requires: Mauritius FSC license, BIIC/MCB partnership
+Requires: Mauritius FSC license, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB partnership
 ```
 
 ---
@@ -994,7 +994,7 @@ function FundingSourceSelection() {
           <RadioItem value="bank-escrow">
             <div className="flex items-center justify-between">
               <div>
-                <h4>Bank Escrow (BIIC)</h4>
+                <h4>Bank Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce))</h4>
                 <p className="text-sm text-gray-500">
                   Simulated wire transfer
                 </p>
@@ -1253,7 +1253,7 @@ console.log('Is mock data:', meta?.isMock);
 
 **Before swapping mock → production:**
 - [ ] Legal entity established (Mauritius CIS Manager)
-- [ ] Bank partnership signed (BIIC/MCB)
+- [ ] Bank partnership signed (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - [ ] Regulatory approval obtained (FSC Mauritius)
 - [ ] Compliance framework implemented
 - [ ] Security audits completed
@@ -1460,7 +1460,7 @@ test('disclaimers present on all pages', async ({ page }) => {
 
 **Before swapping mock → production:**
 - [ ] Legal entity established (Mauritius CIS Manager)
-- [ ] Bank partnership signed (BIIC/MCB)
+- [ ] Bank partnership signed (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - [ ] Regulatory approval obtained (FSC Mauritius)
 - [ ] Compliance framework implemented
 - [ ] Security audits completed

@@ -69,7 +69,7 @@ This is a **major revision** from v1.3 (development) and v2.0 (initial instituti
 | Feature | Description | Status |
 |---------|-------------|--------|
 | **Fireblocks Custody** | Institutional-grade MPC custody | Platform treasury only |
-| **Bank Escrow** | BIIC/MCB escrow accounts | Production only |
+| **Bank Escrow** | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow accounts | Production only |
 | **Mobile Money** | M-Pesa, MTN, Airtel integration | Production only |
 | **KYB Threshold** | €100,000 enhanced due diligence | Mandatory |
 | **Institutional Minimum** | €1,000,000 investment minimum | Platform policy |

@@ -594,7 +594,7 @@ docs/06_MVP_EXECUTION/
 
 3. **Prepare Production**
    - Review production deployment runbook
-   - Set up real bank integration (BIIC/MCB)
+   - Set up real bank integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
    - Schedule security audit
    - Prepare Mauritius entity (CIS Manager License)
 

@@ -736,7 +736,7 @@ fireblocks_multisig_avg_approval_time 7200
 ```prometheus
 # HELP bank_escrow_balance Escrow account balance
 # TYPE gauge
-bank_escrow_balance{bank="BIIC",account="investor_escrow"} 10000000.00
+bank_escrow_balance{bank="BIIC (Banque Internationale pour l'Industrie et le Commerce)",account="investor_escrow"} 10000000.00
 
 # HELP bank_escrow_account_count Number of escrow accounts
 # TYPE gauge

@@ -396,7 +396,7 @@
 
 2. **Production Integrations**
    - Fireblocks custody API
-   - Bank escrow (BIIC/MCB)
+   - Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
    - KYC provider (Sumsub/Onfido)
 
 ### 7.3 Phase 3 Priorities (Sprint 5-6)

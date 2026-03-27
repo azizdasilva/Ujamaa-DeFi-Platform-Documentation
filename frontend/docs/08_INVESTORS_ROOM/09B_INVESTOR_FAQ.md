@@ -36,7 +36,7 @@
 **Key Features:**
 - Mauritius FSC CIS Manager License (regulated)
 - Fireblocks institutional custody
-- BIIC/MCB bank escrow accounts
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank escrow accounts
 - ERC-3643 compliance (KYC/AML enforced)
 - 10-15% APR yield (EUROD-denominated)
 
@@ -304,7 +304,7 @@ Investor Wallet (You own this)
 | **Company Registration** | Mauritius | Active |
 | **Tax Residence** | Mauritius | Active |
 | **Fireblocks Institutional** | Global | Approved |
-| **BIIC/MCB Escrow** | Mauritius | Pending |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow** | Mauritius | Pending |
 
 ### Q19: What KYC/KYB is required?
 

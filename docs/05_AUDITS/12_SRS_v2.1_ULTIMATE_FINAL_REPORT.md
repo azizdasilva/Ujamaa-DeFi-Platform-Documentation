@@ -110,7 +110,7 @@ This report confirms the **100% completion of all SRS v2.1 documentation updates
 
 **Institutional Integrations:**
 - ✅ Fireblocks custody (MPC, 3-of-5 multisig, $1B insurance)
-- ✅ Bank escrow (BIIC/MCB, mock for MVP)
+- ✅ Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, mock for MVP)
 - ✅ Mobile Money (M-Pesa, MTN, Airtel)
 
 **Compliance:**
@@ -478,7 +478,7 @@ This report confirms the **100% completion of all SRS v2.1 documentation updates
 - Deploy backend to production
 - Deploy frontend to production
 - Fireblocks integration (production)
-- BIIC/MCB integration (production)
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration (production)
 - Go-live!
 
 ---
@@ -522,7 +522,7 @@ This report confirms the **100% completion of all SRS v2.1 documentation updates
 - [x] RBAC roles consistent across all docs
 - [x] NAV formula consistent
 - [x] Yield calculation consistent
-- [x] Bank names consistent (BIIC, MCB)
+- [x] Bank names consistent (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB)
 - [x] Fireblocks scope consistent (platform treasury only)
 - [x] KYB threshold consistent (€100K)
 - [x] Jurisdiction list consistent (OFAC+UN+EU+FATF)
@@ -573,7 +573,7 @@ This report confirms the **100% completion of all SRS v2.1 documentation updates
 3. **Security & Compliance:**
    - OWASP Top 10 mitigations
    - Fireblocks custody
-   - Bank escrow (BIIC/MCB)
+   - Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
    - KYB (€100K)
    - Jurisdiction screening
 

@@ -583,7 +583,7 @@
 │                                                                  │
 │  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐    │
 │  │  Bank API    │     │  Chainlink   │     │  GDIZ/SIPI   │    │
-│  │  (BIIC/MCB)  │     │  Price Feeds │     │  Industrial  │    │
+│  │  (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)  │     │  Price Feeds │     │  Industrial  │    │
 │  └──────┬───────┘     └──────┬───────┘     └──────┬───────┘    │
 │         │                    │                    │             │
 │         ▼                    ▼                    ▼             │
@@ -615,7 +615,7 @@
 <tbody>
 <tr>
 <td>Escrow account balance</td>
-<td>Bank API (BIIC/MCB)</td>
+<td>Bank API (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)</td>
 <td>Daily</td>
 <td><code>ReserveGateway.sol</code></td>
 </tr>
@@ -646,7 +646,7 @@ interface IReserveGateway {
 <div class="docs-pre"><code># services/gateway/reserve_gateway.py
 class ReserveGateway:
     def fetch_bank_balance(self, escrow_account: str) -&gt; int:
-        &quot;&quot;&quot;Fetches bank balance from BIIC/MCB API.&quot;&quot;&quot;
+        &quot;&quot;&quot;Fetches bank balance from BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API.&quot;&quot;&quot;
         pass
 
     def fetch_stablecoin_reserves(self, token_address: str) -&gt; int:
@@ -1251,7 +1251,7 @@ POST   /api/v1/gateway/bank/webhook          - Bank webhook
 <td><strong>Bank Integration</strong></td>
 <td><code>bank_integration.py</code></td>
 <td><code>services/production/bank_integration.py</code></td>
-<td>BIIC/MCB integration</td>
+<td>BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration</td>
 </tr>
 <tr>
 <td><strong>Escrow Service</strong></td>

@@ -227,7 +227,7 @@ This document serves as the authoritative reference for:
 - **Fireblocks custody** - Institutional-grade digital asset custody
 - **Ondo EUROD (EUROD)/EURR stablecoins** - Euro-pegged stablecoins for FX risk mitigation
 - **Mobile Money integration** - M-Pesa, MTN, Airtel for fiat on/off ramps
-- **Bank escrow integration** - BIIC/MCB bank escrow accounts for investor funds
+- **Bank escrow integration** - BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank escrow accounts for investor funds
 
 No development work shall commence without traceability to requirements specified in this document. All acceptance testing shall validate compliance with the measurable criteria defined herein.
 
@@ -263,12 +263,12 @@ The Ujamaa DeFi Platform enables institutional-grade tokenization with **yield-b
    - Multi-signature wallet management
    - Institutional-grade security (FSC Mauritius compliant)
    - **Scope:** Platform treasury and pool assets only (NOT for end-user custody)
-   - Bank account integration (BIIC, MCB escrow)
+   - Bank account integration (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB escrow)
 
 4. **Bank Escrow & Banking Integration**
-   - Real escrow accounts at BIIC/MCB Mauritius (Production)
+   - Real escrow accounts at BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (Production)
    - MockEscrow contract (MVP testnet)
-   - Wire transfer integration (BIIC/MCB API)
+   - Wire transfer integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API)
    - Fiat on/off ramp via bank partners
    - Mobile Money integration (M-Pesa, MTN, Airtel) - Production only
 
@@ -488,9 +488,9 @@ All v1.3 scope items remain valid:
 | **Ujamaa Asset Token (UAT)** | Rebranded name for ERC-3643 fungible token contract (formerly UjamaaToken). Use "UAT" or "ERC-3643 fungible token" consistently; deprecated: "UjamaaToken" |
 | **Industrial Gateway** | Rebranded name for stock certification system (formerly AssetProof). Legacy table name: `asset_proofs` → new: `industrial_gateway_certificates` |
 | **Mobile Money** | African mobile payment systems (M-Pesa, MTN, Airtel) |
-| **BIIC** | Banque Internationale pour l'Industrie et le Commerce (Mauritius bank partner) |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)** | Banque Internationale pour l'Industrie et le Commerce (Mauritius bank partner) |
 | **MCB** | Mauritius Commercial Bank (Mauritius bank partner) |
-| **Bank Escrow** | Regulated escrow accounts at BIIC/MCB for investor funds and industrial repayments |
+| **Bank Escrow** | Regulated escrow accounts at BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB for investor funds and industrial repayments |
 | **TVL** | Total Value Locked; Total value of assets deposited in liquidity pool |
 | **APY** | Annual Percentage Yield; Effective annual rate of return (compounding) |
 | **IRR** | Internal Rate of Return; Discount rate making NPV of cash flows zero |
@@ -541,7 +541,7 @@ All v1.3 scope items remain valid:
 29. **EU Sanctions Map** — European External Action Service (https://www.sanctionsmap.eu/)
 30. **FATF High-Risk Jurisdictions** — Financial Action Task Force (https://www.fatf-gafi.org/)
 31. **M-Pesa API Documentation** — Safaricom (https://developer.mpesa.africa/)
-32. **BIIC Bank API** — Banque Internationale pour l'Industrie et le Commerce
+32. **BIIC (Banque Internationale pour l'Industrie et le Commerce) Bank API** — Banque Internationale pour l'Industrie et le Commerce
 33. **MCB Bank API** — Mauritius Commercial Bank
 
 ## 1.5 Overview
@@ -586,7 +586,7 @@ The Ujamaa DeFi Platform occupies a critical position in the institutional decen
   - **Oracle networks:** Chainlink price feeds, African commodity price oracles (LME cobalt, ICE cocoa), foreign exchange rates (African Development Bank FX data), mobile money APIs (M-Pesa, MTN Mobile Money, Airtel Money)
   - **Stablecoin issuers:** Ondo Finance USDC, Tether USDT, African fiat-backed stablecoins (Celo Dollar, Monoix, BitPanda African stablecoins), **Ondo Finance Ondo EUROD (EUROD) (euro-backed)** 🆕, **EURR (euro-backed for African markets)** 🆕
   - **Custody providers:** **Fireblocks (institutional digital asset custody)** 🆕, **Mobile Money providers (M-Pesa, MTN, Airtel)** 🆕
-  - **Bank partners:** **BIIC (Mauritius)** 🆕, **MCB (Mauritius)** 🆕 for escrow accounts
+  - **Bank partners:** **BIIC (Banque Internationale pour l'Industrie et le Commerce) (Mauritius)** 🆕, **MCB (Mauritius)** 🆕 for escrow accounts
   - **Industrial partners:** **GDIZ (General Distribution & Industrial Zone)** 🆕, **SIPI (Société Industrielle et de Promotion)** 🆕
 
 - **Downstream integrations:**
@@ -683,7 +683,7 @@ The Ujamaa DeFi Platform provides the following core functions:
 
 19. **Fireblocks Custody Integration** — Institutional-grade custody for digital assets using MPC technology; multi-sig wallet management; Mobile Money integration (M-Pesa, MTN, Airtel)
 
-20. **Bank Escrow Integration** — Real BIIC/MCB escrow accounts for investor funds; wire transfer integration; fiat on/off ramp; Mobile Money integration
+20. **Bank Escrow Integration** — Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow accounts for investor funds; wire transfer integration; fiat on/off ramp; Mobile Money integration
 
 21. **Enhanced KYB (Know Your Business)** — Institutional investor onboarding (≥€100K); UBO identification (>25% ownership); source of funds verification; enhanced due diligence
 
@@ -726,7 +726,7 @@ Pool Families (4 pools: Industrie, Agriculture, Trade Finance, Renewable Energy)
     ↓
 African Industrials (GDIZ partners in 17 OHADA countries)
     ↓
-Escrow Accounts (BIIC/MCB Mauritius)
+Escrow Accounts (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius)
     ↓
 Investors (Logic Capital, pension funds, family offices)
 ```
@@ -738,7 +738,7 @@ Investors (Logic Capital, pension funds, family offices)
 
 ### Escrow Account Specification
 
-**Definition:** Regulated escrow accounts held at BIIC or MCB (Mauritius) for investor funds and industrial repayments. Funds are ring-fenced from platform operational funds.
+**Definition:** Regulated escrow accounts held at BIIC (Banque Internationale pour l'Industrie et le Commerce) or MCB (Mauritius) for investor funds and industrial repayments. Funds are ring-fenced from platform operational funds.
 
 **Escrow Structure:**
 - **Investor Escrow** - Holds investor deposits (€10M+ for Logic Capital example)
@@ -748,11 +748,11 @@ Investors (Logic Capital, pension funds, family offices)
 
 **Escrow Flow (ZARA Example):**
 ```
-1. Logic Capital wires €10M → Investor Escrow (BIIC Mauritius)
+1. Logic Capital wires €10M → Investor Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 2. Convert to Ondo EUROD (EUROD) → Pool Escrow
 3. Deploy to Industrial (GDIZ partner) → Industrial receives Ondo EUROD (EUROD)
 4. Industrial produces goods for ZARA
-5. ZARA pays €2M → Repayment Escrow (BIIC Mauritius)
+5. ZARA pays €2M → Repayment Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 6. Smart Contract triggers distribution:
    - €1.8M to Pool (principal + interest)
    - €0.2M to Industrial (surplus after financing cost)
@@ -760,7 +760,7 @@ Investors (Logic Capital, pension funds, family offices)
 ```
 
 **Production Implementation:**
-- **Bank Integration:** Real BIIC/MCB API integration for escrow accounts
+- **Bank Integration:** Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API integration for escrow accounts
 - **Interface:** Standardized bank API interface for multi-bank support
 - **Security:** MPC technology for key management (Fireblocks integration)
 
@@ -1580,7 +1580,7 @@ The following assumptions and dependencies are critical to platform success. Fai
 | **FR-077** | System SHALL accrue yield automatically via NAV increase (no minting new tokens) | US-10.4 | AC-10.4.2 | TC-077: Industrial repays → NAV increases, token balance unchanged |
 | **FR-078** | System SHALL display historical NAV chart for performance tracking | US-10.4 | AC-10.4.4 | TC-078: View pool page → NAV chart (30d, 90d, 1y, all) visible |
 | **FR-079** | System SHALL generate yield statements (PDF download) for investors | US-10.4 | AC-10.4.5 | TC-079: Download yield statement → PDF with yield amounts, dates |
-| **FR-080** | System SHALL integrate BIIC/MCB bank escrow for investor funds (production only) | US-10.5 | AC-10.5.1, AC-10.5.2 | TC-080: Wire transfer initiated → Escrow balance updated |
+| **FR-080** | System SHALL integrate BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank escrow for investor funds (production only) | US-10.5 | AC-10.5.1, AC-10.5.2 | TC-080: Wire transfer initiated → Escrow balance updated |
 
 ### FR-081 to FR-085: Auditability (EPIC 10.11)
 
@@ -2313,12 +2313,12 @@ This EPIC implements yield-bearing uLP tokens and liquidity pool management for 
 
 ### User Story 10.5: Bank Escrow Integration
 **As a** Platform Administrator,
-**I want** to integrate with BIIC/MCB bank escrow accounts,
+**I want** to integrate with BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank escrow accounts,
 **So that** investor funds are held in regulated, segregated accounts.
 
 **Acceptance Criteria:**
-- [ ] Real BIIC/MCB escrow account integration
-- [ ] Wire transfer API integration (BIIC/MCB)
+- [ ] Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow account integration
+- [ ] Wire transfer API integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - [ ] Fiat on-ramp (EUR → Ondo EUROD (EUROD) via bank partner)
 - [ ] Fiat off-ramp (Ondo EUROD (EUROD) → EUR via bank partner)
 - [ ] Mobile Money integration (M-Pesa, MTN, Airtel)
@@ -2744,11 +2744,11 @@ class FireblocksService:
 - **Authentication:** API key + secret
 - **Use Case:** East Africa operations (Kenya, Tanzania, Uganda)
 
-### BIIC/MCB Bank APIs
+### BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Bank APIs
 
-**Purpose:** Real bank escrow accounts for investor funds and industrial repayments. Regulated escrow accounts at BIIC or MCB (Mauritius).
+**Purpose:** Real bank escrow accounts for investor funds and industrial repayments. Regulated escrow accounts at BIIC (Banque Internationale pour l'Industrie et le Commerce) or MCB (Mauritius).
 
-**BIIC Bank API:**
+**BIIC (Banque Internationale pour l'Industrie et le Commerce) Bank API:**
 - **Base URL:** `https://api.biic.mu/`
 - **Endpoints:**
   - `POST /api/v1/escrow/create` — Create escrow account
@@ -2773,7 +2773,7 @@ class FireblocksService:
 # backend/services/banking/bank_service.py
 class BankService:
     def __init__(self, bank: str):
-        """Initialize bank service (BIIC or MCB)."""
+        """Initialize bank service (BIIC (Banque Internationale pour l'Industrie et le Commerce) or MCB)."""
     
     def create_escrow_account(self, investor_id: str) -> str:
         """Create real escrow account at bank."""
@@ -3738,7 +3738,7 @@ Debtor → Collection Account (Bank) → Payment Oracle → Distribution Contrac
   - Cross-family diversification limits enforced
 - **Diversification Limits:** Max 20% per industrial, max 40% per asset class
 - **Yield Distribution:** Automatic (no manual claims), pro-rata to all uLP holders
-- **Bank Escrow:** Real BIIC/MCB bank integration for escrow accounts
+- **Bank Escrow:** Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank integration for escrow accounts
 - **Institutional Minimum:** €100,000 minimum investment (enforced by smart contract)
 - **Redemption:** Instant (no lock-up), Ondo EUROD (EUROD) payout
 

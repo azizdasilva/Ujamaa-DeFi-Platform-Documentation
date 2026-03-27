@@ -89,7 +89,7 @@ This report summarizes the completion of **Phase 1 P0 updates** for aligning UJA
 
 **7. Bank Escrow Integration (NEW)**
 - MVP vs Production comparison
-- BIIC/MCB account structure
+- BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB account structure
 - Mobile Money integration
 
 #### Traceability to SRS v2.1:
@@ -310,7 +310,7 @@ This report summarizes the completion of **Phase 1 P0 updates** for aligning UJA
 
 **Institutional Integrations:**
 - ✅ Fireblocks custody (platform treasury)
-- ✅ Bank escrow (BIIC/MCB)
+- ✅ Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - ✅ Mobile Money (M-Pesa, MTN, Airtel)
 
 ---
@@ -451,7 +451,7 @@ This report summarizes the completion of **Phase 1 P0 updates** for aligning UJA
 - [x] RBAC roles consistent across docs
 - [x] NAV formula consistent
 - [x] Yield calculation consistent
-- [x] Bank names consistent (BIIC, MCB)
+- [x] Bank names consistent (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB)
 - [x] Fireblocks scope consistent (platform treasury only)
 
 ---

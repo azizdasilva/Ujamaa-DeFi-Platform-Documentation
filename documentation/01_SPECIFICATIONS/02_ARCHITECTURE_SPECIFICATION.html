@@ -171,7 +171,7 @@
 <tr>
 <td><strong>Bank Integration</strong></td>
 <td>None</td>
-<td><strong>BIIC/MCB escrow</strong> (Production)</td>
+<td><strong>BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow</strong> (Production)</td>
 <td>Regulatory requirement</td>
 </tr>
 <tr>
@@ -190,7 +190,7 @@
 - SIWE authentication service<br />
 - RBAC middleware<br />
 - Fireblocks custody integration<br />
-- Bank escrow integration (BIIC/MCB)<br />
+- Bank escrow integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)<br />
 - NAV calculation engine<br />
 - Yield accrual system</p>
 <p><strong>Updated:</strong><br />
@@ -1836,7 +1836,7 @@ async def list_pools(user: dict = Depends(require_role(&quot;INSTITUTIONAL_INVES
 - ❌ NOT for end-user custody (users retain self-custody via MetaMask/WalletConnect)</p>
 <h3>4.4.5 Bank Escrow Integration 🆕</h3>
 <p><strong>Production Banks:</strong><br />
-- <strong>BIIC</strong> (Banque Internationale pour l'Industrie et le Commerce, Mauritius)<br />
+- <strong>BIIC (Banque Internationale pour l'Industrie et le Commerce)</strong> (Banque Internationale pour l'Industrie et le Commerce, Mauritius)<br />
 - <strong>MCB</strong> (Mauritius Commercial Bank)</p>
 <p><strong>Integration Architecture:</strong></p>
 <div class="docs-pre"><code>┌──────────────────────────────────────────────────────────────────────────────┐
@@ -1850,7 +1850,7 @@ async def list_pools(user: dict = Depends(require_role(&quot;INSTITUTIONAL_INVES
 │                                                                               │
 │  Production:                                                                 │
 │  ┌────────────────────────────────────────────────────────────────────────┐  │
-│  │  Real Escrow Accounts at BIIC/MCB                                      │  │
+│  │  Real Escrow Accounts at BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB                                      │  │
 │  │                                                                        │  │
 │  │  Account Structure:                                                    │  │
 │  │  ├─ Investor Escrow Account ( segregated per pool)                    │  │
@@ -1878,7 +1878,7 @@ async def list_pools(user: dict = Depends(require_role(&quot;INSTITUTIONAL_INVES
 <p><strong>MVP vs Production:</strong><br />
 | Feature | MVP (Testnet) | Production |<br />
 |---------|--------------|------------|<br />
-| Escrow | MockEscrow contract | BIIC/MCB real escrow |<br />
+| Escrow | MockEscrow contract | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB real escrow |<br />
 | Fiat Ramp | MockFiatRamp (faucet) | Bank wire + Mobile Money |<br />
 | Blockchain | Polygon Amoy only | Polygon mainnet + Ethereum |<br />
 | Compliance | Mock KYC/KYB | Real ONCHAINID + KYB |</p>

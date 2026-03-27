@@ -151,7 +151,7 @@ const InvestorPitchDeck: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Partner name="GDIZ" role="Industrial Network" />
               <Partner name="Fireblocks" role="Institutional Custody" />
-              <Partner name="BIIC/MCB" role="Bank Escrow" />
+              <Partner name="BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB" role="Bank Escrow" />
               <Partner name="Polygon" role="Blockchain" />
             </div>
           </div>

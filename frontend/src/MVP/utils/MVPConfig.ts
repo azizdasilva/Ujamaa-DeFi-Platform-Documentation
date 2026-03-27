@@ -209,7 +209,7 @@ export const MVP_CONFIG = {
       
       Production deployment will use:
       • Real EUROD stablecoin (Ondo Finance)
-      • Real bank escrow (BIIC/MCB)
+      • Real bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
       • Real fiat on/off ramps
       • Mainnet Polygon (Chain ID: 137)
     `,

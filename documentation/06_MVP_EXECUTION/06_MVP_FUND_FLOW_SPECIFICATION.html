@@ -118,7 +118,7 @@
         <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> Smart Contract Developers, Backend Engineers, Frontend Developers</p></div>
 
         <h1>MVP Fund Flow Specification</h1>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>uLPToken, MockEscrow &amp; BIIC/MCB Simulation</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>uLPToken, MockEscrow &amp; BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Simulation</h2>
 <p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
 <strong>Version:</strong> 1.0<br />
 <strong>Date:</strong> March 17, 2026<br />
@@ -132,7 +132,7 @@
 <li><a href="#2-uLPToken-sol-specification">uLPToken.sol Specification</a></li>
 <li><a href="#3-mockescrow-sol-specification">MockEscrow.sol Specification</a></li>
 <li><a href="#4-fund-flow-simulation">Fund Flow Simulation</a></li>
-<li><a href="#5-biicmcb-production-swap">BIIC/MCB Production Swap</a></li>
+<li><a href="#5-biicmcb-production-swap">BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Production Swap</a></li>
 <li><a href="#6-testing-guide">Testing Guide</a></li>
 <li><a href="#7-security-considerations">Security Considerations</a></li>
 </ol>
@@ -143,7 +143,7 @@
 <p>This document specifies how MVP handles:<br />
 - <strong>uLPToken.sol</strong> - Yield-bearing LP token smart contract<br />
 - <strong>MockEscrow.sol</strong> - Simulated bank escrow for testnet<br />
-- <strong>Fund Flow Simulation</strong> - BIIC/MCB bank integration mock</p>
+- <strong>Fund Flow Simulation</strong> - BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank integration mock</p>
 <h3>1.2 Key Components</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -729,7 +729,7 @@ contract LiquidityPool {
 <h3>3.1 Overview</h3>
 <p><strong>File:</strong> <code>contracts/MVP/MockEscrow.sol</code></p>
 <p><strong>Purpose:</strong> Simulates bank escrow accounts for investor funds on testnet.</p>
-<p><strong>Design Principle:</strong> Interface-compatible with production BIIC/MCB integration.</p>
+<p><strong>Design Principle:</strong> Interface-compatible with production BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration.</p>
 <h3>3.2 Smart Contract Interface</h3>
 <div class="docs-pre"><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
@@ -737,7 +737,7 @@ pragma solidity ^0.8.20;
 /**
  * @title MockEscrow
  * @notice Simulates bank escrow accounts for MVP testnet
- * @dev Interface designed for easy swap with real BIIC/MCB integration
+ * @dev Interface designed for easy swap with real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration
  */
 contract MockEscrow {
 
@@ -933,7 +933,7 @@ class MockBankService:
     &quot;&quot;&quot;
     MVP Mock Bank Service
 
-    Simulates BIIC/MCB bank operations for testnet.
+    Simulates BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB bank operations for testnet.
     Interface compatible with production BIICBankService.
     &quot;&quot;&quot;
 
@@ -1147,7 +1147,7 @@ async function executeInvestmentFlow() {
 </code></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. BIIC/MCB Production Swap</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Production Swap</h2>
 <h3>5.1 Interface Compatibility</h3>
 <p><strong>MVP (Mock) → Production (Real)</strong></p>
 <div class="docs-pre"><code># Same interface, different implementation
@@ -1182,7 +1182,7 @@ class BIICBankService(IBankService):
         self.base_url = base_url
 
     def create_escrow_account(self, investor_id: str) -&gt; str:
-        # Real BIIC API call
+        # Real BIIC (Banque Internationale pour l'Industrie et le Commerce) API call
         response = requests.post(
             f&quot;{self.base_url}/api/v1/escrow/create&quot;,
             headers={'Authorization': f'Bearer {self.api_key}'},
@@ -1199,7 +1199,7 @@ class Settings(BaseSettings):
     MVP_MODE: bool = True
     MOCK_BANK: bool = True
 
-    # Production Bank (BIIC/MCB)
+    # Production Bank (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
     BIIC_API_KEY: Optional[str] = None
     BIIC_BASE_URL: Optional[str] = None
     MCB_API_KEY: Optional[str] = None
@@ -1221,7 +1221,7 @@ def get_bank_service() -&gt; IBankService:
 <p><strong>Before swapping mock → production:</strong></p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>[ ] Legal entity established (Mauritius CIS Manager License)</li>
-<li>[ ] Bank partnership signed (BIIC or MCB)</li>
+<li>[ ] Bank partnership signed (BIIC (Banque Internationale pour l'Industrie et le Commerce) or MCB)</li>
 <li>[ ] Regulatory approval obtained (FSC Mauritius)</li>
 <li>[ ] Compliance framework implemented</li>
 <li>[ ] Security audits completed (smart contracts + backend)</li>

@@ -494,9 +494,9 @@ DEBUG=true
 
 ### Phase 2: Production Preparation
 ```
-1. Replace MockEscrow → RealBankEscrow (BIIC/MCB integration)
+1. Replace MockEscrow → RealBankEscrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration)
 2. Replace MockFiatRamp → RealFiatRamp (Ondo Finance, EURR integration)
-3. Replace MockBank → RealBankAPI (BIIC/MCB API)
+3. Replace MockBank → RealBankAPI (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API)
 4. Replace MockGDIZ → RealGDIZGateway (GDIZ API integration)
 5. Deploy to Polygon mainnet
 6. Regulatory approval (Mauritius FSC)

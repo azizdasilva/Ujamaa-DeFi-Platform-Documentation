@@ -796,7 +796,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                       <div className="p-4 bg-white rounded-xl border border-[#48A9F0]/30">
                         <p className="font-bold text-[#023D7A] mb-2">Production (Ready)</p>
                         <ul className="text-sm text-[#333333] space-y-1">
-                          <li>• BankService → BIIC/MCB integration</li>
+                          <li>• BankService → BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration</li>
                           <li>• GDIZService → Real certification</li>
                           <li>• FiatRamp → Ondo Finance EUROD</li>
                           <li>• Polygon Mainnet (Chain ID: 137)</li>

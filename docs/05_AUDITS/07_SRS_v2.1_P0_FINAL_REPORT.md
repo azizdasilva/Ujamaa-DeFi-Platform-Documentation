@@ -44,7 +44,7 @@ This report confirms the **completion of all P0 critical documentation updates**
 - **Section 4.2:** Liquidity Pool Layer (uLP/UJG architecture)
 - **Section 4.4:** Authentication & Authorization (SIWE + JWT, RBAC)
 - **Section 4.4.4:** Fireblocks Custody Integration
-- **Section 4.4.5:** Bank Escrow Integration (BIIC/MCB)
+- **Section 4.4.5:** Bank Escrow Integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - **OWASP Top 10 (2025)** mitigations
 - **Input Validation** specification
 
@@ -220,7 +220,7 @@ This report confirms the **completion of all P0 critical documentation updates**
 
 **Institutional Integrations:**
 - ✅ Fireblocks custody (platform treasury only, MPC technology, $1B+ insurance)
-- ✅ Bank escrow (BIIC/MCB, investor escrow, industrial repayment accounts)
+- ✅ Bank escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, investor escrow, industrial repayment accounts)
 - ✅ Mobile Money (M-Pesa, MTN, Airtel - production only)
 
 **Compliance:**
@@ -415,7 +415,7 @@ This report confirms the **completion of all P0 critical documentation updates**
 - [x] RBAC roles consistent across docs
 - [x] NAV formula consistent
 - [x] Yield calculation consistent
-- [x] Bank names consistent (BIIC, MCB)
+- [x] Bank names consistent (BIIC (Banque Internationale pour l'Industrie et le Commerce), MCB)
 - [x] Fireblocks scope consistent (platform treasury only)
 - [x] KYB threshold consistent (€100K)
 - [x] Jurisdiction list consistent (OFAC+UN+EU+FATF)
@@ -494,7 +494,7 @@ Nonce TTL: 5 minutes
 | **KYB** | Know Your Business - enhanced due diligence (≥€100K) |
 | **NAV** | Net Asset Value - per-share pool value |
 | **Fireblocks** | Institutional custody platform (MPC technology) |
-| **BIIC** | Banque Internationale pour l'Industrie et le Commerce (Mauritius) |
+| **BIIC (Banque Internationale pour l'Industrie et le Commerce)** | Banque Internationale pour l'Industrie et le Commerce (Mauritius) |
 | **MCB** | Mauritius Commercial Bank |
 | **UBO** | Ultimate Beneficial Owner (>25% ownership) |
 | **FATF** | Financial Action Task Force |

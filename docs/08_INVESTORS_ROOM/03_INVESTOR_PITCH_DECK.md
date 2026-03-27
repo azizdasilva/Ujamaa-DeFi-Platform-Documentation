@@ -167,7 +167,7 @@
 ║                                                                   ║
 ║  ✓ 10-15% APR Yield           ✓ Mauritius FSC Licensed          ║
 ║  ✓ EUROD Denomination          ✓ Fireblocks Custody              ║
-║  ✓ 180-365 Day Lock-up        ✓ BIIC/MCB Escrow                 ║
+║  ✓ 180-365 Day Lock-up        ✓ BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow                 ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
@@ -324,7 +324,7 @@
 ║  │  API LAYER                                                  │ ║
 ║  │  • FastAPI Microservices                                    │ ║
 ║  │  • Fireblocks API Integration                               │ ║
-║  │  • BIIC/MCB Bank API Integration                            │ ║
+║  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Bank API Integration                            │ ║
 ║  │  • Mobile Money API (M-Pesa, MTN, Airtel)                   │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                           │                                     ║
@@ -350,7 +350,7 @@
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
 ║  │  INFRASTRUCTURE                                             │ ║
 ║  │  • Fireblocks MPC Custody                                   │ ║
-║  │  • BIIC/MCB Escrow Accounts                                 │ ║
+║  │  • BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Escrow Accounts                                 │ ║
 ║  │  • PostgreSQL + Redis                                       │ ║
 ║  │  • Kubernetes + Terraform                                   │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
@@ -458,7 +458,7 @@
 ║  ✓ GDIZ (Benin, Industrial Network) — In discussion           ║
 ║  ✓ SIPI (Stock Certification) — Target partner                  ║
 ║  ✓ Fireblocks (Institutional Custody) — Integration in progress ║
-║  ✓ BIIC/MCB Mauritius (Escrow) — Account opening in progress    ║
+║  ✓ BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (Escrow) — Account opening in progress    ║
 ║  ✓ Chainlink (Oracle Price Feeds) — Planned integration         ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
@@ -751,7 +751,7 @@
 ║  │     → Timeline: Week 4                                      │ ║
 ║  │                                                             │ ║
 ║  │  4. FUND WIRE & TOKEN MINTING                               │ ║
-║  │     → EUROD to BIIC Escrow, uLP Minted                       │ ║
+║  │     → EUROD to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow, uLP Minted                       │ ║
 ║  │     → Timeline: Week 5-6                                    │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║

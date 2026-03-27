@@ -121,7 +121,7 @@ This document provides complete updates for all 5 Technical Guides to align with
 
 **Production - Real Bank Integration:**
 
-1. **BIIC/MCB API Credentials**
+1. **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API Credentials**
    ```bash
    # Environment variables (production)
    BIIC_API_URL="https://api.biic.mu/corporate"
@@ -258,7 +258,7 @@ FIREBLOCKS_VAULT_ID="platform_treasury_001"
 
 # Bank Escrow Configuration
 BANK_ESCROW_ENABLED=true
-BANK_ESCROW_PROVIDER="BIIC"  # or "MCB"
+BANK_ESCROW_PROVIDER="BIIC (Banque Internationale pour l'Industrie et le Commerce)"  # or "MCB"
 BANK_ESCROW_ACCOUNT_ID="..."
 
 # Mobile Money Configuration
@@ -296,7 +296,7 @@ STRICTEST_JURISDICTION_LIST="CU,IR,KP,SY,YE,MM"
 - [ ] Fireblocks API credentials configured
 - [ ] Fireblocks vault created (platform treasury)
 - [ ] Fireblocks multisig policy set (3-of-5)
-- [ ] Bank escrow accounts opened (BIIC/MCB)
+- [ ] Bank escrow accounts opened (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)
 - [ ] MockEscrow contract deployed (MVP testnet)
 - [ ] uLP token contract deployed
 - [ ] UJG token contract deployed
