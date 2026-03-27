@@ -120,7 +120,7 @@ const Button: React.FC<ButtonProps> = ({
           fill="none"
           viewBox="0 0 24 24"
         >
-          <Ondo Finance
+          <circle
             className="opacity-25"
             cx="12"
             cy="12"
