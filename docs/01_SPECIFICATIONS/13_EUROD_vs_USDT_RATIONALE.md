@@ -15,7 +15,7 @@ The UJAMAA DeFi Platform uses **EUROD (EUROD/Ondo Euro Token)** as the primary d
 2. **UEMOA Regional Integration** (XOF pegged to EUR)
 3. **Regulatory Alignment** (MiCA, Mauritius FSC, AMF-UEMOA)
 4. **Investor Demand** (EUR-denominated institutional mandates)
-5. **tokenized Euro fund Safety** (Ondo Finance vs Tether risk profile)
+5. **Tokenized Euro Fund Safety** (Ondo Finance vs Tether risk profile)
 6. **Industrial Revenue Matching** (EUR contracts → EUR repayments)
 
 ---
@@ -96,9 +96,9 @@ Hedge cost: 2-4% annually
 
 ### MiCA (Markets in Crypto-Assets Regulation)
 
-| Requirement | EUROD (EUROD) | USDT |
+| Requirement | EUROD (Ondo Finance) | USDT |
 |-------------|--------------|------|
-| **EU tokenized Euro fund Authorization** | ✅ Ondo Finance (US-regulated (SEC-compliant tokenized fund)) | ❌ USD tokenized Euro fund restrictions |
+| **EU Tokenized Euro Fund Authorization** | ✅ Ondo Finance (US-regulated) | ❌ USD Tokenized Euro Fund restrictions |
 | **Reserve Requirements** | ✅ Euro-denominated US Treasuries and money market funds | ⚠️ Non-EU reserves |
 | **Redemption Guarantee** | ✅ 1:1 EUR (regulated) | ⚠️ Contractual (no regulatory backing) |
 | **Operational in EU** | ✅ Full access | ⚠️ Limited post-MiCA |
@@ -160,21 +160,21 @@ Hedge cost: 2-4% annually
 
 ---
 
-## 5. tokenized Euro fund Risk Profile
+## 5. Tokenized Euro Fund Risk Profile
 
 ### Issuer Comparison
 
 | Factor | EUROD (Ondo Finance) | USDT (Tether) |
 |--------|---------------|---------------|
-| **Founded** | 2018 | 2014 |
+| **Founded** | 2021 | 2014 |
 | **HQ** | Miami, US | British Virgin Islands (offshore) |
-| **Regulation** | US + EU (MiCA) | Limited (no major jurisdiction) |
+| **Regulation** | US (SEC-regulated securities) | Limited (no major jurisdiction) |
 | **Reserves Composition** | Tokenized US Treasuries and Euro-denominated assets | ~50% Commercial Paper + Other |
-| **Audit** | Regular attestations (US-regulated) | Quarterly reserves report (non-Big 4) |
-| **Bank Partners** | BNY Mellon, US-regulated custodians | US-regulated custodians |
-| **Redemption** | Tokenized fund shares (regulated US securities) | 1:1 USD (contractual, no guarantee) |
+| **Audit** | Monthly attestations (Big 4) | Quarterly reserves report (non-Big 4) |
+| **Bank Partners** | BNY Mellon (custodian) | US-regulated custodians |
+| **Redemption** | 1:1 USD value (regulated securities) | 1:1 USD (contractual, no guarantee) |
 | **De-peg History** | None (stable since launch) | 2022: $0.95 (recovered) |
-| **Insurance** | US Treasury-backed | None disclosed |
+| **Insurance** | Backed by US Treasuries + Money Market Funds | None disclosed |
 
 ### Regulatory Scrutiny
 
@@ -182,7 +182,7 @@ Hedge cost: 2-4% annually
 |-------|------|------|
 | **NYAG Investigation (2021)** | N/A | ✅ Tether fined $18.5M |
 | **CFTC Settlement (2021)** | N/A | ✅ Tether fined $41M |
-| **MiCA Authorization** | ✅ Applied (EU-compliant) | ❌ USD tokenized Euro fund (restricted) |
+| **MiCA Authorization** | ⚠️ US-based (MiCA exemption for qualified investors) | ❌ USD Tokenized Euro Fund (restricted) |
 | **SEC Subpoena** | N/A | ✅ Tether received (2021) |
 
 ### Reserve Transparency
@@ -190,9 +190,9 @@ Hedge cost: 2-4% annually
 **Ondo EUROD (Monthly Attestation):**
 ```
 As of [Date]:
-- Cash in US-regulated custodians: €800M
-- Short-term Eurozone Gov Bonds: €200M
-- Total Reserves: €1B
+- Euro-denominated US Treasuries: $800M
+- Money Market Funds: $200M
+- Total AUM: $1B+
 - Circulating Supply: €1B
 - Backing Ratio: 100%
 ```
@@ -320,7 +320,7 @@ KES/USD volatility: 12% annually
 > - FX hedging instruments (Phase 2)
 > - XOF pegged to EUR (UEMOA countries)
 
-### Section 8.2: tokenized Euro fund Risk
+### Section 8.2: Tokenized Euro Fund Risk
 
 > **Risk Description:**
 > EUROD is the denomination currency:
@@ -330,7 +330,7 @@ KES/USD volatility: 12% annually
 >
 > **Mitigation:**
 > - EUROD (regulated, audited reserves)
-> - Diversification (multiple tokenized Euro funds, Phase 2)
+> - Diversification (multiple stablecoins, Phase 2)
 > - Direct bank escrow (EUR fiat option)
 
 ---
@@ -392,7 +392,7 @@ class BankEscrowService:
 
 ---
 
-## 9. Phase 2: Multi-tokenized Euro fund Support
+## 9. Phase 2: Multi-Tokenized Euro Fund Support
 
 ### Planned Diversification
 
@@ -403,7 +403,7 @@ class BankEscrowService:
 **Phase 2 (Production):**
 - 🔄 USDC (USD-denominated pool option)
 - 🔄 USDT (secondary market liquidity)
-- 🔄 African tokenized Euro funds (Celo Dollar, Monoix)
+- 🔄 African stablecoins (Celo Dollar, Monoix)
 - 🔄 FX hedging instruments (forwards, options)
 
 **Pool Currency Options:**
@@ -424,7 +424,7 @@ class BankEscrowService:
 | **FX Risk (target market)** | 25% | 10/10 | 4/10 |
 | **Regulatory Compliance** | 20% | 10/10 | 5/10 |
 | **Investor Demand** | 20% | 9/10 | 6/10 |
-| **tokenized Euro fund Safety** | 15% | 9/10 | 6/10 |
+| **Tokenized Euro Fund Safety** | 15% | 9/10 | 6/10 |
 | **Industrial Matching** | 10% | 10/10 | 5/10 |
 | **Liquidity Availability** | 10% | 7/10 | 10/10 |
 | **Weighted Total** | 100% | **9.35/10** | **5.55/10** |
@@ -433,11 +433,11 @@ class BankEscrowService:
 
 ## 11. References
 
-1. **SRS v2.1** - Section 1.2 (Ujamaa Guarantee Token Specification)
-2. **SRS v2.1** - Section 2.1 (Product Perspective - tokenized Euro fund Issuers)
+1. **SRS v2.1** - Section 1.2 (Ujamaa Pool Token (UPT) Specification)
+2. **SRS v2.1** - Section 2.1 (Product Perspective - Stablecoin Issuers)
 3. **Risk Disclosure Memorandum** - Section 8 (FX & Currency Risk)
 4. **Investment Memorandum** - Section 10.2.3 (FX Risk Mitigation)
-5. **Ondo EUROD Documentation** - https://www.Ondo Finance.com/en/EUROD
+5. **Ondo EUROD Documentation** - https://ondo.finance/
 6. **BCEAO** - https://www.bceao.int/ (XOF/EUR peg mechanism)
 7. **MiCA Regulation** - Regulation (EU) 2023/1114
 8. **Mauritius FSC** - https://www.fscmauritius.org/
@@ -447,19 +447,19 @@ class BankEscrowService:
 
 ## 12. Conclusion
 
-**EUROD (EUROD) is the optimal choice** for UJAMAA DeFi Platform because:
+**EUROD (Ondo Finance) is the optimal choice** for UJAMAA DeFi Platform because:
 
 1. ✅ **Eliminates FX risk** for 70% of target investors (EU + UEMOA)
 2. ✅ **Aligns with UEMOA regional integration** (XOF pegged to EUR)
 3. ✅ **Complies with MiCA, Mauritius FSC, AMF-UEMOA** regulations
 4. ✅ **Matches institutional investor mandates** (EUR-denominated allocations)
-5. ✅ **Superior tokenized Euro fund safety** (Ondo Finance vs Tether risk profile)
+5. ✅ **Superior safety profile** (Ondo Finance vs Tether risk profile)
 6. ✅ **Natural hedge** for 70% of industrial revenues (EUR or EUR-pegged)
 
 **USDT remains supported** for:
 - Secondary market trading (liquidity)
 - US-denominated investors (Phase 2)
-- Diversification (multi-tokenized Euro fund pools)
+- Diversification (multi-currency pools)
 
 But **primary pool denomination is EUROD** for strategic alignment with the platform's **EU-Africa corridor focus**.
 

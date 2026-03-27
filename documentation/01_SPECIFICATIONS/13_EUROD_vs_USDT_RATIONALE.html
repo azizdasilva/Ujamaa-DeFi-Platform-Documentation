@@ -130,7 +130,7 @@
 <li><strong>UEMOA Regional Integration</strong> (XOF pegged to EUR)</li>
 <li><strong>Regulatory Alignment</strong> (MiCA, Mauritius FSC, AMF-UEMOA)</li>
 <li><strong>Investor Demand</strong> (EUR-denominated institutional mandates)</li>
-<li><strong>tokenized Euro fund Safety</strong> (Ondo Finance vs Tether risk profile)</li>
+<li><strong>Tokenized Euro Fund Safety</strong> (Ondo Finance vs Tether risk profile)</li>
 <li><strong>Industrial Revenue Matching</strong> (EUR contracts → EUR repayments)</li>
 </ol>
 <hr />
@@ -271,15 +271,15 @@ Hedge cost: 2-4% annually
 <thead>
 <tr>
 <th>Requirement</th>
-<th>EUROD (EUROD)</th>
+<th>EUROD (Ondo Finance)</th>
 <th>USDT</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>EU tokenized Euro fund Authorization</strong></td>
-<td>✅ Ondo Finance (US-regulated (SEC-compliant tokenized fund))</td>
-<td>❌ USD tokenized Euro fund restrictions</td>
+<td><strong>EU Tokenized Euro Fund Authorization</strong></td>
+<td>✅ Ondo Finance (US-regulated)</td>
+<td>❌ USD Tokenized Euro Fund restrictions</td>
 </tr>
 <tr>
 <td><strong>Reserve Requirements</strong></td>
@@ -387,7 +387,7 @@ Hedge cost: 2-4% annually
 - Investment committee approval delays (additional FX risk disclosure)</p>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. tokenized Euro fund Risk Profile</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Tokenized Euro Fund Risk Profile</h2>
 <h3>Issuer Comparison</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -410,7 +410,7 @@ Hedge cost: 2-4% annually
 </tr>
 <tr>
 <td><strong>Regulation</strong></td>
-<td>US + EU (MiCA)</td>
+<td>US (SEC-regulated securities)</td>
 <td>Limited (no major jurisdiction)</td>
 </tr>
 <tr>
@@ -420,17 +420,17 @@ Hedge cost: 2-4% annually
 </tr>
 <tr>
 <td><strong>Audit</strong></td>
-<td>Regular attestations (US-regulated)</td>
+<td>Monthly attestations (Big 4)</td>
 <td>Quarterly reserves report (non-Big 4)</td>
 </tr>
 <tr>
 <td><strong>Bank Partners</strong></td>
-<td>BNY Mellon, US-regulated custodians</td>
+<td>BNY Mellon (custodian)</td>
 <td>US-regulated custodians</td>
 </tr>
 <tr>
 <td><strong>Redemption</strong></td>
-<td>Tokenized fund shares (regulated US securities)</td>
+<td>1:1 USD value (regulated securities)</td>
 <td>1:1 USD (contractual, no guarantee)</td>
 </tr>
 <tr>
@@ -440,7 +440,7 @@ Hedge cost: 2-4% annually
 </tr>
 <tr>
 <td><strong>Insurance</strong></td>
-<td>US Treasury-backed</td>
+<td>Backed by US Treasuries + Money Market Funds</td>
 <td>None disclosed</td>
 </tr>
 </tbody>
@@ -467,8 +467,8 @@ Hedge cost: 2-4% annually
 </tr>
 <tr>
 <td><strong>MiCA Authorization</strong></td>
-<td>✅ Applied (EU-compliant)</td>
-<td>❌ USD tokenized Euro fund (restricted)</td>
+<td>⚠️ US-based (MiCA exemption for qualified investors)</td>
+<td>❌ USD Tokenized Euro Fund (restricted)</td>
 </tr>
 <tr>
 <td><strong>SEC Subpoena</strong></td>
@@ -480,9 +480,9 @@ Hedge cost: 2-4% annually
 <h3>Reserve Transparency</h3>
 <p><strong>Ondo EUROD (Monthly Attestation):</strong></p>
 <div class="docs-pre"><code>As of [Date]:
-- Cash in US-regulated custodians: €800M
-- Short-term Eurozone Gov Bonds: €200M
-- Total Reserves: €1B
+- Euro-denominated US Treasuries: $800M
+- Money Market Funds: $200M
+- Total AUM: $1B+
 - Circulating Supply: €1B
 - Backing Ratio: 100%
 </code></div>
@@ -628,7 +628,7 @@ Although uLP is EUROD-denominated:<br />
 - FX hedging instruments (Phase 2)<br />
 - XOF pegged to EUR (UEMOA countries)</p>
 </div>
-<h3>Section 8.2: tokenized Euro fund Risk</h3>
+<h3>Section 8.2: Tokenized Euro Fund Risk</h3>
 <div class="docs-callout docs-callout-info"><div class="docs-callout-title">ℹ️</div>
 <p><strong>Risk Description:</strong><br />
 EUROD is the denomination currency:<br />
@@ -637,7 +637,7 @@ EUROD is the denomination currency:<br />
 - Reserve risk (insufficient backing)</p>
 <p><strong>Mitigation:</strong><br />
 - EUROD (regulated, audited reserves)<br />
-- Diversification (multiple tokenized Euro funds, Phase 2)<br />
+- Diversification (multiple stablecoins, Phase 2)<br />
 - Direct bank escrow (EUR fiat option)</p>
 </div>
 <hr />
@@ -689,7 +689,7 @@ class BankEscrowService:
 </code></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Phase 2: Multi-tokenized Euro fund Support</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Phase 2: Multi-Tokenized Euro Fund Support</h2>
 <h3>Planned Diversification</h3>
 <p><strong>Phase 1 (MVP):</strong><br />
 - ✅ EUROD (primary denomination)<br />
@@ -697,7 +697,7 @@ class BankEscrowService:
 <p><strong>Phase 2 (Production):</strong><br />
 - 🔄 USDC (USD-denominated pool option)<br />
 - 🔄 USDT (secondary market liquidity)<br />
-- 🔄 African tokenized Euro funds (Celo Dollar, Monoix)<br />
+- 🔄 African stablecoins (Celo Dollar, Monoix)<br />
 - 🔄 FX hedging instruments (forwards, options)</p>
 <p><strong>Pool Currency Options:</strong><br />
 | Pool Family | Primary Currency | Alternative (Phase 2) |<br />
@@ -739,7 +739,7 @@ class BankEscrowService:
 <td>6/10</td>
 </tr>
 <tr>
-<td><strong>tokenized Euro fund Safety</strong></td>
+<td><strong>Tokenized Euro Fund Safety</strong></td>
 <td>15%</td>
 <td>9/10</td>
 <td>6/10</td>
@@ -768,11 +768,11 @@ class BankEscrowService:
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. References</h2>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li><strong>SRS v2.1</strong> - Section 1.2 (Ujamaa Guarantee Token Specification)</li>
-<li><strong>SRS v2.1</strong> - Section 2.1 (Product Perspective - tokenized Euro fund Issuers)</li>
+<li><strong>SRS v2.1</strong> - Section 1.2 (Ujamaa Pool Token (UPT) Specification)</li>
+<li><strong>SRS v2.1</strong> - Section 2.1 (Product Perspective - Stablecoin Issuers)</li>
 <li><strong>Risk Disclosure Memorandum</strong> - Section 8 (FX &amp; Currency Risk)</li>
 <li><strong>Investment Memorandum</strong> - Section 10.2.3 (FX Risk Mitigation)</li>
-<li><strong>Ondo EUROD Documentation</strong> - https://www.Ondo Finance.com/en/EUROD</li>
+<li><strong>Ondo EUROD Documentation</strong> - https://ondo.finance/</li>
 <li><strong>BCEAO</strong> - https://www.bceao.int/ (XOF/EUR peg mechanism)</li>
 <li><strong>MiCA Regulation</strong> - Regulation (EU) 2023/1114</li>
 <li><strong>Mauritius FSC</strong> - https://www.fscmauritius.org/</li>
@@ -781,19 +781,19 @@ class BankEscrowService:
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12. Conclusion</h2>
-<p><strong>EUROD (EUROD) is the optimal choice</strong> for Ujamaa DeFi Platform because:</p>
+<p><strong>EUROD (Ondo Finance) is the optimal choice</strong> for Ujamaa DeFi Platform because:</p>
 <ol class="docs-list" style="padding-left:1.5rem">
 <li>✅ <strong>Eliminates FX risk</strong> for 70% of target investors (EU + UEMOA)</li>
 <li>✅ <strong>Aligns with UEMOA regional integration</strong> (XOF pegged to EUR)</li>
 <li>✅ <strong>Complies with MiCA, Mauritius FSC, AMF-UEMOA</strong> regulations</li>
 <li>✅ <strong>Matches institutional investor mandates</strong> (EUR-denominated allocations)</li>
-<li>✅ <strong>Superior tokenized Euro fund safety</strong> (Ondo Finance vs Tether risk profile)</li>
+<li>✅ <strong>Superior safety profile</strong> (Ondo Finance vs Tether risk profile)</li>
 <li>✅ <strong>Natural hedge</strong> for 70% of industrial revenues (EUR or EUR-pegged)</li>
 </ol>
 <p><strong>USDT remains supported</strong> for:<br />
 - Secondary market trading (liquidity)<br />
 - US-denominated investors (Phase 2)<br />
-- Diversification (multi-tokenized Euro fund pools)</p>
+- Diversification (multi-currency pools)</p>
 <p>But <strong>primary pool denomination is EUROD</strong> for strategic alignment with the platform's <strong>EU-Africa corridor focus</strong>.</p>
 <hr />
 <p><strong>Document Approval:</strong></p>
