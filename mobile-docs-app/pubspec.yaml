@@ -1,0 +1,89 @@
+name: ujamaa_docs
+description: Ujamaa DeFi Platform - Official Documentation App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.1.1
+  
+  # Navigation
+  go_router: ^13.0.0
+  
+  # UI Components
+  flutter_markdown: ^0.6.18
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  flutter_slidable: ^3.0.1
+  flutter_svg: ^2.0.9
+  flutter_inappwebview: ^6.0.0
+  
+  # Storage
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.2
+  
+  # Search
+  fuse_flutter: ^1.0.0
+  
+  # Sharing
+  share_plus: ^7.2.1
+  
+  # Utilities
+  url_launcher: ^6.2.4
+  package_info_plus: ^5.0.1
+  connectivity_plus: ^5.0.2
+  font_awesome_flutter: ^10.6.0
+  
+  # Firebase (Optional - commented out for now)
+  # firebase_core: ^2.24.2
+  # firebase_analytics: ^10.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/docs/
+  
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+
+# App Icons Configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo-1024.png"
+  image_path_android: "assets/images/logo-android-512.png"
+  image_path_ios: "assets/images/logo-ios-1024.png"
+  adaptive_icon_background: "#1E40AF"
+  adaptive_icon_foreground: "assets/images/logo-foreground-432.png"
+  min_sdk_android: 21
+
+# Splash Screen Configuration
+flutter_native_splash:
+  color: "#1E40AF"
+  image: assets/images/logo-splash.png
+  android: true
+  ios: true
+  web: false
