@@ -1,7 +1,7 @@
 /**
  * Ujamaa DeFi Platform - Main Application
  * MVP Testnet Release
- * 
+ *
  * @reference 04_DESIGN_SYSTEM_SPECIFICATION.md
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
@@ -9,6 +9,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
+
+// Wagmi Configuration
+import { config as wagmiConfig } from './lib/wagmi';
 
 // MVP Components
 import { MVPBanner } from './MVP/components';
@@ -98,6 +102,9 @@ import InvestorReturns from './MVP/pages/investor/Returns';
 import InvestorRecurringInvestment from './MVP/pages/investor/RecurringInvestment';
 import TestnetGuide from './MVP/pages/TestnetGuide';
 
+// Contract Test Dashboard
+import ContractTestDashboard from './MVP/pages/ContractTestDashboard';
+
 // Query Client
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -114,17 +121,18 @@ const queryClient = new QueryClient({
  */
 const App: React.FC = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <div className="min-h-screen bg-[#F3F8FA] flex flex-col">
-          {/* Global MVP Banner - Shows once for 10 seconds */}
-          <MVPBanner />
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <div className="min-h-screen bg-[#F3F8FA] flex flex-col">
+            {/* Global MVP Banner - Shows once for 10 seconds */}
+            <MVPBanner />
 
-          {/* Modern Navigation */}
-          <Navigation />
+            {/* Modern Navigation */}
+            <Navigation />
 
-          {/* Routes */}
-          <Routes>
+            {/* Routes */}
+            <Routes>
             {/* Default - Landing Page */}
             <Route path="/" element={<LandingPage />} />
             
@@ -229,6 +237,9 @@ const App: React.FC = () => {
             
             {/* Testnet Guide */}
             <Route path="/testnet-guide" element={<TestnetGuide />} />
+
+            {/* Contract Test Dashboard */}
+            <Route path="/contract-test" element={<ContractTestDashboard />} />
           </Routes>
 
           {/* Global Footer */}
@@ -236,6 +247,7 @@ const App: React.FC = () => {
         </div>
       </Router>
     </QueryClientProvider>
+  </WagmiProvider>
   );
 };
 

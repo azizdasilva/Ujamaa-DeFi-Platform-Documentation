@@ -104,9 +104,6 @@ const Footer: React.FC = () => {
             <p className="text-sm text-center md:text-left" style={{ color: '#FFFFFF' }}>
               © 2026 Ujamaa DeFi Platform. All rights reserved.
             </p>
-            <p className="text-sm text-center md:text-right" style={{ color: '#FFFFFF' }}>
-              🚀 MVP Testnet • No real funds are handled
-            </p>
           </div>
         </div>
       </div>

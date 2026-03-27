@@ -10,7 +10,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import TestnetNotice from './TestnetNotice';
+import { ConnectWallet } from './wallet';
 
 const Navigation: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -198,7 +198,18 @@ const Navigation: React.FC = () => {
                           </svg>
                           Clear Demo Data
                         </button>
-                        
+
+                        {/* Smart Contract Test - Highlighted */}
+                        <a href="/contract-test" className="flex items-center gap-3 w-full px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#00A8A8]/10 rounded-lg transition-colors border border-[#00A8A8]/30 bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 mb-2">
+                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                          </svg>
+                          <span className="flex-1 text-left">
+                            <span className="block text-xs font-normal text-[#00A8A8]/80">Test</span>
+                            <span className="block">🔧 Smart Contracts</span>
+                          </span>
+                        </a>
+
                         <a href="/pool/dashboard" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30">
                           <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -267,7 +278,7 @@ const Navigation: React.FC = () => {
                     <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />
                   )}
                 </button>
-                
+
                 {notificationsOpen && (
                   <>
                     <div className="fixed inset-0 z-[9999]" onClick={() => setNotificationsOpen(false)} />
@@ -296,11 +307,11 @@ const Navigation: React.FC = () => {
                         ))}
                       </div>
                       <div className="px-4 py-3 border-t border-[#48A9F0]/30 text-center">
-                        <button 
+                        <button
                           onClick={() => {
                             setNotificationsOpen(false);
                             alert('🚀 MVP TESTNET: Full notifications center coming in production. All notifications are shown above.');
-                          }} 
+                          }}
                           className="text-sm text-[#023D7A] hover:text-[#012d5c] font-medium"
                         >
                           View all notifications
@@ -311,8 +322,8 @@ const Navigation: React.FC = () => {
                 )}
               </div>
 
-              {/* Testnet Badge */}
-              <TestnetNotice variant="badge" />
+              {/* Connect Wallet */}
+              <ConnectWallet size="sm" variant="ghost" />
 
               {/* Role Selector / Dashboard Menu */}
               <div className="relative">

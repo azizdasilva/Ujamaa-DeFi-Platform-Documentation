@@ -462,3 +462,17 @@ export function useKeyboardShortcut(key: string, handler: () => void, modifiers:
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [key, modifiers, handler]);
 }
+
+// =============================================================================
+// WALLET HOOKS (Re-exports from useWallet.ts)
+// =============================================================================
+
+export {
+  useWallet,
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useSwitchNetwork,
+  useBalance,
+  useContractWrite,
+} from './useWallet';
