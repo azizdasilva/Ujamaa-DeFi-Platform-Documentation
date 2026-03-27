@@ -150,7 +150,7 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Executive Summary</h2>
 <h3>1.1 Purpose</h3>
-<p>MVP operates on <strong>testnet only</strong> (Polygon Amoy) with <strong>mock services</strong> simulating real-world integrations (banks, GDIZ, fiat ramps). This document defines:</p>
+<p>MVP operates on <strong>testnet only</strong> (Polygon Amoy) with <strong>mock services</strong> simulating real-world integrations (banks, GDIZ (Benin), fiat ramps). This document defines:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>✅ Mock service architecture and interfaces</li>
 <li>✅ Testnet deployment procedures</li>
@@ -258,7 +258,7 @@
 <p><strong>✅ MOCK (Testnet Simulation):</strong><br />
 - Bank escrow accounts (no real money movement)<br />
 - Fiat on/off ramps (no real currency exchange)<br />
-- Industrial Gateway/GDIZ integration (no real production data)<br />
+- Industrial Gateway/GDIZ (Benin) integration (no real production data)<br />
 - KYB verification (simulated approval flow)<br />
 - Wire transfers (simulated transactions)</p>
 <p><strong>❌ DON'T MOCK (Real Implementation):</strong><br />
@@ -302,7 +302,7 @@
 <p><strong>MVP uses Level 2 (Mock) for:</strong><br />
 - Bank services<br />
 - Fiat ramps<br />
-- GDIZ integration</p>
+- GDIZ (Benin) integration</p>
 <p><strong>MVP uses Level 3 (Simulation) for:</strong><br />
 - Yield calculation (real math, simulated principal)<br />
 - NAV calculation (real formula, testnet pool value)</p>
@@ -925,14 +925,14 @@ import random
 
 class MockGDIZService:
     &quot;&quot;&quot;
-    MVP Mock GDIZ Service
+    MVP Mock GDIZ (Benin) Service
 
     Simulates GDIZ industrial gateway for testnet.
     Interface compatible with production GDIZGateway.
     &quot;&quot;&quot;
 
     def __init__(self):
-        &quot;&quot;&quot;Initialize mock GDIZ with sample industrial data.&quot;&quot;&quot;
+        &quot;&quot;&quot;Initialize mock GDIZ (Benin) with sample industrial data.&quot;&quot;&quot;
         self.industrials = self._create_sample_industrials()
         self.productions = []
 
@@ -940,24 +940,24 @@ class MockGDIZService:
         &quot;&quot;&quot;Create sample industrial partners for demo.&quot;&quot;&quot;
         return [
             {
-                'id': 'GDIZ-MVP-001',
-                'name': 'GDIZ Cotton Factory (Test)',
+                'id': 'GDIZ (Benin)-MVP-001',
+                'name': 'GDIZ (Benin) Cotton Factory (Test)',
                 'industry': 'TEXTILE',
                 'location': 'Lomé, Togo (Mock)',
                 'capacity': '500 tons/month',
                 'rating': 'A',
             },
             {
-                'id': 'GDIZ-MVP-002',
-                'name': 'GDIZ Soy Processing (Test)',
+                'id': 'GDIZ (Benin)-MVP-002',
+                'name': 'GDIZ (Benin) Soy Processing (Test)',
                 'industry': 'AGRICULTURE',
                 'location': 'Cotonou, Benin (Mock)',
                 'capacity': '1000 tons/month',
                 'rating': 'A-',
             },
             {
-                'id': 'GDIZ-MVP-003',
-                'name': 'GDIZ Coffee Roasters (Test)',
+                'id': 'GDIZ (Benin)-MVP-003',
+                'name': 'GDIZ (Benin) Coffee Roasters (Test)',
                 'industry': 'FOOD_PROCESSING',
                 'location': 'Abidjan, Côte d\'Ivoire (Mock)',
                 'capacity': '200 tons/month',
@@ -1604,7 +1604,7 @@ test('disclaimers present on all pages', async ({ page }) =&gt; {
 MVP_MODE = False  # Disable MVP mode
 MOCK_BANK = False  # Use real bank
 MOCK_ESCROW = False  # Use real escrow
-MOCK_GDIZ = False  # Use real GDIZ
+MOCK_GDIZ = False  # Use real GDIZ (Benin)
 NETWORK_NAME = &quot;polygon-mainnet&quot;
 CHAIN_ID = 137
 </code></div>

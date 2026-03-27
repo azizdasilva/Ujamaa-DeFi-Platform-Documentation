@@ -202,7 +202,7 @@ This document establishes the **official naming convention** for all tokens in t
 | **Mining** | Ujamaa Asset Token - [Mineral] Revenue | `UAT-[MIN]REV` | `MiningTokenizer.sol` | `UAT-GOLDREV` (Gold Revenue) |
 | **Energy** | Ujamaa Asset Token - [Type] Yield | `UAT-[TYPE]YLD` | `EnergyTokenizer.sol` | `UAT-SOLYLD` (Solar Yield) |
 | **Infrastructure** | Ujamaa Asset Token - [Project] Fund | `UAT-[PRJ]FUND` | `InfrastructureTokenizer.sol` | `UAT-TOLLFUND` (Toll Road Fund) |
-| **Trade Finance** 🆕 | Ujamaa Asset Token - [Invoice] | `UAT-TRD-[INV]` | `TradeFinanceTokenizer.sol` | `UAT-TRD-GDIZ-001` |
+| **Trade Finance** 🆕 | Ujamaa Asset Token - [Invoice] | `UAT-TRD-[INV]` | `TradeFinanceTokenizer.sol` | `UAT-TRD-GDIZ (Benin)-001` |
 | **Receivables Pool** 🆕 | Ujamaa Asset Token - [Receivables] | `UAT-REC-[POOL]` | `ReceivablesTokenizer.sol` | `UAT-REC-COCOA-042` |
 
 #### Token Mechanics
@@ -303,11 +303,11 @@ This document establishes the **official naming convention** for all tokens in t
     "grade": "Grade A",
     "quantity": "1000 bales",
     "weight": "200 metric tons",
-    "warehouse": "GDIZ Warehouse A, Lomé",
+    "warehouse": "GDIZ warehouse (Benin) A, Lomé",
     "certificationDate": "2026-03-01",
     "expiryDate": "2026-06-01",
     "merchandiseValue": "2000000 EUROD",
-    "industrial": "GDIZ Cotton Partners SARL",
+    "industrial": "GDIZ (Benin) Cotton Partners SARL",
     "certificateHash": "0xabc123...",
     "stockHash": "QmX7Kz9...",
     "complianceStatus": "verified"
@@ -324,7 +324,7 @@ This document establishes the **official naming convention** for all tokens in t
 │  1. Industrial receives order (e.g., ZARA €2M cotton contract)   │
 │         │                                                        │
 │         ▼                                                        │
-│  2. Industrial Gateway certifies stock (SIPI/GDIZ verification)  │
+│  2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)  │
 │         │                                                        │
 │         ▼                                                        │
 │  3. UJG-COTTON-001 minted (ERC-3643NFT)                          │

@@ -49,7 +49,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 | **MVP Config** | `backend/config/MVP_config.py` | 450+ | ✅ Complete |
 | **Yield Calculator** | `backend/services/MVP/yield_calculator.py` | 950+ | ✅ Complete |
 | **Mock Bank** | `backend/services/MVP/mock_bank.py` | 380+ | ✅ Complete |
-| **Mock GDIZ** | `backend/services/MVP/mock_gdiz.py` | 220+ | ✅ Complete |
+| **Mock GDIZ (Benin)** | `backend/services/MVP/mock_gdiz.py` | 220+ | ✅ Complete |
 | **Fraud Detector** | `backend/services/MVP/fraud_detector.py` | 520+ | ✅ Complete |
 | **Risk Scorer** | `backend/services/MVP/risk_scorer.py` | 280+ | ✅ Complete |
 | **Risk Engine** | `backend/services/MVP/risk_engine.py` | 340+ | ✅ Complete |
@@ -104,7 +104,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 |---------|-------------|--------|
 | **Yield-Bearing uLP Tokens** | ERC-3643 compliant tokens with NAV accrual | ✅ Active |
 | **Liquidity Pool Management** | Multiple financings, diversification tracking | ✅ Active |
-| **Mock Banking Layer** | Swappable bank/GDIZ services | ✅ Active |
+| **Mock Banking Layer** | Swappable bank/GDIZ (Benin) services | ✅ Active |
 | **Real Financial Math** | Yield calculation, NAV, fees (not mocked) | ✅ Active |
 | **6 Role Workflows** | Institutional, Retail, Originator, Compliance, Admin, Regulator | ✅ Active |
 | **Testnet Deployment** | Polygon Amoy (Chain ID: 80002) | ✅ Ready |
@@ -114,7 +114,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 | Service | Mock Implementation | Production Swap | Status |
 |---------|---------------------|-----------------|--------|
 | **Bank Service** | `MockBankService` (escrow accounts, wire transfers) | `BIICBankService` | ✅ Interface Ready |
-| **GDIZ Service** | `MockGDIZService` (stock certification) | `GDIZGateway` | ✅ Interface Ready |
+| **GDIZ (Benin) Service** | `MockGDIZService` (stock certification) | `GDIZGateway` | ✅ Interface Ready |
 | **Escrow Contract** | `MockEscrow.sol` (in-memory balances) | Real Bank Escrow | ✅ Interface Ready |
 | **Fiat Ramp** | `MockFiatRamp.sol` (simulated on/off ramp) | Real Fiat Rails | ✅ Interface Ready |
 | **KYB Provider** | Mock KYB verification | Real KYB Provider | ✅ Interface Ready |
@@ -140,7 +140,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 
 | Pool | Target APY | Lockup | Asset Classes | Status |
 |------|------------|--------|---------------|--------|
-| **Pool Industrie** | 10-12% | 365 days | Manufacturing, GDIZ Partners, Production | ✅ Active |
+| **Pool Industrie** | 10-12% | 365 days | Manufacturing, GDIZ (Benin) Partners, Production | ✅ Active |
 | **Pool Agriculture** | 12-15% | 180 days | Coffee, Cocoa, Cotton, Cashews, Food Crops | ✅ Active |
 | **Pool Trade Finance** | 8-10% | 90 days | Invoice Tokenization, Receivables, Commercial Paper | ✅ Active |
 | **Pool Renewable Energy** | 9-11% | 730 days | Solar, Wind, Hydroelectric | ✅ Active |
@@ -183,7 +183,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 |------|-----------|--------|
 | Onboarding | Company registration → KYB | ✅ Complete |
 | Asset Submission | AssetSubmission form with docs | ✅ Complete |
-| Certification | GDIZ stock certificate (mock) | ✅ Complete |
+| Certification | GDIZ (Benin) stock certificate (mock) | ✅ Complete |
 | Financing Tracking | Monitor raise progress | ✅ Complete |
 | Repayment | Track repayments to pool | ✅ Complete |
 
@@ -248,7 +248,7 @@ Complete MVP (Minimum Viable Product) implementation with institutional-grade ar
 |----------|-------|----------|--------|
 | **Yield Calculator** | 25 | 95% | ✅ Complete |
 | **Mock Bank** | 18 | 92% | ✅ Complete |
-| **Mock GDIZ** | 12 | 90% | ✅ Complete |
+| **Mock GDIZ (Benin)** | 12 | 90% | ✅ Complete |
 | **Fraud Detector** | 20 | 93% | ✅ Complete |
 | **Risk Scorer** | 15 | 91% | ✅ Complete |
 | **Compliance Tracker** | 14 | 90% | ✅ Complete |
@@ -419,7 +419,7 @@ frontend/src/MVP/
 │   ├── originator/
 │   │   ├── Dashboard.tsx          # ✅ Asset originator dashboard
 │   │   ├── AssetSubmission.tsx    # ✅ Submit asset for financing
-│   │   ├── AssetCertificates.tsx  # ✅ GDIZ certificates
+│   │   ├── AssetCertificates.tsx  # ✅ GDIZ (Benin) certificates
 │   │   └── Financings.tsx         # ✅ Track financings
 │   ├── compliance/
 │   │   ├── Dashboard.tsx          # ✅ Compliance officer dashboard
@@ -471,7 +471,7 @@ backend/services/MVP/
 ├── __init__.py                    # ✅ Package init
 ├── yield_calculator.py            # ✅ Real financial math (950+ lines)
 ├── mock_bank.py                   # ✅ Mock bank service (380+ lines)
-├── mock_gdiz.py                   # ✅ Mock GDIZ service (220+ lines)
+├── mock_gdiz.py                   # ✅ Mock GDIZ (Benin) service (220+ lines)
 ├── fraud_detector.py              # ✅ Fraud detection (520+ lines)
 ├── risk_scorer.py                 # ✅ Risk scoring (280+ lines)
 ├── risk_engine.py                 # ✅ Risk engine (340+ lines)
@@ -677,7 +677,7 @@ The MVP is ready for production transition:
 
 🏦 MOCK SERVICES
 ├── Mock Bank: ✅ 380+ lines
-├── Mock GDIZ: ✅ 220+ lines
+├── Mock GDIZ (Benin): ✅ 220+ lines
 ├── Yield Calculator: ✅ 950+ lines
 ├── Fraud Detector: ✅ 520+ lines
 ├── Risk Scorer: ✅ 280+ lines

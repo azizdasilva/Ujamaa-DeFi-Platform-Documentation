@@ -1032,7 +1032,7 @@ export function NotarizeForm() {
             <textarea
               className="w-full p-3 border rounded-lg font-mono text-sm"
               rows={8}
-              placeholder='{"factory_id": "GDIZ-001", "output": 1000, "date": "2026-03-09"}'
+              placeholder='{"factory_id": "GDIZ (Benin)-001", "output": 1000, "date": "2026-03-09"}'
               value={data}
               onChange={(e) => setData(e.target.value)}
             />
@@ -1135,7 +1135,7 @@ export function NotarizeForm() {
 │                                                                           │
 │  1. Industrial user enters production data                               │
 │     Frontend: NotarizeForm.tsx                                           │
-│     Input: {"factory_id": "GDIZ-001", "output": 1000}                    │
+│     Input: {"factory_id": "GDIZ (Benin)-001", "output": 1000}                    │
 │                                                                           │
 │  2. Calculate SHA-256 hash                                               │
 │     Frontend: calculateSHA256(data) → "0x7d8f..."                        │

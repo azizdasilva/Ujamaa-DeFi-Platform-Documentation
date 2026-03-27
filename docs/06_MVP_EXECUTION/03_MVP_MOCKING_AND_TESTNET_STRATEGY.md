@@ -38,7 +38,7 @@
 
 ### 1.1 Purpose
 
-MVP operates on **testnet only** (Polygon Amoy) with **mock services** simulating real-world integrations (banks, GDIZ, fiat ramps). This document defines:
+MVP operates on **testnet only** (Polygon Amoy) with **mock services** simulating real-world integrations (banks, GDIZ (Benin), fiat ramps). This document defines:
 
 - ✅ Mock service architecture and interfaces
 - ✅ Testnet deployment procedures
@@ -94,7 +94,7 @@ MVP operates on **testnet only** (Polygon Amoy) with **mock services** simulatin
 **✅ MOCK (Testnet Simulation):**
 - Bank escrow accounts (no real money movement)
 - Fiat on/off ramps (no real currency exchange)
-- Industrial Gateway/GDIZ integration (no real production data)
+- Industrial Gateway/GDIZ (Benin) integration (no real production data)
 - KYB verification (simulated approval flow)
 - Wire transfers (simulated transactions)
 
@@ -117,7 +117,7 @@ MVP operates on **testnet only** (Polygon Amoy) with **mock services** simulatin
 **MVP uses Level 2 (Mock) for:**
 - Bank services
 - Fiat ramps
-- GDIZ integration
+- GDIZ (Benin) integration
 
 **MVP uses Level 3 (Simulation) for:**
 - Yield calculation (real math, simulated principal)
@@ -760,14 +760,14 @@ import random
 
 class MockGDIZService:
     """
-    MVP Mock GDIZ Service
+    MVP Mock GDIZ (Benin) Service
     
     Simulates GDIZ industrial gateway for testnet.
     Interface compatible with production GDIZGateway.
     """
     
     def __init__(self):
-        """Initialize mock GDIZ with sample industrial data."""
+        """Initialize mock GDIZ (Benin) with sample industrial data."""
         self.industrials = self._create_sample_industrials()
         self.productions = []
     
@@ -775,24 +775,24 @@ class MockGDIZService:
         """Create sample industrial partners for demo."""
         return [
             {
-                'id': 'GDIZ-MVP-001',
-                'name': 'GDIZ Cotton Factory (Test)',
+                'id': 'GDIZ (Benin)-MVP-001',
+                'name': 'GDIZ (Benin) Cotton Factory (Test)',
                 'industry': 'TEXTILE',
                 'location': 'Lomé, Togo (Mock)',
                 'capacity': '500 tons/month',
                 'rating': 'A',
             },
             {
-                'id': 'GDIZ-MVP-002',
-                'name': 'GDIZ Soy Processing (Test)',
+                'id': 'GDIZ (Benin)-MVP-002',
+                'name': 'GDIZ (Benin) Soy Processing (Test)',
                 'industry': 'AGRICULTURE',
                 'location': 'Cotonou, Benin (Mock)',
                 'capacity': '1000 tons/month',
                 'rating': 'A-',
             },
             {
-                'id': 'GDIZ-MVP-003',
-                'name': 'GDIZ Coffee Roasters (Test)',
+                'id': 'GDIZ (Benin)-MVP-003',
+                'name': 'GDIZ (Benin) Coffee Roasters (Test)',
                 'industry': 'FOOD_PROCESSING',
                 'location': 'Abidjan, Côte d\'Ivoire (Mock)',
                 'capacity': '200 tons/month',
@@ -1479,7 +1479,7 @@ test('disclaimers present on all pages', async ({ page }) => {
 MVP_MODE = False  # Disable MVP mode
 MOCK_BANK = False  # Use real bank
 MOCK_ESCROW = False  # Use real escrow
-MOCK_GDIZ = False  # Use real GDIZ
+MOCK_GDIZ = False  # Use real GDIZ (Benin)
 NETWORK_NAME = "polygon-mainnet"
 CHAIN_ID = 137
 ```

@@ -31,7 +31,7 @@
 |--------------|--------|------|
 | Bank escrow accounts | ✅ | `backend/services/MVP/mock_bank.py` |
 | Fiat on/off ramps | ✅ | `contracts/MVP/MockFiatRamp.sol` |
-| GDIZ integration | ✅ | `backend/services/MVP/mock_gdiz.py` |
+| GDIZ (Benin) integration | ✅ | `backend/services/MVP/mock_gdiz.py` |
 | KYB verification | ✅ | Simulated in backend |
 | Wire transfers | ✅ | Simulated in mock bank |
 
@@ -97,7 +97,7 @@ VITE_MOCK_BANK=true
 
 **Backend Services:**
 - `backend/services/MVP/mock_bank.py` - Implements bank service interface ✅
-- `backend/services/MVP/mock_gdiz.py` - Implements GDIZ interface ✅
+- `backend/services/MVP/mock_gdiz.py` - Implements GDIZ (Benin) interface ✅
 
 ---
 
@@ -283,7 +283,7 @@ VITE_MOCK_BANK=true
 # backend/config/MVP_config.py
 MVP_MODE = False  # Switch to production
 MOCK_BANK = False  # Use real bank service
-MOCK_GDIZ = False  # Use real GDIZ service
+MOCK_GDIZ = False  # Use real GDIZ (Benin) service
 ```
 
 **Frontend:**
@@ -293,7 +293,7 @@ IS_MVP: false,
 MOCK: {
   BANK: false,
   ESCROW: false,
-  GDIZ: false,
+  GDIZ (Benin): false,
 }
 ```
 
@@ -487,13 +487,13 @@ vercel --prod
 
 **File:** `backend/api/MVP/mock_bank.py` ✅
 
-#### A.2 GDIZ Service API ✅
+#### A.2 GDIZ (Benin) Service API ✅
 
 **Endpoints:**
-- `POST /api/v2/gdiz/industrial` - Register industrial
-- `POST /api/v2/gdiz/project` - Create project
-- `POST /api/v2/gdiz/report` - Submit production report
-- `GET /api/v2/gdiz/stats` - Get GDIZ statistics
+- `POST /api/v2/GDIZ (Benin)/industrial` - Register industrial
+- `POST /api/v2/GDIZ (Benin)/project` - Create project
+- `POST /api/v2/GDIZ (Benin)/report` - Submit production report
+- `GET /api/v2/GDIZ (Benin)/stats` - Get GDIZ (Benin) statistics
 
 **File:** `backend/services/MVP/mock_gdiz.py` ✅
 

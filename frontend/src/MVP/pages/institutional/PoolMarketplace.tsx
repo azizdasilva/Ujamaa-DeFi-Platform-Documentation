@@ -44,11 +44,11 @@ const pools: Pool[] = [
     lockupDays: 365,
     totalValue: 50_000_000,
     apy: 11,
-    assetClasses: ['Manufacturing', 'GDIZ Partners', 'Production'],
+    assetClasses: ['Manufacturing', 'GDIZ (Benin) Partners', 'Production'],
     riskLevel: 'medium',
     minInvestment: 100_000,
     maxInvestment: 5_000_000,
-    description: 'Financing for African manufacturing companies and GDIZ-certified industrial partners.',
+    description: 'Financing for African manufacturing companies and GDIZ (Benin)-certified industrial partners.',
     featured: true,
   },
   {

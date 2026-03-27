@@ -143,7 +143,7 @@ forge test -vvv
 
 | Pool | Target APY | Term | Focus |
 |------|------------|------|-------|
-| **POOL_INDUSTRIE** | 10-12% | 365 days | Manufacturing, GDIZ partners |
+| **POOL_INDUSTRIE** | 10-12% | 365 days | Manufacturing, GDIZ (Benin) partners |
 | **POOL_AGRICULTURE** | 12-15% | 180 days | Coffee, cocoa, cotton |
 | **POOL_TRADE_FINANCE** | 8-10% | 90 days | Invoice tokenization |
 | **POOL_RENEWABLE_ENERGY** | 9-11% | 730 days | Solar, wind, hydro |

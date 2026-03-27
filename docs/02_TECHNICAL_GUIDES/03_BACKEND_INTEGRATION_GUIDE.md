@@ -130,7 +130,7 @@ POST /api/v1/kyb/submit
 Headers: Authorization: Bearer {token}
 {
   "companyId": "uuid",
-  "companyName": "GDIZ Industries",
+  "companyName": "GDIZ (Benin) Industries",
   "registrationNumber": "CI-2024-12345",
   "industry": "MANUFACTURING",
   "documents": [
@@ -187,9 +187,9 @@ Response: {
   "assets": [
     {
       "id": "uuid",
-      "name": "GDIZ Factory Invoice #001",
+      "name": "GDIZ (Benin) Factory Invoice #001",
       "class": "Invoice | Factory | Production",
-      "originator": "GDIZ Industries",
+      "originator": "GDIZ (Benin) Industries",
       "targetRaise": 50000,
       "currentRaise": 35000,
       "expectedYield": 8.5,
@@ -209,12 +209,12 @@ GET /api/v1/assets/:assetId
 
 Response: {
   "id": "uuid",
-  "name": "GDIZ Factory Invoice #001",
+  "name": "GDIZ (Benin) Factory Invoice #001",
   "description": "Short description",
   "class": "Invoice",
   "originator": {
     "id": "uuid",
-    "name": "GDIZ Industries",
+    "name": "GDIZ (Benin) Industries",
     "verified": true
   },
   "targetRaise": 50000,
@@ -238,7 +238,7 @@ Response: {
 }
 
 // Search Assets
-GET /api/v1/assets/search?q=GDIZ&class=Invoice
+GET /api/v1/assets/search?q=GDIZ (Benin)&class=Invoice
 
 // Filter Assets
 GET /api/v1/assets/filter?class=Invoice&minYield=5&maxYield=10&minInvestment=100
@@ -285,7 +285,7 @@ Response: {
     {
       "id": "uuid",
       "assetId": "uuid",
-      "assetName": "GDIZ Factory Invoice #001",
+      "assetName": "GDIZ (Benin) Factory Invoice #001",
       "amount": 1000,
       "shares": 100,
       "currentValue": 1050,
@@ -421,8 +421,8 @@ Response: {
   "users": [
     {
       "id": "uuid",
-      "name": "GDIZ Industries",
-      "email": "contact@gdiz.ci",
+      "name": "GDIZ (Benin) Industries",
+      "email": "contact@GDIZ (Benin).ci",
       "role": "ORIGINATOR",
       "kycLevel": 2,
       "submittedAt": "2026-03-01T10:00:00Z"

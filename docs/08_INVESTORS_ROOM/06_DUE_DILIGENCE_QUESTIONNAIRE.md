@@ -104,7 +104,7 @@
 | **Education** | MBA INSEAD, BSc Finance |
 | **Track Record** | Structured $2B+ African transactions |
 | **Co-investment** | €500,000 committed (skin in the game) |
-| **Other Board Seats** | GDIZ (Advisory) |
+| **Other Board Seats** | GDIZ (Benin) (Advisory) |
 | **Regulatory Approvals** | Mauritius FSC Fit & Proper (pending) |
 | **Disciplinary History** | None |
 
@@ -220,8 +220,8 @@
 
 | Question | Response |
 |----------|----------|
-| **3.1.1 Primary Sources** | GDIZ network (Benin, industrial network), SIPI partnerships, African trade associations |
-| **3.1.2 Proprietary Deal Flow** | 60% (GDIZ exclusive network) |
+| **3.1.1 Primary Sources** | GDIZ (Benin) network (Benin, industrial network), SIPI partnerships, African trade associations |
+| **3.1.2 Proprietary Deal Flow** | 60% (GDIZ (Benin) exclusive network) |
 | **3.1.3 Intermediary Deals** | 30% (local banks, brokers) |
 | **3.1.4 Inbound Applications** | 10% (platform applications) |
 | **3.1.5 Geographic Coverage** | 17 OHADA countries (Côte d'Ivoire, Senegal, Benin, Cameroon priority) |
@@ -239,7 +239,7 @@
 │  STAGE 1: INITIAL SCREENING (1-2 weeks)                         │
 │  ─────────────────────────────────────                          │
 │  • Application review (business plan, financials)               │
-│  • GDIZ/SIPI certification check                                │
+│  • GDIZ (Benin)/SIPI certification check                                │
 │  • Preliminary credit assessment                                │
 │  • Go/No-Go decision (Investment Committee)                     │
 │                                                                 │
@@ -261,7 +261,7 @@
 │                                                                 │
 │  STAGE 4: TECHNICAL DUE DILIGENCE (1-2 weeks)                   │
 │  ──────────────────────────────────────────                     │
-│  • Stock certification (SIPI/GDIZ)                              │
+│  • Stock certification (SIPI/GDIZ (Benin))                              │
 │  • Guarantee Token minting preparation                          │
 │  • Insurance verification                                       │
 │  • Technical expert review (if needed)                          │
@@ -306,7 +306,7 @@
 | **Operating History** | 2 years | 5+ years |
 | **Collateral Coverage** | 100% | 120%+ |
 | **Debt Service Coverage** | 1.2x | 1.5x+ |
-| **GDIZ Certification** | Required | Required |
+| **GDIZ (Benin) Certification** | Required | Required |
 | **Off-take Agreement** | Preferred | Required (€2M+) |
 | **ESG Compliance** | Minimum standards | Best practices |
 
@@ -365,7 +365,7 @@
 | Mitigation | Implementation |
 |------------|----------------|
 | **Collateral** | Guarantee Token (certified merchandise, 100%+ coverage) |
-| **GDIZ Guarantee** | Primary recourse (GDIZ backs industrial repayment) |
+| **GDIZ (Benin) Guarantee** | Primary recourse (GDIZ (Benin) backs industrial repayment) |
 | **Credit Provision** | 5% of financing (expected loss reserve) |
 | **Diversification** | 40+ financings per pool |
 | **Covenants** | Financial reporting, insurance maintenance, negative pledge |
@@ -708,7 +708,7 @@
 | **uLP Token** | UJAMAA Liquidity Provider token (yield-bearing) |
 | **Guarantee Token** | ERC-3643 NFT representing collateral |
 | **Ondo EUROD (EUROD)** | Euro Coin (euro-pegged stablecoin) |
-| **GDIZ** | General Distribution & Industrial Zone |
+| **GDIZ (Benin)** | General Distribution & Industrial Zone |
 | **OHADA** | Organization for Harmonization of Business Law in Africa |
 | **FSC** | Financial Services Commission (Mauritius) |
 | **CIS** | Collective Investment Scheme |
@@ -740,7 +740,7 @@
 Ebène Cybercity, Mauritius
 
 **Operating Office:**
-GDIZ Zone, Abidjan, Côte d'Ivoire
+GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 
 **Contact:**
 - Email: investors@ujamaa.defi

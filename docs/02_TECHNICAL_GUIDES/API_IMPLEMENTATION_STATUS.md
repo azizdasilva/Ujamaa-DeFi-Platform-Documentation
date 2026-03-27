@@ -288,7 +288,7 @@
 - ✅ Liquidity pool management (invest, redeem, financings)
 - ✅ Compliance (jurisdiction checks, investor registration)
 - ✅ All 18 KPIs with demo data
-- ✅ Mock services (bank, escrow, GDIZ, KYB)
+- ✅ Mock services (bank, escrow, GDIZ (Benin), KYB)
 - ✅ 5 pool families configured
 
 **MVP Completion: 100%** ✅

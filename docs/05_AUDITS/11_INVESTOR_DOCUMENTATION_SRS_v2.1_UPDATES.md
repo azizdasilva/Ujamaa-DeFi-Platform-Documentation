@@ -41,7 +41,7 @@ This white paper describes the technical architecture, economic model, complianc
 
 **Ujamaa Guarantee (UJG)** - A non-transferable ERC-3643NFT (ERC-721 + compliance) representing certified merchandise collateral held by the liquidity pool as security until repayment.
 
-Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody with $1B+ insurance), BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), and Mobile Money providers (M-Pesa, MTN, Airtel), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
+Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody with $1B+ insurance), BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), and Mobile Money providers (M-Pesa, MTN, Airtel), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
 
 **Key Innovations (v2.1):**
 - Yield-bearing uLP tokens with value-accrual (NAV increases, balance constant)
@@ -119,7 +119,7 @@ Each financing is collateralized by certified merchandise represented by UJG tok
 
 ```
 1. Business receives export order (e.g., ZARA €2M contract)
-2. GDIZ/SIPI certifies stock → UJG minted (ERC-3643NFT)
+2. GDIZ (Benin)/SIPI certifies stock → UJG minted (ERC-3643NFT)
 3. Pool deploys funds to Business
 4. Pool holds UJG as collateral/security
 5. Business repays (principal + 12% interest)
@@ -545,7 +545,7 @@ Recovery Rate: 80-95% (based on auction)
 ### Q: What is the UJG Token?
 
 **A:** The Ujamaa Guarantee (UJG) is a **non-transferable ERC-3643NFT** that represents certified merchandise collateral held by the liquidity pool. Each financing is collateralized by UJG tokens, which are:
-- Minted when stock is certified by GDIZ/SIPI
+- Minted when stock is certified by GDIZ (Benin)/SIPI
 - Held by the pool as security until repayment
 - Returned to the business on full repayment
 - Liquidated via auction on default (proceeds to uLP holders)
@@ -705,7 +705,7 @@ See Investment Memorandum Section 10 for complete risk factors.
 3. Default recorded in compliance audit trail
 4. Legal recourse against business owners (personal guarantees)
 
-Historical recovery rate: 80-95% (based on GDIZ benchmarking)
+Historical recovery rate: 80-95% (based on GDIZ (Benin) benchmarking)
 
 ### Q: What happens if Fireblocks is compromised?
 

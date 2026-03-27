@@ -966,7 +966,7 @@ Vérifier que les marchandises existent **réellement** avant de créer le token
 Avant de prêter de l'argent à une entreprise, on doit vérifier que ses marchandises existent vraiment. C'est comme un expert qui visite une maison avant qu'une banque ne prête de l'argent.
 
 **Qui vérifie ?**
-- **GDIZ** (société d'inspection)
+- **GDIZ (Benin)** (société d'inspection)
 - **SIPI** (société d'inspection)
 - Autres certificateurs approuvés
 
@@ -1002,13 +1002,13 @@ Avant de prêter de l'argent à une entreprise, on doit vérifier que ses marcha
 
 #### 📊 Exemple Concret
 
-**Certificateur : GDIZ**
+**Certificateur : GDIZ (Benin)**
 
 ```
 Date : 15 mars 2026
 Lieu : Entrepôt de Tanger, Maroc
 
-GDIZ vérifie :
+GDIZ (Benin) vérifie :
 ✅ 10 000 chemises en coton comptées
 ✅ Qualité conforme aux documents
 ✅ Stock bien entreposé
@@ -1225,7 +1225,7 @@ Créer automatiquement le token UGT à partir d'un certificat vérifié.
 
 #### 📝 En Termes Simples
 
-Quand un certificateur (GDIZ, SIPI) a vérifié et certifié des marchandises, cet algorithme crée automatiquement le token UGT correspondant. C'est le lien entre le monde physique (marchandises vérifiées) et le monde numérique (token blockchain).
+Quand un certificateur (GDIZ (Benin), SIPI) a vérifié et certifié des marchandises, cet algorithme crée automatiquement le token UGT correspondant. C'est le lien entre le monde physique (marchandises vérifiées) et le monde numérique (token blockchain).
 
 #### 🔢 Comment ça Marche
 
@@ -1266,7 +1266,7 @@ Quand un certificateur (GDIZ, SIPI) a vérifié et certifié des marchandises, c
 
 **Du certificat au token :**
 ```
-Certificat #456 (déjà vérifié par GDIZ) :
+Certificat #456 (déjà vérifié par GDIZ (Benin)) :
 - industrial : TextileMaroc
 - value : 500 000 €
 - assetType : INVENTORY
@@ -1457,7 +1457,7 @@ C'est le **parcours complet** d'un financement, comme un film qui montre toutes 
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  ÉTAPE 2 : Certification (GDIZ/SIPI)                        │
+│  ÉTAPE 2 : Certification (GDIZ (Benin)/SIPI)                        │
 │  ───────────────────────                                     │
 │  • Un certificateur vérifie l'actif                         │
 │  • Crée le certificat avec ID unique                        │
@@ -1509,7 +1509,7 @@ Jour 1 : TextileMaroc soumet une demande
   → Valeur : 500 000 €
   → Stock : 10 000 chemises
 
-Jour 2 : GDIZ inspecte le stock
+Jour 2 : GDIZ (Benin) inspecte le stock
   → Certificat #456 créé
   → Vérifié ✅
 
@@ -1677,7 +1677,7 @@ Sans cache :
 | **Tokenisation** | Minting UGT | ALG-05-03-02 | Création du token de garantie | < 30 s |
 | **Tokenisation** | Redemption UGT | ALG-05-03-03 | Transfert après remboursement | < 1 ms |
 | **Tokenisation** | Liquidation UGT | ALG-05-03-04 | Vente aux enchères en cas de défaut | < 1 ms |
-| **Tokenisation** | Certification | ALG-05-03-05 | Vérification des actifs (GDIZ/SIPI) | < 1 ms |
+| **Tokenisation** | Certification | ALG-05-03-05 | Vérification des actifs (GDIZ (Benin)/SIPI) | < 1 ms |
 | **Tokenisation** | Cert→Token | ALG-05-03-06 | Du certificat au token UGT | < 1 ms |
 | **Tokenisation** | Flux Complet | ALG-05-03-07 | Tokenisation end-to-end | < 5 s |
 | **Tokenisation** | Compliance UGT | ALG-05-03-08 | Restrictions de transfert | < 1 ms |

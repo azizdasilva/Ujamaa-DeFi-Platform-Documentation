@@ -174,7 +174,7 @@
 |--------------|--------|------|<br />
 | Bank escrow accounts | ✅ | <code>backend/services/MVP/mock_bank.py</code> |<br />
 | Fiat on/off ramps | ✅ | <code>contracts/MVP/MockFiatRamp.sol</code> |<br />
-| GDIZ integration | ✅ | <code>backend/services/MVP/mock_gdiz.py</code> |<br />
+| GDIZ (Benin) integration | ✅ | <code>backend/services/MVP/mock_gdiz.py</code> |<br />
 | KYB verification | ✅ | Simulated in backend |<br />
 | Wire transfers | ✅ | Simulated in mock bank |</p>
 <p><strong>❌ DON'T MOCK (Real Implementation):</strong><br />
@@ -251,7 +251,7 @@ VITE_MOCK_BANK=true
 - <code>contracts/MVP/interfaces/IFiatRamp.sol</code> ✅</p>
 <p><strong>Backend Services:</strong><br />
 - <code>backend/services/MVP/mock_bank.py</code> - Implements bank service interface ✅<br />
-- <code>backend/services/MVP/mock_gdiz.py</code> - Implements GDIZ interface ✅</p>
+- <code>backend/services/MVP/mock_gdiz.py</code> - Implements GDIZ (Benin) interface ✅</p>
 <hr />
 <h3>✅ 4. Testnet Deployment Strategy (100%)</h3>
 <h4>4.1 Network Configuration ✅</h4>
@@ -405,7 +405,7 @@ VITE_MOCK_BANK=true
 <div class="docs-pre"><code># backend/config/MVP_config.py
 MVP_MODE = False  # Switch to production
 MOCK_BANK = False  # Use real bank service
-MOCK_GDIZ = False  # Use real GDIZ service
+MOCK_GDIZ = False  # Use real GDIZ (Benin) service
 </code></div>
 <p><strong>Frontend:</strong></p>
 <div class="docs-pre"><code>// frontend/src/MVP/utils/MVPConfig.ts
@@ -413,7 +413,7 @@ IS_MVP: false,
 MOCK: {
   BANK: false,
   ESCROW: false,
-  GDIZ: false,
+  GDIZ (Benin): false,
 }
 </code></div>
 <h4>7.2 Smart Contract Swap ✅</h4>
@@ -555,12 +555,12 @@ vercel --prod
 - <code>POST /api/v2/bank/escrow/{account_id}/freeze</code> - Freeze account<br />
 - <code>GET /api/v2/bank/stats</code> - Get bank statistics</p>
 <p><strong>File:</strong> <code>backend/api/MVP/mock_bank.py</code> ✅</p>
-<h4>A.2 GDIZ Service API ✅</h4>
+<h4>A.2 GDIZ (Benin) Service API ✅</h4>
 <p><strong>Endpoints:</strong><br />
-- <code>POST /api/v2/gdiz/industrial</code> - Register industrial<br />
-- <code>POST /api/v2/gdiz/project</code> - Create project<br />
-- <code>POST /api/v2/gdiz/report</code> - Submit production report<br />
-- <code>GET /api/v2/gdiz/stats</code> - Get GDIZ statistics</p>
+- <code>POST /api/v2/GDIZ (Benin)/industrial</code> - Register industrial<br />
+- <code>POST /api/v2/GDIZ (Benin)/project</code> - Create project<br />
+- <code>POST /api/v2/GDIZ (Benin)/report</code> - Submit production report<br />
+- <code>GET /api/v2/GDIZ (Benin)/stats</code> - Get GDIZ (Benin) statistics</p>
 <p><strong>File:</strong> <code>backend/services/MVP/mock_gdiz.py</code> ✅</p>
 <hr />
 </section>

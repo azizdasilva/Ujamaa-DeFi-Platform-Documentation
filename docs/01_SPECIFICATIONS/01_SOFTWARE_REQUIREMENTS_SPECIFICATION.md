@@ -42,7 +42,7 @@
 - **TECHNOLOGY:** SaaS companies, tech startups (revenue financing)
 
 🆕 **Pool Families:**
-- **POOL_INDUSTRIE:** Manufacturing, factories, production facilities (GDIZ partners)
+- **POOL_INDUSTRIE:** Manufacturing, factories, production facilities (GDIZ (Benin) partners)
 - **POOL_AGRICULTURE:** Coffee, cocoa, cotton, cashews, food crops
 - **POOL_TRADE_FINANCE:** Invoice tokenization, receivables pools
 - **POOL_RENEWABLE_ENERGY:** Solar, wind, hydroelectric projects
@@ -111,7 +111,7 @@
 **Ujamaa Guarantee (UJG) Lifecycle:**
 ```
 1. Industrial receives order (e.g., ZARA €2M contract)
-2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
 3. Ujamaa Guarantee (UJG) minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
 5. Pool holds Ujamaa Guarantee (UJG) (collateral/security)
@@ -169,10 +169,10 @@ contract GuaranteeToken is ERC3643NFT {
 
 **Metadata Stored:**
 - Stock description (e.g., "1000 cotton bales, Grade A")
-- Warehouse location (e.g., "GDIZ Warehouse A, Lomé")
+- Warehouse location (e.g., "GDIZ warehouse (Benin) A, Lomé")
 - Certification date and expiry
 - Industrial Gateway certificate hash
-- SIPI/GDIZ verification data
+- SIPI/GDIZ (Benin) verification data
 - Compliance status (verified/unverified)
 - Default status (for liquidation tracking)
 
@@ -587,7 +587,7 @@ The Ujamaa DeFi Platform occupies a critical position in the institutional decen
   - **Stablecoin issuers:** Ondo Finance USDC, Tether USDT, African fiat-backed stablecoins (Celo Dollar, Monoix, BitPanda African stablecoins), **Ondo Finance Ondo EUROD (EUROD) (euro-backed)** 🆕, **EURR (euro-backed for African markets)** 🆕
   - **Custody providers:** **Fireblocks (institutional digital asset custody)** 🆕, **Mobile Money providers (M-Pesa, MTN, Airtel)** 🆕
   - **Bank partners:** **BIIC (Banque Internationale pour l'Industrie et le Commerce) (Mauritius)** 🆕, **MCB (Mauritius)** 🆕 for escrow accounts
-  - **Industrial partners:** **GDIZ (General Distribution & Industrial Zone)** 🆕, **SIPI (Société Industrielle et de Promotion)** 🆕
+  - **Industrial partners:** **GDIZ (Benin) (General Distribution & Industrial Zone)** 🆕, **SIPI (Société Industrielle et de Promotion)** 🆕
 
 - **Downstream integrations:**
   - **Institutional investors (€100K+):** African pension funds (Ghana SSNIT, Nigeria PenCom, South Africa PIC), family offices, development finance institutions (African Development Bank, IFC, FMO), sovereign wealth funds (Nigeria Sovereign Investment Authority, Botswana Pula Fund, Angola Fundo Soberano), insurance companies (Old Mutual, Sanlam, Prudential Assurance), **Logic Capital (example: €10M investment)** 🆕
@@ -724,7 +724,7 @@ Mauritius Management Company (FSC Licensed)
     ↓
 Pool Families (4 pools: Industrie, Agriculture, Trade Finance, Renewable Energy)
     ↓
-African Industrials (GDIZ partners in 17 OHADA countries)
+African Industrials (GDIZ (Benin) partners in 17 OHADA countries)
     ↓
 Escrow Accounts (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius)
     ↓
@@ -750,7 +750,7 @@ Investors (Logic Capital, pension funds, family offices)
 ```
 1. Logic Capital wires €10M → Investor Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 2. Convert to Ondo EUROD (EUROD) → Pool Escrow
-3. Deploy to Industrial (GDIZ partner) → Industrial receives Ondo EUROD (EUROD)
+3. Deploy to Industrial (GDIZ (Benin) partner) → Industrial receives Ondo EUROD (EUROD)
 4. Industrial produces goods for ZARA
 5. ZARA pays €2M → Repayment Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 6. Smart Contract triggers distribution:
@@ -776,7 +776,7 @@ Investors (Logic Capital, pension funds, family offices)
 
 | Pool Family | Asset Classes | Target Yield | Risk Profile | Minimum Investment | Lock-up Period |
 |-------------|---------------|--------------|--------------|-------------------|----------------|
-| **POOL_INDUSTRIE** | Manufacturing, factories, production (GDIZ) | 10-12% | Medium | €100,000 | 365 days |
+| **POOL_INDUSTRIE** | Manufacturing, factories, production (GDIZ (Benin)) | 10-12% | Medium | €100,000 | 365 days |
 | **POOL_AGRICULTURE** | Coffee, cocoa, cotton, cashews, food crops | 12-15% | Medium-High | €100,000 | 180 days |
 | **POOL_TRADE_FINANCE** | Invoice tokenization, receivables pools | 8-10% | Low-Medium | €100,000 | 90 days |
 | **POOL_RENEWABLE_ENERGY** | Solar, wind, hydroelectric projects | 9-11% | Low-Medium | €100,000 | 730 days |
@@ -3711,7 +3711,7 @@ Debtor → Collection Account (Bank) → Payment Oracle → Distribution Contrac
 
 **Inputs:**
 - Institutional investor deposits (Ondo EUROD (EUROD) via Fireblocks or bank escrow)
-- Industrial repayments (principal + interest from GDIZ partners)
+- Industrial repayments (principal + interest from GDIZ (Benin) partners)
 - Pool manager commands (deploy funds, distribute yield)
 - Oracle price feeds (Ondo EUROD (EUROD)/USD, portfolio valuation)
 

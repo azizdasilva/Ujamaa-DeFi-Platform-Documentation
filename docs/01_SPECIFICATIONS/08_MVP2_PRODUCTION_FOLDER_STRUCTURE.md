@@ -108,7 +108,7 @@ frontend/
 │   │   ├── hooks/                  # MVP custom hooks
 │   │   │   ├── useMVPMode.ts              # MVP mode flag
 │   │   │   ├── useMockBank.ts              # Mock bank service
-│   │   │   ├── useMockGDIZ.ts              # Mock GDIZ service
+│   │   │   ├── useMockGDIZ.ts              # Mock GDIZ (Benin) service
 │   │   │   ├── useuLPToken.ts              # uLP token operations
 │   │   │   ├── usePools.ts                 # Pool operations
 │   │   │   ├── useKYC.ts                   # KYC operations
@@ -122,7 +122,7 @@ frontend/
 │   │   │
 │   │   ├── services/               # MVP API clients
 │   │   │   ├── mockBankService.ts          # Mock bank API
-│   │   │   ├── mockGDIZService.ts          # Mock GDIZ API
+│   │   │   ├── mockGDIZService.ts          # Mock GDIZ (Benin) API
 │   │   │   ├── poolService.ts              # Pool API
 │   │   │   ├── investorService.ts          # Investor API
 │   │   │   ├── originatorService.ts        # Originator API
@@ -251,7 +251,7 @@ backend/
 │   │       ├── compliance.py               # Compliance operations
 │   │       ├── regulator.py                # Regulator operations
 │   │       ├── mock_bank.py                # Mock bank API
-│   │       ├── mock_gdiz.py                # Mock GDIZ API
+│   │       ├── mock_gdiz.py                # Mock GDIZ (Benin) API
 │   │       └── docs.py                     # Documentation
 │   │
 │   ├── services/
@@ -260,7 +260,7 @@ backend/
 │   │   │   ├── pool_service.py             # Pool management
 │   │   │   ├── yield_calculation.py        # Yield calculations
 │   │   │   ├── mock_bank_service.py        # Mock bank service
-│   │   │   ├── mock_gdiz_service.py        # Mock GDIZ service
+│   │   │   ├── mock_gdiz_service.py        # Mock GDIZ (Benin) service
 │   │   │   ├── investor_service.py         # Investor management
 │   │   │   ├── originator_service.py       # Originator management
 │   │   │   ├── compliance_service.py       # Compliance operations
@@ -395,7 +395,7 @@ contracts/
 | Notice | `TestnetNotice.tsx` | Clear testnet notice |
 | Badge | `MockDataBadge.tsx` | Clear mock data indicator |
 | Bank Service | `mockBankService.ts` | Clear mock service |
-| GDIZ Service | `mockGDIZService.ts` | Clear mock service |
+| GDIZ (Benin) Service | `mockGDIZService.ts` | Clear mock service |
 | Escrow Contract | `MockEscrow.sol` | Clear testnet contract |
 | Fiat Ramp Contract | `MockFiatRamp.sol` | Clear testnet contract |
 
@@ -497,7 +497,7 @@ DEBUG=true
 1. Replace MockEscrow → RealBankEscrow (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration)
 2. Replace MockFiatRamp → RealFiatRamp (Ondo Finance, EURR integration)
 3. Replace MockBank → RealBankAPI (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API)
-4. Replace MockGDIZ → RealGDIZGateway (GDIZ API integration)
+4. Replace MockGDIZ → RealGDIZGateway (GDIZ (Benin) API integration)
 5. Deploy to Polygon mainnet
 6. Regulatory approval (Mauritius FSC)
 ```

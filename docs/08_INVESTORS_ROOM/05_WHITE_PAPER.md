@@ -14,7 +14,7 @@
 
 The UJAMAA DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, UJAMAA enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.
 
-This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
+This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
 
 ---
 
@@ -70,7 +70,7 @@ UJAMAA DeFi Platform bridges this gap through blockchain-based tokenization of A
 
 | Metric | Result |
 |--------|--------|
-| **Industrial Partner** | GDIZ-certified textile factory (Côte d'Ivoire) |
+| **Industrial Partner** | GDIZ (Benin)-certified textile factory (Côte d'Ivoire) |
 | **Financing Amount** | €2,000,000 |
 | **Term** | 365 days |
 | **Interest Rate** | 12% APR |
@@ -348,7 +348,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 
 ```
 1. Industrial applies for financing → Dashboard
-2. GDIZ certifies merchandise → SIPI verification
+2. GDIZ (Benin) certifies merchandise → SIPI verification
 3. Guarantee Token minted → ERC-3643 NFT
 4. Liquidity Pool deploys Ondo EUROD (EUROD) → Industrial wallet
 5. Guarantee Token held by Pool → Collateral security
@@ -477,7 +477,7 @@ Example: 100,000 uLP × €1.10 = €110,000
   "name": "Guarantee Token #001",
   "description": "Collateral for GDIZ Industrial Financing",
   "attributes": {
-    "certificateId": "GDIZ-2026-001",
+    "certificateId": "GDIZ (Benin)-2026-001",
     "merchandiseValue": "2000000",
     "merchandiseCurrency": "Ondo EUROD (EUROD)",
     "expiryDate": "2027-03-17",
@@ -485,9 +485,9 @@ Example: 100,000 uLP × €1.10 = €110,000
     "pool": "Pool Industrie",
     "isRedeemed": false,
     "stockHash": "QmXyz...",
-    "warehouseLocation": "GDIZ Warehouse A, Abidjan",
+    "warehouseLocation": "GDIZ warehouse (Benin) A, Abidjan",
     "certificationDate": "2026-03-17",
-    "certifier": "SIPI/GDIZ"
+    "certifier": "SIPI/GDIZ (Benin)"
   },
   "image": "ipfs://QmXyz..."
 }
@@ -497,7 +497,7 @@ Example: 100,000 uLP × €1.10 = €110,000
 
 ```
 1. Industrial receives order (e.g., ZARA €2M contract)
-2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
 3. Guarantee Token minted (ERC-3643 NFT with metadata)
 4. Pool deploys Ondo EUROD (EUROD) to Industrial
 5. Pool holds Guarantee Token (collateral/security)
@@ -725,7 +725,7 @@ contract GuaranteeToken is ERC3643NFT {
     /**
      * @notice Mint Guarantee Token for certified merchandise
      * @param industrial Industrial wallet
-     * @param certificateId GDIZ/SIPI certificate ID
+     * @param certificateId GDIZ (Benin)/SIPI certificate ID
      * @param value Merchandise value in Ondo EUROD (EUROD)
      * @param expiryDate When invoice is due
      * @param stockHash IPFS hash of stock documents
@@ -1435,7 +1435,7 @@ The UJAMAA DeFi Platform represents a paradigm shift in African SME financing. B
 
 - **Transaction Structure:** Validated through market research
 - **€45M Target Pipeline:** Various stages (LOI, due diligence, origination)
-- **GDIZ Partnership:** In discussion (industrial network in Benin)
+- **GDIZ (Benin) Partnership:** In discussion (industrial network in Benin)
 
 **Vision:**
 
@@ -1455,7 +1455,7 @@ Become Africa's leading RWA tokenization platform, facilitating $10B+ in financi
 8. Fireblocks. "Institutional Custody Platform." https://www.fireblocks.com/
 9. Chainlink. "Decentralized Oracle Network." https://chain.link/
 10. OpenZeppelin. "Secure Smart Contract Library." https://openzeppelin.com/contracts/
-11. GDIZ. "General Distribution & Industrial Zone." 2025.
+11. GDIZ (Benin). "General Distribution & Industrial Zone." 2025.
 12. OHADA. "Uniform Act on Commercial Companies." 2025.
 
 ---

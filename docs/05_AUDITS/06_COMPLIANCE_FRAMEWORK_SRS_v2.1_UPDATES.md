@@ -213,7 +213,7 @@ Entity qualifies if:
 ### 4.2 Collateral Management Compliance
 
 **Collateral Requirements:**
-- **Existence Verification:** Industrial Gateway certification (SIPI/GDIZ)
+- **Existence Verification:** Industrial Gateway certification (SIPI/GDIZ (Benin))
 - **Valuation:** Independent appraiser, updated quarterly
 - **Insurance:** Collateral must be insured (fire, theft, damage)
 - **Storage:** Approved warehouse with regular inspections

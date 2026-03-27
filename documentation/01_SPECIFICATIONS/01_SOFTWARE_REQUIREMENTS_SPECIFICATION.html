@@ -209,7 +209,7 @@
 - <strong>REAL_ESTATE:</strong> Property developers, REITs, property management<br />
 - <strong>TECHNOLOGY:</strong> SaaS companies, tech startups (revenue financing)</p>
 <p>🆕 <strong>Pool Families:</strong><br />
-- <strong>POOL_INDUSTRIE:</strong> Manufacturing, factories, production facilities (GDIZ partners)<br />
+- <strong>POOL_INDUSTRIE:</strong> Manufacturing, factories, production facilities (GDIZ (Benin) partners)<br />
 - <strong>POOL_AGRICULTURE:</strong> Coffee, cocoa, cotton, cashews, food crops<br />
 - <strong>POOL_TRADE_FINANCE:</strong> Invoice tokenization, receivables pools<br />
 - <strong>POOL_RENEWABLE_ENERGY:</strong> Solar, wind, hydroelectric projects<br />
@@ -287,7 +287,7 @@
 - ✅ <strong>Compliance</strong> - Only verified Industrial Gateway and Pool can interact with Ujamaa Guarantee (UJG)</p>
 <p><strong>Ujamaa Guarantee (UJG) Lifecycle:</strong></p>
 <div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
-2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
 3. Ujamaa Guarantee (UJG) minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
 5. Pool holds Ujamaa Guarantee (UJG) (collateral/security)
@@ -342,10 +342,10 @@ contract GuaranteeToken is ERC3643NFT {
 </code></div>
 <p><strong>Metadata Stored:</strong><br />
 - Stock description (e.g., "1000 cotton bales, Grade A")<br />
-- Warehouse location (e.g., "GDIZ Warehouse A, Lomé")<br />
+- Warehouse location (e.g., "GDIZ warehouse (Benin) A, Lomé")<br />
 - Certification date and expiry<br />
 - Industrial Gateway certificate hash<br />
-- SIPI/GDIZ verification data<br />
+- SIPI/GDIZ (Benin) verification data<br />
 - Compliance status (verified/unverified)<br />
 - Default status (for liquidation tracking)</p>
 <p><strong>Relationship between Ujamaa Pool Token (uLP) and Ujamaa Guarantee (UJG):</strong><br />
@@ -1121,7 +1121,7 @@ contract GuaranteeToken is ERC3643NFT {
 <li><strong>Custody providers:</strong> <strong>Fireblocks (institutional digital asset custody)</strong> 🆕, <strong>Mobile Money providers (M-Pesa, MTN, Airtel)</strong> 🆕</li>
 <li><strong>Bank partners:</strong> <strong>BIIC (Banque Internationale pour l'Industrie et le Commerce) (Mauritius)</strong> 🆕, <strong>MCB (Mauritius)</strong> 🆕 for escrow accounts</li>
 <li>
-<p><strong>Industrial partners:</strong> <strong>GDIZ (General Distribution &amp; Industrial Zone)</strong> 🆕, <strong>SIPI (Société Industrielle et de Promotion)</strong> 🆕</p>
+<p><strong>Industrial partners:</strong> <strong>GDIZ (Benin) (General Distribution &amp; Industrial Zone)</strong> 🆕, <strong>SIPI (Société Industrielle et de Promotion)</strong> 🆕</p>
 </li>
 <li>
 <p><strong>Downstream integrations:</strong></p>
@@ -1320,7 +1320,7 @@ The platform specifically supports African industrial asset classes:</p>
     ↓
 Pool Families (4 pools: Industrie, Agriculture, Trade Finance, Renewable Energy)
     ↓
-African Industrials (GDIZ partners in 17 OHADA countries)
+African Industrials (GDIZ (Benin) partners in 17 OHADA countries)
     ↓
 Escrow Accounts (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius)
     ↓
@@ -1340,7 +1340,7 @@ Investors (Logic Capital, pension funds, family offices)
 <p><strong>Escrow Flow (ZARA Example):</strong></p>
 <div class="docs-pre"><code>1. Logic Capital wires €10M → Investor Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 2. Convert to Ondo EUROD (EUROD) → Pool Escrow
-3. Deploy to Industrial (GDIZ partner) → Industrial receives Ondo EUROD (EUROD)
+3. Deploy to Industrial (GDIZ (Benin) partner) → Industrial receives Ondo EUROD (EUROD)
 4. Industrial produces goods for ZARA
 5. ZARA pays €2M → Repayment Escrow (BIIC (Banque Internationale pour l'Industrie et le Commerce) Mauritius)
 6. Smart Contract triggers distribution:
@@ -1373,7 +1373,7 @@ Investors (Logic Capital, pension funds, family offices)
 <tbody>
 <tr>
 <td><strong>POOL_INDUSTRIE</strong></td>
-<td>Manufacturing, factories, production (GDIZ)</td>
+<td>Manufacturing, factories, production (GDIZ (Benin))</td>
 <td>10-12%</td>
 <td>Medium</td>
 <td>€100,000</td>
@@ -5488,7 +5488,7 @@ interface IIndustrialGateway {
 - <code>YieldCalculator</code> — Backend service for NAV calculation</p>
 <p><strong>Inputs:</strong><br />
 - Institutional investor deposits (Ondo EUROD (EUROD) via Fireblocks or bank escrow)<br />
-- Industrial repayments (principal + interest from GDIZ partners)<br />
+- Industrial repayments (principal + interest from GDIZ (Benin) partners)<br />
 - Pool manager commands (deploy funds, distribute yield)<br />
 - Oracle price feeds (Ondo EUROD (EUROD)/USD, portfolio valuation)</p>
 <p><strong>Outputs:</strong><br />

@@ -190,7 +190,7 @@
 │                                                              │
 │  1. Industrial receives order (e.g., ZARA €2M contract)     │
 │          ↓                                                   │
-│  2. Industrial Gateway certifies stock (GDIZ verification)  │
+│  2. Industrial Gateway certifies stock (GDIZ (Benin) verification)  │
 │          ↓                                                   │
 │  3. UGT minted (ERC-3643NFT with metadata + compliance)     │
 │          ↓                                                   │
@@ -347,7 +347,7 @@
 </tr>
 <tr>
 <td><strong>Verifiers</strong></td>
-<td>GDIZ, SIPI, approved certifiers</td>
+<td>GDIZ (Benin), SIPI, approved certifiers</td>
 </tr>
 </tbody>
 </table></div>
@@ -385,7 +385,7 @@
 <div class="docs-pre"><code>1. Validate inputs:
    - value &gt; 0
    - industrial != address(0)
-   - Caller has CERTIFIER_ROLE (GDIZ/SIPI)
+   - Caller has CERTIFIER_ROLE (GDIZ (Benin)/SIPI)
 
 2. Create certificate:
    - certificateId = nextCertificateId++
@@ -453,7 +453,7 @@
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  STEP 2: Certification (GDIZ/SIPI)                          │
+│  STEP 2: Certification (GDIZ (Benin)/SIPI)                          │
 │  ───────────────────────                                     │
 │  • Certifier verifies asset existence                       │
 │  • Calls: certifyAsset()                                    │

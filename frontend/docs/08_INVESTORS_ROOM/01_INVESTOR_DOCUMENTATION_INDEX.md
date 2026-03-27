@@ -158,7 +158,7 @@ This index provides a comprehensive navigation guide to all UJAMAA investor docu
 
 | # | Document | Description | Status |
 |---|----------|-------------|--------|
-| 10.1 | **Partnership Announcements** | GDIZ, Fireblocks, etc. | 📝 To Create |
+| 10.1 | **Partnership Announcements** | GDIZ (Benin), Fireblocks, etc. | 📝 To Create |
 | 10.2 | **Case Studies** | Pilot financing stories | ✅ Complete |
 | 10.3 | **Pipeline Overview** | Upcoming financings | 📝 To Create |
 

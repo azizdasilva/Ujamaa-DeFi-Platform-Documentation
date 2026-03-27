@@ -142,7 +142,7 @@ UJAMAA DeFi Platform measures success not only by financial returns but also by 
 | **Youth Employed** | 60 (40% under 35) | Factory employment records |
 | **Skills Training** | 50 workers | Training records |
 | **Fair Wages** | 20% above minimum | Wage comparison |
-| **Working Conditions** | GDIZ certified | Audit report |
+| **Working Conditions** | GDIZ (Benin) certified | Audit report |
 
 ### Environmental Impact
 
@@ -236,7 +236,7 @@ Women Employed = Female employees / Total employees
 ### Marie Kouassi — Textile Worker, Côte d'Ivoire
 
 **Background:**
-Marie, 34, is a single mother of three working at the GDIZ textile factory financed by UJAMAA's ZARA pilot.
+Marie, 34, is a single mother of three working at the GDIZ (Benin) textile factory financed by UJAMAA's ZARA pilot.
 
 **Before Financing:**
 - Seasonal employment (6 months/year)

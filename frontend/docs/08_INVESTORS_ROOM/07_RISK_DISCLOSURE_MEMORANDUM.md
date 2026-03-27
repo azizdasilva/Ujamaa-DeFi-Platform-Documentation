@@ -130,7 +130,7 @@ Industrial borrowers may fail to repay their financings due to:
 
 | Mitigation | Effectiveness | Residual Risk |
 |------------|---------------|---------------|
-| **GDIZ Guarantee** | High (GDIZ backs repayment) | GDIZ credit risk |
+| **GDIZ (Benin) Guarantee** | High (GDIZ (Benin) backs repayment) | GDIZ (Benin) credit risk |
 | **5% Credit Provision** | Medium (covers expected losses) | Insufficient for stress |
 | **Collateral (Guarantee Token)** | Medium-High (merchandise) | Liquidation value uncertainty |
 | **Diversification (40+ deals)** | High (single-name limit 5%) | Correlated defaults |
@@ -175,7 +175,7 @@ The Guarantee Token represents certified merchandise, but:
 
 - 100%+ collateral coverage required
 - Insurance on warehouse stock
-- GDIZ warehouse certification
+- GDIZ warehouse (Benin) certification
 - Regular stock audits
 
 ---
@@ -715,7 +715,7 @@ Financed industrials could:
 
 | Conflict | Description | Mitigation |
 |----------|-------------|------------|
-| **GDIZ Relationship** | CEO founded GDIZ; may favor GDIZ partners | Arm's-length terms, IC approval |
+| **GDIZ (Benin) Relationship** | CEO founded GDIZ (Benin); may favor GDIZ (Benin) partners | Arm's-length terms, IC approval |
 | **Co-investment** | Team invests alongside fund | Same terms, no preferential treatment |
 | **Fee Structure** | Management fee based on AUM | Performance fee alignment (20% carry) |
 | **Cross-Fund** | Multiple pools may compete for deals | Allocation policy, fair treatment |

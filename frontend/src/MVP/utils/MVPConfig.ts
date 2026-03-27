@@ -35,7 +35,7 @@ export const MVP_CONFIG = {
   MOCK: {
     BANK: true,      // MockBankService vs BIICBankService
     ESCROW: true,    // MockEscrow.sol vs Real Bank Escrow
-    GDIZ: true,      // MockGDIZService vs GDIZGateway
+    GDIZ (Benin): true,      // MockGDIZService vs GDIZGateway
     FIAT_RAMP: true, // MockFiatRamp.sol vs Real Fiat Rails
     KYB: true,       // Mock KYB vs Real KYB Provider
   },
@@ -73,7 +73,7 @@ export const MVP_CONFIG = {
     POOL_INDUSTRY: {
       id: 'POOL_INDUSTRY',
       name: 'Pool Industry',
-      assetClasses: ['Manufacturing', 'GDIZ Partners', 'Production Facilities'],
+      assetClasses: ['Manufacturing', 'GDIZ (Benin) Partners', 'Production Facilities'],
       targetYield: { min: 10, max: 12 }, // % APY
       lockupDays: 365,
       maxPerIndustrial: 20, // % of pool
@@ -245,7 +245,7 @@ export const MVP_CONFIG = {
       ORIGINATOR: {
         address: '0x0000000000000000000000000000000000000003',
         balance: 1_000_000n * 10n ** 18n, // 1M EUROD
-        name: 'GDIZ Industries (Demo)',
+        name: 'GDIZ (Benin) Industries (Demo)',
       },
     },
   },

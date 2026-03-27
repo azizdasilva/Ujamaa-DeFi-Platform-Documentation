@@ -546,7 +546,7 @@ If you disagree with your rating:
 
 ## Example 1: Invoice Pool (AAA Rating)
 
-**Asset:** GDIZ Invoice Pool #001  
+**Asset:** GDIZ (Benin) Invoice Pool #001  
 **Rating:** AAA  
 **Yield:** 7.2%  
 **Key Strengths:**

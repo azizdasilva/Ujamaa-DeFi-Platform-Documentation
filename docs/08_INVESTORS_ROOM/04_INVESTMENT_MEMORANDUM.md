@@ -56,7 +56,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 
 **Massive Market:** $331 billion African SME financing gap (World Bank)
 
-**Validated Structure:** Representative €2M export order financing structure (based on market research and GDIZ benchmarking)
+**Validated Structure:** Representative €2M export order financing structure (based on market research and GDIZ (Benin) benchmarking)
 
 **Regulatory Moat:** Mauritius FSC CIS Manager License (application Q2 2026), ERC-3643 compliant, OHADA legal framework
 
@@ -115,7 +115,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 │  │                                                             │
 │  └── UJAMAA AFRICA SARL (Côte d'Ivoire)                        │
 │      └── Industrial Origination                                │
-│      └── GDIZ Partnership                                      │
+│      └── GDIZ (Benin) Partnership                                      │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -223,7 +223,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 │       │                                                         │
 │       │ EUROD Financing                                          │
 │       ▼                                                         │
-│  INDUSTRIAL (GDIZ Partner)                                      │
+│  INDUSTRIAL (GDIZ (Benin) Partner)                                      │
 │  • Receives €500K-€5M financing                                 │
 │  • Provides merchandise collateral                              │
 │  • Guarantee Token minted (ERC-3643 NFT)                        │
@@ -303,7 +303,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 
 | Priority | Country | Rationale |
 |----------|---------|-----------|
-| **1** | Benin | GDIZ headquarters (Glo-Djigbé), 200+ factories, stable government |
+| **1** | Benin | GDIZ (Benin) headquarters (Glo-Djigbé), 200+ factories, stable government |
 | **2** | Côte d'Ivoire | 200+ factories, industrial growth +4.2% (2025) |
 | **3** | Senegal | Renewable energy hub, investment-friendly |
 | **4** | Cameroon | Largest OHADA economy, diverse industrial base |
@@ -373,7 +373,7 @@ Global RWA Tokenization AUM:
 |-----------|--------|
 | **Token Standard** | ERC-3643 (NFT, Non-Transferable) |
 | **Purpose** | Represents certified merchandise/collateral |
-| **Minting** | Upon GDIZ/SIPI stock certification |
+| **Minting** | Upon GDIZ (Benin)/SIPI stock certification |
 | **Holder** | Liquidity Pool (until repayment) |
 | **Release** | Automatic upon full repayment |
 | **Compliance** | Only verified entities (Pool, Industrial Gateway) |
@@ -623,7 +623,7 @@ Global RWA Tokenization AUM:
 | Channel | Strategy | Target Contribution |
 |---------|----------|---------------------|
 | **Founder Network** | Aziz Da Silva ex-Goldman Sachs network | 40% of raise |
-| **GDIZ Partners** | GDIZ industrial network investors | 20% of raise |
+| **GDIZ (Benin) Partners** | GDIZ industrial network investors | 20% of raise |
 | **Mauritius Ecosystem** | Mauritius financial services network | 15% of raise |
 
 #### 7.2.2 Intermediaries
@@ -700,7 +700,7 @@ Global RWA Tokenization AUM:
 | Date | Milestone | Status |
 |------|-----------|--------|
 | **Q1 2025** | Company incorporation (Mauritius) | ✓ Complete |
-| **Q2 2025** | GDIZ partnership discussions initiated | ✓ In progress |
+| **Q2 2025** | GDIZ (Benin) partnership discussions initiated | ✓ In progress |
 | **Q3 2025** | Smart contract development initiated | ✓ Complete |
 | **Q4 2025** | Transaction structure validated (market research) | ✓ Complete |
 | **Q1 2026** | Fireblocks integration | In progress |
@@ -754,7 +754,7 @@ Global RWA Tokenization AUM:
 | **Previous** | Goldman Sachs, VP Investment Banking |
 | **Education** | MBA INSEAD, BSc Finance |
 | **Track Record** | Structured $2B+ African transactions |
-| **Network** | GDIZ founder, African industrial network |
+| **Network** | GDIZ (Benin) founder, African industrial network |
 | **Role** | Strategy, investor relations, partnerships |
 
 #### [TBD] — Chief Financial Officer
@@ -839,7 +839,7 @@ Global RWA Tokenization AUM:
 
 | Risk Category | Level | Mitigation |
 |---------------|-------|------------|
-| **Industrial Default** | Medium | GDIZ guarantee, 5% provision, diversification |
+| **Industrial Default** | Medium | GDIZ (Benin) guarantee, 5% provision, diversification |
 | **Smart Contract** | Low | Audits, multisig, timelock |
 | **FX Risk** | Medium | EUROD denomination, natural hedge |
 | **Regulatory** | Low | FSC license, OHADA framework |
@@ -856,7 +856,7 @@ Global RWA Tokenization AUM:
 | **Risk** | Industrial borrower fails to repay financing |
 | **Probability** | Medium (5-10% expected default rate) |
 | **Impact** | Loss of principal + interest for pool |
-| **Mitigation** | • GDIZ guarantee (primary recourse)<br>• 5% credit provision<br>• Diversification (40+ financings per pool)<br>• Collateral (Guarantee Token)<br>• OHADA legal enforcement |
+| **Mitigation** | • GDIZ (Benin) guarantee (primary recourse)<br>• 5% credit provision<br>• Diversification (40+ financings per pool)<br>• Collateral (Guarantee Token)<br>• OHADA legal enforcement |
 
 #### 10.2.2 Smart Contract Risk
 
@@ -1200,7 +1200,7 @@ Investors must acknowledge the following risks before investing:
 | **Guarantee Token** | ERC-3643 NFT representing certified collateral |
 | **EUROD** | Euro Coin; euro-backed stablecoin (1 EUROD = €1.00) |
 | **Fireblocks** | Institutional-grade digital asset custody platform |
-| **GDIZ** | General Distribution & Industrial Zone (industrial partner) |
+| **GDIZ (Benin)** | General Distribution & Industrial Zone (industrial partner) |
 | **OHADA** | Organization for the Harmonization of Business Law in Africa (17 countries) |
 | **FSC** | Financial Services Commission (Mauritius regulator) |
 | **CIS** | Collective Investment Scheme |
@@ -1225,7 +1225,7 @@ Investors must acknowledge the following risks before investing:
 Ebène Cybercity, Mauritius
 
 **Operating Office:**
-GDIZ Zone, Abidjan, Côte d'Ivoire
+GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 
 **Contact:**
 - Email: investors@ujamaa.defi
@@ -1247,17 +1247,17 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 **Forward-Looking Statements:** This document contains forward-looking statements regarding:
 - Future performance and AUM targets (€50M → €1.5B)
 - Expected yields and returns (10-15% APR target, not guaranteed)
-- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
+- Partnership arrangements (GDIZ (Benin), SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
 - Regulatory approvals (Mauritius FSC CIS Manager License — application expected Q2 2026)
 - Technology development (smart contract audits, integrations)
 - Impact metrics (jobs created, GDP contribution — targets, not achievements)
 
 **These statements are based on current expectations and assumptions that may not materialize. Actual results may differ materially from those projected.**
 
-**Transaction Examples:** The transaction structures shown are REPRESENTATIVE EXAMPLES based on market research and GDIZ benchmarking. No transactions have been completed as of March 17, 2026. First transactions expected Q3-Q4 2026.
+**Transaction Examples:** The transaction structures shown are REPRESENTATIVE EXAMPLES based on market research and GDIZ (Benin) benchmarking. No transactions have been completed as of March 17, 2026. First transactions expected Q3-Q4 2026.
 
 **Partnership Status Disclosure:**
-- GDIZ (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
+- GDIZ (Benin) (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
 - SIPI: Target partner (no agreement signed)
 - Fireblocks: Integration in progress (not yet approved)
 - BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB: Bank account opening in progress

@@ -41,7 +41,7 @@ const ImpactReport: React.FC = () => {
             <SDGCard number="9" title="Industry, Innovation & Infrastructure" impact="50+ factories financed" color="bg-orange-500" />
             <SDGCard number="10" title="Reduced Inequalities" impact="Financing in 8 African countries" color="bg-pink-500" />
             <SDGCard number="12" title="Responsible Consumption" impact="Sustainable supply chains" color="bg-yellow-500" />
-            <SDGCard number="17" title="Partnerships for Goals" impact="GDIZ, Fireblocks, MCB partnerships" color="bg-blue-500" />
+            <SDGCard number="17" title="Partnerships for Goals" impact="GDIZ (Benin), Fireblocks, MCB partnerships" color="bg-blue-500" />
           </div>
         </section>
 

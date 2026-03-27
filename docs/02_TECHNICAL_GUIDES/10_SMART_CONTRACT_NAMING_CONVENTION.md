@@ -83,12 +83,12 @@ UJAMAA smart contracts follow **consistent naming patterns** based on their func
 | Contract | Data Source | Purpose | Status |
 |----------|-------------|---------|--------|
 | `ReserveGateway.sol` | Bank APIs (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB) | Proof of reserves | ✅ Active |
-| `PriceGateway.sol` | Chainlink, GDIZ/SIPI | Price feeds (EUROD, USDC, NAV) | ✅ Active |
+| `PriceGateway.sol` | Chainlink, GDIZ (Benin)/SIPI | Price feeds (EUROD, USDC, NAV) | ✅ Active |
 | `YieldGateway.sol` | Calculated | uLP yield calculation & publication | ✅ Active |
 | `NAVGateway.sol` | Calculated | Net Asset Value per token | ✅ Active |
 | `ChainlinkAdapter.sol` | Chainlink Network | Chainlink Price Feeds integration | ✅ Active |
 | `BankGateway.sol` | Bank APIs (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB) | Banking data (escrow balances) | 🆕 Production |
-| `IndustrialGateway.sol` | GDIZ/SIPI Systems | Production data certification | ✅ Active |
+| `IndustrialGateway.sol` | GDIZ (Benin)/SIPI Systems | Production data certification | ✅ Active |
 
 **Key Characteristic:** Gateway contracts use **"Gateway"** or **"Adapter"** suffix (not "Tokenizer" or "Token").
 

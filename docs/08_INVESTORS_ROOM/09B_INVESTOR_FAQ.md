@@ -87,7 +87,7 @@
 
 **A:** UJAMAA is domiciled in **Mauritius**, with:
 - **Headquarters:** Ebène Cybercity, Mauritius
-- **Operating Office:** GDIZ Zone, Abidjan, Côte d'Ivoire
+- **Operating Office:** GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 - **Regulatory License:** Mauritius FSC CIS Manager (Category 1)
 
 **Why Mauritius?**
@@ -171,7 +171,7 @@ Platform   Investors
 
 **A:** 
 1. **Credit Provision:** 5% reserve covers expected losses
-2. **GDIZ Guarantee:** Primary recourse for repayment
+2. **GDIZ (Benin) Guarantee:** Primary recourse for repayment
 3. **Collateral Liquidation:** Guarantee Token merchandise sold
 4. **Legal Enforcement:** OHADA law enforcement
 5. **Investor Impact:** Diversification limits single-default impact to ~5% of NAV
@@ -189,7 +189,7 @@ Platform   Investors
 - Collateralized lending (100%+ coverage)
 - Diversification (40+ SMEs per pool)
 - Credit provision (5% reserve)
-- GDIZ guarantee
+- GDIZ (Benin) guarantee
 - Due diligence (8-12 week process)
 
 ---
@@ -218,7 +218,7 @@ Platform   Investors
 ```
 UjamaaAssetTokenizer.sol (Smart Contract Factory)
          ↓ mints
-Ujamaa Asset Token - GDIZ Invoice #001 (Digital Asset)
+Ujamaa Asset Token - GDIZ (Benin) Invoice #001 (Digital Asset)
          ↓ held by
 Investor Wallet (You own this)
 ```
@@ -359,7 +359,7 @@ Investor Wallet (You own this)
 
 | Risk | Level | Mitigation |
 |------|-------|------------|
-| **Credit (Default)** | Medium-High | GDIZ guarantee, diversification |
+| **Credit (Default)** | Medium-High | GDIZ (Benin) guarantee, diversification |
 | **Smart Contract** | Medium | Audits, bug bounty, pause |
 | **Regulatory** | Medium | FSC license, compliance program |
 | **Liquidity** | Medium-High | Lock-up, secondary market (Phase 2) |
@@ -371,7 +371,7 @@ Investor Wallet (You own this)
 **A:** 
 - **Due Diligence:** 8-12 week process per SME
 - **Collateral:** 100%+ coverage (Guarantee Token)
-- **GDIZ Guarantee:** Primary recourse
+- **GDIZ (Benin) Guarantee:** Primary recourse
 - **Credit Provision:** 5% reserve
 - **Diversification:** 40+ SMEs per pool, 5% single-name limit
 - **Monitoring:** Monthly financials, quarterly site visits
@@ -426,7 +426,7 @@ Investor Wallet (You own this)
 
 **A:** 
 - **Site Visits:** Available for €5M+ investors (2x/year)
-- **Industrial Visits:** GDIZ factory tours (quarterly)
+- **Industrial Visits:** GDIZ (Benin) factory tours (quarterly)
 - **Virtual Tours:** Available on request
 
 ---

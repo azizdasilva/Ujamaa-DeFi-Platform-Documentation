@@ -49,7 +49,7 @@
 
 | Parameter | Target Detail |
 |-----------|---------------|
-| **Industrial Partner** | GDIZ-certified factory (Benin or Côte d'Ivoire) |
+| **Industrial Partner** | GDIZ (Benin)-certified factory (Benin or Côte d'Ivoire) |
 | **Financing Amount** | €2,000,000 |
 | **Financing Type** | Working Capital (Production Financing) |
 | **Term** | 365 days |
@@ -74,7 +74,7 @@
 │         │ (Financing)                                           │
 │         ▼                                                       │
 │  ┌──────────────┐         ┌──────────────┐                      │
-│  │ GDIZ         │────────▶│ INTERNATIONAL│                      │
+│  │ GDIZ (Benin)         │────────▶│ INTERNATIONAL│                      │
 │  │ FACTORY      │         │ BUYER        │                      │
 │  │              │         │              │                      │
 │  │ Produces     │         │ Receives     │                      │
@@ -101,7 +101,7 @@
 
 | Phase | Event | Duration |
 |-------|-------|----------|
-| **Origination** | Industrial application, GDIZ referral | 2 weeks |
+| **Origination** | Industrial application, GDIZ (Benin) referral | 2 weeks |
 | **Due Diligence** | Business, legal, technical DD | 8-12 weeks |
 | **IC Approval** | Investment Committee review | 1 week |
 | **Closing** | Guarantee Token minting, disbursement | 1 week |
@@ -136,7 +136,7 @@
 
 | Risk | Mitigation Strategy |
 |------|---------------------|
-| **Production Risk** | GDIZ oversight, weekly monitoring |
+| **Production Risk** | GDIZ (Benin) oversight, weekly monitoring |
 | **Off-taker Risk** | Investment-grade buyers preferred |
 | **Collateral Risk** | SIPI certification, warehouse audit |
 | **FX Risk** | EUROD denomination, EUR off-taker contracts |
@@ -170,7 +170,7 @@
 | **Geographic Distribution** | Benin (30%), Côte d'Ivoire (25%), Ghana (15%), Senegal (10%), Other (20%) |
 | **Sector Distribution** | Industrie (45%), Agriculture (30%), Trade Finance (15%), Renewable Energy (10%) |
 
-**Note:** Pipeline statistics are targets based on market research and GDIZ network discussions. Actual deal flow may vary.
+**Note:** Pipeline statistics are targets based on market research and GDIZ (Benin) network discussions. Actual deal flow may vary.
 
 ---
 
@@ -180,7 +180,7 @@
 
 The representative transaction structures in this document are based on:
 
-1. **GDIZ Benchmarking:** Glo-Djigbé Industrial Zone (Benin) has created 14,000+ jobs since inception, demonstrating viable industrial financing models in West Africa.
+1. **GDIZ (Benin) Benchmarking:** Glo-Djigbé Industrial Zone (Benin) has created 14,000+ jobs since inception, demonstrating viable industrial financing models in West Africa.
 
 2. **World Bank Data:** $331B African SME financing gap validates demand for €500K-€5M working capital financing.
 
@@ -201,7 +201,7 @@ The representative transaction structures in this document are based on:
 ### Validation Activities Completed
 
 - ✅ Market research on African SME financing
-- ✅ GDIZ model analysis (14,000 jobs created)
+- ✅ GDIZ (Benin) model analysis (14,000 jobs created)
 - ✅ OHADA legal framework review
 - ✅ Mauritius FSC regulatory requirements confirmed
 - ✅ ERC-3643 technical specification review
@@ -211,7 +211,7 @@ The representative transaction structures in this document are based on:
 
 - 📋 First actual transaction closing
 - ✅ Smart contract audit completion (Q2 2026)
-- 📋 GDIZ partnership agreement execution
+- 📋 GDIZ (Benin) partnership agreement execution
 - 📋 SIPI partnership agreement execution
 - 📋 BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB escrow account opening
 - 📋 Mauritius FSC license approval
@@ -268,7 +268,7 @@ The representative transaction structures in this document are based on:
 |-----------|--------|----------|
 | **Mauritius FSC License** | Application preparation | Q2 2026 |
 | **Smart Contract Audits** | Auditor selection | Q2 2026 |
-| **GDIZ Partnership** | Discussions ongoing | Q2 2026 |
+| **GDIZ (Benin) Partnership** | Discussions ongoing | Q2 2026 |
 | **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Accounts** | Application preparation | Q2 2026 |
 | **Fireblocks Integration** | Onboarding in progress | Q2 2026 |
 | **First Close (€20M)** | Investor outreach | Q3 2026 |
@@ -284,7 +284,7 @@ The representative transaction structures in this document are based on:
 
 **Actual transactions will depend on:**
 - Regulatory approval (Mauritius FSC CIS Manager License)
-- Partnership agreements (GDIZ, SIPI, banks)
+- Partnership agreements (GDIZ (Benin), SIPI, banks)
 - Technology completion (smart contract audits, integrations)
 - Market conditions (industrial demand, off-taker contracts)
 - Investor capital commitments

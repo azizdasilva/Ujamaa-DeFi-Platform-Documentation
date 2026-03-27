@@ -2,7 +2,7 @@
  * Asset Submission Page - Submit Assets for Tokenization
  *
  * Industrial operators can submit assets (INVOICE, INVENTORY, PRODUCTION, SHIPMENT, CONTRACT)
- * for certification by Industrial Gateway (GDIZ/SIPI).
+ * for certification by Industrial Gateway (GDIZ (Benin)/SIPI).
  *
  * Benchmark: Coinbase, Stripe, Airbnb Host, Shopify
  *
@@ -201,7 +201,7 @@ const AssetSubmission: React.FC = () => {
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <p className="text-sm text-blue-700">
-              <strong>Next:</strong> GDIZ/SIPI will review your asset within 24 hours
+              <strong>Next:</strong> GDIZ (Benin)/SIPI will review your asset within 24 hours
             </p>
           </div>
           <Button variant="primary" size="lg" onClick={() => navigate('/originator/assets/certificates')}>
@@ -565,7 +565,7 @@ const AssetSubmission: React.FC = () => {
                   name="warehouseLocation"
                   value={formData.warehouseLocation}
                   onChange={handleChange}
-                  placeholder="e.g., GDIZ Warehouse A, Zone Industrielle, Lomé, Togo"
+                  placeholder="e.g., GDIZ warehouse (Benin) A, Zone Industrielle, Lomé, Togo"
                   fullWidth
                   helperText="Provide the complete address where the asset is stored"
                 />
@@ -709,7 +709,7 @@ const AssetSubmission: React.FC = () => {
               <div className="space-y-4">
                 {[
                   { step: 1, title: 'Submit Application', desc: 'Your asset submission is sent to Industrial Gateway', icon: '📤' },
-                  { step: 2, title: 'GDIZ/SIPI Review', desc: 'Asset is reviewed and verified (24 hours)', icon: '🔍' },
+                  { step: 2, title: 'GDIZ (Benin)/SIPI Review', desc: 'Asset is reviewed and verified (24 hours)', icon: '🔍' },
                   { step: 3, title: 'Certificate Issued', desc: 'Unique certificate ID is generated', icon: '📜' },
                   { step: 4, title: 'UGT Token Minted', desc: 'Guarantee Token created as collateral', icon: '🪙' },
                   { step: 5, title: 'Access Financing', desc: 'Use UGT to secure financing from liquidity pools', icon: '💰' },

@@ -24,7 +24,7 @@
 
 | Family | Token Name | Symbol | Code | Example |
 |--------|------------|--------|------|---------|
-| **RWA** | Ujamaa Token Real World Asset | uRWA | `RWA` | Ujamaa Token RWA - GDIZ Invoice #001 |
+| **RWA** | Ujamaa Token Real World Asset | uRWA | `RWA` | Ujamaa Token RWA - GDIZ (Benin) Invoice #001 |
 | **IND** | Ujamaa Token Industry | uIND | `IND` | Ujamaa Token Industry - Factory Lomé |
 | **AGR** | Ujamaa Token Agriculture | uAGR | `AGR` | Ujamaa Token Agriculture - Cotton Pool |
 | **MIN** | Ujamaa Token Mining | uMIN | `MIN` | Ujamaa Token Mining - Gold Mine |
@@ -37,7 +37,7 @@
 **Format:** `Ujamaa Token [Family] - [Asset Name]`
 
 **Examples:**
-- `Ujamaa Token RWA - GDIZ Invoice #001`
+- `Ujamaa Token RWA - GDIZ (Benin) Invoice #001`
 - `Ujamaa Token AGR - Cotton Burkina 2026`
 - `Ujamaa Token IND - Factory Lomé III`
 - `Ujamaa Token RE - Abidjan Commercial Center`
@@ -100,7 +100,7 @@
 |----------|------|------|
 | `StockCertification.sol` | Ujamaa Stock Certification | Physical stock certification |
 | `AssetProof.sol` | Ujamaa Asset Proof | Production data hash notarization |
-| `IndustrialGateway.sol` | Ujamaa Industrial Gateway | GDIZ/SIPI certification interface |
+| `IndustrialGateway.sol` | Ujamaa Industrial Gateway | GDIZ (Benin)/SIPI certification interface |
 
 ### 2.4 Escrow & Payment Contracts
 
@@ -170,7 +170,7 @@ UJAMAA Gateways provide off-chain data to smart contracts in a secure and decent
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐    │
-│  │  Bank API    │     │  Chainlink   │     │  GDIZ/SIPI   │    │
+│  │  Bank API    │     │  Chainlink   │     │  GDIZ (Benin)/SIPI   │    │
 │  │  (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)  │     │  Price Feeds │     │  Industrial  │    │
 │  └──────┬───────┘     └──────┬───────┘     └──────┬───────┘    │
 │         │                    │                    │             │
@@ -240,7 +240,7 @@ class ReserveGateway:
 | EUROD/USD | Chainlink | ~1 min | `PriceGateway.sol` |
 | USDC/USD | Chainlink | ~1 min | `PriceGateway.sol` |
 | NAV/uLP | Calculated | Daily | `NAVGateway.sol` |
-| RWA asset prices | GDIZ/SIPI | Daily | `PriceGateway.sol` |
+| RWA asset prices | GDIZ (Benin)/SIPI | Daily | `PriceGateway.sol` |
 
 **Smart Contract:**
 ```solidity
@@ -333,7 +333,7 @@ class YieldGateway:
 |------|--------|-----------|----------|
 | Total pool value | Calculated | Daily | `NAVGateway.sol` |
 | NAV per token | Calculated | Daily | `NAVGateway.sol` |
-| Underlying asset values | GDIZ/SIPI | Daily | `NAVGateway.sol` |
+| Underlying asset values | GDIZ (Benin)/SIPI | Daily | `NAVGateway.sol` |
 
 **Smart Contract:**
 ```solidity
@@ -624,7 +624,7 @@ frontend/src/
 |---------|------|------|------|
 | **Mock Bank** | `mock_bank.py` | `services/mock/mock_bank.py` | Bank simulation |
 | **Mock Escrow** | `mock_escrow.py` | `services/mock/mock_escrow.py` | Escrow simulation |
-| **Mock GDIZ** | `mock_gdiz.py` | `services/mock/mock_gdiz.py` | GDIZ certification simulation |
+| **Mock GDIZ (Benin)** | `mock_gdiz.py` | `services/mock/mock_gdiz.py` | GDIZ (Benin) certification simulation |
 
 ### 5.4 Production Services (Future)
 
@@ -632,7 +632,7 @@ frontend/src/
 |---------|------|------|------|
 | **Bank Integration** | `bank_integration.py` | `services/production/bank_integration.py` | BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB integration |
 | **Escrow Service** | `escrow_service.py` | `services/production/escrow_service.py` | Real escrow account management |
-| **GDIZ Integration** | `gdiz_integration.py` | `services/production/gdiz_integration.py` | GDIZ/SIPI API |
+| **GDIZ (Benin) Integration** | `gdiz_integration.py` | `services/production/gdiz_integration.py` | GDIZ (Benin)/SIPI API |
 | **Compliance Service** | `compliance_service.py` | `services/production/compliance_service.py` | Institutional KYB/KYC |
 
 ---
@@ -691,7 +691,7 @@ GET    /api/v1/gateway/bank/transactions/:id - Transactions
 GET    /api/v1/certificates              - List of certificates
 GET    /api/v1/certificates/:id          - Certificate details
 POST   /api/v1/certificates/submit       - Submit stock
-POST   /api/v1/certificates/:id/certify  - Certify stock (GDIZ)
+POST   /api/v1/certificates/:id/certify  - Certify stock (GDIZ (Benin))
 POST   /api/v1/certificates/:id/reject   - Reject stock
 ```
 

@@ -487,7 +487,7 @@ const DeepDive: React.FC = () => {
                           desc: 'Asset certification authority', 
                           lines: '~384',
                           color: 'from-[#023D7A] to-[#8B5B3D]',
-                          features: ['Certificate minting', 'GDIZ integration', 'Asset verification']
+                          features: ['Certificate minting', 'GDIZ (Benin) integration', 'Asset verification']
                         },
                         { 
                           name: 'MockEscrow.sol', 
@@ -589,7 +589,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                           lockup: '365 days', 
                           risk: 'Medium',
                           icon: '🏭',
-                          desc: 'Manufacturing & GDIZ partners',
+                          desc: 'Manufacturing & GDIZ (Benin) partners',
                           color: 'from-[#023D7A] to-[#00A8A8]'
                         },
                         { 

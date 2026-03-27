@@ -1007,7 +1007,7 @@ struct Guarantee {
 │                                                              │
 │  1. Industrial receives order (e.g., ZARA €2M contract)     │
 │          ↓                                                   │
-│  2. Industrial Gateway certifies stock (GDIZ verification)  │
+│  2. Industrial Gateway certifies stock (GDIZ (Benin) verification)  │
 │          ↓                                                   │
 │  3. UGT minted (ERC-3643NFT with metadata + compliance)     │
 │          ↓                                                   │
@@ -1194,7 +1194,7 @@ function mintGuarantee(
 | **Former Name** | AssetProof (SRS v2.0 Section 1.3) |
 | **Purpose** | Certify industrial assets/stock before tokenization |
 | **Role** | Mints certificates → Triggers UGT minting |
-| **Verifiers** | GDIZ, SIPI, approved certifiers |
+| **Verifiers** | GDIZ (Benin), SIPI, approved certifiers |
 
 #### 6.5.2 Certificate Data Structure
 
@@ -1237,7 +1237,7 @@ struct Certificate {
 1. Validate inputs:
    - value > 0
    - industrial != address(0)
-   - Caller has CERTIFIER_ROLE (GDIZ/SIPI)
+   - Caller has CERTIFIER_ROLE (GDIZ (Benin)/SIPI)
 
 2. Create certificate:
    - certificateId = nextCertificateId++
@@ -1326,7 +1326,7 @@ struct Certificate {
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  STEP 2: Certification (GDIZ/SIPI)                          │
+│  STEP 2: Certification (GDIZ (Benin)/SIPI)                          │
 │  ───────────────────────                                     │
 │  • Certifier verifies asset existence                       │
 │  • Calls: certifyAsset()                                    │

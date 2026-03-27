@@ -832,7 +832,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
 
 ```
 1. Industrial receives order (e.g., ZARA €2M contract)
-2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
 3. UJG minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
 5. Pool holds UJG (collateral/security)

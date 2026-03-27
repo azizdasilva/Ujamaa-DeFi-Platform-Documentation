@@ -57,7 +57,7 @@
 **Definition:** An ERC-721 NFT that represents **certified merchandise/collateral** backing a financing operation.
 
 **Examples:**
-- `UGT-001` → 1,000 cotton bales certified at GDIZ Warehouse, Lomé
+- `UGT-001` → 1,000 cotton bales certified at GDIZ warehouse (Benin), Lomé
 - `UGT-002` → €500K worth of cocoa beans in Abidjan port
 - `UGT-003` → Industrial equipment collateral in Cotonou
 
@@ -114,7 +114,7 @@
 │  ┌────────────────────────────────────────────────────────────┐ │
 │  │  UGT-001 (Ujamaa Guarantee Token #001)                     │ │
 │  │         ↓ represents                                       │ │
-│  │  [1,000 COTTON BALES @ GDIZ WAREHOUSE, LOMÉ] ← COLLATERAL  │ │
+│  │  [1,000 COTTON BALES @ GDIZ warehouse (Benin), LOMÉ] ← COLLATERAL  │ │
 │  │         ↓                                                  │ │
 │  │  ORIGINATOR mints UGT → Pool holds UGT as security         │ │
 │  │  (NOT an investment - it's collateral for financing)       │ │
@@ -302,7 +302,7 @@ You (or your advisor) should review:
 Pool managers review:
 - ✅ Merchandise authenticity (via Industrial Gateway)
 - ✅ Independent appraisal/certification
-- ✅ Storage location verification (GDIZ/SIPI warehouse)
+- ✅ Storage location verification (GDIZ (Benin)/SIPI warehouse)
 - ✅ Insurance coverage
 - ✅ Market value of collateral vs. financing amount
 
@@ -576,7 +576,7 @@ UGT is NOT liquid - it's collateral, not tradable.
 
 ### **If You Need to Mint UGT:**
 1. Have certified merchandise/inventory
-2. Apply via Industrial Gateway (GDIZ/SIPI verification)
+2. Apply via Industrial Gateway (GDIZ (Benin)/SIPI verification)
 3. Receive UGT NFT representing collateral
 4. Use UGT to secure financing from Pool
 5. Repay financing → Get UGT back

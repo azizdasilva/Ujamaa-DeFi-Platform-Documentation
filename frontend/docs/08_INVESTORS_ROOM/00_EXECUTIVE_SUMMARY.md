@@ -39,7 +39,7 @@
 
 - **17 OHADA Countries** with harmonized commercial law but fragmented capital access
 - **500,000+ Industrial SMEs** across OHADA zone unable to access affordable financing
-- **GDIZ (Glo-Djigbé Industrial Zone, Benin)** — 14,000+ jobs created, target partner for origination
+- **GDIZ (Benin) (Glo-Djigbé Industrial Zone, Benin)** — 14,000+ jobs created, target partner for origination
 - **Traditional Banks** require 100%+ collateral, 18-24% interest rates, 6-12 month approval
 - **Private Equity** minimum tickets ($10M+) too large for SME needs ($500K-€5M)
 - **Diaspora Capital** ($100B+ annual remittances) lacks institutional investment channels
@@ -73,7 +73,7 @@
 │  1. INSTITUTIONAL INVESTOR invests €10M → uLP Tokens (Pool Industrie)  │
 │     EUROD wired to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow → uLP minted to investor wallet          │
 │                                                                         │
-│  2. GDIZ PARTNER receives €2M financing for export order production    │
+│  2. GDIZ (Benin) PARTNER receives €2M financing for export order production    │
 │     Guarantee Token minted (certified merchandise collateral)          │
 │     Pool holds Guarantee Token until repayment                         │
 │                                                                         │
@@ -99,7 +99,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 
 | Segment | Size | Source |
 |---------|------|--------|
-| **OHADA Industrial SMEs** | 500,000+ businesses | GDIZ Network |
+| **OHADA Industrial SMEs** | 500,000+ businesses | GDIZ (Benin) Network |
 | **Annual Financing Need** | $50-100 Billion | World Bank |
 | **AfCFTA Trade Volume** | $3.4 Trillion (by 2030) | AfCFTA Secretariat |
 | **African Diaspora Remittances** | $100 Billion/year | World Bank |
@@ -111,7 +111,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 - West Africa: Côte d'Ivoire, Senegal, Mali, Burkina Faso, Benin, Togo, Niger, Guinea, Guinea-Bissau, Cameroon, Gabon, Congo, DRC, Chad, CAR, Equatorial Guinea, Comoros
 
 **Priority Markets:**
-1. **Côte d'Ivoire** — GDIZ headquarters, 200+ factories
+1. **Côte d'Ivoire** — GDIZ (Benin) headquarters, 200+ factories
 2. **Senegal** — Renewable energy hub, stable regulatory environment
 3. **Benin** — Port of Cotonou, trade finance opportunities
 4. **Cameroon** — Largest OHADA economy, diverse industrial base
@@ -175,7 +175,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 
 | Partner | Status | Value |
 |---------|--------|-------|
-| **GDIZ (Benin)** | Partnership in discussion | Industrial network, deal origination |
+| **GDIZ (Benin) (Benin)** | Partnership in discussion | Industrial network, deal origination |
 | **SIPI** | Target partner | Stock certification, Guarantee Token minting |
 | **BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB** | Account opening in progress | Regulated escrow, fiat on/off ramps |
 | **Chainlink** | Planned integration | Oracle price feeds, proof of reserves |
@@ -189,7 +189,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 | Metric | Detail |
 |--------|--------|
 | **Transaction Type** | Export Order Financing (Representative Structure) |
-| **Target Industrial** | GDIZ-certified factory (Benin or Côte d'Ivoire) |
+| **Target Industrial** | GDIZ (Benin)-certified factory (Benin or Côte d'Ivoire) |
 | **Target Financing Amount** | €2,000,000 |
 | **Target Term** | 365 days |
 | **Target Interest Rate** | 12% APR |
@@ -197,7 +197,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 | **Expected Outcome** | Full repayment with 10-12% yield to investors |
 | **Expected Impact** | 100-150 jobs created per €2M financing |
 
-**Note:** Transaction structure validated through market research and GDIZ benchmarking. First transactions expected Q3-Q4 2026.
+**Note:** Transaction structure validated through market research and GDIZ (Benin) benchmarking. First transactions expected Q3-Q4 2026.
 
 ### Pipeline (Q1-Q4 2026)
 
@@ -264,7 +264,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 
 | Risk | Level | Mitigation |
 |------|-------|------------|
-| **Industrial Default** | Medium | GDIZ guarantee, 5% provision, diversified pool |
+| **Industrial Default** | Medium | GDIZ (Benin) guarantee, 5% provision, diversified pool |
 | **Smart Contract Risk** | Low | CertiK/OpenZeppelin audits, upgrade mechanism |
 | **FX Risk (EUR/African currencies)** | Medium | EUROD denomination, natural hedge (EUR revenues) |
 | **Regulatory Change** | Low | Mauritius FSC license, OHADA harmonization |
@@ -443,7 +443,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 Ebène Cybercity, Mauritius
 
 **Operating Office:**
-GDIZ Zone, Abidjan, Côte d'Ivoire
+GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 
 **Contact:**
 - Email: investors@ujamaa.defi
@@ -465,7 +465,7 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 **Forward-Looking Statements:** This document contains forward-looking statements regarding:
 - Future performance and AUM targets (€50M → €1.5B)
 - Expected yields and returns (10-15% APR target, not guaranteed)
-- Partnership arrangements (GDIZ, SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
+- Partnership arrangements (GDIZ (Benin), SIPI, Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB — all in various stages of discussion/integration)
 - Regulatory approvals (Mauritius FSC CIS Manager License — application expected Q2 2026)
 - Technology development (smart contract audits, integrations)
 - Impact metrics (jobs created, GDP contribution — targets, not achievements)
@@ -473,12 +473,12 @@ GDIZ Zone, Abidjan, Côte d'Ivoire
 **These statements are based on current expectations and assumptions that may not materialize. Actual results may differ materially from those projected.**
 
 **Partnership Status Disclosure:**
-- GDIZ (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
+- GDIZ (Benin) (Glo-Djigbé Industrial Zone, Benin): Partnership in discussion
 - SIPI: Target partner (no agreement signed)
 - Fireblocks: Integration in progress (not yet approved)
 - BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB: Bank account opening in progress
 
-**Transaction Examples:** The transaction structures shown (e.g., €2M export order financing) are representative examples based on market research and GDIZ benchmarking. Actual transactions will vary based on industrial, off-taker, and market conditions.
+**Transaction Examples:** The transaction structures shown (e.g., €2M export order financing) are representative examples based on market research and GDIZ (Benin) benchmarking. Actual transactions will vary based on industrial, off-taker, and market conditions.
 
 **Confidentiality:** This document is confidential and intended solely for the recipient. Distribution to unauthorized parties is prohibited.
 

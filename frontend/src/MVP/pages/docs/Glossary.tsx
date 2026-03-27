@@ -325,13 +325,13 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     platformContext: 'Polygon\'s low gas fees make Ujamaa transactions cost-effective for investors.',
   },
   {
-    term: 'GDIZ (Guarantee for Development through Industrial Zones)',
+    term: 'GDIZ (Benin) (Guarantee for Development through Industrial Zones)',
     pronunciation: 'G-Diz',
     partOfSpeech: 'proper noun',
     definition: 'A certification or guarantee program that validates industrial projects in Africa, providing additional security and credibility for investors.',
     category: 'African Finance',
     relatedTerms: ['Guarantee', 'Industrial Zone', 'Certification'],
-    platformContext: 'Ujamaa partners with GDIZ to certify Industrial Operators and reduce investment risk.',
+    platformContext: 'Ujamaa partners with GDIZ (Benin) to certify Industrial Operators and reduce investment risk.',
   },
   {
     term: 'Governance',
@@ -675,7 +675,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'The process of identifying, assessing, and mitigating potential risks that could negatively impact an investment or business.',
     category: 'Investment',
     relatedTerms: ['Diversification', 'Hedging', 'Due Diligence'],
-    platformContext: 'Ujamaa employs multiple risk management strategies including collateralization and GDIZ certification.',
+    platformContext: 'Ujamaa employs multiple risk management strategies including collateralization and GDIZ (Benin) certification.',
   },
   {
     term: 'Risk Level',
@@ -924,8 +924,8 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     partOfSpeech: 'noun',
     definition: 'A designated geographic area with special economic regulations and incentives to promote industrial development, trade, and investment.',
     category: 'African Finance',
-    relatedTerms: ['GDIZ', 'Special Economic Zone', 'Industrial Park'],
-    platformContext: 'Ujamaa works with assets located in GDIZ-certified industrial zones across Africa.',
+    relatedTerms: ['GDIZ (Benin)', 'Special Economic Zone', 'Industrial Park'],
+    platformContext: 'Ujamaa works with assets located in GDIZ (Benin)-certified industrial zones across Africa.',
   },
 ];
 

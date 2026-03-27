@@ -187,7 +187,7 @@ const TokenComparisonGuide: React.FC = () => {
               icon="🏭"
               apy="10-12%"
               lockup="365 days"
-              assets="Manufacturing, GDIZ partners"
+              assets="Manufacturing, GDIZ (Benin) partners"
               color="from-blue-500 to-blue-600"
             />
             <PoolFamilyCard

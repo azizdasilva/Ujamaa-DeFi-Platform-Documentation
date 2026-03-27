@@ -119,7 +119,7 @@ Unlike traditional tokens where balance increases, uLP uses **value-accrual**:
 
 | Pool Family | Token Symbol | Asset Classes | Target Yield |
 |-------------|--------------|---------------|--------------|
-| **POOL_INDUSTRIE** | uLP-INDUSTRIE | Manufacturing, factories, production (GDIZ) | 10-12% |
+| **POOL_INDUSTRIE** | uLP-INDUSTRIE | Manufacturing, factories, production (GDIZ (Benin)) | 10-12% |
 | **POOL_AGRICULTURE** | uLP-AGRI | Coffee, cocoa, cotton, cashews, food crops | 12-15% |
 | **POOL_TRADE_FINANCE** | uLP-TRADE | Invoice tokenization, receivables pools | 8-10% |
 | **POOL_RENEWABLE_ENERGY** | uLP-ENERGY | Solar, wind, hydroelectric projects | 9-11% |
@@ -352,7 +352,7 @@ if __name__ == '__main__':
 **Purpose:** Manages liquidity pools with **Pool Family support** for industrial financing with diversification and risk tracking.
 
 **Pool Families Supported:**
-- POOL_INDUSTRIE (Manufacturing, GDIZ partners)
+- POOL_INDUSTRIE (Manufacturing, GDIZ (Benin) partners)
 - POOL_AGRICULTURE (Coffee, cocoa, cotton, cashews)
 - POOL_TRADE_FINANCE (Invoice tokenization, receivables)
 - POOL_RENEWABLE_ENERGY (Solar, wind, hydroelectric)
@@ -367,7 +367,7 @@ if __name__ == '__main__':
 │  │                                                        │
 │  ├── Pool #1: "Ujamaa Industrial Finance Pool I"        │
 │  │   └── Family: POOL_INDUSTRIE                         │
-│  │   └── Assets: GDIZ Cotton, GDIZ Soy, GDIZ Coffee     │
+│  │   └── Assets: GDIZ (Benin) Cotton, GDIZ (Benin) Soy, GDIZ (Benin) Coffee     │
 │  │   └── Target Yield: 10-12%                           │
 │  │   └── Risk Limits: 20% per industrial, 40% per class │
 │  │                                                        │
@@ -415,7 +415,7 @@ contract LiquidityPool {
     
     // Pool Family enum (per SRS v2.0 Section 1.2)
     enum PoolFamily {
-        INDUSTRIE,           // Manufacturing, GDIZ partners
+        INDUSTRIE,           // Manufacturing, GDIZ (Benin) partners
         AGRICULTURE,         // Coffee, cocoa, cotton, cashews
         TRADE_FINANCE,       // Invoice tokenization, receivables
         RENEWABLE_ENERGY     // Solar, wind, hydroelectric
@@ -943,9 +943,9 @@ class MockBankService:
 │  Step 3: Pool Deploys to Industrials                                  │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
 │  │ 7. LiquidityPool.deployToIndustrial(...)                         │  │
-│  │    → GDIZ Cotton #1: €3M @ 12% (90 days)                         │  │
-│  │    → GDIZ Soy #1: €4M @ 11% (120 days)                           │  │
-│  │    → GDIZ Coffee #1: €3M @ 13% (60 days)                         │  │
+│  │    → GDIZ (Benin) Cotton #1: €3M @ 12% (90 days)                         │  │
+│  │    → GDIZ (Benin) Soy #1: €4M @ 11% (120 days)                           │  │
+│  │    → GDIZ (Benin) Coffee #1: €3M @ 13% (60 days)                         │  │
 │  │ 8. Ondo EUROD (EUROD) transferred from Pool → Industrial escrow                │  │
 │  └──────────────────────────────────────────────────────────────────┘  │
 │                              │                                          │

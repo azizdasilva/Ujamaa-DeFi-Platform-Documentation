@@ -279,7 +279,7 @@ const RoleSelection: React.FC = () => {
       id: 'originator',
       title: 'Industrial Operator',
       description: 'Industrial companies seeking financing',
-      features: ['Access Capital', 'GDIZ Certified', 'Flexible Terms'],
+      features: ['Access Capital', 'GDIZ (Benin) Certified', 'Flexible Terms'],
       color: 'from-amber-500 to-orange-500',
       icon: '🏭',
       link: '/originator/dashboard',

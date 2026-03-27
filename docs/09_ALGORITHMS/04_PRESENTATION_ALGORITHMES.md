@@ -896,7 +896,7 @@ Nouvel écart avec la cible : < 1%
 ## La Vérification Physique
 
 **Qui vérifie ?**
-- **GDIZ** (société d'inspection)
+- **GDIZ (Benin)** (société d'inspection)
 - **SIPI** (société d'inspection)
 - Autres certificateurs approuvés
 
@@ -926,13 +926,13 @@ Nouvel écart avec la cible : < 1%
 
 ## Exemple de Certificat
 
-**Certificateur : GDIZ**
+**Certificateur : GDIZ (Benin)**
 
 ```
 Date : 15 mars 2026
 Lieu : Entrepôt de Tanger, Maroc
 
-GDIZ vérifie :
+GDIZ (Benin) vérifie :
 ✅ 10 000 chemises en coton comptées
 ✅ Qualité conforme aux documents
 ✅ Stock bien entreposé
@@ -965,7 +965,7 @@ Certificat créé :
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  ÉTAPE 2 : Certification (GDIZ/SIPI)                        │
+│  ÉTAPE 2 : Certification (GDIZ (Benin)/SIPI)                        │
 │  • Un certificateur vérifie l'actif                         │
 │  • Crée le certificat avec ID unique                        │
 │                                                              │
@@ -1003,7 +1003,7 @@ Jour 1 : TextileMaroc soumet une demande
   → Valeur : 500 000 €
   → Stock : 10 000 chemises
 
-Jour 2 : GDIZ inspecte le stock
+Jour 2 : GDIZ (Benin) inspecte le stock
   → Certificat #456 créé
   → Vérifié ✅
 
@@ -1199,7 +1199,7 @@ TextileMaroc ne rembourse pas
 **Fonction :** `certifyAsset()`
 
 **Certificateurs approuvés :**
-- GDIZ (société d'inspection)
+- GDIZ (Benin) (société d'inspection)
 - SIPI (société d'inspection)
 - Autres certificateurs avec CERTIFIER_ROLE
 

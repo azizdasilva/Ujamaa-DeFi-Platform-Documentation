@@ -27,7 +27,7 @@ const AdminDashboard: React.FC = () => {
   const recentUsers = [
     { id: 'USR-001', name: 'Logic Capital', role: 'INSTITUTIONAL', status: 'active', joined: '2026-03-18' },
     { id: 'USR-002', name: 'John Doe', role: 'RETAIL', status: 'active', joined: '2026-03-18' },
-    { id: 'USR-003', name: 'GDIZ Industries', role: 'ORIGINATOR', status: 'active', joined: '2026-03-17' },
+    { id: 'USR-003', name: 'GDIZ (Benin) Industries', role: 'ORIGINATOR', status: 'active', joined: '2026-03-17' },
     { id: 'USR-004', name: 'Jane Smith', role: 'RETAIL', status: 'pending', joined: '2026-03-17' },
   ];
 

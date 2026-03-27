@@ -136,7 +136,7 @@ frontend/
 │   │   ├── useKYC.ts
 │   │   ├── useCompliance.ts
 │   │   ├── useMockBank.ts                  # Mock bank hook
-│   │   ├── useMockGDIZ.ts                  # Mock GDIZ hook
+│   │   ├── useMockGDIZ.ts                  # Mock GDIZ (Benin) hook
 │   │   ├── useTestnetMode.ts               # Testnet mode flag
 │   │   └── index.ts
 │   │
@@ -153,7 +153,7 @@ frontend/
 │   │   ├── originatorService.ts
 │   │   ├── complianceService.ts
 │   │   ├── mockBankService.ts              # Mock bank service
-│   │   ├── mockGDIZService.ts              # Mock GDIZ service
+│   │   ├── mockGDIZService.ts              # Mock GDIZ (Benin) service
 │   │   └── index.ts
 │   │
 │   ├── utils/                      # Utility functions
@@ -248,7 +248,7 @@ backend/
 │   │       ├── compliance.py
 │   │       ├── regulator.py
 │   │       ├── mock_bank.py                # Mock bank API
-│   │       ├── mock_gdiz.py                # Mock GDIZ API
+│   │       ├── mock_gdiz.py                # Mock GDIZ (Benin) API
 │   │       └── docs.py
 │   │
 │   ├── services/
@@ -257,7 +257,7 @@ backend/
 │   │   ├── originator_service.py
 │   │   ├── compliance_service.py
 │   │   ├── mock_bank_service.py            # Mock bank service
-│   │   ├── mock_gdiz_service.py            # Mock GDIZ service
+│   │   ├── mock_gdiz_service.py            # Mock GDIZ (Benin) service
 │   │   ├── yield_calculation.py
 │   │   └── __init__.py
 │   │
@@ -387,7 +387,7 @@ contracts/
 | Service/File | Name | Why |
 |--------------|------|-----|
 | Bank Service | `mockBankService.ts` | Clear mock identification |
-| GDIZ Service | `mockGDIZService.ts` | Clear mock identification |
+| GDIZ (Benin) Service | `mockGDIZService.ts` | Clear mock identification |
 | Escrow Contract | `MockEscrow.sol` | Clear testnet contract |
 | Fiat Ramp Contract | `MockFiatRamp.sol` | Clear testnet contract |
 | Data Generator | `mockData.ts` | Clear mock data |

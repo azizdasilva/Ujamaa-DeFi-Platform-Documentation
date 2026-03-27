@@ -312,8 +312,8 @@
 <td>P0</td>
 </tr>
 <tr>
-<td><strong>Mock GDIZ Service</strong></td>
-<td>Interface for GDIZ later</td>
+<td><strong>Mock GDIZ (Benin) Service</strong></td>
+<td>Interface for GDIZ (Benin) later</td>
 <td>P1</td>
 </tr>
 </tbody>
@@ -435,7 +435,7 @@
 │  │  │  • Assets    │  │  • Pools     │  │  • Auth      │                │ │
 │  │  │  • Investors │  │  • uLP       │  │  • Config    │                │ │
 │  │  │  • Trades    │  │  • Mock Bank │  │  • Logging   │                │ │
-│  │  │  • Fraud     │  │  • Mock GDIZ │  │              │                │ │
+│  │  │  • Fraud     │  │  • Mock GDIZ (Benin) │  │              │                │ │
 │  │  └──────────────┘  └──────────────┘  └──────────────┘                │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                                   │                                         │
@@ -522,7 +522,7 @@
 │            │ 8. Industrial repays with interest                              │
 │            ▼                                                                  │
 │     ┌──────────────┐                                                         │
-│     │  Mock GDIZ   │  (Simulates industrial repayment)                       │
+│     │  Mock GDIZ (Benin)   │  (Simulates industrial repayment)                       │
 │     └──────┬───────┘                                                         │
 │            │                                                                  │
 │            │ 9. Add yield to pool                                            │
@@ -638,9 +638,9 @@ After 1 year (10% yield):
 <div class="docs-pre"><code>Pool: &quot;Ujamaa Industrial Finance Pool I&quot;
 Total Value: 10M Ondo EUROD (EUROD)
 ├── Deployed: 7M Ondo EUROD (EUROD) (70%)
-│   ├── GDIZ Cotton #1: 2M Ondo EUROD (EUROD) @ 12% (due: 90 days)
-│   ├── GDIZ Soy #1: 3M Ondo EUROD (EUROD) @ 11% (due: 120 days)
-│   └── GDIZ Coffee #1: 2M Ondo EUROD (EUROD) @ 13% (due: 60 days)
+│   ├── GDIZ (Benin) Cotton #1: 2M Ondo EUROD (EUROD) @ 12% (due: 90 days)
+│   ├── GDIZ (Benin) Soy #1: 3M Ondo EUROD (EUROD) @ 11% (due: 120 days)
+│   └── GDIZ (Benin) Coffee #1: 2M Ondo EUROD (EUROD) @ 13% (due: 60 days)
 └── Available: 3M Ondo EUROD (EUROD) (30%)
 </code></div>
 <h3>Functions</h3>
@@ -1027,7 +1027,7 @@ def calculate_yield_accrual(principal, annual_rate, days_elapsed):
 │   │   ├── yield_calculation.py   # Real math, simulated data
 │   │   ├── pool_manager.py        # Pool operations
 │   │   ├── mock_bank.py           # Bank simulation
-│   │   ├── mock_gdiz.py           # GDIZ simulation
+│   │   ├── mock_gdiz.py           # GDIZ (Benin) simulation
 │   │   └── __init__.py
 │   └── mvp1/                      # EXISTING - MVP-1 services
 │       └── fraud_detection.py
@@ -1563,9 +1563,9 @@ Footer Navigation:
 <td>2-3 weeks</td>
 </tr>
 <tr>
-<td><strong>Mock GDIZ</strong></td>
+<td><strong>Mock GDIZ (Benin)</strong></td>
 <td>Mock service</td>
-<td>Real GDIZ integration</td>
+<td>Real GDIZ (Benin) integration</td>
 <td>2-3 weeks</td>
 </tr>
 <tr>
@@ -1648,7 +1648,7 @@ Week 8: MVP launch               Week 9-16: Parallel tracks
 </tr>
 <tr>
 <td><strong>Mock Service</strong></td>
-<td>Simulated service (bank, GDIZ) for testnet</td>
+<td>Simulated service (bank, GDIZ (Benin)) for testnet</td>
 </tr>
 <tr>
 <td><strong>Escrow</strong></td>

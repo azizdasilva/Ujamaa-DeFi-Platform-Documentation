@@ -36,7 +36,7 @@ Automate the liquidation of `Ujamaa Guarantee (UJG)` tokens (collateral NFTs) vi
 ## 3. Improvement 2: IoT-Driven "Dynamic Risk" Oracle
 
 ### 3.1 Concept
-Link physical asset condition (humidity, temperature, GPS) in GDIZ warehouses directly to the on-chain risk rating of the collateral.
+Link physical asset condition (humidity, temperature, GPS) in GDIZ warehouse (Benin)s directly to the on-chain risk rating of the collateral.
 
 ### 3.2 Technical Implementation
 - **Contract:** `IndustrialGateway.sol`

@@ -165,7 +165,7 @@
 <p>This Implementation Plan provides a <strong>step-by-step guide</strong> for building MVP (Institutional Architecture Prototype) over <strong>12 weeks</strong> with <strong>comprehensive role workflow coverage</strong>. It covers:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>✅ Smart contract development (uLPToken, LiquidityPool, Mock services)</li>
-<li>✅ Backend services (Yield calculation, Pool manager, Mock bank/GDIZ)</li>
+<li>✅ Backend services (Yield calculation, Pool manager, Mock bank/GDIZ (Benin))</li>
 <li>✅ <strong>Frontend implementation per MVP Frontend Specification v1.0</strong> (Institutional dashboard, Pool marketplace, uLP operations)</li>
 <li>✅ <strong>Deep Dive</strong> - Comprehensive technical documentation page</li>
 <li>✅ <strong>Investors Room</strong> - Investor documentation portal with search</li>
@@ -209,7 +209,7 @@
 <h3>1.1.3 Mocking Strategy Integration</h3>
 <p><strong>NEW in v4.1:</strong> This implementation plan now integrates with the <strong>MVP Mocking and Testnet Strategy</strong> (<code>04_MVP_MOCKING_AND_TESTNET_STRATEGY.md</code>).</p>
 <p>The Mocking Strategy provides:<br />
-- <strong>Mock Service Architecture</strong> - Bank, GDIZ, escrow, fiat ramp simulations<br />
+- <strong>Mock Service Architecture</strong> - Bank, GDIZ (Benin), escrow, fiat ramp simulations<br />
 - <strong>Testnet Deployment Procedures</strong> - Polygon Amoy deployment, configuration<br />
 - <strong>Production Swap Methodology</strong> - Step-by-step mock → production transition<br />
 - <strong>Frontend Mock Components</strong> - MVPBanner, TestnetNotice, MockDataBadge<br />
@@ -282,8 +282,8 @@
 <td>P0</td>
 </tr>
 <tr>
-<td><strong>Mock GDIZ Service</strong></td>
-<td>Backend GDIZ simulation</td>
+<td><strong>Mock GDIZ (Benin) Service</strong></td>
+<td>Backend GDIZ (Benin) simulation</td>
 <td>4</td>
 <td>P1</td>
 </tr>
@@ -883,7 +883,7 @@ export const MVP_CONFIG = {
   MOCK: {
     BANK: true,           // Use mock bank service
     ESCROW: true,         // Use mock escrow
-    GDIZ: true,           // Use mock GDIZ integration
+    GDIZ (Benin): true,           // Use mock GDIZ (Benin) integration
     YIELD: false,         // Real yield calculation (with mock data)
   },
 
@@ -1182,7 +1182,7 @@ LOG_FILE=logs/MVP.log
 <tbody>
 <tr>
 <td><strong>POOL_INDUSTRIE</strong></td>
-<td>Manufacturing, factories, production (GDIZ)</td>
+<td>Manufacturing, factories, production (GDIZ (Benin))</td>
 <td>10-12%</td>
 <td>Medium</td>
 <td>365 days</td>
@@ -1238,7 +1238,7 @@ interface ILiquidityPool {
 
     // Pool Family enum (per SRS v2.0)
     enum PoolFamily {
-        INDUSTRIE,           // Manufacturing, GDIZ partners
+        INDUSTRIE,           // Manufacturing, GDIZ (Benin) partners
         AGRICULTURE,         // Coffee, cocoa, cotton, cashews
         TRADE_FINANCE,       // Invoice tokenization, receivables
         RENEWABLE_ENERGY,    // Solar, wind, hydroelectric
@@ -2266,7 +2266,7 @@ export const ImpactSlider: React.FC&lt;{ before: string; after: string }&gt; = (
   &lt;ReactCompareSlider
     itemOne={&lt;img src={before} alt=&quot;Before financing&quot; /&gt;}
     itemTwo={&lt;img src={after} alt=&quot;After financing&quot; /&gt;}
-    caption=&quot;GDIZ Factory - 6 months after Ujamaa financing&quot;
+    caption=&quot;GDIZ (Benin) Factory - 6 months after Ujamaa financing&quot;
   /&gt;
 );
 </code></div>
@@ -2610,7 +2610,7 @@ Sentry.init({
 <tr>
 <td><strong>Week 3-4</strong></td>
 <td>Backend Services</td>
-<td>Mock Bank, Mock GDIZ, Yield Calculator</td>
+<td>Mock Bank, Mock GDIZ (Benin), Yield Calculator</td>
 </tr>
 <tr>
 <td><strong>Week 5-6</strong></td>
@@ -2836,7 +2836,7 @@ Sentry.init({
 - [ ] Test wire transfers<br />
 - [ ] Test balance queries<br />
 - [ ] Test transaction history</p>
-<h3>5.2 Mock GDIZ Service</h3>
+<h3>5.2 Mock GDIZ (Benin) Service</h3>
 <p><strong>File:</strong> <code>backend/services/MVP/mock_gdiz.py</code><br />
 <strong>SRS Reference:</strong> Section 5.3<br />
 <strong>Priority:</strong> P1 (High)</p>
@@ -4322,7 +4322,7 @@ function App() {
 - [ ] Production notarization (data hash, transaction history)<br />
 - [ ] Repayment submission (principal + interest)</p>
 <p><strong>3. Mock Integration (Day 5):</strong><br />
-- [ ] Submit asset → Mock GDIZ service<br />
+- [ ] Submit asset → Mock GDIZ (Benin) service<br />
 - [ ] Notarize production → AssetProof contract<br />
 - [ ] Upload documents → Mock document storage</p>
 <p><strong>Testing:</strong><br />
@@ -4826,7 +4826,7 @@ tokenizing real-world assets (RWA) on the blockchain.
 ## How It Works
 
 1. Investors deposit Ondo EUROD (EUROD) → receive uLP tokens
-2. Pool deploys to industrial financings (GDIZ partners)
+2. Pool deploys to industrial financings (GDIZ (Benin) partners)
 3. Industrials repay with interest
 4. Yield accrues to uLP holders (NAV increases)
 5. Investors redeem uLP → receive Ondo EUROD (EUROD) + yield

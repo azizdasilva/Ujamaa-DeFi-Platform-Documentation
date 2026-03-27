@@ -56,7 +56,7 @@ const OnboardingDocuments: React.FC = () => {
       { id: 'financial_statements', name: 'Financial Statements', required: true, description: 'Last 2 years audited statements' },
       { id: 'business_plan', name: 'Business Plan', required: true, description: 'Detailed business plan with projections' },
       { id: 'asset_docs', name: 'Asset Documentation', required: false, description: 'Documents for assets to be financed' },
-      { id: 'gdiz_cert', name: 'GDIZ Certificate', required: false, description: 'GDIZ certification (if applicable)' },
+      { id: 'gdiz_cert', name: 'GDIZ (Benin) Certificate', required: false, description: 'GDIZ (Benin) certification (if applicable)' },
     ],
   };
 

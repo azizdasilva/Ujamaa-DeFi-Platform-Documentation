@@ -36,7 +36,7 @@ const IndustrialOperatorWelcome: React.FC = () => {
         'Factory/production assets',
         'Equipment financing',
         'Working capital',
-        'GDIZ certification available',
+        'GDIZ (Benin) certification available',
       ],
       financingRange: '€100K - €5M',
       targetApy: '10-12%',

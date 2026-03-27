@@ -176,11 +176,11 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 
 ## 3.3 Token Economics
 
-**Example: GDIZ Factory Token (GFT)**
+**Example: GDIZ (Benin) Factory Token (GFT)**
 
 | Parameter | Value |
 |-----------|-------|
-| **Token Name** | GDIZ Factory Token |
+| **Token Name** | GDIZ (Benin) Factory Token |
 | **Token Symbol** | GFT |
 | **Token Type** | ERC-3643 Fungible Token |
 | **Total Supply** | 10,000,000 GFT |
@@ -298,7 +298,7 @@ UJAMAA DEFI PLATFORM uses **ERC-3643 (T-REX Protocol)**, a token standard design
 
 ## 5.3 Example Investment Cost Breakdown
 
-**Investment: $10,000 in GDIZ Factory Token**
+**Investment: $10,000 in GDIZ (Benin) Factory Token**
 
 | Item | Amount |
 |------|--------|

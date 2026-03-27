@@ -18,7 +18,7 @@ import Badge from '../../components/Badge';
 const OriginatorDashboard: React.FC = () => {
   // Mock data for demo
   const company = {
-    name: 'GDIZ Industries (Demo)',
+    name: 'GDIZ (Benin) Industries (Demo)',
     jurisdiction: 'MU',
     status: 'VERIFIED',
     creditLimit: 5_000_000,
@@ -50,7 +50,7 @@ const OriginatorDashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-[#103b5b]">Industrial Operator Dashboard</h1>
-              <p className="text-[#8b5b3d] mt-1">GDIZ Industries (Demo)</p>
+              <p className="text-[#8b5b3d] mt-1">GDIZ (Benin) Industries (Demo)</p>
             </div>
             <div className="flex items-center gap-3">
               <Badge variant="success" size="md">✓ Verified</Badge>
@@ -267,7 +267,7 @@ const OriginatorDashboard: React.FC = () => {
                   <p className="font-medium text-[#00A8A8]">✓ KYB Approved</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">GDIZ Certified</span>
+                  <span className="text-gray-500">GDIZ (Benin) Certified</span>
                   <p className="font-medium text-[#00A8A8]">✓ Yes</p>
                 </div>
               </div>

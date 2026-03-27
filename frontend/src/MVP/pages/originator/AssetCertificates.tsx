@@ -47,7 +47,7 @@ const AssetCertificates: React.FC = () => {
         value: 500000,
         quantity: 1000,
         unit: 'bales',
-        warehouseLocation: 'GDIZ Warehouse A, Lomé, Togo',
+        warehouseLocation: 'GDIZ warehouse (Benin) A, Lomé, Togo',
         description: '1000 cotton bales, Grade A, harvested 2026',
         status: 'verified',
         submittedAt: '2026-03-15T10:30:00Z',
@@ -343,7 +343,7 @@ const AssetCertificates: React.FC = () => {
               <h4 className="font-semibold text-blue-900 mb-1">How Asset Tokenization Works</h4>
               <ol className="text-sm text-blue-700 space-y-1 list-decimal list-inside">
                 <li>Submit asset details for certification</li>
-                <li>GDIZ/SIPI verifies and certifies the asset (1-2 days)</li>
+                <li>GDIZ (Benin)/SIPI verifies and certifies the asset (1-2 days)</li>
                 <li>Certificate created with unique ID</li>
                 <li>Mint UGT (Ujamaa Guarantee Token) token as collateral</li>
                 <li>Use UGT to secure financing from Liquidity Pool</li>

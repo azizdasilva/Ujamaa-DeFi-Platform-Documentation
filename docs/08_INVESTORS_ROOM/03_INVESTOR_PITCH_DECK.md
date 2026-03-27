@@ -158,7 +158,7 @@
 ║  │   GUARANTEE TOKEN (COLLATERAL ERC-3643 NFT)                 │ ║
 ║  │   • Represents certified merchandise/collateral             │ ║
 ║  │   • Held by pool until repayment                            │ ║
-║  │   • GDIZ/SIPI certification                                 │ ║
+║  │   • GDIZ (Benin)/SIPI certification                                 │ ║
 ║  │   • Automatic release on repayment                          │ ║
 ║  │                                                             │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
@@ -209,7 +209,7 @@
 ║         │                                                         ║
 ║         ▼                                                         ║
 ║  ┌──────────────┐         ┌──────────────┐                       ║
-║  │ GDIZ         │         │ INTERNATIONAL│                       ║
+║  │ GDIZ (Benin)         │         │ INTERNATIONAL│                       ║
 ║  │ PARTNER      │         │ BUYER        │                       ║
 ║  │ (Benin)      │         │              │                       ║
 ║  │              │         │              │                       ║
@@ -428,7 +428,7 @@
 ║                                                                   ║
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
 ║  │  REPRESENTATIVE TRANSACTION STRUCTURE                       ║
-║  │  (Based on market research & GDIZ benchmarking)             ║
+║  │  (Based on market research & GDIZ (Benin) benchmarking)             ║
 ║  │                                                             │ ║
 ║  │  ✓ Transaction Type: Export Order Financing                 │ ║
 ║  │  ✓ Target Amount: €2,000,000                                │ ║
@@ -455,7 +455,7 @@
 ║  └──────────────┴────────────┴────────────┴─────────────────┘   ║
 ║                                                                   ║
 ║  PARTNERSHIP STATUS:                                             ║
-║  ✓ GDIZ (Benin, Industrial Network) — In discussion           ║
+║  ✓ GDIZ (Benin) (Benin, Industrial Network) — In discussion           ║
 ║  ✓ SIPI (Stock Certification) — Target partner                  ║
 ║  ✓ Fireblocks (Institutional Custody) — Integration in progress ║
 ║  ✓ BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (Escrow) — Account opening in progress    ║
@@ -537,7 +537,7 @@
 ║  │  • Ex-Goldman Sachs, VP Investment Banking                  │ ║
 ║  │  • MBA INSEAD                                               │ ║
 ║  │  • Structured $2B+ African Transactions                     │ ║
-║  │  • GDIZ Network Founder                                     │ ║
+║  │  • GDIZ (Benin) Network Founder                                     │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
@@ -764,7 +764,7 @@
 ║  │  UJAMAA DeFi Platform                                       │ ║
 ║  │                                                             │ ║
 ║  │  Headquarters: Ebène Cybercity, Mauritius                   │ ║
-║  │  Operating Office: GDIZ Zone, Abidjan, Côte d'Ivoire        │ ║
+║  │  Operating Office: GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State        │ ║
 ║  │                                                             │ ║
 ║  │  Aziz Da Silva, CEO                                         │ ║
 ║  │  Email: aziz@ujamaa.defi                                    │ ║
@@ -797,7 +797,7 @@
 ║                                                                   ║
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
 ║  │  INDUSTRIAL DEFAULT RISK (Medium)                           │ ║
-║  │  Mitigation: GDIZ guarantee, 5% credit provision,            │ ║
+║  │  Mitigation: GDIZ (Benin) guarantee, 5% credit provision,            │ ║
 ║  │            diversified pool (43 deals)                       │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║
@@ -857,12 +857,12 @@
 
 **Slide 5 (Representative Example):**
 - This shows the EXPECTED transaction structure based on market research
-- GDIZ (Benin) has created 14,000+ jobs, validating the industrial financing model
+- GDIZ (Benin) (Benin) has created 14,000+ jobs, validating the industrial financing model
 - First UJAMAA transactions expected Q3-Q4 2026 (subject to regulatory approval)
 
 **Slide 9 (Traction):**
 - €45M TARGET pipeline in various stages (LOI, due diligence, origination)
-- GDIZ partnership in discussion — industrial network access
+- GDIZ (Benin) partnership in discussion — industrial network access
 - Be honest about partnership status (in discussion, not completed)
 
 **Slide 14 (The Ask):**
@@ -873,7 +873,7 @@
 
 1. **"What happens if an industrial defaults?"**
    - 5% credit provision covers initial losses
-   - GDIZ guarantee provides secondary recourse
+   - GDIZ (Benin) guarantee provides secondary recourse
    - Diversification across 43+ deals limits single-name exposure
 
 2. **"How is this different from Centrifuge/Securitize?"**

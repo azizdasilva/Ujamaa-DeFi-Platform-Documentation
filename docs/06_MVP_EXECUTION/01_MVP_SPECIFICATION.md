@@ -137,7 +137,7 @@ MVP is the **second iteration** of the Ujamaa DeFi Platform, introducing institu
 | **Institutional Dashboard** | Frontend for investors | P0 |
 | **uLP Deposit/Redeem** | User flow for uLP tokens | P0 |
 | **Mock Bank Service** | Interface for real bank later | P0 |
-| **Mock GDIZ Service** | Interface for GDIZ later | P1 |
+| **Mock GDIZ (Benin) Service** | Interface for GDIZ (Benin) later | P1 |
 
 ## 2.3 Out of Scope (MVP)
 
@@ -219,7 +219,7 @@ MVP is the **second iteration** of the Ujamaa DeFi Platform, introducing institu
 │  │  │  • Assets    │  │  • Pools     │  │  • Auth      │                │ │
 │  │  │  • Investors │  │  • uLP       │  │  • Config    │                │ │
 │  │  │  • Trades    │  │  • Mock Bank │  │  • Logging   │                │ │
-│  │  │  • Fraud     │  │  • Mock GDIZ │  │              │                │ │
+│  │  │  • Fraud     │  │  • Mock GDIZ (Benin) │  │              │                │ │
 │  │  └──────────────┘  └──────────────┘  └──────────────┘                │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                                   │                                         │
@@ -308,7 +308,7 @@ MVP is the **second iteration** of the Ujamaa DeFi Platform, introducing institu
 │            │ 8. Industrial repays with interest                              │
 │            ▼                                                                  │
 │     ┌──────────────┐                                                         │
-│     │  Mock GDIZ   │  (Simulates industrial repayment)                       │
+│     │  Mock GDIZ (Benin)   │  (Simulates industrial repayment)                       │
 │     └──────┬───────┘                                                         │
 │            │                                                                  │
 │            │ 9. Add yield to pool                                            │
@@ -412,9 +412,9 @@ Manages pool of funds for industrial financing with diversification and risk tra
 Pool: "Ujamaa Industrial Finance Pool I"
 Total Value: 10M Ondo EUROD (EUROD)
 ├── Deployed: 7M Ondo EUROD (EUROD) (70%)
-│   ├── GDIZ Cotton #1: 2M Ondo EUROD (EUROD) @ 12% (due: 90 days)
-│   ├── GDIZ Soy #1: 3M Ondo EUROD (EUROD) @ 11% (due: 120 days)
-│   └── GDIZ Coffee #1: 2M Ondo EUROD (EUROD) @ 13% (due: 60 days)
+│   ├── GDIZ (Benin) Cotton #1: 2M Ondo EUROD (EUROD) @ 12% (due: 90 days)
+│   ├── GDIZ (Benin) Soy #1: 3M Ondo EUROD (EUROD) @ 11% (due: 120 days)
+│   └── GDIZ (Benin) Coffee #1: 2M Ondo EUROD (EUROD) @ 13% (due: 60 days)
 └── Available: 3M Ondo EUROD (EUROD) (30%)
 ```
 
@@ -665,7 +665,7 @@ backend/
 │   │   ├── yield_calculation.py   # Real math, simulated data
 │   │   ├── pool_manager.py        # Pool operations
 │   │   ├── mock_bank.py           # Bank simulation
-│   │   ├── mock_gdiz.py           # GDIZ simulation
+│   │   ├── mock_gdiz.py           # GDIZ (Benin) simulation
 │   │   └── __init__.py
 │   └── mvp1/                      # EXISTING - MVP-1 services
 │       └── fraud_detection.py
@@ -927,7 +927,7 @@ Footer Navigation:
 | **LiquidityPool** | Testnet deployment | Mainnet deployment + audit | 1 week |
 | **MockEscrow** | Mock bank service | Real BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB API | 2-3 weeks |
 | **MockFiatRamp** | Mock fiat service | Real Ondo Finance/bank API | 2-3 weeks |
-| **Mock GDIZ** | Mock service | Real GDIZ integration | 2-3 weeks |
+| **Mock GDIZ (Benin)** | Mock service | Real GDIZ (Benin) integration | 2-3 weeks |
 | **Yield Calculation** | Same (real math) | Same (real data) | 0 weeks |
 | **Frontend** | Same UI/UX | Same UI/UX | 0 weeks |
 
@@ -979,7 +979,7 @@ Week 8: MVP launch               Week 9-16: Parallel tracks
 | **NAV** | Net Asset Value - value per Ujamaa Pool Token (uLP) |
 | **Yield-Bearing** | Token that appreciates in value over time |
 | **Value-Accrual** | Model where balance stays constant, value increases |
-| **Mock Service** | Simulated service (bank, GDIZ) for testnet |
+| **Mock Service** | Simulated service (bank, GDIZ (Benin)) for testnet |
 | **Escrow** | Regulated bank account holding investor funds |
 | **Pool** | Liquidity pool managing multiple financings |
 | **MVP** | Second iteration: Institutional architecture |

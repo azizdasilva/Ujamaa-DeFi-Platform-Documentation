@@ -128,7 +128,7 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>ABSTRACT</h2>
 <p>The Ujamaa DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, Ujamaa enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.</p>
-<p>This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the Ujamaa platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), Ujamaa bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.</p>
+<p>This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the Ujamaa platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), Ujamaa bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.</p>
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>TABLE OF CONTENTS</h2>
@@ -183,7 +183,7 @@
 <tbody>
 <tr>
 <td><strong>Industrial Partner</strong></td>
-<td>GDIZ-certified textile factory (Côte d'Ivoire)</td>
+<td>GDIZ (Benin)-certified textile factory (Côte d'Ivoire)</td>
 </tr>
 <tr>
 <td><strong>Financing Amount</strong></td>
@@ -846,7 +846,7 @@
 </code></div>
 <h4>3.3.2 Financing Flow</h4>
 <div class="docs-pre"><code>1. Industrial applies for financing → Dashboard
-2. GDIZ certifies merchandise → SIPI verification
+2. GDIZ (Benin) certifies merchandise → SIPI verification
 3. Guarantee Token minted → ERC-3643 NFT
 4. Liquidity Pool deploys Ondo EUROD (EUROD) → Industrial wallet
 5. Guarantee Token held by Pool → Collateral security
@@ -1067,7 +1067,7 @@ Example: 100,000 uLP × €1.10 = €110,000
   &quot;name&quot;: &quot;Guarantee Token #001&quot;,
   &quot;description&quot;: &quot;Collateral for GDIZ Industrial Financing&quot;,
   &quot;attributes&quot;: {
-    &quot;certificateId&quot;: &quot;GDIZ-2026-001&quot;,
+    &quot;certificateId&quot;: &quot;GDIZ (Benin)-2026-001&quot;,
     &quot;merchandiseValue&quot;: &quot;2000000&quot;,
     &quot;merchandiseCurrency&quot;: &quot;Ondo EUROD (EUROD)&quot;,
     &quot;expiryDate&quot;: &quot;2027-03-17&quot;,
@@ -1075,16 +1075,16 @@ Example: 100,000 uLP × €1.10 = €110,000
     &quot;pool&quot;: &quot;Pool Industrie&quot;,
     &quot;isRedeemed&quot;: false,
     &quot;stockHash&quot;: &quot;QmXyz...&quot;,
-    &quot;warehouseLocation&quot;: &quot;GDIZ Warehouse A, Abidjan&quot;,
+    &quot;warehouseLocation&quot;: &quot;GDIZ warehouse (Benin) A, Abidjan&quot;,
     &quot;certificationDate&quot;: &quot;2026-03-17&quot;,
-    &quot;certifier&quot;: &quot;SIPI/GDIZ&quot;
+    &quot;certifier&quot;: &quot;SIPI/GDIZ (Benin)&quot;
   },
   &quot;image&quot;: &quot;ipfs://QmXyz...&quot;
 }
 </code></div>
 <h4>4.2.3 Lifecycle</h4>
 <div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
-2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
 3. Guarantee Token minted (ERC-3643 NFT with metadata)
 4. Pool deploys Ondo EUROD (EUROD) to Industrial
 5. Pool holds Guarantee Token (collateral/security)
@@ -1432,7 +1432,7 @@ contract GuaranteeToken is ERC3643NFT {
     /**
      * @notice Mint Guarantee Token for certified merchandise
      * @param industrial Industrial wallet
-     * @param certificateId GDIZ/SIPI certificate ID
+     * @param certificateId GDIZ (Benin)/SIPI certificate ID
      * @param value Merchandise value in Ondo EUROD (EUROD)
      * @param expiryDate When invoice is due
      * @param stockHash IPFS hash of stock documents
@@ -2650,7 +2650,7 @@ def erase_pii(investor_id):
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Transaction Structure:</strong> Validated through market research</li>
 <li><strong>€45M Target Pipeline:</strong> Various stages (LOI, due diligence, origination)</li>
-<li><strong>GDIZ Partnership:</strong> In discussion (industrial network in Benin)</li>
+<li><strong>GDIZ (Benin) Partnership:</strong> In discussion (industrial network in Benin)</li>
 </ul>
 <p><strong>Vision:</strong></p>
 <p>Become Africa's leading RWA tokenization platform, facilitating $10B+ in financing by 2030, creating 50,000+ jobs, and demonstrating the transformative potential of blockchain technology for economic development.</p>
@@ -2668,7 +2668,7 @@ def erase_pii(investor_id):
 <li>Fireblocks. "Institutional Custody Platform." https://www.fireblocks.com/</li>
 <li>Chainlink. "Decentralized Oracle Network." https://chain.link/</li>
 <li>OpenZeppelin. "Secure Smart Contract Library." https://openzeppelin.com/contracts/</li>
-<li>GDIZ. "General Distribution &amp; Industrial Zone." 2025.</li>
+<li>GDIZ (Benin). "General Distribution &amp; Industrial Zone." 2025.</li>
 <li>OHADA. "Uniform Act on Commercial Companies." 2025.</li>
 </ol>
 <hr />

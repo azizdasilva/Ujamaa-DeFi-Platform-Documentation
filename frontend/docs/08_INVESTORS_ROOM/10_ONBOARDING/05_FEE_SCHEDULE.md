@@ -265,7 +265,7 @@ UJAMAA DEFI PLATFORM operates on **Polygon** for most transactions, offering sig
 
 ## 5.4 Example 4: Secondary Market Transaction
 
-**Sale:** $50,000 of GDIZ Factory Tokens
+**Sale:** $50,000 of GDIZ (Benin) Factory Tokens
 
 | Item | Calculation | Amount |
 |------|-------------|--------|

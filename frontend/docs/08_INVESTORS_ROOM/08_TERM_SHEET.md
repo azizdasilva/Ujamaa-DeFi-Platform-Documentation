@@ -234,7 +234,7 @@
 
 | Risk Category | Level | Mitigation |
 |---------------|-------|------------|
-| **Credit Risk** | Medium-High | GDIZ guarantee, 5% provision, diversification |
+| **Credit Risk** | Medium-High | GDIZ (Benin) guarantee, 5% provision, diversification |
 | **Smart Contract Risk** | Medium | Audits, bug bounty, timelock, pause |
 | **Regulatory Risk** | Medium | FSC license, compliance program |
 | **Liquidity Risk** | Medium-High | 180-365 day lock-up, secondary market (Phase 2) |
@@ -343,7 +343,7 @@
 Ebène Cybercity, Mauritius
 
 **Operating Office:**
-GDIZ Zone, Abidjan, Côte d'Ivoire
+GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 
 **Contact:**
 - Email: investors@ujamaa.defi
