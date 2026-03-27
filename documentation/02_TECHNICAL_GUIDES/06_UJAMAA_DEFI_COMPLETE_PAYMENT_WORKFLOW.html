@@ -568,12 +568,12 @@ def can_list_asset(asset):
 │          │     • Status: &quot;PAYMENT_RECEIVED&quot;                                 │
 │          │     • Audit trail: timestamp, IP address, device fingerprint     │
 │          ▼                                                                   │
-│  ONAFRIQ + CIRCLE ON-RAMP                                                    │
+│  ONAFRIQ + Ondo Finance ON-RAMP                                                    │
 │          │                                                                   │
 │          │ 14. Fiat (XOF, NGN, KES...) converted to USDC at locked rate     │
 │          │     • Rate locked for 15 minutes at payment confirmation         │
 │          │     • Onafriq API: POST /convert                                 │
-│          │     • Response: USDC amount, Circle transaction ID               │
+│          │     • Response: USDC amount, Ondo Finance transaction ID               │
 │          │                                                                   │
 │          │ 15. USDC sent to Ujamaa smart contract escrow on Polygon         │
 │          │     • From: Onafriq settlement wallet                            │
@@ -827,7 +827,7 @@ function _canTransfer(
 │  Ujamaa BACKEND                                                              │
 │          │                                                                   │
 │          │ 7. On-ramp converts fiat → USDC on Polygon                       │
-│          │    • Circle Mint (for institutional amounts &gt;$100K)             │
+│          │    • Ondo Finance Mint (for institutional amounts &gt;$100K)             │
 │          │    • Or OTC desk partner (for large conversions)                │
 │          │    • Exchange rate locked at time of conversion                 │
 │          │                                                                   │
@@ -902,7 +902,7 @@ function _canTransfer(
 │          │    • Transparent: visible on Polygonscan                        │
 │          │                                                                   │
 │          │ 6. SPV converts USDC → local fiat via banking partner            │
-│          │    • For large amounts: OTC desk or Circle Mint redeem          │
+│          │    • For large amounts: OTC desk or Ondo Finance Mint redeem          │
 │          │    • For smaller amounts: Flutterwave FX                        │
 │          │    • Fiat deposited into SPV operating account                  │
 │          ▼                                                                   │
@@ -1017,7 +1017,7 @@ async def final_aml_sweep(subscriptions):
 │  WEB3 WALLET INVESTORS                     MOBILE MONEY &amp; BANK INVESTORS    │
 │          │                                             │                    │
 │          │ USDC returned directly                      │ USDC → fiat via    │
-│          │ to investor's wallet on-chain               │ Onafriq/Circle     │
+│          │ to investor's wallet on-chain               │ Onafriq/Ondo Finance     │
 │          │                                             │                    │
 │          │ claimRefund() called by investor            │ Flutterwave        │
 │          │ or automatically pushed                     │ disburses to       │
@@ -1126,7 +1126,7 @@ function processCustodialRefund(address investor, uint256 amount)
 │          │                                                                   │
 │          │ 4. SPV converts net yield fiat → USDC via on-ramp               │
 │          │    • Flutterwave FX for smaller amounts                         │
-│          │    • Circle Mint or OTC desk for large amounts                  │
+│          │    • Ondo Finance Mint or OTC desk for large amounts                  │
 │          │    • Exchange rate locked at time of conversion                 │
 │          │                                                                   │
 │          │ 5. USDC deposited into Ujamaa distribution contract              │
@@ -1344,7 +1344,7 @@ FeeConfig public fees = FeeConfig({
 │          │                                                                   │
 │          │ Confirms payment                                                 │
 │          • Webhook fired to Ujamaa backend                                  │
-│          • Fiat converted to USDC (Onafriq/Circle)                          │
+│          • Fiat converted to USDC (Onafriq/Ondo Finance)                          │
 │          • USDC sent to Polygon escrow                                      │
 │          ▼                                                                   │
 │  SMART CONTRACT ESCROW on POLYGON                                            │
@@ -1423,7 +1423,7 @@ FeeConfig public fees = FeeConfig({
 <tr>
 <td><strong>Fiat/USDC conversion rate loss</strong></td>
 <td>Investors</td>
-<td>Rate locked at time of payment confirmation (15-minute window); Onafriq/Circle API guarantee</td>
+<td>Rate locked at time of payment confirmation (15-minute window); Onafriq/Ondo Finance API guarantee</td>
 <td>Section 4</td>
 </tr>
 <tr>
@@ -1522,7 +1522,7 @@ FeeConfig public fees = FeeConfig({
 <h3>13.4 Technical Integration</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>[ ] Flutterwave webhook endpoint live and secured (HMAC verification)</li>
-<li>[ ] Onafriq/Circle on-ramp integration tested</li>
+<li>[ ] Onafriq/Ondo Finance on-ramp integration tested</li>
 <li>[ ] Fireblocks custody configured (for mobile money investors)</li>
 <li>[ ] Gnosis Safe multisig configured (4-of-7 for admin operations)</li>
 <li>[ ] Monitoring and alerting configured (Datadog, PagerDuty)</li>

@@ -926,8 +926,8 @@ function transferWithCompliance(address to, uint256 amount) external returns (bo
 │  │  │  • Represents ownership share in pool                            │  │  │
 │  │  │  • Value-accrual model (balance constant, NAV increases)         │  │  │
 │  │  │  • ERC-3643 compliance (identity verification)                   │  │  │
-│  │  │  • Deposit UJEUR → mint uLP                                      │  │  │
-│  │  │  • Redeem uLP → receive UJEUR + yield                            │  │  │
+│  │  │  • Deposit EUROD → mint uLP                                      │  │  │
+│  │  │  • Redeem uLP → receive EUROD + yield                            │  │  │
 │  │  └──────────────────────────────────────────────────────────────────┘  │  │
 │  │                                                                         │  │
 │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
@@ -1056,7 +1056,7 @@ The Ujamaa Guarantee (UJG) token represents <strong>certified merchandise</stron
 contract GuaranteeToken is ERC3643NFT {
     struct Guarantee {
         uint256 certificateId;      // Industrial Gateway certificate
-        uint256 merchandiseValue;   // Value in Ujamaa Euro (UJEUR)
+        uint256 merchandiseValue;   // Value in Ondo EUROD (EUROD)
         uint256 expiryDate;         // When invoice is due
         address industrial;         // Original issuer
         bool isRedeemed;            // Whether repaid
@@ -1810,7 +1810,7 @@ async def list_pools(user: dict = Depends(require_role(&quot;INSTITUTIONAL_INVES
 │  │  • $1B+ Insurance Coverage                                            │  │
 │  │                                                                        │  │
 │  │  Assets Held:                                                         │  │
-│  │  ├─ Ujamaa Euro (UJEUR) (treasury reserves)                                          │  │
+│  │  ├─ Ondo EUROD (EUROD) (treasury reserves)                                          │  │
 │  │  ├─ USDC/USDT (operating capital)                                     │  │
 │  │  └─ uLP (platform-owned pool shares)                                  │  │
 │  └────────────────────────────────────────────────────────────────────────┘  │

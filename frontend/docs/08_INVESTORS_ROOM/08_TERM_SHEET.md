@@ -21,10 +21,10 @@
 | **Pool Families** | Pool Industrie, Pool Agriculture, Pool Trade Finance, Pool Renewable Energy |
 | **Target Raise** | €50,000,000 |
 | **Minimum Investment** | €100,000 (Institutional Tier) |
-| **Denomination** | EURC (Euro-pegged Stablecoin) |
-| **Expected Yield** | 10-15% APR (EURC-denominated) |
+| **Denomination** | EUROD (Euro-pegged Stablecoin) |
+| **Expected Yield** | 10-15% APR (EUROD-denominated) |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
-| **Distribution Frequency** | Quarterly (EURC) |
+| **Distribution Frequency** | Quarterly (EUROD) |
 
 ---
 
@@ -37,7 +37,7 @@
 | **Rate** | 2.0% per annum |
 | **Calculation** | Daily accrual based on NAV |
 | **Collection** | Quarterly deduction from pool value |
-| **Payment Currency** | EURC (deducted from NAV) |
+| **Payment Currency** | EUROD (deducted from NAV) |
 
 ### Performance Fee (Carried Interest)
 
@@ -97,7 +97,7 @@
 | **Redemption Minimum** | €50,000 (partial redemptions) |
 | **Redemption Fee** | 0.5% (if redeemed <90 days after lock-up) |
 | **Redemption Gate** | 10% of NAV per quarter (pro-rata if exceeded) |
-| **Redemption Currency** | EURC |
+| **Redemption Currency** | EUROD |
 
 ### Transfer Rights
 
@@ -238,7 +238,7 @@
 | **Smart Contract Risk** | Medium | Audits, bug bounty, timelock, pause |
 | **Regulatory Risk** | Medium | FSC license, compliance program |
 | **Liquidity Risk** | Medium-High | 180-365 day lock-up, secondary market (Phase 2) |
-| **FX Risk** | Medium | EURC denomination, natural hedge |
+| **FX Risk** | Medium | EUROD denomination, natural hedge |
 | **Political Risk** | Medium-High | Geographic diversification, insurance |
 
 **Full risk disclosure:** See Risk Disclosure Memorandum (attached)

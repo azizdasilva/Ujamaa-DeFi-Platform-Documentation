@@ -38,7 +38,7 @@
 | **1.1.4 Regulatory License** | Mauritius FSC CIS Manager License (Category 1) - Application Q2 2026 |
 | **1.1.5 Investment Strategy** | African RWA tokenization; diversified industrial financing pools |
 | **1.1.6 Target AUM** | €50M (First Close), €1.5B (Year 5) |
-| **1.1.7 Base Currency** | Ujamaa Euro (UJEUR) (Euro-pegged Stablecoin) |
+| **1.1.7 Base Currency** | Ondo EUROD (EUROD) (Euro-pegged Stablecoin) |
 | **1.1.8 Fiscal Year End** | December 31 |
 | **1.1.9 Fund Life** | Perpetual (5-year initial commitment) |
 | **1.1.10 Minimum Investment** | €100,000 (Institutional Tier) |
@@ -52,9 +52,9 @@
 | **1.2.3 Sector Focus** | Manufacturing, Agriculture, Trade Finance, Renewable Energy |
 | **1.2.4 Investment Size** | €500K - €5M per financing |
 | **1.2.5 Pool Diversification** | 40+ financings per pool |
-| **1.2.6 Target Yield** | 10-15% APR (Ujamaa Euro (UJEUR)-denominated) |
+| **1.2.6 Target Yield** | 10-15% APR (Ondo EUROD (EUROD)-denominated) |
 | **1.2.7 Lock-up Period** | 180-365 days (pool-dependent) |
-| **1.2.8 Distribution Frequency** | Quarterly (Ujamaa Euro (UJEUR)) |
+| **1.2.8 Distribution Frequency** | Quarterly (Ondo EUROD (EUROD)) |
 | **1.2.9 Leverage** | None (cash-funded financings) |
 | **1.2.10 Derivatives** | None (Phase 1); FX hedging (Phase 2) |
 
@@ -439,7 +439,7 @@
 | Service | Provider | SLA |
 |---------|----------|-----|
 | **Custody** | Fireblocks | 99.9% uLPime, $1B+ insurance |
-| **Bank Escrow** | BIIC/MCB | Same-day settlement (Ujamaa Euro (UJEUR)) |
+| **Bank Escrow** | BIIC/MCB | Same-day settlement (Ondo EUROD (EUROD)) |
 | **Cloud Hosting** | AWS/GCP | 99.99% uLPime |
 | **Smart Contract** | Polygon | 99.9% uLPime (network dependent) |
 | **Oracle** | Chainlink | Decentralized, 99.9% uLPime |
@@ -448,7 +448,7 @@
 
 | Asset | Valuation Method | Frequency |
 |-------|------------------|-----------|
-| **Ujamaa Euro (UJEUR) Cash** | Face value | Daily |
+| **Ondo EUROD (EUROD) Cash** | Face value | Daily |
 | **Outstanding Financings** | Amortized cost + provision | Daily |
 | **Accrued Interest** | Accrual basis | Daily |
 | **uLP Token NAV** | Pool Value / uLP Supply | Daily |
@@ -706,7 +706,7 @@
 | **ERC-3643** | Ethereum token standard for permissioned securities |
 | **uLP Token** | UJAMAA Liquidity Provider token (yield-bearing) |
 | **Guarantee Token** | ERC-3643 NFT representing collateral |
-| **Ujamaa Euro (UJEUR)** | Euro Coin (euro-pegged stablecoin) |
+| **Ondo EUROD (EUROD)** | Euro Coin (euro-pegged stablecoin) |
 | **GDIZ** | General Distribution & Industrial Zone |
 | **OHADA** | Organization for Harmonization of Business Law in Africa |
 | **FSC** | Financial Services Commission (Mauritius) |

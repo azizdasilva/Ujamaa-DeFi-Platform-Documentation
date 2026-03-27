@@ -303,7 +303,7 @@
 contract GuaranteeToken is ERC3643NFT {
     struct Guarantee {
         uint256 certificateId;      // Industrial Gateway certificate
-        uint256 merchandiseValue;   // Value in Ujamaa Euro (UJEUR)
+        uint256 merchandiseValue;   // Value in Ondo EUROD (EUROD)
         uint256 expiryDate;         // When invoice is due
         address industrial;         // Original issuer
         bool isRedeemed;            // Whether repaid
@@ -386,7 +386,7 @@ contract GuaranteeToken is ERC3643NFT {
 - <strong>Ujamaa Pool Token (uLP) (yield-bearing)</strong> - Value-accrual token representing pool ownership<br />
 - <strong>Liquidity Pool management</strong> - Multi-asset financing with diversification<br />
 - <strong>Fireblocks custody</strong> - Institutional-grade digital asset custody<br />
-- <strong>Ujamaa Euro (UJEUR)/EURR stablecoins</strong> - Euro-pegged stablecoins for FX risk mitigation<br />
+- <strong>Ondo EUROD (EUROD)/EURR stablecoins</strong> - Euro-pegged stablecoins for FX risk mitigation<br />
 - <strong>Mobile Money integration</strong> - M-Pesa, MTN, Airtel for fiat on/off ramps<br />
 - <strong>Bank escrow integration</strong> - BIIC/MCB bank escrow accounts for investor funds</p>
 <p>No development work shall commence without traceability to requirements specified in this document. All acceptance testing shall validate compliance with the measurable criteria defined herein.</p>
@@ -399,8 +399,8 @@ contract GuaranteeToken is ERC3643NFT {
 <p><strong>Ujamaa Pool Token (uLP) (Yield-Bearing)</strong><br />
    - ERC-3643 compliant yield-bearing token<br />
    - Value-accrual model (balance constant, NAV increases)<br />
-   - Deposit Ujamaa Euro (UJEUR) → mint uLP<br />
-   - Redeem uLP → receive Ujamaa Euro (UJEUR) + yield<br />
+   - Deposit Ondo EUROD (EUROD) → mint uLP<br />
+   - Redeem uLP → receive Ondo EUROD (EUROD) + yield<br />
    - NAV calculation and tracking<br />
    - <strong>NAV Update Frequency:</strong> Real-time for deposits/redemptions; Daily for yield accrual; On-chain event triggered<br />
    - <strong>Yield Calculation Formula:</strong><br />
@@ -947,8 +947,8 @@ contract GuaranteeToken is ERC3643NFT {
 <td>Institutional-grade digital asset custody platform (FSC Mauritius compliant, MPC technology)</td>
 </tr>
 <tr>
-<td><strong>Ujamaa Euro (UJEUR)</strong></td>
-<td>Euro Coin; euro-backed stablecoin (1 Ujamaa Euro (UJEUR) = €1.00). Issued by Circle (MiCA-compliant, EU-regulated)</td>
+<td><strong>Ondo EUROD (EUROD)</strong></td>
+<td>Euro Coin; euro-backed stablecoin (1 Ondo EUROD (EUROD) = €1.00). Issued by Ondo Finance (MiCA-compliant, EU-regulated)</td>
 </tr>
 <tr>
 <td><strong>EURR</strong></td>
@@ -1082,7 +1082,7 @@ contract GuaranteeToken is ERC3643NFT {
 <h3>Institutional References</h3>
 <ol start="24">
 <li><strong>Fireblocks API Documentation</strong> — Institutional Custody Platform (https://developers.fireblocks.com/)</li>
-<li><strong>Circle Ujamaa Euro (UJEUR) Documentation</strong> — Euro Coin Stablecoin (https://www.circle.com/en/Ujamaa Euro (UJEUR))</li>
+<li><strong>Ondo Finance Ondo EUROD (EUROD) Documentation</strong> — Euro Coin Stablecoin (https://www.Ondo Finance.com/en/Ondo EUROD (EUROD))</li>
 <li><strong>Mauritius FSC CIS Manager License</strong> — Financial Services Commission (https://www.fscmauritius.org/)</li>
 <li><strong>OFAC Sanctions List</strong> — U.S. Treasury Department (https://sanctionssearch.ofac.treas.gov/)</li>
 <li><strong>UN Sanctions List</strong> — United Nations Security Council (https://www.un.org/securitycouncil/sanctions)</li>
@@ -1117,7 +1117,7 @@ contract GuaranteeToken is ERC3643NFT {
 <li><strong>Asset originators:</strong> African real estate developers (e.g., Rendeavour, Actis), agricultural cooperatives (coffee, cocoa, tea producers), mining companies (gold, cobalt, lithium operations), renewable energy projects (solar farms via Africa50), infrastructure funds (toll roads, ports, telecommunications), trade finance originators (Afreximbank partners), private equity firms (Helios Investment Partners, Actis, Harith General Partners)</li>
 <li><strong>Identity providers:</strong> National ID systems (e.g., Nigeria NIN, Kenya Huduma Namba, Ghana Card), KYC/AML verification services (Youverify, Smile Identity, Dojah), credit bureaus (TransUnion Africa, Experian Africa)</li>
 <li><strong>Oracle networks:</strong> Chainlink price feeds, African commodity price oracles (LME cobalt, ICE cocoa), foreign exchange rates (African Development Bank FX data), mobile money APIs (M-Pesa, MTN Mobile Money, Airtel Money)</li>
-<li><strong>Stablecoin issuers:</strong> Circle USDC, Tether USDT, African fiat-backed stablecoins (Celo Dollar, Monoix, BitPanda African stablecoins), <strong>Circle Ujamaa Euro (UJEUR) (euro-backed)</strong> 🆕, <strong>EURR (euro-backed for African markets)</strong> 🆕</li>
+<li><strong>Stablecoin issuers:</strong> Ondo Finance USDC, Tether USDT, African fiat-backed stablecoins (Celo Dollar, Monoix, BitPanda African stablecoins), <strong>Ondo Finance Ondo EUROD (EUROD) (euro-backed)</strong> 🆕, <strong>EURR (euro-backed for African markets)</strong> 🆕</li>
 <li><strong>Custody providers:</strong> <strong>Fireblocks (institutional digital asset custody)</strong> 🆕, <strong>Mobile Money providers (M-Pesa, MTN, Airtel)</strong> 🆕</li>
 <li><strong>Bank partners:</strong> <strong>BIIC (Mauritius)</strong> 🆕, <strong>MCB (Mauritius)</strong> 🆕 for escrow accounts</li>
 <li>
@@ -1269,7 +1269,7 @@ The platform specifically supports African industrial asset classes:</p>
 <p>🆕 <strong>Institutional Functions (16-23):</strong></p>
 <ol start="16">
 <li>
-<p><strong>Ujamaa Pool Token (uLP) Minting &amp; Redemption</strong> — Create yield-bearing uLP tokens representing pool ownership; redeem uLP for Ujamaa Euro (UJEUR) + accrued yield using value-accrual model (balance constant, NAV increases)</p>
+<p><strong>Ujamaa Pool Token (uLP) Minting &amp; Redemption</strong> — Create yield-bearing uLP tokens representing pool ownership; redeem uLP for Ondo EUROD (EUROD) + accrued yield using value-accrual model (balance constant, NAV increases)</p>
 </li>
 <li>
 <p><strong>Liquidity Pool Management</strong> — Create and manage diversified pools (Pool Industrie, Pool Agriculture, etc.); deploy funds to multiple industrials; track allocation by asset class, industrial, and geography</p>
@@ -1339,8 +1339,8 @@ Investors (Logic Capital, pension funds, family offices)
 - <strong>Distribution Escrow</strong> - Distributes yield to uLP holders</p>
 <p><strong>Escrow Flow (ZARA Example):</strong></p>
 <div class="docs-pre"><code>1. Logic Capital wires €10M → Investor Escrow (BIIC Mauritius)
-2. Convert to Ujamaa Euro (UJEUR) → Pool Escrow
-3. Deploy to Industrial (GDIZ partner) → Industrial receives Ujamaa Euro (UJEUR)
+2. Convert to Ondo EUROD (EUROD) → Pool Escrow
+3. Deploy to Industrial (GDIZ partner) → Industrial receives Ondo EUROD (EUROD)
 4. Industrial produces goods for ZARA
 5. ZARA pays €2M → Repayment Escrow (BIIC Mauritius)
 6. Smart Contract triggers distribution:
@@ -1597,7 +1597,7 @@ struct RealEstatePoolConfig {
 - View <strong>real-time NAV</strong> and yield accrual 🆕<br />
 - Download <strong>yield statements</strong> (PDF for accounting) 🆕<br />
 - Access <strong>institutional dashboard</strong> (portfolio, allocation, performance) 🆕<br />
-- Request <strong>redemption</strong> (uLP → Ujamaa Euro (UJEUR) + yield) 🆕<br />
+- Request <strong>redemption</strong> (uLP → Ondo EUROD (EUROD) + yield) 🆕<br />
 - View <strong>Proof of Reserve</strong> (on-chain attestation) 🆕<br />
 - Multi-sig wallet support (Gnosis Safe, Fireblocks) 🆕<br />
 - All permissions from standard Investors class</p>
@@ -1849,7 +1849,7 @@ struct RealEstatePoolConfig {
 </tbody>
 </table></div>
 <h3>FX Risk Mitigation</h3>
-<p><strong>Strategy:</strong> Ujamaa Euro (UJEUR)/EURR Primary Stablecoins with 2% Transaction Fee Margin</p>
+<p><strong>Strategy:</strong> Ondo EUROD (EUROD)/EURR Primary Stablecoins with 2% Transaction Fee Margin</p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -1860,7 +1860,7 @@ struct RealEstatePoolConfig {
 <tbody>
 <tr>
 <td><strong>Primary Stablecoin</strong></td>
-<td><strong>Ujamaa Euro (UJEUR) (euro-backed, 1 Ujamaa Euro (UJEUR) = €1.00)</strong> ✅</td>
+<td><strong>Ondo EUROD (EUROD) (euro-backed, 1 Ondo EUROD (EUROD) = €1.00)</strong> ✅</td>
 </tr>
 <tr>
 <td><strong>Secondary Stablecoin</strong></td>
@@ -1889,22 +1889,22 @@ struct RealEstatePoolConfig {
 </tbody>
 </table></div>
 <p><strong>FX Risk Flow:</strong></p>
-<div class="docs-pre"><code>Investor (EUR) → Ujamaa Euro (UJEUR) (1:1 parity) → Pool (Ujamaa Euro (UJEUR)-denominated)
+<div class="docs-pre"><code>Investor (EUR) → Ondo EUROD (EUROD) (1:1 parity) → Pool (Ondo EUROD (EUROD)-denominated)
                                           ↓
                                     Industrial (FCFA)
                                           ↓
-                                    Repayment (Ujamaa Euro (UJEUR))
+                                    Repayment (Ondo EUROD (EUROD))
                                           ↓
-                                    Investor (Ujamaa Euro (UJEUR) + yield)
+                                    Investor (Ondo EUROD (EUROD) + yield)
 
 FX Risk Absorption:
-- Entry: EUR → Ujamaa Euro (UJEUR) (0% slippage, 1:1 parity)
-- Deployment: Ujamaa Euro (UJEUR) → FCFA (2% fee margin covers conversion)
-- Repayment: FCFA → Ujamaa Euro (UJEUR) (2% fee margin covers conversion)
-- Exit: Ujamaa Euro (UJEUR) → EUR (0% slippage, 1:1 parity)
+- Entry: EUR → Ondo EUROD (EUROD) (0% slippage, 1:1 parity)
+- Deployment: Ondo EUROD (EUROD) → FCFA (2% fee margin covers conversion)
+- Repayment: FCFA → Ondo EUROD (EUROD) (2% fee margin covers conversion)
+- Exit: Ondo EUROD (EUROD) → EUR (0% slippage, 1:1 parity)
 
 Platform absorbs FX risk via 2% transaction fee margin.
-Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure).
+Investors receive Ondo EUROD (EUROD)-denominated returns (no FX exposure).
 </code></div>
 <p><strong>Fee Structure (FX Risk Coverage):</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
@@ -1917,22 +1917,22 @@ Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure).
 </thead>
 <tbody>
 <tr>
-<td><strong>Deposit (EUR → Ujamaa Euro (UJEUR))</strong></td>
+<td><strong>Deposit (EUR → Ondo EUROD (EUROD))</strong></td>
 <td>0%</td>
 <td>No FX risk (1:1 parity)</td>
 </tr>
 <tr>
-<td><strong>Investment (Ujamaa Euro (UJEUR) → FCFA)</strong></td>
+<td><strong>Investment (Ondo EUROD (EUROD) → FCFA)</strong></td>
 <td>2%</td>
 <td>Covers EUR/FCFA conversion risk</td>
 </tr>
 <tr>
-<td><strong>Repayment (FCFA → Ujamaa Euro (UJEUR))</strong></td>
+<td><strong>Repayment (FCFA → Ondo EUROD (EUROD))</strong></td>
 <td>2%</td>
 <td>Covers FCFA/EUR conversion risk</td>
 </tr>
 <tr>
-<td><strong>Redemption (Ujamaa Euro (UJEUR) → EUR)</strong></td>
+<td><strong>Redemption (Ondo EUROD (EUROD) → EUR)</strong></td>
 <td>0%</td>
 <td>No FX risk (1:1 parity)</td>
 </tr>
@@ -1943,7 +1943,7 @@ Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure).
 </tr>
 </tbody>
 </table></div>
-<p><strong>Ujamaa Euro (UJEUR) vs. USDC/USDT Comparison:</strong></p>
+<p><strong>Ondo EUROD (EUROD) vs. USDC/USDT Comparison:</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -1956,7 +1956,7 @@ Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure).
 </thead>
 <tbody>
 <tr>
-<td><strong>Ujamaa Euro (UJEUR)</strong> ✅</td>
+<td><strong>Ondo EUROD (EUROD)</strong> ✅</td>
 <td>EUR (1:1)</td>
 <td><strong>Fixed (1 EUR = 655.957 XOF)</strong></td>
 <td><strong>None</strong></td>
@@ -1985,16 +1985,16 @@ Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure).
 </tr>
 </tbody>
 </table></div>
-<p><strong>Why Ujamaa Euro (UJEUR)/EURR (Not USDC/USDT)?</strong></p>
+<p><strong>Why Ondo EUROD (EUROD)/EURR (Not USDC/USDT)?</strong></p>
 <ol class="docs-list" style="padding-left:1.5rem">
 <li><strong>EUR/FCFA Fixed Parity:</strong> 1 EUR = 655.957 XOF (fixed since 1994, BCEAO guarantee)</li>
-<li><strong>Zero FX Risk:</strong> Ujamaa Euro (UJEUR) maintains 1:1 parity with FCFA (no fluctuation)</li>
+<li><strong>Zero FX Risk:</strong> Ondo EUROD (EUROD) maintains 1:1 parity with FCFA (no fluctuation)</li>
 <li><strong>Historical Stability:</strong> EUR/FCFA rate unchanged for 30+ years</li>
-<li><strong>African Market Fit:</strong> Ujamaa Euro (UJEUR) aligns with UEMOA monetary zone (8 countries, 160M people)</li>
+<li><strong>African Market Fit:</strong> Ondo EUROD (EUROD) aligns with UEMOA monetary zone (8 countries, 160M people)</li>
 <li><strong>Platform Risk Absorption:</strong> 2% fee margin covers any residual FX exposure</li>
 </ol>
 <p><strong>Risk Mitigation Hierarchy:</strong></p>
-<div class="docs-pre"><code>Level 1: Ujamaa Euro (UJEUR)/EURR Primary (Zero FX Risk)
+<div class="docs-pre"><code>Level 1: Ondo EUROD (EUROD)/EURR Primary (Zero FX Risk)
   └─ EUR/FCFA fixed parity eliminates currency fluctuation
 
 Level 2: 2% Transaction Fee Margin (Risk Buffer)
@@ -2018,10 +2018,10 @@ function invest(uint256 amount) external {
     uint256 netAmount = amount - fxFee;
 
     // Fee goes to platform treasury (FX risk buffer)
-    Ujamaa Euro (UJEUR).transferFrom(msg.sender, treasury, fxFee);
+    Ondo EUROD (EUROD).transferFrom(msg.sender, treasury, fxFee);
 
     // Net amount deployed to industrial
-    Ujamaa Euro (UJEUR).transferFrom(msg.sender, pool, netAmount);
+    Ondo EUROD (EUROD).transferFrom(msg.sender, pool, netAmount);
 }
 
 // FX Fee Allocation
@@ -2040,11 +2040,11 @@ function invest(uint256 amount) external {
 <tbody>
 <tr>
 <td><strong>BCEAO Compliance</strong></td>
-<td>Ujamaa Euro (UJEUR)/FCFA parity maintained (UEMOA monetary zone)</td>
+<td>Ondo EUROD (EUROD)/FCFA parity maintained (UEMOA monetary zone)</td>
 </tr>
 <tr>
-<td><strong>Circle Ujamaa Euro (UJEUR) Licensing</strong></td>
-<td>Ujamaa Euro (UJEUR) issued by Circle (EU MiCA compliant)</td>
+<td><strong>Ondo Finance Ondo EUROD (EUROD) Licensing</strong></td>
+<td>Ondo EUROD (EUROD) issued by Ondo Finance (EU MiCA compliant)</td>
 </tr>
 <tr>
 <td><strong>EURR Licensing</strong></td>
@@ -2901,7 +2901,7 @@ function invest(uint256 amount) external {
 <td>System SHALL mint Ujamaa Pool Token (uLP) as yield-bearing ERC-3643 fungible token</td>
 <td>US-10.1</td>
 <td>AC-10.1.1, AC-10.1.2</td>
-<td>TC-068: Deposit UJEUR → uLP minted at current NAV</td>
+<td>TC-068: Deposit EUROD → uLP minted at current NAV</td>
 </tr>
 <tr>
 <td><strong>FR-069</strong></td>
@@ -2919,10 +2919,10 @@ function invest(uint256 amount) external {
 </tr>
 <tr>
 <td><strong>FR-071</strong></td>
-<td>System SHALL allow uLP redemption for UJEUR at current NAV (instant, no lock-up)</td>
+<td>System SHALL allow uLP redemption for EUROD at current NAV (instant, no lock-up)</td>
 <td>US-10.2</td>
 <td>AC-10.2.1, AC-10.2.3</td>
-<td>TC-071: Redeem uLP → UJEUR transferred, tokens burned</td>
+<td>TC-071: Redeem uLP → EUROD transferred, tokens burned</td>
 </tr>
 <tr>
 <td><strong>FR-072</strong></td>
@@ -4006,22 +4006,22 @@ This EPIC implements yield-bearing uLP tokens and liquidity pool management for 
 <p><strong>Priority:</strong> Must Have</p>
 <h3>User Story 10.1: Ujamaa Pool Token (uLP) Deposit</h3>
 <p><strong>As an</strong> Institutional Investor,<br />
-<strong>I want</strong> to deposit Ujamaa Euro (UJEUR) and receive uLP tokens,<br />
+<strong>I want</strong> to deposit Ondo EUROD (EUROD) and receive uLP tokens,<br />
 <strong>So that</strong> I can invest in a diversified pool of industrial financings.</p>
 <p><strong>Acceptance Criteria:</strong><br />
 - [ ] ERC-3643 compliant (transfer restrictions enforced)<br />
 - [ ] Value-accrual model (balance constant, NAV increases)<br />
-- [ ] Deposit Ujamaa Euro (UJEUR) → mint uLP at current NAV<br />
+- [ ] Deposit Ondo EUROD (EUROD) → mint uLP at current NAV<br />
 - [ ] NAV calculation: (Total Pool Value / Total uLP Shares)<br />
 - [ ] Proof of Reserve: On-chain attestation of pool value<br />
 - [ ] Minimum deposit: €100,000 (enforced by smart contract)<br />
 - [ ] Gas cost: &lt;150,000 gas on Polygon</p>
 <h3>User Story 10.2: Ujamaa Pool Token (uLP) Redemption</h3>
 <p><strong>As an</strong> Institutional Investor,<br />
-<strong>I want</strong> to redeem uLP tokens for Ujamaa Euro (UJEUR),<br />
+<strong>I want</strong> to redeem uLP tokens for Ondo EUROD (EUROD),<br />
 <strong>So that</strong> I can exit my investment and receive principal + accrued yield.</p>
 <p><strong>Acceptance Criteria:</strong><br />
-- [ ] Redeem uLP → receive Ujamaa Euro (UJEUR) at current NAV<br />
+- [ ] Redeem uLP → receive Ondo EUROD (EUROD) at current NAV<br />
 - [ ] Yield accrued = (Current NAV - Entry NAV) × Shares<br />
 - [ ] Instant redemption (no lock-up)<br />
 - [ ] Transaction receipt with yield breakdown (principal vs. yield)<br />
@@ -4056,8 +4056,8 @@ This EPIC implements yield-bearing uLP tokens and liquidity pool management for 
 <p><strong>Acceptance Criteria:</strong><br />
 - [ ] Real BIIC/MCB escrow account integration<br />
 - [ ] Wire transfer API integration (BIIC/MCB)<br />
-- [ ] Fiat on-ramp (EUR → Ujamaa Euro (UJEUR) via bank partner)<br />
-- [ ] Fiat off-ramp (Ujamaa Euro (UJEUR) → EUR via bank partner)<br />
+- [ ] Fiat on-ramp (EUR → Ondo EUROD (EUROD) via bank partner)<br />
+- [ ] Fiat off-ramp (Ondo EUROD (EUROD) → EUR via bank partner)<br />
 - [ ] Mobile Money integration (M-Pesa, MTN, Airtel)<br />
 - [ ] Clear disclosure: "Funds held in regulated escrow accounts"</p>
 <p><strong>Smart Contracts:</strong><br />
@@ -4443,7 +4443,7 @@ await safeSdk.approveTransactionHash(safeTxHash);
 - <code>POST /v1/vault_accounts</code> — Create vault account for institutional investor<br />
 - <code>POST /v1/transactions</code> — Initiate transfer (requires multi-sig approval)<br />
 - <code>GET /v1/vault_accounts/{id}</code> — Get balance and transaction history<br />
-- <code>POST /v1/otex/orders</code> — Convert fiat → stablecoin (EUR → Ujamaa Euro (UJEUR))<br />
+- <code>POST /v1/otex/orders</code> — Convert fiat → stablecoin (EUR → Ondo EUROD (EUROD))<br />
 - <code>POST /v1/network_connections</code> — Connect to external wallets (whitelisted)</p>
 <p><strong>Production Integration:</strong></p>
 <div class="docs-pre"><code># backend/services/custody/fireblocks_service.py
@@ -4455,7 +4455,7 @@ class FireblocksService:
         &quot;&quot;&quot;Initiate transfer (requires multi-sig approval).&quot;&quot;&quot;
 
     def get_balance(self, vault_id: str) -&gt; int:
-        &quot;&quot;&quot;Get vault balance in Ujamaa Euro (UJEUR).&quot;&quot;&quot;
+        &quot;&quot;&quot;Get vault balance in Ondo EUROD (EUROD).&quot;&quot;&quot;
 </code></div>
 <p><strong>Security:</strong><br />
 - MPC technology (private keys split into shards, never reconstructed)<br />
@@ -5487,21 +5487,21 @@ interface IIndustrialGateway {
 - <code>PoolRegistry.sol</code> — Pool creation and tracking<br />
 - <code>YieldCalculator</code> — Backend service for NAV calculation</p>
 <p><strong>Inputs:</strong><br />
-- Institutional investor deposits (Ujamaa Euro (UJEUR) via Fireblocks or bank escrow)<br />
+- Institutional investor deposits (Ondo EUROD (EUROD) via Fireblocks or bank escrow)<br />
 - Industrial repayments (principal + interest from GDIZ partners)<br />
 - Pool manager commands (deploy funds, distribute yield)<br />
-- Oracle price feeds (Ujamaa Euro (UJEUR)/USD, portfolio valuation)</p>
+- Oracle price feeds (Ondo EUROD (EUROD)/USD, portfolio valuation)</p>
 <p><strong>Outputs:</strong><br />
 - uLP tokens (minted on deposit, burned on redemption)<br />
-- Ujamaa Euro (UJEUR) (redeemed by institutional investors)<br />
+- Ondo EUROD (EUROD) (redeemed by institutional investors)<br />
 - Yield events (accrued to uLP holders via NAV increase)<br />
 - Pool statistics (TVL, allocation, performance metrics)<br />
 - Proof of Reserve attestations (on-chain)</p>
 <p><strong>Inter-Layer Dependencies:</strong><br />
-- Depends on <strong>Tokenization Layer</strong> for Ujamaa Euro (UJEUR) token contract<br />
+- Depends on <strong>Tokenization Layer</strong> for Ondo EUROD (EUROD) token contract<br />
 - Depends on <strong>Smart Contracts Layer</strong> for compliance enforcement (ERC-3643)<br />
 - Depends on <strong>Oracles Layer</strong> for NAV calculation and price feeds<br />
-- Depends on <strong>Payments Layer</strong> for Ujamaa Euro (UJEUR) distribution<br />
+- Depends on <strong>Payments Layer</strong> for Ondo EUROD (EUROD) distribution<br />
 - Produces events for <strong>Auditability Layer</strong> (deposits, redemptions, yield)<br />
 - Integrates with <strong>Fireblocks Custody</strong> (institutional asset protection)</p>
 <p><strong>Key Design Decisions:</strong><br />
@@ -5514,7 +5514,7 @@ interface IIndustrialGateway {
 - <strong>Yield Distribution:</strong> Automatic (no manual claims), pro-rata to all uLP holders<br />
 - <strong>Bank Escrow:</strong> Real BIIC/MCB bank integration for escrow accounts<br />
 - <strong>Institutional Minimum:</strong> €100,000 minimum investment (enforced by smart contract)<br />
-- <strong>Redemption:</strong> Instant (no lock-up), Ujamaa Euro (UJEUR) payout</p>
+- <strong>Redemption:</strong> Instant (no lock-up), Ondo EUROD (EUROD) payout</p>
 <p><strong>Smart Contract Architecture:</strong></p>
 <div class="docs-pre"><code>// ULPToken.sol - Yield-bearing ERC-3643
 contract ULPToken is ERC3643 {

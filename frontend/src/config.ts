@@ -33,7 +33,7 @@ export const config = {
     KYB: true,
   },
   
-  // Investment Limits (UJEUR)
+  // Investment Limits (EUROD)
   LIMITS: {
     MIN_DEPOSIT: 1_000,
     MAX_DEPOSIT: 1_000_000,
@@ -120,7 +120,7 @@ This is the Ujamaa DeFi Platform MVP running on Polygon Amoy testnet.
 This is for demonstration and testing purposes only.
 
 Production deployment will use:
-• Real UJEUR stablecoin (Circle)
+• Real EUROD stablecoin (Ondo Finance)
 • Real bank escrow (BIIC/MCB)
 • Real fiat on/off ramps
 • Mainnet Polygon (Chain ID: 137)
@@ -138,9 +138,9 @@ Production deployment will use:
   // Demo Mode
   DEMO: {
     ENABLED: true,
-    INSTITUTIONAL_BALANCE: 10_000_000, // 10M UJEUR
-    RETAIL_BALANCE: 50_000, // 50K UJEUR
-    ORIGINATOR_BALANCE: 1_000_000, // 1M UJEUR
+    INSTITUTIONAL_BALANCE: 10_000_000, // 10M EUROD
+    RETAIL_BALANCE: 50_000, // 50K EUROD
+    ORIGINATOR_BALANCE: 1_000_000, // 1M EUROD
   },
 } as const;
 

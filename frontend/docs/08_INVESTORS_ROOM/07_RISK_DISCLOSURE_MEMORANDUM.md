@@ -577,7 +577,7 @@ If >10% of NAV requested for redemption:
 
 **Risk Description:**
 
-Although uLP is EURC-denominated:
+Although uLP is EUROD-denominated:
 - Some industrials earn in local currency (XOF, XAF, NGN)
 - FX fluctuations affect repayment capacity
 - EUR appreciation hurts exporters
@@ -602,14 +602,14 @@ Although uLP is EURC-denominated:
 
 **Risk Description:**
 
-EURC is the denomination currency:
-- De-pegging risk (EURC loses €1.00 peg)
-- Issuer risk (Circle bankruLPcy)
+EUROD is the denomination currency:
+- De-pegging risk (EUROD loses €1.00 peg)
+- Issuer risk (Ondo Finance bankruLPcy)
 - Reserve risk (insufficient backing)
 
 **Mitigation:**
 
-- EURC (regulated, audited reserves)
+- EUROD (regulated, audited reserves)
 - Diversification (multiple stablecoins, Phase 2)
 - Direct bank escrow (EUR fiat option)
 

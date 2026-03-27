@@ -240,8 +240,8 @@
 <td>Section 5.3</td>
 </tr>
 <tr>
-<td><strong>Test Ujamaa Euro (UJEUR)</strong></td>
-<td>Real Ujamaa Euro (UJEUR) (Circle)</td>
+<td><strong>Test Ondo EUROD (EUROD)</strong></td>
+<td>Real Ondo EUROD (EUROD) (Ondo Finance)</td>
 <td>Section 4.3</td>
 </tr>
 <tr>
@@ -318,7 +318,7 @@
 const mockInvestor = {
   id: 'INV-MVP-001',
   name: 'Logic Capital (Test)',
-  investment: 10_000_000, // 10M test Ujamaa Euro (UJEUR)
+  investment: 10_000_000, // 10M test Ondo EUROD (EUROD)
   kycStatus: 'APPROVED_MVP',
 };
 
@@ -593,7 +593,7 @@ settings = Settings()
 </tr>
 <tr>
 <td><strong>Stablecoin</strong></td>
-<td>Ujamaa Euro (UJEUR) (test)</td>
+<td>Ondo EUROD (EUROD) (test)</td>
 <td>Mock euro-backed stablecoin</td>
 </tr>
 </tbody>
@@ -608,7 +608,7 @@ settings = Settings()
 <h3>4.2 Testnet Token Strategy</h3>
 <p><strong>Test Tokens Required:</strong><br />
 1. <strong>MATIC (test)</strong> - For gas fees<br />
-2. <strong>Ujamaa Euro (UJEUR) (test)</strong> - For deposits/redemptions<br />
+2. <strong>Ondo EUROD (EUROD) (test)</strong> - For deposits/redemptions<br />
 3. <strong>uLP (test)</strong> - Yield-bearing pool token</p>
 <p><strong>Acquisition Methods:</strong></p>
 <div class="docs-pre"><code>## MATIC (test)
@@ -616,13 +616,13 @@ settings = Settings()
 - **Amount:** 100 MATIC per day per address
 - **Cost:** FREE
 
-## Ujamaa Euro (UJEUR) (test)
+## Ondo EUROD (EUROD) (test)
 - **Method 1:** MockFiatRamp mint (unlimited for testing)
 - **Method 2:** Testnet swap (if available)
 - **Cost:** FREE (testnet only)
 
 ## uLP (test)
-- **Method:** Deposit test Ujamaa Euro (UJEUR) into uLPToken contract
+- **Method:** Deposit test Ondo EUROD (EUROD) into uLPToken contract
 - **Rate:** 1:1 at inception (NAV = 1.00)
 - **Cost:** Gas only (test MATIC)
 </code></div>
@@ -669,10 +669,10 @@ def main():
     if balance == 0:
         raise Exception('❌ Insufficient MATIC. Get testnet MATIC from faucet.')
 
-    # Deploy Mock EURC (testnet only)
-    print('\n🪙 Deploying Mock EURC...')
-    mock_eurc = deployer.deploy(project.MockERC20, &quot;Mock EURC&quot;, &quot;EURC&quot;, 18)
-    print(f'✅ Mock EURC deployed to: {mock_eurc.address}')
+    # Deploy Mock EUROD (testnet only)
+    print('\n🪙 Deploying Mock EUROD...')
+    mock_eurc = deployer.deploy(project.MockERC20, &quot;Mock EUROD&quot;, &quot;EUROD&quot;, 18)
+    print(f'✅ Mock EUROD deployed to: {mock_eurc.address}')
 
     # Deploy uLPToken
     print('\n📝 Deploying uLPToken...')
@@ -775,7 +775,7 @@ contract MockEscrow {
 - ✅ Clear MVP labeling<br />
 - ✅ No real value movement</p>
 <h3>5.2 MockFiatRamp.sol</h3>
-<p><strong>Purpose:</strong> Simulates fiat on/off ramp (EUR ↔ Ujamaa Euro (UJEUR) conversion).</p>
+<p><strong>Purpose:</strong> Simulates fiat on/off ramp (EUR ↔ Ondo EUROD (EUROD) conversion).</p>
 <p><strong>Interface:</strong></p>
 <div class="docs-pre"><code>// contracts/MVP/MockFiatRamp.sol
 // SPDX-License-Identifier: MIT
@@ -784,14 +784,14 @@ pragma solidity ^0.8.20;
 /**
  * @title MockFiatRamp
  * @dev Simulates fiat on/off ramp for MVP testnet.
- *      Mints test Ujamaa Euro (UJEUR) for demo purposes.
+ *      Mints test Ondo EUROD (EUROD) for demo purposes.
  */
 contract MockFiatRamp {
     // Events
     event FiatOnRamp(address indexed user, uint256 eurcAmount, string mockWireId);
     event FiatOffRamp(address indexed user, uint256 eurcAmount, string mockWireId);
 
-    // Mock Ujamaa Euro (UJEUR) (testnet only)
+    // Mock Ondo EUROD (EUROD) (testnet only)
     IERC20 public testEURC;
 
     // Functions
@@ -806,12 +806,12 @@ contract MockFiatRamp {
 }
 </code></div>
 <p><strong>Usage:</strong></p>
-<div class="docs-pre"><code>// Frontend: Mint test Ujamaa Euro (UJEUR) for demo
+<div class="docs-pre"><code>// Frontend: Mint test Ondo EUROD (EUROD) for demo
 async function getTestEURC(amount: bigint) {
   const contract = getMockFiatRampContract();
   const tx = await contract.mintTestEURC(userAddress, amount);
   await tx.wait();
-  console.log(`✅ Minted ${amount} test Ujamaa Euro (UJEUR)`);
+  console.log(`✅ Minted ${amount} test Ondo EUROD (EUROD)`);
 }
 </code></div>
 <h3>5.3 MockBankService (Backend)</h3>
@@ -835,7 +835,7 @@ class MockBankService:
         Initialize mock bank.
 
         Args:
-            initial_balance: Starting balance for demo accounts (10M test Ujamaa Euro (UJEUR))
+            initial_balance: Starting balance for demo accounts (10M test Ondo EUROD (EUROD))
         &quot;&quot;&quot;
         self.accounts: Dict[str, dict] = {}
         self.transactions: List[dict] = []
@@ -1119,10 +1119,10 @@ function AccountBalance({ balance }) {
       &lt;/CardHeader&gt;
       &lt;CardContent&gt;
         &lt;RadioGroup&gt;
-          &lt;RadioItem value=&quot;Ujamaa Euro (UJEUR)-wallet&quot;&gt;
+          &lt;RadioItem value=&quot;Ondo EUROD (EUROD)-wallet&quot;&gt;
             &lt;div className=&quot;flex items-center justify-between&quot;&gt;
               &lt;div&gt;
-                &lt;h4&gt;Ujamaa Euro (UJEUR) Wallet&lt;/h4&gt;
+                &lt;h4&gt;Ondo EUROD (EUROD) Wallet&lt;/h4&gt;
                 &lt;p className=&quot;text-sm text-gray-500&quot;&gt;
                   Balance: €2,450,000 🧪 MOCK
                 &lt;/p&gt;
@@ -1693,7 +1693,7 @@ def test_full_investment_flow():
     # 1. Create escrow
     account = mock_bank.create_escrow_account(&quot;LOGIC-CAPITAL&quot;)
 
-    # 2. Deposit Ujamaa Euro (UJEUR)
+    # 2. Deposit Ondo EUROD (EUROD)
     ulp_token.deposit(10_000_000 * 10**18)
 
     # 3. Receive uLP

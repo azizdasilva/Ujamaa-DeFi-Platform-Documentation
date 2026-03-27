@@ -29,8 +29,8 @@ interface PoolPosition {
 const InstitutionalDashboard: React.FC = () => {
   const navigate = useNavigate();
   // Mock data for demo
-  const portfolioValue = 5_000_000; // 5M UJEUR
-  const totalYield = 125_000; // 125K UJEUR
+  const portfolioValue = 5_000_000; // 5M EUROD
+  const totalYield = 125_000; // 125K EUROD
   const positions: PoolPosition[] = [
     { poolId: 'POOL_INDUSTRY', poolName: 'Pool Industry', shares: 2_000_000, value: 2_100_000, apy: 11 },
     { poolId: 'POOL_AGRICULTURE', poolName: 'Pool Agriculture', shares: 1_500_000, value: 1_650_000, apy: 13.5 },

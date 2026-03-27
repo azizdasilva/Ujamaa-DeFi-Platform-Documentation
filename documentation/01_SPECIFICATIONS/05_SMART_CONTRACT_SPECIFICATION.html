@@ -890,8 +890,8 @@ Day 30 (12% APR):
 </code></div>
 <h3>4.5.2 Deposit/Redeem Mechanism</h3>
 <div class="docs-pre"><code>/**
- * @notice Deposit Ujamaa Euro (UJEUR) to mint uLP tokens
- * @param amountUJUR Amount of Ujamaa Euro (UJEUR) to deposit
+ * @notice Deposit Ondo EUROD (EUROD) to mint uLP tokens
+ * @param amountUJUR Amount of Ondo EUROD (EUROD) to deposit
  * @return uLPMinted Amount of uLP tokens minted
  */
 function deposit(uint256 amountUJUR) external returns (uint256) {
@@ -900,10 +900,10 @@ function deposit(uint256 amountUJUR) external returns (uint256) {
     uint256 navPerShare = getNAVPerShare();
     uint256 uLPMinted = (amountUJUR * 1e18) / navPerShare;
 
-    // Transfer UJEUR from user to pool
+    // Transfer EUROD from user to pool
     require(
         UJEURToken.transferFrom(msg.sender, poolAddress, amountUJUR),
-        &quot;UJEUR transfer failed&quot;
+        &quot;EUROD transfer failed&quot;
     );
 
     // Mint uLP to user
@@ -917,9 +917,9 @@ function deposit(uint256 amountUJUR) external returns (uint256) {
 }
 
 /**
- * @notice Redeem uLP tokens for Ujamaa Euro (UJEUR) + yield
+ * @notice Redeem uLP tokens for Ondo EUROD (EUROD) + yield
  * @param uLPAmount Amount of uLP tokens to burn
- * @return amountUJUR Amount of UJEUR received (principal + yield)
+ * @return amountUJUR Amount of EUROD received (principal + yield)
  */
 function redeem(uint256 uLPAmount) external returns (uint256) {
     require(uLPAmount &gt; 0 &amp;&amp; uLPAmount &lt;= s_balances[msg.sender], &quot;Invalid amount&quot;);
@@ -930,10 +930,10 @@ function redeem(uint256 uLPAmount) external returns (uint256) {
     // Burn uLP tokens
     _burn(msg.sender, uLPAmount);
 
-    // Transfer UJEUR from pool to user
+    // Transfer EUROD from pool to user
     require(
         UJEURToken.transfer(msg.sender, amountUJUR),
-        &quot;UJEUR transfer failed&quot;
+        &quot;EUROD transfer failed&quot;
     );
 
     // Notify pool of removed liquidity
@@ -1047,7 +1047,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
     // Guarantee structure
     struct Guarantee {
         uint256 certificateId;      // Industrial Gateway certificate
-        uint256 merchandiseValue;   // Value in Ujamaa Euro (UJEUR)
+        uint256 merchandiseValue;   // Value in Ondo EUROD (EUROD)
         uint256 expiryDate;         // When invoice is due
         address industrial;         // Original issuer
         bool isRedeemed;            // Whether repaid
@@ -1080,7 +1080,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
      * @notice Mint Guarantee Token (UJG) for certified merchandise
      * @param industrial Address of industrial (must be verified)
      * @param certificateId Industrial Gateway certificate ID
-     * @param value Merchandise value in UJEUR
+     * @param value Merchandise value in EUROD
      * @param expiryDate Invoice due date
      * @param stockHash IPFS hash of stock documents
      * @return tokenId Minted token ID

@@ -38,7 +38,7 @@
 - Fireblocks institutional custody
 - BIIC/MCB bank escrow accounts
 - ERC-3643 compliance (KYC/AML enforced)
-- 10-15% APR yield (EURC-denominated)
+- 10-15% APR yield (EUROD-denominated)
 
 ### Q2: Who can invest?
 
@@ -102,7 +102,7 @@
 
 ### Q7: What yield can I expect?
 
-**A:** Target yield is **10-15% APR** (EURC-denominated), net of fees.
+**A:** Target yield is **10-15% APR** (EUROD-denominated), net of fees.
 
 **Yield by Pool:**
 | Pool | Target Yield | Lock-up |
@@ -148,14 +148,14 @@ Platform   Investors
 
 **A:** 
 - **Frequency:** Quarterly
-- **Currency:** EURC (euro-pegged stablecoin)
+- **Currency:** EUROD (euro-pegged stablecoin)
 - **Method:** Direct to investor wallet or reinvestment
 - **Tax Treatment:** Investors receive annual tax statement
 
 **Distribution Process:**
 1. SME repayments collected in escrow
 2. Smart contract calculates yield per uLP
-3. EURC transferred to uLP holder wallets
+3. EUROD transferred to uLP holder wallets
 4. Distribution notice sent to investors
 
 ### Q10: Can I redeem my investment early?
@@ -362,7 +362,7 @@ Investor Wallet (You own this)
 | **Smart Contract** | Medium | Audits, bug bounty, pause |
 | **Regulatory** | Medium | FSC license, compliance program |
 | **Liquidity** | Medium-High | Lock-up, secondary market (Phase 2) |
-| **FX** | Medium | EURC denomination, natural hedge |
+| **FX** | Medium | EUROD denomination, natural hedge |
 | **Political** | Medium-High | Geographic diversification |
 
 ### Q24: How is credit risk managed?

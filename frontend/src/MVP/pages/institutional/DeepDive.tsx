@@ -396,7 +396,7 @@ const DeepDive: React.FC = () => {
                           },
                         ].map((item, index) => (
                           <div key={item.step} className="flex items-center gap-4 relative">
-                            {/* Step Number Circle */}
+                            {/* Step Number Ondo Finance */}
                             <div className={`hidden md:flex w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} items-center justify-center text-white font-bold text-xl shadow-lg z-10 flex-shrink-0`}>
                               {item.step}
                             </div>
@@ -501,7 +501,7 @@ const DeepDive: React.FC = () => {
                           desc: 'Simulated fiat on/off ramp', 
                           lines: '~450',
                           color: 'from-[#00A8A8] to-[#D57028]',
-                          features: ['UJEUR simulation', 'FX conversion', 'Circle integration ready']
+                          features: ['EUROD simulation', 'FX conversion', 'Ondo Finance integration ready']
                         },
                       ].map((contract) => (
                         <div key={contract.name} className="p-5 bg-gradient-to-br from-white to-[#F3F8FA] rounded-2xl border border-[#48A9F0]/30 hover:shadow-lg transition-all duration-300">
@@ -533,7 +533,7 @@ const DeepDive: React.FC = () => {
                     <h3 className="text-lg font-bold text-[#023D7A] mb-4">UPTToken: Deposit Function</h3>
                     <div className="bg-[#023D7A] rounded-2xl p-6 overflow-x-auto">
                       <pre className="text-gray-100 text-sm font-mono leading-relaxed">
-                        <code>{`// UPTToken.sol - Deposit UJEUR and mint UPT
+                        <code>{`// UPTToken.sol - Deposit EUROD and mint UPT
 function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
     if (ujeurAmount == 0) revert ZeroDeposit();
 
@@ -553,7 +553,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                     </div>
                     <p className="text-xs text-[#333333] mt-3">
                       <span className="font-bold">Note:</span> This function demonstrates the value-accrual model where
-                      users deposit UJEUR and receive UPT tokens at the current NAV per share.
+                      users deposit EUROD and receive UPT tokens at the current NAV per share.
                     </p>
                   </div>
 
@@ -702,7 +702,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                         { 
                           name: 'MockFiatRampService', 
                           interface: 'IFiatRampService', 
-                          desc: 'Simulated UJEUR stablecoin operations (Circle-ready)',
+                          desc: 'Simulated EUROD stablecoin operations (Ondo Finance-ready)',
                           status: 'Active'
                         },
                         { 
@@ -789,7 +789,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                         <ul className="text-sm text-[#333333] space-y-1">
                           <li>• MockBankService → Simulated escrow</li>
                           <li>• MockGDIZService → Test certificates</li>
-                          <li>• MockFiatRamp → Test UJEUR</li>
+                          <li>• MockFiatRamp → Test EUROD</li>
                           <li>• Polygon Amoy (Chain ID: 80002)</li>
                         </ul>
                       </div>
@@ -798,7 +798,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                         <ul className="text-sm text-[#333333] space-y-1">
                           <li>• BankService → BIIC/MCB integration</li>
                           <li>• GDIZService → Real certification</li>
-                          <li>• FiatRamp → Circle UJEUR</li>
+                          <li>• FiatRamp → Ondo Finance EUROD</li>
                           <li>• Polygon Mainnet (Chain ID: 137)</li>
                         </ul>
                       </div>

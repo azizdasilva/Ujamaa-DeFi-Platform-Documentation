@@ -55,14 +55,14 @@ export const MVP_CONFIG = {
 
   /**
    * Investment Limits (Testnet)
-   * All values in UJEUR (18 decimals)
+   * All values in EUROD (18 decimals)
    */
   LIMITS: {
-    MAX_DEPOSIT: 1_000_000n * 10n ** 18n,      // 1M UJEUR
-    MIN_DEPOSIT: 1_000n * 10n ** 18n,          // 1K UJEUR
-    DAILY_WITHDRAWAL: 500_000n * 10n ** 18n,   // 500K UJEUR
-    INSTITUTIONAL_MIN: 100_000n * 10n ** 18n,  // 100K UJEUR (KYB threshold)
-    RETAIL_MAX: 99_999n * 10n ** 18n,          // 99,999 UJEUR
+    MAX_DEPOSIT: 1_000_000n * 10n ** 18n,      // 1M EUROD
+    MIN_DEPOSIT: 1_000n * 10n ** 18n,          // 1K EUROD
+    DAILY_WITHDRAWAL: 500_000n * 10n ** 18n,   // 500K EUROD
+    INSTITUTIONAL_MIN: 100_000n * 10n ** 18n,  // 100K EUROD (KYB threshold)
+    RETAIL_MAX: 99_999n * 10n ** 18n,          // 99,999 EUROD
   },
 
   /**
@@ -127,14 +127,14 @@ export const MVP_CONFIG = {
 
   /**
    * FX Configuration
-   * UJEUR = €1.00 (fixed parity)
+   * EUROD = €1.00 (fixed parity)
    * FCFA: 1 EUR = 655.957 XOF (fixed CFA peg)
    */
   FX: {
-    UJEUR_EUR_PARITY: 1.0,      // 1 UJEUR = €1.00
+    UJEUR_EUR_PARITY: 1.0,      // 1 EUROD = €1.00
     EUR_FCFA_RATE: 655.957,     // 1 EUR = 655.957 XOF
-    FX_FEE_INVESTMENT: 0.02,    // 2% fee on EUR→UJEUR→FCFA
-    FX_FEE_REPAYMENT: 0.02,     // 2% fee on FCFA→UJEUR→EUR
+    FX_FEE_INVESTMENT: 0.02,    // 2% fee on EUR→EUROD→FCFA
+    FX_FEE_REPAYMENT: 0.02,     // 2% fee on FCFA→EUROD→EUR
   },
 
   /**
@@ -208,7 +208,7 @@ export const MVP_CONFIG = {
       This is for demonstration and testing purposes only.
       
       Production deployment will use:
-      • Real UJEUR stablecoin (Circle)
+      • Real EUROD stablecoin (Ondo Finance)
       • Real bank escrow (BIIC/MCB)
       • Real fiat on/off ramps
       • Mainnet Polygon (Chain ID: 137)
@@ -234,17 +234,17 @@ export const MVP_CONFIG = {
     ACCOUNTS: {
       INSTITUTIONAL: {
         address: '0x0000000000000000000000000000000000000001',
-        balance: 10_000_000n * 10n ** 18n, // 10M UJEUR
+        balance: 10_000_000n * 10n ** 18n, // 10M EUROD
         name: 'Logic Capital (Demo)',
       },
       RETAIL: {
         address: '0x0000000000000000000000000000000000000002',
-        balance: 50_000n * 10n ** 18n, // 50K UJEUR
+        balance: 50_000n * 10n ** 18n, // 50K EUROD
         name: 'Demo Retail Investor',
       },
       ORIGINATOR: {
         address: '0x0000000000000000000000000000000000000003',
-        balance: 1_000_000n * 10n ** 18n, // 1M UJEUR
+        balance: 1_000_000n * 10n ** 18n, // 1M EUROD
         name: 'GDIZ Industries (Demo)',
       },
     },
@@ -292,7 +292,7 @@ export function isJurisdictionAllowed(code: string): boolean {
 }
 
 /**
- * Helper: Format UJEUR with decimals
+ * Helper: Format EUROD with decimals
  */
 export function formatUJEUR(amount: bigint, decimals: number = 18): string {
   return (Number(amount) / 10 ** decimals).toLocaleString('en-US', {

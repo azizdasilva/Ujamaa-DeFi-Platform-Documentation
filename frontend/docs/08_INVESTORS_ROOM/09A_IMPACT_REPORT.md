@@ -82,7 +82,7 @@ UJAMAA DeFi Platform measures success not only by financial returns but also by 
 | Metric | Definition | Target (Year 1) |
 |--------|------------|-----------------|
 | **SMEs Financed** | Number of unique SMEs receiving financing | 40 |
-| **Total Financing Volume** | Total EURC deployed to SMEs | €47M |
+| **Total Financing Volume** | Total EUROD deployed to SMEs | €47M |
 | **Average Financing Size** | Average per SME | €1.2M |
 | **Jobs Created** | Direct + indirect jobs attributable to financing | 500 |
 | **Wages Paid** | Total wages paid by financed SMEs | €5M |

@@ -813,7 +813,7 @@ contract NAVCalculator {
      *
      * Formula: NAV = Total Pool Value / Total uLP Shares
      *
-     * @param totalPoolValue Total value of pool assets (in Ujamaa Euro (UJEUR), 18 decimals)
+     * @param totalPoolValue Total value of pool assets (in Ondo EUROD (EUROD), 18 decimals)
      * @param totalShares Total uLP tokens in circulation (18 decimals)
      * @return navPerShare Net Asset Value per share (18 decimals)
      */
@@ -832,9 +832,9 @@ contract NAVCalculator {
     /**
      * @dev Calculate uLP tokens to mint on deposit
      *
-     * Formula: uLP Amount = Ujamaa Euro (UJEUR) Deposit / NAV Per Share
+     * Formula: uLP Amount = Ondo EUROD (EUROD) Deposit / NAV Per Share
      *
-     * @param eurcAmount Ujamaa Euro (UJEUR) deposit amount (18 decimals)
+     * @param eurcAmount Ondo EUROD (EUROD) deposit amount (18 decimals)
      * @param navPerShare Current NAV per share (18 decimals)
      * @return ulpAmount uLP tokens to mint (18 decimals)
      */
@@ -844,26 +844,26 @@ contract NAVCalculator {
     ) external pure returns (uint256 ulpAmount) {
         require(navPerShare &gt; 0, &quot;Invalid NAV&quot;);
 
-        // uLP = (Ujamaa Euro (UJEUR) * PRECISION) / NAV
+        // uLP = (Ondo EUROD (EUROD) * PRECISION) / NAV
         ulpAmount = eurcAmount.mul(PRECISION).div(navPerShare);
 
         return ulpAmount;
     }
 
     /**
-     * @dev Calculate Ujamaa Euro (UJEUR) to receive on redemption
+     * @dev Calculate Ondo EUROD (EUROD) to receive on redemption
      *
-     * Formula: Ujamaa Euro (UJEUR) = uLP Shares * NAV Per Share
+     * Formula: Ondo EUROD (EUROD) = uLP Shares * NAV Per Share
      *
      * @param ulpAmount uLP tokens to redeem (18 decimals)
      * @param navPerShare Current NAV per share (18 decimals)
-     * @return eurcAmount Ujamaa Euro (UJEUR) to receive (18 decimals)
+     * @return eurcAmount Ondo EUROD (EUROD) to receive (18 decimals)
      */
     function calculateEURCRedemption(
         uint256 ulpAmount,
         uint256 navPerShare
     ) external pure returns (uint256 eurcAmount) {
-        // Ujamaa Euro (UJEUR) = (uLP * NAV) / PRECISION
+        // Ondo EUROD (EUROD) = (uLP * NAV) / PRECISION
         eurcAmount = ulpAmount.mul(navPerShare).div(PRECISION);
 
         return eurcAmount;
@@ -883,7 +883,7 @@ def calculate_nav_per_share(
     Calculate NAV per Ujamaa Pool Token (uLP) share.
 
     Args:
-        total_pool_value: Total pool value in Ujamaa Euro (UJEUR) (18 decimals)
+        total_pool_value: Total pool value in Ondo EUROD (EUROD) (18 decimals)
         total_shares: Total uLP shares outstanding (18 decimals)
 
     Returns:
@@ -905,10 +905,10 @@ def calculate_ulp_mint_amount(
     nav_per_share: int
 ) -&gt; int:
     &quot;&quot;&quot;
-    Calculate uLP tokens to mint on Ujamaa Euro (UJEUR) deposit.
+    Calculate uLP tokens to mint on Ondo EUROD (EUROD) deposit.
 
     Args:
-        eurc_amount: Ujamaa Euro (UJEUR) deposit (18 decimals)
+        eurc_amount: Ondo EUROD (EUROD) deposit (18 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
@@ -917,10 +917,10 @@ def calculate_ulp_mint_amount(
     if nav_per_share == 0:
         raise ValueError(&quot;Invalid NAV&quot;)
 
-    Ujamaa Euro (UJEUR) = Decimal(eurc_amount)
+    Ondo EUROD (EUROD) = Decimal(eurc_amount)
     nav = Decimal(nav_per_share)
 
-    uLP = (Ujamaa Euro (UJEUR) * PRECISION) / nav
+    uLP = (Ondo EUROD (EUROD) * PRECISION) / nav
 
     return int(uLP.quantize(Decimal('1'), rounding=ROUND_DOWN))
 
@@ -930,36 +930,36 @@ def calculate_eurc_redemption(
     nav_per_share: int
 ) -&gt; int:
     &quot;&quot;&quot;
-    Calculate Ujamaa Euro (UJEUR) to receive on uLP redemption.
+    Calculate Ondo EUROD (EUROD) to receive on uLP redemption.
 
     Args:
         ulp_amount: uLP tokens to redeem (18 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
-        Ujamaa Euro (UJEUR) to receive (18 decimals)
+        Ondo EUROD (EUROD) to receive (18 decimals)
     &quot;&quot;&quot;
     uLP = Decimal(ulp_amount)
     nav = Decimal(nav_per_share)
 
-    Ujamaa Euro (UJEUR) = (uLP * nav) / PRECISION
+    Ondo EUROD (EUROD) = (uLP * nav) / PRECISION
 
-    return int(Ujamaa Euro (UJEUR).quantize(Decimal('1'), rounding=ROUND_DOWN))
+    return int(Ondo EUROD (EUROD).quantize(Decimal('1'), rounding=ROUND_DOWN))
 </code></div>
 <h4>5.1.3 Example Calculation</h4>
 <div class="docs-pre"><code>Initial State:
-  - Total Pool Value: 1,000,000 Ujamaa Euro (UJEUR) (€1M)
+  - Total Pool Value: 1,000,000 Ondo EUROD (EUROD) (€1M)
   - Total uLP Shares: 1,000,000 (1M shares)
-  - NAV Per Share: 1.000000000000000000 Ujamaa Euro (UJEUR)
+  - NAV Per Share: 1.000000000000000000 Ondo EUROD (EUROD)
 
 After Yield Accrual (5% APY, 1 year):
-  - Total Pool Value: 1,050,000 Ujamaa Euro (UJEUR) (€1.05M)
+  - Total Pool Value: 1,050,000 Ondo EUROD (EUROD) (€1.05M)
   - Total uLP Shares: 1,000,000 (unchanged)
-  - NAV Per Share: 1.050000000000000000 Ujamaa Euro (UJEUR) (+5%)
+  - NAV Per Share: 1.050000000000000000 Ondo EUROD (EUROD) (+5%)
 
 Investor Redemption:
   - Investor holds: 10,000 uLP shares
-  - Ujamaa Euro (UJEUR) Received: 10,000 × 1.05 = 10,500 Ujamaa Euro (UJEUR)
+  - Ondo EUROD (EUROD) Received: 10,000 × 1.05 = 10,500 Ondo EUROD (EUROD)
   - Yield Earned: €500 (5% return)
 </code></div>
 <hr />
@@ -1067,8 +1067,8 @@ def calculate_pool_yield(
  * In the value-accrual model, yield is NOT distributed as additional tokens.
  * Instead, NAV per share increases, benefiting all holders proportionally.
  *
- * @param totalYield Total yield to distribute (Ujamaa Euro (UJEUR), 18 decimals)
- * @param totalPoolValue Current total pool value (Ujamaa Euro (UJEUR), 18 decimals)
+ * @param totalYield Total yield to distribute (Ondo EUROD (EUROD), 18 decimals)
+ * @param totalPoolValue Current total pool value (Ondo EUROD (EUROD), 18 decimals)
  * @return newPoolValue Updated pool value after yield addition
  */
 function distributeYield(
@@ -1094,7 +1094,7 @@ function distributeYield(
  * @param totalShares Total uLP shares outstanding (18 decimals)
  * @param navPerShareBefore NAV before yield (18 decimals)
  * @param navPerShareAfter NAV after yield (18 decimals)
- * @return investorYield Investor's share of yield (Ujamaa Euro (UJEUR), 18 decimals)
+ * @return investorYield Investor's share of yield (Ondo EUROD (EUROD), 18 decimals)
  */
 function calculateInvestorYield(
     uint256 investorShares,
@@ -1155,7 +1155,7 @@ function calculateInvestorYield(
 <h4>6.1.2 UGT Data Structure</h4>
 <div class="docs-pre"><code>struct Guarantee {
     uint256 certificateId;      // Industrial Gateway certificate
-    uint256 merchandiseValue;   // Value in UJEUR (18 decimals)
+    uint256 merchandiseValue;   // Value in EUROD (18 decimals)
     uint256 expiryDate;         // When invoice is due
     address industrial;         // Original issuer
     address poolAddress;        // Pool holding collateral
@@ -1203,7 +1203,7 @@ function calculateInvestorYield(
 <p><strong>Inputs:</strong><br />
 - <code>industrial</code> - Industrial company address<br />
 - <code>certificateId</code> - Industrial Gateway certificate ID<br />
-- <code>value</code> - Merchandise value in UJEUR (18 decimals)<br />
+- <code>value</code> - Merchandise value in EUROD (18 decimals)<br />
 - <code>expiryDate</code> - Expiry timestamp<br />
 - <code>stockHash</code> - IPFS hash of stock documents<br />
 - <code>description</code> - Stock description<br />
@@ -1358,7 +1358,7 @@ function calculateInvestorYield(
     uint256 certificateId;
     address industrial;
     string assetType;         // INVOICE, INVENTORY, PRODUCTION, SHIPMENT, CONTRACT
-    uint256 value;            // Value in UJEUR (18 decimals)
+    uint256 value;            // Value in EUROD (18 decimals)
     uint256 quantity;
     string unit;              // e.g., &quot;bales&quot;, &quot;tons&quot;, &quot;units&quot;
     string warehouseLocation;
@@ -1376,7 +1376,7 @@ function calculateInvestorYield(
 <p><strong>Inputs:</strong><br />
 - <code>industrial</code> - Industrial company address<br />
 - <code>assetType</code> - Type of asset (INVOICE, INVENTORY, PRODUCTION, SHIPMENT, CONTRACT)<br />
-- <code>value</code> - Value in UJEUR (18 decimals)<br />
+- <code>value</code> - Value in EUROD (18 decimals)<br />
 - <code>quantity</code> - Quantity of items<br />
 - <code>unit</code> - Unit of measure<br />
 - <code>warehouseLocation</code> - Warehouse location<br />
@@ -1643,10 +1643,10 @@ contract DiversificationChecker {
     /**
      * @dev Check if new financing violates diversification limits
      *
-     * @param poolValue Total pool value (Ujamaa Euro (UJEUR), 18 decimals)
-     * @param currentIndustrialExposure Current exposure to industrial (Ujamaa Euro (UJEUR), 18 decimals)
-     * @param currentAssetClassExposure Current exposure to asset class (Ujamaa Euro (UJEUR), 18 decimals)
-     * @param newFinancingAmount New financing amount (Ujamaa Euro (UJEUR), 18 decimals)
+     * @param poolValue Total pool value (Ondo EUROD (EUROD), 18 decimals)
+     * @param currentIndustrialExposure Current exposure to industrial (Ondo EUROD (EUROD), 18 decimals)
+     * @param currentAssetClassExposure Current exposure to asset class (Ondo EUROD (EUROD), 18 decimals)
+     * @param newFinancingAmount New financing amount (Ondo EUROD (EUROD), 18 decimals)
      * @return isValid True if within limits
      * @return violationCode 0=none, 1=industrial, 2=asset_class
      */

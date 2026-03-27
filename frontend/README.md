@@ -316,7 +316,7 @@ import {
 } from '@/lib/utils';
 
 formatCurrency(1000000); // "€1,000,000.00"
-formatTokenAmount(1000000000000000000n); // "1.00 UJEUR"
+formatTokenAmount(1000000000000000000n); // "1.00 EUROD"
 formatPercentage(0.10); // "10.00%"
 formatDate('2026-03-19'); // "Mar 19, 2026"
 truncateMiddle('0x1234...5678'); // "0x1234...5678"

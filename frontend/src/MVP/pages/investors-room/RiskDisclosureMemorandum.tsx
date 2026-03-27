@@ -46,7 +46,7 @@ const RiskDisclosureMemorandum: React.FC = () => {
               { title: 'Concentration Risk', desc: 'Pools may have significant exposure to single borrowers, sectors, or geographic regions.' },
               { title: 'Liquidity Risk', desc: 'Limited secondary market for uLP tokens may make it difficult to exit positions before maturity.' },
               { title: 'Interest Rate Risk', desc: 'Changes in market interest rates may affect the value of pool holdings and yield distributions.' },
-              { title: 'Currency Risk', desc: 'FX fluctuations between EURC and local currencies may affect returns.' },
+              { title: 'Currency Risk', desc: 'FX fluctuations between EUROD and local currencies may affect returns.' },
             ].map((risk) => (
               <div key={risk.title} className="bg-white border-2 border-[#48A9F0]/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-[#023D7A] mb-3">{risk.title}</h3>

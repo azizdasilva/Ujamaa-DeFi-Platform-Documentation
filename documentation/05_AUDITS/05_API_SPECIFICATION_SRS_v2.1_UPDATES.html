@@ -311,7 +311,7 @@ Response:
 </code></div>
 <h3>2.2 uLP Deposit/Redeem Endpoints</h3>
 <p><strong>POST /api/v1/pools/{poolId}/deposit</strong></p>
-<div class="docs-pre"><code>Description: Deposit UJEUR to mint uLP tokens
+<div class="docs-pre"><code>Description: Deposit EUROD to mint uLP tokens
 Auth: JWT (Institutional Investor, min €100K)
 Request:
   amount: string (EUR, min €100K for institutional)
@@ -338,15 +338,15 @@ Example:
   }
 </code></div>
 <p><strong>POST /api/v1/pools/{poolId}/redeem</strong></p>
-<div class="docs-pre"><code>Description: Redeem uLP tokens for UJEUR + yield
+<div class="docs-pre"><code>Description: Redeem uLP tokens for EUROD + yield
 Auth: JWT (Institutional Investor, uLP holder)
 Request:
   ulpAmount: string (tokens to redeem)
-  recipientAddress: string (wallet to receive UJEUR)
+  recipientAddress: string (wallet to receive EUROD)
 Response:
   transactionId: string
   uJPBurned: string
-  amountReceived: string (UJEUR, principal + yield)
+  amountReceived: string (EUROD, principal + yield)
   navPerShare: string (at time of redemption)
   yieldEarned: string (accrued yield)
   status: string

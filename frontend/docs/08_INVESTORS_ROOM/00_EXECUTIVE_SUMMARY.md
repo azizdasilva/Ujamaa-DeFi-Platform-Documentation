@@ -22,11 +22,11 @@
 | **Minimum Investment** | €100,000 (Institutional Tier) |
 | **Target Raise** | €50,000,000 |
 | **Use of Proceeds** | Launch of 4 Pool Families (Industrie, Agriculture, Trade Finance, Renewable Energy) |
-| **Expected Yield** | 10-15% APR (EURC-denominated) |
+| **Expected Yield** | 10-15% APR (EUROD-denominated) |
 | **Lock-up Period** | 180-365 days (varies by pool) |
 | **Management Fee** | 2.0% per annum |
 | **Performance Fee** | 20% (with 8% preferred return hurdle) |
-| **Distribution Currency** | EURC (Euro-pegged Stablecoin) |
+| **Distribution Currency** | EUROD (Euro-pegged Stablecoin) |
 | **Custody** | Fireblocks (Institutional MPC) |
 | **Escrow Bank** | BIIC / MCB Mauritius |
 | **Regulatory License** | Mauritius FSC CIS Manager License |
@@ -71,7 +71,7 @@
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
 │  1. INSTITUTIONAL INVESTOR invests €10M → uLP Tokens (Pool Industrie)  │
-│     EURC wired to BIIC Escrow → uLP minted to investor wallet          │
+│     EUROD wired to BIIC Escrow → uLP minted to investor wallet          │
 │                                                                         │
 │  2. GDIZ PARTNER receives €2M financing for export order production    │
 │     Guarantee Token minted (certified merchandise collateral)          │
@@ -82,7 +82,7 @@
 │     - €1.8M to Pool (principal + interest)                             │
 │     - €0.2M surplus to Industrial partner                              │
 │                                                                         │
-│  4. YIELD DISTRIBUTED to uLP holders (pro-rata, EURC)                  │
+│  4. YIELD DISTRIBUTED to uLP holders (pro-rata, EUROD)                  │
 │     Guarantee Token redeemed to Industrial                             │
 │     Investor receives 10-12% APR yield                                 │
 │                                                                         │
@@ -266,7 +266,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 |------|-------|------------|
 | **Industrial Default** | Medium | GDIZ guarantee, 5% provision, diversified pool |
 | **Smart Contract Risk** | Low | CertiK/OpenZeppelin audits, upgrade mechanism |
-| **FX Risk (EUR/African currencies)** | Medium | EURC denomination, natural hedge (EUR revenues) |
+| **FX Risk (EUR/African currencies)** | Medium | EUROD denomination, natural hedge (EUR revenues) |
 | **Regulatory Change** | Low | Mauritius FSC license, OHADA harmonization |
 | **Political Instability** | Medium | Geographic diversification, political risk insurance |
 | **Liquidity Risk** | Medium | 180-365 day lock-up, secondary market (Phase 2) |
@@ -347,10 +347,10 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 |------|--------|
 | **Token Standard** | ERC-3643 (Fungible, Yield-Bearing) |
 | **Blockchain** | Polygon (Primary), Ethereum (Settlement) |
-| **Denomination** | EURC (Euro-pegged Stablecoin) |
+| **Denomination** | EUROD (Euro-pegged Stablecoin) |
 | **Minimum Investment** | €100,000 |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
-| **Distribution Frequency** | Quarterly (EURC) |
+| **Distribution Frequency** | Quarterly (EUROD) |
 | **Redemption** | After lock-up, 30-day notice |
 | **Transferability** | ERC-3643 restricted (verified wallets only) |
 
@@ -373,9 +373,9 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 2. **KYB Due Diligence** → Submit corporate documents, UBO identification
 3. **Accreditation Verification** → Confirm institutional status (≥€100K)
 4. **Subscription Agreement** → Sign LPA, subscription documents
-5. **Fund Wire** → EURC to BIIC/MCB escrow account
+5. **Fund Wire** → EUROD to BIIC/MCB escrow account
 6. **uLP Token Minting** → Tokens deposited to investor wallet
-7. **Yield Distribution** → Quarterly EURC distributions
+7. **Yield Distribution** → Quarterly EUROD distributions
 
 ### Required Documents
 
@@ -430,7 +430,7 @@ Actual transactions will vary based on industrial, off-taker, and market conditi
 |---------|-------------|
 | **Blended Finance Structure** | Catalytic capital, private sector mobilization |
 | **Measurable Impact** | Jobs, GDP, SDG alignment (reporting included) |
-| **Local Currency Support** | FX risk mitigation, EURC denomination |
+| **Local Currency Support** | FX risk mitigation, EUROD denomination |
 | **Capacity Building** | SME development, financial inclusion |
 
 ---

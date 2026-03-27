@@ -53,7 +53,7 @@ const InvestmentMemorandum: React.FC = () => {
                 </tr>
                 <tr className="border-b border-[#48A9F0]/20">
                   <td className="px-6 py-4 font-semibold text-[#023D7A]">Investment Currency</td>
-                  <td className="px-6 py-4 text-[#333333]">EURC (Euro Coin)</td>
+                  <td className="px-6 py-4 text-[#333333]">EUROD (Euro Coin)</td>
                 </tr>
                 <tr className="border-b border-[#48A9F0]/20 bg-[#F3F8FA]">
                   <td className="px-6 py-4 font-semibold text-[#023D7A]">Distribution Frequency</td>
@@ -77,8 +77,8 @@ const InvestmentMemorandum: React.FC = () => {
               <li className="flex items-start gap-3">
                 <span className="flex-shrink-0 w-8 h-8 bg-[#023D7A] text-white rounded-full flex items-center justify-center font-bold">1</span>
                 <div>
-                  <p className="font-bold text-[#023D7A]">Investor Deposits EURC</p>
-                  <p className="text-[#333333]">Investor transfers EURC to the pool smart contract</p>
+                  <p className="font-bold text-[#023D7A]">Investor Deposits EUROD</p>
+                  <p className="text-[#333333]">Investor transfers EUROD to the pool smart contract</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">

@@ -82,7 +82,7 @@ const WhitePaper: React.FC = () => {
                 </tr>
                 <tr className="border-b border-[#48A9F0]/20 bg-[#F3F8FA]">
                   <td className="px-6 py-4 font-semibold text-[#023D7A]">Expected Yield</td>
-                  <td className="px-6 py-4 text-[#333333]">10-15% APR (EURC-denominated)</td>
+                  <td className="px-6 py-4 text-[#333333]">10-15% APR (EUROD-denominated)</td>
                 </tr>
                 <tr className="border-b border-[#48A9F0]/20">
                   <td className="px-6 py-4 font-semibold text-[#023D7A]">Lock-up Period</td>

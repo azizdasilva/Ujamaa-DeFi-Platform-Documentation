@@ -562,7 +562,7 @@ treasury = vault_accounts[0]  # Platform treasury
 # Initiate transfer (requires 3-of-5 multisig)
 transaction = fb_sdk.create_transaction(
     vault_account_id=&quot;platform_treasury_001&quot;,
-    asset_id=&quot;EURC&quot;,  # Euro Coin on Fireblocks
+    asset_id=&quot;EUROD&quot;,  # Euro Coin on Fireblocks
     amount=&quot;100000.00&quot;,
     destination_address=&quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
     note=&quot;Pool deployment - Factory A financing&quot;
@@ -904,7 +904,7 @@ class PoolService:
         amount: Decimal,
         investor_wallet: str
     ) -&gt; dict:
-        &quot;&quot;&quot;Deposit UJEUR and mint uLP tokens&quot;&quot;&quot;
+        &quot;&quot;&quot;Deposit EUROD and mint uLP tokens&quot;&quot;&quot;
         pool = await self.get_pool(pool_id)
 
         # Check minimum investment
@@ -946,7 +946,7 @@ class PoolService:
         ulp_amount: Decimal,
         investor_wallet: str
     ) -&gt; dict:
-        &quot;&quot;&quot;Redeem uLP tokens for UJEUR + yield&quot;&quot;&quot;
+        &quot;&quot;&quot;Redeem uLP tokens for EUROD + yield&quot;&quot;&quot;
         pool = await self.get_pool(pool_id)
 
         # Calculate redemption value
@@ -1093,7 +1093,7 @@ export function ULPDeposit({ poolId }: { poolId: string }) {
     setIsLoading(true);
 
     try {
-      // 1. Approve UJEUR spending
+      // 1. Approve EUROD spending
       await approveUJEUR(amount);
 
       // 2. Call deposit
@@ -1125,7 +1125,7 @@ export function ULPDeposit({ poolId }: { poolId: string }) {
         min=&quot;100000&quot;
       /&gt;
       &lt;button onClick={handleDeposit} disabled={isLoading}&gt;
-        {isLoading ? 'Depositing...' : 'Deposit UJEUR'}
+        {isLoading ? 'Depositing...' : 'Deposit EUROD'}
       &lt;/button&gt;
     &lt;/div&gt;
   );

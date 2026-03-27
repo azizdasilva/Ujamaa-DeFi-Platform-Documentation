@@ -726,7 +726,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     definition: 'A cryptocurrency designed to maintain a stable value by being pegged to a reserve asset like a fiat currency (e.g., USD, EUR) or commodity.',
     category: 'DeFi Basics',
     relatedTerms: ['USDC', 'USDT', 'Peg'],
-    platformContext: 'Ujamaa uses Circle\'s stablecoin infrastructure for EUR-backed tokens.',
+    platformContext: 'Ujamaa uses Ondo Finance\'s stablecoin infrastructure for EUR-backed tokens.',
   },
   {
     term: 'Staking',
@@ -818,13 +818,13 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     platformContext: 'Ujamaa DeFi Platform embodies the spirit of African economic cooperation through decentralized finance.',
   },
   {
-    term: 'UJEUR',
+    term: 'EUROD',
     pronunciation: 'U-J-Euro',
     partOfSpeech: 'proper noun',
     definition: 'The Euro-backed stablecoin token used within the Ujamaa platform for investments, yield distribution, and redemptions.',
     category: 'Ujamaa Platform',
     relatedTerms: ['Stablecoin', 'Token', 'EUR'],
-    platformContext: 'All Ujamaa pool investments and yields are denominated in UJEUR tokens.',
+    platformContext: 'All Ujamaa pool investments and yields are denominated in EUROD tokens.',
   },
   // ============================================================================
   // V

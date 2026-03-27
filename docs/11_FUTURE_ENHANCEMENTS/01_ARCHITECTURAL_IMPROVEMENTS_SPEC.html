@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architectural Improvements Specification - UJAMAA DeFi Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ujamaa-navy: #103b5b;
+            --ujamaa-sky: #48A9F0;
+            --ujamaa-orange: #F97316;
+            --ujamaa-sand: #F3F8FA;
+            --text-dark: #1F2937;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--ujamaa-sand);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            border-bottom: 2px solid var(--ujamaa-navy);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--ujamaa-navy);
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--ujamaa-navy);
+            font-size: 1.8rem;
+            margin-top: 40px;
+            border-left: 4px solid var(--ujamaa-orange);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: var(--ujamaa-sky);
+            font-size: 1.3rem;
+            margin-top: 25px;
+        }
+
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            background: #E5E7EB;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--ujamaa-navy);
+        }
+
+        .status-proposed {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 40px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #F3F4F6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #D11111;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        th {
+            background-color: var(--ujamaa-navy);
+            color: white;
+            text-align: left;
+            padding: 12px 15px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:nth-child(even) {
+            background-color: #F9FAFB;
+        }
+
+        .section-summary {
+            background: #F3F8FA;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--ujamaa-sky);
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+                margin: 20px;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Architectural Improvements Specification</h1>
+        <div class="meta">
+            <span><strong>Version:</strong> 1.0</span>
+            <span><strong>Date:</strong> March 21, 2026</span>
+            <span class="badge status-proposed">PROPOSED / RESEARCH</span>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">
+            Reference: SRS v2.0, ERC-3643 (T-REX Protocol)
+        </div>
+    </header>
+
+    <div class="section-summary">
+        <h2>1. Executive Summary</h2>
+        <p>This document outlines five strategic architectural improvements designed to enhance the UJAMAA DeFi Platform's capital efficiency, risk mitigation, and institutional appeal. These changes maintain the core mission of African RWA tokenization while introducing advanced TradFi-DeFi hybrid mechanics.</p>
+    </div>
+
+    <hr>
+
+    <h2>2. Improvement 1: Automated Default Auction Mechanism</h2>
+    <h3>2.1 Concept</h3>
+    <p>Automate the liquidation of <code>Ujamaa Guarantee (UJG)</code> tokens (collateral NFTs) via an on-chain Dutch Auction if an industrial partner defaults on repayment.</p>
+
+    <h3>2.2 Technical Implementation</h3>
+    <ul>
+        <li><strong>Contract:</strong> <code>GuaranteeToken.sol</code></li>
+        <li><strong>Logic:</strong> Add a <code>DutchAuction</code> module.
+            <ul>
+                <li><strong>Trigger:</strong> <code>LiquidityPool</code> calls <code>startLiquidation(tokenId)</code> after maturity + grace period.</li>
+                <li><strong>Price Curve:</strong> Starts at 120% of <code>merchandiseValue</code>, drops linearly to a "Floor Price" over 7 days.</li>
+                <li><strong>Eligibility:</strong> Bidders must be verified in the <code>IdentityRegistry</code> (compliance-gated).</li>
+            </ul>
+        </li>
+        <li><strong>Backend:</strong> New <code>AuctionMonitor</code> service to alert whitelisted "Distressed Asset Buyers."</li>
+    </ul>
+
+    <h3>2.3 Documentation Updates</h3>
+    <ul>
+        <li><strong>SRS v2.0 (Section 4.1.2):</strong> Update "Default Handling" lifecycle to include the "Dutch Auction" stage.</li>
+        <li><strong>Smart Contract Spec (Section 6.2):</strong> Add function definitions for <code>startAuction()</code>, <code>placeBid()</code>, and <code>settleAuction()</code>.</li>
+        <li><strong>API Spec (Section 4):</strong> Add <code>/api/v2/auctions</code> endpoints for listing active liquidations.</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Improvement 2: IoT-Driven "Dynamic Risk" Oracle</h2>
+    <h3>3.1 Concept</h3>
+    <p>Link physical asset condition (humidity, temperature, GPS) in GDIZ warehouses directly to the on-chain risk rating of the collateral.</p>
+
+    <h3>3.2 Technical Implementation</h3>
+    <ul>
+        <li><strong>Contract:</strong> <code>IndustrialGateway.sol</code></li>
+        <li><strong>Logic:</strong> Integrate Chainlink Functions.
+            <ul>
+                <li><strong>Data Ingest:</strong> Periodically fetch warehouse sensor data via API.</li>
+                <li><strong>On-Chain Trigger:</strong> If sensors exceed safety thresholds (e.g., >60% humidity for cotton), the contract updates the <code>stockHash</code> metadata with a "Condition Warning" flag.</li>
+            </ul>
+        </li>
+        <li><strong>Economic Impact:</strong> Trigger an automatic increase in the "Interest Buffer" or a partial margin call.</li>
+    </ul>
+
+    <h3>3.3 Documentation Updates</h3>
+    <ul>
+        <li><strong>Architecture Spec (Layer 3: Oracles):</strong> Document the integration of IoT data providers as trusted Oracle sources.</li>
+        <li><strong>Asset Risk Rating Guide:</strong> Update the risk scoring matrix to include "Real-time Environmental Stability" as a 15% weight factor.</li>
+        <li><strong>Technical Guide 08 (Web3 Architecture):</strong> Add a sequence diagram showing IoT Data -> Chainlink -> Smart Contract.</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Improvement 3: Atomic OTC Swaps (Secondary Liquidity)</h2>
+    <h3>3.1 Concept</h3>
+    <p>Enable peer-to-peer (P2P) trading of UPT tokens between whitelisted investors, providing liquidity even when the pool is "fully deployed."</p>
+
+    <h3>4.2 Technical Implementation</h3>
+    <ul>
+        <li><strong>Contract:</strong> <code>UPTSwapDesk.sol</code> (New Contract)</li>
+        <li><strong>Logic:</strong> Escrow-based atomic swap.
+            <ul>
+                <li><strong>Step 1:</strong> Seller creates a "Limit Order" (e.g., Sell 100k UPT for 105k EUROD).</li>
+                <li><strong>Step 2:</strong> Contract validates both parties via <code>IdentityRegistry.isVerified()</code>.</li>
+                <li><strong>Step 3:</strong> Atomic exchange: UPT transfers to Buyer, EUROD transfers to Seller in one transaction.</li>
+            </ul>
+        </li>
+        <li><strong>Compliance:</strong> Transfer is blocked if the Buyer's jurisdiction cap is reached (ERC-3643 <code>ComplianceModule</code>).</li>
+    </ul>
+
+    <h3>4.3 Documentation Updates</h3>
+    <ul>
+        <li><strong>SRS v2.0 (Section 6.5):</strong> Create a new "Secondary Market Mechanics" sub-section.</li>
+        <li><strong>Investor FAQ:</strong> Add "How can I exit my position before the pool maturity?" explaining the OTC desk.</li>
+        <li><strong>API Spec:</strong> Add <code>/api/v2/market/orders</code> for order book management.</li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Improvement 4: Senior/Junior Tranching (Waterfall)</h2>
+    <h3>5.1 Concept</h3>
+    <p>Segment the Liquidity Pool into two risk classes: <strong>Senior (UPT-A)</strong> for low-risk/lower-yield and <strong>Junior (UPT-B)</strong> for high-risk/higher-yield (first-loss capital).</p>
+
+    <h3>5.2 Technical Implementation</h3>
+    <ul>
+        <li><strong>Contract:</strong> <code>LiquidityPool.sol</code> (Major Refactor)</li>
+        <li><strong>Logic:</strong> Waterfall payment structure.
+            <ul>
+                <li><strong>Distribution:</strong> <code>addYield()</code> first fills the Senior Tranche's target (e.g., 8%). Any excess yield flows to the Junior Tranche.</li>
+                <li><strong>Loss Absorption:</strong> If a default occurs, the Junior Tranche's NAV is reduced first. The Senior Tranche is only affected if the Junior Tranche is wiped out.</li>
+            </ul>
+        </li>
+        <li><strong>Tokens:</strong> Issue two separate ERC-3643 tokens per pool.</li>
+    </ul>
+
+    <h3>5.3 Documentation Updates</h3>
+    <ul>
+        <li><strong>White Paper (Economics Section):</strong> Redesign the "Yield Model" to explain the Waterfall mechanism and risk/reward for A vs B tokens.</li>
+        <li><strong>Investment Memorandum:</strong> Update "Risk Factors" to describe the "First-Loss" nature of the Junior Tranche.</li>
+        <li><strong>Token Naming Reference:</strong> Add <code>UPT-A</code> (Senior) and <code>UPT-B</code> (Junior) nomenclature.</li>
+    </ul>
+
+    <hr>
+
+    <h2>6. Improvement 5: Chainlink Proof of Reserve (PoR)</h2>
+    <h3>6.1 Concept</h3>
+    <p>Verify the Euro reserves backing the EUROD stablecoin in real-time to prevent "Stablecoin De-pegging" risks.</p>
+
+    <h3>6.2 Technical Implementation</h3>
+    <ul>
+        <li><strong>Contract:</strong> <code>UPTToken.sol</code></li>
+        <li><strong>Logic:</strong> Circuit Breaker.
+            <ul>
+                <li><strong>Integration:</strong> Call <code>latestRoundData()</code> on a Chainlink PoR feed (e.g., EUROD/EUR).</li>
+                <li><strong>Safety Check:</strong> If <code>ReserveAmount < TotalSupply * 0.99</code>, the <code>deposit()</code> function is automatically paused to prevent investors from entering a potentially under-collateralized system.</li>
+            </ul>
+        </li>
+        <li><strong>Admin:</strong> Multi-sig can manually override in case of Oracle failure.</li>
+    </ul>
+
+    <h3>6.3 Documentation Updates</h3>
+    <ul>
+        <li><strong>Compliance Framework (Section 8: Audit):</strong> Add "Proof of Reserve Verification" as a mandatory real-time audit requirement.</li>
+        <li><strong>Operational Runbooks:</strong> Add a procedure for "Stablecoin De-peg Incident Response."</li>
+        <li><strong>SRS v2.0 (Section 9: Security):</strong> Document the PoR Circuit Breaker as a core system safeguard.</li>
+    </ul>
+
+    <hr>
+
+    <h2>7. Implementation Roadmap</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Phase</th>
+                <th>Enhancement</th>
+                <th>Target Release</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Phase A</strong></td>
+                <td>Proof of Reserve & OTC Swaps</td>
+                <td>MVP v2.1</td>
+                <td>P0 (Safety/Liquidity)</td>
+            </tr>
+            <tr>
+                <td><strong>Phase B</strong></td>
+                <td>Senior/Junior Tranching</td>
+                <td>MVP v2.2</td>
+                <td>P1 (Capital Attraction)</td>
+            </tr>
+            <tr>
+                <td><strong>Phase C</strong></td>
+                <td>Automated Dutch Auction</td>
+                <td>Production v1.0</td>
+                <td>P1 (Risk Recovery)</td>
+            </tr>
+            <tr>
+                <td><strong>Phase D</strong></td>
+                <td>IoT Dynamic Risk</td>
+                <td>Production v1.1</td>
+                <td>P2 (Efficiency)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>8. Summary of Document Updates (Checklist)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Document Path</th>
+                <th>Section to Update</th>
+                <th>Change Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>docs/01_SPECIFICATIONS/01_SRS.md</code></td>
+                <td>4.1.2, 6.5, 9.2</td>
+                <td>Structural / Logical</td>
+            </tr>
+            <tr>
+                <td><code>docs/01_SPECIFICATIONS/03_SMART_CONTRACT.md</code></td>
+                <td>Interface definitions</td>
+                <td>Technical API</td>
+            </tr>
+            <tr>
+                <td><code>docs/01_SPECIFICATIONS/04_API_SPEC.md</code></td>
+                <td>Endpoints for Auction/OTC</td>
+                <td>Routing / Schema</td>
+            </tr>
+            <tr>
+                <td><code>docs/08_INVESTORS_ROOM/04_WHITE_PAPER.md</code></td>
+                <td>Economic Model</td>
+                <td>Marketing / Narrative</td>
+            </tr>
+            <tr>
+                <td><code>docs/08_INVESTORS_ROOM/03_INVEST_MEMO.md</code></td>
+                <td>Risk Factors</td>
+                <td>Legal / Disclosure</td>
+            </tr>
+            <tr>
+                <td><code>docs/02_TECHNICAL_GUIDES/08_WEB3_ARCH.md</code></td>
+                <td>Oracle / Swap Diagrams</td>
+                <td>Architectural</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        &copy; 2026 UJAMAA DeFi Platform. All Rights Reserved. Proprietary & Confidential.
+    </footer>
+</div>
+
+</body>
+</html>

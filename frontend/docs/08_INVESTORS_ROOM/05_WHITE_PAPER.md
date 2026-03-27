@@ -75,7 +75,7 @@ UJAMAA DeFi Platform bridges this gap through blockchain-based tokenization of A
 | **Interest Rate** | 12% APR |
 | **Collateral** | Certified merchandise (Guarantee Token) |
 | **Outcome** | 100% repaid on time |
-| **Yield Distributed** | 12% in Ujamaa Euro (UJEUR) |
+| **Yield Distributed** | 12% in Ondo EUROD (EUROD) |
 | **Impact** | 150 jobs created |
 
 This pilot validates the core financing model, collateral mechanism, and yield distribution process.
@@ -349,7 +349,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 1. Industrial applies for financing → Dashboard
 2. GDIZ certifies merchandise → SIPI verification
 3. Guarantee Token minted → ERC-3643 NFT
-4. Liquidity Pool deploys Ujamaa Euro (UJEUR) → Industrial wallet
+4. Liquidity Pool deploys Ondo EUROD (EUROD) → Industrial wallet
 5. Guarantee Token held by Pool → Collateral security
 6. Industrial produces goods → Sales to off-taker (e.g., ZARA)
 7. Off-taker pays → Repayment Escrow (BIIC)
@@ -358,7 +358,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
    - Surplus → Industrial
    - Guarantee Token → Redeemed to Industrial
 9. Yield accrued → uLP NAV increases
-10. Quarterly distribution → Ujamaa Euro (UJEUR) to uLP holders
+10. Quarterly distribution → Ondo EUROD (EUROD) to uLP holders
 ```
 
 ---
@@ -377,7 +377,7 @@ Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:
 | **Blockchain** | Polygon (Primary), Ethereum (Settlement) |
 | **Decimals** | 18 |
 | **Yield Mechanism** | Value accrual (NAV increases, balance constant) |
-| **Denomination** | Ujamaa Euro (UJEUR) (Euro-pegged Stablecoin) |
+| **Denomination** | Ondo EUROD (EUROD) (Euro-pegged Stablecoin) |
 | **Minimum Investment** | €100,000 (100,000 uLP at NAV=€1.00) |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
 | **Redemption** | 30-day notice after lock-up |
@@ -423,12 +423,12 @@ Total uLP Supply = Constant (after initial minting)
 **Minting (Initial Investment):**
 
 ```
-1. Investor wires Ujamaa Euro (UJEUR) to BIIC Escrow
-2. Smart Contract receives Ujamaa Euro (UJEUR)
+1. Investor wires Ondo EUROD (EUROD) to BIIC Escrow
+2. Smart Contract receives Ondo EUROD (EUROD)
 3. uLP Tokens minted at current NAV
 4. uLP deposited to investor wallet
 
-uLP Minted = Ujamaa Euro (UJEUR) Amount / NAV per uLP
+uLP Minted = Ondo EUROD (EUROD) Amount / NAV per uLP
 
 Example: €100,000 / €1.00 = 100,000 uLP
 ```
@@ -438,10 +438,10 @@ Example: €100,000 / €1.00 = 100,000 uLP
 ```
 1. Investor submits redemption request (30-day notice)
 2. Smart Contract calculates redemption value
-3. Ujamaa Euro (UJEUR) transferred from Pool to investor
+3. Ondo EUROD (EUROD) transferred from Pool to investor
 4. uLP Tokens burned
 
-Ujamaa Euro (UJEUR) Received = uLP Amount × NAV per uLP
+Ondo EUROD (EUROD) Received = uLP Amount × NAV per uLP
 
 Example: 100,000 uLP × €1.10 = €110,000
 ```
@@ -478,7 +478,7 @@ Example: 100,000 uLP × €1.10 = €110,000
   "attributes": {
     "certificateId": "GDIZ-2026-001",
     "merchandiseValue": "2000000",
-    "merchandiseCurrency": "Ujamaa Euro (UJEUR)",
+    "merchandiseCurrency": "Ondo EUROD (EUROD)",
     "expiryDate": "2027-03-17",
     "industrial": "0x...",
     "pool": "Pool Industrie",
@@ -498,7 +498,7 @@ Example: 100,000 uLP × €1.10 = €110,000
 1. Industrial receives order (e.g., ZARA €2M contract)
 2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
 3. Guarantee Token minted (ERC-3643 NFT with metadata)
-4. Pool deploys Ujamaa Euro (UJEUR) to Industrial
+4. Pool deploys Ondo EUROD (EUROD) to Industrial
 5. Pool holds Guarantee Token (collateral/security)
 6. Industrial repays (principal + interest)
 7. Guarantee Token transferred back to Industrial (forcedTransfer)
@@ -615,7 +615,7 @@ import "@tokeny/erc3643/contracts/ERC3643.sol";
 contract ULPToken is ERC3643 {
     // Pool-specific data
     string public poolName;      // e.g., "Pool Industrie"
-    uint256 public poolValue;    // Total pool value in Ujamaa Euro (UJEUR) (18 decimals)
+    uint256 public poolValue;    // Total pool value in Ondo EUROD (EUROD) (18 decimals)
     uint256 public totalShares;  // Total uLP supply
     
     // NAV tracking
@@ -628,7 +628,7 @@ contract ULPToken is ERC3643 {
     /**
      * @notice Mint uLP tokens to investor
      * @param investor Investor wallet address
-     * @param amount Ujamaa Euro (UJEUR) amount invested
+     * @param amount Ondo EUROD (EUROD) amount invested
      * @return uLP tokens minted
      */
     function mint(address investor, uint256 amount) 
@@ -647,7 +647,7 @@ contract ULPToken is ERC3643 {
      * @notice Burn uLP tokens on redemption
      * @param investor Investor wallet address
      * @param shares uLP tokens to burn
-     * @return Ujamaa Euro (UJEUR) amount to redeem
+     * @return Ondo EUROD (EUROD) amount to redeem
      */
     function burn(address investor, uint256 shares) 
         external 
@@ -678,7 +678,7 @@ contract ULPToken is ERC3643 {
     /**
      * @notice Get investor's current value
      * @param investor Investor wallet address
-     * @return Current value in Ujamaa Euro (UJEUR)
+     * @return Current value in Ondo EUROD (EUROD)
      */
     function getInvestorValue(address investor) 
         external 
@@ -725,7 +725,7 @@ contract GuaranteeToken is ERC3643NFT {
      * @notice Mint Guarantee Token for certified merchandise
      * @param industrial Industrial wallet
      * @param certificateId GDIZ/SIPI certificate ID
-     * @param value Merchandise value in Ujamaa Euro (UJEUR)
+     * @param value Merchandise value in Ondo EUROD (EUROD)
      * @param expiryDate When invoice is due
      * @param stockHash IPFS hash of stock documents
      * @return tokenId New Guarantee Token ID
@@ -868,7 +868,7 @@ contract LiquidityPool {
         
         totalDeployed += principal;
         
-        // Transfer Ujamaa Euro (UJEUR) to industrial
+        // Transfer Ondo EUROD (EUROD) to industrial
         IERC20(eurcToken).transfer(industrial, principal);
         
         emit FinancingCreated(id, industrial, principal, interestRate, financings[id].maturityDate);
@@ -907,7 +907,7 @@ contract LiquidityPool {
     
     /**
      * @notice Get total pool value
-     * @return Pool value in Ujamaa Euro (UJEUR)
+     * @return Pool value in Ondo EUROD (EUROD)
      */
     function getPoolValue() public view returns (uint256) {
         uint256 outstandingPrincipal = totalDeployed - totalRepaid;

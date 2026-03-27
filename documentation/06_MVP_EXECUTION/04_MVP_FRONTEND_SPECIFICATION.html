@@ -1656,7 +1656,7 @@ Step 3: Funding Source
 ┌─────────────────────────────────────────┐
 │  Select Funding Source                  │
 │                                         │
-│  ○ Ujamaa Euro (UJEUR) Wallet (0x1234...5678)          │
+│  ○ Ondo EUROD (EUROD) Wallet (0x1234...5678)          │
 │    Balance: €2,450,000                  │
 │                                         │
 │  ○ Bank Escrow (BIIC)                   │
@@ -2396,7 +2396,7 @@ export const config = createConfig({
 <p><strong>Purpose:</strong> Provide institutional-grade transparency with real-time on-chain attestation of pool reserves backing uLP tokens.</p>
 <p><strong>Key Metrics:</strong><br />
 - Total uLP Supply (tokens outstanding)<br />
-- Total Backing Assets (Ujamaa Euro (UJEUR) held in pool)<br />
+- Total Backing Assets (Ondo EUROD (EUROD) held in pool)<br />
 - Reserve Ratio (Backing Assets / uLP Supply Value)<br />
 - Last Audit Timestamp<br />
 - On-chain Proof Link</p>
@@ -2763,7 +2763,7 @@ export function ReserveWidget() {
 import { api } from '@/lib/api';
 
 export interface ReserveData {
-  totalReserves: number;      // Total backing assets (Ujamaa Euro (UJEUR))
+  totalReserves: number;      // Total backing assets (Ondo EUROD (EUROD))
   ulpSupply: number;          // Total uLP tokens outstanding
   reserveRatio: number;       // Ratio (1.0 = 100% backed)
   surplus: number;            // Surplus/deficit amount
@@ -3364,7 +3364,7 @@ export function PoolCard({ pool, onViewDetails, onSubscribe }: PoolCardProps) {
    └─ Clicks &quot;Redeem&quot;
 
 2. Enter Redemption Amount
-   └─ Specifies uLP amount or Ujamaa Euro (UJEUR) value
+   └─ Specifies uLP amount or Ondo EUROD (EUROD) value
    └─ Sees estimated proceeds
    └─ Acknowledges redemption notice period (30 days)
 
@@ -3379,7 +3379,7 @@ export function PoolCard({ pool, onViewDetails, onSubscribe }: PoolCardProps) {
 
 5. Redemption Complete
    └─ uLP tokens burned
-   └─ Ujamaa Euro (UJEUR) transferred to wallet
+   └─ Ondo EUROD (EUROD) transferred to wallet
    └─ Transaction recorded on-chain
    └─ Email confirmation
 </code></div>
@@ -3512,7 +3512,7 @@ Focus Indicators:
       &lt;tr&gt;
         &lt;th scope=&quot;col&quot;&gt;Pool&lt;/th&gt;
         &lt;th scope=&quot;col&quot;&gt;Percentage&lt;/th&gt;
-        &lt;th scope=&quot;col&quot;&gt;Value (Ujamaa Euro (UJEUR))&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Value (Ondo EUROD (EUROD))&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;

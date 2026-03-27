@@ -86,7 +86,7 @@ const DeFiBasics: React.FC = () => {
             {[
               { step: '1', title: 'Create a Wallet', desc: 'Set up a compatible crypto wallet (MetaMask, WalletConnect)' },
               { step: '2', title: 'Complete KYC', desc: 'Verify your identity through our compliance process' },
-              { step: '3', title: 'Deposit Funds', desc: 'Transfer EURC or other supported assets to your account' },
+              { step: '3', title: 'Deposit Funds', desc: 'Transfer EUROD or other supported assets to your account' },
               { step: '4', title: 'Choose a Pool', desc: 'Select from our diversified pool families based on your goals' },
               { step: '5', title: 'Start Earning', desc: 'Receive uLP tokens and begin earning yield automatically' },
             ].map((item) => (

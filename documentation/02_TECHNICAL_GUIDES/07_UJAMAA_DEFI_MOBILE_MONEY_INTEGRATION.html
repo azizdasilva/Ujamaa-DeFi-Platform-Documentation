@@ -130,7 +130,7 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Overview &amp; Rationale</h2>
 <p>Ujamaa DeFi Platform is an institutional-grade tokenization platform enabling fractional ownership of African real-world assets (RWAs) through <strong>ERC-3643 compliant blockchain-based digital securities</strong>. To maximize financial inclusion across African markets, the platform supports two parallel payment rails:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li><strong>Web3 wallets</strong> with stablecoins (USDC/USDT/EURC) for crypto-native users</li>
+<li><strong>Web3 wallets</strong> with stablecoins (USDC/USDT/EUROD) for crypto-native users</li>
 <li><strong>Mobile money</strong> for the majority of African users who do not hold a Web3 wallet but actively use MTN MoMo, Orange Money, Airtel Money, M-Pesa, and similar services</li>
 </ul>
 <p>Mobile money is the dominant financial infrastructure across Sub-Saharan Africa, accounting for nearly 50% of global mobile money accounts and $2.5 billion in daily transactions. Supporting it is not optional — it is the primary gateway to financial inclusion at scale.</p>
@@ -167,8 +167,8 @@
 </tr>
 <tr>
 <td><strong>Stablecoin</strong></td>
-<td>USDC (Circle), EURC</td>
-<td>Native Polygon USDC/EURC</td>
+<td>USDC (Ondo Finance), EUROD</td>
+<td>Native Polygon USDC/EUROD</td>
 </tr>
 <tr>
 <td><strong>Industrial Gateway</strong></td>
@@ -209,7 +209,7 @@
 </tr>
 <tr>
 <td><strong>Fiat → Stablecoin On-ramp</strong></td>
-<td>Onafriq + Circle</td>
+<td>Onafriq + Ondo Finance</td>
 <td>USDC on Polygon</td>
 <td>1B+ wallets connected, regulatory compliance</td>
 </tr>
@@ -239,7 +239,7 @@
 </tr>
 <tr>
 <td><strong>Stablecoin</strong></td>
-<td>USDC (Circle)</td>
+<td>USDC (Ondo Finance)</td>
 <td>Native Polygon deployment</td>
 <td>Regulatory compliance, institutional trust</td>
 </tr>
@@ -339,7 +339,7 @@
 <li><strong>EVM compatibility</strong> — full compatibility with Ethereum smart contract standards, including <strong>ERC-3643</strong> for regulated security tokens</li>
 <li><strong>High throughput</strong> — capable of handling thousands of transactions per second, providing the scale required for a pan-African user base</li>
 <li><strong>Institutional credibility</strong> — Mastercard and JP Morgan have both run RWA tokenization pilots on Polygon, providing regulatory and enterprise confidence</li>
-<li><strong>Native USDC support</strong> — Circle's USDC is natively deployed on Polygon, eliminating cross-chain bridging complexity and reducing settlement risk</li>
+<li><strong>Native USDC support</strong> — Ondo Finance's USDC is natively deployed on Polygon, eliminating cross-chain bridging complexity and reducing settlement risk</li>
 <li><strong>African Market Presence</strong> — Polygon has established partnerships with African governments and financial institutions for blockchain adoption</li>
 </ul>
 <h3>4.1 Network Configuration</h3>
@@ -382,7 +382,7 @@
 │          ↓                                                                    │
 │  Fiat received in local currency (XOF, NGN, KES, GHS...)                    │
 │          ↓                                                                    │
-│  Auto-convert to stablecoin (USDC) via Onafriq + Circle                     │
+│  Auto-convert to stablecoin (USDC) via Onafriq + Ondo Finance                     │
 │          ↓                                                                    │
 │  Backend triggers ERC-3643 compliance checks                                │
 │          ↓                                                                    │
@@ -521,7 +521,7 @@
 │     • Filter users by payout preference (mobile money vs. wallet)          │
 │                                                                              │
 │  3. For mobile money users: Convert USDC to local fiat                     │
-│     • Circle API: USDC → USD                                               │
+│     • Ondo Finance API: USDC → USD                                               │
 │     • Flutterwave FX: USD → Local currency (XOF, NGN, KES, etc.)           │
 │     • Exchange rate locked for 15 minutes                                  │
 │                                                                              │
@@ -652,7 +652,7 @@ The user confirms or enters the mobile money number to be charged. If provided a
 Flutterwave initiates the mobile money charge. The user receives a USSD push or in-app prompt from their operator. The Ujamaa app displays a waiting screen: <em>"Waiting for your confirmation on [operator name]..."</em> with a timeout indicator (typically 5 minutes).</p>
 <p><strong>Step 5 — Processing Screen</strong><br />
 Once Flutterwave confirms payment, the backend silently handles:<br />
-- Fiat-to-USDC conversion via Onafriq/Circle<br />
+- Fiat-to-USDC conversion via Onafriq/Ondo Finance<br />
 - ERC-3643 compliance verification<br />
 - Token minting on Polygon<br />
 - AssetProof notarization</p>
@@ -1057,7 +1057,7 @@ receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 <li>[ ] Contracts deployed to Polygon Mainnet</li>
 <li>[ ] Contracts verified on Polygonscan</li>
 <li>[ ] Flutterwave production credentials configured</li>
-<li>[ ] Onafriq/Circle production integration complete</li>
+<li>[ ] Onafriq/Ondo Finance production integration complete</li>
 <li>[ ] Fireblocks custody configured</li>
 <li>[ ] Gnosis Safe multisig configured (4-of-7)</li>
 <li>[ ] Monitoring and alerting configured (Datadog, PagerDuty)</li>

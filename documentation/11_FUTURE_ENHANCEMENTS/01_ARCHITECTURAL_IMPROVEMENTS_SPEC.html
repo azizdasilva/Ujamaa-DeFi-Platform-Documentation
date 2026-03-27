@@ -179,9 +179,9 @@
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Contract:</strong> <code>uLPSwapDesk.sol</code> (New Contract)</li>
 <li><strong>Logic:</strong> Escrow-based atomic swap.<ul class="docs-list" style="padding-left:1.5rem">
-<li><strong>Step 1:</strong> Seller creates a "Limit Order" (e.g., Sell 100k uLP for 105k UJEUR).</li>
+<li><strong>Step 1:</strong> Seller creates a "Limit Order" (e.g., Sell 100k uLP for 105k EUROD).</li>
 <li><strong>Step 2:</strong> Contract validates both parties via <code>IdentityRegistry.isVerified()</code>.</li>
-<li><strong>Step 3:</strong> Atomic exchange: uLP transfers to Buyer, UJEUR transfers to Seller in one transaction.</li>
+<li><strong>Step 3:</strong> Atomic exchange: uLP transfers to Buyer, EUROD transfers to Seller in one transaction.</li>
 </ul>
 </li>
 <li><strong>Compliance:</strong> Transfer is blocked if the Buyer's jurisdiction cap is reached (ERC-3643 <code>ComplianceModule</code>).</li>
@@ -217,12 +217,12 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Improvement 5: Chainlink Proof of Reserve (PoR)</h2>
 <h3>6.1 Concept</h3>
-<p>Verify the Euro reserves backing the UJEUR stablecoin in real-time to prevent "Stablecoin De-pegging" risks.</p>
+<p>Verify the Euro reserves backing the EUROD stablecoin in real-time to prevent "Stablecoin De-pegging" risks.</p>
 <h3>6.2 Technical Implementation</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Contract:</strong> <code>uLPToken.sol</code></li>
 <li><strong>Logic:</strong> Circuit Breaker.<ul class="docs-list" style="padding-left:1.5rem">
-<li><strong>Integration:</strong> Call <code>latestRoundData()</code> on a Chainlink PoR feed (e.g., EURC/EUR).</li>
+<li><strong>Integration:</strong> Call <code>latestRoundData()</code> on a Chainlink PoR feed (e.g., EUROD/EUR).</li>
 <li><strong>Safety Check:</strong> If <code>ReserveAmount &lt; TotalSupply * 0.99</code>, the <code>deposit()</code> function is automatically paused to prevent investors from entering a potentially under-collateralized system.</li>
 </ul>
 </li>

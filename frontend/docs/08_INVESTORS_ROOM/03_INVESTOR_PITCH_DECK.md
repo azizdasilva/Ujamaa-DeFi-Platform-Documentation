@@ -146,7 +146,7 @@
 ║  │   uLP TOKEN (YIELD-BEARING ERC-3643)                        │ ║
 ║  │   • Represents ownership in diversified pool                │ ║
 ║  │   • Value accrual model (NAV increases over time)           │ ║
-║  │   • Quarterly EURC distributions                            │ ║
+║  │   • Quarterly EUROD distributions                            │ ║
 ║  │   • ERC-3643 compliance (verified wallets only)             │ ║
 ║  │                                                             │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
@@ -164,7 +164,7 @@
 ║  ═══════════════════════════════════════════════════════════     ║
 ║                                                                   ║
 ║  ✓ 10-15% APR Yield           ✓ Mauritius FSC Licensed          ║
-║  ✓ EURC Denomination          ✓ Fireblocks Custody              ║
+║  ✓ EUROD Denomination          ✓ Fireblocks Custody              ║
 ║  ✓ 180-365 Day Lock-up        ✓ BIIC/MCB Escrow                 ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
@@ -199,7 +199,7 @@
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
 ║  │              POOL INDUSTRIE (Smart Contract)                │ ║
 ║  │                                                             │ ║
-║  │  • Receives EURC from investors                             │ ║
+║  │  • Receives EUROD from investors                             │ ║
 ║  │  • Deploys to GDIZ industrial partners (Benin)              │ ║
 ║  │  • Holds Guarantee Tokens as collateral                     │ ║
 ║  │  • Distributes yield to uLP holders                         │ ║
@@ -239,7 +239,7 @@
 ║  │              │                                                 ║
 ║  │ Receive 10-  │                                                 ║
 ║  │ 12% APR in   │                                                 ║
-║  │ EURC         │                                                 ║
+║  │ EUROD         │                                                 ║
 ║  └──────────────┘                                                 ║
 ║                                                                   ║
 ║  ═══════════════════════════════════════════════════════════     ║
@@ -688,17 +688,17 @@
 ║  │  Security Type        uLP Token (Yield-Bearing ERC-3643)    │ ║
 ║  │  Target Raise         €50,000,000                           │ ║
 ║  │  Minimum Investment   €100,000 (Institutional Tier)         │ ║
-║  │  Denomination         EURC (Euro-pegged Stablecoin)         │ ║
+║  │  Denomination         EUROD (Euro-pegged Stablecoin)         │ ║
 ║  │  Blockchain           Polygon (Primary), Ethereum (Settle.) │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║
 ║  ECONOMIC TERMS:                                                  ║
 ║                                                                   ║
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
-║  │  Expected Yield       10-15% APR (EURC)                     │ ║
+║  │  Expected Yield       10-15% APR (EUROD)                     │ ║
 ║  │  Management Fee       2.0% per annum                        │ ║
 ║  │  Performance Fee      20% (8% preferred return hurdle)      │ ║
-║  │  Distribution         Quarterly (EURC)                      │ ║
+║  │  Distribution         Quarterly (EUROD)                      │ ║
 ║  │  Lock-up Period       180-365 days (pool-dependent)         │ ║
 ║  │  Redemption           30-day notice after lock-up           │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
@@ -749,7 +749,7 @@
 ║  │     → Timeline: Week 4                                      │ ║
 ║  │                                                             │ ║
 ║  │  4. FUND WIRE & TOKEN MINTING                               │ ║
-║  │     → EURC to BIIC Escrow, uLP Minted                       │ ║
+║  │     → EUROD to BIIC Escrow, uLP Minted                       │ ║
 ║  │     → Timeline: Week 5-6                                    │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║
@@ -807,7 +807,7 @@
 ║                                                                   ║
 ║  ┌─────────────────────────────────────────────────────────────┐ ║
 ║  │  FX RISK (Medium)                                           │ ║
-║  │  Mitigation: EURC denomination, natural hedge                │ ║
+║  │  Mitigation: EUROD denomination, natural hedge                │ ║
 ║  │            (EUR-denominated industrial revenues)             │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║
@@ -885,8 +885,8 @@
    - Ultimate: IPO Mauritius Stock Exchange (Year 5)
 
 4. **"How do you handle FX risk?"**
-   - EURC denomination matches industrial revenues (export-oriented)
-   - Natural hedge: Export buyers pay EUR, we distribute EURC
+   - EUROD denomination matches industrial revenues (export-oriented)
+   - Natural hedge: Export buyers pay EUR, we distribute EUROD
    - Optional: FX hedging instruments for non-EUR exposures (Phase 2)
 
 ---

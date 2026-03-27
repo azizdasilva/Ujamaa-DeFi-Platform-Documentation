@@ -172,7 +172,7 @@
 <h3>1.2 UGT Data Structure</h3>
 <div class="docs-pre"><code>struct Guarantee {
     uint256 certificateId;      // Industrial Gateway certificate
-    uint256 merchandiseValue;   // Value in UJEUR (18 decimals)
+    uint256 merchandiseValue;   // Value in EUROD (18 decimals)
     uint256 expiryDate;         // When invoice is due
     address industrial;         // Original issuer
     address poolAddress;        // Pool holding collateral
@@ -214,7 +214,7 @@
 <p><strong>Inputs:</strong><br />
 - <code>industrial</code> - Industrial company address<br />
 - <code>certificateId</code> - Industrial Gateway certificate ID<br />
-- <code>value</code> - Merchandise value in UJEUR (18 decimals)<br />
+- <code>value</code> - Merchandise value in EUROD (18 decimals)<br />
 - <code>expiryDate</code> - Expiry timestamp<br />
 - <code>stockHash</code> - IPFS hash of stock documents<br />
 - <code>description</code> - Stock description<br />
@@ -356,7 +356,7 @@
     uint256 certificateId;
     address industrial;
     string assetType;         // INVOICE, INVENTORY, PRODUCTION, SHIPMENT, CONTRACT
-    uint256 value;            // Value in UJEUR (18 decimals)
+    uint256 value;            // Value in EUROD (18 decimals)
     uint256 quantity;
     string unit;              // e.g., &quot;bales&quot;, &quot;tons&quot;, &quot;units&quot;
     string warehouseLocation;
@@ -374,7 +374,7 @@
 <p><strong>Inputs:</strong><br />
 - <code>industrial</code> - Industrial company address<br />
 - <code>assetType</code> - Type of asset (INVOICE, INVENTORY, PRODUCTION, SHIPMENT, CONTRACT)<br />
-- <code>value</code> - Value in UJEUR (18 decimals)<br />
+- <code>value</code> - Value in EUROD (18 decimals)<br />
 - <code>quantity</code> - Quantity of items<br />
 - <code>unit</code> - Unit of measure<br />
 - <code>warehouseLocation</code> - Warehouse location<br />

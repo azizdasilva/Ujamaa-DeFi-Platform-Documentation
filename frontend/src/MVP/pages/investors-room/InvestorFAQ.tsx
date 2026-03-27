@@ -64,7 +64,7 @@ const InvestorFAQ: React.FC = () => {
           <section className="space-y-4">
             <FAQItem 
               question="What returns can I expect?"
-              answer="uLP (Pool tokens): 8-12% APR, diversified and stable. UAT (Single asset): 8-15% APR, varies by asset performance. Returns are paid quarterly in EURC stablecoin."
+              answer="uLP (Pool tokens): 8-12% APR, diversified and stable. UAT (Single asset): 8-15% APR, varies by asset performance. Returns are paid quarterly in EUROD stablecoin."
             />
             <FAQItem 
               question="What are the fees?"
@@ -76,7 +76,7 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="How are distributions paid?"
-              answer="Quarterly distributions in EURC stablecoin directly to your wallet. You can reinvest or withdraw to your bank account via our fiat ramp partners."
+              answer="Quarterly distributions in EUROD stablecoin directly to your wallet. You can reinvest or withdraw to your bank account via our fiat ramp partners."
             />
             <FAQItem 
               question="What happens if a borrower defaults?"

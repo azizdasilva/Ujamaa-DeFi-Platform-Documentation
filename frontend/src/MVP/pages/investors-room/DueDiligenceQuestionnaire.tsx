@@ -155,7 +155,7 @@ const DueDiligenceQuestionnaire: React.FC = () => {
             <RiskItem category="Smart Contract Risk" level="Medium" mitigation="CertiK audit, bug bounty, upgradeable contracts" />
             <RiskItem category="Regulatory Risk" level="Low" mitigation="FSC licensed, compliance-first design, legal opinions" />
             <RiskItem category="Liquidity Risk" level="Medium" mitigation="180-day lock-up, secondary market development" />
-            <RiskItem category="FX Risk" level="Medium" mitigation="EURC-denominated, hedging strategies" />
+            <RiskItem category="FX Risk" level="Medium" mitigation="EUROD-denominated, hedging strategies" />
             <RiskItem category="Operational Risk" level="Low" mitigation="Multi-sig, Fireblocks custody, insurance" />
           </div>
           

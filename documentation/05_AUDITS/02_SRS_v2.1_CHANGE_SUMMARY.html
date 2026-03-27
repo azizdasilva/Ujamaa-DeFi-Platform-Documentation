@@ -560,7 +560,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 
     // Deposit/redeem
     function deposit(uint256 amount) external returns (uint256 uLPMinted);
-    function redeem(uint256 uLPAmount) external returns (uint256 Ujamaa Euro (UJEUR)Received);
+    function redeem(uint256 uLPAmount) external returns (uint256 Ondo EUROD (EUROD)Received);
 }
 </code></div>
 <p><strong>GuaranteeToken (UJG):</strong></p>
@@ -634,13 +634,13 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <tr>
 <td>POST</td>
 <td><code>/api/v1/pools/{id}/deposit</code></td>
-<td>Deposit Ujamaa Euro (UJEUR) for uLP</td>
+<td>Deposit Ondo EUROD (EUROD) for uLP</td>
 <td>Institutional Investor</td>
 </tr>
 <tr>
 <td>POST</td>
 <td><code>/api/v1/pools/{id}/redeem</code></td>
-<td>Redeem uLP for Ujamaa Euro (UJEUR) + yield</td>
+<td>Redeem uLP for Ondo EUROD (EUROD) + yield</td>
 <td>Institutional Investor</td>
 </tr>
 <tr>
@@ -816,7 +816,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 <p><strong>uLP Token Tests:</strong><br />
 - [ ] NAV calculation accuracy (18 decimal precision)<br />
 - [ ] Deposit mints correct uLP amount<br />
-- [ ] Redeem burns uLP and returns correct Ujamaa Euro (UJEUR) + yield<br />
+- [ ] Redeem burns uLP and returns correct Ondo EUROD (EUROD) + yield<br />
 - [ ] Value accrual over time (simulate yield)<br />
 - [ ] ERC-3643 compliance (identity verification on transfer)<br />
 - [ ] Forced transfer (regulatory actions)</p>

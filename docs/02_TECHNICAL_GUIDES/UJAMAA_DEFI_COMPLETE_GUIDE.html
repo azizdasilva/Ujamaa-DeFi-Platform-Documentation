@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujamaa DeFi Platform - Complete Technical Guide</title>
+    <style>
+        :root {
+            --primary-color: #00D4AA;
+            --secondary-color: #1a1a2e;
+            --accent-color: #16213e;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-color: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --code-bg: #1e1e1e;
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            display: block;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        nav button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid transparent;
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        nav button.active {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .toc-list {
+            list-style: none;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .toc-list a:hover {
+            background: rgba(0, 212, 170, 0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .toc-list a.active {
+            background: rgba(0, 212, 170, 0.15);
+            border-left-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .toc-list .sub-item {
+            padding-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Main Content */
+        main {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .doc-section {
+            display: none;
+        }
+
+        .doc-section.active {
+            display: block;
+        }
+
+        /* Document Headers */
+        .doc-header {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(26, 26, 46, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .doc-header h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .doc-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .status-badge.success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success-color);
+        }
+
+        .status-badge.warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning-color);
+        }
+
+        /* Content Typography */
+        h2 {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin: 1rem 0 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--secondary-color);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        tr:hover {
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        code {
+            font-family: 'Courier New', Consolas, monospace;
+        }
+
+        :not(pre) > code {
+            background: rgba(0,0,0,0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+
+        /* Callouts */
+        .callout {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .callout.info {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .callout.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning-color);
+        }
+
+        .callout.danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--danger-color);
+        }
+
+        .callout.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--success-color);
+        }
+
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Diagrams */
+        .diagram {
+            background: var(--code-bg);
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .toc-list {
+                max-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00b894;
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .sidebar, footer, nav {
+                display: none;
+            }
+
+            .container {
+                display: block;
+            }
+
+            .doc-section {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">U</div>
+                <div>
+                    <h1>Ujamaa DeFi Platform</h1>
+                    <span>Complete Technical Documentation</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><button class="nav-btn active" data-section="doc1">MetaMask & Testnet</button></li>
+                    <li><button class="nav-btn" data-section="doc2">MVP Testnet Guide</button></li>
+                    <li><button class="nav-btn" data-section="doc3">Smart Contract Integration</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>📑 Table of Contents</h3>
+            <div id="toc-container">
+                <!-- TOC will be populated by JavaScript -->
+            </div>
+        </aside>
+
+        <main>
+            <!-- Document 1: MetaMask & Testnet Guide -->
+            <section id="doc1" class="doc-section active">
+                <div class="doc-header">
+                    <h2>🚀 MetaMask & Testnet Integration Guide</h2>
+                    <div class="doc-meta">
+                        <span><strong>Version:</strong> 2.0.0-mvp</span>
+                        <span><strong>Network:</strong> Polygon Amoy Testnet</span>
+                        <span><strong>Chain ID:</strong> 80002</span>
+                    </div>
+                    <span class="status-badge success">✅ Production Ready for Testnet</span>
+                </div>
+
+                <div id="doc1-content">
+                    <h2 id="doc1-toc">📋 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#doc1-overview">Overview</a></li>
+                        <li><a href="#doc1-network">Network Configuration</a></li>
+                        <li><a href="#doc1-metamask">MetaMask Setup</a></li>
+                        <li><a href="#doc1-web3">Web3 Integration</a></li>
+                        <li><a href="#doc1-components">Component Usage</a></li>
+                        <li><a href="#doc1-testing">Testing Guide</a></li>
+                        <li><a href="#doc1-troubleshooting">Troubleshooting</a></li>
+                        <li><a href="#doc1-structure">File Structure</a></li>
+                    </ol>
+
+                    <h2 id="doc1-overview">📖 Overview</h2>
+                    <p>The Ujamaa DeFi Platform is now fully integrated with MetaMask and configured for the <strong>Polygon Amoy Testnet</strong>. This integration allows users to:</p>
+                    <ul>
+                        <li>Connect their MetaMask wallet</li>
+                        <li>Switch to Polygon Amoy network automatically</li>
+                        <li>View POL token balances</li>
+                        <li>Sign messages and transactions</li>
+                        <li>Interact with smart contracts (when deployed)</li>
+                    </ul>
+
+                    <div class="callout warning">
+                        <div class="callout-title">⚠️ Important</div>
+                        <p>This is a <strong>TESTNET</strong> deployment. No real money is involved.</p>
+                    </div>
+
+                    <h2 id="doc1-network">🌐 Network Configuration</h2>
+                    <h3>Polygon Amoy Testnet Parameters</h3>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Network Name</strong></td>
+                            <td>Polygon Amoy Testnet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chain ID</strong></td>
+                            <td>80002 (0x13882 in hex)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RPC URL</strong></td>
+                            <td>https://rpc-amoy.polygon.technology/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Block Explorer</strong></td>
+                            <td>https://amoy.polygonscan.com/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Native Token</strong></td>
+                            <td>POL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Token Decimals</strong></td>
+                            <td>18</td>
+                        </tr>
+                    </table>
+
+                    <h3>Manual Network Setup in MetaMask</h3>
+                    <ol>
+                        <li>Open MetaMask</li>
+                        <li>Click network dropdown → "Add Network"</li>
+                        <li>Enter the following:
+                            <ul>
+                                <li><strong>Network Name:</strong> Polygon Amoy Testnet</li>
+                                <li><strong>RPC URL:</strong> https://rpc-amoy.polygon.technology/</li>
+                                <li><strong>Chain ID:</strong> 80002</li>
+                                <li><strong>Currency Symbol:</strong> POL</li>
+                                <li><strong>Block Explorer:</strong> https://amoy.polygonscan.com/</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h2 id="doc1-metamask">🦊 MetaMask Setup</h2>
+                    <h3>Step 1: Install MetaMask</h3>
+                    <p><strong>Download:</strong> <a href="https://metamask.io/download/" target="_blank">https://metamask.io/download/</a></p>
+                    <ul>
+                        <li>Available for Chrome, Firefox, Brave, Edge</li>
+                        <li>Mobile apps for iOS and Android</li>
+                        <li><strong>⚠️ Warning:</strong> Only download from official website!</li>
+                    </ul>
+
+                    <h3>Step 2: Create a Wallet</h3>
+                    <ol>
+                        <li>Click "Create a Wallet"</li>
+                        <li>Set a strong password</li>
+                        <li><strong>Securely store your seed phrase</strong> (12-24 words)</li>
+                        <li>Never share your seed phrase with anyone!</li>
+                    </ol>
+
+                    <h3>Step 3: Add Polygon Amoy Network</h3>
+                    <p>The platform will automatically prompt to switch networks when you connect. Or follow manual setup above.</p>
+
+                    <h3>Step 4: Get Test POL Tokens</h3>
+                    <p><strong>Faucet:</strong> <a href="https://faucet.polygon.technology/" target="_blank">https://faucet.polygon.technology/</a></p>
+                    <ol>
+                        <li>Copy your MetaMask address</li>
+                        <li>Paste into faucet</li>
+                        <li>Request test tokens</li>
+                        <li>Wait ~15 seconds for confirmation</li>
+                    </ol>
+
+                    <p><strong>Alternative Faucets:</strong></p>
+                    <ul>
+                        <li>https://amoyfaucet.com/</li>
+                        <li>https://faucet.quicknode.com/polygon/amoy</li>
+                    </ul>
+
+                    <h2 id="doc1-web3">🔗 Web3 Integration</h2>
+                    <h3>Configuration File</h3>
+                    <p><strong>Location:</strong> <code>frontend/src/config/web3.ts</code></p>
+                    <pre><code>export const web3Config = {
+  NETWORK: {
+    NAME: 'Polygon Amoy Testnet',
+    CHAIN_ID: '0x13882',
+    CHAIN_ID_DECIMAL: 80002,
+    RPC_URL: 'https://rpc-amoy.polygon.technology/',
+    BLOCK_EXPLORER: 'https://amoy.polygonscan.com/',
+  },
+  CONTRACTS: {
+    ULP_TOKEN: '0x0000000000000000000000000000000000000000',
+    UAT_TOKEN: '0x0000000000000000000000000000000000000000',
+  },
+}</code></pre>
+
+                    <h3>useWallet Hook</h3>
+                    <p><strong>Location:</strong> <code>frontend/src/MVP/hooks/useWallet.ts</code></p>
+                    <pre><code>import { useWallet } from './hooks/useWallet';
+
+function MyComponent() {
+  const {
+    isConnected,
+    address,
+    chainId,
+    balance,
+    connect,
+    disconnect,
+    switchNetwork,
+    signMessage,
+    sendTransaction,
+  } = useWallet();
+
+  return (
+    &lt;div&gt;
+      {isConnected ? (
+        &lt;p&gt;Connected: {address}&lt;/p&gt;
+      ) : (
+        &lt;button onClick={connect}&gt;Connect Wallet&lt;/button&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+                    <h3>Available Methods</h3>
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Returns</th>
+                        </tr>
+                        <tr>
+                            <td><code>connect()</code></td>
+                            <td>Connect MetaMask wallet</td>
+                            <td>Promise&lt;void&gt;</td>
+                        </tr>
+                        <tr>
+                            <td><code>disconnect()</code></td>
+                            <td>Disconnect wallet</td>
+                            <td>void</td>
+                        </tr>
+                        <tr>
+                            <td><code>switchNetwork()</code></td>
+                            <td>Switch to Polygon Amoy</td>
+                            <td>Promise&lt;void&gt;</td>
+                        </tr>
+                        <tr>
+                            <td><code>signMessage(msg)</code></td>
+                            <td>Sign a message</td>
+                            <td>Promise&lt;string&gt;</td>
+                        </tr>
+                        <tr>
+                            <td><code>sendTransaction(tx)</code></td>
+                            <td>Send transaction</td>
+                            <td>Promise&lt;string&gt; (tx hash)</td>
+                        </tr>
+                        <tr>
+                            <td><code>refreshBalance()</code></td>
+                            <td>Refresh balance</td>
+                            <td>Promise&lt;void&gt;</td>
+                        </tr>
+                    </table>
+
+                    <h2 id="doc1-components">🧩 Component Usage</h2>
+                    <h3>WalletConnect Component</h3>
+                    <p><strong>Location:</strong> <code>frontend/src/MVP/components/WalletConnect.tsx</code></p>
+                    <p><strong>Features:</strong></p>
+                    <ul>
+                        <li>One-click MetaMask connection</li>
+                        <li>Automatic network switching</li>
+                        <li>Balance display</li>
+                        <li>Network status indicator</li>
+                        <li>Error handling</li>
+                    </ul>
+
+                    <h2 id="doc1-testing">🧪 Testing Guide</h2>
+                    <h3>1. Access Testnet Guide</h3>
+                    <p>Navigate to: <code>http://localhost:5173/testnet-guide</code></p>
+                    <p>This page provides:</p>
+                    <ul>
+                        <li>Complete setup tutorial</li>
+                        <li>Network configuration details</li>
+                        <li>Test POL faucet links</li>
+                        <li>FAQ section</li>
+                    </ul>
+
+                    <h3>2. Test Wallet Connection</h3>
+                    <ol>
+                        <li>Click "Connect MetaMask" button</li>
+                        <li>Approve connection in MetaMask popup</li>
+                        <li>Verify address displays correctly</li>
+                        <li>Check POL balance shows</li>
+                    </ol>
+
+                    <h3>3. Test Network Switching</h3>
+                    <ol>
+                        <li>If on wrong network, amber "Switch Network" button appears</li>
+                        <li>Click to switch to Polygon Amoy</li>
+                        <li>MetaMask will prompt for approval</li>
+                        <li>Page reloads automatically on success</li>
+                    </ol>
+
+                    <h2 id="doc1-troubleshooting">🔧 Troubleshooting</h2>
+                    <h3>MetaMask Not Detected</h3>
+                    <p><strong>Error:</strong> "MetaMask not installed"</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ol>
+                        <li>Install MetaMask from https://metamask.io</li>
+                        <li>Refresh the page</li>
+                        <li>Check browser console for errors</li>
+                        <li>Try a different browser</li>
+                    </ol>
+
+                    <h3>Wrong Network</h3>
+                    <p><strong>Error:</strong> "Wrong network. Please switch to Polygon Amoy Testnet."</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ol>
+                        <li>Click "Switch Network" button</li>
+                        <li>Approve in MetaMask</li>
+                        <li>If fails, manually add network (see Network Configuration)</li>
+                    </ol>
+
+                    <h3>Transaction Fails</h3>
+                    <p><strong>Error:</strong> "Transaction rejected" or "Insufficient balance"</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ol>
+                        <li>Ensure you have test POL for gas fees</li>
+                        <li>Check you're on Polygon Amoy network</li>
+                        <li>Verify contract addresses are correct</li>
+                        <li>Check Polygonscan for transaction details</li>
+                    </ol>
+
+                    <h2 id="doc1-structure">📁 File Structure</h2>
+                    <div class="diagram">frontend/src/
+├── config/
+│   ├── index.ts
+│   └── web3.ts                          # Web3 configuration
+│
+├── MVP/
+│   ├── components/
+│   │   ├── index.ts
+│   │   └── WalletConnect.tsx            # MetaMask connection UI
+│   │
+│   ├── hooks/
+│   │   ├── index.ts                     # Updated exports
+│   │   └── useWallet.ts                 # Wallet connection hook
+│   │
+│   └── pages/
+│       ├── TestnetGuide.tsx             # User guide page
+│       └── ...
+│
+└── App.tsx                              # Routes updated</div>
+
+                    <h2>📝 Contract Deployment Checklist</h2>
+                    <ol>
+                        <li><strong>Deploy to Polygon Amoy:</strong>
+                            <pre><code>npx hardhat run scripts/deploy.ts --network polygonAmoy</code></pre>
+                        </li>
+                        <li><strong>Update Contract Addresses:</strong>
+                            <ul>
+                                <li>Edit <code>frontend/src/config/web3.ts</code></li>
+                                <li>Replace placeholder addresses with deployed addresses</li>
+                            </ul>
+                        </li>
+                        <li><strong>Verify on Polygonscan:</strong>
+                            <pre><code>npx hardhat verify --network polygonAmoy &lt;CONTRACT_ADDRESS&gt;</code></pre>
+                        </li>
+                        <li><strong>Test Integration:</strong>
+                            <ul>
+                                <li>Connect wallet</li>
+                                <li>Test each contract function</li>
+                                <li>Verify transactions on Polygonscan</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h2>🔐 Security Best Practices</h2>
+                    <h3>For Users:</h3>
+                    <ul>
+                        <li>✅ Never share seed phrase</li>
+                        <li>✅ Only download MetaMask from official site</li>
+                        <li>✅ Verify URLs before connecting</li>
+                        <li>✅ Use hardware wallet for large amounts (production)</li>
+                        <li>✅ Enable MetaMask phishing detection</li>
+                    </ul>
+
+                    <h2>📞 Support & Resources</h2>
+                    <p><strong>Documentation:</strong></p>
+                    <ul>
+                        <li><strong>MetaMask Docs:</strong> https://docs.metamask.io/</li>
+                        <li><strong>Polygon Docs:</strong> https://docs.polygon.technology/</li>
+                        <li><strong>Ethers.js:</strong> https://docs.ethers.org/</li>
+                    </ul>
+
+                    <div class="callout warning">
+                        <div class="callout-title">⚠️ Disclaimer</div>
+                        <p><strong>THIS IS A TESTNET DEPLOYMENT</strong></p>
+                        <ul>
+                            <li>No real money is involved</li>
+                            <li>All tokens are test tokens with no value</li>
+                            <li>For testing and development purposes only</li>
+                            <li>Production deployment will use real stablecoins and bank integrations</li>
+                        </ul>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                        <strong>Last Updated:</strong> March 24, 2026 | <strong>Version:</strong> 2.0.0-mvp | <strong>Network:</strong> Polygon Amoy Testnet (80002)
+                    </p>
+                </div>
+            </section>
+
+            <!-- Document 2: MVP Testnet Guide -->
+            <section id="doc2" class="doc-section">
+                <div class="doc-header">
+                    <h2>📘 MVP Testnet & MetaMask Complete Guide</h2>
+                    <div class="doc-meta">
+                        <span><strong>Author:</strong> Aziz Da Silva - Lead Architect</span>
+                        <span><strong>Version:</strong> 1.0</span>
+                        <span><strong>Date:</strong> March 22, 2026</span>
+                    </div>
+                    <span class="status-badge success">🚀 MVP Testnet Deployment</span>
+                </div>
+
+                <div id="doc2-content">
+                    <h2 id="doc2-toc">Table of Contents</h2>
+                    <ol>
+                        <li><a href="#doc2-overview">Overview</a></li>
+                        <li><a href="#doc2-prerequisites">Prerequisites</a></li>
+                        <li><a href="#doc2-step1">Step 1: Install MetaMask Wallet</a></li>
+                        <li><a href="#doc2-step2">Step 2: Configure MetaMask for Polygon Amoy</a></li>
+                        <li><a href="#doc2-step3">Step 3: Get Testnet MATIC for Gas Fees</a></li>
+                        <li><a href="#doc2-step4">Step 4: Deploy Smart Contracts to Testnet</a></li>
+                        <li><a href="#doc2-step5">Step 5: Configure Frontend with Contract Addresses</a></li>
+                        <li><a href="#doc2-step6">Step 6: Mint Test EUROD Tokens</a></li>
+                        <li><a href="#doc2-step7">Step 7: Deposit EUROD and Receive uLP Tokens</a></li>
+                        <li><a href="#doc2-step8">Step 8: Create Industrial Financing</a></li>
+                        <li><a href="#doc2-step9">Step 9: Record Repayment and Distribute Yield</a></li>
+                        <li><a href="#doc2-step10">Step 10: Redeem uLP Tokens</a></li>
+                        <li><a href="#doc2-verification">Verification & Troubleshooting</a></li>
+                        <li><a href="#doc2-security">Security & Best Practices</a></li>
+                    </ol>
+
+                    <h2 id="doc2-overview">1. Overview</h2>
+                    <p>This guide provides <strong>step-by-step instructions</strong> for deploying and testing the Ujamaa DeFi Platform MVP on <strong>Polygon Amoy Testnet</strong> using <strong>MetaMask</strong>.</p>
+
+                    <h3>What You Will Accomplish</h3>
+                    <ul>
+                        <li>✅ Configure MetaMask for Polygon Amoy testnet</li>
+                        <li>✅ Obtain testnet MATIC for gas fees (FREE)</li>
+                        <li>✅ Deploy smart contracts to testnet</li>
+                        <li>✅ Mint test EUROD tokens (mock euro stablecoin)</li>
+                        <li>✅ Deposit EUROD and receive yield-bearing uLP tokens</li>
+                        <li>✅ Create industrial financing pools</li>
+                        <li>✅ Simulate loan repayments and yield distribution</li>
+                        <li>✅ Redeem uLP tokens for EUROD</li>
+                    </ul>
+
+                    <div class="callout warning">
+                        <div class="callout-title">⚠️ Important Disclaimers</div>
+                        <ul>
+                            <li><strong>TESTNET ONLY:</strong> This is a testnet deployment. <strong>NO REAL MONEY</strong> is involved.</li>
+                            <li><strong>TEST TOKENS:</strong> All tokens (MATIC, EUROD, uLP) are <strong>TEST TOKENS</strong> with no real value.</li>
+                            <li><strong>MVP:</strong> This is a Minimum Viable Product for demonstration and testing purposes.</li>
+                        </ul>
+                    </div>
+
+                    <h2 id="doc2-prerequisites">2. Prerequisites</h2>
+                    <h3>2.1 Software Requirements</h3>
+                    <table>
+                        <tr>
+                            <th>Software</th>
+                            <th>Version</th>
+                            <th>Purpose</th>
+                            <th>Download Link</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Node.js</strong></td>
+                            <td>18.x or higher</td>
+                            <td>Smart contract deployment</td>
+                            <td>https://nodejs.org/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Python</strong></td>
+                            <td>3.10 or higher</td>
+                            <td>Backend services</td>
+                            <td>https://python.org/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Git</strong></td>
+                            <td>Latest</td>
+                            <td>Version control</td>
+                            <td>https://git-scm.com/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MetaMask</strong></td>
+                            <td>Latest</td>
+                            <td>Crypto wallet</td>
+                            <td>https://metamask.io/</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foundry</strong></td>
+                            <td>Latest</td>
+                            <td>Smart contract testing</td>
+                            <td>https://getfoundry.sh/</td>
+                        </tr>
+                    </table>
+
+                    <h2 id="doc2-step1">3. Step 1: Install MetaMask Wallet</h2>
+                    <h3>3.1 Download MetaMask</h3>
+                    <p><strong>Option A: Browser Extension (Recommended)</strong></p>
+                    <ol>
+                        <li>Open your web browser (Chrome, Firefox, Brave, or Edge)</li>
+                        <li>Go to https://metamask.io/</li>
+                        <li>Click <strong>"Download"</strong> button</li>
+                        <li>Select your browser (e.g., "Install for Chrome")</li>
+                        <li>Click <strong>"Add to Chrome"</strong> (or equivalent for your browser)</li>
+                        <li>Click <strong>"Add extension"</strong> in the confirmation popup</li>
+                    </ol>
+
+                    <h3>3.2 Create a New Wallet</h3>
+                    <ol>
+                        <li>Click <strong>"Get Started"</strong> in the MetaMask welcome screen</li>
+                        <li>Click <strong>"Create a new wallet"</strong></li>
+                        <li><strong>Create a strong password</strong> (minimum 8 characters)</li>
+                        <li>Click <strong>"Create"</strong></li>
+                    </ol>
+
+                    <div class="callout danger">
+                        <div class="callout-title">⚠️ CRITICAL SECURITY STEP ⚠️</div>
+                        <p><strong>Secure Your Secret Recovery Phrase (SRP):</strong></p>
+                        <ol>
+                            <li>Click "Click to reveal secret recovery phrase"</li>
+                            <li><strong>Write down all 12 words</strong> in exact order on paper</li>
+                            <li><strong>DO NOT</strong> save digitally (no screenshots, no text files, no cloud storage)</li>
+                            <li><strong>DO NOT</strong> share with anyone</li>
+                            <li>This phrase controls access to ALL your testnet and mainnet assets</li>
+                        </ol>
+                    </div>
+
+                    <h2 id="doc2-step2">4. Step 2: Configure MetaMask for Polygon Amoy</h2>
+                    <h3>4.1 Add Polygon Amoy Network</h3>
+                    <p><strong>Method A: Manual Configuration (Recommended)</strong></p>
+                    <ol>
+                        <li>Open MetaMask</li>
+                        <li>Click the network dropdown at the top (shows "Ethereum Mainnet")</li>
+                        <li>Click <strong>"Add network"</strong></li>
+                        <li>Click <strong>"Add a network manually"</strong></li>
+                        <li>Fill in the following details:</li>
+                    </ol>
+
+                    <table>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Network Name</strong></td>
+                            <td><code>Polygon Amoy Testnet</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Native Currency</strong></td>
+                            <td><code>MATIC</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Currency Symbol</strong></td>
+                            <td><code>MATIC</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>RPC URL</strong></td>
+                            <td><code>https://rpc-amoy.polygon.technology/</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chain ID</strong></td>
+                            <td><code>80002</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Block Explorer URL</strong></td>
+                            <td><code>https://amoy.polygonscan.com/</code></td>
+                        </tr>
+                    </table>
+
+                    <h2 id="doc2-step3">5. Step 3: Get Testnet MATIC for Gas Fees</h2>
+                    <h3>5.1 Why You Need Testnet MATIC</h3>
+                    <ul>
+                        <li><strong>Gas Fees:</strong> Every blockchain transaction requires gas (paid in MATIC)</li>
+                        <li><strong>Testnet MATIC:</strong> FREE tokens for testing (no real value)</li>
+                        <li><strong>Daily Limit:</strong> ~100 MATIC per day per address from faucet</li>
+                    </ul>
+
+                    <h3>5.2 Get MATIC from Official Polygon Faucet</h3>
+                    <p><strong>Method A: Alchemy Faucet (Recommended)</strong></p>
+                    <ol>
+                        <li>Go to https://faucet.polygon.technology/</li>
+                        <li>Connect your MetaMask wallet (click "Connect")</li>
+                        <li>Select <strong>"Amoy"</strong> network</li>
+                        <li>Enter your wallet address</li>
+                        <li>Solve the CAPTCHA</li>
+                        <li>Click <strong>"Send MATIC"</strong></li>
+                        <li>Wait for confirmation (~30 seconds)</li>
+                        <li>Check your MetaMask balance - you should see <strong>~100 MATIC</strong></li>
+                    </ol>
+
+                    <h2 id="doc2-step4">6. Step 4: Deploy Smart Contracts to Testnet</h2>
+                    <h3>6.1 Prepare Deployment Environment</h3>
+                    <pre><code># Navigate to project directory
+cd "C:\Users\aziz_\PycharmProjects\2026\INTELLI_BRIDGE_ANALYTICS\UJAMAA DeFi PlatForm"
+
+# Install Foundry (if not already installed)
+# Windows PowerShell (as Administrator):
+powershell -ExecutionPolicy Bypass -Command "iex (New-Object Net.WebClient).String('https://raw.githubusercontent.com/foundry-rs/foundry/master/foundryup/install.ps1')"
+foundryup
+
+# Verify Foundry installation
+forge --version</code></pre>
+
+                    <h3>6.2 Configure Deployment Environment</h3>
+                    <pre><code># Create .env file for smart contracts
+cd contracts/MVP
+cat &gt; .env &lt;&lt; EOF
+# Deployer wallet private key (from MetaMask)
+DEPLOYER_PRIVATE_KEY=YOUR_PRIVATE_KEY_HERE
+
+# Polygon Amoy RPC URL
+RPC_URL=https://rpc-amoy.polygon.technology/
+
+# Polygonscan API key (for contract verification)
+POLYGONSCAN_API_KEY=YOUR_POLYGONSCAN_API_KEY
+
+# Network configuration
+CHAIN_ID=80002
+NETWORK_NAME=polygon-amoy
+EOF</code></pre>
+
+                    <div class="callout danger">
+                        <div class="callout-title">⚠️ SECURITY WARNING</div>
+                        <p>Never share your private key or commit it to git!</p>
+                    </div>
+
+                    <h2 id="doc2-step5">7. Step 5: Configure Frontend with Contract Addresses</h2>
+                    <h3>7.1 Update Frontend Environment</h3>
+                    <pre><code># Navigate to frontend directory
+cd frontend
+
+# Create .env.MVP file
+cat &gt; .env.MVP &lt;&lt; EOF
+# MVP Mode
+VITE_MVP_MODE=true
+VITE_MOCK_BANK=true
+VITE_MOCK_GDIZ=true
+VITE_MOCK_FIAT_RAMP=true
+
+# Network Configuration
+VITE_CHAIN_ID=80002
+VITE_NETWORK_NAME=Polygon Amoy Testnet
+VITE_RPC_URL=https://rpc-amoy.polygon.technology/
+VITE_BLOCK_EXPLORER=https://amoy.polygonscan.com/
+
+# Smart Contract Addresses (from deployment)
+VITE_ULP_TOKEN_ADDRESS=0x1234...5678
+VITE_LIQUIDITY_POOL_ADDRESS=0x2345...6789
+VITE_MOCK_ESCROW_ADDRESS=0x3456...7890
+VITE_MOCK_FIAT_RAMP_ADDRESS=0x4567...8901
+VITE_GUARANTEE_TOKEN_ADDRESS=0x5678...9012
+
+# Backend API
+VITE_API_URL=http://localhost:8000
+EOF</code></pre>
+
+                    <h2 id="doc2-step6">8. Step 6: Mint Test EUROD Tokens</h2>
+                    <h3>8.1 Access MockFiatRamp</h3>
+                    <p><strong>Option A: Via Frontend</strong></p>
+                    <ol>
+                        <li>Go to http://localhost:5173/</li>
+                        <li>Click <strong>"Dashboard"</strong> in the navigation</li>
+                        <li>Click <strong>"Faucet"</strong> or <strong>"Get Test Tokens"</strong></li>
+                        <li>Enter amount of EUROD to mint (e.g., <code>1000000</code> for 1M EUROD)</li>
+                        <li>Click <strong>"Mint Test EUROD"</strong></li>
+                        <li>Approve the transaction in MetaMask</li>
+                        <li>Wait for confirmation (~15 seconds)</li>
+                    </ol>
+
+                    <h2 id="doc2-step7">9. Step 7: Deposit EUROD and Receive uLP Tokens</h2>
+                    <h3>9.1 Understanding the Deposit Flow</h3>
+                    <div class="diagram">User EUROD Balance  →  Deposit to uLPToken  →  Receive uLP Shares
+      100,000                    ↓                    100,000
+                                 ↓
+                    Pool Value Increases
+                    NAV per Share = 1.00 (initial)</div>
+
+                    <h2 id="doc2-step8">10. Step 8: Create Industrial Financing</h2>
+                    <h3>10.1 Understanding Industrial Financing</h3>
+                    <p>The LiquidityPool contract allows you to create financings for industrial companies:</p>
+                    <div class="diagram">Liquidity Pool  →  Fund Industrial Company  →  Receive Repayment + Interest
+     50,000 EUROD              ↓                    55,000 EUROD
+                               ↓
+                    Yield Distributed to uLP Holders
+                    NAV per Share Increases</div>
+
+                    <h2 id="doc2-step9">11. Step 9: Record Repayment and Distribute Yield</h2>
+                    <h3>11.1 Simulate Industrial Repayment</h3>
+                    <p><strong>Total Repayment = Principal + Interest</strong></p>
+                    <ul>
+                        <li>Principal: 50,000 EUROD</li>
+                        <li>Interest: 5,000 EUROD (10% of 50,000)</li>
+                        <li><strong>Total:</strong> 55,000 EUROD</li>
+                    </ul>
+
+                    <h2 id="doc2-step10">12. Step 10: Redeem uLP Tokens</h2>
+                    <h3>12.1 Understanding Redemption</h3>
+                    <div class="diagram">uLP Tokens  →  Redeem from uLPToken  →  Receive EUROD (at current NAV)
+  100,000    ↓
+             ↓
+  Pool Value Decreases
+  uLP Supply Decreases</div>
+
+                    <h2 id="doc2-verification">13. Verification & Troubleshooting</h2>
+                    <h3>13.1 Verification Checklist</h3>
+                    <ul>
+                        <li>☐ MetaMask configured for Polygon Amoy (Chain ID: 80002)</li>
+                        <li>☐ Testnet MATIC balance &gt; 0</li>
+                        <li>☐ Smart contracts deployed and verified on Polygonscan</li>
+                        <li>☐ Frontend connected to MetaMask</li>
+                        <li>☐ EUROD tokens minted (balance &gt; 0)</li>
+                        <li>☐ uLP tokens received from deposit</li>
+                        <li>☐ Industrial financing created</li>
+                        <li>☐ Repayment recorded</li>
+                        <li>☐ NAV per share increased (showing yield)</li>
+                        <li>☐ uLP tokens redeemed for EUROD</li>
+                    </ul>
+
+                    <h2 id="doc2-security">14. Security & Best Practices</h2>
+                    <h3>14.1 Security Best Practices</h3>
+                    <p><strong>Private Key Security:</strong></p>
+                    <ul>
+                        <li>⚠️ <strong>NEVER</strong> share your private key with anyone</li>
+                        <li>⚠️ <strong>NEVER</strong> commit private key to git</li>
+                        <li>⚠️ <strong>NEVER</strong> use same wallet for testnet and mainnet</li>
+                        <li>✅ Use environment variables for private keys</li>
+                        <li>✅ Use separate wallets for deployment and testing</li>
+                    </ul>
+
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                        <strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> March 22, 2026 | <strong>Maintained By:</strong> Ujamaa DeFi Platform Development Team
+                    </p>
+                </div>
+            </section>
+
+            <!-- Document 3: Smart Contract Integration Guide -->
+            <section id="doc3" class="doc-section">
+                <div class="doc-header">
+                    <h2>🔗 Smart Contract Integration Guide</h2>
+                    <div class="doc-meta">
+                        <span><strong>Author:</strong> Aziz Da Silva - Lead Architect</span>
+                        <span><strong>Version:</strong> 1.0</span>
+                        <span><strong>Date:</strong> March 9, 2026</span>
+                    </div>
+                    <span class="status-badge warning">Connecting Smart Contracts to Backend & Frontend</span>
+                </div>
+
+                <div id="doc3-content">
+                    <h2 id="doc3-toc">Table of Contents</h2>
+                    <ol>
+                        <li><a href="#doc3-architecture">Architecture Overview</a></li>
+                        <li><a href="#doc3-contracts">Smart Contracts (Week 2)</a></li>
+                        <li><a href="#doc3-backend">Backend Integration</a></li>
+                        <li><a href="#doc3-frontend">Frontend Integration</a></li>
+                        <li><a href="#doc3-dataflow">Data Flow Examples</a></li>
+                        <li><a href="#doc3-security">Security Considerations</a></li>
+                    </ol>
+
+                    <h2 id="doc3-architecture">1. Architecture Overview</h2>
+                    <h3>1.1 Three-Layer Architecture</h3>
+                    <div class="diagram">┌─────────────────────────────────────────────────────────────────┐
+│                    FRONTEND (React + TypeScript)                  │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │  wagmi/viem     │  │  React Query    │  │  Axios HTTP     │ │
+│  │  (Direct SC)    │  │  (State Mgmt)   │  │  (Backend API)  │ │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘ │
+│           │                     │                     │          │
+│           │ Web3 Calls          │ State Sync          │ REST API │
+│           │ (Read/Write)        │ (Polling)           │ (CRUD)   │
+└───────────┼─────────────────────┼─────────────────────┼──────────┘
+            │                     │                     │
+            ▼                     ▼                     ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    BACKEND (FastAPI + Python)                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │  Web3.py        │  │  PostgreSQL     │  │  Business Logic │ │
+│  │  (SC Listener)  │  │  (Data Store)   │  │  (Validation)   │ │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘ │
+│           │                     │                     │          │
+│           │ Blockchain Events   │ Persistent Data     │ API Endpoints
+│           │ Indexing            │ + Indexing          │ + Auth   │
+└───────────┼─────────────────────┼─────────────────────┼──────────┘
+            │                     │                     │
+            ▼                     ▼                     ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                 BLOCKCHAIN LAYER (Polygon Amoy)                   │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │  UjamaaToken    │  │ IdentityReg.    │  │ ComplianceMod.  │ │
+│  │  (ERC-3643)     │  │  (KYC Status)   │  │  (Rules)        │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
+│  ┌─────────────────┐                                            │
+│  │  AssetProof     │                                            │
+│  │  (Notarization) │                                            │
+│  └─────────────────┘                                            │
+└─────────────────────────────────────────────────────────────────┘</div>
+
+                    <h3>1.2 Connection Strategies</h3>
+                    <table>
+                        <tr>
+                            <th>Strategy</th>
+                            <th>Use Case</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Direct Web3</strong></td>
+                            <td>Wallet connection, transactions</td>
+                            <td>Frontend → Contract (mint, transfer)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Backend API</strong></td>
+                            <td>Data queries, business logic</td>
+                            <td>Frontend → Backend → DB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hybrid</strong></td>
+                            <td>Complex flows</td>
+                            <td>Frontend → Backend → Contract → Frontend</td>
+                        </tr>
+                    </table>
+
+                    <h2 id="doc3-contracts">2. Smart Contracts (Week 2)</h2>
+                    <h3>2.1 Contract Addresses (After Deployment)</h3>
+                    <pre><code>// frontend/src/web3/addresses.ts
+export const CONTRACT_ADDRESSES = {
+  UjamaaToken: '0x...',           // Deployed Week 2 Day 5
+  IdentityRegistry: '0x...',       // Deployed Week 2 Day 5
+  ComplianceModule: '0x...',       // Deployed Week 2 Day 5
+  AssetProof: '0x...',             // Deployed Week 2 Day 5
+} as const;
+
+export const CHAIN_ID = 80002; // Polygon Amoy</code></pre>
+
+                    <h3>2.2 Key Contract Functions</h3>
+                    <h4>UjamaaToken (ERC-3643)</h4>
+                    <pre><code>// Read functions (free, no gas)
+function balanceOf(address account) view returns (uint256)
+function totalSupply() view returns (uint256)
+function getNavPerShare() view returns (uint256)
+
+// Write functions (require gas)
+function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE)
+function burn(uint256 amount) external
+function transfer(address to, uint256 amount) external override</code></pre>
+
+                    <h2 id="doc3-backend">3. Backend Integration</h2>
+                    <h3>3.1 Backend Setup</h3>
+                    <h4>Install Dependencies</h4>
+                    <pre><code># backend/requirements.txt
+web3>=6.0.0
+eth-ape>=0.7.0
+pydantic>=2.0.0
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+asyncpg>=0.29.0</code></pre>
+
+                    <h4>Environment Variables</h4>
+                    <pre><code># backend/.env
+# Blockchain
+POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+POLYGON_CHAIN_ID=80002
+
+# Contract Addresses (from Week 2 deployment)
+UJAMAA_TOKEN_ADDRESS=0x...
+IDENTITY_REGISTRY_ADDRESS=0x...
+COMPLIANCE_MODULE_ADDRESS=0x...
+ASSET_PROOF_ADDRESS=0x...
+
+# Admin
+ADMIN_PRIVATE_KEY=0x...  # Store in secrets manager!
+ADMIN_WALLET_ADDRESS=0x...</code></pre>
+
+                    <h2 id="doc3-frontend">4. Frontend Integration</h2>
+                    <h3>4.1 Web3 Configuration</h3>
+                    <pre><code>// frontend/src/web3/config.ts
+import { configureChains, createConfig } from 'wagmi';
+import { polygonAmoy } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+
+export const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [polygonAmoy],
+  [publicProvider()]
+);
+
+export const config = createConfig({
+  autoConnect: true,
+  publicClient,
+  chains,
+});</code></pre>
+
+                    <h2 id="doc3-dataflow">5. Data Flow Examples</h2>
+                    <h3>5.1 Investment Flow (Complete)</h3>
+                    <div class="diagram">┌─────────────────────────────────────────────────────────────────┐
+│                         INVESTMENT FLOW                           │
+│                                                                   │
+│  1. User connects wallet (MetaMask)                               │
+│     Frontend: useAccount() → address                              │
+│                                                                   │
+│  2. User clicks "Invest" ($1000)                                  │
+│     Frontend: InvestForm.tsx                                      │
+│                                                                   │
+│  3. Check KYC on-chain                                            │
+│     Frontend → Blockchain: isVerified(address)                    │
+│     Result: true (KYC Level 2)                                    │
+│                                                                   │
+│  4. Mint tokens (backend has MINTER_ROLE)                         │
+│     Frontend → Backend API: POST /api/v1/investments              │
+│     Backend → Blockchain: token.mint(address, 1000 * 1e18)        │
+│     Blockchain: Transaction submitted (tx_hash: 0x...)            │
+│     Backend → PostgreSQL: INSERT investment record                │
+│     Backend → Frontend: { success: true, tx_hash: "0x..." }       │
+│                                                                   │
+│  5. Wait for confirmation                                         │
+│     Frontend: useWaitForTransaction({ hash })                     │
+│     Blockchain: Block confirmed (~2-5 seconds on Amoy)            │
+│                                                                   │
+│  6. Update UI                                                     │
+│     Frontend: Query invalidation → refresh balance                │
+│     Frontend: Show success message with Polygonscan link          │
+│                                                                   │
+│  7. User sees tokens in dashboard                                 │
+│     Frontend → Blockchain: token.balanceOf(address)               │
+│     Display: 1000 tokens                                          │
+└─────────────────────────────────────────────────────────────────┘</div>
+
+                    <h2 id="doc3-security">6. Security Considerations</h2>
+                    <h3>6.1 Private Key Management</h3>
+                    <p><strong>NEVER store private keys in:</strong></p>
+                    <ul>
+                        <li>❌ Frontend code</li>
+                        <li>❌ Environment variables (in production)</li>
+                        <li>❌ Database</li>
+                        <li>❌ Git repository</li>
+                    </ul>
+
+                    <p><strong>DO store private keys in:</strong></p>
+                    <ul>
+                        <li>✅ HashiCorp Vault</li>
+                        <li>✅ AWS Secrets Manager</li>
+                        <li>✅ Azure Key Vault</li>
+                        <li>✅ GCP Secret Manager</li>
+                    </ul>
+
+                    <h3>6.2 Transaction Signing</h3>
+                    <p><strong>Backend Signing (for MINTER_ROLE):</strong></p>
+                    <pre><code># Use secure key management
+from azure.keyvault.keys import KeyClient
+from web3 import Account
+
+# Get key from vault (not environment!)
+vault_client = KeyClient(vault_url=os.getenv('VAULT_URL'))
+private_key = vault_client.get_secret('admin-signing-key')
+
+# Sign transaction
+signed_tx = w3.eth.account.sign_transaction(tx, private_key)</code></pre>
+
+                    <p><strong>Frontend Signing (user transactions):</strong></p>
+                    <pre><code>// Users sign with their own wallets (MetaMask)
+// Backend never sees user private keys
+const { write } = useContractWrite({
+  // wagmi handles signing via browser wallet
+});</code></pre>
+
+                    <h3>6.3 Access Control</h3>
+                    <table>
+                        <tr>
+                            <th>Function</th>
+                            <th>Role</th>
+                            <th>Who Has It</th>
+                        </tr>
+                        <tr>
+                            <td><code>mint()</code></td>
+                            <td>MINTER_ROLE</td>
+                            <td>Backend service</td>
+                        </tr>
+                        <tr>
+                            <td><code>verifyIdentity()</code></td>
+                            <td>ADMIN_ROLE</td>
+                            <td>Admin users</td>
+                        </tr>
+                        <tr>
+                            <td><code>notarize()</code></td>
+                            <td>ORIGINATOR_ROLE</td>
+                            <td>Industrial partners</td>
+                        </tr>
+                        <tr>
+                            <td><code>transfer()</code></td>
+                            <td>Any verified user</td>
+                            <td>Investors</td>
+                        </tr>
+                    </table>
+
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                        <strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> March 9, 2026 | <strong>Next Review:</strong> After Week 2 deployment
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Ujamaa DeFi Platform - Complete Technical Documentation</p>
+        <p>Generated: March 25, 2026 | Network: Polygon Amoy Testnet (Chain ID: 80002)</p>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons and sections
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.doc-section').forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding section
+                this.classList.add('active');
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+
+                // Update TOC
+                updateTOC(sectionId);
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Update Table of Contents based on active document
+        function updateTOC(docId) {
+            const tocContainer = document.getElementById('toc-container');
+            const activeDoc = document.getElementById(docId);
+            const links = activeDoc.querySelectorAll('#doc1-toc, #doc2-toc, #doc3-toc')[0];
+
+            if (links) {
+                tocContainer.innerHTML = '<h3>📑 Table of Contents</h3>';
+                const tocList = document.createElement('ul');
+                tocList.className = 'toc-list';
+
+                Array.from(links.querySelectorAll('li')).forEach((item, index) => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = item.querySelector('a').getAttribute('href');
+                    a.textContent = item.querySelector('a').textContent;
+                    a.className = 'toc-link';
+
+                    // Smooth scroll within document
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            const offset = 120;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // Update active state
+                            document.querySelectorAll('.toc-list a').forEach(l => l.classList.remove('active'));
+                            this.classList.add('active');
+                        }
+                    });
+
+                    li.appendChild(a);
+                    tocList.appendChild(li);
+                });
+
+                tocContainer.appendChild(tocList);
+            }
+        }
+
+        // Initialize TOC for first document
+        updateTOC('doc1');
+
+        // Add scroll spy to highlight active TOC item
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('h2[id^="doc"]');
+            const scrollPosition = window.scrollY + 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.toc-list a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

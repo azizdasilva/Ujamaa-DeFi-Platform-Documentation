@@ -63,7 +63,7 @@ const SubscriptionForm: React.FC = () => {
                 </div>
               </div>
               <div className="border-t border-gray-200 pt-6">
-                <p className="text-sm text-gray-600 mb-2">Investment Amount (EURC)</p>
+                <p className="text-sm text-gray-600 mb-2">Investment Amount (EUROD)</p>
                 <div className="bg-[#F3F8FA] px-4 py-3 rounded-lg">
                   <p className="text-2xl font-bold text-[#023D7A]">€[Amount]</p>
                   <p className="text-xs text-gray-500 mt-1">Minimum: €100,000 (Institutional)</p>

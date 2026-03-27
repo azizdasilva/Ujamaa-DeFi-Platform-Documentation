@@ -666,17 +666,17 @@ This is a testnet deployment. No real funds are handled.
 - Clear banners on all pages<br />
 - Testnet notice in footer<br />
 - Mock data clearly labeled</p>
-<h3>2.5 FX Risk Mitigation (Ujamaa Euro (UJEUR)/EURR Strategy) 🆕</h3>
-<p><strong>Primary Stablecoin:</strong> Ujamaa Euro (UJEUR) (euro-backed, 1 Ujamaa Euro (UJEUR) = €1.00)</p>
-<p><strong>Why Ujamaa Euro (UJEUR) (Not USDC/USDT)?</strong><br />
+<h3>2.5 FX Risk Mitigation (Ondo EUROD (EUROD)/EURR Strategy) 🆕</h3>
+<p><strong>Primary Stablecoin:</strong> Ondo EUROD (EUROD) (euro-backed, 1 Ondo EUROD (EUROD) = €1.00)</p>
+<p><strong>Why Ondo EUROD (EUROD) (Not USDC/USDT)?</strong><br />
 - ✅ <strong>EUR/FCFA Fixed Parity:</strong> 1 EUR = 655.957 XOF (fixed since 1994, BCEAO guarantee)<br />
-- ✅ <strong>Zero FX Risk:</strong> Ujamaa Euro (UJEUR) maintains 1:1 parity with FCFA (no fluctuation)<br />
+- ✅ <strong>Zero FX Risk:</strong> Ondo EUROD (EUROD) maintains 1:1 parity with FCFA (no fluctuation)<br />
 - ✅ <strong>Historical Stability:</strong> EUR/FCFA rate unchanged for 30+ years<br />
-- ✅ <strong>African Market Fit:</strong> Ujamaa Euro (UJEUR) aligns with UEMOA monetary zone (8 countries, 160M people)</p>
+- ✅ <strong>African Market Fit:</strong> Ondo EUROD (EUROD) aligns with UEMOA monetary zone (8 countries, 160M people)</p>
 <p><strong>Platform Risk Absorption:</strong><br />
 - <strong>2% transaction fee margin</strong> covers FX fluctuations<br />
 - Platform absorbs FX risk (no pass-through to investors)<br />
-- Investors receive Ujamaa Euro (UJEUR)-denominated returns (no FX exposure)</p>
+- Investors receive Ondo EUROD (EUROD)-denominated returns (no FX exposure)</p>
 <p><strong>Fee Structure (FX Risk Coverage):</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -688,22 +688,22 @@ This is a testnet deployment. No real funds are handled.
 </thead>
 <tbody>
 <tr>
-<td>Deposit (EUR → Ujamaa Euro (UJEUR))</td>
+<td>Deposit (EUR → Ondo EUROD (EUROD))</td>
 <td>0%</td>
 <td>No FX risk (1:1 parity)</td>
 </tr>
 <tr>
-<td>Investment (Ujamaa Euro (UJEUR) → FCFA)</td>
+<td>Investment (Ondo EUROD (EUROD) → FCFA)</td>
 <td>2%</td>
 <td>Covers EUR/FCFA conversion</td>
 </tr>
 <tr>
-<td>Repayment (FCFA → Ujamaa Euro (UJEUR))</td>
+<td>Repayment (FCFA → Ondo EUROD (EUROD))</td>
 <td>2%</td>
 <td>Covers FCFA/EUR conversion</td>
 </tr>
 <tr>
-<td>Redemption (Ujamaa Euro (UJEUR) → EUR)</td>
+<td>Redemption (Ondo EUROD (EUROD) → EUR)</td>
 <td>0%</td>
 <td>No FX risk (1:1 parity)</td>
 </tr>
@@ -724,19 +724,19 @@ function invest(uint256 amount) external {
     uint256 netAmount = amount - fxFee;
 
     // Fee → treasury (FX risk buffer)
-    Ujamaa Euro (UJEUR).transferFrom(msg.sender, treasury, fxFee);
+    Ondo EUROD (EUROD).transferFrom(msg.sender, treasury, fxFee);
 
     // Net amount → pool
-    Ujamaa Euro (UJEUR).transferFrom(msg.sender, pool, netAmount);
+    Ondo EUROD (EUROD).transferFrom(msg.sender, pool, netAmount);
 }
 </code></div>
 <p><strong>MVP Testnet Implementation:</strong><br />
-- Use test Ujamaa Euro (UJEUR) (mock stablecoin)<br />
+- Use test Ondo EUROD (EUROD) (mock stablecoin)<br />
 - Simulate 2% FX fee collection<br />
 - Track FX risk buffer in treasury<br />
-- Test EUR → Ujamaa Euro (UJEUR) → FCFA → Ujamaa Euro (UJEUR) → EUR flow</p>
+- Test EUR → Ondo EUROD (EUROD) → FCFA → Ondo EUROD (EUROD) → EUR flow</p>
 <p><strong>Production Readiness:</strong><br />
-- Circle Ujamaa Euro (UJEUR) integration (mainnet)<br />
+- Ondo Finance Ondo EUROD (EUROD) integration (mainnet)<br />
 - EURR partnership (African markets)<br />
 - Monthly FX exposure reporting<br />
 - Quarterly hedge adjustment</p>
@@ -893,15 +893,15 @@ export const MVP_CONFIG = {
     LiquidityPool: '',    // Set after deployment
     MockEscrow: '',       // Set after deployment
     MockFiatRamp: '',     // Set after deployment
-    Ujamaa Euro (UJEUR): '',             // Testnet Ujamaa Euro (UJEUR) address
+    Ondo EUROD (EUROD): '',             // Testnet Ondo EUROD (EUROD) address
   },
 
   /** MVP limits */
   LIMITS: {
-    MAX_DEPOSIT: 1_000_000,      // 1M Ujamaa Euro (UJEUR) (testnet)
-    MIN_DEPOSIT: 1_000,          // 1K Ujamaa Euro (UJEUR)
+    MAX_DEPOSIT: 1_000_000,      // 1M Ondo EUROD (EUROD) (testnet)
+    MIN_DEPOSIT: 1_000,          // 1K Ondo EUROD (EUROD)
     MAX_REDEEM_PERCENT: 100,     // 100% can redeem
-    DAILY_WITHDRAWAL: 500_000,   // 500K Ujamaa Euro (UJEUR) daily limit
+    DAILY_WITHDRAWAL: 500_000,   // 500K Ondo EUROD (EUROD) daily limit
   },
 
   /** Disclaimers */
@@ -985,12 +985,12 @@ class MVPConfig:
     CONTRACT_ADDRESSES: Dict[str, str] = None
 
     # MVP limits (18 decimals)
-    MAX_DEPOSIT: int = 1_000_000 * 10**18  # 1M Ujamaa Euro (UJEUR)
-    MIN_DEPOSIT: int = 1_000 * 10**18      # 1K Ujamaa Euro (UJEUR)
-    DAILY_WITHDRAWAL: int = 500_000 * 10**18  # 500K Ujamaa Euro (UJEUR)
+    MAX_DEPOSIT: int = 1_000_000 * 10**18  # 1M Ondo EUROD (EUROD)
+    MIN_DEPOSIT: int = 1_000 * 10**18      # 1K Ondo EUROD (EUROD)
+    DAILY_WITHDRAWAL: int = 500_000 * 10**18  # 500K Ondo EUROD (EUROD)
 
     # Mock initial balance (for demo accounts)
-    MOCK_INITIAL_BALANCE: int = 10_000_000 * 10**18  # 10M Ujamaa Euro (UJEUR)
+    MOCK_INITIAL_BALANCE: int = 10_000_000 * 10**18  # 10M Ondo EUROD (EUROD)
 
     # Disclaimers
     DISCLAIMER_HEADER: str = &quot;🚀 MVP: Institutional Architecture - Testnet Release&quot;
@@ -1081,7 +1081,7 @@ MOCK_FIAT_RAMP_ADDRESS=
 EURC_ADDRESS=
 
 # Mock Service Configuration
-MOCK_BANK_INITIAL_BALANCE=10000000000000000000000000  # 10M test Ujamaa Euro (UJEUR) (18 decimals)
+MOCK_BANK_INITIAL_BALANCE=10000000000000000000000000  # 10M test Ondo EUROD (EUROD) (18 decimals)
 MOCK_ESCROW_ENABLED=true
 MOCK_GDIZ_ENABLED=true
 MOCK_FIAT_RAMP_ENABLED=true
@@ -1131,13 +1131,13 @@ LOG_FILE=logs/MVP.log
 - NAV calculation on-chain</p>
 <p><strong>Interface:</strong></p>
 <div class="docs-pre"><code>interface IULPToken {
-    // Deposit Ujamaa Euro (UJEUR) → mint uLP
+    // Deposit Ondo EUROD (EUROD) → mint uLP
     function deposit(uint256 eurcAmount) external returns (uint256 ulpAmount);
 
-    // Redeem uLP → receive Ujamaa Euro (UJEUR)
+    // Redeem uLP → receive Ondo EUROD (EUROD)
     function redeem(uint256 ulpAmount) external returns (uint256 eurcAmount);
 
-    // Get current value in Ujamaa Euro (UJEUR)
+    // Get current value in Ondo EUROD (EUROD)
     function getValue(address account) external view returns (uint256);
 
     // Get NAV per Ujamaa Pool Token (uLP)
@@ -2074,12 +2074,12 @@ error DailyLimitExceeded();
 <strong>Priority:</strong> P1 (High)</p>
 <p><strong>Key Features:</strong><br />
 - Simulated fiat on/off ramp<br />
-- Mint test Ujamaa Euro (UJEUR)<br />
-- Burn test Ujamaa Euro (UJEUR)<br />
+- Mint test Ondo EUROD (EUROD)<br />
+- Burn test Ondo EUROD (EUROD)<br />
 - Clear disclaimers</p>
 <p><strong>Tests:</strong><br />
-- [ ] Test on-ramp (EUR → Ujamaa Euro (UJEUR))<br />
-- [ ] Test off-ramp (Ujamaa Euro (UJEUR) → EUR)<br />
+- [ ] Test on-ramp (EUR → Ondo EUROD (EUROD))<br />
+- [ ] Test off-ramp (Ondo EUROD (EUROD) → EUR)<br />
 - [ ] Test mint/burn</p>
 <h3>4.5 Deployment Script</h3>
 <p><strong>File:</strong> <code>contracts/MVP/scripts/deploy_MVP.ts</code><br />
@@ -3693,7 +3693,7 @@ const HeavyChart = lazy(() =&gt; import('./components/HeavyChart'));
 <p><strong>Multi-Step Flow:</strong><br />
 - [ ] Step 1: Amount Selection (slider + input, projected uLP)<br />
 - [ ] Step 2: Review Terms (lock-up, APY, fees)<br />
-- [ ] Step 3: Funding Source (Ujamaa Euro (UJEUR) wallet or bank escrow)<br />
+- [ ] Step 3: Funding Source (Ondo EUROD (EUROD) wallet or bank escrow)<br />
 - [ ] Step 4: Confirmation (summary, sign transaction)<br />
 - [ ] Step 5: Progress Tracking (timeline, block confirmations)</p>
 <p><strong>Reference:</strong> Frontend Spec Section 5.4 (Subscribe Flow)</p>
@@ -4562,7 +4562,7 @@ export const YieldVisualizer: React.FC = () =&gt; {
         &lt;/AreaChart&gt;
       &lt;/ResponsiveContainer&gt;
       &lt;div className=&quot;mt-4 text-center&quot;&gt;
-        &lt;p className=&quot;text-3xl font-bold&quot;&gt;{nav.toFixed(4)} Ujamaa Euro (UJEUR)&lt;/p&gt;
+        &lt;p className=&quot;text-3xl font-bold&quot;&gt;{nav.toFixed(4)} Ondo EUROD (EUROD)&lt;/p&gt;
         &lt;p className=&quot;text-sm text-gray-500&quot;&gt;NAV per uLP after {days} days&lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4825,11 +4825,11 @@ tokenizing real-world assets (RWA) on the blockchain.
 
 ## How It Works
 
-1. Investors deposit Ujamaa Euro (UJEUR) → receive uLP tokens
+1. Investors deposit Ondo EUROD (EUROD) → receive uLP tokens
 2. Pool deploys to industrial financings (GDIZ partners)
 3. Industrials repay with interest
 4. Yield accrues to uLP holders (NAV increases)
-5. Investors redeem uLP → receive Ujamaa Euro (UJEUR) + yield
+5. Investors redeem uLP → receive Ondo EUROD (EUROD) + yield
 
 ## Risk Disclosure
 
@@ -4882,10 +4882,10 @@ Mainnet deployment pending regulatory approval.
 <p><strong>Test Flows:</strong></p>
 <p><strong>Flow 1: Deposit Flow</strong></p>
 <div class="docs-pre"><code>1. Connect wallet (MetaMask/Rainbow)
-2. Get testnet Ujamaa Euro (UJEUR) (faucet or MockFiatRamp)
+2. Get testnet Ondo EUROD (EUROD) (faucet or MockFiatRamp)
 3. Navigate to Deposit page
-4. Enter deposit amount (e.g., 10,000 Ujamaa Euro (UJEUR))
-5. Approve Ujamaa Euro (UJEUR) spend
+4. Enter deposit amount (e.g., 10,000 Ondo EUROD (EUROD))
+5. Approve Ondo EUROD (EUROD) spend
 6. Confirm deposit transaction
 7. Wait for confirmation
 8. Verify uLP balance increased
@@ -4904,7 +4904,7 @@ Mainnet deployment pending regulatory approval.
 2. Enter redemption amount
 3. Confirm redemption transaction
 4. Burn uLP tokens
-5. Receive Ujamaa Euro (UJEUR) (principal + yield)
+5. Receive Ondo EUROD (EUROD) (principal + yield)
 6. Verify profit realized
 </code></div>
 <h3>7.2 Security Review</h3>

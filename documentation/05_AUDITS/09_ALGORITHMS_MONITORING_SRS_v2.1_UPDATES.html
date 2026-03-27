@@ -146,7 +146,7 @@ def calculate_nav_per_share(
     Calculate NAV per uLP share with 18 decimal precision.
 
     Args:
-        total_pool_value: Total value of pool assets in UJEUR (18 decimals)
+        total_pool_value: Total value of pool assets in EUROD (18 decimals)
         total_shares: Total uLP shares outstanding (18 decimals)
 
     Returns:
@@ -185,11 +185,11 @@ def calculate_daily_yield(
     Calculate daily yield accrual.
 
     Args:
-        principal: Total pool value in UJEUR
+        principal: Total pool value in EUROD
         apr: Annual Percentage Rate (decimal)
 
     Returns:
-        Daily yield in UJEUR (2 decimals)
+        Daily yield in EUROD (2 decimals)
     &quot;&quot;&quot;
     daily_rate = apr / Decimal(&quot;365&quot;)
     daily_yield = principal * daily_rate
@@ -215,14 +215,14 @@ def calculate_daily_yield(
 <div class="docs-pre"><code>from decimal import Decimal
 
 def calculate_ulp_minted(
-    deposit_amount: Decimal,  # In UJEUR (2 decimals)
+    deposit_amount: Decimal,  # In EUROD (2 decimals)
     nav_per_share: Decimal    # In EUR (18 decimals)
 ) -&gt; Decimal:
     &quot;&quot;&quot;
     Calculate uLP tokens to mint for deposit.
 
     Args:
-        deposit_amount: Amount of UJEUR to deposit (2 decimals)
+        deposit_amount: Amount of EUROD to deposit (2 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
@@ -243,10 +243,10 @@ def calculate_ulp_minted(
 </code></div>
 <p><strong>Complexity:</strong> O(1)<br />
 <strong>Precision:</strong> 18 decimals<br />
-<strong>Use Case:</strong> Investor deposits UJEUR → receives uLP</p>
+<strong>Use Case:</strong> Investor deposits EUROD → receives uLP</p>
 <hr />
 <h3>ALG-10-02-02: uLP Redemption Calculation</h3>
-<p><strong>Purpose:</strong> Calculate UJEUR received on redemption  </p>
+<p><strong>Purpose:</strong> Calculate EUROD received on redemption  </p>
 <p><strong>Formula:</strong></p>
 <div class="docs-pre"><code>redemption_value = (uLP_amount × NAV_per_share) / 1e18
 </code></div>
@@ -258,14 +258,14 @@ def calculate_redemption_value(
     nav_per_share: Decimal  # NAV per share (18 decimals)
 ) -&gt; Decimal:
     &quot;&quot;&quot;
-    Calculate UJEUR received on redemption.
+    Calculate EUROD received on redemption.
 
     Args:
         ulp_amount: Amount of uLP to redeem (18 decimals)
         nav_per_share: Current NAV per share (18 decimals)
 
     Returns:
-        UJEUR received (2 decimals)
+        EUROD received (2 decimals)
     &quot;&quot;&quot;
     redemption_wei = ulp_amount * nav_per_share
 
@@ -282,7 +282,7 @@ def calculate_redemption_value(
 </code></div>
 <p><strong>Complexity:</strong> O(1)<br />
 <strong>Precision:</strong> 2 decimals (euro cents)<br />
-<strong>Use Case:</strong> Investor redeems uLP → receives UJEUR + yield</p>
+<strong>Use Case:</strong> Investor redeems uLP → receives EUROD + yield</p>
 <hr />
 <h3>ALG-10-03-01: Pool Diversification Check</h3>
 <p><strong>Purpose:</strong> Verify pool meets diversification requirements  </p>
@@ -510,7 +510,7 @@ ulp_nav_per_share{pool_id=&quot;pool_industrie_001&quot;} 1.05234567
 # TYPE gauge
 ulp_total_shares{pool_id=&quot;pool_industrie_001&quot;} 10000000.00000000
 
-# HELP ulp_total_pool_value Total pool value in UJEUR
+# HELP ulp_total_pool_value Total pool value in EUROD
 # TYPE gauge
 ulp_total_pool_value{pool_id=&quot;pool_industrie_001&quot;} 10523456.70
 
@@ -519,7 +519,7 @@ ulp_total_pool_value{pool_id=&quot;pool_industrie_001&quot;} 10523456.70
 ulp_nav_last_update_timestamp 1711382400
 </code></div>
 <p><strong>Deposit/Redeem Metrics:</strong></p>
-<div class="docs-pre"><code># HELP ulp_deposit_total Total UJEUR deposited
+<div class="docs-pre"><code># HELP ulp_deposit_total Total EUROD deposited
 # TYPE counter
 ulp_deposit_total{pool_id=&quot;pool_industrie_001&quot;} 15000000.00
 
@@ -527,7 +527,7 @@ ulp_deposit_total{pool_id=&quot;pool_industrie_001&quot;} 15000000.00
 # TYPE counter
 ulp_deposit_count{pool_id=&quot;pool_industrie_001&quot;} 25
 
-# HELP ulp_redemption_total Total UJEUR redeemed
+# HELP ulp_redemption_total Total EUROD redeemed
 # TYPE counter
 ulp_redemption_total{pool_id=&quot;pool_industrie_001&quot;} 5000000.00
 
@@ -703,7 +703,7 @@ auth_jwt_validation_failed_total 78
 <p><strong>Vault Metrics:</strong></p>
 <div class="docs-pre"><code># HELP fireblocks_vault_balance Fireblocks vault balance
 # TYPE gauge
-fireblocks_vault_balance{asset=&quot;UJEUR&quot;,vault=&quot;platform_treasury&quot;} 5000000.00
+fireblocks_vault_balance{asset=&quot;EUROD&quot;,vault=&quot;platform_treasury&quot;} 5000000.00
 
 # HELP fireblocks_vault_asset_count Number of assets in vault
 # TYPE gauge
@@ -728,7 +728,7 @@ fireblocks_transaction_rejected_total 0
 
 # HELP fireblocks_transaction_value_total Total transaction value
 # TYPE counter
-fireblocks_transaction_value_total{asset=&quot;UJEUR&quot;} 8000000.00
+fireblocks_transaction_value_total{asset=&quot;EUROD&quot;} 8000000.00
 </code></div>
 <p><strong>Multisig Metrics:</strong></p>
 <div class="docs-pre"><code># HELP fireblocks_multisig_approvals_total Multisig approvals
@@ -910,7 +910,7 @@ groups:
 
       - alert: FireblocksVaultBalanceLow
         expr: |
-          fireblocks_vault_balance{asset=&quot;UJEUR&quot;} &lt; 1000000
+          fireblocks_vault_balance{asset=&quot;EUROD&quot;} &lt; 1000000
         for: 1h
         labels:
           severity: warning

@@ -352,18 +352,18 @@ contract uLPToken is ERC3643, UUPSUpgradeable {
     }
 
     /**
-     * @notice Deposit Ujamaa Euro (UJEUR) → mint uLP
-     * @param eurcAmount Amount of Ujamaa Euro (UJEUR) to deposit
+     * @notice Deposit Ondo EUROD (EUROD) → mint uLP
+     * @param eurcAmount Amount of Ondo EUROD (EUROD) to deposit
      * @return ulpAmount uLP tokens minted
      */
     function deposit(uint256 eurcAmount) external returns (uint256) {
         require(eurcAmount &gt; 0, &quot;Amount must be &gt; 0&quot;);
-        require(eurcAmount &lt;= 1_000_000e18, &quot;Exceeds MVP limit (1M Ujamaa Euro (UJEUR))&quot;);
+        require(eurcAmount &lt;= 1_000_000e18, &quot;Exceeds MVP limit (1M Ondo EUROD (EUROD))&quot;);
 
         uint256 navPerShare = getValuePerShare();
         uint256 ulpAmount = (eurcAmount * 1e18) / navPerShare;
 
-        // Transfer Ujamaa Euro (UJEUR) from investor to pool
+        // Transfer Ondo EUROD (EUROD) from investor to pool
         IERC20(eurcAddress).transferFrom(msg.sender, liquidityPool, eurcAmount);
 
         // Mint uLP to investor
@@ -375,9 +375,9 @@ contract uLPToken is ERC3643, UUPSUpgradeable {
     }
 
     /**
-     * @notice Redeem uLP → receive Ujamaa Euro (UJEUR)
+     * @notice Redeem uLP → receive Ondo EUROD (EUROD)
      * @param ulpAmount uLP tokens to burn
-     * @return eurcAmount Ujamaa Euro (UJEUR) received
+     * @return eurcAmount Ondo EUROD (EUROD) received
      */
     function redeem(uint256 ulpAmount) external returns (uint256) {
         require(ulpAmount &gt; 0, &quot;Amount must be &gt; 0&quot;);
@@ -389,7 +389,7 @@ contract uLPToken is ERC3643, UUPSUpgradeable {
         // Burn uLP tokens
         _burn(msg.sender, ulpAmount);
 
-        // Transfer Ujamaa Euro (UJEUR) from pool to investor
+        // Transfer Ondo EUROD (EUROD) from pool to investor
         IERC20(eurcAddress).transferFrom(liquidityPool, msg.sender, eurcAmount);
 
         emit Redeemed(msg.sender, ulpAmount, eurcAmount);
@@ -415,7 +415,7 @@ contract uLPToken is ERC3643, UUPSUpgradeable {
     /**
      * @notice Get current value of investor's holdings
      * @param account Investor address
-     * @return Value in Ujamaa Euro (UJEUR) (18 decimals)
+     * @return Value in Ondo EUROD (EUROD) (18 decimals)
      */
     function getValue(address account) external view returns (uint256) {
         uint256 balance = this.balanceOf(account);
@@ -426,7 +426,7 @@ contract uLPToken is ERC3643, UUPSUpgradeable {
 
     /**
      * @notice Add yield to pool (admin only)
-     * @param amount Yield amount in Ujamaa Euro (UJEUR)
+     * @param amount Yield amount in Ondo EUROD (EUROD)
      */
     function addYield(uint256 amount) external onlyRole(POOL_MANAGER_ROLE) {
         require(amount &gt; 0, &quot;Amount must be &gt; 0&quot;);
@@ -667,7 +667,7 @@ contract LiquidityPool {
             repaidAmount: 0
         }));
 
-        // Transfer Ujamaa Euro (UJEUR) to industrial
+        // Transfer Ondo EUROD (EUROD) to industrial
         IERC20(eurcAddress).transferFrom(address(this), industrial, amount);
 
         emit FinancingCreated(financingId, poolId, industrial, amount);
@@ -798,11 +798,11 @@ contract MockEscrow {
             )
         );
 
-        // Create account with initial balance (10M test Ujamaa Euro (UJEUR))
+        // Create account with initial balance (10M test Ondo EUROD (EUROD))
         accounts[accountId] = EscrowAccount({
             accountId: accountId,
             investor: investor,
-            balance: 10_000_000e18, // 10M test Ujamaa Euro (UJEUR)
+            balance: 10_000_000e18, // 10M test Ondo EUROD (EUROD)
             isActive: true,
             createdAt: block.timestamp,
             bankName: &quot;Mock Bank (MVP Testnet)&quot;
@@ -863,7 +863,7 @@ contract MockEscrow {
     /**
      * @notice Get account balance
      * @param accountId Account ID
-     * @return Balance in test Ujamaa Euro (UJEUR) (18 decimals)
+     * @return Balance in test Ondo EUROD (EUROD) (18 decimals)
      */
     function getBalance(string memory accountId) 
         external 
@@ -942,7 +942,7 @@ class MockBankService:
         Initialize mock bank.
 
         Args:
-            initial_balance: Starting balance for demo accounts (10M test Ujamaa Euro (UJEUR))
+            initial_balance: Starting balance for demo accounts (10M test Ondo EUROD (EUROD))
         &quot;&quot;&quot;
         self.accounts: Dict[str, dict] = {}
         self.transactions: List[dict] = []
@@ -1045,14 +1045,14 @@ class MockBankService:
 │  │ 2. Completes KYB verification (mock for MVP)                   │  │
 │  │ 3. MockEscrow.createEscrowAccount(investor)                      │  │
 │  │    → Account ID: MOCK-ESCROW-0x1234...-abc123                    │  │
-│  │    → Initial Balance: 10M test Ujamaa Euro (UJEUR)                              │  │
+│  │    → Initial Balance: 10M test Ondo EUROD (EUROD)                              │  │
 │  └──────────────────────────────────────────────────────────────────┘  │
 │                              │                                          │
 │                              ▼                                          │
-│  Step 2: Deposit Ujamaa Euro (UJEUR) → Mint uLP                                      │
+│  Step 2: Deposit Ondo EUROD (EUROD) → Mint uLP                                      │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
 │  │ 4. Investor calls uLPToken.deposit(10_000_000e18)                │  │
-│  │ 5. Ujamaa Euro (UJEUR) transferred from investor → LiquidityPool                │  │
+│  │ 5. Ondo EUROD (EUROD) transferred from investor → LiquidityPool                │  │
 │  │ 6. uLP tokens minted to investor                                 │  │
 │  │    → uLP Balance: 10,000,000 uLP                                 │  │
 │  │    → NAV: €1.00/uLP                                              │  │
@@ -1066,7 +1066,7 @@ class MockBankService:
 │  │    → GDIZ Cotton #1: €3M @ 12% (90 days)                         │  │
 │  │    → GDIZ Soy #1: €4M @ 11% (120 days)                           │  │
 │  │    → GDIZ Coffee #1: €3M @ 13% (60 days)                         │  │
-│  │ 8. Ujamaa Euro (UJEUR) transferred from Pool → Industrial escrow                │  │
+│  │ 8. Ondo EUROD (EUROD) transferred from Pool → Industrial escrow                │  │
 │  └──────────────────────────────────────────────────────────────────┘  │
 │                              │                                          │
 │                              ▼                                          │
@@ -1083,11 +1083,11 @@ class MockBankService:
 │  └──────────────────────────────────────────────────────────────────┘  │
 │                              │                                          │
 │                              ▼                                          │
-│  Step 5: Redeem uLP → Receive Ujamaa Euro (UJEUR) + Yield                            │
+│  Step 5: Redeem uLP → Receive Ondo EUROD (EUROD) + Yield                            │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
 │  │ 12. Investor calls uLPToken.redeem(10_000_000e18)                │  │
 │  │ 13. uLP tokens burned                                            │  │
-│  │ 14. Ujamaa Euro (UJEUR) transferred from Pool → Investor                        │  │
+│  │ 14. Ondo EUROD (EUROD) transferred from Pool → Investor                        │  │
 │  │     → Principal: €10,000,000                                     │  │
 │  │     → Yield: €89,000                                             │  │
 │  │     → Total: €10,089,000                                         │  │
@@ -1110,12 +1110,12 @@ async function executeInvestmentFlow() {
   const accountId = await mockEscrow.investorToAccount(address);
   console.log('Escrow account created:', accountId);
 
-  // Step 3: Get test Ujamaa Euro (UJEUR) (mock faucet)
+  // Step 3: Get test Ondo EUROD (EUROD) (mock faucet)
   const mockFiatRamp = getMockFiatRampContract();
   const mintTx = await mockFiatRamp.mintTestEURC(address, 10_000_000e18);
   await mintTx.wait();
 
-  // Step 4: Approve Ujamaa Euro (UJEUR) spend
+  // Step 4: Approve Ondo EUROD (EUROD) spend
   const eurcContract = getEURCContract();
   const approveTx = await eurcContract.approve(
     ULPTOKEN_ADDRESS,
@@ -1123,7 +1123,7 @@ async function executeInvestmentFlow() {
   );
   await approveTx.wait();
 
-  // Step 5: Deposit Ujamaa Euro (UJEUR) → mint uLP
+  // Step 5: Deposit Ondo EUROD (EUROD) → mint uLP
   const uLPToken = getULPTokenContract();
   const depositTx = await uLPToken.deposit(10_000_000e18);
   await depositTx.wait();
@@ -1137,12 +1137,12 @@ async function executeInvestmentFlow() {
 
   // ... wait for yield accrual ...
 
-  // Step 7: Redeem uLP → receive Ujamaa Euro (UJEUR) + yield
+  // Step 7: Redeem uLP → receive Ondo EUROD (EUROD) + yield
   const redeemTx = await uLPToken.redeem(ulpBalance);
   await redeemTx.wait();
 
   const eurcBalance = await eurcContract.balanceOf(address);
-  console.log('Ujamaa Euro (UJEUR) received:', ethers.formatEther(eurcBalance));
+  console.log('Ondo EUROD (EUROD) received:', ethers.formatEther(eurcBalance));
 }
 </code></div>
 <hr />
@@ -1265,7 +1265,7 @@ def liquidity_pool(deployer, ulp_token):
 
 def test_deposit_mints_tokens(ulp_token, mock_eurc, investor):
     &quot;&quot;&quot;Should mint uLP tokens on deposit&quot;&quot;&quot;
-    # Approve Ujamaa Euro (UJEUR) spend
+    # Approve Ondo EUROD (EUROD) spend
     mock_eurc.approve(ulp_token, 10_000_000 * 10**18, sender=investor)
 
     # Deposit
@@ -1282,7 +1282,7 @@ def test_yield_increases_nav(ulp_token, liquidity_pool, pool_manager):
     assert initial_nav == 10**18  # 1.0
 
     # Add yield
-    liquidity_pool.addYield(100_000 * 10**18, sender=pool_manager)  # 100K Ujamaa Euro (UJEUR)
+    liquidity_pool.addYield(100_000 * 10**18, sender=pool_manager)  # 100K Ondo EUROD (EUROD)
 
     # New NAV
     new_nav = ulp_token.getValuePerShare()
@@ -1341,7 +1341,7 @@ def test_insufficient_balance():
 - ✅ No real money handled<br />
 - ✅ Clear disclaimers on all UI<br />
 - ✅ <code>IS_MVP_TESTNET = true</code> flag in contracts<br />
-- ✅ Max deposit limits (1M Ujamaa Euro (UJEUR) for demo)<br />
+- ✅ Max deposit limits (1M Ondo EUROD (EUROD) for demo)<br />
 - ✅ Mock data clearly labeled</p>
 <h3>7.2 Private Key Security</h3>
 <p><strong>NEVER store private keys in:</strong><br />

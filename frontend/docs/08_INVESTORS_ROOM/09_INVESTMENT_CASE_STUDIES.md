@@ -69,7 +69,7 @@
 │  │ (Investors)  │                                               │
 │  └──────┬───────┘                                               │
 │         │                                                       │
-│         │ €2,000,000 EURC                                       │
+│         │ €2,000,000 EUROD                                       │
 │         │ (Financing)                                           │
 │         ▼                                                       │
 │  ┌──────────────┐         ┌──────────────┐                      │
@@ -138,7 +138,7 @@
 | **Production Risk** | GDIZ oversight, weekly monitoring |
 | **Off-taker Risk** | Investment-grade buyers preferred |
 | **Collateral Risk** | SIPI certification, warehouse audit |
-| **FX Risk** | EURC denomination, EUR off-taker contracts |
+| **FX Risk** | EUROD denomination, EUR off-taker contracts |
 
 ---
 
@@ -195,7 +195,7 @@ The representative transaction structures in this document are based on:
 | **5% Default Rate** | Conservative vs. 8-12% African SME average | Could be higher in stress scenarios |
 | **100%+ Collateral Coverage** | Standard trade finance practice | Liquidation value may vary |
 | **365-day Term** | Typical production + sales cycle | Some sectors may need longer |
-| **EURC Denomination** | Stablecoin stability | Adoption may take time |
+| **EUROD Denomination** | Stablecoin stability | Adoption may take time |
 
 ### Validation Activities Completed
 

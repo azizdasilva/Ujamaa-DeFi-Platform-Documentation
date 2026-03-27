@@ -39,7 +39,7 @@
 
 ### 1.1 Investment Opportunity
 
-UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3643 compliant liquidity pool platform for industrial and SME financing. The platform enables institutional investors to earn **10-15% APR yield** (EURC-denominated) by providing diversified financing to productive African businesses.
+UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3643 compliant liquidity pool platform for industrial and SME financing. The platform enables institutional investors to earn **10-15% APR yield** (EUROD-denominated) by providing diversified financing to productive African businesses.
 
 ### 1.2 The Opportunity
 
@@ -212,19 +212,19 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 │  INVESTORS                                                      │
 │  (Pension Funds, Family Offices, DFIs)                         │
 │       │                                                         │
-│       │ EURC Wire to BIIC Escrow                                │
+│       │ EUROD Wire to BIIC Escrow                                │
 │       ▼                                                         │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │              LIQUIDITY POOL (Smart Contract)            │   │
 │  │                                                         │   │
-│  │  • Receives EURC from investors                         │   │
+│  │  • Receives EUROD from investors                         │   │
 │  │  • Mints uLP Tokens to investors                        │   │
 │  │  • Deploys to GDIZ industrial partners                  │   │
 │  │  • Holds Guarantee Tokens as collateral                 │   │
 │  │  • Distributes yield to uLP holders                     │   │
 │  └─────────────────────────────────────────────────────────┘   │
 │       │                                                         │
-│       │ EURC Financing                                          │
+│       │ EUROD Financing                                          │
 │       ▼                                                         │
 │  INDUSTRIAL (GDIZ Partner)                                      │
 │  • Receives €500K-€5M financing                                 │
@@ -246,7 +246,7 @@ UJAMAA DeFi Platform is raising **€50,000,000** to launch Africa's first ERC-3
 │  │  • Principal + Interest → Pool                          │   │
 │  │  • Surplus → Industrial                                 │   │
 │  │  • Guarantee Token → Redeemed to Industrial             │   │
-│  │  • Yield → Distributed to uLP holders (EURC)            │   │
+│  │  • Yield → Distributed to uLP holders (EUROD)            │   │
 │  └─────────────────────────────────────────────────────────┘   │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -363,10 +363,10 @@ Global RWA Tokenization AUM:
 | **Token Standard** | ERC-3643 (Fungible, Permissioned) |
 | **Blockchain** | Polygon (Primary), Ethereum (Settlement) |
 | **Yield Mechanism** | Value accrual (NAV increases, balance constant) |
-| **Denomination** | EURC (Euro-pegged Stablecoin) |
+| **Denomination** | EUROD (Euro-pegged Stablecoin) |
 | **Minimum Investment** | €100,000 |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
-| **Distribution Frequency** | Quarterly (EURC) |
+| **Distribution Frequency** | Quarterly (EUROD) |
 | **Redemption** | 30-day notice after lock-up |
 | **Transferability** | ERC-3643 restricted (verified wallets only) |
 
@@ -844,7 +844,7 @@ Global RWA Tokenization AUM:
 |---------------|-------|------------|
 | **Industrial Default** | Medium | GDIZ guarantee, 5% provision, diversification |
 | **Smart Contract** | Low | Audits, multisig, timelock |
-| **FX Risk** | Medium | EURC denomination, natural hedge |
+| **FX Risk** | Medium | EUROD denomination, natural hedge |
 | **Regulatory** | Low | FSC license, OHADA framework |
 | **Political** | Medium | Geographic diversification, insurance |
 | **Liquidity** | Medium | Lock-up, secondary market (Phase 2) |
@@ -877,7 +877,7 @@ Global RWA Tokenization AUM:
 | **Risk** | EUR/African currency fluctuations |
 | **Probability** | Medium (10-20% annual volatility) |
 | **Impact** | Reduced yield for EUR investors |
-| **Mitigation** | • EURC denomination<br>• Natural hedge (export-oriented industrials)<br>• Optional FX hedging instruments<br>• Geographic diversification |
+| **Mitigation** | • EUROD denomination<br>• Natural hedge (export-oriented industrials)<br>• Optional FX hedging instruments<br>• Geographic diversification |
 
 #### 10.2.4 Regulatory Risk
 
@@ -1046,7 +1046,7 @@ Global RWA Tokenization AUM:
 | **Security Type** | uLP Token (Yield-Bearing ERC-3643) |
 | **Token Standard** | ERC-3643 (Fungible, Permissioned) |
 | **Blockchain** | Polygon (Primary), Ethereum (Settlement) |
-| **Denomination** | EURC (Euro-pegged Stablecoin) |
+| **Denomination** | EUROD (Euro-pegged Stablecoin) |
 | **ISIN** | [TBD] |
 | **Minimum Investment** | €100,000 (Institutional Tier) |
 | **Lock-up Period** | 180-365 days (pool-dependent) |
@@ -1057,10 +1057,10 @@ Global RWA Tokenization AUM:
 
 | Term | Detail |
 |------|--------|
-| **Expected Yield** | 10-15% APR (EURC) |
+| **Expected Yield** | 10-15% APR (EUROD) |
 | **Management Fee** | 2.0% per annum (daily accrual, quarterly deduction) |
 | **Performance Fee** | 20% (8% preferred return hurdle, high-water mark) |
-| **Distribution Frequency** | Quarterly (EURC) |
+| **Distribution Frequency** | Quarterly (EUROD) |
 | **Distribution Method** | Direct to investor wallet or reinvestment |
 | **Redemption Fee** | 0.5% (early redemption <90 days after lock-up) |
 | **NAV Calculation** | Daily (based on pool value / uLP supply) |
@@ -1140,7 +1140,7 @@ Investors must acknowledge the following risks before investing:
 │                                                                 │
 │  STEP 5: FUND WIRE & TOKEN MINTING                              │
 │  ──────────────────────────────────                             │
-│  • EURC Wire to BIIC/MCB Escrow                                 │
+│  • EUROD Wire to BIIC/MCB Escrow                                 │
 │  • Confirm Receipt                                              │
 │  • uLP Tokens Minted to Investor Wallet                         │
 │  • Welcome Package Sent                                         │
@@ -1150,7 +1150,7 @@ Investors must acknowledge the following risks before investing:
 │  ────────────────────────────────────                           │
 │  • Monthly Reports                                              │
 │  • Quarterly Presentations                                      │
-│  • Quarterly Distributions (EURC)                               │
+│  • Quarterly Distributions (EUROD)                               │
 │  • Annual Meeting                                               │
 │  • Timeline: Ongoing                                            │
 │                                                                 │
@@ -1201,7 +1201,7 @@ Investors must acknowledge the following risks before investing:
 | **ERC-3643** | Ethereum token standard for permissioned securities with on-chain identity |
 | **uLP Token** | UJAMAA Liquidity Provider token; yield-bearing ERC-3643 |
 | **Guarantee Token** | ERC-3643 NFT representing certified collateral |
-| **EURC** | Euro Coin; euro-backed stablecoin (1 EURC = €1.00) |
+| **EUROD** | Euro Coin; euro-backed stablecoin (1 EUROD = €1.00) |
 | **Fireblocks** | Institutional-grade digital asset custody platform |
 | **GDIZ** | General Distribution & Industrial Zone (industrial partner) |
 | **OHADA** | Organization for the Harmonization of Business Law in Africa (17 countries) |

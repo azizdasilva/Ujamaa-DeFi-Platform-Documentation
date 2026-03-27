@@ -238,13 +238,13 @@
 <tbody>
 <tr>
 <td>EUR Coin</td>
-<td>Circle EURC</td>
-<td>$EURC$</td>
+<td>Ondo EUROD</td>
+<td>$EUROD$</td>
 <td>Polygon</td>
 </tr>
 <tr>
 <td>USD Coin</td>
-<td>Circle USDC</td>
+<td>Ondo Finance USDC</td>
 <td>$USDC$</td>
 <td>Polygon</td>
 </tr>
@@ -495,7 +495,7 @@
 <tr>
 <td><code>PriceGateway.sol</code></td>
 <td>Ujamaa Price Gateway</td>
-<td>Price feeds (EURC, USDC, NAV)</td>
+<td>Price feeds (EUROD, USDC, NAV)</td>
 <td>Polygon</td>
 </tr>
 <tr>
@@ -671,7 +671,7 @@ class ReserveGateway:
 </thead>
 <tbody>
 <tr>
-<td>EURC/USD</td>
+<td>EUROD/USD</td>
 <td>Chainlink</td>
 <td>~1 min</td>
 <td><code>PriceGateway.sol</code></td>
@@ -722,7 +722,7 @@ class PriceGateway:
         self.chainlink_adapter = ChainlinkAdapter()
 
     def get_eurc_usd_price(self) -&gt; Decimal:
-        &quot;&quot;&quot;Fetches EURC/USD price from Chainlink.&quot;&quot;&quot;
+        &quot;&quot;&quot;Fetches EUROD/USD price from Chainlink.&quot;&quot;&quot;
         pass
 
     def get_usdc_usd_price(self) -&gt; Decimal:
@@ -1364,13 +1364,13 @@ GET    /api/v1/escrow/transactions   - Transaction history
 <td><code>ULPDeposit</code></td>
 <td><code>demo/pages/ULPDeposit.tsx</code></td>
 <td><code>/demo/ulp/deposit</code></td>
-<td>EURC → uLP deposit</td>
+<td>EUROD → uLP deposit</td>
 </tr>
 <tr>
 <td><code>ULPRedeem</code></td>
 <td><code>demo/pages/ULPRedeem.tsx</code></td>
 <td><code>/demo/ulp/redeem</code></td>
-<td>uLP → EURC redemption</td>
+<td>uLP → EUROD redemption</td>
 </tr>
 </tbody>
 </table></div>

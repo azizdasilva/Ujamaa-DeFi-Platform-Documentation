@@ -85,7 +85,7 @@ const TestnetGuide: React.FC = () => {
     },
     {
       question: 'Will this move to mainnet?',
-      answer: 'Yes! After thorough testing on testnet, Ujamaa will deploy to Polygon Mainnet (Chain ID: 137) with real stablecoins (UJEUR), real bank integrations, and actual investment opportunities.',
+      answer: 'Yes! After thorough testing on testnet, Ujamaa will deploy to Polygon Mainnet (Chain ID: 137) with real stablecoins (EUROD), real bank integrations, and actual investment opportunities.',
     },
     {
       question: 'Is MetaMask safe?',

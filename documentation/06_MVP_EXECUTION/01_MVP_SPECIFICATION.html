@@ -486,7 +486,7 @@
 │                                                                              │
 │  2. Deposit → uLP Minting                                                    │
 │            │                                                                  │
-│            │ 3. Deposit testnet Ujamaa Euro (UJEUR) (faucet or swap)                        │
+│            │ 3. Deposit testnet Ondo EUROD (EUROD) (faucet or swap)                        │
 │            ▼                                                                  │
 │     ┌──────────────┐                                                         │
 │     │  Mock Bank   │  (Simulates wire transfer)                              │
@@ -531,7 +531,7 @@
 │     │  uLPToken    │  (Value per share increases)                            │
 │     └──────┬───────┘                                                         │
 │            │                                                                  │
-│            │ 10. NAV updates (e.g., 1.00 → 1.10 Ujamaa Euro (UJEUR))                        │
+│            │ 10. NAV updates (e.g., 1.00 → 1.10 Ondo EUROD (EUROD))                        │
 │            ▼                                                                  │
 │     ┌──────────────┐                                                         │
 │     │  Dashboard   │  (Shows increased value)                                │
@@ -545,7 +545,7 @@
 │     │  uLPToken    │  (Burn uLP tokens)                                      │
 │     └──────┬───────┘                                                         │
 │            │                                                                  │
-│            │ 12. Receive Ujamaa Euro (UJEUR) (principal + yield)                            │
+│            │ 12. Receive Ondo EUROD (EUROD) (principal + yield)                            │
 │            ▼                                                                  │
 │     ┌──────────────┐                                                         │
 │     │ MockFiatRamp │  (Simulates fiat withdrawal)                            │
@@ -572,13 +572,13 @@
 - Value per token increases with yield<br />
 - NAV calculated on-chain</p>
 <p><strong>Example:</strong></p>
-<div class="docs-pre"><code>Initial: Investor deposits 10M Ujamaa Euro (UJEUR)
-→ Receives 10M uLP tokens (NAV = 1.00 Ujamaa Euro (UJEUR) per uLP)
+<div class="docs-pre"><code>Initial: Investor deposits 10M Ondo EUROD (EUROD)
+→ Receives 10M uLP tokens (NAV = 1.00 Ondo EUROD (EUROD) per uLP)
 
 After 1 year (10% yield):
 → Still holds 10M uLP tokens (balance unchanged)
-→ NAV = 1.10 Ujamaa Euro (UJEUR) per uLP
-→ Total value = 11M Ujamaa Euro (UJEUR)
+→ NAV = 1.10 Ondo EUROD (EUROD) per uLP
+→ Total value = 11M Ondo EUROD (EUROD)
 </code></div>
 <h3>Functions</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
@@ -592,17 +592,17 @@ After 1 year (10% yield):
 <tbody>
 <tr>
 <td><code>deposit(uint256 eurcAmount)</code></td>
-<td>Deposit Ujamaa Euro (UJEUR), receive uLP</td>
+<td>Deposit Ondo EUROD (EUROD), receive uLP</td>
 <td>~85,000</td>
 </tr>
 <tr>
 <td><code>redeem(uint256 shares)</code></td>
-<td>Burn uLP, receive Ujamaa Euro (UJEUR)</td>
+<td>Burn uLP, receive Ondo EUROD (EUROD)</td>
 <td>~65,000</td>
 </tr>
 <tr>
 <td><code>getValue(address)</code></td>
-<td>Get current value in Ujamaa Euro (UJEUR)</td>
+<td>Get current value in Ondo EUROD (EUROD)</td>
 <td>~2,500</td>
 </tr>
 <tr>
@@ -621,7 +621,7 @@ After 1 year (10% yield):
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>✅ ERC-3643 compliance (transfer restrictions)</li>
 <li>✅ IS_PRODUCTION = false (testnet safety)</li>
-<li>✅ Max deposit limit (1M Ujamaa Euro (UJEUR) for demo)</li>
+<li>✅ Max deposit limit (1M Ondo EUROD (EUROD) for demo)</li>
 <li>✅ Role-based access control</li>
 </ul>
 <hr />
@@ -636,12 +636,12 @@ After 1 year (10% yield):
 - Diversification tracking (by asset, by industrial, by geography)</p>
 <p><strong>Example:</strong></p>
 <div class="docs-pre"><code>Pool: &quot;Ujamaa Industrial Finance Pool I&quot;
-Total Value: 10M Ujamaa Euro (UJEUR)
-├── Deployed: 7M Ujamaa Euro (UJEUR) (70%)
-│   ├── GDIZ Cotton #1: 2M Ujamaa Euro (UJEUR) @ 12% (due: 90 days)
-│   ├── GDIZ Soy #1: 3M Ujamaa Euro (UJEUR) @ 11% (due: 120 days)
-│   └── GDIZ Coffee #1: 2M Ujamaa Euro (UJEUR) @ 13% (due: 60 days)
-└── Available: 3M Ujamaa Euro (UJEUR) (30%)
+Total Value: 10M Ondo EUROD (EUROD)
+├── Deployed: 7M Ondo EUROD (EUROD) (70%)
+│   ├── GDIZ Cotton #1: 2M Ondo EUROD (EUROD) @ 12% (due: 90 days)
+│   ├── GDIZ Soy #1: 3M Ondo EUROD (EUROD) @ 11% (due: 120 days)
+│   └── GDIZ Coffee #1: 2M Ondo EUROD (EUROD) @ 13% (due: 60 days)
+└── Available: 3M Ondo EUROD (EUROD) (30%)
 </code></div>
 <h3>Functions</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
@@ -791,12 +791,12 @@ def calculate_yield_accrual(principal, annual_rate, days_elapsed):
     return accrued
 
 # Example:
-# Principal: 10M Ujamaa Euro (UJEUR)
+# Principal: 10M Ondo EUROD (EUROD)
 # Annual rate: 10%
 # Days elapsed: 365
-# Accrued yield: 10M * 0.10 / 365 * 365 = 1M Ujamaa Euro (UJEUR)
-# New pool value: 11M Ujamaa Euro (UJEUR)
-# New NAV per share: 1.10 Ujamaa Euro (UJEUR)
+# Accrued yield: 10M * 0.10 / 365 * 365 = 1M Ondo EUROD (EUROD)
+# New pool value: 11M Ondo EUROD (EUROD)
+# New NAV per share: 1.10 Ondo EUROD (EUROD)
 </code></div>
 <h3>Accuracy</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
@@ -1104,12 +1104,12 @@ def calculate_yield_accrual(principal, annual_rate, days_elapsed):
 <tr>
 <td><code>/api/v2/uLP/deposit</code></td>
 <td>POST</td>
-<td>Deposit Ujamaa Euro (UJEUR), receive uLP</td>
+<td>Deposit Ondo EUROD (EUROD), receive uLP</td>
 </tr>
 <tr>
 <td><code>/api/v2/uLP/redeem</code></td>
 <td>POST</td>
-<td>Burn uLP, receive Ujamaa Euro (UJEUR)</td>
+<td>Burn uLP, receive Ondo EUROD (EUROD)</td>
 </tr>
 <tr>
 <td><code>/api/v2/uLP/{address}/balance</code></td>
@@ -1140,8 +1140,8 @@ def calculate_yield_accrual(principal, annual_rate, days_elapsed):
 │   │   ├── PoolPerformance.tsx    # Historical NAV chart
 │   │   └── PoolAllocation.tsx     # Allocation breakdown
 │   ├── uLP/
-│   │   ├── Deposit.tsx            # Deposit Ujamaa Euro (UJEUR) → receive uLP
-│   │   ├── Redeem.tsx             # Burn uLP → receive Ujamaa Euro (UJEUR)
+│   │   ├── Deposit.tsx            # Deposit Ondo EUROD (EUROD) → receive uLP
+│   │   ├── Redeem.tsx             # Burn uLP → receive Ondo EUROD (EUROD)
 │   │   └── MyHoldings.tsx         # View uLP holdings &amp; yield
 │   └── institutional/
 │       ├── Dashboard.tsx          # Institutional portfolio
@@ -1199,12 +1199,12 @@ Footer Navigation:
 </tr>
 <tr>
 <td><strong>Deposit Flow</strong></td>
-<td>✅ Ujamaa Euro (UJEUR) → uLP working</td>
+<td>✅ Ondo EUROD (EUROD) → uLP working</td>
 <td>User testing</td>
 </tr>
 <tr>
 <td><strong>Redeem Flow</strong></td>
-<td>✅ uLP → Ujamaa Euro (UJEUR) working</td>
+<td>✅ uLP → Ondo EUROD (EUROD) working</td>
 <td>User testing</td>
 </tr>
 <tr>
@@ -1343,10 +1343,10 @@ Footer Navigation:
 │  │  ├── PoolDetail.tsx (pool stats)                                       │ │
 │  │  ├── PoolPerformance.tsx (NAV chart)                                   │ │
 │  │  ├── PoolAllocation.tsx (allocation pie)                               │ │
-│  │  └── Deposit.tsx (Ujamaa Euro (UJEUR) → uLP flow)                                     │ │
+│  │  └── Deposit.tsx (Ondo EUROD (EUROD) → uLP flow)                                     │ │
 │  │                                                                        │ │
 │  │  Week 6                                                                │ │
-│  │  ├── Redeem.tsx (uLP → Ujamaa Euro (UJEUR) flow)                                      │ │
+│  │  ├── Redeem.tsx (uLP → Ondo EUROD (EUROD) flow)                                      │ │
 │  │  ├── MyHoldings.tsx (uLP portfolio)                                    │ │
 │  │  ├── InstitutionalDashboard.tsx                                        │ │
 │  │  ├── YieldStatement.tsx (PDF download)                                 │ │
@@ -1559,7 +1559,7 @@ Footer Navigation:
 <tr>
 <td><strong>MockFiatRamp</strong></td>
 <td>Mock fiat service</td>
-<td>Real Circle/bank API</td>
+<td>Real Ondo Finance/bank API</td>
 <td>2-3 weeks</td>
 </tr>
 <tr>
