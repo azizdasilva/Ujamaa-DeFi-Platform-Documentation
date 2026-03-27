@@ -29,6 +29,7 @@ This folder contains the **core technical specifications** for the UJAMAA DeFi P
 | 10 | [Compliance Framework](10_COMPLIANCE_FRAMEWORK.md) | Compliance requirements | ✅ Complete |
 | 11 | [Asset Risk Rating Guide](11_ASSET_RISK_RATING_GUIDE.md) | Risk assessment methodology | ✅ Complete |
 | 12 | [Ujamaa Token Naming Reference](12_UJAMAA_TOKEN_NAMING_REFERENCE.md) | Token nomenclature | ✅ Complete |
+| 13 | [EUROD vs USDT Rationale](13_EUROD_vs_USDT_RATIONALE.md) | Currency selection rationale | ✅ Complete |
 
 ---
 
