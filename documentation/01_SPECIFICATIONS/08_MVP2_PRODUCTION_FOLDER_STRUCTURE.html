@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DeFi Platform - MVP Production Folder Structure - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DeFi Platform - MVP Production Folder Structure</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DeFi Platform - MVP Production Folder Structure</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (MVP with Production Quality) | <strong>Last Updated:</strong> March 19, 2026</p></div>
+
+        <h1>UJAMAA DeFi Platform - MVP Production Folder Structure</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 2.0 (MVP with Production Quality)<br />
+<strong>Date:</strong> March 19, 2026<br />
+<strong>Purpose:</strong> Production-ready folder structure WITH MVP naming (testnet/mock services preserved)</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Overview</h2>
+<p>This document defines the <strong>MVP folder structure</strong> for the UJAMAA DeFi Platform. This is a <strong>hybrid approach</strong>:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ <strong>Production-quality code</strong> (clean architecture, testing, documentation)</li>
+<li>✅ <strong>MVP naming preserved</strong> (clear testnet/mock identification)</li>
+<li>✅ <strong>Mock services explicit</strong> (easy to swap for production later)</li>
+<li>✅ <strong>Ready for investor demo</strong> (Logic Capital presentation)</li>
+</ul>
+<p><strong>Key Principle:</strong> MVP is <strong>NOT throwaway code</strong> - it's production-quality code with mock services that will be swapped for real integrations in production.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Frontend Structure</h2>
+<div class="docs-pre"><code>frontend/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   ├── manifest.json
+│   └── assets/
+│       ├── images/
+│       ├── fonts/
+│       └── icons/
+│
+├── src/
+│   ├── MVP/                       # MVP specific code (production quality)
+│   │   │
+│   │   ├── components/             # MVP UI components
+│   │   │   ├── MVPBanner.tsx              # Testnet banner (all pages)
+│   │   │   ├── TestnetNotice.tsx           # First-time visitor modal
+│   │   │   ├── MockDataBadge.tsx           # Mock data indicator
+│   │   │   ├── DisclaimerModal.tsx         # 10-second auto-dismiss
+│   │   │   ├── PoolCard.tsx                # Pool display card
+│   │   │   ├── YieldChart.tsx              # Yield visualization
+│   │   │   ├── ReserveWidget.tsx           # Proof of reserve display
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── pages/                  # MVP pages (by role)
+│   │   │   ├── institutional/      # Institutional investor (€100K+)
+│   │   │   │   ├── InstitutionalDashboard.tsx
+│   │   │   │   ├── YieldStatement.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── retail/             # Retail investor (&lt;€100K)
+│   │   │   │   ├── RetailDashboard.tsx
+│   │   │   │   ├── SimplifiedPortfolio.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── originator/         # Asset originators
+│   │   │   │   ├── OriginatorDashboard.tsx
+│   │   │   │   ├── AssetSubmission.tsx
+│   │   │   │   ├── CapitalRaiseTracker.tsx
+│   │   │   │   ├── ProductionNotarization.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── compliance/         # Compliance officers
+│   │   │   │   ├── ComplianceDashboard.tsx
+│   │   │   │   ├── KYCApprovalQueue.tsx
+│   │   │   │   ├── AccreditationManager.tsx
+│   │   │   │   ├── RegulatoryReporting.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── admin/              # Administrators
+│   │   │   │   ├── AdminDashboard.tsx
+│   │   │   │   ├── UserManagement.tsx
+│   │   │   │   ├── AssetApproval.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── regulator/          # Regulators (read-only)
+│   │   │   │   ├── RegulatorDashboard.tsx
+│   │   │   │   ├── ComplianceMetrics.tsx
+│   │   │   │   ├── TransactionMonitor.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── diaspora/           # Diaspora investors
+│   │   │   │   ├── DiasporaDashboard.tsx
+│   │   │   │   ├── OverseasKYC.tsx
+│   │   │   │   ├── DualCurrencyDistribution.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── mobile/             # Mobile money users
+│   │   │   │   ├── MobileMoneyConnect.tsx
+│   │   │   │   ├── USSDInterface.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── pools/              # Pool marketplace
+│   │   │   │   ├── PoolMarketplace.tsx
+│   │   │   │   ├── PoolDetail.tsx
+│   │   │   │   ├── PoolPerformance.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── portfolio/          # Portfolio management
+│   │   │   │   ├── Portfolio.tsx
+│   │   │   │   ├── TransactionHistory.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── onboarding/         # Onboarding flows
+│   │   │   │   ├── InvestorOnboarding.tsx
+│   │   │   │   ├── OriginatorOnboarding.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── documentation/      # Documentation
+│   │   │   │   ├── DeepDive.tsx
+│   │   │   │   ├── InvestorsRoom.tsx
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── hooks/                  # MVP custom hooks
+│   │   │   ├── useMVPMode.ts              # MVP mode flag
+│   │   │   ├── useMockBank.ts              # Mock bank service
+│   │   │   ├── useMockGDIZ.ts              # Mock GDIZ service
+│   │   │   ├── useuLPToken.ts              # uLP token operations
+│   │   │   ├── usePools.ts                 # Pool operations
+│   │   │   ├── useKYC.ts                   # KYC operations
+│   │   │   ├── useCompliance.ts            # Compliance operations
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── contexts/               # MVP React contexts
+│   │   │   ├── MVPModeContext.tsx         # MVP mode (testnet/prod)
+│   │   │   ├── MockServicesContext.tsx     # Mock service configuration
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── services/               # MVP API clients
+│   │   │   ├── mockBankService.ts          # Mock bank API
+│   │   │   ├── mockGDIZService.ts          # Mock GDIZ API
+│   │   │   ├── poolService.ts              # Pool API
+│   │   │   ├── investorService.ts          # Investor API
+│   │   │   ├── originatorService.ts        # Originator API
+│   │   │   ├── complianceService.ts        # Compliance API
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── utils/                  # MVP utilities
+│   │   │   ├── mockData.ts                 # Mock data generators
+│   │   │   ├── MVPConfig.ts               # MVP configuration
+│   │   │   ├── navCalculator.ts            # NAV calculations
+│   │   │   ├── yieldCalculator.ts          # Yield calculations
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── constants/              # MVP constants
+│   │   │   ├── MVPAddresses.ts            # Contract addresses (testnet)
+│   │   │   ├── mockDataConstants.ts        # Mock data constants
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── types/                  # MVP TypeScript types
+│   │   │   ├── pool.ts
+│   │   │   ├── investor.ts
+│   │   │   ├── originator.ts
+│   │   │   ├── compliance.ts
+│   │   │   ├── mockServices.ts
+│   │   │   └── index.ts
+│   │   │
+│   │   └── styles/                 # MVP specific styles
+│   │       ├── MVP-components.css
+│   │       ├── testnet-indicators.css
+│   │       └── index.css
+│   │
+│   ├── components/                 # Shared components (MVP-1 + MVP)
+│   │   ├── common/                 # Base components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Badge.tsx
+│   │   │   ├── Modal.tsx
+│   │   │   └── index.ts
+│   │   ├── layout/                 # Layout components
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── hooks/                      # Shared hooks
+│   │   ├── useWallet.ts
+│   │   └── index.ts
+│   │
+│   ├── contexts/                   # Shared contexts
+│   │   ├── WalletContext.tsx
+│   │   └── index.ts
+│   │
+│   ├── services/                   # Shared API clients
+│   │   ├── api.ts
+│   │   └── index.ts
+│   │
+│   ├── utils/                      # Shared utilities
+│   │   ├── formatters.ts
+│   │   ├── validators.ts
+│   │   └── index.ts
+│   │
+│   ├── types/                      # Shared types
+│   │   ├── common.ts
+│   │   └── index.ts
+│   │
+│   ├── config/                     # Configuration
+│   │   ├── network.ts
+│   │   ├── contracts.ts
+│   │   └── index.ts
+│   │
+│   ├── contracts/                  # Contract ABIs
+│   │   ├── uLPToken.json
+│   │   ├── LiquidityPool.json
+│   │   ├── MockEscrow.json
+│   │   ├── MockFiatRamp.json
+│   │   └── index.ts
+│   │
+│   ├── App.tsx                     # Main application
+│   ├── App.css                     # App styles
+│   ├── index.css                   # Global styles
+│   └── main.tsx                    # Entry point
+│
+├── tests/                          # Test files
+│   ├── MVP/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   └── services/
+│   └── shared/
+│
+├── .env                            # Environment variables
+├── .env.MVP                       # MVP environment
+├── .env.production                 # Production environment (future)
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.js
+└── README.md
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Backend Structure</h2>
+<div class="docs-pre"><code>backend/
+├── app/
+│   ├── main.py
+│   ├── config.py
+│   ├── database.py
+│   │
+│   ├── api/
+│   │   ├── v1/                     # MVP-1 API (unchanged)
+│   │   │   ├── __init__.py
+│   │   │   ├── assets.py
+│   │   │   ├── compliance.py
+│   │   │   └── auth.py
+│   │   │
+│   │   └── MVP/                   # MVP API (NEW)
+│   │       ├── __init__.py
+│   │       ├── pools.py                    # Pool operations
+│   │       ├── investors.py                # Investor operations
+│   │       ├── originators.py              # Originator operations
+│   │       ├── compliance.py               # Compliance operations
+│   │       ├── regulator.py                # Regulator operations
+│   │       ├── mock_bank.py                # Mock bank API
+│   │       ├── mock_gdiz.py                # Mock GDIZ API
+│   │       └── docs.py                     # Documentation
+│   │
+│   ├── services/
+│   │   ├── MVP/                   # MVP services (NEW)
+│   │   │   ├── __init__.py
+│   │   │   ├── pool_service.py             # Pool management
+│   │   │   ├── yield_calculation.py        # Yield calculations
+│   │   │   ├── mock_bank_service.py        # Mock bank service
+│   │   │   ├── mock_gdiz_service.py        # Mock GDIZ service
+│   │   │   ├── investor_service.py         # Investor management
+│   │   │   ├── originator_service.py       # Originator management
+│   │   │   ├── compliance_service.py       # Compliance operations
+│   │   │   └── regulator_service.py        # Regulator operations
+│   │   │
+│   │   └── [existing MVP-1 services - UNTOUCHED]
+│   │
+│   ├── models/
+│   │   ├── MVP/                   # MVP models (NEW)
+│   │   │   ├── __init__.py
+│   │   │   ├── pool.py
+│   │   │   ├── investor.py
+│   │   │   ├── originator.py
+│   │   │   ├── compliance.py
+│   │   │   └── transaction.py
+│   │   │
+│   │   └── [existing MVP-1 models - UNTOUCHED]
+│   │
+│   ├── schemas/
+│   │   ├── MVP/                   # MVP schemas (NEW)
+│   │   │   ├── __init__.py
+│   │   │   ├── pool.py
+│   │   │   ├── investor.py
+│   │   │   ├── originator.py
+│   │   │   └── compliance.py
+│   │   │
+│   │   └── [existing - UNTOUCHED]
+│   │
+│   ├── db/
+│   │   ├── session.py
+│   │   ├── crud.py
+│   │   └── base.py
+│   │
+│   ├── utils/
+│   │   ├── security.py
+│   │   ├── validators.py
+│   │   └── formatters.py
+│   │
+│   └── middleware/
+│       ├── auth.py
+│       ├── cors.py
+│       └── rate_limit.py
+│
+├── tests/
+│   ├── MVP/
+│   │   ├── test_pools.py
+│   │   ├── test_investors.py
+│   │   ├── test_originators.py
+│   │   ├── test_compliance.py
+│   │   ├── test_mock_bank.py
+│   │   └── test_mock_gdiz.py
+│   └── [existing - UNTOUCHED]
+│
+├── scripts/
+│   ├── deploy_MVP.sh
+│   ├── migrate_MVP.py
+│   └── seed_mock_data.py
+│
+├── .env
+├── .env.MVP
+├── .env.production
+├── requirements.txt
+├── alembic.ini
+└── README.md
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Smart Contracts Structure</h2>
+<div class="docs-pre"><code>contracts/
+├── mvp1/                         # MVP-1 contracts (UNTOUCHED)
+│   ├── UjamaaAssetToken.sol
+│   ├── IdentityRegistry.sol
+│   ├── ComplianceModule.sol
+│   └── AssetProof.sol
+│
+├── MVP/                         # MVP contracts (NEW)
+│   ├── uLPToken.sol              # Ujamaa Pool Token (yield-bearing)
+│   ├── LiquidityPool.sol         # Liquidity Pool management
+│   ├── MockEscrow.sol            # Mock bank escrow (testnet)
+│   ├── MockFiatRamp.sol          # Mock fiat on/off ramp (testnet)
+│   │
+│   ├── interfaces/
+│   │   ├── IuLPToken.sol
+│   │   ├── ILiquidityPool.sol
+│   │   ├── IMockEscrow.sol
+│   │   ├── IMockFiatRamp.sol
+│   │   ├── IBankService.sol      # Interface for real bank (production)
+│   │   └── IFiatRamp.sol         # Interface for real ramp (production)
+│   │
+│   ├── libraries/
+│   │   ├── Math.sol
+│   │   └── SafeERC20.sol
+│   │
+│   ├── scripts/
+│   │   ├── deploy_MVP.ts
+│   │   ├── verify_MVP.ts
+│   │   └── interact_MVP.ts
+│   │
+│   └── tests/
+│       ├── uLPToken.test.ts
+│       ├── LiquidityPool.test.ts
+│       ├── MockEscrow.test.ts
+│       └── MockFiatRamp.test.ts
+│
+├── deployments/
+│   ├── amoy/                     # Polygon Amoy (testnet)
+│   │   ├── uLPToken.json
+│   │   ├── LiquidityPool.json
+│   │   ├── MockEscrow.json
+│   │   └── MockFiatRamp.json
+│   │
+│   └── polygon/                  # Polygon mainnet (future production)
+│       └── [to be deployed]
+│
+├── hardhat.config.ts
+├── package.json
+└── README.md
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Key Naming Conventions</h2>
+<h3>✅ Keep MVP Naming</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Name</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banner</td>
+<td><code>MVPBanner.tsx</code></td>
+<td>Clear testnet identification</td>
+</tr>
+<tr>
+<td>Notice</td>
+<td><code>TestnetNotice.tsx</code></td>
+<td>Clear testnet notice</td>
+</tr>
+<tr>
+<td>Badge</td>
+<td><code>MockDataBadge.tsx</code></td>
+<td>Clear mock data indicator</td>
+</tr>
+<tr>
+<td>Bank Service</td>
+<td><code>mockBankService.ts</code></td>
+<td>Clear mock service</td>
+</tr>
+<tr>
+<td>GDIZ Service</td>
+<td><code>mockGDIZService.ts</code></td>
+<td>Clear mock service</td>
+</tr>
+<tr>
+<td>Escrow Contract</td>
+<td><code>MockEscrow.sol</code></td>
+<td>Clear testnet contract</td>
+</tr>
+<tr>
+<td>Fiat Ramp Contract</td>
+<td><code>MockFiatRamp.sol</code></td>
+<td>Clear testnet contract</td>
+</tr>
+</tbody>
+</table></div>
+<h3>✅ Production-Quality Code</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Testing</strong></td>
+<td>&gt;90% coverage, vitest + playwright</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>JSDoc, docstrings, NatSpec</td>
+</tr>
+<tr>
+<td><strong>Linting</strong></td>
+<td>ESLint, Prettier, Solhint</td>
+</tr>
+<tr>
+<td><strong>Type Safety</strong></td>
+<td>Full TypeScript typing</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>Comprehensive error boundaries</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>WCAG 2.2 AA compliant</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Lighthouse &gt;90</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Environment Configuration</h2>
+<h3>Frontend (.env.MVP)</h3>
+<div class="docs-pre"><code># MVP Mode
+VITE_MVP_MODE=true
+VITE_NETWORK=testnet
+VITE_CHAIN_ID=80002
+VITE_RPC_URL=https://rpc-amoy.polygon.technology/
+VITE_BLOCK_EXPLORER=https://amoy.polygonscan.com/
+
+# Contract Addresses (Testnet)
+VITE_uLP_TOKEN_ADDRESS=0x...
+VITE_LIQUIDITY_POOL_ADDRESS=0x...
+VITE_MOCK_ESCROW_ADDRESS=0x...
+VITE_MOCK_FIAT_RAMP_ADDRESS=0x...
+
+# Mock Services
+VITE_MOCK_BANK_ENABLED=true
+VITE_MOCK_GDIZ_ENABLED=true
+VITE_MOCK_FIAT_RAMP_ENABLED=true
+
+# API
+VITE_API_BASE_URL=http://localhost:8000
+VITE_API_V2_BASE_URL=http://localhost:8000/api/MVP
+
+# Features
+VITE_FEATURE_INSTITUTIONAL=true
+VITE_FEATURE_RETAIL=true
+VITE_FEATURE_ORIGINATOR=true
+VITE_FEATURE_COMPLIANCE=true
+VITE_FEATURE_REGULATOR=true
+VITE_FEATURE_DIASPORA=true
+VITE_FEATURE_MOBILE_MONEY=true
+
+# Disclaimers
+VITE_MVP_DISCLAIMER_ENABLED=true
+</code></div>
+<h3>Backend (.env.MVP)</h3>
+<div class="docs-pre"><code># MVP Mode
+MVP_MODE=true
+NETWORK=testnet
+CHAIN_ID=80002
+RPC_URL=https://rpc-amoy.polygon.technology/
+
+# Mock Services
+MOCK_BANK_ENABLED=true
+MOCK_GDIZ_ENABLED=true
+MOCK_FIAT_RAMP_ENABLED=true
+MOCK_INITIAL_BALANCE=10000000000000000000000000
+
+# Database
+DATABASE_URL=postgresql://user:pass@localhost:5432/ujamaa_MVP
+
+# Redis
+REDIS_URL=redis://localhost:6379/1
+
+# API
+API_HOST=0.0.0.0
+API_PORT=8000
+DEBUG=true
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Migration Path to Production</h2>
+<h3>Phase 1: MVP (Current)</h3>
+<div class="docs-pre"><code>✅ Mock services (MockEscrow, MockFiatRamp, MockBank, MockGDIZ)
+✅ Testnet deployment (Polygon Amoy)
+✅ All role workflows functional
+✅ Investor-ready demo
+</code></div>
+<h3>Phase 2: Production Preparation</h3>
+<div class="docs-pre"><code>1. Replace MockEscrow → RealBankEscrow (BIIC/MCB integration)
+2. Replace MockFiatRamp → RealFiatRamp (Circle, EURR integration)
+3. Replace MockBank → RealBankAPI (BIIC/MCB API)
+4. Replace MockGDIZ → RealGDIZGateway (GDIZ API integration)
+5. Deploy to Polygon mainnet
+6. Regulatory approval (Mauritius FSC)
+</code></div>
+<h3>Phase 3: Production</h3>
+<div class="docs-pre"><code>✅ Real bank integration
+✅ Real fiat on/off ramp
+✅ Mainnet deployment
+✅ Live investor funds
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>File Organization Principles</h2>
+<h3>1. Clear Separation</h3>
+<div class="docs-pre"><code>✅ MVP/ folder for all MVP code
+✅ Existing MVP-1 code UNTOUCHED
+✅ Easy to find MVP vs MVP-1
+</code></div>
+<h3>2. Mock Services Explicit</h3>
+<div class="docs-pre"><code>✅ mockBankService.ts (clear mock)
+✅ MockEscrow.sol (clear mock)
+✅ Interface: IBankService.sol (production-ready)
+✅ Easy to swap: MockBankService → RealBankService
+</code></div>
+<h3>3. Role-Based Organization</h3>
+<div class="docs-pre"><code>✅ pages/institutional/
+✅ pages/retail/
+✅ pages/originator/
+✅ pages/compliance/
+✅ pages/regulator/
+✅ Easy to find by user role
+</code></div>
+<h3>4. Production-Quality Code</h3>
+<div class="docs-pre"><code>✅ Full TypeScript typing
+✅ Comprehensive tests
+✅ Documentation (JSDoc, docstrings)
+✅ Linting (ESLint, Prettier)
+✅ Accessibility (WCAG 2.2 AA)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<p><strong>This MVP folder structure:</strong><br />
+- ✅ Uses <code>MVP/</code> prefix (clear testnet identification)<br />
+- ✅ Keeps <code>Mock</code> naming (easy to identify swap targets)<br />
+- ✅ Production-quality code (testing, documentation, linting)<br />
+- ✅ Role-based organization (easy navigation)<br />
+- ✅ Clear separation from MVP-1 (no conflicts)<br />
+- ✅ Ready for investor demo (Logic Capital presentation)<br />
+- ✅ Ready for production swap (interfaces defined)</p>
+<p><strong>Developers can:</strong><br />
+- ✅ Find MVP files easily (<code>MVP/</code> folder)<br />
+- ✅ Identify mock services (<code>Mock</code> prefix)<br />
+- ✅ Understand production path (interfaces defined)<br />
+- ✅ Navigate quickly (role-based organization)<br />
+- ✅ Deploy confidently (testnet → mainnet path clear)</p>
+<hr />
+<p><strong>Related Documents:</strong><br />
+- <code>02_MVP_IMPLEMENTATION_PLAN.md</code> - Implementation guide<br />
+- <code>03_MVP_MOCKING_AND_TESTNET_STRATEGY.md</code> - Mock services &amp; testnet<br />
+- <code>04_MVP_FRONTEND_SPECIFICATION.md</code> - Frontend design<br />
+- <code>14_MVP_ROLE_WORKFLOW_COVERAGE_ANALYSIS.md</code> - Role coverage<br />
+- <code>15_MVP_V6_ALL_ROLE_WORKFLOWS_UPDATE.md</code> - v6.0 update</p>
+<hr />
+<p><strong>END OF MVP PRODUCTION FOLDER STRUCTURE</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

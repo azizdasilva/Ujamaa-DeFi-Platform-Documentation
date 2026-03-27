@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Production Folder Structure - Quick Reference - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Production Folder Structure - Quick Reference</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Production Folder Structure - Quick Reference</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 (Production-Ready) | <strong>Last Updated:</strong> March 19, 2026</p></div>
+
+        <h1>Production Folder Structure - Quick Reference</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>For:</strong> UJAMAA DeFi Platform Development Team<br />
+<strong>Date:</strong> March 19, 2026<br />
+<strong>Version:</strong> 1.0 (Production-Ready)</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Quick Start: Where to Create Files</h2>
+<h3>Adding a New Component</h3>
+<div class="docs-pre"><code># Base component (Button, Card, Input)
+src/components/common/NewComponent.tsx
+
+# Dashboard component (charts, KPIs)
+src/components/dashboard/NewComponent.tsx
+
+# Pool component (pool cards, lists)
+src/components/pools/NewComponent.tsx
+</code></div>
+<h3>Adding a New Page</h3>
+<div class="docs-pre"><code># Dashboard page
+src/pages/dashboard/NewDashboard.tsx
+
+# Feature page
+src/pages/pools/NewPage.tsx
+
+# Onboarding flow
+src/pages/onboarding/NewFlow.tsx
+</code></div>
+<h3>Adding a New Hook</h3>
+<div class="docs-pre"><code>src/hooks/useNewFeature.ts
+</code></div>
+<h3>Adding a New Service</h3>
+<div class="docs-pre"><code>src/services/newService.ts
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Complete Structure (Condensed)</h2>
+<div class="docs-pre"><code>src/
+├── components/          # UI components (reusable)
+│   ├── common/         # Button, Card, Input, Badge
+│   ├── layout/         # Header, Footer, Sidebar
+│   ├── dashboard/      # KPICard, Charts
+│   ├── pools/          # PoolCard, PoolList
+│   └── compliance/     # KYCStatus, Badges
+│
+├── pages/              # Full pages (routes)
+│   ├── home/           # Landing page
+│   ├── dashboard/      # 6 dashboards (by role)
+│   ├── pools/          # Marketplace, detail
+│   ├── portfolio/      # Portfolio view
+│   ├── onboarding/     # 3 onboarding flows
+│   ├── originator/     # Originator features
+│   ├── compliance/     # Compliance features
+│   ├── regulator/      # Regulator features
+│   ├── diaspora/       # Diaspora features
+│   ├── mobile/         # Mobile money
+│   └── documentation/  # Deep Dive, Investors Room
+│
+├── hooks/              # Custom React hooks
+├── contexts/           # React contexts
+├── services/           # API clients
+├── utils/              # Helper functions
+├── types/              # TypeScript types
+├── styles/             # CSS files
+├── config/             # Config files
+├── contracts/          # Contract ABIs
+└── assets/             # Images, fonts, icons
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>No MVP/MVP Prefixes</h2>
+<p><strong>❌ Don't Use:</strong><br />
+- <code>MVP/</code> folder<br />
+- <code>MVPComponent.tsx</code><br />
+- <code>mock_feature.ts</code><br />
+- <code>testnet_config.ts</code></p>
+<p><strong>✅ Use Instead:</strong><br />
+- <code>components/</code><br />
+- <code>Component.tsx</code><br />
+- <code>feature.ts</code> (with feature flags)<br />
+- <code>config.ts</code> (with environment variables)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Environment-Based Features</h2>
+<p>Use environment variables, not folder names:</p>
+<div class="docs-pre"><code>// ✅ Good
+if (process.env.VITE_FEATURE_DIASPORA === 'true') {
+  &lt;DiasporaDashboard /&gt;
+}
+
+// ❌ Bad
+if (IS_MVP) {
+  &lt;MVPDashboard /&gt;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>File Naming Examples</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Purpose</th>
+<th>✅ Good</th>
+<th>❌ Bad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button component</td>
+<td><code>Button.tsx</code></td>
+<td><code>MVPButton.tsx</code></td>
+</tr>
+<tr>
+<td>Pool card</td>
+<td><code>PoolCard.tsx</code></td>
+<td><code>TestnetPoolCard.tsx</code></td>
+</tr>
+<tr>
+<td>KYC status</td>
+<td><code>KYCStatus.tsx</code></td>
+<td><code>MockKYCStatus.tsx</code></td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td><code>InstitutionalDashboard.tsx</code></td>
+<td><code>MVPDashboard.tsx</code></td>
+</tr>
+<tr>
+<td>Service</td>
+<td><code>poolService.ts</code></td>
+<td><code>MVP_pool_service.ts</code></td>
+</tr>
+<tr>
+<td>Hook</td>
+<td><code>usePools.ts</code></td>
+<td><code>useMVPPools.ts</code></td>
+</tr>
+<tr>
+<td>Config</td>
+<td><code>network.ts</code></td>
+<td><code>testnet_config.ts</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Production Deployment</h2>
+<h3>Frontend</h3>
+<div class="docs-pre"><code># Build for production
+npm run build
+
+# Output: dist/
+# Deploy to: Vercel, Netlify, or AWS S3 + CloudFront
+</code></div>
+<h3>Backend</h3>
+<div class="docs-pre"><code># Deploy with Docker
+docker build -t ujamaa-backend .
+docker run -p 8000:8000 ujamaa-backend
+
+# Or deploy to: Heroku, AWS ECS, GCP Cloud Run
+</code></div>
+<h3>Contracts</h3>
+<div class="docs-pre"><code># Deploy to Polygon mainnet
+npx hardhat run scripts/deploy.ts --network polygon
+
+# Verify on Polygonscan
+npx hardhat verify --network polygon DEPLOYED_CONTRACT_ADDRESS
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Key Points</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>No MVP prefixes</strong> - Production-ready names only</li>
+<li><strong>Role-based organization</strong> - Easy to find by user type</li>
+<li><strong>Environment configuration</strong> - Features controlled by <code>.env</code></li>
+<li><strong>Clean separation</strong> - Components, pages, services, utils</li>
+<li><strong>Scalable</strong> - Easy to add new features</li>
+</ol>
+<hr />
+<p><strong>Full Documentation:</strong> <code>docs/01_SPECIFICATIONS/07_PRODUCTION_FOLDER_STRUCTURE.md</code></p>
+<hr />
+<p><strong>END OF QUICK REFERENCE</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

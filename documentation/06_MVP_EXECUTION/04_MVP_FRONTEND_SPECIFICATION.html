@@ -1,0 +1,4133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MVP Frontend Specification: Institutional Dashboard - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Frontend Specification: Institutional Dashboard</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">MVP Frontend Specification: Institutional Dashboard</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> Frontend Developers, UI/UX Designers, Product Managers, Stakeholders</p></div>
+
+        <h1>MVP Frontend Specification: Institutional Dashboard</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - Next-Generation Institutional Interface</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 17, 2026<br />
+<strong>Classification:</strong> Internal / Development<br />
+<strong>Audience:</strong> Frontend Developers, UI/UX Designers, Product Managers, Stakeholders</p>
+<p><strong>Aligned with:</strong> SRS v2.0 Section 4.1 (User Interfaces), Section 2.3 (User Classes)</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-design-philosophy">Design Philosophy</a></li>
+<li><a href="#3-visual-design-system">Visual Design System</a></li>
+<li><a href="#4-architecture--technology-stack">Architecture &amp; Technology Stack</a></li>
+<li><a href="#5-page-specifications">Page Specifications</a></li>
+<li><a href="#6-component-library">Component Library</a></li>
+<li><a href="#7-user-flows">User Flows</a></li>
+<li><a href="#8-accessibility-requirements">Accessibility Requirements</a></li>
+<li><a href="#9-performance-requirements">Performance Requirements</a></li>
+<li><a href="#10-security-requirements">Security Requirements</a></li>
+<li><a href="#11-testing-strategy">Testing Strategy</a></li>
+<li><a href="#12-implementation-timeline">Implementation Timeline</a></li>
+</ol>
+<hr />
+<h1>1. Executive Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Mission Statement</h2>
+<p>Create an <strong>institutional-grade frontend</strong> that makes investors say <strong>"WOW"</strong> through:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ <strong>Clarity</strong> - Complex financial data presented simply</li>
+<li>✅ <strong>Trust</strong> - Every interaction reinforces security and compliance</li>
+<li>✅ <strong>Speed</strong> - Sub-2-second load times, instant feedback</li>
+<li>✅ <strong>Beauty</strong> - Modern, professional aesthetics inspired by Stripe, BlackRock, and leading DeFi platforms</li>
+<li>✅ <strong>Accessibility</strong> - WCAG 2.2 AA compliant, usable by everyone</li>
+</ul>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Target Users</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>User Type</th>
+<th>Investment Range</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institutional Investor</strong></td>
+<td>€100K - €10M+</td>
+<td>Portfolio tracking, yield statements, compliance docs, proof of reserve</td>
+</tr>
+<tr>
+<td><strong>Retail Investor</strong></td>
+<td>€1K - €100K</td>
+<td>Simple investment flows, educational content, portfolio overview</td>
+</tr>
+<tr>
+<td><strong>Pool Manager</strong></td>
+<td>N/A</td>
+<td>Pool management, investor oversight, yield distribution</td>
+</tr>
+<tr>
+<td><strong>Compliance Officer</strong></td>
+<td>N/A</td>
+<td>KYB/KYC tracking, document management, audit trails</td>
+</tr>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>N/A</td>
+<td>System oversight, user management, fraud monitoring</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Key Improvements Over MVP-1</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>MVP-1</th>
+<th>MVP (Target)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visual Design</strong></td>
+<td>Basic Bootstrap</td>
+<td>Custom design system (Stripe-inspired)</td>
+</tr>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Static tables</td>
+<td>Interactive charts, real-time updates</td>
+</tr>
+<tr>
+<td><strong>Yield Display</strong></td>
+<td>Simple percentage</td>
+<td>Live accrual counter, projection simulator</td>
+</tr>
+<tr>
+<td><strong>Navigation</strong></td>
+<td>Top nav only</td>
+<td>Top nav + sidebar + command palette (⌘K)</td>
+</tr>
+<tr>
+<td><strong>Mobile</strong></td>
+<td>Responsive</td>
+<td>Mobile-first, PWA with offline support</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>~3s load</td>
+<td>&lt;1.5s FCP, &lt;3.5s TTI</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>Basic</td>
+<td>WCAG 2.2 AA compliant</td>
+</tr>
+<tr>
+<td><strong>Trust Signals</strong></td>
+<td>Minimal</td>
+<td>Integrated throughout (badges, status, audits)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Design Philosophy</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Core Principles</h2>
+<h3>Principle 1: Clarity Over Complexity</h3>
+<p><strong>Problem:</strong> Institutional finance dashboards are often overwhelming (Bloomberg Terminal, legacy platforms).</p>
+<p><strong>Solution:</strong> Progressive disclosure - show essentials first, allow drill-down.</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────┐
+│  What users see FIRST (3-second rule):  │
+│  • Total portfolio value                │
+│  • 24h change                           │
+│  • Active positions count               │
+├─────────────────────────────────────────┤
+│  What users can EXPLORE:                │
+│  • Individual pool performance          │
+│  • Asset allocation breakdown           │
+│  • Transaction history                  │
+│  • Yield projections                    │
+└─────────────────────────────────────────┘
+</code></div>
+<h3>Principle 2: Trust Through Transparency</h3>
+<p><strong>Every screen should answer:</strong><br />
+- ✅ Where is my money?<br />
+- ✅ Is it secure?<br />
+- ✅ What is it earning?<br />
+- ✅ How do I verify this?</p>
+<p><strong>Implementation:</strong><br />
+- Real-time "All systems operational" status indicator<br />
+- Proof of Reserve display on every pool card<br />
+- One-click access to on-chain verification<br />
+- Compliance badges visible (FSC Mauritius, MiCA, FATF)</p>
+<h3>Principle 3: Performance is a Feature</h3>
+<p><strong>Target Metrics:</strong><br />
+| Metric | Target | Why It Matters |<br />
+|--------|--------|----------------|<br />
+| First Contentful Paint | &lt;1.5s | First impression |<br />
+| Time to Interactive | &lt;3.5s | Can actually use the app |<br />
+| API Response (P95) | &lt;500ms | Perceived speed |<br />
+| WebSocket Latency | &lt;100ms | Real-time feel |</p>
+<h3>Principle 4: Mobile-First, Not Mobile-Afterthought</h3>
+<p><strong>Reality:</strong> 60%+ of African users access via mobile.</p>
+<p><strong>Approach:</strong><br />
+- Design for 320px width first<br />
+- Thumb-friendly zones (primary actions at bottom)<br />
+- Touch targets: 48x48px minimum<br />
+- Offline support for low-connectivity areas</p>
+<h3>Principle 5: Accessibility is Non-Negotiable</h3>
+<p><strong>Compliance:</strong> WCAG 2.2 AA (legally required for institutional products).</p>
+<p><strong>Benefits:</strong><br />
+- Usable by people with disabilities<br />
+- Better SEO<br />
+- Improved mobile UX<br />
+- Legal protection</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Design Inspiration</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Platform</th>
+<th>What We're Borrowing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stripe Dashboard</strong></td>
+<td>Clean typography, card-based layout, micro-interactions</td>
+</tr>
+<tr>
+<td><strong>BlackRock Aladdin</strong></td>
+<td>Institutional data visualization, risk metrics display</td>
+</tr>
+<tr>
+<td><strong>Lido Finance</strong></td>
+<td>Live yield accrual visualization, staking UX</td>
+</tr>
+<tr>
+<td><strong>Coinbase Advanced</strong></td>
+<td>Dual-mode interface (simple/advanced), order flow</td>
+</tr>
+<tr>
+<td><strong>Betterment</strong></td>
+<td>Portfolio allocation charts, goal-based investing UI</td>
+</tr>
+<tr>
+<td><strong>Rainbow Wallet</strong></td>
+<td>Playful micro-interactions, color usage</td>
+</tr>
+<tr>
+<td><strong>Linear</strong></td>
+<td>Command palette (⌘K), keyboard-first navigation</td>
+</tr>
+<tr>
+<td><strong>Notion</strong></td>
+<td>Clean documentation, block-based editing patterns</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>3. Visual Design System</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Color Palette</h2>
+<h3>Heritage &amp; Trust Theme 🆕</h3>
+<p><strong>Design Philosophy:</strong> This color scheme emphasizes energy and reliability, echoing the elephant's strength and the logo's existing palette.</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Color</th>
+<th>Hex Code</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary</strong></td>
+<td>Vibrant Orange</td>
+<td><code>#F58220</code></td>
+<td>CTAs, key actions, brand identity</td>
+</tr>
+<tr>
+<td><strong>Secondary</strong></td>
+<td>Deep Blue</td>
+<td><code>#1D3557</code></td>
+<td>Headers, navigation, trust elements</td>
+</tr>
+<tr>
+<td><strong>Accent</strong></td>
+<td>Light Gray</td>
+<td><code>#E5E5E5</code></td>
+<td>Backgrounds, borders, subtle dividers</td>
+</tr>
+</tbody>
+</table></div>
+<div class="docs-pre"><code>:root {
+  /* =========================================
+     HERITAGE &amp; TRUST THEME
+     Emphasizes energy (orange) and reliability (blue)
+     Echoing elephant strength &amp; logo palette
+     ========================================= */
+
+  /* Primary: Vibrant Orange (#F58220) - Energy, Action, Brand */
+  --color-primary-50: #FFF5F0;
+  --color-primary-100: #FFE8D9;
+  --color-primary-200: #FFD0B3;
+  --color-primary-300: #FFB78C;
+  --color-primary-400: #F89E59;
+  --color-primary-500: #F58220;   /* ✅ Primary buttons, CTAs, brand elements */
+  --color-primary-600: #E06B15;   /* Hover states */
+  --color-primary-700: #C9550A;   /* Active states */
+  --color-primary-800: #B24000;
+  --color-primary-900: #9B2A00;   /* Important accents */
+
+  /* Secondary: Deep Blue (#1D3557) - Trust, Stability, Heritage */
+  --color-secondary-50: #F0F4F8;
+  --color-secondary-100: #D9E2EC;
+  --color-secondary-200: #BCCCDC;
+  --color-secondary-300: #9FB3C8;
+  --color-secondary-400: #829AB1;
+  --color-secondary-500: #627D98;
+  --color-secondary-600: #486581;
+  --color-secondary-700: #334E68;
+  --color-secondary-800: #243B53;
+  --color-secondary-900: #1D3557;   /* ✅ Headers, navigation, trust elements */
+
+  /* Accent: Light Gray (#E5E5E5) - Neutral, Balance */
+  --color-accent-50: #FAFAFA;
+  --color-accent-100: #F5F5F5;
+  --color-accent-200: #E5E5E5;   /* ✅ Borders, subtle dividers */
+  --color-accent-300: #D4D4D4;
+  --color-accent-400: #A3A3A3;
+  --color-accent-500: #737373;
+  --color-accent-600: #525252;
+  --color-accent-700: #404040;
+  --color-accent-800: #262626;
+  --color-accent-900: #171717;
+
+  /* Usage Guidelines:
+     - primary-500 (#F58220): Primary CTAs, key actions, brand highlights
+     - primary-100 (#FFE8D9): Background tints for orange-themed sections
+     - secondary-900 (#1D3557): Headers, navigation bars, trust badges
+     - secondary-700 (#334E68): Secondary text, subtitles
+     - accent-200 (#E5E5E5): Borders, dividers, card backgrounds
+     - accent-100 (#F5F5F5): Page backgrounds, subtle sections
+  */
+}
+</code></div>
+<h3>Semantic Colors (Updated for Heritage Theme)</h3>
+<div class="docs-pre"><code>:root {
+  /* Success - Yields, positive changes, verified status */
+  --color-success-50: #ECFDF5;
+  --color-success-100: #D1FAE5;
+  --color-success-500: #10B981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+
+  /* Warning - Pending states, attention needed (aligns with orange theme) */
+  --color-warning-50: #FFF5F0;
+  --color-warning-100: #FFE8D9;
+  --color-warning-500: #F58220;   /* Matches primary orange */
+  --color-warning-600: #E06B15;
+  --color-warning-700: #C9550A;
+
+  /* Danger - Errors, negative changes, critical alerts */
+  --color-danger-50: #FEF2F2;
+  --color-danger-100: #FEE2E2;
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+
+  /* Info - Neutral information, tips (aligns with blue theme) */
+  --color-info-50: #F0F4F8;
+  --color-info-100: #D9E2EC;
+  --color-info-500: #627D98;
+  --color-info-600: #486581;
+  --color-info-700: #334E68;
+}
+</code></div>
+<h3>Neutral Colors (Updated)</h3>
+<div class="docs-pre"><code>:root {
+  /* Grays - Text, borders, backgrounds */
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #E5E5E5;   /* Matches accent-200 */
+  --color-gray-300: #D4D4D4;
+  --color-gray-400: #A3A3A3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+}
+</code></div>
+<h3>Asset Class Colors (Updated for Heritage Theme)</h3>
+<div class="docs-pre"><code>:root {
+  /* Pool Industrie - Deep Blue (heritage, industry) */
+  --color-pool-industrie: #1D3557;
+
+  /* Pool Agriculture - Green (growth, nature) */
+  --color-pool-agriculture: #10B981;
+
+  /* Pool Trade Finance - Secondary Blue (commerce, trust) */
+  --color-pool-trade: #334E68;
+
+  /* Pool Renewable Energy - Vibrant Orange (energy, innovation) */
+  --color-pool-energy: #F58220;
+
+  /* Pool Real Estate - Teal (stability, property) */
+  --color-pool-realestate: #14B8A6;
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Typography</h2>
+<h3>Font Families</h3>
+<div class="docs-pre"><code>:root {
+  /* Primary font - Inter (free, Google Fonts, excellent readability) */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+               Roboto, Helvetica, Arial, sans-serif;
+
+  /* Monospace - For numbers, addresses, code */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+}
+</code></div>
+<h3>Type Scale</h3>
+<div class="docs-pre"><code>:root {
+  /* Display - Hero sections, major headlines */
+  --text-display: 2.25rem;      /* 36px */
+  --line-height-display: 2.5rem; /* 40px */
+
+  /* H1 - Page titles */
+  --text-h1: 1.875rem;          /* 30px */
+  --line-height-h1: 2.25rem;    /* 36px */
+
+  /* H2 - Section headers */
+  --text-h2: 1.5rem;            /* 24px */
+  --line-height-h2: 2rem;       /* 32px */
+
+  /* H3 - Card titles, subsections */
+  --text-h3: 1.25rem;           /* 20px */
+  --line-height-h3: 1.75rem;    /* 28px */
+
+  /* Body Large - Lead paragraphs */
+  --text-lg: 1.125rem;          /* 18px */
+  --line-height-lg: 1.75rem;    /* 28px */
+
+  /* Body - Default text */
+  --text-base: 1rem;            /* 16px */
+  --line-height-base: 1.5rem;   /* 24px */
+
+  /* Small - Secondary text, captions */
+  --text-sm: 0.875rem;          /* 14px */
+  --line-height-sm: 1.25rem;    /* 20px */
+
+  /* Extra Small - Footnotes, legal */
+  --text-xs: 0.75rem;           /* 12px */
+  --line-height-xs: 1rem;       /* 16px */
+}
+</code></div>
+<h3>Font Weights</h3>
+<div class="docs-pre"><code>:root {
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+</code></div>
+<h3>Usage Guidelines</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Element</th>
+<th>Font Size</th>
+<th>Weight</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page Title</td>
+<td>H1</td>
+<td>Bold</td>
+<td>gray-900</td>
+</tr>
+<tr>
+<td>Section Header</td>
+<td>H2</td>
+<td>Semibold</td>
+<td>gray-900</td>
+</tr>
+<tr>
+<td>Card Title</td>
+<td>H3</td>
+<td>Medium</td>
+<td>gray-800</td>
+</tr>
+<tr>
+<td>Body Text</td>
+<td>Base</td>
+<td>Normal</td>
+<td>gray-700</td>
+</tr>
+<tr>
+<td>Secondary Text</td>
+<td>Small</td>
+<td>Normal</td>
+<td>gray-500</td>
+</tr>
+<tr>
+<td>Captions</td>
+<td>XS</td>
+<td>Normal</td>
+<td>gray-400</td>
+</tr>
+<tr>
+<td>Numbers (currency)</td>
+<td>Mono</td>
+<td>Medium</td>
+<td>gray-900</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 Spacing System</h2>
+<p><strong>Based on 8px grid</strong> (industry standard, divisible by most numbers):</p>
+<div class="docs-pre"><code>:root {
+  --space-1: 0.25rem;   /* 4px - Tight spacing */
+  --space-2: 0.5rem;    /* 8px - Base unit */
+  --space-3: 0.75rem;   /* 12px - Form elements */
+  --space-4: 1rem;      /* 16px - Card padding */
+  --space-6: 1.5rem;    /* 24px - Section spacing */
+  --space-8: 2rem;      /* 32px - Large sections */
+  --space-12: 3rem;     /* 48px - Page sections */
+  --space-16: 4rem;     /* 64px - Major divisions */
+  --space-20: 5rem;     /* 80px - Hero spacing */
+  --space-24: 6rem;     /* 96px - Page margins */
+}
+</code></div>
+<h3>Spacing Patterns</h3>
+<div class="docs-pre"><code>Card Internal Spacing:
+┌─────────────────────────────────┐
+│  ┌───────────────────────────┐  │ ← space-4 (16px) from edge
+│  │  Card Title (H3)          │  │
+│  │  space-2 (8px)            │  │
+│  │  Card content...          │  │
+│  │  space-4 (16px)           │  │
+│  │  [Action Button]          │  │
+│  └───────────────────────────┘  │
+└─────────────────────────────────┘
+  ↑
+  space-6 (24px) between cards
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.4 Border Radius</h2>
+<div class="docs-pre"><code>:root {
+  --radius-sm: 0.25rem;   /* 4px - Small buttons, tags */
+  --radius-md: 0.375rem;  /* 6px - Default */
+  --radius-lg: 0.5rem;    /* 8px - Cards, modals */
+  --radius-xl: 0.75rem;   /* 12px - Large containers */
+  --radius-2xl: 1rem;     /* 16px - Hero sections */
+  --radius-full: 9999px;  /* Pills, avatars */
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.5 Shadows (Elevation System)</h2>
+<div class="docs-pre"><code>:root {
+  /* Subtle - Default card elevation */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+  /* Medium - Hover states, dropdowns */
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 
+               0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  /* Large - Modals, popovers */
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 
+               0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Extra Large - Floating elements */
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
+               0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Focus Ring - Accessibility */
+  --shadow-focus: 0 0 0 3px rgba(0, 102, 184, 0.5);
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.6 Iconography</h2>
+<h3>Icon Library</h3>
+<p><strong>Primary:</strong> <a href="https://lucide.dev/">Lucide Icons</a> (open-source, consistent, 2000+ icons)</p>
+<p><strong>Alternative:</strong> Heroicons (Tailwind CSS creators)</p>
+<h3>Icon Sizes</h3>
+<div class="docs-pre"><code>:root {
+  --icon-xs: 0.875rem;   /* 14px - Inline with small text */
+  --icon-sm: 1rem;       /* 16px - Inline with body text */
+  --icon-md: 1.25rem;    /* 20px - Default */
+  --icon-lg: 1.5rem;     /* 24px - Buttons, navigation */
+  --icon-xl: 2rem;       /* 32px - Feature icons */
+  --icon-2xl: 3rem;      /* 48px - Hero icons */
+}
+</code></div>
+<h3>Icon Usage</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Context</th>
+<th>Icon Size</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inline with text</td>
+<td>sm</td>
+<td>Match text color</td>
+</tr>
+<tr>
+<td>Buttons</td>
+<td>md</td>
+<td>Inherit or primary</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>lg</td>
+<td>Current: primary-500, Default: gray-400</td>
+</tr>
+<tr>
+<td>Status indicators</td>
+<td>sm</td>
+<td>Semantic colors</td>
+</tr>
+<tr>
+<td>Feature illustrations</td>
+<td>2xl</td>
+<td>Brand colors</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.7 Logo &amp; Branding 🆕</h2>
+<h3>Logo Files</h3>
+<p><strong>Location:</strong> <code>docs/10_DESIGN/</code></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>File</th>
+<th>Background</th>
+<th>Usage</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ujamaa_DeFi_logo.png</strong></td>
+<td>White background</td>
+<td>Light backgrounds, documents, print</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td><strong>Ujamaa_DeFi_logo_transparent.png</strong></td>
+<td>Transparent</td>
+<td>Dark backgrounds, overlays, web</td>
+<td>PNG</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Logo Usage Guidelines</h3>
+<h4>Primary Logo (White Background)</h4>
+<p><strong>File:</strong> <code>docs/10_DESIGN/Ujamaa_DeFi_logo.png</code></p>
+<p><strong>Usage:</strong><br />
+- ✅ Light backgrounds (white, light gray)<br />
+- ✅ Printed documents (PDFs, reports)<br />
+- ✅ Email signatures<br />
+- ✅ Presentations (light slides)<br />
+- ✅ Marketing materials</p>
+<p><strong>Example:</strong></p>
+<div class="docs-pre"><code>// Light background sections
+&lt;img 
+  src=&quot;/assets/logos/Ujamaa_DeFi_logo.png&quot; 
+  alt=&quot;UJAMAA DEFI PLATFORM&quot;
+  className=&quot;h-12 w-auto&quot;
+/&gt;
+</code></div>
+<h4>Transparent Logo</h4>
+<p><strong>File:</strong> <code>docs/10_DESIGN/Ujamaa_DeFi_logo_transparent.png</code></p>
+<p><strong>Usage:</strong><br />
+- ✅ Dark backgrounds (Deep Blue #1D3557)<br />
+- ✅ Overlays on images<br />
+- ✅ Navigation headers (dark mode)<br />
+- ✅ Presentations (dark slides)<br />
+- ✅ Web headers with colored backgrounds</p>
+<p><strong>Example:</strong></p>
+<div class="docs-pre"><code>// Dark background sections (navigation, headers)
+&lt;img 
+  src=&quot;/assets/logos/Ujamaa_DeFi_logo_transparent.png&quot; 
+  alt=&quot;UJAMAA DEFI PLATFORM&quot;
+  className=&quot;h-12 w-auto&quot;
+/&gt;
+</code></div>
+<h3>Logo Clear Space</h3>
+<p><strong>Minimum Clear Space:</strong> Equal to the height of the elephant icon</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────┐
+│                                         │
+│         ← Elephant Height →             │
+│         ┌───────────┐                   │
+│         │           │                   │
+│         │   LOGO    │                   │
+│         │           │                   │
+│         └───────────┘                   │
+│                                         │
+│         Minimum clear space             │
+└─────────────────────────────────────────┘
+</code></div>
+<p><strong>CSS Implementation:</strong></p>
+<div class="docs-pre"><code>.logo-container {
+  padding: calc(var(--logo-height) / 2);
+}
+
+.logo {
+  height: 48px;  /* Default header size */
+  width: auto;
+  display: block;
+}
+</code></div>
+<h3>Logo Sizes</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Context</th>
+<th>Height</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Navigation Header</strong></td>
+<td>48px</td>
+<td>Default header logo</td>
+</tr>
+<tr>
+<td><strong>Mobile Header</strong></td>
+<td>40px</td>
+<td>Mobile navigation</td>
+</tr>
+<tr>
+<td><strong>Footer</strong></td>
+<td>32px</td>
+<td>Footer logo</td>
+</tr>
+<tr>
+<td><strong>Hero Section</strong></td>
+<td>80px</td>
+<td>Landing page hero</td>
+</tr>
+<tr>
+<td><strong>Email Signature</strong></td>
+<td>24px</td>
+<td>Email footer</td>
+</tr>
+<tr>
+<td><strong>Favicon</strong></td>
+<td>32px</td>
+<td>Browser tab icon</td>
+</tr>
+<tr>
+<td><strong>Social Media</strong></td>
+<td>120px</td>
+<td>Profile pictures</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Responsive Logo Sizes:</strong></p>
+<div class="docs-pre"><code>/* Navigation Logo */
+.header-logo {
+  height: 48px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    height: 40px;  /* Smaller on mobile */
+  }
+}
+
+/* Footer Logo */
+.footer-logo {
+  height: 32px;
+  width: auto;
+}
+
+/* Hero Logo */
+.hero-logo {
+  height: 80px;
+  width: auto;
+}
+</code></div>
+<h3>Logo Color Variations</h3>
+<p><strong>For Heritage &amp; Trust Theme:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Background</th>
+<th>Logo Version</th>
+<th>Text Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>White (#FFFFFF)</strong></td>
+<td>White background logo</td>
+<td>Deep Blue (#1D3557)</td>
+</tr>
+<tr>
+<td><strong>Light Gray (#F5F5F5)</strong></td>
+<td>White background logo</td>
+<td>Deep Blue (#1D3557)</td>
+</tr>
+<tr>
+<td><strong>Deep Blue (#1D3557)</strong></td>
+<td>Transparent logo</td>
+<td>White (#FFFFFF)</td>
+</tr>
+<tr>
+<td><strong>Vibrant Orange (#F58220)</strong></td>
+<td>Transparent logo</td>
+<td>White (#FFFFFF)</td>
+</tr>
+<tr>
+<td><strong>Image Overlay</strong></td>
+<td>Transparent logo</td>
+<td>White (#FFFFFF)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Logo Don'ts</h3>
+<p>❌ <strong>DO NOT:</strong><br />
+- Stretch or distort the logo<br />
+- Change logo colors (except approved variations)<br />
+- Add effects (shadows, gradients, outlines)<br />
+- Place on busy backgrounds without clear space<br />
+- Use low-resolution versions<br />
+- Rotate or flip the logo<br />
+- Crop the logo improperly</p>
+<p>✅ <strong>DO:</strong><br />
+- Use approved logo files from <code>docs/10_DESIGN/</code><br />
+- Maintain clear space around logo<br />
+- Use appropriate version for background<br />
+- Scale proportionally<br />
+- Ensure high resolution (minimum 150 DPI for print)</p>
+<h3>Asset Import Path</h3>
+<p><strong>Frontend Project Structure:</strong></p>
+<div class="docs-pre"><code>frontend/
+├── public/
+│   └── assets/
+│       └── logos/
+│           ├── Ujamaa_DeFi_logo.png              # White background
+│           ├── Ujamaa_DeFi_logo_transparent.png  # Transparent
+│           └── favicon.ico                        # Browser favicon
+├── src/
+│   └── components/
+│       └── layout/
+│           └── Header.tsx  # Logo usage example
+</code></div>
+<p><strong>Import Examples:</strong></p>
+<div class="docs-pre"><code>// React Component
+import logo from '@/assets/logos/Ujamaa_DeFi_logo.png';
+import logoTransparent from '@/assets/logos/Ujamaa_DeFi_logo_transparent.png';
+
+function Header() {
+  return (
+    &lt;header className=&quot;bg-secondary-900&quot;&gt;
+      &lt;img 
+        src={logoTransparent} 
+        alt=&quot;UJAMAA DEFI PLATFORM&quot;
+        className=&quot;h-12 w-auto&quot;
+      /&gt;
+    &lt;/header&gt;
+  );
+}
+
+function Footer() {
+  return (
+    &lt;footer className=&quot;bg-gray-100&quot;&gt;
+      &lt;img 
+        src={logo} 
+        alt=&quot;UJAMAA DEFI PLATFORM&quot;
+        className=&quot;h-8 w-auto&quot;
+      /&gt;
+    &lt;/footer&gt;
+  );
+}
+</code></div>
+<h3>Brand Colors in Logo</h3>
+<p><strong>Logo Color Palette:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Element</th>
+<th>Color</th>
+<th>Hex Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Elephant</strong></td>
+<td>Vibrant Orange</td>
+<td><code>#F58220</code></td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td>Deep Blue</td>
+<td><code>#1D3557</code></td>
+</tr>
+<tr>
+<td><strong>Background</strong></td>
+<td>White / Transparent</td>
+<td><code>#FFFFFF</code> / <code>transparent</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Consistency:</strong><br />
+- Logo orange matches Primary-500 (<code>#F58220</code>)<br />
+- Logo blue matches Secondary-900 (<code>#1D3557</code>)<br />
+- Ensures brand consistency across all touchpoints</p>
+<h3>Favicon &amp; App Icons</h3>
+<p><strong>Files to Generate:</strong></p>
+<div class="docs-pre"><code>frontend/public/
+├── favicon.ico          # 32x32, 16x16 (browser tab)
+├── apple-touch-icon.png # 180x180 (iOS home screen)
+├── android-chrome-192x192.png
+├── android-chrome-512x512.png
+└── manifest.json        # PWA manifest
+</code></div>
+<p><strong>HTML Head:</strong></p>
+<div class="docs-pre"><code>&lt;head&gt;
+  &lt;!-- Favicon --&gt;
+  &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;/assets/logos/favicon.ico&quot; /&gt;
+  &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/assets/logos/apple-touch-icon.png&quot; /&gt;
+
+  &lt;!-- PWA Manifest --&gt;
+  &lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot; /&gt;
+
+  &lt;!-- Theme Color --&gt;
+  &lt;meta name=&quot;theme-color&quot; content=&quot;#F58220&quot; /&gt;
+  &lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#1D3557&quot; /&gt;
+&lt;/head&gt;
+</code></div>
+<hr />
+</section>
+<h1>4. Architecture &amp; Technology Stack</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Technology Choices</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>React</td>
+<td>19.x</td>
+<td>React Compiler for auto-optimization, latest features</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>6.0+</td>
+<td>Type safety, better DX, required for Web3</td>
+</tr>
+<tr>
+<td><strong>Build Tool</strong></td>
+<td>Vite</td>
+<td>7.x</td>
+<td>Fastest HMR, optimized builds, ESM native</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>Tailwind CSS</td>
+<td>4.x</td>
+<td>Utility-first, consistent design system</td>
+</tr>
+<tr>
+<td><strong>UI Primitives</strong></td>
+<td>Radix UI</td>
+<td>Latest</td>
+<td>Accessible, unstyled components</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Recharts</td>
+<td>2.x</td>
+<td>React-native, accessible, customizable</td>
+</tr>
+<tr>
+<td><strong>Animations</strong></td>
+<td>Framer Motion</td>
+<td>10.x</td>
+<td>GPU-accelerated, reduced-motion support</td>
+</tr>
+<tr>
+<td><strong>State (Server)</strong></td>
+<td>TanStack Query</td>
+<td>5.x</td>
+<td>Caching, background updates, optimistic UI</td>
+</tr>
+<tr>
+<td><strong>State (Client)</strong></td>
+<td>Zustand</td>
+<td>4.x</td>
+<td>Minimal, TypeScript-first</td>
+</tr>
+<tr>
+<td><strong>Forms</strong></td>
+<td>React Hook Form</td>
+<td>7.x</td>
+<td>Performance, easy validation</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Zod</td>
+<td>3.x</td>
+<td>TypeScript-first schema validation</td>
+</tr>
+<tr>
+<td><strong>Tables</strong></td>
+<td>TanStack Table</td>
+<td>8.x</td>
+<td>Virtualization, sorting, filtering</td>
+</tr>
+<tr>
+<td><strong>Wallet</strong></td>
+<td>Wagmi</td>
+<td>Latest</td>
+<td>React hooks for Web3</td>
+</tr>
+<tr>
+<td><strong>Web3</strong></td>
+<td>Viem</td>
+<td>Latest</td>
+<td>Type-safe, 10x smaller than ethers.js</td>
+</tr>
+<tr>
+<td><strong>HTTP Client</strong></td>
+<td>Axios</td>
+<td>1.x</td>
+<td>Interceptors, cancel requests</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Playwright + Vitest</td>
+<td>Latest</td>
+<td>E2E + unit testing</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Project Structure</h2>
+<div class="docs-pre"><code>frontend/
+├── public/
+│   ├── favicon.ico
+│   ├── manifest.json          # PWA manifest
+│   └── robots.txt
+│
+├── src/
+│   ├── assets/                # Images, SVGs, fonts
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── fonts/
+│   │
+│   ├── components/            # Reusable UI components
+│   │   ├── ui/                # Base components (Button, Card, Input)
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Modal.tsx
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── layout/            # Layout components
+│   │   │   ├── Header.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── charts/            # Chart components
+│   │   │   ├── LineChart.tsx
+│   │   │   ├── PieChart.tsx
+│   │   │   ├── BarChart.tsx
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── tables/            # Table components
+│   │   │   ├── DataTable.tsx
+│   │   │   ├── TransactionTable.tsx
+│   │   │   └── index.ts
+│   │   │
+│   │   └── web3/              # Web3-specific components
+│   │       ├── WalletConnect.tsx
+│   │       ├── TransactionStatus.tsx
+│   │       └── index.ts
+│   │
+│   ├── config/                # Configuration files
+│   │   ├── constants.ts
+│   │   ├── contracts.ts       # Contract addresses &amp; ABIs
+│   │   └── env.ts             # Environment variables
+│   │
+│   ├── hooks/                 # Custom React hooks
+│   │   ├── useWallet.ts
+│   │   ├── useYield.ts
+│   │   ├── usePools.ts
+│   │   └── index.ts
+│   │
+│   ├── layouts/               # Page layouts
+│   │   ├── DashboardLayout.tsx
+│   │   ├── AuthLayout.tsx
+│   │   └── MarketingLayout.tsx
+│   │
+│   ├── lib/                   # Utility libraries
+│   │   ├── api.ts             # Axios instance
+│   │   ├── queryClient.ts     # TanStack Query config
+│   │   └── utils.ts           # Helper functions
+│   │
+│   ├── pages/                 # Page components (routes)
+│   │   ├── index.tsx          # Homepage
+│   │   ├── dashboard/
+│   │   │   ├── index.tsx      # Dashboard overview
+│   │   │   ├── pools.tsx      # Pool marketplace
+│   │   │   ├── portfolio.tsx  # Portfolio view
+│   │   │   └── compliance.tsx # Compliance dashboard
+│   │   ├── pools/
+│   │   │   ├── [id].tsx       # Pool detail page
+│   │   │   └── subscribe.tsx  # Subscribe flow
+│   │   ├── onboarding/
+│   │   │   ├── investor.tsx
+│   │   │   └── originator.tsx
+│   │   └── auth/
+│   │       ├── login.tsx
+│   │       └── register.tsx
+│   │
+│   ├── services/              # API &amp; Web3 services
+│   │   ├── api/
+│   │   │   ├── pools.ts
+│   │   │   ├── investors.ts
+│   │   │   └── transactions.ts
+│   │   └── web3/
+│   │       ├── contracts.ts
+│   │       └── transactions.ts
+│   │
+│   ├── store/                 # Zustand stores
+│   │   ├── walletStore.ts
+│   │   ├── uiStore.ts
+│   │   └── index.ts
+│   │
+│   ├── styles/                # Global styles
+│   │   ├── globals.css
+│   │   └── variables.css
+│   │
+│   ├── types/                 # TypeScript types
+│   │   ├── api.ts
+│   │   ├── pool.ts
+│   │   ├── investor.ts
+│   │   └── index.ts
+│   │
+│   ├── utils/                 # Utility functions
+│   │   ├── formatters.ts      # Currency, date, number formatting
+│   │   ├── validators.ts      # Validation functions
+│   │   └── helpers.ts
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+│
+├── tests/
+│   ├── e2e/                   # Playwright E2E tests
+│   ├── unit/                  # Vitest unit tests
+│   └── fixtures/              # Test data
+│
+├── .env.example
+├── .env.MVP
+├── index.html
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 Environment Configuration</h2>
+<div class="docs-pre"><code># .env.MVP (Vite requires VITE_ prefix)
+
+# API Configuration
+VITE_API_URL=https://api.mvp.ujamaa-defi.com
+VITE_API_TIMEOUT=30000
+
+# Blockchain Configuration
+VITE_POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+VITE_POLYGON_CHAIN_ID=80002
+VITE_EXPLORER_URL=https://amoy.polygonscan.com
+
+# Contract Addresses (MVP Testnet)
+VITE_ULP_TOKEN_ADDRESS=0x...
+VITE_LIQUIDITY_POOL_ADDRESS=0x...
+VITE_MOCK_ESCROW_ADDRESS=0x...
+VITE_MOCK_FIAT_RAMP_ADDRESS=0x...
+
+# Feature Flags
+VITE_ENABLE_MVP=true
+VITE_ENABLE_SECONDARY_MARKET=false
+VITE_ENABLE_MOBILE_APPS=false
+
+# Analytics (optional)
+VITE_ANALYTICS_ID=
+VITE_SENTRY_DSN=
+
+# CDN (optional)
+VITE_CDN_URL=https://cdn.ujamaa-defi.com
+</code></div>
+<hr />
+</section>
+<h1>5. Page Specifications</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Dashboard Overview (Institutional)</h2>
+<h3>Route: <code>/dashboard</code></h3>
+<h3>Purpose</h3>
+<p>Primary landing page for institutional investors after login. Shows portfolio summary, active positions, and key metrics.</p>
+<h3>Layout</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│  UJAMAA    Dashboard  Pools  Portfolio  Compliance    [🔔] [👤 Admin▼] │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  Welcome back, Logic Capital Management                    [🔄 Refresh] │
+│  Last updated: 2 minutes ago                                             │
+│                                                                          │
+│  ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐            │
+│  │ Total Value     │ │ Total Yield     │ │ Active Pools    │            │
+│  │ €2,450,000      │ │ €187,432        │ │ 5               │            │
+│  │ ▲ +2.3% (24h)   │ │ ▲ +8.5% (APY)   │ │ 3 pending      │            │
+│  │ 🟢 Live         │ │ 🟢 On Target    │ │ 🟡 2 attention │            │
+│  └─────────────────┘ └─────────────────┘ └─────────────────┘            │
+│                                                                          │
+│  ┌───────────────────────────────────┐ ┌───────────────────────────────┐│
+│  │  Portfolio Allocation             │ │  Yield Accrual (30 days)      ││
+│  │                                   │ │                               ││
+│  │     [Interactive Pie Chart]       │ │  [Line Chart with trend]      ││
+│  │                                   │ │                               ││
+│  │  🏭 Industrie  45%  €1,102,500    │ │  €187,432                     ││
+│  │  🌾 Agriculture 30%  €735,000     │ │  ▲ +12.3% vs previous         ││
+│  │  📦 Trade Fin  25%  €612,500      │ │                               ││
+│  │                                   │ │  [View Detailed Report →]     ││
+│  └───────────────────────────────────┘ └───────────────────────────────┘│
+│                                                                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐│
+│  │  Active Pool Positions                                              ││
+│  │                                                                     ││
+│  │  Pool Name        Invested    uLP Balance   NAV      Yield (APY)   ││
+│  │  ─────────────────────────────────────────────────────────────────  ││
+│  │  🏭 Pool Industrie                                                  ││
+│  │     €1,000,000   980,000 uLP  €1.0234      8.5%    🟢 On Target    ││
+│  │     [View Details] [Subscribe More] [Redeem]                        ││
+│  │                                                                     ││
+│  │  🌾 Pool Agriculture                                                ││
+│  │     €750,000     740,000 uLP  €1.0135      7.8%    🟢 On Target    ││
+│  │     [View Details] [Subscribe More] [Redeem]                        ││
+│  │                                                                     ││
+│  │  📦 Pool Trade Finance                                              ││
+│  │     €700,000     700,000 uLP  €1.0089      7.2%    🟡 Below Target ││
+│  │     [View Details] [Subscribe More] [Redeem]                        ││
+│  │                                                                     ││
+│  │  [View All Positions →]                                             ││
+│  └─────────────────────────────────────────────────────────────────────┘│
+│                                                                          │
+│  ┌───────────────────────────────────┐ ┌───────────────────────────────┐│
+│  │  Recent Transactions              │ │  Compliance Status            ││
+│  │                                   │ │                               ││
+│  │  📥 €500K subscribed (Mar 17)     │ │  🟢 KYB Verified              ││
+│  │  📤 €200K redeemed (Mar 15)       │ │  🟢 Documents Current         ││
+│  │  💰 €12,432 yield distributed     │ │  🟡 3 renewals in 30 days     ││
+│  │  💰 €8,234 yield accrued (today)  │ │                               ││
+│  │                                   │ │  [Manage Compliance →]        ││
+│  │  [View All →]                    │ │                               ││
+│  └───────────────────────────────────┘ └───────────────────────────────┘│
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>Components Required</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Priority</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KPICard</code></td>
+<td>P0</td>
+<td>Displays key metrics with trend indicators</td>
+</tr>
+<tr>
+<td><code>PortfolioPieChart</code></td>
+<td>P0</td>
+<td>Interactive allocation chart</td>
+</tr>
+<tr>
+<td><code>YieldLineChart</code></td>
+<td>P0</td>
+<td>30-day yield accrual trend</td>
+</tr>
+<tr>
+<td><code>PoolPositionTable</code></td>
+<td>P0</td>
+<td>Active positions with actions</td>
+</tr>
+<tr>
+<td><code>TransactionList</code></td>
+<td>P0</td>
+<td>Recent transactions</td>
+</tr>
+<tr>
+<td><code>ComplianceStatusCard</code></td>
+<td>P0</td>
+<td>KYB/document status</td>
+</tr>
+<tr>
+<td><code>LiveValueCounter</code></td>
+<td>P1</td>
+<td>Real-time portfolio value</td>
+</tr>
+<tr>
+<td><code>QuickActionsBar</code></td>
+<td>P1</td>
+<td>Subscribe, Redeem, Transfer shortcuts</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Data Requirements</h3>
+<div class="docs-pre"><code>interface DashboardData {
+  // KPIs
+  totalValue: {
+    amount: number;
+    currency: string;
+    change24h: number; // percentage
+    lastUpdated: string; // ISO 8601
+  };
+
+  totalYield: {
+    amount: number;
+    currency: string;
+    apy: number; // percentage
+    status: 'on-target' | 'below-target' | 'above-target';
+  };
+
+  activePools: {
+    count: number;
+    pending: number;
+    attention: number;
+  };
+
+  // Allocation
+  allocation: Array&lt;{
+    poolId: string;
+    poolName: string;
+    poolClass: AssetClass;
+    percentage: number;
+    value: number;
+    color: string;
+  }&gt;;
+
+  // Positions
+  positions: Array&lt;{
+    poolId: string;
+    poolName: string;
+    invested: number;
+    ulpBalance: number;
+    nav: number;
+    apy: number;
+    status: 'on-target' | 'below-target' | 'above-target';
+  }&gt;;
+
+  // Transactions
+  recentTransactions: Array&lt;{
+    id: string;
+    type: 'subscribe' | 'redeem' | 'yield' | 'transfer';
+    amount: number;
+    currency: string;
+    timestamp: string;
+    status: 'pending' | 'completed' | 'failed';
+    txHash?: string;
+  }&gt;;
+
+  // Compliance
+  compliance: {
+    kybStatus: 'verified' | 'pending' | 'expired';
+    documentsStatus: 'current' | 'expiring' | 'expired';
+    renewalsDue: number;
+    renewalsDueDays: number;
+  };
+}
+</code></div>
+<h3>API Endpoints</h3>
+<div class="docs-pre"><code>// GET /api/v1/investors/{investor_id}/dashboard
+// Returns complete dashboard data
+
+// GET /api/v1/investors/{investor_id}/portfolio
+// Returns detailed portfolio with positions
+
+// GET /api/v1/investors/{investor_id}/transactions?limit=10
+// Returns recent transactions
+
+// GET /api/v1/investors/{investor_id}/compliance/status
+// Returns compliance status
+</code></div>
+<h3>Web3 Integration</h3>
+<div class="docs-pre"><code>// Real-time NAV updates via WebSocket
+// Subscribe to uLPToken Transfer events
+// Listen to LiquidityPool YieldAccrued events
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Pool Marketplace</h2>
+<h3>Route: <code>/pools</code></h3>
+<h3>Purpose</h3>
+<p>Browse and filter available liquidity pools for investment.</p>
+<h3>Layout</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│  UJAMAA    Dashboard  Pools  Portfolio  Compliance    [🔔] [👤 Admin▼] │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  Liquidity Pool Marketplace                                              │
+│  Discover institutional-grade investment opportunities                   │
+│                                                                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐│
+│  │  [Search pools...                          ] [🔍 Advanced Filters▼]││
+│  └─────────────────────────────────────────────────────────────────────┘│
+│                                                                          │
+│  Quick Filters:                                                          │
+│  [All Pools ▼] [Performance ▼] [Risk ▼] [Region ▼] [Clear All]          │
+│                                                                          │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐   │
+│  │ 🏭 Pool      │ │ 🌾 Pool      │ │ 📦 Pool      │ │ ⚡ Pool       │   │
+│  │  Industrie   │ │  Agriculture │ │  Trade Fin   │ │  Renewable    │   │
+│  │              │ │              │ │              │ │               │   │
+│  │  Target:     │ │  Target:     │ │  Target:     │ │  Target:      │   │
+│  │  €50M        │ │  €30M        │ │  €40M        │ │  €25M         │   │
+│  │  Raised:     │ │  Raised:     │ │  Raised:     │ │  Raised:      │   │
+│  │  €42.5M      │ │  €18.2M      │ │  €35.1M      │ │  €12.8M       │   │
+│  │              │ │              │ │              │ │               │   │
+│  │  ████████░░  │ │  ██████░░░░  │ │  █████████░  │ │  █████░░░░░  │   │
+│  │  85%         │ │  61%         │ │  88%         │ │  51%          │   │
+│  │              │ │              │ │              │ │               │   │
+│  │  APY: 8.5%   │ │  APY: 7.8%   │ │  APY: 7.2%   │ │  APY: 9.2%    │   │
+│  │  🟢 On Target│ │  🟢 On Target│ │  🟡 Below    │ │  🟢 Above     │   │
+│  │              │ │              │ │              │ │               │   │
+│  │  Min: €100K  │ │  Min: €100K  │ │  Min: €100K  │ │  Min: €100K   │   │
+│  │  Risk: A     │ │  Risk: A     │ │  Risk: BBB   │ │  Risk: A      │   │
+│  │              │ │              │ │              │ │               │   │
+│  │  [View Pool] │ │  [View Pool] │ │  [View Pool] │ │  [View Pool]  │   │
+│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘   │
+│                                                                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐│
+│  │  Pool Comparison                                                      ││
+│  │  [Add pools to compare]                                               ││
+│  └─────────────────────────────────────────────────────────────────────┘│
+│                                                                          │
+│  Showing 6 of 12 pools                                                   │
+│  [Load More]                                                             │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>Components Required</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Priority</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PoolCard</code></td>
+<td>P0</td>
+<td>Displays pool key metrics</td>
+</tr>
+<tr>
+<td><code>SearchBar</code></td>
+<td>P0</td>
+<td>Text search with autocomplete</td>
+</tr>
+<tr>
+<td><code>FilterBar</code></td>
+<td>P0</td>
+<td>Quick filter chips</td>
+</tr>
+<tr>
+<td><code>AdvancedFilters</code></td>
+<td>P1</td>
+<td>Sidebar with detailed filters</td>
+</tr>
+<tr>
+<td><code>ProgressBar</code></td>
+<td>P0</td>
+<td>Fundraising progress</td>
+</tr>
+<tr>
+<td><code>PoolComparison</code></td>
+<td>P1</td>
+<td>Side-by-side comparison</td>
+</tr>
+<tr>
+<td><code>StatusBadge</code></td>
+<td>P0</td>
+<td>Risk/performance status</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.3 Pool Detail Page</h2>
+<h3>Route: <code>/pools/:id</code></h3>
+<h3>Purpose</h3>
+<p>Detailed view of a single liquidity pool with full transparency.</p>
+<h3>Key Sections</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Header</strong> - Pool name, class, risk rating, status</li>
+<li><strong>Quick Stats</strong> - TVL, APY, NAV, min investment</li>
+<li><strong>Performance Chart</strong> - Historical NAV and yield</li>
+<li><strong>Asset Allocation</strong> - Underlying assets breakdown</li>
+<li><strong>Documents</strong> - Offering memorandum, audits, legal</li>
+<li><strong>Investors</strong> - Cap table (for authorized users)</li>
+<li><strong>Actions</strong> - Subscribe, Redeem buttons</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.4 Subscribe Flow</h2>
+<h3>Route: <code>/pools/:id/subscribe</code></h3>
+<h3>Multi-Step Flow</h3>
+<div class="docs-pre"><code>Step 1: Amount Selection
+┌─────────────────────────────────────────┐
+│  How much would you like to invest?     │
+│                                         │
+│  [€100,000 ──────────●───────── €10M]  │
+│                                         │
+│  Minimum: €100,000 (institutional)      │
+│  Maximum: €10,000,000 per investor      │
+│                                         │
+│  Your Investment: €500,000              │
+│  uLP You'll Receive: ~500,000 uLP       │
+│  Current NAV: €1.0234/uLP               │
+│                                         │
+│  [Continue →]                           │
+└─────────────────────────────────────────┘
+
+Step 2: Review Terms
+┌─────────────────────────────────────────┐
+│  Review Investment Terms                │
+│                                         │
+│  ✓ Lock-up Period: 365 days             │
+│  ✓ Expected APY: 8.5%                   │
+│  ✓ Management Fee: 2.0% annually        │
+│  ✓ Performance Fee: 20% of yield        │
+│  ✓ Redemption Notice: 30 days           │
+│                                         │
+│  [I Agree to Terms]                     │
+│  [Continue →]                           │
+└─────────────────────────────────────────┘
+
+Step 3: Funding Source
+┌─────────────────────────────────────────┐
+│  Select Funding Source                  │
+│                                         │
+│  ○ Ujamaa Euro (UJEUR) Wallet (0x1234...5678)          │
+│    Balance: €2,450,000                  │
+│                                         │
+│  ○ Bank Escrow (BIIC)                   │
+│    Wire transfer instructions           │
+│                                         │
+│  [Continue →]                           │
+└─────────────────────────────────────────┘
+
+Step 4: Confirmation
+┌─────────────────────────────────────────┐
+│  Confirm Investment                     │
+│                                         │
+│  Pool: Pool Industrie                   │
+│  Amount: €500,000                       │
+│  uLP: ~500,000 tokens                   │
+│  NAV: €1.0234                           │
+│                                         │
+│  [Sign Transaction]                     │
+│                                         │
+│  After signing:                         │
+│  1. Funds transferred from wallet       │
+│  2. uLP tokens minted to your address   │
+│  3. Transaction recorded on-chain       │
+└─────────────────────────────────────────┘
+
+Step 5: Progress Tracking
+┌─────────────────────────────────────────┐
+│  Investment In Progress                 │
+│                                         │
+│  ┌─────────┬─────────┬─────────┬─────┐ │
+│  │Initiated│  KYB    │  Funds  │Done │ │
+│  │   ✓     │   ✓     │   ●     │  ─  │ │
+│  └─────────┴─────────┴─────────┴─────┘ │
+│                                         │
+│  &quot;Waiting for blockchain confirmation&quot;  │
+│  Block confirmations: 2/12              │
+│                                         │
+│  Estimated completion: 2-3 minutes      │
+└─────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.5 Portfolio Page</h2>
+<h3>Route: <code>/portfolio</code></h3>
+<h3>Purpose</h3>
+<p>Detailed view of all investments with performance analytics.</p>
+<h3>Key Sections</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Portfolio Summary</strong> - Total value, cost basis, gains/losses</li>
+<li><strong>Position Details</strong> - Each pool position with actions</li>
+<li><strong>Performance Charts</strong> - Value over time, vs. benchmarks</li>
+<li><strong>Yield Statements</strong> - Downloadable PDF statements</li>
+<li><strong>Transaction History</strong> - Complete history with filters</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.6 Compliance Dashboard</h2>
+<h3>Route: <code>/compliance</code></h3>
+<h3>Purpose</h3>
+<p>Manage KYB/KYC, documents, and regulatory compliance.</p>
+<h3>Key Sections</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Compliance Status</strong> - Overall compliance health</li>
+<li><strong>KYB/KYC Status</strong> - Verification status, expiry dates</li>
+<li><strong>Document Vault</strong> - Upload, track, manage documents</li>
+<li><strong>Investor List</strong> - For pool managers (authorized only)</li>
+<li><strong>Audit Trail</strong> - On-chain compliance events</li>
+</ol>
+<hr />
+</section>
+<h1>5.7 Wallet Integration ⭐ <strong>NEW</strong></h1>
+<p><strong>Reference:</strong> <code>04_MVP_MOCKING_AND_TESTNET_STRATEGY.md</code> Section 6 (Frontend Integration)</p>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.1 Wallet Connection Architecture</h2>
+<h3>Supported Wallets</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Wallet</th>
+<th>Type</th>
+<th>Priority</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MetaMask</strong></td>
+<td>Browser Extension</td>
+<td>P0</td>
+<td>Primary wallet for desktop</td>
+</tr>
+<tr>
+<td><strong>WalletConnect</strong></td>
+<td>Protocol</td>
+<td>P0</td>
+<td>Mobile wallet connectivity</td>
+</tr>
+<tr>
+<td><strong>Rainbow</strong></td>
+<td>Mobile App</td>
+<td>P1</td>
+<td>iOS/Android mobile users</td>
+</tr>
+<tr>
+<td><strong>Safe (Gnosis)</strong></td>
+<td>Smart Contract</td>
+<td>P2</td>
+<td>Institutional multi-sig</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Wallet Connection Flow</h3>
+<div class="docs-pre"><code>1. User clicks &quot;Connect Wallet&quot; button
+   └─ RainbowKit modal opens
+
+2. User selects wallet provider
+   └─ MetaMask: Extension popup
+   └─ WalletConnect: QR code displayed
+   └─ Rainbow: Mobile app redirect
+
+3. User approves connection
+   └─ Wallet signs challenge message
+   └─ Frontend verifies signature
+   └─ Wallet address linked to user account
+
+4. Connection established
+   └─ Wallet address displayed in header
+   └─ User menu shows balance
+   └─ Can now interact with smart contracts
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.2 Wallet Connect Component</h2>
+<p><strong>Component:</strong> <code>WalletConnect.tsx</code></p>
+<div class="docs-pre"><code>// src/components/web3/WalletConnect.tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
+
+export function WalletConnect() {
+  const { address, isConnected } = useAccount();
+
+  return (
+    &lt;ConnectButton
+      accountStatus={{
+        smallScreen: 'avatar',
+        largeScreen: 'full',
+      }}
+      chainStatus={{
+        smallScreen: 'icon',
+        largeScreen: 'name',
+      }}
+      showBalance={{
+        smallScreen: false,
+        largeScreen: true,
+      }}
+    /&gt;
+  );
+}
+</code></div>
+<p><strong>Custom Wallet Button:</strong></p>
+<div class="docs-pre"><code>// src/components/web3/ConnectWalletButton.tsx
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { Button } from '@/components/ui/Button';
+
+export function ConnectWalletButton() {
+  const { openConnectModal } = useConnectModal();
+
+  return (
+    &lt;Button onClick={openConnectModal}&gt;
+      Connect Wallet
+    &lt;/Button&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.3 Wallet Verification</h2>
+<p><strong>Component:</strong> <code>WalletVerification.tsx</code></p>
+<div class="docs-pre"><code>// src/components/web3/WalletVerification.tsx
+import { useSignMessage } from 'wagmi';
+import { useState } from 'react';
+
+export function WalletVerification({ 
+  investorId,
+  onVerified 
+}: { 
+  investorId: string;
+  onVerified: (signature: string) =&gt; void;
+}) {
+  const [isVerifying, setIsVerifying] = useState(false);
+  const { signMessage } = useSignMessage();
+
+  const handleVerify = async () =&gt; {
+    setIsVerifying(true);
+
+    try {
+      // Create challenge message
+      const message = `Verify wallet ownership for investor ${investorId}\n\nNonce: ${Date.now()}`;
+
+      // Request signature
+      const signature = await signMessageAsync({ message });
+
+      // Send to backend for verification
+      await api.post('/investors/verify-wallet', {
+        investor_id: investorId,
+        signature,
+        message,
+      });
+
+      onVerified(signature);
+    } catch (error) {
+      console.error('Wallet verification failed:', error);
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+  return (
+    &lt;Button onClick={handleVerify} disabled={isVerifying}&gt;
+      {isVerifying ? 'Verifying...' : 'Verify Wallet Ownership'}
+    &lt;/Button&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.4 Wallet Display Component</h2>
+<p><strong>Component:</strong> <code>WalletDisplay.tsx</code></p>
+<div class="docs-pre"><code>// src/components/web3/WalletDisplay.tsx
+import { useAccount, useBalance } from 'wagmi';
+import { formatAddress } from '@/utils/formatters';
+
+export function WalletDisplay() {
+  const { address, isConnected } = useAccount();
+  const { data: balance } = useBalance({
+    address,
+  });
+
+  if (!isConnected || !address) {
+    return null;
+  }
+
+  return (
+    &lt;div className=&quot;flex items-center space-x-3&quot;&gt;
+      {/* Wallet Address */}
+      &lt;div className=&quot;flex items-center space-x-2&quot;&gt;
+        &lt;div className=&quot;w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center&quot;&gt;
+          &lt;WalletIcon className=&quot;w-4 h-4 text-primary-700&quot; /&gt;
+        &lt;/div&gt;
+        &lt;span className=&quot;text-sm font-mono text-gray-700&quot;&gt;
+          {formatAddress(address)}
+        &lt;/span&gt;
+        &lt;CopyButton text={address} /&gt;
+      &lt;/div&gt;
+
+      {/* Balance */}
+      {balance &amp;&amp; (
+        &lt;div className=&quot;text-sm text-gray-600&quot;&gt;
+          {balance.formatted} {balance.symbol}
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.5 Wallet Store (Zustand)</h2>
+<p><strong>Store:</strong> <code>walletStore.ts</code></p>
+<div class="docs-pre"><code>// src/store/walletStore.ts
+import { create } from 'zustand';
+import { Address } from 'viem';
+
+interface WalletState {
+  // State
+  address: Address | null;
+  isConnected: boolean;
+  isConnecting: boolean;
+  lastConnected: number | null;
+
+  // Actions
+  setConnected: (address: Address) =&gt; void;
+  setDisconnected: () =&gt; void;
+  setConnecting: (isConnecting: boolean) =&gt; void;
+}
+
+export const useWalletStore = create&lt;WalletState&gt;((set) =&gt; ({
+  // Initial state
+  address: null,
+  isConnected: false,
+  isConnecting: false,
+  lastConnected: null,
+
+  // Actions
+  setConnected: (address) =&gt;
+    set({
+      address,
+      isConnected: true,
+      isConnecting: false,
+      lastConnected: Date.now(),
+    }),
+
+  setDisconnected: () =&gt;
+    set({
+      address: null,
+      isConnected: false,
+      isConnecting: false,
+      lastConnected: null,
+    }),
+
+  setConnecting: (isConnecting) =&gt;
+    set({ isConnecting }),
+}));
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.6 Wallet Hook</h2>
+<p><strong>Hook:</strong> <code>useWallet.ts</code></p>
+<div class="docs-pre"><code>// src/hooks/useWallet.ts
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { useWalletStore } from '@/store/walletStore';
+
+export function useWallet() {
+  const { address, isConnected, isConnecting } = useAccount();
+  const { connect, disconnect } = useConnect();
+  const { setConnected, setDisconnected } = useWalletStore();
+
+  const handleConnect = async () =&gt; {
+    connect({ connector: new InjectedConnector() });
+  };
+
+  const handleDisconnect = async () =&gt; {
+    await disconnect();
+    setDisconnected();
+  };
+
+  return {
+    // State
+    address,
+    isConnected,
+    isConnecting,
+
+    // Actions
+    connect: handleConnect,
+    disconnect: handleDisconnect,
+
+    // Utilities
+    formatAddress: () =&gt; address ? formatAddress(address) : '',
+    isContract: async () =&gt; {
+      // Check if wallet is a smart contract
+      const code = await publicClient.getCode({ address: address! });
+      return code !== undefined;
+    },
+  };
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.7 Wallet Integration in Pages</h2>
+<h3>Dashboard Header</h3>
+<div class="docs-pre"><code>// src/components/layout/Header.tsx
+import { WalletConnect } from '@/components/web3/WalletConnect';
+import { WalletDisplay } from '@/components/web3/WalletDisplay';
+
+export function Header() {
+  return (
+    &lt;header className=&quot;border-b bg-white&quot;&gt;
+      &lt;div className=&quot;flex items-center justify-between px-6 py-4&quot;&gt;
+        &lt;Logo /&gt;
+        &lt;nav&gt;
+          {/* Navigation links */}
+        &lt;/nav&gt;
+        &lt;div className=&quot;flex items-center space-x-4&quot;&gt;
+          &lt;NotificationsBell /&gt;
+          &lt;WalletConnect /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+  );
+}
+</code></div>
+<h3>Onboarding Flow</h3>
+<div class="docs-pre"><code>// src/pages/onboarding/investor.tsx
+import { WalletVerification } from '@/components/web3/WalletVerification';
+
+function InvestorOnboarding() {
+  const [walletVerified, setWalletVerified] = useState(false);
+
+  return (
+    &lt;div&gt;
+      &lt;Step1&gt;
+        &lt;h3&gt;Step 1: Connect Wallet&lt;/h3&gt;
+        &lt;WalletVerification
+          investorId={investorId}
+          onVerified={() =&gt; setWalletVerified(true)}
+        /&gt;
+        {walletVerified &amp;&amp; (
+          &lt;Badge variant=&quot;success&quot;&gt;✓ Wallet Verified&lt;/Badge&gt;
+        )}
+      &lt;/Step1&gt;
+
+      &lt;Step2 disabled={!walletVerified}&gt;
+        &lt;h3&gt;Step 2: Enter Details&lt;/h3&gt;
+        {/* Email, jurisdiction, etc. */}
+      &lt;/Step2&gt;
+    &lt;/div&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.8 Wallet Testing</h2>
+<p><strong>Unit Tests:</strong></p>
+<div class="docs-pre"><code>// tests/unit/components/WalletConnect.test.tsx
+import { render, screen } from '@testing-library/react';
+import { WalletConnect } from '@/components/web3/WalletConnect';
+
+describe('WalletConnect', () =&gt; {
+  it('renders connect button when disconnected', () =&gt; {
+    render(&lt;WalletConnect /&gt;);
+    expect(screen.getByText('Connect Wallet')).toBeInTheDocument();
+  });
+
+  it('renders wallet address when connected', () =&gt; {
+    render(&lt;WalletConnect /&gt;, {
+      wrapper: ({ children }) =&gt; (
+        &lt;WagmiConfig config={testConfig}&gt;
+          &lt;RainbowKitProvider&gt;{children}&lt;/RainbowKitProvider&gt;
+        &lt;/WagmiConfig&gt;
+      ),
+    });
+
+    // Simulate connection
+    fireEvent.click(screen.getByText('Connect Wallet'));
+
+    expect(screen.getByText(/0x[a-fA-F0-9]{4}...[a-fA-F0-9]{4}/))
+      .toBeInTheDocument();
+  });
+});
+</code></div>
+<p><strong>E2E Tests:</strong></p>
+<div class="docs-pre"><code>// tests/e2e/wallet-connection.spec.ts
+import { test, expect } from '@playwright/test';
+
+test('user can connect wallet', async ({ page }) =&gt; {
+  await page.goto('/dashboard');
+
+  // Click connect wallet
+  await page.getByRole('button', { name: 'Connect Wallet' }).click();
+
+  // MetaMask popup would appear (mocked in test)
+  // For E2E, we'd use a test wallet
+
+  // Verify wallet address displayed
+  await expect(page.getByText(/0x[a-fA-F0-9]{4}...[a-fA-F0-9]{4}/))
+    .toBeVisible();
+});
+
+test('wallet verification works', async ({ page }) =&gt; {
+  await page.goto('/onboarding/investor');
+
+  // Connect wallet
+  await page.getByRole('button', { name: 'Connect Wallet' }).click();
+
+  // Verify ownership
+  await page.getByRole('button', { name: 'Verify Wallet' }).click();
+
+  // Wait for verification
+  await expect(page.getByText('Wallet Verified'))
+    .toBeVisible({ timeout: 10000 });
+});
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.9 Wallet Security Considerations</h2>
+<h3>Best Practices</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Practice</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Never store private keys</strong></td>
+<td>Keys stay in wallet, never in frontend code</td>
+</tr>
+<tr>
+<td><strong>Signature verification</strong></td>
+<td>Always verify wallet ownership via signature</td>
+</tr>
+<tr>
+<td><strong>Chain validation</strong></td>
+<td>Check user is on correct network (Polygon Amoy)</td>
+</tr>
+<tr>
+<td><strong>Network switching</strong></td>
+<td>Prompt user to switch if wrong network</td>
+</tr>
+<tr>
+<td><strong>Transaction preview</strong></td>
+<td>Show full transaction details before signing</td>
+</tr>
+<tr>
+<td><strong>Error handling</strong></td>
+<td>Graceful handling of user rejections</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Web3 Architecture Compliance ⭐ <strong>NEW</strong></h3>
+<p><strong>Reference:</strong> <code>docs/02_TECHNICAL_GUIDES/08_WEB3_ARCHITECTURE_GUIDE.md</code></p>
+<p><strong>MVP follows the Non-Custodial Web3 Model:</strong></p>
+<p>✅ <strong>Self-Custody:</strong><br />
+- Users hold their own private keys (in MetaMask, WalletConnect, etc.)<br />
+- Frontend NEVER accesses private keys<br />
+- Backend NEVER accesses private keys<br />
+- Keys never leave user's device</p>
+<p>✅ <strong>User Signs Transactions:</strong><br />
+- All transactions signed by user's wallet (MetaMask popup)<br />
+- User reviews transaction details before signing<br />
+- User can reject transactions<br />
+- Backend cannot sign on behalf of users</p>
+<p>✅ <strong>Non-Custodial Architecture:</strong><br />
+- Backend does NOT hold user funds<br />
+- Backend does NOT have signing authority<br />
+- Backend provides off-chain services only (fraud detection, indexing, metadata)<br />
+- Smart contracts enforce rules on-chain (not backend)</p>
+<p>✅ <strong>Regulatory Compliance:</strong><br />
+- Non-custodial = Lower regulatory burden<br />
+- No Money Service Business (MSB) license required<br />
+- No BitLicense required<br />
+- No money transmitter licenses required</p>
+<p><strong>What Backend DOES (Off-Chain):</strong><br />
+- ✅ Fraud detection and validation (warnings only)<br />
+- ✅ Indexing and querying blockchain data<br />
+- ✅ Storing off-chain metadata (user profiles, investment records)<br />
+- ✅ Providing portfolio analytics<br />
+- ✅ Generating reports and statements</p>
+<p><strong>What Backend CANNOT Do:</strong><br />
+- ❌ Sign transactions for users<br />
+- ❌ Hold user funds<br />
+- ❌ Access private keys<br />
+- ❌ Stop or reverse transactions<br />
+- ❌ Act as custodian</p>
+<p><strong>Code Example - Correct Flow:</strong></p>
+<div class="docs-pre"><code>// ✅ CORRECT: Frontend wallet interaction
+// src/components/web3/WalletConnect.tsx
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+
+export function WalletConnect() {
+  const { openConnectModal } = useConnectModal();
+
+  // User controls keys through RainbowKit/MetaMask
+  // Frontend NEVER sees private keys
+  return (
+    &lt;Button onClick={openConnectModal}&gt;
+      Connect Wallet
+    &lt;/Button&gt;
+  );
+}
+
+// ✅ CORRECT: User signs transaction
+// src/hooks/useuLPToken.ts
+import { useWriteContract } from 'wagmi';
+
+export function useuLPToken() {
+  const { writeContract } = useWriteContract();
+
+  const deposit = (amount: bigint) =&gt; {
+    // This triggers MetaMask popup
+    // User reviews and signs
+    // Backend has NO access to signing
+    writeContract({
+      address: ULPTOKEN_ADDRESS,
+      abi: ULPTOKEN_ABI,
+      functionName: 'deposit',
+      args: [amount],
+    });
+  };
+
+  return { deposit };
+}
+
+// ✅ CORRECT: Backend records transaction (off-chain only)
+// backend/api/investments.py
+@router.post(&quot;/api/v1/investments&quot;)
+async def record_investment(investment: InvestmentData):
+    &quot;&quot;&quot;
+    Record investment in database (off-chain)
+
+    This does NOT move funds - just tracks it for:
+    - Portfolio tracking
+    - Tax reporting
+    - Analytics
+
+    Backend CANNOT modify or reverse transaction.
+    &quot;&quot;&quot;
+    # Store in PostgreSQL (read-only record)
+    await db.execute(
+        &quot;&quot;&quot;
+        INSERT INTO investments (wallet, amount, tx_hash, created_at)
+        VALUES ($1, $2, $3, NOW())
+        &quot;&quot;&quot;,
+        investment.wallet,
+        investment.amount,
+        investment.tx_hash
+    )
+
+    return {&quot;status&quot;: &quot;recorded&quot;}
+</code></div>
+<p><strong>Inconsistencies to Avoid:</strong></p>
+<div class="docs-pre"><code>// ❌ WRONG: Backend should NEVER hold keys
+// backend/services/wallet.py
+# 🚨 NEVER DO THIS - CUSTODIAL MODEL
+private_key = os.getenv(&quot;USER_PRIVATE_KEY&quot;)
+wallet = Account.from_key(private_key)
+
+// ❌ WRONG: Backend should NEVER sign for users
+// backend/api/invest.py
+# 🚨 NEVER DO THIS - REQUIRES MSB LICENSE
+@app.post(&quot;/api/v1/invest&quot;)
+async def invest_for_user(wallet: str, amount: int):
+    private_key = os.getenv(&quot;MASTER_PRIVATE_KEY&quot;)
+    account = Account.from_key(private_key)
+    tx = await contract.functions.mint(account.address, amount)
+    return {&quot;tx_hash&quot;: tx.hash}
+</code></div>
+<p><strong>Document Consistency:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Section</th>
+<th>Consistency Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web3 Architecture Guide</strong></td>
+<td>All</td>
+<td>✅ Source of truth</td>
+</tr>
+<tr>
+<td><strong>Frontend Spec v1.0</strong></td>
+<td>Section 5.7 (Wallet)</td>
+<td>✅ Fully aligned</td>
+</tr>
+<tr>
+<td><strong>MVP Implementation Plan</strong></td>
+<td>Phase 4.11</td>
+<td>✅ Fully aligned</td>
+</tr>
+<tr>
+<td><strong>Mocking Strategy v2.0</strong></td>
+<td>Section 6</td>
+<td>✅ Fully aligned</td>
+</tr>
+<tr>
+<td><strong>SRS v2.0</strong></td>
+<td>Section 1.2 (Scope)</td>
+<td>✅ Non-custodial stated</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>Error Messages</h3>
+<div class="docs-pre"><code>// src/utils/walletErrors.ts
+const walletErrorMessages: Record&lt;number, string&gt; = {
+  4001: 'Transaction rejected by user',
+  4100: 'Wallet not connected',
+  4200: 'Wallet not authorized',
+  4900: 'Wallet disconnected',
+  4901: 'Chain not supported',
+  4902: 'RPC method not supported',
+};
+
+export function getWalletErrorMessage(code: number): string {
+  return walletErrorMessages[code] || 'Unknown wallet error';
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.7.10 Wallet Configuration</h2>
+<p><strong>Environment Variables:</strong></p>
+<div class="docs-pre"><code># .env.MVP
+VITE_WALLET_CONNECT_PROJECT_ID=your_project_id
+VITE_POLYGON_AMOY_CHAIN_ID=80002
+VITE_POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+VITE_POLYGON_AMOY_EXPLORER=https://amoy.polygonscan.com/
+</code></div>
+<p><strong>Wagmi Configuration:</strong></p>
+<div class="docs-pre"><code>// src/lib/wagmi.ts
+import { configureChains, createConfig } from 'wagmi';
+import { polygonAmoy } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+
+const { chains, publicClient } = configureChains(
+  [polygonAmoy],
+  [publicProvider()]
+);
+
+export const config = createConfig({
+  autoConnect: true,
+  connectors: [
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
+        showQrModal: true,
+      },
+    }),
+    // Add more connectors (MetaMask, Rainbow, etc.)
+  ],
+  publicClient,
+});
+</code></div>
+<hr />
+</section>
+<h1>5.6 Compliance Dashboard</h1>
+<h3>Route: <code>/compliance</code></h3>
+<h3>Purpose</h3>
+<p>Manage KYB/KYC, documents, and regulatory compliance.</p>
+<h3>Key Sections</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Compliance Status</strong> - Overall compliance health</li>
+<li><strong>KYB/KYC Status</strong> - Verification status, expiry dates</li>
+<li><strong>Document Vault</strong> - Upload, track, manage documents</li>
+<li><strong>Investor List</strong> - For pool managers (authorized only)</li>
+<li><strong>Audit Trail</strong> - On-chain compliance events</li>
+</ol>
+<hr />
+<h1>5.8 Proof of Reserve Dashboard ⭐ <strong>NEW</strong></h1>
+<p><strong>Reference:</strong> SRS v2.0 Section 1.2, 3.158, 5.12; Chainlink Proof of Reserve</p>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.1 Overview</h2>
+<p><strong>Purpose:</strong> Provide institutional-grade transparency with real-time on-chain attestation of pool reserves backing uLP tokens.</p>
+<p><strong>Key Metrics:</strong><br />
+- Total uLP Supply (tokens outstanding)<br />
+- Total Backing Assets (Ujamaa Euro (UJEUR) held in pool)<br />
+- Reserve Ratio (Backing Assets / uLP Supply Value)<br />
+- Last Audit Timestamp<br />
+- On-chain Proof Link</p>
+<p><strong>Target:</strong> Display on every pool card and dashboard</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.2 Proof of Reserve Component</h2>
+<p><strong>Component:</strong> <code>ProofOfReserveDisplay.tsx</code></p>
+<div class="docs-pre"><code>// src/components/pools/ProofOfReserveDisplay.tsx
+import { useContractRead } from 'wagmi';
+import { formatCurrency, formatPercentage } from '@/utils/formatters';
+
+interface ProofOfReserveProps {
+  poolAddress: string;
+  ulpTokenAddress: string;
+}
+
+export function ProofOfReserveDisplay({ 
+  poolAddress, 
+  ulpTokenAddress 
+}: ProofOfReserveProps) {
+  // Read on-chain data
+  const { data: totalSupply } = useContractRead({
+    address: ulpTokenAddress,
+    abi: ULPTOKEN_ABI,
+    functionName: 'totalSupply',
+  });
+
+  const { data: backingAssets } = useContractRead({
+    address: poolAddress,
+    abi: LIQUIDITYPOOL_ABI,
+    functionName: 'getTotalBackingAssets',
+  });
+
+  const { data: lastAudit } = useContractRead({
+    address: poolAddress,
+    abi: LIQUIDITYPOOL_ABI,
+    functionName: 'lastReserveAudit',
+  });
+
+  // Calculate reserve ratio
+  const reserveRatio = backingAssets &amp;&amp; totalSupply
+    ? (backingAssets / totalSupply) * 100
+    : 100;
+
+  const isFullyBacked = reserveRatio &gt;= 100;
+
+  return (
+    &lt;Card variant=&quot;elevated&quot; className=&quot;border-primary-200&quot;&gt;
+      &lt;CardHeader&gt;
+        &lt;CardTitle className=&quot;flex items-center&quot;&gt;
+          &lt;ShieldCheckIcon className=&quot;w-5 h-5 mr-2 text-primary-700&quot; /&gt;
+          Proof of Reserve
+        &lt;/CardTitle&gt;
+      &lt;/CardHeader&gt;
+      &lt;CardContent&gt;
+        {/* Reserve Ratio Badge */}
+        &lt;div className=&quot;mb-6&quot;&gt;
+          &lt;div className=&quot;flex items-center justify-between mb-2&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Reserve Ratio&lt;/span&gt;
+            &lt;Badge 
+              variant={isFullyBacked ? 'success' : 'danger'}
+              className=&quot;text-sm&quot;
+            &gt;
+              {isFullyBacked ? '✅ Fully Backed' : '⚠️ Under-Collateralized'}
+            &lt;/Badge&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;text-3xl font-bold text-primary-900&quot;&gt;
+            {formatPercentage(reserveRatio / 100)}
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* Reserve Breakdown */}
+        &lt;div className=&quot;space-y-3&quot;&gt;
+          &lt;div className=&quot;flex justify-between&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Total uLP Supply:&lt;/span&gt;
+            &lt;span className=&quot;font-mono font-semibold&quot;&gt;
+              {formatCurrency(totalSupply || 0)}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;flex justify-between&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Backing Assets:&lt;/span&gt;
+            &lt;span className=&quot;font-mono font-semibold text-success-700&quot;&gt;
+              {formatCurrency(backingAssets || 0)}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;flex justify-between&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Surplus/Deficit:&lt;/span&gt;
+            &lt;span className={`font-mono font-semibold ${
+              backingAssets &gt;= totalSupply 
+                ? 'text-success-700' 
+                : 'text-danger-700'
+            }`}&gt;
+              {formatCurrency((backingAssets || 0) - (totalSupply || 0))}
+            &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* Last Audit */}
+        &lt;div className=&quot;mt-4 pt-4 border-t border-gray-200&quot;&gt;
+          &lt;div className=&quot;flex justify-between items-center&quot;&gt;
+            &lt;span className=&quot;text-xs text-gray-500&quot;&gt;Last On-Chain Audit:&lt;/span&gt;
+            &lt;span className=&quot;text-xs font-mono&quot;&gt;
+              {lastAudit 
+                ? new Date(Number(lastAudit) * 1000).toLocaleString()
+                : 'Never'}
+            &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* On-Chain Verification */}
+        &lt;div className=&quot;mt-4&quot;&gt;
+          &lt;Button 
+            variant=&quot;outline&quot; 
+            size=&quot;sm&quot; 
+            className=&quot;w-full&quot;
+            onClick={() =&gt; {
+              window.open(
+                `${BLOCK_EXPLORER}/address/${poolAddress}#readContract`,
+                '_blank'
+              );
+            }}
+          &gt;
+            &lt;ExternalLinkIcon className=&quot;w-4 h-4 mr-2&quot; /&gt;
+            Verify on Polygonscan
+          &lt;/Button&gt;
+        &lt;/div&gt;
+
+        {/* Alert if under-collateralized */}
+        {!isFullyBacked &amp;&amp; (
+          &lt;Alert variant=&quot;danger&quot; className=&quot;mt-4&quot;&gt;
+            &lt;AlertIcon /&gt;
+            &lt;AlertTitle&gt;Reserve Alert&lt;/AlertTitle&gt;
+            &lt;AlertDescription&gt;
+              Pool reserves are below 100%. Redemptions may be affected.
+            &lt;/AlertDescription&gt;
+          &lt;/Alert&gt;
+        )}
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.3 Reserve Ratio Chart</h2>
+<p><strong>Component:</strong> <code>ReserveRatioChart.tsx</code></p>
+<div class="docs-pre"><code>// src/components/pools/ReserveRatioChart.tsx
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+
+interface ReserveRatioChartProps {
+  data: Array&lt;{
+    date: string;
+    ratio: number;
+  }&gt;;
+}
+
+export function ReserveRatioChart({ data }: ReserveRatioChartProps) {
+  return (
+    &lt;Card&gt;
+      &lt;CardHeader&gt;
+        &lt;CardTitle&gt;Reserve Ratio History (30 Days)&lt;/CardTitle&gt;
+      &lt;/CardHeader&gt;
+      &lt;CardContent&gt;
+        &lt;ResponsiveContainer width=&quot;100%&quot; height={300}&gt;
+          &lt;AreaChart data={data}&gt;
+            &lt;defs&gt;
+              &lt;linearGradient id=&quot;colorRatio&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
+                &lt;stop offset=&quot;5%&quot; stopColor=&quot;#10B981&quot; stopOpacity={0.8}/&gt;
+                &lt;stop offset=&quot;95%&quot; stopColor=&quot;#10B981&quot; stopOpacity={0}/&gt;
+              &lt;/linearGradient&gt;
+            &lt;/defs&gt;
+            &lt;XAxis 
+              dataKey=&quot;date&quot; 
+              tick={{ fontSize: 12 }}
+              tickFormatter={(date) =&gt; new Date(date).toLocaleDateString()}
+            /&gt;
+            &lt;YAxis 
+              domain={[90, 110]}
+              tick={{ fontSize: 12 }}
+              tickFormatter={(value) =&gt; `${value}%`}
+            /&gt;
+            &lt;Tooltip 
+              formatter={(value: number) =&gt; [`${value.toFixed(2)}%`, 'Reserve Ratio']}
+              labelFormatter={(label) =&gt; new Date(label).toLocaleDateString()}
+            /&gt;
+            &lt;Area 
+              type=&quot;monotone&quot; 
+              dataKey=&quot;ratio&quot; 
+              stroke=&quot;#10B981&quot; 
+              fillOpacity={1} 
+              fill=&quot;url(#colorRatio)&quot; 
+            /&gt;
+            {/* 100% line */}
+            &lt;ReferenceLine 
+              y={100} 
+              stroke=&quot;#DC2626&quot; 
+              strokeDasharray=&quot;3 3&quot;
+              label=&quot;100% (Fully Backed)&quot;
+            /&gt;
+          &lt;/AreaChart&gt;
+        &lt;/ResponsiveContainer&gt;
+
+        {/* Legend */}
+        &lt;div className=&quot;flex items-center justify-center space-x-6 mt-4&quot;&gt;
+          &lt;div className=&quot;flex items-center&quot;&gt;
+            &lt;div className=&quot;w-3 h-3 bg-success-500 rounded-full mr-2&quot; /&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Above 100%&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;flex items-center&quot;&gt;
+            &lt;div className=&quot;w-3 h-3 bg-danger-500 rounded-full mr-2&quot; /&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Below 100%&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.4 Pool Card with Reserve Indicator</h2>
+<p><strong>Component:</strong> <code>PoolCardWithReserve.tsx</code></p>
+<div class="docs-pre"><code>// src/components/pools/PoolCard.tsx
+import { ProofOfReserveBadge } from './ProofOfReserveBadge';
+
+interface PoolCardProps {
+  pool: Pool;
+}
+
+export function PoolCard({ pool }: PoolCardProps) {
+  return (
+    &lt;Card variant=&quot;interactive&quot;&gt;
+      &lt;CardHeader&gt;
+        &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+          &lt;div&gt;
+            &lt;CardTitle&gt;{pool.name}&lt;/CardTitle&gt;
+            &lt;p className=&quot;text-sm text-gray-500&quot;&gt;{pool.assetClass}&lt;/p&gt;
+          &lt;/div&gt;
+          {/* Reserve Badge */}
+          &lt;ProofOfReserveBadge reserveRatio={pool.reserveRatio} /&gt;
+        &lt;/div&gt;
+      &lt;/CardHeader&gt;
+      &lt;CardContent&gt;
+        {/* Other pool metrics... */}
+
+        {/* Reserve Info */}
+        &lt;div className=&quot;mt-4 pt-4 border-t&quot;&gt;
+          &lt;div className=&quot;flex justify-between items-center&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Reserve Ratio&lt;/span&gt;
+            &lt;span className=&quot;font-semibold&quot;&gt;
+              {(pool.reserveRatio * 100).toFixed(2)}%
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;flex justify-between items-center mt-2&quot;&gt;
+            &lt;span className=&quot;text-xs text-gray-500&quot;&gt;Last Audit&lt;/span&gt;
+            &lt;span className=&quot;text-xs font-mono&quot;&gt;
+              {new Date(pool.lastAudit).toLocaleDateString()}
+            &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<p><strong>Badge Component:</strong></p>
+<div class="docs-pre"><code>// src/components/pools/ProofOfReserveBadge.tsx
+interface ProofOfReserveBadgeProps {
+  reserveRatio: number; // 0.0 to 2.0+
+}
+
+export function ProofOfReserveBadge({ reserveRatio }: ProofOfReserveBadgeProps) {
+  const isFullyBacked = reserveRatio &gt;= 1.0;
+  const isWellBacked = reserveRatio &gt;= 1.05;
+
+  return (
+    &lt;Badge 
+      variant={isFullyBacked ? 'success' : 'danger'}
+      className=&quot;flex items-center&quot;
+    &gt;
+      {isWellBacked ? (
+        &lt;&gt;
+          &lt;ShieldCheckIcon className=&quot;w-3 h-3 mr-1&quot; /&gt;
+          {((reserveRatio - 1) * 100).toFixed(1)}% Surplus
+        &lt;/&gt;
+      ) : isFullyBacked ? (
+        &lt;&gt;
+          &lt;CheckCircleIcon className=&quot;w-3 h-3 mr-1&quot; /&gt;
+          100% Backed
+        &lt;/&gt;
+      ) : (
+        &lt;&gt;
+          &lt;AlertTriangleIcon className=&quot;w-3 h-3 mr-1&quot; /&gt;
+          {((1 - reserveRatio) * 100).toFixed(1)}% Deficit
+        &lt;/&gt;
+      )}
+    &lt;/Badge&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.5 Dashboard Reserve Widget</h2>
+<p><strong>Component:</strong> <code>ReserveWidget.tsx</code></p>
+<div class="docs-pre"><code>// src/components/dashboard/ReserveWidget.tsx
+import { useQuery } from '@tanstack/react-query';
+
+export function ReserveWidget() {
+  const { data: reserves } = useQuery({
+    queryKey: ['reserves'],
+    queryFn: () =&gt; api.get('/api/v1/pools/reserves'),
+    refetchInterval: 60000, // Update every minute
+  });
+
+  return (
+    &lt;Card variant=&quot;elevated&quot;&gt;
+      &lt;CardHeader&gt;
+        &lt;CardTitle&gt;Proof of Reserve&lt;/CardTitle&gt;
+      &lt;/CardHeader&gt;
+      &lt;CardContent&gt;
+        &lt;div className=&quot;grid grid-cols-2 gap-4&quot;&gt;
+          &lt;div&gt;
+            &lt;p className=&quot;text-sm text-gray-600&quot;&gt;Total Reserves&lt;/p&gt;
+            &lt;p className=&quot;text-2xl font-bold text-success-700&quot;&gt;
+              {formatCurrency(reserves?.totalReserves || 0)}
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;p className=&quot;text-sm text-gray-600&quot;&gt;uLP Supply&lt;/p&gt;
+            &lt;p className=&quot;text-2xl font-bold&quot;&gt;
+              {formatCurrency(reserves?.ulpSupply || 0)}
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;mt-4&quot;&gt;
+          &lt;div className=&quot;flex justify-between mb-2&quot;&gt;
+            &lt;span className=&quot;text-sm text-gray-600&quot;&gt;Reserve Ratio&lt;/span&gt;
+            &lt;span className=&quot;font-semibold&quot;&gt;
+              {(reserves?.reserveRatio * 100).toFixed(2)}%
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;ProgressBar 
+            value={Math.min(reserves?.reserveRatio * 100 || 0, 100)} 
+            max={100}
+            color={reserves?.reserveRatio &gt;= 1 ? 'success' : 'danger'}
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;mt-4 text-xs text-gray-500&quot;&gt;
+          Last updated: {new Date(reserves?.timestamp).toLocaleString()}
+        &lt;/div&gt;
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.6 API Integration</h2>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/pools/reserves</code></p>
+<div class="docs-pre"><code>// src/services/api/reserves.ts
+import { api } from '@/lib/api';
+
+export interface ReserveData {
+  totalReserves: number;      // Total backing assets (Ujamaa Euro (UJEUR))
+  ulpSupply: number;          // Total uLP tokens outstanding
+  reserveRatio: number;       // Ratio (1.0 = 100% backed)
+  surplus: number;            // Surplus/deficit amount
+  lastAudit: string;          // ISO 8601 timestamp
+  pools: Array&lt;{
+    poolId: string;
+    poolName: string;
+    reserves: number;
+    ulpSupply: number;
+    ratio: number;
+  }&gt;;
+}
+
+export async function getReserves(): Promise&lt;ReserveData&gt; {
+  const response = await api.get('/api/v1/pools/reserves');
+  return response.data;
+}
+
+export async function getPoolReserves(poolId: string): Promise&lt;ReserveData&gt; {
+  const response = await api.get(`/api/v1/pools/${poolId}/reserves`);
+  return response.data;
+}
+</code></div>
+<p><strong>Backend Endpoint:</strong></p>
+<div class="docs-pre"><code># backend/api/reserves.py
+from fastapi import APIRouter
+from web3 import Web3
+
+router = APIRouter()
+
+@router.get(&quot;/api/v1/pools/reserves&quot;)
+async def get_reserves():
+    &quot;&quot;&quot;
+    Get proof of reserve data for all pools.
+
+    Returns on-chain attested reserve data.
+    &quot;&quot;&quot;
+    pools = await db.fetch_all(&quot;SELECT * FROM liquidity_pools&quot;)
+
+    total_reserves = 0
+    total_ulp_supply = 0
+    pool_data = []
+
+    for pool in pools:
+        # Get on-chain data
+        ulp_supply = await ulp_contract.functions.totalSupply().call()
+        backing_assets = await pool_contract.functions.getTotalBackingAssets().call()
+
+        ratio = backing_assets / ulp_supply if ulp_supply &gt; 0 else 1.0
+
+        total_reserves += backing_assets
+        total_ulp_supply += ulp_supply
+
+        pool_data.append({
+            'poolId': pool['id'],
+            'poolName': pool['name'],
+            'reserves': backing_assets,
+            'ulpSupply': ulp_supply,
+            'ratio': ratio,
+        })
+
+    overall_ratio = total_reserves / total_ulp_supply if total_ulp_supply &gt; 0 else 1.0
+
+    return {
+        'totalReserves': total_reserves,
+        'ulpSupply': total_ulp_supply,
+        'reserveRatio': overall_ratio,
+        'surplus': total_reserves - total_ulp_supply,
+        'lastAudit': datetime.utcnow().isoformat(),
+        'pools': pool_data,
+    }
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.7 Placement Guide</h2>
+<p><strong>Where to Display Proof of Reserve:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Location</th>
+<th>Component</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Reserve Widget</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Pool Marketplace</strong></td>
+<td>Reserve Badge on Cards</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Pool Detail</strong></td>
+<td>Full Reserve Display</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Pool Detail</strong></td>
+<td>Reserve Ratio Chart</td>
+<td>P1</td>
+</tr>
+<tr>
+<td><strong>Institutional Dashboard</strong></td>
+<td>Reserve Summary</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Compliance Dashboard</strong></td>
+<td>Reserve Audit Trail</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.8 Testing</h2>
+<p><strong>Unit Tests:</strong></p>
+<div class="docs-pre"><code>// tests/unit/components/ProofOfReserveDisplay.test.tsx
+import { render, screen } from '@testing-library/react';
+import { ProofOfReserveDisplay } from '@/components/pools/ProofOfReserveDisplay';
+
+describe('ProofOfReserveDisplay', () =&gt; {
+  it('shows fully backed status when ratio &gt;= 100%', () =&gt; {
+    render(&lt;ProofOfReserveDisplay poolAddress=&quot;0x...&quot; ulpTokenAddress=&quot;0x...&quot; /&gt;);
+
+    expect(screen.getByText('✅ Fully Backed')).toBeInTheDocument();
+  });
+
+  it('shows alert when under-collateralized', () =&gt; {
+    // Mock contract to return ratio &lt; 100%
+    render(&lt;ProofOfReserveDisplay poolAddress=&quot;0x...&quot; ulpTokenAddress=&quot;0x...&quot; /&gt;);
+
+    expect(screen.getByText('Reserve Alert')).toBeInTheDocument();
+  });
+
+  it('displays reserve ratio correctly', () =&gt; {
+    render(&lt;ProofOfReserveDisplay poolAddress=&quot;0x...&quot; ulpTokenAddress=&quot;0x...&quot; /&gt;);
+
+    expect(screen.getByText(/100\.00%/)).toBeInTheDocument();
+  });
+});
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.8.9 Chainlink Integration (Future)</h2>
+<p><strong>For Production:</strong></p>
+<div class="docs-pre"><code>// src/lib/chainlink.ts
+import { Contract } from 'ethers';
+
+const CHAINLINK_ORACLE_ABI = [
+  'function latestAnswer() view returns (int256)',
+  'function latestTimestamp() view returns (uint256)',
+  'function latestRound() view returns (uint256)',
+];
+
+export async function getChainlinkProofOfReserves(
+  oracleAddress: string
+): Promise&lt;{
+  reserves: bigint;
+  timestamp: number;
+  roundId: number;
+}&gt; {
+  const oracle = new Contract(oracleAddress, CHAINLINK_ORACLE_ABI, provider);
+
+  const [reserves, timestamp, roundId] = await Promise.all([
+    oracle.latestAnswer(),
+    oracle.latestTimestamp(),
+    oracle.latestRound(),
+  ]);
+
+  return {
+    reserves: BigInt(reserves.toString()),
+    timestamp: Number(timestamp),
+    roundId: Number(roundId),
+  };
+}
+</code></div>
+<hr />
+</section>
+<h1>6. Component Library</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Base Components</h2>
+<h3>Button</h3>
+<div class="docs-pre"><code>// src/components/ui/Button.tsx
+import { forwardRef } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+
+const buttonVariants = cva(
+  'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary-700 text-white hover:bg-primary-600',
+        secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
+        outline: 'border border-gray-300 bg-transparent hover:bg-gray-100',
+        ghost: 'hover:bg-gray-100',
+        link: 'text-primary-700 underline-offset-4 hover:underline',
+        destructive: 'bg-danger-600 text-white hover:bg-danger-700',
+      },
+      size: {
+        default: 'h-10 py-2 px-4',
+        sm: 'h-9 px-3 text-sm',
+        lg: 'h-11 px-8 text-lg',
+
+        icon: 'h-10 w-10',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt;,
+    VariantProps&lt;typeof buttonVariants&gt; {}
+
+const Button = forwardRef&lt;HTMLButtonElement, ButtonProps&gt;(
+  ({ className, variant, size, ...props }, ref) =&gt; {
+    return (
+      &lt;button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      /&gt;
+    );
+  }
+);
+Button.displayName = 'Button';
+
+export { Button, buttonVariants };
+</code></div>
+<h3>Usage Examples</h3>
+<div class="docs-pre"><code>// Primary action
+&lt;Button onClick={handleSubscribe}&gt;
+  Subscribe to Pool
+&lt;/Button&gt;
+
+// Secondary action
+&lt;Button variant=&quot;secondary&quot; onClick={handleCancel}&gt;
+  Cancel
+&lt;/Button&gt;
+
+// With icon
+&lt;Button&gt;
+  &lt;DownloadIcon className=&quot;mr-2 h-4 w-4&quot; /&gt;
+  Download Statement
+&lt;/Button&gt;
+
+// Loading state
+&lt;Button disabled={isLoading}&gt;
+  {isLoading ? &lt;Spinner className=&quot;mr-2&quot; /&gt; : null}
+  Processing...
+&lt;/Button&gt;
+</code></div>
+<hr />
+<h3>Card</h3>
+<div class="docs-pre"><code>// src/components/ui/Card.tsx
+import { cn } from '@/lib/utils';
+
+interface CardProps extends React.HTMLAttributes&lt;HTMLDivElement&gt; {
+  variant?: 'default' | 'elevated' | 'interactive';
+}
+
+export function Card({ className, variant = 'default', ...props }: CardProps) {
+  return (
+    &lt;div
+      className={cn(
+        'rounded-lg border bg-white',
+        variant === 'default' &amp;&amp; 'border-gray-200 shadow-sm',
+        variant === 'elevated' &amp;&amp; 'border-gray-200 shadow-md',
+        variant === 'interactive' &amp;&amp; 'border-gray-200 shadow-sm hover:shadow-lg transition-shadow cursor-pointer',
+        className
+      )}
+      {...props}
+    /&gt;
+  );
+}
+
+export function CardHeader({ className, ...props }: React.HTMLAttributes&lt;HTMLDivElement&gt;) {
+  return (
+    &lt;div className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} /&gt;
+  );
+}
+
+export function CardTitle({ className, ...props }: React.HTMLAttributes&lt;HTMLHeadingElement&gt;) {
+  return (
+    &lt;h3 className={cn('text-lg font-semibold leading-none tracking-tight', className)} {...props} /&gt;
+  );
+}
+
+export function CardContent({ className, ...props }: React.HTMLAttributes&lt;HTMLDivElement&gt;) {
+  return (
+    &lt;div className={cn('p-6 pt-0', className)} {...props} /&gt;
+  );
+}
+</code></div>
+<hr />
+<h3>Input</h3>
+<div class="docs-pre"><code>// src/components/ui/Input.tsx
+import { forwardRef } from 'react';
+import { cn } from '@/lib/utils';
+
+export interface InputProps
+  extends React.InputHTMLAttributes&lt;HTMLInputElement&gt; {
+  label?: string;
+  error?: string;
+  helperText?: string;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+}
+
+const Input = forwardRef&lt;HTMLInputElement, InputProps&gt;(
+  ({ className, label, error, helperText, prefix, suffix, ...props }, ref) =&gt; {
+    return (
+      &lt;div className=&quot;w-full space-y-2&quot;&gt;
+        {label &amp;&amp; (
+          &lt;label className=&quot;text-sm font-medium text-gray-700&quot;&gt;
+            {label}
+          &lt;/label&gt;
+        )}
+        &lt;div className=&quot;relative&quot;&gt;
+          {prefix &amp;&amp; (
+            &lt;div className=&quot;absolute left-3 top-1/2 -translate-y-1/2 text-gray-500&quot;&gt;
+              {prefix}
+            &lt;/div&gt;
+          )}
+          &lt;input
+            className={cn(
+              'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm',
+              'placeholder:text-gray-400',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2',
+              'disabled:cursor-not-allowed disabled:opacity-50',
+              error &amp;&amp; 'border-danger-500 focus-visible:ring-danger-500',
+              prefix &amp;&amp; 'pl-10',
+              suffix &amp;&amp; 'pr-10',
+              className
+            )}
+            ref={ref}
+            {...props}
+          /&gt;
+          {suffix &amp;&amp; (
+            &lt;div className=&quot;absolute right-3 top-1/2 -translate-y-1/2 text-gray-500&quot;&gt;
+              {suffix}
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
+        {error &amp;&amp; (
+          &lt;p className=&quot;text-sm text-danger-600&quot;&gt;{error}&lt;/p&gt;
+        )}
+        {helperText &amp;&amp; !error &amp;&amp; (
+          &lt;p className=&quot;text-sm text-gray-500&quot;&gt;{helperText}&lt;/p&gt;
+        )}
+      &lt;/div&gt;
+    );
+  }
+);
+Input.displayName = 'Input';
+
+export { Input };
+</code></div>
+<h3>Usage Example</h3>
+<div class="docs-pre"><code>&lt;Input
+  label=&quot;Investment Amount&quot;
+  type=&quot;number&quot;
+  placeholder=&quot;€100,000&quot;
+  prefix=&quot;€&quot;
+  error={errors.amount?.message}
+  helperText=&quot;Minimum investment: €100,000&quot;
+  {...register('amount')}
+/&gt;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Complex Components</h2>
+<h3>KPICard</h3>
+<div class="docs-pre"><code>// src/components/dashboard/KPICard.tsx
+interface KPICardProps {
+  title: string;
+  value: string;
+  change?: {
+    value: number;
+    period: string;
+  };
+  status?: 'positive' | 'negative' | 'neutral';
+  icon?: React.ReactNode;
+  live?: boolean;
+}
+
+export function KPICard({
+  title,
+  value,
+  change,
+  status = 'neutral',
+  icon,
+  live,
+}: KPICardProps) {
+  return (
+    &lt;Card variant=&quot;elevated&quot;&gt;
+      &lt;CardHeader className=&quot;flex flex-row items-center justify-between space-y-0 pb-2&quot;&gt;
+        &lt;span className=&quot;text-sm font-medium text-gray-600&quot;&gt;{title}&lt;/span&gt;
+        {icon &amp;&amp; &lt;div className=&quot;h-4 w-4 text-gray-400&quot;&gt;{icon}&lt;/div&gt;}
+      &lt;/CardHeader&gt;
+      &lt;CardContent&gt;
+        &lt;div className=&quot;text-2xl font-bold text-gray-900&quot;&gt;{value}&lt;/div&gt;
+        &lt;div className=&quot;flex items-center mt-2 space-x-2&quot;&gt;
+          {change &amp;&amp; (
+            &lt;span
+              className={cn(
+                'text-sm font-medium',
+                change.value &gt;= 0 ? 'text-success-600' : 'text-danger-600'
+              )}
+            &gt;
+              {change.value &gt;= 0 ? '▲' : '▼'} {Math.abs(change.value)}%
+            &lt;/span&gt;
+          )}
+          {change &amp;&amp; (
+            &lt;span className=&quot;text-sm text-gray-500&quot;&gt;({change.period})&lt;/span&gt;
+          )}
+          {live &amp;&amp; (
+            &lt;span className=&quot;flex items-center text-sm text-success-600&quot;&gt;
+              &lt;span className=&quot;w-2 h-2 mr-1 bg-success-600 rounded-full animate-pulse&quot; /&gt;
+              Live
+            &lt;/span&gt;
+          )}
+        &lt;/div&gt;
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+<h3>PoolCard</h3>
+<div class="docs-pre"><code>// src/components/pools/PoolCard.tsx
+interface PoolCardProps {
+  pool: Pool;
+  onViewDetails: (poolId: string) =&gt; void;
+  onSubscribe: (poolId: string) =&gt; void;
+}
+
+export function PoolCard({ pool, onViewDetails, onSubscribe }: PoolCardProps) {
+  const progressPercentage = (pool.raised / pool.target) * 100;
+
+  return (
+    &lt;Card variant=&quot;interactive&quot; onClick={() =&gt; onViewDetails(pool.id)}&gt;
+      &lt;CardHeader&gt;
+        &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+          &lt;div className=&quot;flex items-center space-x-3&quot;&gt;
+            &lt;PoolIcon assetClass={pool.assetClass} className=&quot;h-8 w-8&quot; /&gt;
+            &lt;div&gt;
+              &lt;CardTitle&gt;{pool.name}&lt;/CardTitle&gt;
+              &lt;p className=&quot;text-sm text-gray-500&quot;&gt;{pool.assetClass}&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;StatusBadge status={pool.status} /&gt;
+        &lt;/div&gt;
+      &lt;/CardHeader&gt;
+
+      &lt;CardContent className=&quot;space-y-4&quot;&gt;
+        {/* Progress Bar */}
+        &lt;div className=&quot;space-y-2&quot;&gt;
+          &lt;div className=&quot;flex justify-between text-sm&quot;&gt;
+            &lt;span className=&quot;text-gray-600&quot;&gt;Raised&lt;/span&gt;
+            &lt;span className=&quot;font-medium&quot;&gt;
+              {formatCurrency(pool.raised)} / {formatCurrency(pool.target)}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;ProgressBar value={progressPercentage} /&gt;
+          &lt;p className=&quot;text-xs text-gray-500&quot;&gt;{progressPercentage.toFixed(0)}% funded&lt;/p&gt;
+        &lt;/div&gt;
+
+        {/* Key Metrics */}
+        &lt;div className=&quot;grid grid-cols-2 gap-4&quot;&gt;
+          &lt;Metric label=&quot;APY&quot; value={`${pool.apy}%`} status={pool.performanceStatus} /&gt;
+          &lt;Metric label=&quot;Risk&quot; value={pool.riskRating} /&gt;
+          &lt;Metric label=&quot;Min Investment&quot; value={formatCurrency(pool.minInvestment)} /&gt;
+          &lt;Metric label=&quot;NAV&quot; value={formatCurrency(pool.navPerShare)} /&gt;
+        &lt;/div&gt;
+
+        {/* Actions */}
+        &lt;div className=&quot;flex space-x-2 pt-4&quot;&gt;
+          &lt;Button
+            className=&quot;flex-1&quot;
+            onClick={(e) =&gt; {
+              e.stopPropagation();
+              onSubscribe(pool.id);
+            }}
+          &gt;
+            Subscribe
+          &lt;/Button&gt;
+          &lt;Button
+            variant=&quot;secondary&quot;
+            onClick={(e) =&gt; {
+              e.stopPropagation();
+              onViewDetails(pool.id);
+            }}
+          &gt;
+            View Details
+          &lt;/Button&gt;
+        &lt;/div&gt;
+      &lt;/CardContent&gt;
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<h1>7. User Flows</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 First-Time Institutional Investor</h2>
+<div class="docs-pre"><code>1. Landing Page
+   └─ Clicks &quot;Get Started&quot; or &quot;Contact Sales&quot;
+
+2. Onboarding Initiation
+   └─ Selects &quot;Institutional Investor&quot;
+   └─ Enters email, company name
+   └─ Receives verification email
+
+3. Account Creation
+   └─ Sets password
+   └─ Connects wallet (MetaMask, WalletConnect)
+   └─ Verifies wallet ownership (signature)
+
+4. KYB Submission (Enhanced Due Diligence)
+   └─ Uploads company documents:
+      - Certificate of Incorporation
+      - Memorandum &amp; Articles of Association
+      - Board Resolution authorizing investment
+      - Beneficial Owner Declaration
+      - Proof of Address
+   └─ Completes company information:
+      - Legal name, registration number
+      - Registered address
+      - Industry sector
+      - AUM range
+      - Investment mandate
+
+5. Compliance Review
+   └─ Automated AML screening (ComplyAdvantage)
+   └─ PEP/sanctions check
+   └─ Manual review by compliance officer (if required)
+   └─ ONCHAINID claim issued upon approval
+
+6. Guided Platform Tour
+   └─ Interactive walkthrough of dashboard
+   └─ Explanation of uLP tokens, yield mechanics
+   └─ Link to educational resources
+
+7. First Investment
+   └─ Browses pool marketplace
+   └─ Views pool details
+   └─ Clicks &quot;Subscribe&quot;
+   └─ Enters amount (≥€100,000)
+   └─ Reviews terms
+   └─ Selects funding source
+   └─ Signs transaction
+   └─ Tracks progress
+
+8. Post-Investment
+   └─ Receives confirmation email
+   └─ uLP tokens appear in wallet
+   └─ Position visible in portfolio
+   └─ Can download yield statement
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 Repeat Investment Flow</h2>
+<div class="docs-pre"><code>1. Login
+   └─ Connect wallet
+   └─ Signature authentication
+
+2. Dashboard
+   └─ Views portfolio performance
+   └─ Checks yield accrual
+
+3. Browse Pools
+   └─ Filters by preferred criteria
+   └─ Views pool details
+
+4. Subscribe
+   └─ Enters amount
+   └─ Quick confirm (KYB already verified)
+   └─ Signs transaction
+
+5. Confirmation
+   └─ Real-time progress tracking
+   └─ Email notification
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.3 Redemption Flow</h2>
+<div class="docs-pre"><code>1. Navigate to Portfolio
+   └─ Selects pool position
+   └─ Clicks &quot;Redeem&quot;
+
+2. Enter Redemption Amount
+   └─ Specifies uLP amount or Ujamaa Euro (UJEUR) value
+   └─ Sees estimated proceeds
+   └─ Acknowledges redemption notice period (30 days)
+
+3. Submit Redemption Request
+   └─ Signs transaction
+   └─ Request queued for processing
+
+4. Processing Period (30 days)
+   └─ Status: &quot;Redemption Pending&quot;
+   └─ Yield continues to accrue
+   └─ Can cancel redemption (if pool allows)
+
+5. Redemption Complete
+   └─ uLP tokens burned
+   └─ Ujamaa Euro (UJEUR) transferred to wallet
+   └─ Transaction recorded on-chain
+   └─ Email confirmation
+</code></div>
+<hr />
+</section>
+<h1>8. Accessibility Requirements</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 WCAG 2.2 AA Compliance</h2>
+<h3>Perceivable</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text Alternatives</strong></td>
+<td>All images have alt text, icons have aria-labels</td>
+</tr>
+<tr>
+<td><strong>Time-Based Media</strong></td>
+<td>Captions for videos, transcripts for audio</td>
+</tr>
+<tr>
+<td><strong>Adaptable Content</strong></td>
+<td>Semantic HTML, proper heading hierarchy</td>
+</tr>
+<tr>
+<td><strong>Distinguishable</strong></td>
+<td>4.5:1 contrast ratio, resizable text (200%)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Operable</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Keyboard Accessible</strong></td>
+<td>All interactive elements focusable via Tab</td>
+</tr>
+<tr>
+<td><strong>Enough Time</strong></td>
+<td>No time limits, or ability to extend</td>
+</tr>
+<tr>
+<td><strong>Seizures</strong></td>
+<td>No flashing content (&gt;3 times/second)</td>
+</tr>
+<tr>
+<td><strong>Navigable</strong></td>
+<td>Breadcrumbs, skip links, focus indicators</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Understandable</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Readable</strong></td>
+<td>Plain language (8th grade level), glossary for jargon</td>
+</tr>
+<tr>
+<td><strong>Predictable</strong></td>
+<td>Consistent navigation, clear labels</td>
+</tr>
+<tr>
+<td><strong>Input Assistance</strong></td>
+<td>Inline validation, clear error messages</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Robust</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compatible</strong></td>
+<td>Valid HTML, ARIA where needed, tested with screen readers</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 Keyboard Navigation</h2>
+<div class="docs-pre"><code>Tab Order:
+1. Skip to main content link
+2. Logo
+3. Navigation links
+4. Search bar
+5. Main content
+6. Footer links
+
+Focus Indicators:
+- 3px solid outline
+- 3:1 contrast ratio
+- Visible on all interactive elements
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.3 Screen Reader Support</h2>
+<div class="docs-pre"><code>// Accessible chart example
+&lt;div
+  role=&quot;img&quot;
+  aria-label={`Portfolio allocation: ${allocation.map(a =&gt; `${a.name} ${a.percentage}%`).join(', ')}`}
+&gt;
+  &lt;PieChart data={allocation} /&gt;
+
+  {/* Hidden table for screen readers */}
+  &lt;table className=&quot;sr-only&quot;&gt;
+    &lt;caption&gt;Portfolio Allocation Details&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope=&quot;col&quot;&gt;Pool&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Percentage&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Value (Ujamaa Euro (UJEUR))&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      {allocation.map(item =&gt; (
+        &lt;tr key={item.id}&gt;
+          &lt;td&gt;{item.name}&lt;/td&gt;
+          &lt;td&gt;{item.percentage}%&lt;/td&gt;
+          &lt;td&gt;{formatCurrency(item.value)}&lt;/td&gt;
+        &lt;/tr&gt;
+      ))}
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+</code></div>
+<hr />
+</section>
+<h1>9. Performance Requirements</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 Core Web Vitals</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Largest Contentful Paint (LCP)</strong></td>
+<td>&lt;2.5s</td>
+<td>75th percentile</td>
+</tr>
+<tr>
+<td><strong>First Input Delay (FID)</strong></td>
+<td>&lt;100ms</td>
+<td>75th percentile</td>
+</tr>
+<tr>
+<td><strong>Cumulative Layout Shift (CLS)</strong></td>
+<td>&lt;0.1</td>
+<td>75th percentile</td>
+</tr>
+<tr>
+<td><strong>First Contentful Paint (FCP)</strong></td>
+<td>&lt;1.5s</td>
+<td>75th percentile</td>
+</tr>
+<tr>
+<td><strong>Time to Interactive (TTI)</strong></td>
+<td>&lt;3.5s</td>
+<td>75th percentile</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 Optimization Strategies</h2>
+<h3>Code Splitting</h3>
+<div class="docs-pre"><code>// Route-based splitting
+const Dashboard = lazy(() =&gt; import('@/pages/dashboard'));
+const Pools = lazy(() =&gt; import('@/pages/pools'));
+const Portfolio = lazy(() =&gt; import('@/pages/portfolio'));
+
+// In App.tsx
+&lt;Suspense fallback={&lt;PageLoader /&gt;}&gt;
+  &lt;Routes&gt;
+    &lt;Route path=&quot;/dashboard&quot; element={&lt;Dashboard /&gt;} /&gt;
+    &lt;Route path=&quot;/pools&quot; element={&lt;Pools /&gt;} /&gt;
+    &lt;Route path=&quot;/portfolio&quot; element={&lt;Portfolio /&gt;} /&gt;
+  &lt;/Routes&gt;
+&lt;/Suspense&gt;
+</code></div>
+<h3>Image Optimization</h3>
+<div class="docs-pre"><code>// Use WebP/AVIF formats
+&lt;picture&gt;
+  &lt;source srcSet=&quot;/hero.avif&quot; type=&quot;image/avif&quot; /&gt;
+  &lt;source srcSet=&quot;/hero.webp&quot; type=&quot;image/webp&quot; /&gt;
+  &lt;img src=&quot;/hero.jpg&quot; alt=&quot;Hero&quot; loading=&quot;lazy&quot; /&gt;
+&lt;/picture&gt;
+</code></div>
+<h3>Data Fetching</h3>
+<div class="docs-pre"><code>// TanStack Query with caching
+const { data, isLoading } = useQuery({
+  queryKey: ['dashboard', investorId],
+  queryFn: () =&gt; fetchDashboard(investorId),
+  staleTime: 5 * 60 * 1000, // 5 minutes
+  gcTime: 10 * 60 * 1000, // 10 minutes
+  refetchInterval: 30 * 1000, // 30 seconds for real-time feel
+});
+</code></div>
+<hr />
+</section>
+<h1>10. Security Requirements</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Frontend Security Checklist</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Security Measure</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTTPS Only</strong></td>
+<td>All API calls over HTTPS</td>
+</tr>
+<tr>
+<td><strong>CSP Headers</strong></td>
+<td>Content-Security-Policy configured</td>
+</tr>
+<tr>
+<td><strong>XSS Protection</strong></td>
+<td>React auto-escapes, no dangerouslySetInnerHTML</td>
+</tr>
+<tr>
+<td><strong>CSRF Protection</strong></td>
+<td>Double-submit cookie pattern</td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Client + server-side validation</td>
+</tr>
+<tr>
+<td><strong>Secret Management</strong></td>
+<td>No secrets in frontend code</td>
+</tr>
+<tr>
+<td><strong>Dependency Scanning</strong></td>
+<td>npm audit, Snyk integration</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>Generic error messages, detailed logging</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 Web3 Security</h2>
+<div class="docs-pre"><code>// Always verify contract addresses
+const CONTRACT_ADDRESSES = Object.freeze({
+  uLPToken: import.meta.env.VITE_ULP_TOKEN_ADDRESS,
+  LiquidityPool: import.meta.env.VITE_LIQUIDITY_POOL_ADDRESS,
+} as const);
+
+// Validate transaction parameters before signing
+async function validateAndSign(transaction: Transaction) {
+  // Verify recipient address
+  if (!isValidAddress(transaction.to)) {
+    throw new Error('Invalid recipient address');
+  }
+
+  // Verify amount
+  if (transaction.amount &lt;= 0) {
+    throw new Error('Invalid amount');
+  }
+
+  // Show user clear transaction details
+  await showTransactionConfirmation(transaction);
+
+  // Request signature
+  return await signTransaction(transaction);
+}
+</code></div>
+<hr />
+</section>
+<h1>11. Testing Strategy</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.1 Testing Pyramid</h2>
+<div class="docs-pre"><code>        /\
+       /  \      E2E Tests (Playwright)
+      /----\     Critical user flows
+     /      \    
+    /--------\   Integration Tests (Vitest + Testing Library)
+   /          \  Component interactions
+  /------------\ 
+ /              \ Unit Tests (Vitest)
+/________________\ Utilities, hooks, formatters
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.2 Test Coverage Targets</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Test Type</th>
+<th>Coverage Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit Tests</td>
+<td>&gt;90%</td>
+</tr>
+<tr>
+<td>Integration Tests</td>
+<td>&gt;80%</td>
+</tr>
+<tr>
+<td>E2E Tests</td>
+<td>Critical flows only</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.3 Example Tests</h2>
+<div class="docs-pre"><code>// Unit test example
+import { describe, it, expect } from 'vitest';
+import { formatCurrency } from '@/utils/formatters';
+
+describe('formatCurrency', () =&gt; {
+  it('formats EUR correctly', () =&gt; {
+    expect(formatCurrency(1234567.89, 'EUR')).toBe('€1,234,567.89');
+  });
+
+  it('handles small amounts', () =&gt; {
+    expect(formatCurrency(0.0042, 'EUR')).toBe('€0.0042');
+  });
+});
+
+// Component test example
+import { render, screen } from '@testing-library/react';
+import { KPICard } from '@/components/dashboard/KPICard';
+
+describe('KPICard', () =&gt; {
+  it('renders title and value', () =&gt; {
+    render(
+      &lt;KPICard
+        title=&quot;Total Value&quot;
+        value=&quot;€2,450,000&quot;
+        change={{ value: 2.3, period: '24h' }}
+      /&gt;
+    );
+
+    expect(screen.getByText('Total Value')).toBeInTheDocument();
+    expect(screen.getByText('€2,450,000')).toBeInTheDocument();
+  });
+});
+
+// E2E test example (Playwright)
+import { test, expect } from '@playwright/test';
+
+test('investor can subscribe to pool', async ({ page }) =&gt; {
+  // Login
+  await page.goto('/dashboard');
+  await page.getByRole('button', { name: 'Connect Wallet' }).click();
+
+  // Navigate to pools
+  await page.getByRole('link', { name: 'Pools' }).click();
+
+  // Select pool
+  await page.getByRole('button', { name: 'Subscribe' }).first().click();
+
+  // Enter amount
+  await page.getByLabel('Investment Amount').fill('500000');
+  await page.getByRole('button', { name: 'Continue' }).click();
+
+  // Confirm
+  await page.getByRole('button', { name: 'Sign Transaction' }).click();
+
+  // Wait for confirmation
+  await expect(page.getByText('Investment Complete')).toBeVisible();
+});
+</code></div>
+<hr />
+</section>
+<h1>12. Implementation Timeline</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.1 Phase 1: Foundation (Week 1-2)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Duration</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project setup (Vite, TypeScript, Tailwind)</td>
+<td>1 day</td>
+<td>Lead Dev</td>
+</tr>
+<tr>
+<td>Design system implementation</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Base components (Button, Card, Input, etc.)</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Layout components (Header, Sidebar, Footer)</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Routing setup</td>
+<td>1 day</td>
+<td>Lead Dev</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deliverable:</strong> Component library v1.0, design system documented</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.2 Phase 2: Dashboard (Week 3-4)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Duration</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard layout</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>KPI cards with live data</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Charts integration (Recharts)</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>API integration (TanStack Query)</td>
+<td>3 days</td>
+<td>Backend + Frontend</td>
+</tr>
+<tr>
+<td>Web3 integration (wagmi/viem)</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deliverable:</strong> Functional dashboard with mock data</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.3 Phase 3: Pool Features (Week 5-6)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Duration</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pool marketplace page</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Pool detail page</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Subscribe flow (multi-step)</td>
+<td>4 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Filter/search functionality</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deliverable:</strong> Complete pool browsing and subscription</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.4 Phase 4: Portfolio &amp; Compliance (Week 7-8)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Duration</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portfolio page</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Yield statement generation</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Compliance dashboard</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Document upload/management</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deliverable:</strong> Complete investor experience</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.5 Phase 5: Polish &amp; Testing (Week 9-10)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Duration</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accessibility audit</td>
+<td>2 days</td>
+<td>QA Team</td>
+</tr>
+<tr>
+<td>Performance optimization</td>
+<td>3 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>E2E testing</td>
+<td>3 days</td>
+<td>QA Team</td>
+</tr>
+<tr>
+<td>Bug fixes</td>
+<td>2 days</td>
+<td>Frontend Team</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>2 days</td>
+<td>Technical Writer</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deliverable:</strong> Production-ready MVP frontend</p>
+<hr />
+</section>
+<h1>Appendix A: Glossary</h1>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ujamaa Pool Token (uLP)</strong></td>
+<td>Ujamaa Liquidity Provider token; yield-bearing ERC-3643 token</td>
+</tr>
+<tr>
+<td><strong>NAV</strong></td>
+<td>Net Asset Value; value per Ujamaa Pool Token (uLP)</td>
+</tr>
+<tr>
+<td><strong>APY</strong></td>
+<td>Annual Percentage Yield; expected annual return</td>
+</tr>
+<tr>
+<td><strong>TVL</strong></td>
+<td>Total Value Locked; total assets in pool</td>
+</tr>
+<tr>
+<td><strong>KYB</strong></td>
+<td>Know Your Business; enhanced due diligence for institutions</td>
+</tr>
+<tr>
+<td><strong>ERC-3643</strong></td>
+<td>Token standard for permissioned securities</td>
+</tr>
+<tr>
+<td><strong>ONCHAINID</strong></td>
+<td>Decentralized identity protocol</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>Appendix B: References</h1>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="https://react.dev/">React 19 Documentation</a></li>
+<li><a href="https://www.typescriptlang.org/docs/">TypeScript 6.0 Handbook</a></li>
+<li><a href="https://tailwindcss.com/docs">Tailwind CSS Documentation</a></li>
+<li><a href="https://www.radix-ui.com/">Radix UI Primitives</a></li>
+<li><a href="https://tanstack.com/query/latest">TanStack Query Documentation</a></li>
+<li><a href="https://wagmi.sh/">Wagmi Documentation</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG22/quickref/">WCAG 2.2 Guidelines</a></li>
+</ul>
+<hr />
+<p><strong>Document Control:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>March 17, 2026</td>
+<td>Aziz Da Silva</td>
+<td>Initial Frontend Specification</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>March 17, 2026</td>
+<td>Aziz Da Silva</td>
+<td>🆕 Updated Color Palette (Heritage &amp; Trust Theme)</td>
+</tr>
+<tr>
+<td><strong>1.2</strong></td>
+<td><strong>March 17, 2026</strong></td>
+<td><strong>Aziz Da Silva</strong></td>
+<td><strong>🆕 Added Logo &amp; Branding (Section 3.7)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Changes in v1.2:</h3>
+<p><strong>🆕 NEW: Section 3.7 - Logo &amp; Branding</strong></p>
+<p><strong>Logo Files (docs/10_DESIGN/):</strong><br />
+- ✅ <code>Ujamaa_DeFi_logo.png</code> - White background version<br />
+- ✅ <code>Ujamaa_DeFi_logo_transparent.png</code> - Transparent background version</p>
+<p><strong>Logo Usage Guidelines:</strong><br />
+| Logo Version | Background | Usage |<br />
+|--------------|------------|-------|<br />
+| White Background | Light backgrounds | Documents, print, light web sections |<br />
+| Transparent | Dark backgrounds | Navigation headers, overlays, dark mode |</p>
+<p><strong>Logo Sizes:</strong><br />
+| Context | Height |<br />
+|---------|--------|<br />
+| Navigation Header | 48px |<br />
+| Mobile Header | 40px |<br />
+| Footer | 32px |<br />
+| Hero Section | 80px |<br />
+| Email Signature | 24px |<br />
+| Favicon | 32px |<br />
+| Social Media | 120px |</p>
+<p><strong>Logo Clear Space:</strong><br />
+- Minimum clear space = Height of elephant icon<br />
+- CSS padding implementation provided</p>
+<p><strong>Logo Color Variations:</strong><br />
+| Background | Logo Version | Text Color |<br />
+|------------|--------------|------------|<br />
+| White (#FFFFFF) | White background | Deep Blue (#1D3557) |<br />
+| Light Gray (#F5F5F5) | White background | Deep Blue (#1D3557) |<br />
+| Deep Blue (#1D3557) | Transparent | White (#FFFFFF) |<br />
+| Vibrant Orange (#F58220) | Transparent | White (#FFFFFF) |<br />
+| Image Overlay | Transparent | White (#FFFFFF) |</p>
+<p><strong>Logo Don'ts:</strong><br />
+- ❌ Stretch or distort<br />
+- ❌ Change colors (except approved)<br />
+- ❌ Add effects (shadows, gradients)<br />
+- ❌ Place on busy backgrounds<br />
+- ❌ Use low-resolution<br />
+- ❌ Rotate or flip</p>
+<p><strong>Asset Import Path:</strong></p>
+<div class="docs-pre"><code>frontend/public/assets/logos/
+├── Ujamaa_DeFi_logo.png
+├── Ujamaa_DeFi_logo_transparent.png
+└── favicon.ico
+</code></div>
+<p><strong>React Component Examples:</strong></p>
+<div class="docs-pre"><code>// Header (dark background)
+&lt;img src={logoTransparent} className=&quot;h-12 w-auto&quot; /&gt;
+
+// Footer (light background)
+&lt;img src={logo} className=&quot;h-8 w-auto&quot; /&gt;
+</code></div>
+<p><strong>Brand Colors in Logo:</strong><br />
+| Element | Color | Hex |<br />
+|---------|-------|-----|<br />
+| Elephant | Vibrant Orange | #F58220 |<br />
+| Text | Deep Blue | #1D3557 |<br />
+| Background | White/Transparent | #FFFFFF/transparent |</p>
+<p><strong>Favicon &amp; App Icons:</strong><br />
+- favicon.ico (32x32, 16x16)<br />
+- apple-touch-icon.png (180x180)<br />
+- android-chrome-192x192.png<br />
+- android-chrome-512x512.png<br />
+- manifest.json (PWA manifest)</p>
+<p><strong>Approval Required:</strong> Proceed with frontend implementation</p>
+<p><strong>Next Step:</strong> Begin Week 5, Day 1 tasks (Design System Setup)</p>
+<hr />
+<p><em>UJAMAA DEFI PLATFORM - Tokenize African Real-World Assets</em><br />
+<em>Heritage &amp; Trust Theme - Emphasizing Energy &amp; Reliability</em><br />
+<em>Institutional-Grade Frontend Specification for MVP</em></p>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

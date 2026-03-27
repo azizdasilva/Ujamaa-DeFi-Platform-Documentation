@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Architectural Improvements Specification (v1.0) - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Future Enhancements</a><span class="docs-breadcrumb-separator">/</span><span>Architectural Improvements Specification (v1.0)</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Architectural Improvements Specification (v1.0)</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ PROPOSED / RESEARCH | <strong>Last Updated:</strong> March 21, 2026</p></div>
+
+        <h1>Architectural Improvements Specification (v1.0)</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>UJAMAA DeFi Platform - Post-MVP Institutional Upgrades</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Date:</strong> March 21, 2026<br />
+<strong>Status:</strong> PROPOSED / RESEARCH<br />
+<strong>Reference:</strong> SRS v2.0, ERC-3643 (T-REX Protocol)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Executive Summary</h2>
+<p>This document outlines five strategic architectural improvements designed to enhance the UJAMAA DeFi Platform's capital efficiency, risk mitigation, and institutional appeal. These changes maintain the core mission of African RWA tokenization while introducing advanced TradFi-DeFi hybrid mechanics.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Improvement 1: Automated Default Auction Mechanism</h2>
+<h3>2.1 Concept</h3>
+<p>Automate the liquidation of <code>Ujamaa Guarantee (UJG)</code> tokens (collateral NFTs) via an on-chain Dutch Auction if an industrial partner defaults on repayment.</p>
+<h3>2.2 Technical Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Contract:</strong> <code>GuaranteeToken.sol</code></li>
+<li><strong>Logic:</strong> Add a <code>DutchAuction</code> module.<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Trigger:</strong> <code>LiquidityPool</code> calls <code>startLiquidation(tokenId)</code> after maturity + grace period.</li>
+<li><strong>Price Curve:</strong> Starts at 120% of <code>merchandiseValue</code>, drops linearly to a "Floor Price" over 7 days.</li>
+<li><strong>Eligibility:</strong> Bidders must be verified in the <code>IdentityRegistry</code> (compliance-gated).</li>
+</ul>
+</li>
+<li><strong>Backend:</strong> New <code>AuctionMonitor</code> service to alert whitelisted "Distressed Asset Buyers."</li>
+</ul>
+<h3>2.3 Documentation Updates</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>SRS v2.0 (Section 4.1.2):</strong> Update "Default Handling" lifecycle to include the "Dutch Auction" stage.</li>
+<li><strong>Smart Contract Spec (Section 6.2):</strong> Add function definitions for <code>startAuction()</code>, <code>placeBid()</code>, and <code>settleAuction()</code>.</li>
+<li><strong>API Spec (Section 4):</strong> Add <code>/api/v2/auctions</code> endpoints for listing active liquidations.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Improvement 2: IoT-Driven "Dynamic Risk" Oracle</h2>
+<h3>3.1 Concept</h3>
+<p>Link physical asset condition (humidity, temperature, GPS) in GDIZ warehouses directly to the on-chain risk rating of the collateral.</p>
+<h3>3.2 Technical Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Contract:</strong> <code>IndustrialGateway.sol</code></li>
+<li><strong>Logic:</strong> Integrate Chainlink Functions.<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Data Ingest:</strong> Periodically fetch warehouse sensor data via API.</li>
+<li><strong>On-Chain Trigger:</strong> If sensors exceed safety thresholds (e.g., &gt;60% humidity for cotton), the contract updates the <code>stockHash</code> metadata with a "Condition Warning" flag.</li>
+</ul>
+</li>
+<li><strong>Economic Impact:</strong> Trigger an automatic increase in the "Interest Buffer" or a partial margin call.</li>
+</ul>
+<h3>3.3 Documentation Updates</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Architecture Spec (Layer 3: Oracles):</strong> Document the integration of IoT data providers as trusted Oracle sources.</li>
+<li><strong>Asset Risk Rating Guide:</strong> Update the risk scoring matrix to include "Real-time Environmental Stability" as a 15% weight factor.</li>
+<li><strong>Technical Guide 08 (Web3 Architecture):</strong> Add a sequence diagram showing IoT Data -&gt; Chainlink -&gt; Smart Contract.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Improvement 3: Atomic OTC Swaps (Secondary Liquidity)</h2>
+<h3>3.1 Concept</h3>
+<p>Enable peer-to-peer (P2P) trading of uLP tokens between whitelisted investors, providing liquidity even when the pool is "fully deployed."</p>
+<h3>4.2 Technical Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Contract:</strong> <code>uLPSwapDesk.sol</code> (New Contract)</li>
+<li><strong>Logic:</strong> Escrow-based atomic swap.<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Step 1:</strong> Seller creates a "Limit Order" (e.g., Sell 100k uLP for 105k UJEUR).</li>
+<li><strong>Step 2:</strong> Contract validates both parties via <code>IdentityRegistry.isVerified()</code>.</li>
+<li><strong>Step 3:</strong> Atomic exchange: uLP transfers to Buyer, UJEUR transfers to Seller in one transaction.</li>
+</ul>
+</li>
+<li><strong>Compliance:</strong> Transfer is blocked if the Buyer's jurisdiction cap is reached (ERC-3643 <code>ComplianceModule</code>).</li>
+</ul>
+<h3>4.3 Documentation Updates</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>SRS v2.0 (Section 6.5):</strong> Create a new "Secondary Market Mechanics" sub-section.</li>
+<li><strong>Investor FAQ:</strong> Add "How can I exit my position before the pool maturity?" explaining the OTC desk.</li>
+<li><strong>API Spec:</strong> Add <code>/api/v2/market/orders</code> for order book management.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Improvement 4: Senior/Junior Tranching (Waterfall)</h2>
+<h3>5.1 Concept</h3>
+<p>Segment the Liquidity Pool into two risk classes: <strong>Senior (uLP-A)</strong> for low-risk/lower-yield and <strong>Junior (uLP-B)</strong> for high-risk/higher-yield (first-loss capital).</p>
+<h3>5.2 Technical Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Contract:</strong> <code>LiquidityPool.sol</code> (Major Refactor)</li>
+<li><strong>Logic:</strong> Waterfall payment structure.<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Distribution:</strong> <code>addYield()</code> first fills the Senior Tranche's target (e.g., 8%). Any excess yield flows to the Junior Tranche.</li>
+<li><strong>Loss Absorption:</strong> If a default occurs, the Junior Tranche's NAV is reduced first. The Senior Tranche is only affected if the Junior Tranche is wiped out.</li>
+</ul>
+</li>
+<li><strong>Tokens:</strong> Issue two separate ERC-3643 tokens per pool.</li>
+</ul>
+<h3>5.3 Documentation Updates</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>White Paper (Economics Section):</strong> Redesign the "Yield Model" to explain the Waterfall mechanism and risk/reward for A vs B tokens.</li>
+<li><strong>Investment Memorandum:</strong> Update "Risk Factors" to describe the "First-Loss" nature of the Junior Tranche.</li>
+<li><strong>Token Naming Reference:</strong> Add <code>uLP-A</code> (Senior) and <code>uLP-B</code> (Junior) nomenclature.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Improvement 5: Chainlink Proof of Reserve (PoR)</h2>
+<h3>6.1 Concept</h3>
+<p>Verify the Euro reserves backing the UJEUR stablecoin in real-time to prevent "Stablecoin De-pegging" risks.</p>
+<h3>6.2 Technical Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Contract:</strong> <code>uLPToken.sol</code></li>
+<li><strong>Logic:</strong> Circuit Breaker.<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Integration:</strong> Call <code>latestRoundData()</code> on a Chainlink PoR feed (e.g., EURC/EUR).</li>
+<li><strong>Safety Check:</strong> If <code>ReserveAmount &lt; TotalSupply * 0.99</code>, the <code>deposit()</code> function is automatically paused to prevent investors from entering a potentially under-collateralized system.</li>
+</ul>
+</li>
+<li><strong>Admin:</strong> Multi-sig can manually override in case of Oracle failure.</li>
+</ul>
+<h3>6.3 Documentation Updates</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Compliance Framework (Section 8: Audit):</strong> Add "Proof of Reserve Verification" as a mandatory real-time audit requirement.</li>
+<li><strong>Operational Runbooks:</strong> Add a procedure for "Stablecoin De-peg Incident Response."</li>
+<li><strong>SRS v2.0 (Section 9: Security):</strong> Document the PoR Circuit Breaker as a core system safeguard.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Implementation Roadmap</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th style="text-align: left;">Phase</th>
+<th style="text-align: left;">Enhancement</th>
+<th style="text-align: left;">Target Release</th>
+<th style="text-align: left;">Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Phase A</strong></td>
+<td style="text-align: left;">Proof of Reserve &amp; OTC Swaps</td>
+<td style="text-align: left;">MVP v2.1</td>
+<td style="text-align: left;">P0 (Safety/Liquidity)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase B</strong></td>
+<td style="text-align: left;">Senior/Junior Tranching</td>
+<td style="text-align: left;">MVP v2.2</td>
+<td style="text-align: left;">P1 (Capital Attraction)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase C</strong></td>
+<td style="text-align: left;">Automated Dutch Auction</td>
+<td style="text-align: left;">Production v1.0</td>
+<td style="text-align: left;">P1 (Risk Recovery)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase D</strong></td>
+<td style="text-align: left;">IoT Dynamic Risk</td>
+<td style="text-align: left;">Production v1.1</td>
+<td style="text-align: left;">P2 (Efficiency)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Summary of Document Updates (Checklist)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th style="text-align: left;">Document Path</th>
+<th style="text-align: left;">Section to Update</th>
+<th style="text-align: left;">Change Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>docs/01_SPECIFICATIONS/01_SRS.md</code></td>
+<td style="text-align: left;">4.1.2, 6.5, 9.2</td>
+<td style="text-align: left;">Structural / Logical</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docs/01_SPECIFICATIONS/03_SMART_CONTRACT.md</code></td>
+<td style="text-align: left;">Interface definitions</td>
+<td style="text-align: left;">Technical API</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docs/01_SPECIFICATIONS/04_API_SPEC.md</code></td>
+<td style="text-align: left;">Endpoints for Auction/OTC</td>
+<td style="text-align: left;">Routing / Schema</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docs/08_INVESTORS_ROOM/04_WHITE_PAPER.md</code></td>
+<td style="text-align: left;">Economic Model</td>
+<td style="text-align: left;">Marketing / Narrative</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docs/08_INVESTORS_ROOM/03_INVEST_MEMO.md</code></td>
+<td style="text-align: left;">Risk Factors</td>
+<td style="text-align: left;">Legal / Disclosure</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docs/02_TECHNICAL_GUIDES/08_WEB3_ARCH.md</code></td>
+<td style="text-align: left;">Oracle / Swap Diagrams</td>
+<td style="text-align: left;">Architectural</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Future Enhancements</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

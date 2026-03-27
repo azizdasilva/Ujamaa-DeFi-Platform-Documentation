@@ -1,0 +1,3996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Monitoring & Observability Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>Monitoring & Observability Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Monitoring & Observability Specification</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> February 27, 2026 | <strong>Audience:</strong> SREs, DevOps Engineers, Platform Engineers, On-Call Staff</p></div>
+
+        <h1>Monitoring &amp; Observability Specification</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform Observability Stack</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> February 27, 2026<br />
+<strong>Classification:</strong> Technical / Operations<br />
+<strong>Audience:</strong> SREs, DevOps Engineers, Platform Engineers, On-Call Staff</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-monitoring-architecture">Monitoring Architecture</a></li>
+<li><a href="#3-prometheus-configuration">Prometheus Configuration</a></li>
+<li><a href="#4-metrics-specification">Metrics Specification</a></li>
+<li><a href="#5-alert-rules">Alert Rules</a></li>
+<li><a href="#6-grafana-dashboards">Grafana Dashboards</a></li>
+<li><a href="#7-logging-with-loki">Logging with Loki</a></li>
+<li><a href="#8-distributed-tracing">Distributed Tracing</a></li>
+<li><a href="#9-kubernetes-monitoring">Kubernetes Monitoring</a></li>
+<li><a href="#10-blockchain-monitoring">Blockchain Monitoring</a></li>
+<li><a href="#11-slosli-framework">SLO/SLI Framework</a></li>
+<li><a href="#12-runbooks">Runbooks</a></li>
+<li><a href="#13-on-call-operations">On-Call Operations</a></li>
+</ol>
+<hr />
+<h1>1. Executive Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Monitoring Stack Overview</h2>
+<p>Ujamaa DeFi Platform implements a comprehensive observability stack based on the CNCF Prometheus/Grafana ecosystem:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Purpose</th>
+<th>Deployment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metrics Collection</strong></td>
+<td>Prometheus 2.48</td>
+<td>Time-series metrics scraping, storage, alerting</td>
+<td>Kubernetes (StatefulSet)</td>
+</tr>
+<tr>
+<td><strong>Metrics Visualization</strong></td>
+<td>Grafana 10.2</td>
+<td>Dashboards, alerting, data exploration</td>
+<td>Kubernetes (Deployment)</td>
+</tr>
+<tr>
+<td><strong>Log Aggregation</strong></td>
+<td>Loki 2.9</td>
+<td>Log collection, indexing, querying</td>
+<td>Kubernetes (StatefulSet)</td>
+</tr>
+<tr>
+<td><strong>Distributed Tracing</strong></td>
+<td>Tempo 2.3 / Jaeger</td>
+<td>Trace collection, visualization</td>
+<td>Kubernetes (StatefulSet)</td>
+</tr>
+<tr>
+<td><strong>Alert Management</strong></td>
+<td>Alertmanager 0.26</td>
+<td>Alert routing, deduplication, silencing</td>
+<td>Kubernetes (StatefulSet)</td>
+</tr>
+<tr>
+<td><strong>Service Discovery</strong></td>
+<td>Kubernetes SD + Consul</td>
+<td>Automatic target discovery</td>
+<td>Built-in</td>
+</tr>
+<tr>
+<td><strong>Long-term Storage</strong></td>
+<td>Thanos 0.32 / Mimir</td>
+<td>Metrics retention, global view</td>
+<td>Multi-cluster</td>
+</tr>
+<tr>
+<td><strong>On-Call Management</strong></td>
+<td>PagerDuty / Opsgenie</td>
+<td>Incident escalation, rotation</td>
+<td>SaaS</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Monitoring Tiers</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MONITORING PYRAMID                                    │
+│                                                                              │
+│                              ┌───────┐                                       │
+│                              │  SLO  │  Business outcomes, user satisfaction │
+│                              └───────┘                                       │
+│                           ┌───────────┐                                      │
+│                           │  Alerts   │  Actionable pages, runbooks          │
+│                           └───────────┘                                      │
+│                        ┌─────────────────┐                                   │
+│                        │   Dashboards    │  Visualization, exploration        │
+│                        └─────────────────┘                                   │
+│                     ┌─────────────────────┐                                  │
+│                     │      Metrics        │  RED, USE, business metrics       │
+│                     └─────────────────────┘                                  │
+│                  ┌─────────────────────────┐                                 │
+│                  │       Logs + Traces     │  Debugging, root cause          │
+│                  └─────────────────────────┘                                 │
+│                                                                              │
+│  Data Volume:     Logs &gt; Traces &gt; Metrics                                    │
+│  Query Cost:      Logs &gt; Traces &gt; Metrics                                    │
+│  Retention:       Metrics &gt; Logs &gt; Traces                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Key Monitoring Requirements</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Target</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metrics Retention</strong></td>
+<td>90 days hot, 1 year cold</td>
+<td>Prometheus + Thanos</td>
+</tr>
+<tr>
+<td><strong>Scrape Interval</strong></td>
+<td>15s default, 5s critical</td>
+<td>Per-job configuration</td>
+</tr>
+<tr>
+<td><strong>Alert Latency</strong></td>
+<td>&lt;60s from incident to page</td>
+<td>Alertmanager + PagerDuty</td>
+</tr>
+<tr>
+<td><strong>Dashboard Refresh</strong></td>
+<td>&lt;5s for real-time panels</td>
+<td>Grafana streaming</td>
+</tr>
+<tr>
+<td><strong>Log Query</strong></td>
+<td>&lt;10s for 24h search</td>
+<td>Loki indexing</td>
+</tr>
+<tr>
+<td><strong>Trace Query</strong></td>
+<td>&lt;5s for trace lookup</td>
+<td>Tempo indexing</td>
+</tr>
+<tr>
+<td><strong>Data Points</strong></td>
+<td>1M+ samples/second</td>
+<td>Prometheus sharding</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Monitoring Architecture</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 High-Level Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         MONITORING ARCHITECTURE                                   │
+│                                                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────────┐ │
+│  │                      DATA SOURCES (Kubernetes Cluster)                      │ │
+│  │                                                                             │ │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │ │
+│  │  │   FastAPI    │  │   FastAPI    │  │   FastAPI    │  │   FastAPI    │   │ │
+│  │  │   Assets     │  │   Investors  │  │   Trades     │  │   Compliance │   │ │
+│  │  │   :8000      │  │   :8001      │  │   :8002      │  │   :8003      │   │ │
+│  │  │   /metrics   │  │   /metrics   │  │   /metrics   │  │   /metrics   │   │ │
+│  │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘   │ │
+│  │         │                 │                 │                 │            │ │
+│  │  ┌──────▼─────────────────▼─────────────────▼─────────────────▼───────┐   │ │
+│  │  │                    Istio Service Mesh (Envoy)                       │   │ │
+│  │  │         • Request metrics (HTTP/gRPC)                               │   │ │
+│  │  │         • Latency histograms                                        │   │ │
+│  │  │         • Error rates                                               │   │ │
+│  │  └──────┬──────────────────────────────────────────────────────────────┘   │ │
+│  │         │                                                                   │ │
+│  │  ┌──────▼──────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Node Exporter (per node)                          │   │ │
+│  │  │         • CPU, Memory, Disk, Network                                 │   │ │
+│  │  └──────┬──────────────────────────────────────────────────────────────┘   │ │
+│  │         │                                                                   │ │
+│  │  ┌──────▼──────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Kubernetes Components                             │   │ │
+│  │  │         • API Server, Scheduler, Controller Manager                  │   │ │
+│  │  │         • Kubelet, Kube-proxy                                        │   │ │
+│  │  │         • CoreDNS, Etcd                                              │   │ │
+│  │  └──────┬──────────────────────────────────────────────────────────────┘   │ │
+│  │         │                                                                   │ │
+│  │  ┌──────▼──────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Stateful Services                                 │   │ │
+│  │  │         • PostgreSQL (RDS/Cloud SQL)                                 │   │ │
+│  │  │         • Redis (ElastiCache/Memorystore)                            │   │ │
+│  │  │         • Kafka (MSK)                                                │   │ │
+│  │  └──────┬──────────────────────────────────────────────────────────────┘   │ │
+│  │         │                                                                   │ │
+│  │  ┌──────▼──────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Blockchain Nodes                                  │   │ │
+│  │  │         • Polygon RPC                                                │   │ │
+│  │  │         • Ethereum RPC                                               │   │ │
+│  │  │         • Custom exporters                                           │   │ │
+│  │  └──────────────────────────────────────────────────────────────────────┘   │ │
+│  └────────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                             │
+│                                   ▼                                             │
+│  ┌────────────────────────────────────────────────────────────────────────────┐ │
+│  │                      PROMETHEUS CLUSTER                                     │ │
+│  │                                                                             │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Prometheus Primary (StatefulSet)                  │   │ │
+│  │  │                                                                      │   │ │
+│  │  │  • Scrape interval: 15s (default), 5s (critical)                     │   │ │
+│  │  │  • Retention: 15 days local                                          │   │ │
+│  │  │  • TSDB blocks: 2h duration                                          │   │ │
+│  │  │  • Remote write to Thanos                                            │   │ │
+│  │  │  • Rules evaluation: 30s                                             │   │ │
+│  │  │                                                                      │   │ │
+│  │  │  Resource Allocation:                                                │   │ │
+│  │  │  • CPU: 4 cores request, 8 cores limit                               │   │ │
+│  │  │  • Memory: 16Gi request, 32Gi limit                                  │   │ │
+│  │  │  • Storage: 500Gi PVC (SSD)                                          │   │ │
+│  │  └─────────────────────────────────────────────────────────────────────┘   │ │
+│  │                                                                             │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────┐   │ │
+│  │  │                    Prometheus Secondary (HA Pair)                    │   │ │
+│  │  │         Same configuration as primary                                │   │ │
+│  │  └─────────────────────────────────────────────────────────────────────┘   │ │
+│  └────────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                             │
+│                                   ▼                                             │
+│  ┌────────────────────────────────────────────────────────────────────────────┐ │
+│  │                      THANOS (Long-term Storage)                             │ │
+│  │                                                                             │ │
+│  │  • Sidecar: Uploads TSDB blocks to S3/GCS                                  │ │
+│  │  • Store Gateway: Queries object storage                                   │ │
+│  │  • Query: Global query layer (PromQL)                                      │ │
+│  │  • Compactor: Downsampling (5m, 1h), retention                             │ │
+│  │  • Ruler: Recording rules, alerts                                          │ │
+│  │                                                                             │ │
+│  │  Retention Policy:                                                          │ │
+│  │  • Raw data: 90 days                                                       │ │
+│  │  • 5m downsampled: 1 year                                                  │ │
+│  │  • 1h downsampled: 5 years                                                 │ │
+│  └────────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                             │
+│              ┌────────────────────┼────────────────────┐                       │
+│              ▼                    ▼                    ▼                       │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐             │
+│  │     Grafana      │  │   Alertmanager   │  │      Loki        │             │
+│  │   (Dashboards)   │  │    (Alerting)    │  │     (Logs)       │             │
+│  │                  │  │                  │  │                  │             │
+│  │  • 20+ dashboards│  │  • Routing       │  │  • Promtail      │             │
+│  │  • 200+ panels   │  │  • Deduplication │  │  • Log collection│             │
+│  │  • 50+ alerts    │  │  • Silencing     │  │  • 30d retention │             │
+│  │                  │  │  • Inhibition    │  │                  │             │
+│  │  Resource:       │  │  Resource:       │  │  Resource:       │             │
+│  │  • 2 cores, 4Gi  │  │  • 1 core, 2Gi   │  │  • 4 cores, 16Gi │             │
+│  └──────────────────┘  └──────────────────┘  └──────────────────┘             │
+│                                   │                                             │
+│                                   ▼                                             │
+│                          ┌─────────────────┐                                    │
+│                          │   PagerDuty     │                                    │
+│                          │   (Escalation)  │                                    │
+│                          └─────────────────┘                                    │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Network Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MONITORING NETWORK TOPOLOGY                           │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Monitoring Namespace (istio-system)                  │ │
+│  │                                                                         │ │
+│  │  ┌──────────────────────────────────────────────────────────────────┐  │ │
+│  │  │                    Prometheus Service                             │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  ClusterIP: 10.100.50.10:9090                                     │  │ │
+│  │  │  NodePort: 30090                                                  │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  Access:                                                          │  │ │
+│  │  │  • Internal: All pods via ClusterIP                               │  │ │
+│  │  │  • External: Via Istio Ingress (auth required)                    │  │ │
+│  │  │  • Federated: Thanos Query                                        │  │ │
+│  │  └──────────────────────────────────────────────────────────────────┘  │ │
+│  │                                                                         │ │
+│  │  ┌──────────────────────────────────────────────────────────────────┐  │ │
+│  │  │                    Grafana Service                                │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  ClusterIP: 10.100.50.11:3000                                     │  │ │
+│  │  │  Ingress: monitoring.ujamaa-defi.com                              │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  Authentication:                                                  │  │ │
+│  │  │  • OAuth2 (Google SSO)                                            │  │ │
+│  │  │  • LDAP (internal users)                                          │  │ │
+│  │  │  • API Keys (automation)                                          │  │ │
+│  │  └──────────────────────────────────────────────────────────────────┘  │ │
+│  │                                                                         │ │
+│  │  ┌──────────────────────────────────────────────────────────────────┐  │ │
+│  │  │                    Alertmanager Service                           │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  ClusterIP: 10.100.50.12:9093                                     │  │ │
+│  │  │  Ingress: alertmanager.ujamaa-defi.com                            │  │ │
+│  │  │                                                                   │  │ │
+│  │  │  Receivers:                                                       │  │ │
+│  │  │  • PagerDuty (critical)                                           │  │ │
+│  │  │  • Slack (warning, info)                                          │  │ │
+│  │  │  • Email (daily digest)                                           │  │ │
+│  │  └──────────────────────────────────────────────────────────────────┘  │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  Firewall Rules:                                                             │
+│  • Allow 9090 from Kubernetes pods                                          │
+│  • Allow 3000 from corporate network                                        │
+│  • Allow 9093 from Prometheus only                                          │
+│  • Deny all other inbound                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<h1>3. Prometheus Configuration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Main Configuration</h2>
+<div class="docs-pre"><code># monitoring/prometheus/prometheus.yml
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+  external_labels:
+    cluster: production
+    region: af-south-1
+    environment: production
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - alertmanager:9093
+    scheme: http
+    timeout: 10s
+    api_version: v2
+
+# Rule files
+rule_files:
+  - /etc/prometheus/rules/alerts/*.yml
+  - /etc/prometheus/rules/recording/*.yml
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090']
+    metrics_path: /metrics
+    scheme: http
+    scrape_interval: 5s  # High-frequency self-monitoring
+
+  # Kubernetes API server
+  - job_name: 'kubernetes-apiservers'
+    kubernetes_sd_configs:
+    - role: endpoints
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecure_skip_verify: false
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+      action: keep
+      regex: default;kubernetes;https
+
+  # Kubernetes nodes (kubelet)
+  - job_name: 'kubernetes-nodes'
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecure_skip_verify: true
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    kubernetes_sd_configs:
+    - role: node
+    relabel_configs:
+    - action: labelmap
+      regex: __meta_kubernetes_node_label_(.+)
+    - target_label: __address__
+      replacement: kubernetes.default.svc:443
+    - source_labels: [__meta_kubernetes_node_name]
+      regex: (.+)
+      target_label: __metrics_path__
+      replacement: /api/v1/nodes/${1}/proxy/metrics
+
+  # Kubernetes nodes (cAdvisor)
+  - job_name: 'kubernetes-nodes-cadvisor'
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecure_skip_verify: true
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    kubernetes_sd_configs:
+    - role: node
+    relabel_configs:
+    - action: labelmap
+      regex: __meta_kubernetes_node_label_(.+)
+    - target_label: __address__
+      replacement: kubernetes.default.svc:443
+    - source_labels: [__meta_kubernetes_node_name]
+      regex: (.+)
+      target_label: __metrics_path__
+      replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+
+  # Kubernetes service discovery (pods)
+  - job_name: 'kubernetes-pods'
+    kubernetes_sd_configs:
+    - role: pod
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+      action: keep
+      regex: true
+    - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+      action: replace
+      target_label: __metrics_path__
+      regex: (.+)
+    - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+      action: replace
+      regex: ([^:]+)(?::\d+)?;(\d+)
+      replacement: $1:$2
+      target_label: __address__
+    - action: labelmap
+      regex: __meta_kubernetes_pod_annotation_(.+)
+      replacement: $1
+    - action: labelmap
+      regex: __meta_kubernetes_pod_label_(.+)
+      replacement: pod_$1
+    - source_labels: [__meta_kubernetes_namespace]
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      target_label: pod
+    - source_labels: [__meta_kubernetes_pod_container_name]
+      target_label: container
+
+  # Kubernetes service discovery (services)
+  - job_name: 'kubernetes-services'
+    kubernetes_sd_configs:
+    - role: service
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_probe]
+      action: keep
+      regex: true
+    - source_labels: [__address__]
+      target_label: __param_target
+    - target_label: __address__
+      replacement: blackbox-exporter:9115
+    - source_labels: [__param_target]
+      target_label: instance
+    - action: labelmap
+      regex: __meta_kubernetes_service_annotation_(.+)
+      replacement: $1
+    - source_labels: [__meta_kubernetes_namespace]
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_service_name]
+      target_label: service
+
+  # FastAPI services (ujamaa-production namespace)
+  - job_name: 'fastapi-services'
+    kubernetes_sd_configs:
+    - role: pod
+      namespaces:
+        names:
+        - ujamaa-production
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      action: keep
+      regex: .+-service
+    - source_labels: [__meta_kubernetes_pod_container_port_number]
+      action: keep
+      regex: 800[0-4]
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      target_label: service
+    - source_labels: [__meta_kubernetes_pod_label_version]
+      target_label: version
+    - action: labelmap
+      regex: __meta_kubernetes_pod_label_(.+)
+      replacement: $1
+    - source_labels: [__meta_kubernetes_namespace]
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      target_label: pod
+    metric_relabel_configs:
+    - source_labels: [__name__]
+      regex: 'go_.*'
+      action: drop
+    - source_labels: [__name__]
+      regex: 'process_.*'
+      action: drop
+
+  # Istio service mesh
+  - job_name: 'istio-mesh'
+    kubernetes_sd_configs:
+    - role: pod
+      namespaces:
+        names:
+        - istio-system
+        - ujamaa-production
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_container_port_name]
+      action: keep
+      regex: http-monitoring
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      target_label: component
+    - source_labels: [__meta_kubernetes_namespace]
+      target_label: namespace
+
+  # Node Exporter
+  - job_name: 'node-exporter'
+    static_configs:
+    - targets: ['node-exporter:9100']
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: instance
+
+  # Kafka (MSK or self-managed)
+  - job_name: 'kafka'
+    kubernetes_sd_configs:
+    - role: pod
+      namespaces:
+        names:
+        - kafka
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      action: keep
+      regex: kafka
+    - source_labels: [__meta_kubernetes_pod_container_port_number]
+      action: keep
+      regex: 9092|9094
+    - source_labels: [__meta_kubernetes_pod_name]
+      target_label: broker
+
+  # PostgreSQL (via postgres-exporter sidecar)
+  - job_name: 'postgresql'
+    kubernetes_sd_configs:
+    - role: pod
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      action: keep
+      regex: postgresql
+    - source_labels: [__meta_kubernetes_pod_container_port_number]
+      action: keep
+      regex: 9187
+    - source_labels: [__meta_kubernetes_pod_name]
+      target_label: instance
+
+  # Redis (via redis-exporter sidecar)
+  - job_name: 'redis'
+    kubernetes_sd_configs:
+    - role: pod
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_label_app]
+      action: keep
+      regex: redis
+    - source_labels: [__meta_kubernetes_pod_container_port_number]
+      action: keep
+      regex: 9121
+    - source_labels: [__meta_kubernetes_pod_name]
+      target_label: instance
+
+  # Blockchain exporters
+  - job_name: 'blockchain-polygon'
+    static_configs:
+    - targets: ['blockchain-exporter-polygon:9500']
+      labels:
+        blockchain: polygon
+        network: mainnet
+    scrape_interval: 10s  # Higher frequency for chain data
+
+  - job_name: 'blockchain-ethereum'
+    static_configs:
+    - targets: ['blockchain-exporter-ethereum:9500']
+      labels:
+        blockchain: ethereum
+        network: mainnet
+    scrape_interval: 30s  # Slower due to block times
+
+  # Blackbox exporter (endpoint health)
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+    - targets:
+      - https://api.ujamaa-defi.com/health/live
+      - https://api.ujamaa-defi.com/health/ready
+      - https://monitoring.ujamaa-defi.com
+      - https://app.ujamaa-defi.com
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox-exporter:9115
+
+# Remote write to Thanos
+remote_write:
+- url: http://thanos-receive:19291/api/v1/receive
+  queue_config:
+    max_samples_per_send: 10000
+    max_shards: 200
+    capacity: 25000
+  write_relabel_configs:
+  - source_labels: [__name__]
+    regex: 'go_.*'
+    action: drop
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Kubernetes Deployment</h2>
+<div class="docs-pre"><code># monitoring/prometheus/deployment.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    name: monitoring
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    # (Configuration from above)
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prometheus
+  namespace: monitoring
+  labels:
+    app: prometheus
+spec:
+  serviceName: prometheus
+  replicas: 2  # HA pair
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+      annotations:
+        prometheus.io/scrape: &quot;false&quot;  # Don't scrape Prometheus itself via SD
+    spec:
+      serviceAccountName: prometheus
+      securityContext:
+        fsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      initContainers:
+      - name: init-chmod-data
+        image: busybox:1.36
+        command: ['sh', '-c']
+        args:
+        - |
+          chown -R 65534:65534 /prometheus
+          mkdir -p /prometheus/rules/alerts
+          mkdir -p /prometheus/rules/recording
+          chown -R 65534:65534 /prometheus/rules
+        volumeMounts:
+        - name: prometheus-data
+          mountPath: /prometheus
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.48.1
+        args:
+        - --config.file=/etc/prometheus/prometheus.yml
+        - --storage.tsdb.path=/prometheus
+        - --storage.tsdb.retention.time=15d
+        - --storage.tsdb.retention.size=400GB
+        - --web.enable-lifecycle
+        - --web.enable-admin-api
+        - --web.route-prefix=/
+        - --web.external-url=https://prometheus.ujamaa-defi.com
+        - --storage.tsdb.min-block-duration=2h
+        - --storage.tsdb.max-block-duration=2h
+        - --log.level=info
+        - --log.format=logfmt
+        ports:
+        - containerPort: 9090
+          name: http
+          protocol: TCP
+        - containerPort: 9090
+          name: grpc
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /-/ready
+            port: 9090
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /-/healthy
+            port: 9090
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 5
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: 4000m
+            memory: 16Gi
+          limits:
+            cpu: 8000m
+            memory: 32Gi
+        volumeMounts:
+        - name: prometheus-config
+          mountPath: /etc/prometheus
+        - name: prometheus-data
+          mountPath: /prometheus
+        - name: prometheus-rules
+          mountPath: /etc/prometheus/rules
+      - name: thanos-sidecar
+        image: thanosio/thanos:v0.32.5
+        args:
+        - sidecar
+        - --prometheus.url=http://localhost:9090
+        - --grpc-address=:10901
+        - --http-address=:10902
+        - --objstore.config=$(OBJSTORE_CONFIG)
+        - --tsdb.path=/prometheus
+        - --log.level=info
+        env:
+        - name: OBJSTORE_CONFIG
+          valueFrom:
+            secretKeyRef:
+              name: thanos-objstore-config
+              key: objstore.yml
+        ports:
+        - containerPort: 10901
+          name: grpc
+        - containerPort: 10902
+          name: http
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 2Gi
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+        volumeMounts:
+        - name: prometheus-data
+          mountPath: /prometheus
+      volumes:
+      - name: prometheus-config
+        configMap:
+          name: prometheus-config
+      - name: prometheus-rules
+        configMap:
+          name: prometheus-rules
+      - name: prometheus-data
+        persistentVolumeClaim:
+          claimName: prometheus-data
+  volumeClaimTemplates:
+  - metadata:
+      name: prometheus-data
+    spec:
+      accessModes: [&quot;ReadWriteOnce&quot;]
+      storageClassName: gp3
+      resources:
+        requests:
+          storage: 500Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: monitoring
+  labels:
+    app: prometheus
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless for StatefulSet
+  ports:
+  - port: 9090
+    targetPort: 9090
+    protocol: TCP
+    name: http
+  - port: 10901
+    targetPort: 10901
+    protocol: TCP
+    name: grpc
+  - port: 10902
+    targetPort: 10902
+    protocol: TCP
+    name: sidecar
+  selector:
+    app: prometheus
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+- apiGroups: [&quot;&quot;]
+  resources:
+  - nodes
+  - nodes/proxy
+  - services
+  - endpoints
+  - pods
+  verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
+- apiGroups: [&quot;extensions&quot;]
+  resources:
+  - ingresses
+  verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
+- nonResourceURLs: [&quot;/metrics&quot;]
+  verbs: [&quot;get&quot;]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: monitoring
+</code></div>
+<hr />
+</section>
+<h1>4. Metrics Specification</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Metric Categories</h2>
+<p>Ujamaa DeFi Platform implements the <strong>RED Method</strong> for services and <strong>USE Method</strong> for infrastructure:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Metrics</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RED (Services)</strong></td>
+<td>Rate, Errors, Duration</td>
+<td>User-facing service health</td>
+</tr>
+<tr>
+<td><strong>USE (Infrastructure)</strong></td>
+<td>Utilization, Saturation, Errors</td>
+<td>Resource health</td>
+</tr>
+<tr>
+<td><strong>Business</strong></td>
+<td>AUM, transactions, investors</td>
+<td>Business KPIs</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Block lag, gas, contracts</td>
+<td>Chain health</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Application Metrics (FastAPI Services)</h2>
+<h3>HTTP Request Metrics</h3>
+<div class="docs-pre"><code># metrics.py - FastAPI Prometheus metrics
+
+from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
+from prometheus_client import REGISTRY
+from fastapi import Request, Response
+import time
+import functools
+
+# RED Metrics
+http_requests_total = Counter(
+    'http_requests_total',
+    'Total HTTP requests',
+    ['service', 'method', 'handler', 'status', 'namespace']
+)
+
+http_request_duration_seconds = Histogram(
+    'http_request_duration_seconds',
+    'HTTP request duration in seconds',
+    ['service', 'method', 'handler', 'namespace'],
+    buckets=[0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0]
+)
+
+http_requests_in_flight = Gauge(
+    'http_requests_in_flight',
+    'Number of HTTP requests currently being processed',
+    ['service', 'handler', 'namespace']
+)
+
+# Business Metrics
+asset_tokenization_total = Counter(
+    'asset_tokenization_total',
+    'Total number of assets tokenized',
+    ['asset_class', 'blockchain', 'status']
+)
+
+investor_onboarding_total = Counter(
+    'investor_onboarding_total',
+    'Total investor onboarding attempts',
+    ['status', 'jurisdiction', 'investor_type']
+)
+
+transaction_volume_usd = Counter(
+    'transaction_volume_usd',
+    'Total transaction volume in USD',
+    ['type', 'asset_class', 'blockchain']
+)
+
+compliance_checks_total = Counter(
+    'compliance_checks_total',
+    'Total compliance checks performed',
+    ['check_type', 'result', 'asset_id']
+)
+
+# Database Metrics
+db_query_duration_seconds = Histogram(
+    'db_query_duration_seconds',
+    'Database query duration in seconds',
+    ['service', 'query_type', 'table'],
+    buckets=[0.001, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0]
+)
+
+db_connections_active = Gauge(
+    'db_connections_active',
+    'Number of active database connections',
+    ['service', 'pool']
+)
+
+# Cache Metrics
+cache_hits_total = Counter(
+    'cache_hits_total',
+    'Total cache hits',
+    ['service', 'cache_type']
+)
+
+cache_misses_total = Counter(
+    'cache_misses_total',
+    'Total cache misses',
+    ['service', 'cache_type']
+)
+
+cache_operation_duration_seconds = Histogram(
+    'cache_operation_duration_seconds',
+    'Cache operation duration in seconds',
+    ['service', 'operation', 'cache_type'],
+    buckets=[0.0005, 0.001, 0.0025, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5]
+)
+
+# Kafka Metrics
+kafka_messages_produced_total = Counter(
+    'kafka_messages_produced_total',
+    'Total Kafka messages produced',
+    ['service', 'topic']
+)
+
+kafka_messages_consumed_total = Counter(
+    'kafka_messages_consumed_total',
+    'Total Kafka messages consumed',
+    ['service', 'topic', 'consumer_group']
+)
+
+kafka_consumer_lag = Gauge(
+    'kafka_consumer_lag',
+    'Kafka consumer lag (messages behind)',
+    ['service', 'topic', 'partition', 'consumer_group']
+)
+
+kafka_message_processing_duration_seconds = Histogram(
+    'kafka_message_processing_duration_seconds',
+    'Kafka message processing duration in seconds',
+    ['service', 'topic', 'consumer_group'],
+    buckets=[0.001, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0]
+)
+
+# Middleware for automatic metrics collection
+async def metrics_middleware(request: Request, call_next):
+    start_time = time.time()
+
+    # Extract handler name
+    handler = request.url.path
+    service = request.app.title
+    namespace = &quot;ujamaa-production&quot;
+
+    http_requests_in_flight.labels(
+        service=service,
+        handler=handler,
+        namespace=namespace
+    ).inc()
+
+    try:
+        response = await call_next(request)
+
+        duration = time.time() - start_time
+
+        http_requests_total.labels(
+            service=service,
+            method=request.method,
+            handler=handler,
+            status=response.status_code,
+            namespace=namespace
+        ).inc()
+
+        http_request_duration_seconds.labels(
+            service=service,
+            method=request.method,
+            handler=handler,
+            namespace=namespace
+        ).observe(duration)
+
+        return response
+    finally:
+        http_requests_in_flight.labels(
+            service=service,
+            handler=handler,
+            namespace=namespace
+        ).dec()
+
+# Metrics endpoint
+async def metrics_endpoint():
+    return Response(
+        content=generate_latest(REGISTRY),
+        media_type=CONTENT_TYPE_LATEST
+    )
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 Infrastructure Metrics</h2>
+<h3>Node Exporter Metrics (Selected)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+<th>Query Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node_cpu_seconds_total</code></td>
+<td>CPU time spent</td>
+<td><code>rate(node_cpu_seconds_total{mode="idle"}[5m])</code></td>
+</tr>
+<tr>
+<td><code>node_memory_MemAvailable_bytes</code></td>
+<td>Available memory</td>
+<td><code>node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes</code></td>
+</tr>
+<tr>
+<td><code>node_filesystem_avail_bytes</code></td>
+<td>Disk space available</td>
+<td><code>node_filesystem_avail_bytes / node_filesystem_size_bytes</code></td>
+</tr>
+<tr>
+<td><code>node_network_receive_bytes_total</code></td>
+<td>Network received</td>
+<td><code>rate(node_network_receive_bytes_total[5m])</code></td>
+</tr>
+<tr>
+<td><code>node_disk_io_time_seconds_total</code></td>
+<td>Disk I/O time</td>
+<td><code>rate(node_disk_io_time_seconds_total[5m])</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Kubernetes Metrics</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+<th>Query Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kube_pod_status_phase</code></td>
+<td>Pod phase</td>
+<td><code>kube_pod_status_phase{phase="Running"}</code></td>
+</tr>
+<tr>
+<td><code>kube_pod_container_status_waiting</code></td>
+<td>Container waiting</td>
+<td><code>kube_pod_container_status_waiting == 1</code></td>
+</tr>
+<tr>
+<td><code>kube_pod_container_status_restarts_total</code></td>
+<td>Container restarts</td>
+<td><code>increase(kube_pod_container_status_restarts_total[1h])</code></td>
+</tr>
+<tr>
+<td><code>kube_deployment_status_replicas_available</code></td>
+<td>Deployment replicas</td>
+<td><code>kube_deployment_status_replicas_available / kube_deployment_spec_replicas</code></td>
+</tr>
+<tr>
+<td><code>kube_hpa_status_current_replicas</code></td>
+<td>HPA current replicas</td>
+<td><code>kube_hpa_status_current_replicas</code></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.4 Blockchain Metrics</h2>
+<div class="docs-pre"><code># blockchain_exporter.py
+
+from prometheus_client import Gauge, Counter, Histogram
+import web3
+import time
+
+# Blockchain state
+blockchain_latest_block_number = Gauge(
+    'blockchain_latest_block_number',
+    'Latest block number on blockchain',
+    ['blockchain', 'network']
+)
+
+blockchain_sync_lag_blocks = Gauge(
+    'blockchain_sync_lag_blocks',
+    'Number of blocks behind latest (sync lag)',
+    ['blockchain', 'network']
+)
+
+blockchain_block_time_seconds = Histogram(
+    'blockchain_block_time_seconds',
+    'Time between blocks in seconds',
+    ['blockchain', 'network'],
+    buckets=[1, 2, 5, 10, 15, 20, 30, 45, 60, 90, 120]
+)
+
+# Gas metrics
+blockchain_gas_price_gwei = Gauge(
+    'blockchain_gas_price_gwei',
+    'Current gas price in Gwei',
+    ['blockchain', 'network', 'percentile']
+)
+
+blockchain_gas_used_ratio = Gauge(
+    'blockchain_gas_used_ratio',
+    'Gas used / gas limit ratio per block',
+    ['blockchain', 'network']
+)
+
+# Smart contract metrics
+smart_contract_calls_total = Counter(
+    'smart_contract_calls_total',
+    'Total smart contract function calls',
+    ['blockchain', 'contract', 'function', 'status']
+)
+
+smart_contract_events_total = Counter(
+    'smart_contract_events_total',
+    'Total smart contract events emitted',
+    ['blockchain', 'contract', 'event_type']
+)
+
+smart_contract_balance = Gauge(
+    'smart_contract_balance',
+    'Token balance in smart contract',
+    ['blockchain', 'contract', 'token']
+)
+
+# Transaction metrics
+blockchain_transactions_pending = Gauge(
+    'blockchain_transactions_pending',
+    'Number of pending transactions in mempool',
+    ['blockchain', 'network']
+)
+
+blockchain_transaction_confirmation_time_seconds = Histogram(
+    'blockchain_transaction_confirmation_time_seconds',
+    'Time to transaction confirmation',
+    ['blockchain', 'network'],
+    buckets=[5, 10, 15, 30, 45, 60, 90, 120, 180, 300, 600]
+)
+
+# Bridge metrics
+bridge_locked_tokens = Gauge(
+    'bridge_locked_tokens',
+    'Number of tokens locked in bridge',
+    ['blockchain', 'token', 'direction']
+)
+
+bridge_transfer_total = Counter(
+    'bridge_transfer_total',
+    'Total bridge transfers',
+    ['source_chain', 'destination_chain', 'status']
+)
+
+bridge_transfer_duration_seconds = Histogram(
+    'bridge_transfer_duration_seconds',
+    'Time for cross-chain transfer',
+    ['source_chain', 'destination_chain'],
+    buckets=[60, 120, 180, 300, 420, 600, 900, 1200, 1800, 3600]
+)
+
+async def collect_blockchain_metrics():
+    &quot;&quot;&quot;Collect blockchain metrics periodically.&quot;&quot;&quot;
+    w3 = web3.Web3(web3.Web3.HTTPProvider(RPC_URL))
+
+    while True:
+        try:
+            # Get latest block
+            latest_block = w3.eth.get_block('latest')
+
+            blockchain_latest_block_number.labels(
+                blockchain='polygon',
+                network='mainnet'
+            ).set(latest_block['number'])
+
+            # Calculate block time
+            if latest_block['number'] &gt; 0:
+                prev_block = w3.eth.get_block(latest_block['number'] - 1)
+                block_time = latest_block['timestamp'] - prev_block['timestamp']
+                blockchain_block_time_seconds.labels(
+                    blockchain='polygon',
+                    network='mainnet'
+                ).observe(block_time)
+
+            # Gas price
+            gas_price = w3.eth.gas_price / 1e9  # Convert to Gwei
+            blockchain_gas_price_gwei.labels(
+                blockchain='polygon',
+                network='mainnet',
+                percentile='50'
+            ).set(gas_price)
+
+            # Gas used ratio
+            gas_used_ratio = latest_block['gasUsed'] / latest_block['gasLimit']
+            blockchain_gas_used_ratio.labels(
+                blockchain='polygon',
+                network='mainnet'
+            ).set(gas_used_ratio)
+
+        except Exception as e:
+            logger.error(f&quot;Error collecting blockchain metrics: {e}&quot;)
+
+        await asyncio.sleep(10)  # Collect every 10 seconds
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.5 Business Metrics</h2>
+<div class="docs-pre"><code># business_metrics.py
+
+from prometheus_client import Gauge, Counter, Summary
+
+# AUM metrics
+total_aum_usd = Gauge(
+    'total_aum_usd',
+    'Total Assets Under Management in USD',
+    ['asset_class']
+)
+
+asset_aum_usd = Gauge(
+    'asset_aum_usd',
+    'AUM per asset',
+    ['asset_id', 'asset_name', 'asset_class']
+)
+
+# Investor metrics
+total_investors = Gauge(
+    'total_investors',
+    'Total number of verified investors',
+    ['status', 'jurisdiction']
+)
+
+investors_by_type = Gauge(
+    'investors_by_type',
+    'Number of investors by type',
+    ['investor_type']
+)
+
+kyc_applications = Gauge(
+    'kyc_applications',
+    'KYC applications in pipeline',
+    ['status']
+)
+
+kyc_processing_time_seconds = Histogram(
+    'kyc_processing_time_seconds',
+    'Time to process KYC application',
+    buckets=[60, 300, 900, 1800, 3600, 7200, 14400, 28800, 86400, 172800]
+)
+
+# Transaction metrics
+transactions_24h_total = Gauge(
+    'transactions_24h_total',
+    'Number of transactions in last 24 hours',
+    ['type', 'blockchain']
+)
+
+transactions_24h_volume_usd = Gauge(
+    'transactions_24h_volume_usd',
+    'Transaction volume in USD in last 24 hours',
+    ['type', 'blockchain']
+)
+
+transaction_value_usd = Histogram(
+    'transaction_value_usd',
+    'Transaction value in USD',
+    ['type', 'asset_class'],
+    buckets=[10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000]
+)
+
+# Compliance metrics
+compliance_alerts_active = Gauge(
+    'compliance_alerts_active',
+    'Number of active compliance alerts',
+    ['severity', 'type']
+)
+
+transfers_blocked_total = Counter(
+    'transfers_blocked_total',
+    'Total transfers blocked by compliance',
+    ['reason', 'asset_id']
+)
+
+aml_screenings_total = Counter(
+    'aml_screenings_total',
+    'Total AML screenings performed',
+    ['result', 'risk_level']
+)
+
+# Distribution metrics
+distributions_pending = Gauge(
+    'distributions_pending',
+    'Number of pending distributions',
+    ['asset_id', 'distribution_type']
+)
+
+distributions_paid_total = Counter(
+    'distributions_paid_total',
+    'Total distributions paid',
+    ['asset_id', 'distribution_type']
+)
+
+distributions_amount_usd = Counter(
+    'distributions_amount_usd',
+    'Total distribution amount in USD',
+    ['asset_id', 'distribution_type']
+)
+</code></div>
+<hr />
+</section>
+<h1>5. Alert Rules</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Alert Configuration</h2>
+<div class="docs-pre"><code># monitoring/prometheus/rules/alerts/infrastructure.yml
+
+groups:
+- name: infrastructure-alerts
+  interval: 30s
+  rules:
+
+  # Node alerts
+  - alert: NodeDown
+    expr: up{job=&quot;kubernetes-nodes&quot;} == 0
+    for: 2m
+    labels:
+      severity: critical
+      team: infrastructure
+    annotations:
+      summary: &quot;Node {{ $labels.node }} is down&quot;
+      description: &quot;Node {{ $labels.node }} has been unreachable for more than 2 minutes.&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-down&quot;
+      dashboard: &quot;https://grafana.ujamaa-defi.com/d/node-overview&quot;
+
+  - alert: NodeCPUHigh
+    expr: |
+      100 - (avg by(instance) (rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100) &gt; 80
+    for: 10m
+    labels:
+      severity: warning
+      team: infrastructure
+    annotations:
+      summary: &quot;High CPU usage on {{ $labels.instance }}&quot;
+      description: &quot;CPU usage is {{ $value | humanize }}% on node {{ $labels.instance }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-cpu-high&quot;
+
+  - alert: NodeMemoryHigh
+    expr: |
+      (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 &gt; 85
+    for: 10m
+    labels:
+      severity: warning
+      team: infrastructure
+    annotations:
+      summary: &quot;High memory usage on {{ $labels.instance }}&quot;
+      description: &quot;Memory usage is {{ $value | humanize }}% on node {{ $labels.instance }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-memory-high&quot;
+
+  - alert: NodeDiskFull
+    expr: |
+      (node_filesystem_avail_bytes{mountpoint=&quot;/&quot;} / node_filesystem_size_bytes{mountpoint=&quot;/&quot;}) * 100 &lt; 15
+    for: 30m
+    labels:
+      severity: critical
+      team: infrastructure
+    annotations:
+      summary: &quot;Disk space critical on {{ $labels.instance }}&quot;
+      description: &quot;Disk space is {{ $value | humanize }}% available on {{ $labels.instance }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/node-disk-full&quot;
+
+  - alert: NodeNetworkUnreachable
+    expr: |
+      probe_success{job=&quot;blackbox&quot;} == 0
+    for: 2m
+    labels:
+      severity: critical
+      team: infrastructure
+    annotations:
+      summary: &quot;Network endpoint unreachable: {{ $labels.instance }}&quot;
+      description: &quot;Endpoint {{ $labels.instance }} has been unreachable for 2 minutes&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/network-unreachable&quot;
+
+---
+# monitoring/prometheus/rules/alerts/kubernetes.yml
+
+groups:
+- name: kubernetes-alerts
+  interval: 30s
+  rules:
+
+  - alert: PodCrashLooping
+    expr: |
+      increase(kube_pod_container_status_restarts_total[1h]) &gt; 5
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Pod {{ $labels.pod }} is crash looping&quot;
+      description: &quot;Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has restarted {{ $value }} times in the last hour&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/pod-crash-looping&quot;
+
+  - alert: PodPending
+    expr: |
+      kube_pod_status_phase{phase=&quot;Pending&quot;} == 1
+    for: 15m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Pod {{ $labels.pod }} is pending&quot;
+      description: &quot;Pod {{ $labels.pod }} has been in Pending state for more than 15 minutes&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/pod-pending&quot;
+
+  - alert: DeploymentReplicasMismatch
+    expr: |
+      kube_deployment_spec_replicas != kube_deployment_status_replicas_available
+    for: 15m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Deployment {{ $labels.deployment }} replicas mismatch&quot;
+      description: &quot;Deployment {{ $labels.deployment }} has {{ $value }} available replicas, expected {{ kube_deployment_spec_replicas }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/deployment-replicas-mismatch&quot;
+
+  - alert: HPOMaxReplicas
+    expr: |
+      kube_hpa_status_current_replicas == kube_hpa_spec_max_replicas
+    for: 10m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;HPA {{ $labels.horizontalpodautoscaler }} at max replicas&quot;
+      description: &quot;HPA {{ $labels.horizontalpodautoscaler }} is at maximum replicas ({{ $value }})&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/hpa-max-replicas&quot;
+
+---
+# monitoring/prometheus/rules/alerts/application.yml
+
+groups:
+- name: application-alerts
+  interval: 30s
+  rules:
+
+  - alert: ServiceDown
+    expr: |
+      up{job=&quot;fastapi-services&quot;} == 0
+    for: 2m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;Service {{ $labels.service }} is down&quot;
+      description: &quot;Service {{ $labels.service }} (pod: {{ $labels.pod }}) has been down for more than 2 minutes&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/service-down&quot;
+
+  - alert: HighErrorRate
+    expr: |
+      (
+        sum(rate(http_requests_total{status=~&quot;5..&quot;}[5m])) by (service)
+        /
+        sum(rate(http_requests_total[5m])) by (service)
+      ) * 100 &gt; 1
+    for: 5m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;High error rate for {{ $labels.service }}&quot;
+      description: &quot;Service {{ $labels.service }} has {{ $value | humanize }}% error rate (5m average)&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-error-rate&quot;
+
+  - alert: HighLatency
+    expr: |
+      histogram_quantile(0.95,
+        sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service)
+      ) &gt; 1
+    for: 10m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;High latency for {{ $labels.service }}&quot;
+      description: &quot;Service {{ $labels.service }} 95th percentile latency is {{ $value }}s&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-latency&quot;
+
+  - alert: HighLatencyP99
+    expr: |
+      histogram_quantile(0.99,
+        sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service)
+      ) &gt; 5
+    for: 5m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;Critical latency for {{ $labels.service }}&quot;
+      description: &quot;Service {{ $labels.service }} 99th percentile latency is {{ $value }}s&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/high-latency-p99&quot;
+
+  - alert: DatabaseConnectionsHigh
+    expr: |
+      (db_connections_active / db_connections_max) * 100 &gt; 80
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Database connections high for {{ $labels.service }}&quot;
+      description: &quot;{{ $value | humanize }}% of database connections in use&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/db-connections-high&quot;
+
+  - alert: CacheHitRateLow
+    expr: |
+      (
+        sum(rate(cache_hits_total[5m])) by (service)
+        /
+        (sum(rate(cache_hits_total[5m])) by (service) + sum(rate(cache_misses_total[5m])) by (service))
+      ) * 100 &lt; 70
+    for: 15m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Low cache hit rate for {{ $labels.service }}&quot;
+      description: &quot;Cache hit rate is {{ $value | humanize }}% for {{ $labels.service }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/cache-hit-rate-low&quot;
+
+---
+# monitoring/prometheus/rules/alerts/kafka.yml
+
+groups:
+- name: kafka-alerts
+  interval: 30s
+  rules:
+
+  - alert: KafkaConsumerLagHigh
+    expr: |
+      kafka_consumer_lag &gt; 10000
+    for: 10m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;High Kafka consumer lag&quot;
+      description: &quot;Consumer group {{ $labels.consumer_group }} has lag of {{ $value }} messages on topic {{ $labels.topic }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-consumer-lag&quot;
+
+  - alert: KafkaConsumerLagCritical
+    expr: |
+      kafka_consumer_lag &gt; 50000
+    for: 5m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;Critical Kafka consumer lag&quot;
+      description: &quot;Consumer group {{ $labels.consumer_group }} has critical lag of {{ $value }} messages&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-consumer-lag-critical&quot;
+
+  - alert: KafkaBrokerDown
+    expr: |
+      up{job=&quot;kafka&quot;} == 0
+    for: 2m
+    labels:
+      severity: critical
+      team: infrastructure
+    annotations:
+      summary: &quot;Kafka broker {{ $labels.broker }} is down&quot;
+      description: &quot;Kafka broker {{ $labels.broker }} has been down for more than 2 minutes&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kafka-broker-down&quot;
+
+---
+# monitoring/prometheus/rules/alerts/blockchain.yml
+
+groups:
+- name: blockchain-alerts
+  interval: 30s
+  rules:
+
+  - alert: BlockchainSyncBehind
+    expr: |
+      blockchain_sync_lag_blocks &gt; 20
+    for: 5m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;Blockchain sync behind on {{ $labels.blockchain }}&quot;
+      description: &quot;{{ $labels.blockchain }} is {{ $value }} blocks behind&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/blockchain-sync-behind&quot;
+
+  - alert: BlockchainGasPriceHigh
+    expr: |
+      blockchain_gas_price_gwei{percentile=&quot;50&quot;} &gt; 100
+    for: 10m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;High gas price on {{ $labels.blockchain }}&quot;
+      description: &quot;Gas price is {{ $value }} Gwei on {{ $labels.blockchain }}&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/gas-price-high&quot;
+
+  - alert: SmartContractPaused
+    expr: |
+      smart_contract_paused == 1
+    for: 1m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: &quot;Smart contract paused: {{ $labels.contract }}&quot;
+      description: &quot;Smart contract {{ $labels.contract }} is paused&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/smart-contract-paused&quot;
+
+  - alert: BridgeTransferDelayed
+    expr: |
+      bridge_transfer_duration_seconds &gt; 1800
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;Bridge transfer delayed&quot;
+      description: &quot;Bridge transfer from {{ $labels.source_chain }} to {{ $labels.destination_chain }} taking {{ $value }}s&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/bridge-transfer-delayed&quot;
+
+---
+# monitoring/prometheus/rules/alerts/business.yml
+
+groups:
+- name: business-alerts
+  interval: 60s
+  rules:
+
+  - alert: KYCBacklogHigh
+    expr: |
+      kyc_applications{status=&quot;pending&quot;} &gt; 100
+    for: 30m
+    labels:
+      severity: warning
+      team: compliance
+    annotations:
+      summary: &quot;High KYC application backlog&quot;
+      description: &quot;{{ $value }} KYC applications pending review&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/kyc-backlog&quot;
+
+  - alert: ComplianceAlertsSpike
+    expr: |
+      increase(compliance_alerts_active[1h]) &gt; 20
+    for: 15m
+    labels:
+      severity: warning
+      team: compliance
+    annotations:
+      summary: &quot;Spike in compliance alerts&quot;
+      description: &quot;{{ $value }} new compliance alerts in the last hour&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/compliance-alerts-spike&quot;
+
+  - alert: AUMDrop
+    expr: |
+      (
+        total_aum_usd - total_aum_usd offset 24h
+      ) / total_aum_usd offset 24h * 100 &lt; -10
+    for: 1h
+    labels:
+      severity: warning
+      team: business
+    annotations:
+      summary: &quot;AUM dropped significantly&quot;
+      description: &quot;AUM dropped by {{ $value | humanize }}% in the last 24 hours&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/aum-drop&quot;
+
+  - alert: TransactionVolumeAnomaly
+    expr: |
+      (
+        transactions_24h_volume_usd - transactions_24h_volume_usd offset 7d
+      ) / transactions_24h_volume_usd offset 7d * 100 &lt; -50
+    for: 2h
+    labels:
+      severity: warning
+      team: business
+    annotations:
+      summary: &quot;Transaction volume anomaly&quot;
+      description: &quot;Transaction volume is {{ $value | humanize }}% lower than last week&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/transaction-volume-anomaly&quot;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Recording Rules</h2>
+<div class="docs-pre"><code># monitoring/prometheus/rules/recording/rules.yml
+
+groups:
+- name: recording-rules
+  interval: 30s
+  rules:
+
+  # Service-level SLO metrics
+  - record: service:http_requests:rate5m
+    expr: sum(rate(http_requests_total[5m])) by (service)
+
+  - record: service:http_errors:rate5m
+    expr: sum(rate(http_requests_total{status=~&quot;5..&quot;}[5m])) by (service)
+
+  - record: service:http_error_ratio:rate5m
+    expr: |
+      sum(rate(http_requests_total{status=~&quot;5..&quot;}[5m])) by (service)
+      /
+      sum(rate(http_requests_total[5m])) by (service)
+
+  - record: service:http_latency:p95
+    expr: |
+      histogram_quantile(0.95,
+        sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service)
+      )
+
+  - record: service:http_latency:p99
+    expr: |
+      histogram_quantile(0.99,
+        sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service)
+      )
+
+  # Business metrics aggregations
+  - record: business:aum:total
+    expr: sum(total_aum_usd)
+
+  - record: business:investors:total
+    expr: sum(total_investors)
+
+  - record: business:transactions:rate24h
+    expr: sum(transactions_24h_total)
+
+  - record: business:volume:rate24h
+    expr: sum(transactions_24h_volume_usd)
+
+  # Kubernetes resource utilization
+  - record: namespace:cpu:usage_ratio
+    expr: |
+      sum(rate(container_cpu_usage_seconds_total[5m])) by (namespace)
+      /
+      sum(kube_resourcequota{resource=&quot;requests.cpu&quot;}) by (namespace)
+
+  - record: namespace:memory:usage_ratio
+    expr: |
+      sum(container_memory_usage_bytes) by (namespace)
+      /
+      sum(kube_resourcequota{resource=&quot;requests.memory&quot;}) by (namespace)
+</code></div>
+<hr />
+</section>
+<h1>6. Grafana Dashboards</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Dashboard Inventory</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>ID</th>
+<th>Purpose</th>
+<th>Refresh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Platform Overview</strong></td>
+<td><code>platform-overview</code></td>
+<td>Executive summary, key metrics</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Service Performance</strong></td>
+<td><code>service-performance</code></td>
+<td>Per-service RED metrics</td>
+<td>10s</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td><code>infrastructure</code></td>
+<td>Node, cluster health</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td><code>kubernetes</code></td>
+<td>Pod, deployment, HPA status</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td><code>database</code></td>
+<td>PostgreSQL performance</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td><code>cache</code></td>
+<td>Redis performance</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Kafka</strong></td>
+<td><code>kafka</code></td>
+<td>Broker, consumer, topic metrics</td>
+<td>30s</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td><code>blockchain</code></td>
+<td>Chain sync, gas, contracts</td>
+<td>10s</td>
+</tr>
+<tr>
+<td><strong>Business Metrics</strong></td>
+<td><code>business-metrics</code></td>
+<td>AUM, investors, transactions</td>
+<td>1m</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td><code>compliance</code></td>
+<td>KYC, AML, alerts</td>
+<td>1m</td>
+</tr>
+<tr>
+<td><strong>Bridge Monitoring</strong></td>
+<td><code>bridge</code></td>
+<td>Cross-chain transfers</td>
+<td>30s</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Platform Overview Dashboard</h2>
+<div class="docs-pre"><code>{
+  &quot;dashboard&quot;: {
+    &quot;title&quot;: &quot;Platform Overview&quot;,
+    &quot;uid&quot;: &quot;platform-overview&quot;,
+    &quot;tags&quot;: [&quot;platform&quot;, &quot;executive&quot;],
+    &quot;timezone&quot;: &quot;browser&quot;,
+    &quot;refresh&quot;: &quot;30s&quot;,
+    &quot;panels&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;Total AUM&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 4, &quot;w&quot;: 6, &quot;x&quot;: 0, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(total_aum_usd)&quot;,
+            &quot;legendFormat&quot;: &quot;AUM (USD)&quot;,
+            &quot;format&quot;: &quot;time_series&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;USD&quot;,
+            &quot;decimals&quot;: 0,
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 5000000},
+                {&quot;color&quot;: &quot;green&quot;, &quot;value&quot;: 25000000}
+              ]
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;Verified Investors&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 4, &quot;w&quot;: 6, &quot;x&quot;: 6, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(total_investors{status=\&quot;verified\&quot;})&quot;,
+            &quot;legendFormat&quot;: &quot;Investors&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;short&quot;,
+            &quot;decimals&quot;: 0
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;24h Volume&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 4, &quot;w&quot;: 6, &quot;x&quot;: 12, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(transactions_24h_volume_usd)&quot;,
+            &quot;legendFormat&quot;: &quot;Volume (USD)&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;USD&quot;,
+            &quot;decimals&quot;: 0
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 4,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;Active Alerts&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 4, &quot;w&quot;: 6, &quot;x&quot;: 18, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(ALERTS{alertstate=\&quot;firing\&quot;})&quot;,
+            &quot;legendFormat&quot;: &quot;Firing Alerts&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;short&quot;,
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;green&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 1},
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 5}
+              ]
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 5,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;AUM Trend&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 0, &quot;y&quot;: 4},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(total_aum_usd)&quot;,
+            &quot;legendFormat&quot;: &quot;Total AUM&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;USD&quot;,
+            &quot;custom&quot;: {
+              &quot;lineWidth&quot;: 2,
+              &quot;fillOpacity&quot;: 10
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 6,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Transaction Volume (24h)&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 12, &quot;y&quot;: 4},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(transactions_24h_volume_usd)&quot;,
+            &quot;legendFormat&quot;: &quot;Volume&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;USD&quot;
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 7,
+        &quot;type&quot;: &quot;table&quot;,
+        &quot;title&quot;: &quot;Service Health&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 24, &quot;x&quot;: 0, &quot;y&quot;: 12},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;up{job=\&quot;fastapi-services\&quot;}&quot;,
+            &quot;legendFormat&quot;: &quot;{{service}}&quot;,
+            &quot;format&quot;: &quot;table&quot;,
+            &quot;instant&quot;: true
+          }
+        ],
+        &quot;transformations&quot;: [
+          {
+            &quot;id&quot;: &quot;organize&quot;,
+            &quot;options&quot;: {
+              &quot;excludeByName&quot;: {&quot;Time&quot;: true, &quot;__name__&quot;: true, &quot;instance&quot;: true, &quot;job&quot;: true}
+            }
+          }
+        ]
+      }
+    ],
+    &quot;time&quot;: {&quot;from&quot;: &quot;now-24h&quot;, &quot;to&quot;: &quot;now&quot;},
+    &quot;templating&quot;: {
+      &quot;list&quot;: [
+        {
+          &quot;name&quot;: &quot;environment&quot;,
+          &quot;type&quot;: &quot;query&quot;,
+          &quot;query&quot;: &quot;label_values(environment)&quot;
+        }
+      ]
+    }
+  }
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.3 Service Performance Dashboard</h2>
+<div class="docs-pre"><code>{
+  &quot;dashboard&quot;: {
+    &quot;title&quot;: &quot;Service Performance&quot;,
+    &quot;uid&quot;: &quot;service-performance&quot;,
+    &quot;tags&quot;: [&quot;services&quot;, &quot;performance&quot;],
+    &quot;refresh&quot;: &quot;10s&quot;,
+    &quot;panels&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Request Rate&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 0, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(rate(http_requests_total[5m])) by (service)&quot;,
+            &quot;legendFormat&quot;: &quot;{{service}}&quot;
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Error Rate&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 12, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(rate(http_requests_total{status=~\&quot;5..\&quot;}[5m])) by (service)&quot;,
+            &quot;legendFormat&quot;: &quot;{{service}}&quot;
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Latency (p95)&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 0, &quot;y&quot;: 8},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service))&quot;,
+            &quot;legendFormat&quot;: &quot;{{service}}&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;s&quot;,
+            &quot;custom&quot;: {
+              &quot;fillOpacity&quot;: 10
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 4,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Latency (p99)&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 12, &quot;x&quot;: 12, &quot;y&quot;: 8},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service))&quot;,
+            &quot;legendFormat&quot;: &quot;{{service}}&quot;
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: 5,
+        &quot;type&quot;: &quot;heatmap&quot;,
+        &quot;title&quot;: &quot;Latency Heatmap&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 24, &quot;x&quot;: 0, &quot;y&quot;: 16},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;sum(increase(http_request_duration_seconds_bucket[5m])) by (le, service)&quot;,
+            &quot;legendFormat&quot;: &quot;{{le}}&quot;,
+            &quot;format&quot;: &quot;heatmap&quot;
+          }
+        ]
+      }
+    ],
+    &quot;templating&quot;: {
+      &quot;list&quot;: [
+        {
+          &quot;name&quot;: &quot;service&quot;,
+          &quot;type&quot;: &quot;query&quot;,
+          &quot;query&quot;: &quot;label_values(http_requests_total, service)&quot;
+        }
+      ]
+    }
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>7. Logging with Loki</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         LOKI LOGGING ARCHITECTURE                             │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Log Sources (Kubernetes Pods)                        │ │
+│  │                                                                         │ │
+│  │  • FastAPI services: JSON logs to stdout/stderr                         │ │
+│  │  • System logs: journald                                                │ │
+│  │  • Kubernetes: Container logs, audit logs                               │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Promtail (DaemonSet)                                 │ │
+│  │                                                                         │ │
+│  │  • Collects logs from /var/log/containers                               │ │
+│  │  • Adds Kubernetes metadata (pod, namespace, labels)                    │ │
+│  │  • Applies relabeling and log processing                                │ │
+│  │  • Pushes to Loki via gRPC                                              │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Loki (StatefulSet)                                   │ │
+│  │                                                                         │ │
+│  │  • Indexes log metadata (labels, timestamps)                            │ │
+│  │  • Stores compressed log chunks in object storage                       │ │
+│  │  • Retention: 30 days                                                   │ │
+│  │                                                                         │ │
+│  │  Resource Allocation:                                                   │ │
+│  │  • CPU: 4 cores request, 8 cores limit                                  │ │
+│  │  • Memory: 8Gi request, 16Gi limit                                      │ │
+│  │  • Storage: 200Gi PVC                                                   │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Grafana (Log Exploration)                            │ │
+│  │                                                                         │ │
+│  │  • LogQL queries                                                        │ │
+│  │  • Log aggregation and filtering                                        │ │
+│  │  • Correlation with metrics                                             │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 Promtail Configuration</h2>
+<div class="docs-pre"><code># monitoring/loki/promtail-config.yml
+
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+- url: http://loki:3100/loki/api/v1/push
+  batchwait: 5s
+  batchsize: 1048576  # 1MB
+  timeout: 10s
+
+scrape_configs:
+# Kubernetes container logs
+- job_name: kubernetes-pods
+  kubernetes_sd_configs:
+  - role: pod
+  pipeline_stages:
+  - cri: {}
+  - json:
+      expressions:
+        level: level
+        message: message
+        service: service
+        trace_id: trace_id
+  - labels:
+      level:
+      service:
+      trace_id:
+  - static_labels:
+      cluster: production
+      environment: production
+  relabel_configs:
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_pod_label_app
+    target_label: app
+  - source_labels:
+    - __meta_kubernetes_pod_container_name
+    target_label: container
+
+# Application logs (FastAPI)
+- job_name: fastapi-logs
+  kubernetes_sd_configs:
+  - role: pod
+    namespaces:
+      names:
+      - ujamaa-production
+  relabel_configs:
+  - source_labels:
+    - __meta_kubernetes_pod_label_app
+    action: keep
+    regex: .+-service
+  pipeline_stages:
+  - json:
+      expressions:
+        timestamp: timestamp
+        level: level
+        message: message
+        service: service
+        path: path
+        method: method
+        status_code: status_code
+        response_time: response_time
+        user_id: user_id
+        request_id: request_id
+  - labels:
+      level:
+      service:
+      path:
+      method:
+      status_code:
+      user_id:
+      request_id:
+  - timestamp:
+      source: timestamp
+      format: RFC3339
+  - output:
+      source: message
+
+# Audit logs
+- job_name: audit-logs
+  kubernetes_sd_configs:
+  - role: pod
+    namespaces:
+      names:
+      - ujamaa-production
+  relabel_configs:
+  - source_labels:
+    - __meta_kubernetes_pod_label_app
+    action: keep
+    regex: compliance-service
+  pipeline_stages:
+  - json:
+      expressions:
+        event_type: event_type
+        actor_id: actor_id
+        resource_type: resource_type
+        resource_id: resource_id
+        compliance_status: compliance_status
+  - labels:
+      event_type:
+      actor_id:
+      resource_type:
+      compliance_status:
+  - output:
+      source: message
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.3 LogQL Query Examples</h2>
+<div class="docs-pre"><code># All error logs from assets service
+{app=&quot;assets-service&quot;, level=&quot;error&quot;}
+
+# Error logs with 5xx status code
+{app=~&quot;.+-service&quot;} | json | status_code =~ &quot;5..&quot;
+
+# Slow requests (&gt;1s)
+{app=~&quot;.+-service&quot;} | json | response_time &gt; 1.0
+
+# Logs for specific user
+{app=~&quot;.+-service&quot;} | json | user_id = &quot;inv_001&quot;
+
+# Logs for specific request (trace)
+{app=~&quot;.+-service&quot;} | json | request_id = &quot;req_abc123&quot;
+
+# Compliance events
+{app=&quot;compliance-service&quot;, event_type=&quot;TRANSFER_BLOCKED&quot;}
+
+# Error rate aggregation
+sum(rate({app=~&quot;.+-service&quot;, level=&quot;error&quot;}[5m])) by (app)
+
+# Error logs with pattern matching
+{app=~&quot;.+-service&quot;} |~ &quot;(?i)error|exception|failed&quot;
+
+# Multi-line stack traces
+{app=&quot;assets-service&quot;} |~ &quot;(?m)^\\s*at &quot;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.4 Log Retention</h2>
+<div class="docs-pre"><code># monitoring/loki/loki-config.yml
+
+limits_config:
+  retention_period: 720h  # 30 days
+  max_entries_limit_per_query: 5000
+  max_lines_rate_per_stream: 100
+  ingestion_rate_mb: 16
+  ingestion_burst_size_mb: 24
+
+compactor:
+  working_directory: /tmp/loki/compactor
+  shared_store: s3
+  retention_enabled: true
+  retention_delete_delay: 2h
+  retention_delete_worker_count: 150
+
+# Delete requests for GDPR compliance
+# POST /loki/api/v1/delete
+# {
+#   &quot;matchers&quot;: &quot;{user_id=\&quot;inv_001\&quot;}&quot;,
+#   &quot;start&quot;: &quot;2026-01-01T00:00:00Z&quot;,
+#   &quot;end&quot;: &quot;2026-02-27T23:59:59Z&quot;
+# }
+</code></div>
+<hr />
+</section>
+<h1>8. Distributed Tracing</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         DISTRIBUTED TRACING ARCHITECTURE                      │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    Instrumented Services (FastAPI)                      │ │
+│  │                                                                         │ │
+│  │  • OpenTelemetry SDK                                                    │ │
+│  │  • Auto-instrumentation for HTTP, database, cache                       │ │
+│  │  • Custom spans for business logic                                      │ │
+│  │  • Sampling: 10% (production), 100% (staging)                           │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                    OpenTelemetry Collector                              │ │
+│  │                                                                         │ │
+│  │  • Receives spans via OTLP (gRPC)                                       │ │
+│  │  • Processes: batching, filtering, enrichment                           │ │
+│  │  • Exports to Tempo/Jaeger                                              │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│              ┌────────────────────┼────────────────────┐                   │
+│              ▼                    ▼                    ▼                   │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐         │
+│  │      Tempo       │  │      Jaeger      │  │    Grafana       │         │
+│  │   (Production)   │  │   (Staging)      │  │  (Visualization) │         │
+│  │                  │  │                  │  │                  │         │
+│  │  • Trace storage │  │  • Debug traces  │  │  • Trace search  │         │
+│  │  • Metrics gen   │  │  • Full sampling │  │  • Service graph │         │
+│  │  • 7d retention  │  │  • 30d retention │  │  • Latency views │         │
+│  └──────────────────┘  └──────────────────┘  └──────────────────┘         │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 OpenTelemetry Configuration</h2>
+<div class="docs-pre"><code># tracing.py - OpenTelemetry setup for FastAPI
+
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+from opentelemetry.instrumentation.httpx import HTTPXInstrumentor
+from opentelemetry.instrumentation.sqlalchemy import SQLAlchemyInstrumentor
+from opentelemetry.instrumentation.redis import RedisInstrumentor
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace.sampling import ParentBasedTraceIdRatio
+from fastapi import FastAPI
+
+def setup_tracing(app: FastAPI, service_name: str, sample_rate: float = 0.1):
+    &quot;&quot;&quot;
+    Set up OpenTelemetry tracing for FastAPI application.
+
+    Args:
+        app: FastAPI application
+        service_name: Service name for tracing
+        sample_rate: Sampling rate (0.1 = 10%)
+    &quot;&quot;&quot;
+    # Create resource with service info
+    resource = Resource.create({
+        &quot;service.name&quot;: service_name,
+        &quot;service.namespace&quot;: &quot;ujamaa-production&quot;,
+        &quot;deployment.environment&quot;: &quot;production&quot;,
+    })
+
+    # Set up tracer provider with sampling
+    provider = TracerProvider(
+        resource=resource,
+        sampler=ParentBasedTraceIdRatio(sample_rate)
+    )
+
+    # Add batch span processor
+    exporter = OTLPSpanExporter(
+        endpoint=&quot;otel-collector:4317&quot;,
+        insecure=True
+    )
+
+    processor = BatchSpanProcessor(
+        exporter,
+        max_queue_size=2048,
+        scheduled_delay_millis=5000,
+        max_export_batch_size=512
+    )
+
+    provider.add_span_processor(processor)
+    trace.set_tracer_provider(provider)
+
+    # Instrument FastAPI
+    FastAPIInstrumentor.instrument_app(app)
+
+    # Instrument other libraries
+    HTTPXInstrumentor().instrument()
+    SQLAlchemyInstrumentor().instrument()
+    RedisInstrumentor().instrument()
+
+    return trace.get_tracer(service_name)
+
+# Usage in main.py
+app = FastAPI(title=&quot;Assets Service&quot;)
+tracer = setup_tracing(app, &quot;assets-service&quot;, sample_rate=0.1)
+
+# Custom span example
+@app.post(&quot;/assets&quot;)
+async def create_asset(asset: AssetCreate):
+    with tracer.start_as_current_span(&quot;asset_validation&quot;) as span:
+        # Business logic
+        span.set_attribute(&quot;asset.class&quot;, asset.asset_class)
+        span.set_attribute(&quot;asset.jurisdiction&quot;, asset.jurisdiction)
+
+        # Nested span
+        with tracer.start_as_current_span(&quot;compliance_check&quot;):
+            compliance_result = await check_compliance(asset)
+            span.set_attribute(&quot;compliance.passed&quot;, compliance_result.passed)
+
+        # Continue with asset creation
+        ...
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.3 Tempo Configuration</h2>
+<div class="docs-pre"><code># monitoring/tempo/tempo-config.yml
+
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317
+        http:
+          endpoint: 0.0.0.0:4318
+
+ingester:
+  max_block_duration: 5m
+  max_block_bytes: 104857600  # 100MB
+  trace_idle_period: 10s
+
+compactor:
+  compaction:
+    block_retention: 168h  # 7 days
+    compacted_block_retention: 24h
+
+storage:
+  trace:
+    backend: s3
+    s3:
+      bucket: ujamaa-tempo-traces
+      endpoint: s3.af-south-1.amazonaws.com
+    wal:
+      path: /tmp/tempo/wal
+      encoding: snappy
+    pool:
+      max_workers: 100
+      queue_depth: 10000
+
+metrics_generator:
+  processor:
+    local_blocks:
+      filter_server_spans: false
+    span_metrics:
+      dimensions:
+      - service_name
+      - span_name
+      - span_kind
+  storage:
+    path: /tmp/tempo/generator
+    remote_write:
+    - url: http://prometheus:9090/api/v1/write
+      send_exemplars: true
+
+overrides:
+  metrics_generator_processors:
+  - service-graphs
+  - span-metrics
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.4 Trace Query Examples</h2>
+<div class="docs-pre"><code># Grafana Tempo query language
+
+# Find traces by service
+{service.name=&quot;assets-service&quot;}
+
+# Find traces with errors
+{service.name=&quot;assets-service&quot;} | @error=true
+
+# Find slow traces (&gt;2s)
+{service.name=&quot;assets-service&quot;} | duration &gt; 2s
+
+# Find traces by operation
+{service.name=&quot;assets-service&quot;, span.name=&quot;POST /api/v1/assets&quot;}
+
+# Find traces by user
+{service.name=&quot;assets-service&quot;, user.id=&quot;inv_001&quot;}
+
+# Find traces by request ID
+{service.name=&quot;assets-service&quot;, request.id=&quot;req_abc123&quot;}
+
+# Service graph
+service_graph({service.name=&quot;assets-service&quot;})
+</code></div>
+<hr />
+</section>
+<h1>9. Kubernetes Monitoring</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 Kube-State-Metrics</h2>
+<div class="docs-pre"><code># monitoring/kube-state-metrics/deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-state-metrics
+  template:
+    metadata:
+      labels:
+        app: kube-state-metrics
+    spec:
+      serviceAccountName: kube-state-metrics
+      containers:
+      - name: kube-state-metrics
+        image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.10.1
+        args:
+        - --port=8080
+        - --resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruLPionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments
+        - --metric-labels-allowlist=namespaces=[app.kubernetes.io/name],pods=[app.kubernetes.io/name,app.kubernetes.io/component]
+        - --metric-annotations-allowlist=pods=[app.kubernetes.io/version]
+        ports:
+        - containerPort: 8080
+          name: http-metrics
+        - containerPort: 8081
+          name: telemetry
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 HPA Integration with Prometheus</h2>
+<div class="docs-pre"><code># k8s/hpa/prometheus-adapter.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adapter-config
+  namespace: monitoring
+data:
+  config.yaml: |
+    rules:
+    - seriesQuery: 'http_requests_total{namespace!=&quot;&quot;,pod!=&quot;&quot;}'
+      resources:
+        overrides:
+          namespace: {resource: &quot;namespace&quot;}
+          pod: {resource: &quot;pod&quot;}
+      name:
+        matches: &quot;^(.*)_total&quot;
+        as: &quot;${1}_per_second&quot;
+      metricsQuery: 'sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}[2m])) by (&lt;&lt;.GroupBy&gt;&gt;)'
+
+    - seriesQuery: 'http_request_duration_seconds_bucket{namespace!=&quot;&quot;,pod!=&quot;&quot;}'
+      resources:
+        overrides:
+          namespace: {resource: &quot;namespace&quot;}
+          pod: {resource: &quot;pod&quot;}
+      name:
+        matches: &quot;&quot;
+        as: &quot;http_request_duration_seconds_p95&quot;
+      metricsQuery: 'histogram_quantile(0.95, sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}[5m])) by (le, &lt;&lt;.GroupBy&gt;&gt;))'
+
+    - seriesQuery: 'kafka_consumer_lag{namespace!=&quot;&quot;,pod!=&quot;&quot;}'
+      resources:
+        overrides:
+          namespace: {resource: &quot;namespace&quot;}
+          pod: {resource: &quot;pod&quot;}
+      name:
+        matches: &quot;&quot;
+        as: &quot;kafka_consumer_lag&quot;
+      metricsQuery: 'sum(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}) by (&lt;&lt;.GroupBy&gt;&gt;)'
+
+    # Custom metrics for business scaling
+    - seriesQuery: 'transactions_24h_volume_usd'
+      resources:
+        overrides:
+          namespace: {resource: &quot;namespace&quot;}
+      name:
+        matches: &quot;&quot;
+        as: &quot;transactions_volume_usd&quot;
+      metricsQuery: 'sum(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;})'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-adapter
+  namespace: monitoring
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus-adapter
+  template:
+    metadata:
+      labels:
+        app: prometheus-adapter
+    spec:
+      serviceAccountName: prometheus-adapter
+      containers:
+      - name: prometheus-adapter
+        image: registry.k8s.io/prometheus-adapter/prometheus-adapter:v0.10.0
+        args:
+        - --cert-dir=/var/run/serving-cert
+        - --config=/etc/adapter/config.yaml
+        - --logtostderr=true
+        - --metrics-relist-interval=1m
+        - --prometheus-url=http://prometheus:9090/
+        - --secure-port=6443
+        ports:
+        - containerPort: 6443
+          name: https
+        volumeMounts:
+        - mountPath: /etc/adapter
+          name: config
+          readOnly: true
+        - mountPath: /var/run/serving-cert
+          name: volume-serving-cert
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+      volumes:
+      - name: config
+        configMap:
+          name: adapter-config
+      - name: volume-serving-cert
+        emptyDir: {}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.3 Pod DisruLPion Budget Monitoring</h2>
+<div class="docs-pre"><code># monitoring/prometheus/rules/alerts/kubernetes-pdb.yml
+
+groups:
+- name: kubernetes-pdb-alerts
+  rules:
+  - alert: PDBMisconfigured
+    expr: |
+      kube_poddisruLPionbudget_status_observed_generation
+      !=
+      kube_poddisruLPionbudget_metadata_generation
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;PDB {{ $labels.poddisruLPionbudget }} misconfigured&quot;
+      description: &quot;PDB {{ $labels.poddisruLPionbudget }} has not been observed by controller&quot;
+
+  - alert: PDBNotProtecting
+    expr: |
+      kube_poddisruLPionbudget_status_pod_disruLPions_allowed == 0
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+    annotations:
+      summary: &quot;PDB {{ $labels.poddisruLPionbudget }} not protecting pods&quot;
+      description: &quot;PDB {{ $labels.poddisruLPionbudget }} allows 0 disruLPions&quot;
+</code></div>
+<hr />
+</section>
+<h1>10. Blockchain Monitoring</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Blockchain Exporter</h2>
+<div class="docs-pre"><code># blockchain_exporter/main.py
+
+from prometheus_client import start_http_server, Gauge, Counter, Histogram
+import asyncio
+from web3 import Web3
+import logging
+from typing import Dict, List
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Metrics (defined in Section 4.4)
+# ...
+
+class BlockchainMonitor:
+    def __init__(self, rpc_url: str, blockchain: str, network: str):
+        self.w3 = Web3(Web3.HTTPProvider(rpc_url))
+        self.blockchain = blockchain
+        self.network = network
+        self.last_block_number = 0
+        self.block_times: List[float] = []
+
+    async def monitor(self):
+        &quot;&quot;&quot;Main monitoring loop.&quot;&quot;&quot;
+        while True:
+            try:
+                await self.collect_metrics()
+            except Exception as e:
+                logger.error(f&quot;Error collecting metrics: {e}&quot;)
+            await asyncio.sleep(10)
+
+    async def collect_metrics(self):
+        &quot;&quot;&quot;Collect all blockchain metrics.&quot;&quot;&quot;
+        # Latest block
+        latest_block = self.w3.eth.get_block('latest')
+
+        blockchain_latest_block_number.labels(
+            blockchain=self.blockchain,
+            network=self.network
+        ).set(latest_block['number'])
+
+        # Sync lag (compare with expected latest)
+        expected_block = self.get_expected_block_number()
+        if expected_block:
+            lag = expected_block - latest_block['number']
+            blockchain_sync_lag_blocks.labels(
+                blockchain=self.blockchain,
+                network=self.network
+            ).set(lag)
+
+        # Block time
+        if latest_block['number'] &gt; 0:
+            prev_block = self.w3.eth.get_block(latest_block['number'] - 1)
+            block_time = latest_block['timestamp'] - prev_block['timestamp']
+            self.block_times.append(block_time)
+            if len(self.block_times) &gt; 100:
+                self.block_times.pop(0)
+
+            blockchain_block_time_seconds.labels(
+                blockchain=self.blockchain,
+                network=self.network
+            ).observe(block_time)
+
+        # Gas price
+        gas_price = self.w3.eth.gas_price / 1e9  # Gwei
+        blockchain_gas_price_gwei.labels(
+            blockchain=self.blockchain,
+            network=self.network,
+            percentile='50'
+        ).set(gas_price)
+
+        # Gas used ratio
+        gas_used_ratio = latest_block['gasUsed'] / latest_block['gasLimit']
+        blockchain_gas_used_ratio.labels(
+            blockchain=self.blockchain,
+            network=self.network
+        ).set(gas_used_ratio)
+
+        # Pending transactions
+        pending_count = self.w3.eth.get_block('pending').transactions.__len__()
+        blockchain_transactions_pending.labels(
+            blockchain=self.blockchain,
+            network=self.network
+        ).set(pending_count)
+
+        # Smart contract balances
+        await self.collect_contract_metrics()
+
+    async def collect_contract_metrics(self):
+        &quot;&quot;&quot;Collect metrics for monitored smart contracts.&quot;&quot;&quot;
+        contracts = self.get_monitored_contracts()
+
+        for contract_info in contracts:
+            contract = self.w3.eth.contract(
+                address=contract_info['address'],
+                abi=contract_info['abi']
+            )
+
+            try:
+                # Contract balance
+                balance = contract.functions.totalSupply().call()
+                smart_contract_balance.labels(
+                    blockchain=self.blockchain,
+                    contract=contract_info['name'],
+                    token=contract_info['token']
+                ).set(balance)
+
+                # Contract paused status
+                if 'paused' in contract_info['functions']:
+                    paused = contract.functions.paused().call()
+                    # Export as gauge (1 = paused, 0 = active)
+                    # Note: Define smart_contract_paused metric
+
+            except Exception as e:
+                logger.error(f&quot;Error collecting contract metrics for {contract_info['name']}: {e}&quot;)
+
+    def get_expected_block_number(self) -&gt; int:
+        &quot;&quot;&quot;Get expected block number based on average block time.&quot;&quot;&quot;
+        # Implementation depends on blockchain
+        # For Polygon: ~2 seconds per block
+        # For Ethereum: ~12 seconds per block
+        pass
+
+    def get_monitored_contracts(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Get list of contracts to monitor.&quot;&quot;&quot;
+        return [
+            {
+                'name': 'UjamaaToken',
+                'address': '0x...',
+                'abi': [...],
+                'token': 'LCREIT',
+                'functions': ['paused', 'totalSupply']
+            },
+            # Add more contracts
+        ]
+
+# Start monitoring
+if __name__ == '__main__':
+    # Start Prometheus server
+    start_http_server(9500)
+    logger.info(&quot;Prometheus metrics server started on :9500&quot;)
+
+    # Create monitors
+    polygon_monitor = BlockchainMonitor(
+        rpc_url=&quot;https://polygon-rpc.com&quot;,
+        blockchain=&quot;polygon&quot;,
+        network=&quot;mainnet&quot;
+    )
+
+    ethereum_monitor = BlockchainMonitor(
+        rpc_url=&quot;https://mainnet.infura.io/v3/...&quot;,
+        blockchain=&quot;ethereum&quot;,
+        network=&quot;mainnet&quot;
+    )
+
+    # Run async
+    asyncio.run(asyncio.gather(
+        polygon_monitor.monitor(),
+        ethereum_monitor.monitor()
+    ))
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 Smart Contract Event Monitoring</h2>
+<div class="docs-pre"><code># blockchain_exporter/event_monitor.py
+
+from web3 import Web3
+from web3.logs import DISCARD
+import asyncio
+from prometheus_client import Counter
+
+# Event metrics
+contract_events_total = Counter(
+    'smart_contract_events_total',
+    'Total smart contract events',
+    ['blockchain', 'contract', 'event_type']
+)
+
+transfer_with_compliance_total = Counter(
+    'transfer_with_compliance_total',
+    'ERC-3643 TransferWithCompliance events',
+    ['blockchain', 'contract', 'from', 'to', 'compliance_passed']
+)
+
+class EventMonitor:
+    def __init__(self, w3: Web3, blockchain: str):
+        self.w3 = w3
+        self.blockchain = blockchain
+
+    async def monitor_events(self, contract_address: str, abi: dict, from_block: int):
+        &quot;&quot;&quot;Monitor smart contract events.&quot;&quot;&quot;
+        contract = self.w3.eth.contract(address=contract_address, abi=abi)
+
+        # Get latest block
+        latest_block = self.w3.eth.block_number
+
+        # Process blocks
+        for block_num in range(from_block, latest_block + 1):
+            try:
+                block = self.w3.eth.get_block(block_num)
+
+                # Get all logs from block
+                logs = block.transactions
+                for tx in logs:
+                    tx_receipt = self.w3.eth.get_transaction_receipt(tx)
+
+                    # Process TransferWithCompliance events
+                    for log in tx_receipt.logs:
+                        try:
+                            event_data = contract.events.TransferWithCompliance().processLog(log)
+
+                            contract_events_total.labels(
+                                blockchain=self.blockchain,
+                                contract=contract.address[:10],
+                                event_type='TransferWithCompliance'
+                            ).inc()
+
+                            transfer_with_compliance_total.labels(
+                                blockchain=self.blockchain,
+                                contract=contract.address[:10],
+                                from=event_data['from'][:10],
+                                to=event_data['to'][:10],
+                                compliance_passed=str(event_data['compliancePassed'])
+                            ).inc()
+
+                        except Exception:
+                            # Log doesn't match this event
+                            pass
+
+            except Exception as e:
+                logger.error(f&quot;Error processing block {block_num}: {e}&quot;)
+
+            await asyncio.sleep(1)  # Rate limit
+</code></div>
+<hr />
+</section>
+<h1>11. SLO/SLI Framework</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.1 Service Level Objectives</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Service</th>
+<th>SLI</th>
+<th>SLO Target</th>
+<th>Error Budget</th>
+<th>Measurement Window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Assets API</strong></td>
+<td>Availability</td>
+<td>99.9%</td>
+<td>0.1% (43m/month)</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Assets API</strong></td>
+<td>Latency (p95)</td>
+<td>&lt;500ms</td>
+<td>5% violations</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Investors API</strong></td>
+<td>Availability</td>
+<td>99.5%</td>
+<td>0.5% (3.6h/month)</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Investors API</strong></td>
+<td>Latency (p95)</td>
+<td>&lt;300ms</td>
+<td>5% violations</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Trades API</strong></td>
+<td>Availability</td>
+<td>99.9%</td>
+<td>0.1% (43m/month)</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Trades API</strong></td>
+<td>Latency (p95)</td>
+<td>&lt;1s</td>
+<td>5% violations</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Compliance API</strong></td>
+<td>Availability</td>
+<td>99.5%</td>
+<td>0.5% (3.6h/month)</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Compliance API</strong></td>
+<td>Latency (p95)</td>
+<td>&lt;2s</td>
+<td>5% violations</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Blockchain Sync</strong></td>
+<td>Block Lag</td>
+<td>&lt;10 blocks</td>
+<td>1% violations</td>
+<td>7 days</td>
+</tr>
+<tr>
+<td><strong>Cross-Chain Bridge</strong></td>
+<td>Finality Time</td>
+<td>&lt;15 min</td>
+<td>5% violations</td>
+<td>30 days</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.2 SLO Recording Rules</h2>
+<div class="docs-pre"><code># monitoring/prometheus/rules/recording/slo.yml
+
+groups:
+- name: slo-recording-rules
+  interval: 1m
+  rules:
+
+  # Assets API Availability SLO
+  - record: slo:assets_api:availability:ratio30d
+    expr: |
+      avg_over_time(
+        sum(rate(http_requests_total{service=&quot;assets-service&quot;, status!~&quot;5..&quot;}[5m]))
+        /
+        sum(rate(http_requests_total{service=&quot;assets-service&quot;}[5m]))
+        [30d:5m]
+      )
+
+  # Assets API Latency SLO (p95 &lt; 500ms)
+  - record: slo:assets_api:latency_p95:violation_ratio30d
+    expr: |
+      avg_over_time(
+        (
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket{service=&quot;assets-service&quot;}[5m]))
+            by (le)
+          ) &gt; 0.5
+        )
+        [30d:5m]
+      )
+
+  # Error Budget remaining
+  - record: slo:assets_api:error_budget:remaining
+    expr: |
+      1 - (
+        (1 - slo:assets_api:availability:ratio30d)
+        /
+        (1 - 0.999)  # SLO target
+      )
+
+  # Burn Rate (how fast we're consuming error budget)
+  - record: slo:assets_api:burn_rate:rate1h
+    expr: |
+      (
+        1 - sum(rate(http_requests_total{service=&quot;assets-service&quot;, status!~&quot;5..&quot;}[1h]))
+        / sum(rate(http_requests_total{service=&quot;assets-service&quot;}[1h]))
+      )
+      /
+      (1 - 0.999)
+
+  - record: slo:assets_api:burn_rate:rate6h
+    expr: |
+      (
+        1 - sum(rate(http_requests_total{service=&quot;assets-service&quot;, status!~&quot;5..&quot;}[6h]))
+        / sum(rate(http_requests_total{service=&quot;assets-service&quot;}[6h]))
+      )
+      /
+      (1 - 0.999)
+
+  - record: slo:assets_api:burn_rate:rate24h
+    expr: |
+      (
+        1 - sum(rate(http_requests_total{service=&quot;assets-service&quot;, status!~&quot;5..&quot;}[24h]))
+        / sum(rate(http_requests_total{service=&quot;assets-service&quot;}[24h]))
+      )
+      /
+      (1 - 0.999)
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.3 Burn Rate Alerts</h2>
+<div class="docs-pre"><code># monitoring/prometheus/rules/alerts/slo-burn-rate.yml
+
+groups:
+- name: slo-burn-rate-alerts
+  rules:
+
+  # Critical: Burn rate &gt; 14.4x (error budget exhausted in 2 hours)
+  - alert: AssetsAPICriticalBurnRate
+    expr: |
+      slo:assets_api:burn_rate:rate1h &gt; 14.4
+      and
+      slo:assets_api:burn_rate:rate5m &gt; 14.4
+    for: 2m
+    labels:
+      severity: critical
+      team: platform
+      slo: assets_api
+    annotations:
+      summary: &quot;Assets API critical burn rate&quot;
+      description: &quot;Error budget will be exhausted in 2 hours at current burn rate ({{ $value }}x)&quot;
+      runbook_url: &quot;https://runbooks.ujamaa-defi.com/alerts/slo-burn-rate&quot;
+
+  # High: Burn rate &gt; 6x (error budget exhausted in 6 hours)
+  - alert: AssetsAPIHighBurnRate
+    expr: |
+      slo:assets_api:burn_rate:rate6h &gt; 6
+      and
+      slo:assets_api:burn_rate:rate30m &gt; 6
+    for: 5m
+    labels:
+      severity: warning
+      team: platform
+      slo: assets_api
+    annotations:
+      summary: &quot;Assets API high burn rate&quot;
+      description: &quot;Error budget will be exhausted in 6 hours at current burn rate ({{ $value }}x)&quot;
+
+  # Warning: Burn rate &gt; 3x (error budget exhausted in 1 day)
+  - alert: AssetsAPIWarningBurnRate
+    expr: |
+      slo:assets_api:burn_rate:rate24h &gt; 3
+    for: 15m
+    labels:
+      severity: info
+      team: platform
+      slo: assets_api
+    annotations:
+      summary: &quot;Assets API elevated burn rate&quot;
+      description: &quot;Error budget will be exhausted in 1 day at current burn rate ({{ $value }}x)&quot;
+
+  # Error Budget Remaining &lt; 10%
+  - alert: AssetsAPIErrorBudgetLow
+    expr: |
+      slo:assets_api:error_budget:remaining &lt; 0.1
+    for: 1h
+    labels:
+      severity: warning
+      team: platform
+      slo: assets_api
+    annotations:
+      summary: &quot;Assets API error budget low&quot;
+      description: &quot;Only {{ $value | humanizePercentage }} of error budget remaining for 30-day window&quot;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.4 SLO Dashboard</h2>
+<div class="docs-pre"><code>{
+  &quot;dashboard&quot;: {
+    &quot;title&quot;: &quot;SLO Dashboard - Assets API&quot;,
+    &quot;uid&quot;: &quot;slo-assets-api&quot;,
+    &quot;tags&quot;: [&quot;slo&quot;, &quot;assets-api&quot;],
+    &quot;panels&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;type&quot;: &quot;gauge&quot;,
+        &quot;title&quot;: &quot;Error Budget Remaining&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 6, &quot;w&quot;: 8, &quot;x&quot;: 0, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:error_budget:remaining * 100&quot;,
+            &quot;legendFormat&quot;: &quot;Error Budget %&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;percent&quot;,
+            &quot;min&quot;: 0,
+            &quot;max&quot;: 100,
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 20},
+                {&quot;color&quot;: &quot;green&quot;, &quot;value&quot;: 50}
+              ]
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;Availability (30d)&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 6, &quot;w&quot;: 8, &quot;x&quot;: 8, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:availability:ratio30d * 100&quot;,
+            &quot;legendFormat&quot;: &quot;Availability %&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;unit&quot;: &quot;percent&quot;,
+            &quot;decimals&quot;: 3,
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 99.5},
+                {&quot;color&quot;: &quot;green&quot;, &quot;value&quot;: 99.9}
+              ]
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;type&quot;: &quot;stat&quot;,
+        &quot;title&quot;: &quot;Burn Rate (1h)&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 6, &quot;w&quot;: 8, &quot;x&quot;: 16, &quot;y&quot;: 0},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:burn_rate:rate1h&quot;,
+            &quot;legendFormat&quot;: &quot;Burn Rate&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;green&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 3},
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 6}
+              ]
+            }
+          }
+        }
+      },
+      {
+        &quot;id&quot;: 4,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;title&quot;: &quot;Burn Rate Over Time&quot;,
+        &quot;gridPos&quot;: {&quot;h&quot;: 8, &quot;w&quot;: 24, &quot;x&quot;: 0, &quot;y&quot;: 6},
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:burn_rate:rate1h&quot;,
+            &quot;legendFormat&quot;: &quot;1h burn rate&quot;
+          },
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:burn_rate:rate6h&quot;,
+            &quot;legendFormat&quot;: &quot;6h burn rate&quot;
+          },
+          {
+            &quot;expr&quot;: &quot;slo:assets_api:burn_rate:rate24h&quot;,
+            &quot;legendFormat&quot;: &quot;24h burn rate&quot;
+          }
+        ],
+        &quot;fieldConfig&quot;: {
+          &quot;defaults&quot;: {
+            &quot;custom&quot;: {
+              &quot;lineWidth&quot;: 2
+            },
+            &quot;thresholds&quot;: {
+              &quot;mode&quot;: &quot;absolute&quot;,
+              &quot;steps&quot;: [
+                {&quot;color&quot;: &quot;transparent&quot;, &quot;value&quot;: 0},
+                {&quot;color&quot;: &quot;yellow&quot;, &quot;value&quot;: 3},
+                {&quot;color&quot;: &quot;red&quot;, &quot;value&quot;: 6}
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>12. Runbooks</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.1 Runbook Template</h2>
+<div class="docs-pre"><code># Runbook: {Alert Name}
+
+## Alert Details
+
+- **Alert Name:** `{alert_name}`
+- **Severity:** {critical|warning|info}
+- **Team:** {team}
+- **SLO Impact:** {Yes/No}
+
+## Description
+
+{What does this alert mean?}
+
+## Impact
+
+{What is the user/business impact?}
+
+## Diagnosis
+
+### Step 1: Check Dashboard
+
+1. Open Grafana dashboard: {dashboard_url}
+2. Check relevant panels:
+   - {Panel 1}: Expected value: {X}, Actual: {Y}
+   - {Panel 2}: Expected value: {X}, Actual: {Y}
+
+### Step 2: Check Logs
+
+```logql
+{logql_query}
+</code></div>
+<p>Look for:<br />
+- Error patterns: <code>{pattern}</code><br />
+- Recent changes: <code>{pattern}</code></p>
+<h3>Step 3: Check Recent Changes</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Check deployment history: <code>kubectl get deployments -n {namespace}</code></li>
+<li>Check recent config changes: <code>kubectl get configmaps -n {namespace}</code></li>
+<li>Check recent incidents: {incident_tracker_url}</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Resolution</h2>
+<h3>Immediate Actions</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>{Action 1}</li>
+<li>{Action 2}</li>
+</ol>
+<h3>Rollback (if needed)</h3>
+<div class="docs-pre"><code>kubectl rollout undo deployment/{name} -n {namespace}
+</code></div>
+<h3>Scale Resources</h3>
+<div class="docs-pre"><code>kubectl scale deployment/{name} --replicas={n} -n {namespace}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Verification</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Confirm alert has cleared</li>
+<li>Check SLO impact: {slo_dashboard_url}</li>
+<li>Monitor for {X} minutes</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Escalation</h2>
+<p>If unable to resolve within {X} minutes:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Escalate to: {role}</li>
+<li>Contact: {slack_channel}</li>
+<li>Page: {on-call_person}</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Post-Incident</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Create incident report: {template_url}</li>
+<li>Schedule post-mortem</li>
+<li>Update runbook if needed</li>
+</ol>
+<div class="docs-pre"><code>
+## 12.2 Example Runbook: Service Down
+
+```markdown
+# Runbook: ServiceDown
+
+## Alert Details
+
+- **Alert Name:** `ServiceDown`
+- **Severity:** Critical
+- **Team:** Platform
+- **SLO Impact:** Yes
+
+## Description
+
+A FastAPI service pod has been unreachable for more than 2 minutes.
+
+## Impact
+
+- Users cannot access the affected service
+- API requests will fail with 503 errors
+- SLO availability will be impacted
+
+## Diagnosis
+
+### Step 1: Check Dashboard
+
+1. Open Grafana: https://grafana.ujamaa-defi.com/d/service-performance
+2. Check which service is affected
+3. Check error rate and latency panels
+
+### Step 2: Check Pod Status
+
+```bash
+# Get pod status
+kubectl get pods -n ujamaa-production -l app={service-name}
+
+# Describe pod for events
+kubectl describe pod {pod-name} -n ujamaa-production
+
+# Check pod logs
+kubectl logs {pod-name} -n ujamaa-production --tail=100
+</code></div>
+<h3>Step 3: Check Logs in Grafana</h3>
+<div class="docs-pre"><code>{app=&quot;{service-name}&quot;, level=&quot;error&quot;} |~ &quot;(?i)panic|fatal|exception&quot;
+</code></div>
+<h3>Step 4: Check Dependencies</h3>
+<div class="docs-pre"><code># Check database connectivity
+kubectl exec {pod-name} -n ujamaa-production -- curl -s http://postgres:5432
+
+# Check Redis connectivity
+kubectl exec {pod-name} -n ujamaa-production -- redis-cli -h redis ping
+
+# Check Kafka connectivity
+kubectl exec {pod-name} -n ujamaa-production -- kafka-topics --bootstrap-server kafka:9092 --list
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Resolution</h2>
+<h3>If Pod is CrashLooping</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p>Check logs for error:<br />
+<code>bash
+   kubectl logs {pod-name} -n ujamaa-production --previous</code></p>
+</li>
+<li>
+<p>If recent deployment:<br />
+<code>bash
+   kubectl rollout undo deployment/{service-name} -n ujamaa-production</code></p>
+</li>
+<li>
+<p>If resource exhaustion:<br />
+<code>bash
+   kubectl edit deployment/{service-name} -n ujamaa-production
+   # Increase resources</code></p>
+</li>
+</ol>
+<h3>If Pod is Pending</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p>Check node resources:<br />
+<code>bash
+   kubectl top nodes</code></p>
+</li>
+<li>
+<p>Check for scheduling issues:<br />
+<code>bash
+   kubectl describe pod {pod-name} -n ujamaa-production | grep -A 10 "Events:"</code></p>
+</li>
+</ol>
+<h3>If Pod is Running but Unhealthy</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p>Check readiness probe:<br />
+<code>bash
+   kubectl exec {pod-name} -n ujamaa-production -- curl -s http://localhost:8000/health/ready</code></p>
+</li>
+<li>
+<p>Restart pod:<br />
+<code>bash
+   kubectl delete pod {pod-name} -n ujamaa-production</code></p>
+</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Verification</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p>Confirm pod is Running:<br />
+<code>bash
+   kubectl get pods -n ujamaa-production -l app={service-name}</code></p>
+</li>
+<li>
+<p>Check health endpoint:<br />
+<code>bash
+   curl https://api.ujamaa-defi.com/health/ready</code></p>
+</li>
+<li>
+<p>Monitor for 5 minutes to ensure stability</p>
+</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Escalation</h2>
+<p>If unable to resolve within 15 minutes:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Escalate to: Platform Lead</li>
+<li>Contact: #platform-oncall</li>
+<li>Page: On-call Engineer</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Related Alerts</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>HighErrorRate</li>
+<li>HighLatency</li>
+<li>PodCrashLooping</li>
+</ul>
+<div class="docs-pre"><code>
+## 12.3 Example Runbook: Blockchain Sync Behind
+
+```markdown
+# Runbook: BlockchainSyncBehind
+
+## Alert Details
+
+- **Alert Name:** `BlockchainSyncBehind`
+- **Severity:** Critical
+- **Team:** Platform
+- **SLO Impact:** Yes
+
+## Description
+
+Blockchain node is more than 20 blocks behind the network tip.
+
+## Impact
+
+- Transactions may not be processed
+- Compliance checks may fail
+- Bridge operations delayed
+
+## Diagnosis
+
+### Step 1: Check Blockchain Dashboard
+
+1. Open: https://grafana.ujamaa-defi.com/d/blockchain
+2. Check:
+   - Current block number
+   - Sync lag trend
+   - Block time
+
+### Step 2: Check RPC Node
+
+```bash
+# Check node status
+curl -X POST https://polygon-rpc.com \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:1}'
+
+# Check peer count
+curl -X POST https://polygon-rpc.com \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_peerCount&quot;,&quot;params&quot;:[],&quot;id&quot;:1}'
+</code></div>
+<h3>Step 3: Check Blockchain Exporter</h3>
+<div class="docs-pre"><code>kubectl logs -l app=blockchain-exporter -n monitoring --tail=100
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Resolution</h2>
+<h3>If Using Third-Party RPC</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Check provider status page</li>
+<li>Switch to backup RPC:<br />
+<code>bash
+   kubectl set env deployment/blockchain-exporter \
+     RPC_URL=https://polygon-mainnet.g.alchemy.com/v2/{key} \
+     -n monitoring</code></li>
+</ol>
+<h3>If Running Own Node</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p>Check node logs:<br />
+<code>bash
+   kubectl logs -l app=polygon-node -n blockchain</code></p>
+</li>
+<li>
+<p>Restart node:<br />
+<code>bash
+   kubectl delete pod -l app=polygon-node -n blockchain</code></p>
+</li>
+<li>
+<p>Wait for sync (may take hours)</p>
+</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Verification</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Confirm sync lag &lt; 10 blocks</li>
+<li>Check transaction processing resumed</li>
+<li>Monitor for 30 minutes</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Escalation</h2>
+<p>If unable to resolve within 30 minutes:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Escalate to: Blockchain Lead</li>
+<li>Contact: #blockchain-oncall</li>
+</ol>
+<div class="docs-pre"><code>
+---
+
+# 13. On-Call Operations
+
+## 13.1 On-Call Schedule
+
+| Week | Primary | Secondary | Timezone |
+|------|---------|-----------|----------|
+| Week 1 | Engineer A | Engineer B | UTC+1 (Lagos) |
+| Week 2 | Engineer B | Engineer C | UTC+3 (Nairobi) |
+| Week 3 | Engineer C | Engineer A | UTC+2 (Johannesburg) |
+| Week 4 | Engineer A | Engineer B | UTC+1 (Lagos) |
+
+## 13.2 Escalation Policy
+
+```yaml
+# monitoring/alertmanager/escalation-policy.yml
+
+route:
+  receiver: slack-notifications
+  group_by: ['alertname', 'severity', 'team']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+  # Critical alerts -&gt; PagerDuty immediately
+  - match:
+      severity: critical
+    receiver: pagerduty-critical
+    continue: true
+    group_wait: 10s
+
+  # Warning alerts -&gt; Slack, escalate after 30m
+  - match:
+      severity: warning
+    receiver: slack-warnings
+    group_wait: 5m
+    repeat_interval: 1h
+
+  # Info alerts -&gt; Email digest
+  - match:
+      severity: info
+    receiver: email-digest
+    group_wait: 1h
+    repeat_interval: 24h
+
+receivers:
+- name: slack-notifications
+  slack_configs:
+  - api_url: https://hooks.slack.com/services/XXX/YYY/ZZZ
+    channel: '#alerts'
+    title: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+    text: '{{ range .Alerts }}{{ .Annotations.description }}{{ end }}'
+    send_resolved: true
+
+- name: pagerduty-critical
+  pagerduty_configs:
+  - service_key: &lt;pagerduty-service-key&gt;
+    severity: critical
+    description: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+    details:
+      runbook_url: '{{ range .Alerts }}{{ .Annotations.runbook_url }}{{ end }}'
+      dashboard_url: '{{ range .Alerts }}{{ .Annotations.dashboard_url }}{{ end }}'
+
+- name: slack-warnings
+  slack_configs:
+  - api_url: https://hooks.slack.com/services/XXX/YYY/ZZZ
+    channel: '#alerts-warning'
+    title: '[WARNING] {{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+    send_resolved: true
+
+- name: email-digest
+  email_configs:
+  - to: platform-team@ujamaa-defi.com
+    send_resolved: false
+    headers:
+      Subject: '[UJAMAA Daily Alert Digest]'
+
+- name: slack-critical
+  slack_configs:
+  - api_url: https://hooks.slack.com/services/XXX/YYY/ZZZ
+    channel: '#alerts-critical'
+    title: '[CRITICAL] {{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+    text: '{{ range .Alerts }}{{ .Annotations.description }}\nRunbook: {{ .Annotations.runbook_url }}{{ end }}'
+    send_resolved: true
+
+inhibit_rules:
+# If service is down, don't alert on high latency
+- source_match:
+    alertname: ServiceDown
+  target_match:
+    alertname: HighLatency
+  equal: ['service']
+
+# If node is down, don't alert on pod pending
+- source_match:
+    alertname: NodeDown
+  target_match:
+    alertname: PodPending
+  equal: ['node']
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13.3 Incident Response Process</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         INCIDENT RESPONSE FLOW                                │
+│                                                                              │
+│  1. Detection                                                                │
+│     └─&gt; Alert fires in Prometheus                                           │
+│     └─&gt; Alertmanager routes to PagerDuty                                    │
+│     └─&gt; On-call engineer paged                                              │
+│                                                                              │
+│  2. Triage (0-5 minutes)                                                     │
+│     └─&gt; Acknowledge alert in PagerDuty                                      │
+│     └─&gt; Check Grafana dashboard                                             │
+│     └─&gt; Assess severity and impact                                          │
+│     └─&gt; Create incident in incident management system                       │
+│                                                                              │
+│  3. Diagnosis (5-15 minutes)                                                 │
+│     └─&gt; Follow runbook                                                      │
+│     └─&gt; Check logs, metrics, traces                                         │
+│     └─&gt; Identify root cause                                                 │
+│     └─&gt; Update incident status                                              │
+│                                                                              │
+│  4. Resolution (15-60 minutes)                                               │
+│     └─&gt; Implement fix                                                       │
+│     └─&gt; Verify resolution                                                   │
+│     └─&gt; Monitor for stability                                               │
+│     └─&gt; Close alert                                                         │
+│                                                                              │
+│  5. Post-Incident (1-7 days)                                                 │
+│     └─&gt; Write incident report                                               │
+│     └─&gt; Schedule post-mortem                                                │
+│     └─&gt; Identify action items                                               │
+│     └─&gt; Update runbooks                                                     │
+│     └─&gt; Implement preventive measures                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13.4 Incident Severity Levels</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Description</th>
+<th>Response Time</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SEV1</strong></td>
+<td>Complete outage, data loss</td>
+<td>5 minutes</td>
+<td>Every 15 minutes</td>
+</tr>
+<tr>
+<td><strong>SEV2</strong></td>
+<td>Major feature broken, high impact</td>
+<td>15 minutes</td>
+<td>Every 30 minutes</td>
+</tr>
+<tr>
+<td><strong>SEV3</strong></td>
+<td>Partial degradation, workaround exists</td>
+<td>1 hour</td>
+<td>Every 2 hours</td>
+</tr>
+<tr>
+<td><strong>SEV4</strong></td>
+<td>Minor issue, low impact</td>
+<td>4 hours</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Document Control</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-02-27</td>
+<td>SRE Lead</td>
+<td>Initial release</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related Documents</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> - Requirements specification</li>
+<li><code>02_ARCHITECTURE_SPECIFICATION.md</code> - System architecture</li>
+<li><code>05_SMART_CONTRACT_SPECIFICATION.md</code> - Blockchain monitoring requirements</li>
+<li><code>06_DEPLOYMENT_GUIDE.md</code> - Infrastructure deployment</li>
+<li><code>08_OPERATIONAL_RUNBOOKS.md</code> - Incident response procedures</li>
+</ul>
+<p><strong>Runbooks Repository</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>https://github.com/ujamaa-defi/runbooks</code></li>
+</ul>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Operations</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

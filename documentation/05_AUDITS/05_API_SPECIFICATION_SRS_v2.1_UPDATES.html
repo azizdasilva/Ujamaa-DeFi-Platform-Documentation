@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>API Specification - SRS v2.1 Updates - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>API Specification - SRS v2.1 Updates</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">API Specification - SRS v2.1 Updates</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Last Updated:</strong> March 25, 2026</p></div>
+
+        <h1>API Specification - SRS v2.1 Updates</h1>
+<p><strong>Date:</strong> March 25, 2026<br />
+<strong>Source:</strong> SRS v2.1 Section 1.2.1 (Authentication), Section 1.2.2 (Authorization)<br />
+<strong>Target:</strong> <code>docs/01_SPECIFICATIONS/06_API_SPECIFICATION.md</code>  </p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<p>This document provides the complete updates needed for the API Specification to align with SRS v2.1. Due to the size of the original file (1900+ lines), these updates should be merged into the existing document.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. New Service: Authentication Service 🆕</h2>
+<p><strong>Base Path:</strong> <code>/api/v1/auth</code><br />
+<strong>Protocol:</strong> REST + JSON<br />
+<strong>Port:</strong> 8005  </p>
+<h3>1.1 SIWE Authentication Endpoints</h3>
+<p><strong>GET /api/v1/auth/nonce</strong></p>
+<div class="docs-pre"><code>Description: Request nonce for SIWE authentication
+Rate Limit: 10 requests/minute
+Parameters:
+  - wallet: string (query, required) - 0x-prefixed, 42 characters
+Response:
+  nonce: string (UUID v4)
+  expiresAt: string (ISO 8601, 5 minutes from now)
+  message: string (SIWE message template)
+Example Request:
+  GET /api/v1/auth/nonce?wallet=0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb
+Example Response:
+  {
+    &quot;nonce&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;expiresAt&quot;: &quot;2026-03-25T10:05:00Z&quot;,
+    &quot;message&quot;: &quot;Sign this message to authenticate with UJAMAA DeFi&quot;
+  }
+</code></div>
+<p><strong>POST /api/v1/auth/login</strong></p>
+<div class="docs-pre"><code>Description: SIWE login (signature verification + JWT issuance)
+Rate Limit: 5 requests/hour (prevent brute force)
+Request Body:
+  wallet: string (0x-prefixed, 42 characters)
+  signature: string (hex-encoded, recovered address must match wallet)
+  nonce: string (UUID v4, must match Redis value)
+Response:
+  accessToken: string (JWT, 30 days expiry)
+  refreshToken: string (JWT, 7 days expiry)
+  expiresAt: string (ISO 8601)
+  user:
+    wallet: string
+    role: string (INSTITUTIONAL_INVESTOR, etc.)
+    kycStatus: string (VERIFIED, PENDING, REJECTED)
+Example Request:
+  POST /api/v1/auth/login
+  {
+    &quot;wallet&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+    &quot;signature&quot;: &quot;0x1234567890abcdef...&quot;,
+    &quot;nonce&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;
+  }
+Example Response:
+  {
+    &quot;accessToken&quot;: &quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...&quot;,
+    &quot;refreshToken&quot;: &quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...&quot;,
+    &quot;expiresAt&quot;: &quot;2026-04-24T10:00:00Z&quot;,
+    &quot;user&quot;: {
+      &quot;wallet&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+      &quot;role&quot;: &quot;INSTITUTIONAL_INVESTOR&quot;,
+      &quot;kycStatus&quot;: &quot;VERIFIED&quot;
+    }
+  }
+</code></div>
+<p><strong>POST /api/v1/auth/refresh</strong></p>
+<div class="docs-pre"><code>Description: Refresh JWT token (rotate refresh token)
+Authentication: Refresh token required in Authorization header
+Request Body:
+  refreshToken: string (valid, non-revoked refresh token)
+Response:
+  accessToken: string (new access token)
+  refreshToken: string (rotated refresh token - old one invalidated)
+Security:
+  - Refresh token rotation (new token issued on each refresh)
+  - Old refresh token immediately invalidated
+</code></div>
+<p><strong>POST /api/v1/auth/logout</strong></p>
+<div class="docs-pre"><code>Description: Invalidate all sessions (blacklist JWT jti in Redis)
+Authentication: Access token required
+Response:
+  success: boolean
+  message: string
+Side Effects:
+  - All active sessions for user invalidated
+  - JWT jti added to Redis blacklist (TTL: until expiry)
+  - Refresh tokens deleted from database
+</code></div>
+<h3>1.2 SIWE Message Format</h3>
+<div class="docs-pre"><code>uri: https://ujamaa.defi
+version: 1
+chain_id: 80002 (Polygon Amoy testnet)
+nonce: {uuid-v4}
+issued_at: {ISO8601}
+expiration_time: {ISO8601, 5 minutes from issued_at}
+resources:
+  - ipfs://bafybeigdyrzt5sfp7udm7hu77uh7zzt2pu9hryrgqwpq5jrp7t6vu3
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. New Service: Liquidity Pools Service 🆕</h2>
+<p><strong>Base Path:</strong> <code>/api/v1/pools</code><br />
+<strong>Protocol:</strong> REST + JSON<br />
+<strong>Port:</strong> 8006<br />
+<strong>Authentication:</strong> JWT required<br />
+<strong>Authorization:</strong> Institutional Investor, Pool Manager  </p>
+<h3>2.1 Pool Management Endpoints</h3>
+<p><strong>GET /api/v1/pools</strong></p>
+<div class="docs-pre"><code>Description: List all liquidity pools
+Auth: JWT (Institutional Investor, Pool Manager)
+Query Parameters:
+  - family: string (optional) - POOL_INDUSTRIE, POOL_AGRICULTURE, etc.
+  - status: string (optional) - ACTIVE, CLOSED
+Response:
+  pools:
+    - id: string (UUID)
+      name: string
+      family: string
+      totalValueLocked: string (EUR, 2 decimals)
+      navPerShare: string (EUR, 8 decimals)
+      totalShares: string (8 decimals)
+      apr: string (annual percentage yield)
+      status: string
+Example:
+  GET /api/v1/pools?family=POOL_INDUSTRIE
+  {
+    &quot;pools&quot;: [
+      {
+        &quot;id&quot;: &quot;pool_industrie_001&quot;,
+        &quot;name&quot;: &quot;Pool Industrie - Tranche 1&quot;,
+        &quot;family&quot;: &quot;POOL_INDUSTRIE&quot;,
+        &quot;totalValueLocked&quot;: &quot;10000000.00&quot;,
+        &quot;navPerShare&quot;: &quot;1.05234567&quot;,
+        &quot;totalShares&quot;: &quot;10000000.00000000&quot;,
+        &quot;apr&quot;: &quot;0.1234&quot;,
+        &quot;status&quot;: &quot;ACTIVE&quot;
+      }
+    ]
+  }
+</code></div>
+<p><strong>GET /api/v1/pools/{poolId}</strong></p>
+<div class="docs-pre"><code>Description: Get detailed pool information
+Auth: JWT (Institutional Investor, Pool Manager)
+Response:
+  id: string
+  name: string
+  family: string
+  description: string
+  totalValueLocked: string
+  navPerShare: string
+  totalShares: string
+  apr: string
+  assetAllocation:
+    byIndustrial:
+      - industrialId: string
+        name: string
+        amount: string
+        percentage: number
+    byGeography:
+      - country: string
+        amount: string
+        percentage: number
+    byAssetClass:
+      - assetClass: string
+        amount: string
+        percentage: number
+  performance:
+    inceptionDate: string
+    totalYield: string
+    yield30d: string
+    yield90d: string
+    yieldYtd: string
+  riskMetrics:
+    diversificationRatio: number
+    concentrationRisk: string (LOW, MEDIUM, HIGH)
+    defaultRate: string
+</code></div>
+<p><strong>POST /api/v1/pools</strong></p>
+<div class="docs-pre"><code>Description: Create new liquidity pool
+Auth: JWT (Pool Manager only)
+Request:
+  name: string
+  family: string (POOL_INDUSTRIE, POOL_AGRICULTURE, etc.)
+  targetSize: string (EUR)
+  minInvestment: string (EUR, default €100K)
+  managementFeeBps: number (basis points)
+  performanceFeeBps: number
+Response:
+  poolId: string (UUID)
+  status: string (CREATED, PENDING_APPROVAL)
+</code></div>
+<h3>2.2 uLP Deposit/Redeem Endpoints</h3>
+<p><strong>POST /api/v1/pools/{poolId}/deposit</strong></p>
+<div class="docs-pre"><code>Description: Deposit UJEUR to mint uLP tokens
+Auth: JWT (Institutional Investor, min €100K)
+Request:
+  amount: string (EUR, min €100K for institutional)
+  uJPAddress: string (investor's wallet address)
+Response:
+  transactionId: string (UUID)
+  ulpMinted: string (calculated as amount / navPerShare)
+  navPerShare: string (at time of deposit)
+  status: string (PENDING, COMPLETED, FAILED)
+  blockchainTxHash: string (once confirmed)
+Example:
+  POST /api/v1/pools/pool_industrie_001/deposit
+  {
+    &quot;amount&quot;: &quot;1000000.00&quot;,
+    &quot;uJPAddress&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;
+  }
+  Response:
+  {
+    &quot;transactionId&quot;: &quot;tx_deposit_001&quot;,
+    &quot;ulpMinted&quot;: &quot;950226.21742112&quot;,
+    &quot;navPerShare&quot;: &quot;1.05234567&quot;,
+    &quot;status&quot;: &quot;PENDING&quot;,
+    &quot;blockchainTxHash&quot;: null
+  }
+</code></div>
+<p><strong>POST /api/v1/pools/{poolId}/redeem</strong></p>
+<div class="docs-pre"><code>Description: Redeem uLP tokens for UJEUR + yield
+Auth: JWT (Institutional Investor, uLP holder)
+Request:
+  ulpAmount: string (tokens to redeem)
+  recipientAddress: string (wallet to receive UJEUR)
+Response:
+  transactionId: string
+  uJPBurned: string
+  amountReceived: string (UJEUR, principal + yield)
+  navPerShare: string (at time of redemption)
+  yieldEarned: string (accrued yield)
+  status: string
+  blockchainTxHash: string
+Example:
+  POST /api/v1/pools/pool_industrie_001/redeem
+  {
+    &quot;ulpAmount&quot;: &quot;100000.00000000&quot;,
+    &quot;recipientAddress&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;
+  }
+  Response:
+  {
+    &quot;transactionId&quot;: &quot;tx_redeem_001&quot;,
+    &quot;uJPBurned&quot;: &quot;100000.00000000&quot;,
+    &quot;amountReceived&quot;: &quot;105234.57&quot;,
+    &quot;navPerShare&quot;: &quot;1.05234567&quot;,
+    &quot;yieldEarned&quot;: &quot;5234.57&quot;,
+    &quot;status&quot;: &quot;PENDING&quot;,
+    &quot;blockchainTxHash&quot;: null
+  }
+</code></div>
+<h3>2.3 NAV Endpoints</h3>
+<p><strong>GET /api/v1/pools/{poolId}/nav</strong></p>
+<div class="docs-pre"><code>Description: Get current NAV per share
+Auth: Public (no authentication required)
+Response:
+  poolId: string
+  navPerShare: string (8 decimals)
+  totalPoolValue: string (2 decimals)
+  totalShares: string (8 decimals)
+  timestamp: string (ISO 8601)
+  dataHash: string (IPFS hash of supporting data)
+Example:
+  GET /api/v1/pools/pool_industrie_001/nav
+  {
+    &quot;poolId&quot;: &quot;pool_industrie_001&quot;,
+    &quot;navPerShare&quot;: &quot;1.05234567&quot;,
+    &quot;totalPoolValue&quot;: &quot;10523456.70&quot;,
+    &quot;totalShares&quot;: &quot;10000000.00000000&quot;,
+    &quot;timestamp&quot;: &quot;2026-03-25T14:00:00Z&quot;,
+    &quot;dataHash&quot;: &quot;QmX1Y2Z3...&quot;
+  }
+</code></div>
+<p><strong>GET /api/v1/pools/{poolId}/nav/history</strong></p>
+<div class="docs-pre"><code>Description: Get NAV history
+Auth: JWT (Institutional Investor)
+Query Parameters:
+  - days: number (default 30, max 365)
+Response:
+  history:
+    - date: string
+      navPerShare: string
+      totalPoolValue: string
+      dailyYield: string
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. New Service: Guarantee Tokens Service 🆕</h2>
+<p><strong>Base Path:</strong> <code>/api/v1/guarantees</code><br />
+<strong>Protocol:</strong> REST + JSON<br />
+<strong>Port:</strong> 8007<br />
+<strong>Authentication:</strong> JWT required<br />
+<strong>Authorization:</strong> Pool Manager, Industrial Gateway  </p>
+<h3>3.1 UJG Management Endpoints</h3>
+<p><strong>GET /api/v1/guarantees</strong></p>
+<div class="docs-pre"><code>Description: List Guarantee Tokens (UJG)
+Auth: JWT (Pool Manager, Compliance Officer)
+Query Parameters:
+  - poolId: string (optional)
+  - industrialId: string (optional)
+  - status: string (optional) - ACTIVE, REDEEMED, DEFAULTED
+Response:
+  guarantees:
+    - tokenId: string (NFT token ID)
+      poolId: string
+      industrialId: string
+      certificateId: string
+      merchandiseValue: string (EUR)
+      expiryDate: string (ISO 8601)
+      isRedeemed: boolean
+      isDefaulted: boolean
+      stockHash: string (IPFS hash)
+      mintedAt: string
+</code></div>
+<p><strong>POST /api/v1/guarantees</strong></p>
+<div class="docs-pre"><code>Description: Mint Guarantee Token (UJG) for certified merchandise
+Auth: JWT (Industrial Gateway only - ORIGINATOR_ROLE)
+Request:
+  industrial: string (wallet address)
+  certificateId: string (Industrial Gateway certificate)
+  value: string (EUR, merchandise value)
+  expiryDate: string (ISO 8601, invoice due date)
+  stockHash: string (IPFS hash of stock documents)
+Response:
+  tokenId: string
+  transactionHash: string
+  status: string (MINTED, PENDING)
+</code></div>
+<p><strong>POST /api/v1/guarantees/{tokenId}/redeem</strong></p>
+<div class="docs-pre"><code>Description: Redeem UJG upon full repayment
+Auth: JWT (Pool Manager only)
+Response:
+  transactionId: string
+  status: string (REDEEMED, PENDING)
+  redeemedAt: string
+</code></div>
+<p><strong>POST /api/v1/guarantees/{tokenId}/liquidate</strong></p>
+<div class="docs-pre"><code>Description: Liquidate defaulted UJG via auction
+Auth: JWT (Pool Manager only)
+Request:
+  auctionWinner: string (wallet address)
+  liquidationAmount: string (EUR)
+Response:
+  transactionId: string
+  status: string (LIQUIDATED, PENDING)
+  auctionWinner: string
+  liquidationAmount: string
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Updated: Authentication &amp; Authorization Section</h2>
+<h3>Replace existing Section 9 with:</h3>
+<p><strong>9.1 SIWE Authentication Flow</strong><br />
+- 8-step flow diagram (see Architecture Spec Section 4.4.1)<br />
+- SIWE message format<br />
+- Nonce generation (UUID v4, Redis TTL 5 min)<br />
+- Signature verification (ecrecover)<br />
+- JWT issuance (RS256, HSM-stored key)</p>
+<p><strong>9.2 JWT Token Structure</strong></p>
+<div class="docs-pre"><code>{
+  &quot;sub&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;iat&quot;: 1711382400,
+  &quot;exp&quot;: 1713974400,
+  &quot;jti&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+  &quot;role&quot;: &quot;INSTITUTIONAL_INVESTOR&quot;,
+  &quot;kyc_status&quot;: &quot;VERIFIED&quot;,
+  &quot;kyc_expires&quot;: 1742918400,
+  &quot;wallet&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;
+}
+</code></div>
+<p><strong>Token Specifications:</strong><br />
+| Token Type | Expiry | Storage | Refresh |<br />
+|------------|--------|---------|---------|<br />
+| Access Token | 30 days | Memory (React state) | Via refresh token |<br />
+| Refresh Token | 7 days | localStorage (encrypted) | Via /auth/refresh |</p>
+<p><strong>Session Management:</strong><br />
+- Idle Timeout: 15 minutes<br />
+- Absolute Timeout: 8 hours<br />
+- Max Concurrent Sessions: 5<br />
+- Session Revocation: POST /auth/logout</p>
+<p><strong>9.3 RBAC Authorization Matrix</strong><br />
+- Complete 10+ role table (see Architecture Spec Section 4.4.2)<br />
+- Permission enforcement mechanisms<br />
+- FastAPI RBAC middleware example</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Updated: Error Handling Section</h2>
+<h3>Add new error codes:</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Error Code</th>
+<th>HTTP Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTHENTICATION_REQUIRED</code></td>
+<td>401</td>
+<td>Missing or invalid JWT</td>
+</tr>
+<tr>
+<td><code>INVALID_SIGNATURE</code></td>
+<td>401</td>
+<td>SIWE signature verification failed</td>
+</tr>
+<tr>
+<td><code>NONCE_EXPIRED</code></td>
+<td>401</td>
+<td>SIWE nonce expired (5 min TTL)</td>
+</tr>
+<tr>
+<td><code>SESSION_EXPIRED</code></td>
+<td>401</td>
+<td>JWT expired or revoked</td>
+</tr>
+<tr>
+<td><code>INSUFFICIENT_PERMISSIONS</code></td>
+<td>403</td>
+<td>RBAC check failed</td>
+</tr>
+<tr>
+<td><code>SESSION_LIMIT_EXCEEDED</code></td>
+<td>403</td>
+<td>Max 5 concurrent sessions</td>
+</tr>
+<tr>
+<td><code>MFA_REQUIRED</code></td>
+<td>403</td>
+<td>Sensitive action requires MFA</td>
+</tr>
+<tr>
+<td><code>NAV_STALE</code></td>
+<td>422</td>
+<td>NAV data older than 24 hours</td>
+</tr>
+<tr>
+<td><code>MIN_INVESTMENT_NOT_MET</code></td>
+<td>422</td>
+<td>Investment &lt; €100K (institutional)</td>
+</tr>
+<tr>
+<td><code>POOL_CAPACITY_EXCEEDED</code></td>
+<td>422</td>
+<td>Pool at max capacity</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Updated: Rate Limiting Section</h2>
+<h3>Add authentication-specific rate limits:</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Limit</th>
+<th>Action on Exceed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/auth/nonce</td>
+<td>10/min</td>
+<td>429 Too Many Requests</td>
+</tr>
+<tr>
+<td>/auth/login</td>
+<td>5/hour</td>
+<td>429 + temporary lockout (15 min)</td>
+</tr>
+<tr>
+<td>/auth/refresh</td>
+<td>10/min</td>
+<td>429 Too Many Requests</td>
+</tr>
+<tr>
+<td>/auth/logout</td>
+<td>10/min</td>
+<td>429 Too Many Requests</td>
+</tr>
+<tr>
+<td>/pools/*/deposit</td>
+<td>20/min</td>
+<td>429 Too Many Requests</td>
+</tr>
+<tr>
+<td>/pools/*/redeem</td>
+<td>20/min</td>
+<td>429 Too Many Requests</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Implementation Notes</h2>
+<h3>Redis Schema for Session Management</h3>
+<div class="docs-pre"><code># Nonce storage
+Key: &quot;auth:nonce:{wallet}&quot;
+Value: &quot;{uuid-v4}&quot;
+TTL: 300 seconds (5 minutes)
+
+# Session tracking
+Key: &quot;auth:session:{wallet}:{session_id}&quot;
+Value: JSON({ jti, expires_at, last_activity })
+TTL: 28800 seconds (8 hours)
+
+# JWT blacklist (revocation)
+Key: &quot;auth:blacklist:{jti}&quot;
+Value: &quot;1&quot;
+TTL: until JWT expiry
+</code></div>
+<h3>FastAPI Middleware Example</h3>
+<div class="docs-pre"><code>from fastapi import Depends, HTTPException, status
+from jose import JWTError, jwt
+
+async def get_current_user(token: str = Depends(oauth2_scheme)) -&gt; dict:
+    &quot;&quot;&quot;Validate JWT and extract user claims&quot;&quot;&quot;
+    try:
+        payload = jwt.decode(token, settings.JWT_PUBLIC_KEY, algorithms=[&quot;RS256&quot;])
+        wallet = payload.get(&quot;sub&quot;)
+        if wallet is None:
+            raise HTTPException(status_code=401, detail=&quot;Invalid token&quot;)
+        return payload
+    except JWTError:
+        raise HTTPException(status_code=401, detail=&quot;Token validation failed&quot;)
+
+async def require_role(required_role: str, current_user: dict = Depends(get_current_user)):
+    &quot;&quot;&quot;Enforce role-based access control&quot;&quot;&quot;
+    user_role = current_user.get(&quot;role&quot;)
+    if user_role != required_role and not is_admin(user_role):
+        raise HTTPException(status_code=403, detail=&quot;Insufficient permissions&quot;)
+    return current_user
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Testing Requirements</h2>
+<h3>Authentication Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] SIWE signature verification (valid/invalid signatures)</li>
+<li>[ ] Nonce expiry (5 minute TTL)</li>
+<li>[ ] JWT generation/validation</li>
+<li>[ ] Refresh token rotation</li>
+<li>[ ] Session timeout (idle 15min, absolute 8hr)</li>
+<li>[ ] Concurrent session limit (max 5)</li>
+<li>[ ] Session revocation (logout)</li>
+<li>[ ] Rate limiting (5 failed logins/hour)</li>
+</ul>
+<h3>Pool Service Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Pool creation (Pool Manager only)</li>
+<li>[ ] NAV calculation accuracy (8 decimals)</li>
+<li>[ ] uLP deposit (min €100K enforcement)</li>
+<li>[ ] uLP redemption (yield calculation)</li>
+<li>[ ] Asset allocation limits (max 10% per industrial)</li>
+<li>[ ] Diversification checks (min 5 assets)</li>
+</ul>
+<h3>Guarantee Token Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] UJG minting (Industrial Gateway only)</li>
+<li>[ ] UJG transfer restrictions (non-transferable)</li>
+<li>[ ] UJG redemption (Pool Manager only)</li>
+<li>[ ] UJG liquidation (auction flow)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Migration Checklist</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Add /auth/* endpoints to API Gateway routes</li>
+<li>[ ] Implement SIWE verification library (@spruceid/siwe)</li>
+<li>[ ] Set up Redis for session storage</li>
+<li>[ ] Generate RS256 key pair (HSM-stored private key)</li>
+<li>[ ] Implement RBAC middleware</li>
+<li>[ ] Update OpenAPI schema</li>
+<li>[ ] Add rate limiting configuration</li>
+<li>[ ] Write integration tests</li>
+<li>[ ] Update frontend authentication flow</li>
+<li>[ ] Deploy to staging</li>
+<li>[ ] Security audit (penetration testing)</li>
+</ul>
+<hr />
+<p><strong>Document End</strong></p>
+<p><strong>Merge Instructions:</strong><br />
+1. Add Section 2.7 (Fireblocks), Section 2.8 (Bank Escrow) to existing Section 2<br />
+2. Replace Section 9 (Authentication) with complete SIWE + JWT spec<br />
+3. Add new error codes to Section 10<br />
+4. Add rate limits to Section 11<br />
+5. Add new services to Section 1.2 (Service Inventory)</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

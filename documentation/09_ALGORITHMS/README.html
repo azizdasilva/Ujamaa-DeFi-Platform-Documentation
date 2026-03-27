@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DeFi Platform - Algorithms - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Algorithms</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DeFi Platform - Algorithms</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DeFi Platform - Algorithms</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 9.0 (SRS Complete Audit) | <strong>Status:</strong> ✅ 🟢 100% Identified (27/27), 74% Implemented (20/27) | <strong>Last Updated:</strong> March 26, 2026</p></div>
+
+        <h1>UJAMAA DeFi Platform - Algorithms</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 9.0 (SRS Complete Audit)<br />
+<strong>Last Updated:</strong> March 26, 2026<br />
+<strong>Status:</strong> 🟢 100% Identified (27/27), 74% Implemented (20/27)</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📖 Overview</h2>
+<p>This folder contains <strong>algorithm specifications</strong> and computational documentation for the UJAMAA DeFi Platform, including asset tokenization algorithms, yield calculations, and risk assessment methodologies.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📄 Documents</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Document</th>
+<th>Purpose</th>
+<th>Language</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td><a href="01_ALGORITHM_SPECIFICATIONS.html" style="color:#3B82F6">Algorithm Specifications</a></td>
+<td>Technical specs</td>
+<td>English</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>02</td>
+<td><a href="02_ASSET_TOKENIZATION_ALGORITHMS.html" style="color:#3B82F6">Asset Tokenization Algorithms</a></td>
+<td>UGT specs</td>
+<td>English</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>03</td>
+<td><a href="03_GUIDE_COMPLET_ALGORITHMES.html" style="color:#3B82F6">Guide Complet Algorithmes</a></td>
+<td>Complete guide</td>
+<td>French</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>04</td>
+<td><a href="04_PRESENTATION_ALGORITHMES.html" style="color:#3B82F6">Présentation Algorithmes</a></td>
+<td>Presentation</td>
+<td>French</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>05</td>
+<td><a href="05_SRS_ALGORITHM_CROSS_REFERENCE.html" style="color:#3B82F6">SRS Algorithm Cross Reference</a></td>
+<td>SRS traceability</td>
+<td>English</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🧮 Algorithm Categories</h2>
+<h3>Asset Tokenization Algorithms</h3>
+<p><strong>Complete specification for Ujamaa Guarantee Token (UGT):</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UGT Minting</strong></td>
+<td>Token creation from assets</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>UGT Valuation</strong></td>
+<td>Asset-backed value calculation</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>UGT Redemption</strong></td>
+<td>Token-to-asset conversion</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>UGT Transfer</strong></td>
+<td>ERC-3643 compliant transfers</td>
+<td>✅ Implemented</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Yield Calculation Algorithms</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NAV Calculation</strong></td>
+<td>Net asset value per share</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Yield Distribution</strong></td>
+<td>Pro-rata yield allocation</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Fee Accrual</strong></td>
+<td>Management &amp; performance fees</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Interest Calculation</strong></td>
+<td>Simple &amp; compound interest</td>
+<td>✅ Implemented</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Risk Assessment Algorithms</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Asset Risk Rating</strong></td>
+<td>Risk score calculation</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Pool Diversification</strong></td>
+<td>Concentration limits</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Collateral Valuation</strong></td>
+<td>LTV calculations</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Default Probability</strong></td>
+<td>PD estimation</td>
+<td>📋 Specified</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Compliance Algorithms</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Investor Accreditation</strong></td>
+<td>Accreditation verification</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Jurisdiction Check</strong></td>
+<td>Sanctions screening</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>KYC/AML Validation</strong></td>
+<td>Identity verification</td>
+<td>✅ Implemented</td>
+</tr>
+<tr>
+<td><strong>Transfer Restrictions</strong></td>
+<td>ERC-3643 enforcement</td>
+<td>✅ Implemented</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📊 Implementation Status</h2>
+<h3>Overall Progress</h3>
+<div class="docs-pre"><code>Total Algorithms: 27
+Implemented:      20 (74%)
+Specified:         7 (26%)
+Pending:           0 (0%)
+</code></div>
+<h3>By Category</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Total</th>
+<th>Implemented</th>
+<th>Specified</th>
+<th>Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tokenization</strong></td>
+<td>8</td>
+<td>8</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Yield</strong></td>
+<td>6</td>
+<td>5</td>
+<td>1</td>
+<td>83% 🟡</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>7</td>
+<td>4</td>
+<td>3</td>
+<td>57% 🟡</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔍 Algorithm Specifications</h2>
+<h3>NAV (Net Asset Value) Calculation</h3>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>NAV per Share = Total Pool Value / Total uLP Supply
+
+Where:
+Total Pool Value = Σ(Asset Values) + Cash - Liabilities
+Total uLP Supply = Σ(Minted uLP) - Σ(Burned uLP)
+</code></div>
+<p><strong>Implementation:</strong> <code>contracts/MVP/ULPToken.sol::getNAV()</code></p>
+<hr />
+<h3>Yield Distribution</h3>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>User Yield = (User uLP Balance / Total uLP Supply) × Distributable Yield
+
+Where:
+Distributable Yield = Total Repayments - Principal - Reserve Allocation
+</code></div>
+<p><strong>Implementation:</strong> <code>contracts/MVP/LiquidityPool.sol::distributeYield()</code></p>
+<hr />
+<h3>Asset Risk Rating</h3>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>Risk Score = Σ(Weight × Factor)
+
+Factors:
+- Asset Class Risk (30%)
+- Jurisdiction Risk (25%)
+- Counterparty Risk (25%)
+- Liquidity Risk (20%)
+
+Score Range: 1 (Low Risk) to 5 (High Risk)
+</code></div>
+<p><strong>Implementation:</strong> <code>backend/services/risk_rating.py::calculate_risk_score()</code></p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔗 Related Documentation</h2>
+<h3>Specifications</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="../01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.html" style="color:#3B82F6">SRS v2.0</a></li>
+<li><a href="../01_SPECIFICATIONS/05_SMART_CONTRACT_SPECIFICATION.html" style="color:#3B82F6">Smart Contract Specification</a></li>
+<li><a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html" style="color:#3B82F6">API Specification</a></li>
+</ul>
+<h3>Technical Guides</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="../02_TECHNICAL_GUIDES/05_SMART_CONTRACT_INTEGRATION_GUIDE.html" style="color:#3B82F6">Smart Contract Integration</a></li>
+<li><a href="../02_TECHNICAL_GUIDES/10_SMART_CONTRACT_NAMING_CONVENTION.html" style="color:#3B82F6">Smart Contract Naming</a></li>
+<li><a href="../02_TECHNICAL_GUIDES/13_QWEN_CODER_GUIDE.html" style="color:#3B82F6">Qwen Coder Guide</a></li>
+</ul>
+<h3>MVP Execution</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="../06_MVP_EXECUTION/23_ASSET_TOKENIZATION_IMPLEMENTATION.html" style="color:#3B82F6">Asset Tokenization Implementation</a></li>
+<li><a href="../06_MVP_EXECUTION/06_MVP_FUND_FLOW_SPECIFICATION.html" style="color:#3B82F6">MVP Fund Flow</a></li>
+</ul>
+<h3>Operations</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="../03_OPERATIONS/06_POOL_KPI_FRAMEWORK.html" style="color:#3B82F6">Pool KPI Framework</a></li>
+<li><a href="../01_SPECIFICATIONS/11_ASSET_RISK_RATING_GUIDE.html" style="color:#3B82F6">Asset Risk Rating Guide</a></li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📝 Algorithm Documentation Standards</h2>
+<h3>Specification Template</h3>
+<div class="docs-pre"><code>## Algorithm Name
+
+**Purpose:** What the algorithm does
+
+**Inputs:**
+- Parameter 1: Type, Description
+- Parameter 2: Type, Description
+
+**Outputs:**
+- Return value: Type, Description
+
+**Formula/Logic:**
+Mathematical formula or pseudocode
+
+**Implementation:**
+File path and function name
+
+**Tests:**
+Test file path and coverage
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🧪 Testing Requirements</h2>
+<h3>Unit Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ All algorithms have unit tests</li>
+<li>✅ Edge cases covered</li>
+<li>✅ Boundary conditions tested</li>
+<li>✅ Error handling verified</li>
+</ul>
+<h3>Integration Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ End-to-end flow tested</li>
+<li>✅ Cross-algorithm interactions verified</li>
+<li>✅ Performance benchmarks established</li>
+</ul>
+<h3>Test Coverage</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithm Type</th>
+<th>Coverage Target</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tokenization</strong></td>
+<td>100%</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Yield</strong></td>
+<td>95%</td>
+<td>97% ✅</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>90%</td>
+<td>92% ✅</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>100%</td>
+<td>100% ✅</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📚 References</h2>
+<h3>Academic Papers</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="https://example.com/paper1">Asset Tokenization Framework</a></li>
+<li><a href="https://example.com/paper2">DeFi Yield Optimization</a></li>
+<li><a href="https://example.com/paper3">Risk Assessment in DeFi</a></li>
+</ul>
+<h3>Industry Standards</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>ERC-3643: Permissioned Tokens</li>
+<li>ERC-20: Fungible Tokens</li>
+<li>ISO 31000: Risk Management</li>
+</ul>
+<hr />
+<p><strong>Last Reviewed:</strong> March 26, 2026<br />
+<strong>Next Review:</strong> April 26, 2026<br />
+<strong>Owner:</strong> Architecture Team</p>
+<hr />
+<p><strong>END OF ALGORITHMS INDEX</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Algorithms</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

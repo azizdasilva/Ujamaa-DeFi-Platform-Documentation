@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DEFI PLATFORM Frontend - Quick Start Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DEFI PLATFORM Frontend - Quick Start Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DEFI PLATFORM Frontend - Quick Start Guide</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ Active | <strong>Last Updated:</strong> March 17, 2026</p></div>
+
+        <h1>UJAMAA DEFI PLATFORM Frontend - Quick Start Guide</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>How to Start and Launch the Frontend Application</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Document Version:</strong> 2.0 (SRS v2.0 Aligned)<br />
+<strong>Last Updated:</strong> March 17, 2026<br />
+<strong>Framework:</strong> React 19 + Vite 7.x + TypeScript 6.0+</p>
+<p><strong>Aligned with:</strong> SRS v2.0 Section 4.1 (User Interfaces)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-prerequisites">Prerequisites</a></li>
+<li><a href="#2-installation">Installation</a></li>
+<li><a href="#3-start-development-server">Start Development Server</a></li>
+<li><a href="#4-access-the-application">Access the Application</a></li>
+<li><a href="#5-testing-checklist">Testing Checklist</a></li>
+<li><a href="#6-build-for-production">Build for Production</a></li>
+<li><a href="#7-deploy-to-production">Deploy to Production</a></li>
+<li><a href="#8-troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Prerequisites</h2>
+<p>Ensure you have the following installed:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>How to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>v18+</td>
+<td><code>node --version</code></td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>v9+</td>
+<td><code>npm --version</code></td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>Latest</td>
+<td><code>git --version</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Install Node.js (if not installed)</h3>
+<p><strong>Windows:</strong></p>
+<div class="docs-pre"><code># Download from https://nodejs.org/
+# Run the installer and follow prompts
+</code></div>
+<p><strong>Verify Installation:</strong></p>
+<div class="docs-pre"><code>node --version
+npm --version
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Installation</h2>
+<h3>Step 1: Navigate to Frontend Directory</h3>
+<div class="docs-pre"><code>cd &quot;C:\Users\aziz_\PycharmProjects\2026\INTELLI_BRIDGE_ANALYTICS\UJAMAA DEFI PLATFORM\frontend&quot;
+</code></div>
+<h3>Step 2: Install Dependencies</h3>
+<div class="docs-pre"><code>npm install
+</code></div>
+<p><strong>Expected Output:</strong></p>
+<div class="docs-pre"><code>added 225 packages, and audited 226 packages in 1m
+
+61 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Start Development Server</h2>
+<h3>Option A: Foreground (Recommended for Development)</h3>
+<div class="docs-pre"><code>npm run dev
+</code></div>
+<p><strong>Expected Output:</strong></p>
+<div class="docs-pre"><code>  VITE v7.3.1  ready in 500 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+</code></div>
+<h3>Option B: Background (For Testing)</h3>
+<div class="docs-pre"><code># Windows (PowerShell)
+Start-Process npm -ArgumentList &quot;run&quot;,&quot;dev&quot; -WindowStyle Hidden
+
+# Or use npm run dev &amp;
+</code></div>
+<h3>Stop the Server</h3>
+<p><strong>Foreground:</strong><br />
+- Press <code>Ctrl + C</code> in the terminal</p>
+<p><strong>Background:</strong></p>
+<div class="docs-pre"><code># Find the process
+tasklist | findstr node
+
+# Kill the process
+taskkill /F /IM node.exe
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Access the Application</h2>
+<h3>Open Your Browser</h3>
+<p>Navigate to:</p>
+<div class="docs-pre"><code>http://localhost:5173
+</code></div>
+<h3>Supported Browsers</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Browser</th>
+<th>Version</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td>120+</td>
+<td>✅ Tested</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>120+</td>
+<td>✅ Tested</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>120+</td>
+<td>✅ Tested</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>16+</td>
+<td>⚠️ Not Tested</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Testing Checklist</h2>
+<h3>Quick Routes Reference</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Page</th>
+<th>Route</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Homepage</strong></td>
+<td><code>/</code></td>
+<td>Landing page with hero, features, CTA</td>
+</tr>
+<tr>
+<td><strong>Marketplace</strong></td>
+<td><code>/marketplace</code></td>
+<td>Browse and filter assets</td>
+</tr>
+<tr>
+<td><strong>Investor Onboarding</strong></td>
+<td><code>/onboarding/investor</code></td>
+<td>KYC flow for investors</td>
+</tr>
+<tr>
+<td><strong>Industrial Onboarding</strong></td>
+<td><code>/onboarding/originator</code></td>
+<td>KYB flow for companies</td>
+</tr>
+<tr>
+<td><strong>Investor Dashboard</strong></td>
+<td><code>/dashboard/investor</code></td>
+<td>Portfolio and investments</td>
+</tr>
+<tr>
+<td><strong>Industrial Dashboard</strong></td>
+<td><code>/dashboard/originator</code></td>
+<td>Asset management, notarization</td>
+</tr>
+<tr>
+<td><strong>Admin Dashboard</strong></td>
+<td><code>/dashboard/admin</code></td>
+<td>User approval, fraud alerts</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>Detailed Testing Steps</h3>
+<h4>1. <strong>Landing Page</strong> (<code>http://localhost:5173/</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Hero section displays with green gradient background</li>
+<li>[ ] Headline: "Tokenize African Real-World Assets"</li>
+<li>[ ] 3 CTA buttons visible (Browse Assets, Invest Now, Tokenize Assets)</li>
+<li>[ ] Features section shows 4 cards:</li>
+<li>ERC-3643 Compliance</li>
+<li>Institutional Security</li>
+<li>African Market Focus</li>
+<li>Transparent &amp; Auditable</li>
+<li>[ ] "How It Works" section shows 3 steps</li>
+<li>[ ] Footer with links displays correctly</li>
+<li>[ ] Click "Browse Assets" → navigates to <code>/marketplace</code></li>
+<li>[ ] Click "Invest Now" → navigates to <code>/onboarding/investor</code></li>
+</ul>
+<h4>2. <strong>Marketplace</strong> (<code>http://localhost:5173/marketplace</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] 6 asset cards display in grid (3 columns on desktop)</li>
+<li>[ ] Each card shows:</li>
+<li>Asset name and originator</li>
+<li>Asset class badge</li>
+<li>Target raise and current raise</li>
+<li>Expected yield (%)</li>
+<li>Minimum investment</li>
+<li>Progress bar</li>
+<li>"View Details" button</li>
+<li>[ ] Search bar filters assets by name/originator</li>
+<li>[ ] Class dropdown filters by asset type</li>
+<li>[ ] Clear Filters button resets all filters</li>
+<li>[ ] Responsive on mobile (1 column)</li>
+</ul>
+<h4>3. <strong>Investor Onboarding</strong> (<code>http://localhost:5173/onboarding/investor</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] 3-step onboarding flow visible</li>
+<li>[ ] Step 1: "Connect Wallet" button present</li>
+<li>[ ] Step 2: Email input and jurisdiction dropdown</li>
+<li>[ ] Step 3: KYC document upload area</li>
+<li>[ ] "Continue to Dashboard" button at bottom</li>
+<li>[ ] Form validation works (try submitting empty fields)</li>
+</ul>
+<h4>4. <strong>Industrial Onboarding</strong> (<code>http://localhost:5173/onboarding/originator</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Company information form displays</li>
+<li>[ ] Inputs: Company Name, Registration Number</li>
+<li>[ ] Industry dropdown with 8 options:</li>
+<li>Manufacturing</li>
+<li>Agriculture</li>
+<li>Mining</li>
+<li>Trade</li>
+<li>Services</li>
+<li>Energy</li>
+<li>Real Estate</li>
+<li>Technology</li>
+<li>[ ] Document upload areas (2 files required)</li>
+<li>[ ] "Submit for Verification" button</li>
+</ul>
+<h4>5. <strong>Investor Dashboard</strong> (<code>http://localhost:5173/dashboard/investor</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Portfolio summary cards (4 cards):</li>
+<li>Total Invested</li>
+<li>Current Value</li>
+<li>Total Returns</li>
+<li>Active Investments</li>
+<li>[ ] Investments table with columns:</li>
+<li>Asset name</li>
+<li>Shares</li>
+<li>Value</li>
+<li>Returns (%)</li>
+<li>Status badge</li>
+<li>[ ] Mock data populates correctly</li>
+<li>[ ] "View All" link visible</li>
+</ul>
+<h4>6. <strong>Industrial Dashboard</strong> (<code>http://localhost:5173/dashboard/originator</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Stats summary (4 cards):</li>
+<li>Total Assets</li>
+<li>Pending Approval</li>
+<li>Total Raised</li>
+<li>Proofs Notarized</li>
+<li>[ ] "Deposit New Asset" button visible</li>
+<li>[ ] Your Assets list with progress bars</li>
+<li>[ ] Notarization History table</li>
+<li>[ ] "🔐 Notarize Production Data" button</li>
+</ul>
+<h4>7. <strong>Admin Dashboard</strong> (<code>http://localhost:5173/dashboard/admin</code>)</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] KPI cards (4 cards):</li>
+<li>Pending Users</li>
+<li>Pending Assets</li>
+<li>Fraud Alerts</li>
+<li>Total AUM</li>
+<li>[ ] Pending Users table with Approve/Reject actions</li>
+<li>[ ] Pending Assets table with Approve/Reject actions</li>
+<li>[ ] Fraud Alerts with severity badges</li>
+<li>[ ] Resolve/Escalate buttons on alerts</li>
+</ul>
+<hr />
+<h3>Navigation Testing</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Header logo links to homepage</li>
+<li>[ ] "Marketplace" link in header works</li>
+<li>[ ] Dashboard links appear after wallet connection</li>
+<li>[ ] Footer links are functional</li>
+<li>[ ] Mobile navigation (hamburger menu) works</li>
+<li>[ ] Role-based navigation displays correctly</li>
+</ul>
+<hr />
+<h3>Responsive Testing</h3>
+<p><strong>Desktop (1920x1080):</strong><br />
+- [ ] All layouts display correctly<br />
+- [ ] Grid layouts show full columns<br />
+- [ ] Header navigation visible</p>
+<p><strong>Tablet (768x1024):</strong><br />
+- [ ] Grid layouts adjust to 2 columns<br />
+- [ ] Navigation remains accessible<br />
+- [ ] No horizontal scrolling</p>
+<p><strong>Mobile (375x667):</strong><br />
+- [ ] Single column layouts<br />
+- [ ] Mobile navigation works<br />
+- [ ] All buttons are tappable<br />
+- [ ] Text is readable without zoom</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Build for Production</h2>
+<h3>Step 1: Run Production Build</h3>
+<div class="docs-pre"><code>npm run build
+</code></div>
+<p><strong>Expected Output:</strong></p>
+<div class="docs-pre"><code>&gt; frontend@0.0.0 build
+&gt; tsc -b &amp;&amp; vite build
+
+vite v7.3.1 building client environment for production...
+transforming...
+✓ 60 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.04 kB │ gzip:  0.53 kB
+dist/assets/index-Dv2Yopbj.css    6.43 kB │ gzip:  1.83 kB
+dist/assets/index-D-ChvpMS.js   272.61 kB │ gzip: 82.58 kB
+✓ built in 2.63s
+</code></div>
+<h3>Step 2: Preview Production Build</h3>
+<div class="docs-pre"><code>npm run preview
+</code></div>
+<p><strong>Expected Output:</strong></p>
+<div class="docs-pre"><code>  VITE v7.3.1  ready in 300 ms
+
+  ➜  Local:   http://localhost:4173/
+  ➜  Network: use --host to expose
+</code></div>
+<p>Navigate to <code>http://localhost:4173</code> to test production build.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Deploy to Production</h2>
+<h3>Deploy to Vercel (Recommended)</h3>
+<h4>Step 1: Install Vercel CLI</h4>
+<div class="docs-pre"><code>npm install -g vercel
+</code></div>
+<h4>Step 2: Login to Vercel</h4>
+<div class="docs-pre"><code>vercel login
+</code></div>
+<h4>Step 3: Deploy</h4>
+<div class="docs-pre"><code># Navigate to frontend directory
+cd frontend
+
+# Deploy to preview
+vercel
+
+# Deploy to production
+vercel --prod
+</code></div>
+<h4>Step 4: Set Environment Variables</h4>
+<p>In Vercel dashboard, add:</p>
+<div class="docs-pre"><code>NEXT_PUBLIC_POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+NEXT_PUBLIC_API_URL=https://your-api-url.com
+</code></div>
+<h3>Deploy to Netlify</h3>
+<h4>Step 1: Install Netlify CLI</h4>
+<div class="docs-pre"><code>npm install -g netlify-cli
+</code></div>
+<h4>Step 2: Deploy</h4>
+<div class="docs-pre"><code>netlify deploy --prod
+</code></div>
+<h4>Step 3: Build Settings</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Build command:</strong> <code>npm run build</code></li>
+<li><strong>Publish directory:</strong> <code>dist</code></li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Troubleshooting</h2>
+<h3>Common Issues</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Issue</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Port 5173 already in use</strong></td>
+<td>Another Vite server running</td>
+<td>Kill process: <code>taskkill /F /IM node.exe</code></td>
+</tr>
+<tr>
+<td><strong><code>npm install</code> fails</strong></td>
+<td>Network/cache issue</td>
+<td>Run <code>npm cache clean --force</code> then retry</td>
+</tr>
+<tr>
+<td><strong>Blank page on load</strong></td>
+<td>Build error or missing dependency</td>
+<td>Run <code>npm run build</code> to check for errors</td>
+</tr>
+<tr>
+<td><strong>Styles not loading</strong></td>
+<td>Tailwind CSS not configured</td>
+<td>Verify <code>tailwind.config.js</code> exists</td>
+</tr>
+<tr>
+<td><strong>TypeScript errors</strong></td>
+<td>Type mismatch</td>
+<td>Run <code>npx tsc --noEmit</code> to see all errors</td>
+</tr>
+<tr>
+<td><strong>Module not found</strong></td>
+<td>Import path incorrect</td>
+<td>Check relative paths (use <code>../../</code> for pages)</td>
+</tr>
+<tr>
+<td><strong>Hot reload not working</strong></td>
+<td>Vite cache issue</td>
+<td>Restart dev server with <code>Ctrl+C</code> then <code>npm run dev</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Debug Commands</h3>
+<p><strong>Check Node Version:</strong></p>
+<div class="docs-pre"><code>node --version
+</code></div>
+<p><strong>Check npm Version:</strong></p>
+<div class="docs-pre"><code>npm --version
+</code></div>
+<p><strong>List Installed Packages:</strong></p>
+<div class="docs-pre"><code>npm list --depth=0
+</code></div>
+<p><strong>Clear npm Cache:</strong></p>
+<div class="docs-pre"><code>npm cache clean --force
+</code></div>
+<p><strong>Reinstall Dependencies:</strong></p>
+<div class="docs-pre"><code>rm -rf node_modules package-lock.json
+npm install
+</code></div>
+<p><strong>TypeScript Check:</strong></p>
+<div class="docs-pre"><code>npx tsc --noEmit
+</code></div>
+<p><strong>Build and Preview:</strong></p>
+<div class="docs-pre"><code>npm run build
+npm run preview
+</code></div>
+<h3>Browser Console Debugging</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Open browser DevTools (<code>F12</code>)</li>
+<li>Go to <strong>Console</strong> tab</li>
+<li>Look for errors (red text)</li>
+<li>Check <strong>Network</strong> tab for failed requests</li>
+<li>Use <code>console.log()</code> in components for debugging</li>
+</ol>
+<h3>Performance Issues</h3>
+<p><strong>Slow Page Load:</strong><br />
+- Check bundle size: <code>npm run build</code><br />
+- Enable compression on server<br />
+- Use React.lazy() for code splitting</p>
+<p><strong>Slow Hot Reload:</strong><br />
+- Exclude large folders in <code>vite.config.ts</code><br />
+- Use <code>esbuild</code> for faster transpilation</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix: Available Scripts</h2>
+<div class="docs-pre"><code># Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Type check
+npx tsc --noEmit
+
+# Lint (if configured)
+npm run lint
+
+# Format (if configured)
+npm run format
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Environment Variables</h2>
+<p>Create a <code>.env</code> file in the <code>frontend</code> directory:</p>
+<div class="docs-pre"><code># Development
+VITE_API_URL=http://localhost:8000
+VITE_POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+VITE_CHAIN_ID=80002
+</code></div>
+<p><strong>Note:</strong> Vite requires <code>VITE_</code> prefix for environment variables.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Support</h2>
+<p>For issues or questions:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Check this guide first</li>
+<li>Review error messages in browser console</li>
+<li>Check terminal output for build errors</li>
+<li>Contact the development team</li>
+</ol>
+<hr />
+<p><strong>Document Control:</strong><br />
+- <strong>Version:</strong> 1.0<br />
+- <strong>Created:</strong> March 2, 2026<br />
+- <strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+- <strong>Status:</strong> Active</p>
+<hr />
+<p><em>UJAMAA DEFI PLATFORM - Tokenize African Real-World Assets</em></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

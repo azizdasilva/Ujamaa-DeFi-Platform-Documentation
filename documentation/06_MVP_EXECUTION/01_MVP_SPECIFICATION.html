@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MVP Specification: Institutional Architecture Prototype - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Specification: Institutional Architecture Prototype</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">MVP Specification: Institutional Architecture Prototype</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Development Team, Investors, Stakeholders</p></div>
+
+        <h1>MVP Specification: Institutional Architecture Prototype</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - Second Iteration</h2>
+<p><strong>IMPORTANT:</strong> This MVP Specification is an <strong>EXTRACTION</strong> from the master <strong>SRS v2.1</strong> document. <strong>SRS v2.1</strong> is the <strong>PRODUCTION BASELINE</strong> and authoritative specification. MVP contains only the subset of SRS v2.1 features required for the institutional architecture prototype (testnet).</p>
+<p><strong>Source Document:</strong> <code>docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> (SRS v2.1 - 7,386 lines)</p>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
+<strong>Date:</strong> March 25, 2026<br />
+<strong>Classification:</strong> Internal / Development<br />
+<strong>Audience:</strong> Development Team, Investors, Stakeholders  </p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Updates Summary (v2.1)</h2>
+<p><strong>Updated to align with SRS v2.1:</strong><br />
+- ✅ uLP Token specification (yield-bearing, value-accrual model)<br />
+- ✅ UJG Token specification (collateral ERC-3643NFT)<br />
+- ✅ SIWE authentication (replacing ad-hoc wallet signature)<br />
+- ✅ RBAC authorization matrix (10+ roles)<br />
+- ✅ Fireblocks custody integration (platform treasury)<br />
+- ✅ Bank escrow integration (BIIC/MCB, mock for MVP)<br />
+- ✅ KYB threshold (€100K enhanced due diligence)</p>
+<p><strong>New Sections:</strong><br />
+- Section 4.4: UJG Token (Guarantee Token) specification<br />
+- Section 6.4: SIWE Authentication architecture<br />
+- Section 6.5: RBAC implementation<br />
+- Section 8.3: Fireblocks mock service<br />
+- Section 8.4: Bank escrow mock service</p>
+<p><strong>SRS Traceability:</strong><br />
+- SRS v2.1 Section 1.2 (uLP, UJG, Fireblocks, Bank Escrow)<br />
+- SRS v2.1 Section 1.2.1 (Authentication Specification)<br />
+- SRS v2.1 Section 1.2.2 (Authorization Matrix)<br />
+- SRS v2.1 Section 3 (System Features - EPIC 10: Liquidity Pool)</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-MVP-mission--scope">MVP Mission &amp; Scope</a></li>
+<li><a href="#3-architecture-overview">Architecture Overview</a></li>
+<li><a href="#4-core-features">Core Features</a></li>
+<li><a href="#5-technical-stack">Technical Stack</a></li>
+<li><a href="#6-smart-contract-architecture">Smart Contract Architecture</a></li>
+<li><a href="#7-backend-services">Backend Services</a></li>
+<li><a href="#8-frontend-components">Frontend Components</a></li>
+<li><a href="#9-success-metrics">Success Metrics</a></li>
+<li><a href="#10-timeline--milestones">Timeline &amp; Milestones</a></li>
+<li><a href="#11-risk-management">Risk Management</a></li>
+<li><a href="#12-MVP--production-path">MVP → Production Path</a></li>
+</ol>
+<hr />
+<h1>1. Executive Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Product Vision</h2>
+<p>MVP is the <strong>second iteration</strong> of the Ujamaa DeFi Platform, introducing institutional-grade architecture for liquidity pool management and yield-bearing token (uLP) functionality.</p>
+<p><strong>MVP-1 (Current):</strong> Retail tokenization platform<br />
+- Direct asset purchase (Ujamaa Asset Token (UAT))<br />
+- Basic KYC/AML<br />
+- 3 role dashboards</p>
+<p><strong>MVP (Institutional):</strong> Liquidity pool architecture<br />
+- Yield-bearing uLP tokens<br />
+- Pool-based financing<br />
+- Institutional dashboard<br />
+- Mock banking (testnet-only)</p>
+<p><strong>Production:</strong> Full institutional platform<br />
+- Real bank integration (BIIC/MCB)<br />
+- Mauritius entity (CIS Manager License)<br />
+- OHADA compliance<br />
+- Mainnet deployment</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Strategic Rationale</h2>
+<p><strong>Why MVP?</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Investor Demand:</strong> Institutional investors (€1M+) require different architecture than retail (€1K-€100K)</li>
+<li><strong>Token Economics:</strong> Yield-bearing tokens (uLP) better represent fund shares than asset-specific tokens</li>
+<li><strong>Banking Integration:</strong> Escrow accounts required for regulatory compliance</li>
+<li><strong>Testnet-First:</strong> Validate architecture before mainnet deployment</li>
+</ol>
+<p><strong>MVP is NOT:</strong><br />
+- ❌ A "demo" or "prototype"<br />
+- ❌ Throwaway code<br />
+- ❌ Fake functionality</p>
+<p><strong>MVP IS:</strong><br />
+- ✅ Production-quality code<br />
+- ✅ Testnet deployment only (regulatory pending)<br />
+- ✅ Swappable mock services (ready for real banks)<br />
+- ✅ Investor-presentable architecture</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Key Metrics</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Development Time</strong></td>
+<td>10 weeks</td>
+<td>Weeks 1-10 (includes Frontend Spec + Mocking Strategy integration)</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>$150K-$240K</td>
+<td>Development only (accounts for Frontend Spec additions)</td>
+</tr>
+<tr>
+<td><strong>Testnet Deployment</strong></td>
+<td>Polygon Amoy</td>
+<td>Week 10</td>
+</tr>
+<tr>
+<td><strong>Code Coverage</strong></td>
+<td>&gt;90%</td>
+<td>All new code</td>
+</tr>
+<tr>
+<td><strong>Security Review</strong></td>
+<td>0 critical bugs</td>
+<td>Pre-deployment</td>
+</tr>
+<tr>
+<td><strong>Investor Ready</strong></td>
+<td>Logic Capital presentation</td>
+<td>Week 10</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. MVP Mission &amp; Scope</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Mission Statement</h2>
+<p><strong>Deliver a functional, institutional-grade liquidity pool architecture on testnet that demonstrates:</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Ujamaa Pool Token (uLP) Mechanics</strong> - Yield-bearing token with correct NAV calculation</li>
+<li><strong>Pool Management</strong> - Multiple financings, diversification, risk tracking</li>
+<li><strong>Mock Banking</strong> - Swappable interfaces for real bank integration</li>
+<li><strong>Institutional UX</strong> - Real-time dashboard, yield statements, transparency</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 In Scope (MVP)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLPToken Contract</strong></td>
+<td>Yield-bearing LP token (ERC-3643)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>LiquidityPool Contract</strong></td>
+<td>Pool management, multiple financings</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>MockEscrow Contract</strong></td>
+<td>Simulated escrow accounts</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>MockFiatRamp Contract</strong></td>
+<td>Simulated fiat on/off ramp</td>
+<td>P1</td>
+</tr>
+<tr>
+<td><strong>Yield Calculation</strong></td>
+<td>Real math, simulated data</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Pool Manager API</strong></td>
+<td>Backend for pool operations</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Institutional Dashboard</strong></td>
+<td>Frontend for investors</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>uLP Deposit/Redeem</strong></td>
+<td>User flow for uLP tokens</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Mock Bank Service</strong></td>
+<td>Interface for real bank later</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Mock GDIZ Service</strong></td>
+<td>Interface for GDIZ later</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.3 Out of Scope (MVP)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Reason</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real Bank Integration</strong></td>
+<td>Requires banking partnership</td>
+<td>Production</td>
+</tr>
+<tr>
+<td><strong>Mauritius Entity</strong></td>
+<td>Legal setup (6-8 weeks)</td>
+<td>Parallel track</td>
+</tr>
+<tr>
+<td><strong>OHADA Compliance</strong></td>
+<td>Legal framework</td>
+<td>Production</td>
+</tr>
+<tr>
+<td><strong>Mainnet Deployment</strong></td>
+<td>Regulatory approval needed</td>
+<td>Production</td>
+</tr>
+<tr>
+<td><strong>Secondary Market for uLP</strong></td>
+<td>Liquidity pool focus</td>
+<td>MVP-3</td>
+</tr>
+<tr>
+<td><strong>Mobile Apps</strong></td>
+<td>Web-first approach</td>
+<td>MVP-3</td>
+</tr>
+<tr>
+<td><strong>Multi-language</strong></td>
+<td>English + French only</td>
+<td>MVP-1 (done)</td>
+</tr>
+<tr>
+<td><strong>Cross-Chain Bridge</strong></td>
+<td>Requires 5-of-9 multisig setup</td>
+<td>Production</td>
+</tr>
+<tr>
+<td><strong>Ujamaa Guarantee (UJG) Auction</strong></td>
+<td>Default scenario complex</td>
+<td>Production (optional mock)</td>
+</tr>
+<tr>
+<td><strong>Mobile Money Integration</strong></td>
+<td>Partnership required</td>
+<td>Production (MockFiatRamp in MVP)</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.4 Design Principles</h2>
+<h3>1. Non-Breaking Changes</h3>
+<p>✅ <strong>DO NOT</strong> modify MVP-1 contracts (Ujamaa Asset Token (UAT), IdentityRegistry, ComplianceModule)<br />
+✅ <strong>DO</strong> add new features in separate folders (<code>MVP/</code> prefix)<br />
+✅ <strong>DO</strong> use feature flags for MVP mode</p>
+<h3>2. Clear Separation</h3>
+<p>✅ <strong>DO</strong> keep mock services clearly separated from real services<br />
+✅ <strong>DO</strong> use dependency injection for easy swapping<br />
+✅ <strong>DO</strong> label all MVP components with <code>MVP</code> prefix</p>
+<h3>3. Production Quality</h3>
+<p>✅ <strong>DO</strong> write tests for all new code (&gt;90% coverage)<br />
+✅ <strong>DO</strong> use TypeScript types for all interfaces<br />
+✅ <strong>DO</strong> add comprehensive documentation<br />
+✅ <strong>DO</strong> use ESLint + Prettier consistently</p>
+<h3>4. Transparency</h3>
+<p>✅ <strong>DO</strong> add disclaimers on every MVP page<br />
+✅ <strong>DO</strong> never hide that this is testnet-only<br />
+✅ <strong>DO</strong> use testnet only (Polygon Amoy)<br />
+✅ <strong>DO</strong> document all mock services</p>
+<hr />
+</section>
+<h1>3. Architecture Overview</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 System Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MVP ARCHITECTURE                                    │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                      USER ACCESS LAYER                                  │ │
+│  │                                                                        │ │
+│  │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐    │ │
+│  │  │  Institutional   │  │  Retail          │  │  Admin           │    │ │
+│  │  │  Dashboard       │  │  Dashboard       │  │  Dashboard       │    │ │
+│  │  │  (MVP)         │  │  (MVP-1)         │  │  (MVP-1)         │    │ │
+│  │  └──────────────────┘  └──────────────────┘  └──────────────────┘    │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼ HTTPS/WSS (TLS 1.3)                     │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                      API GATEWAY LAYER                                  │ │
+│  │         Kong/Nginx: Rate Limiting │ Auth │ Routing │ CORS              │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                   MICROSERVICES LAYER (FastAPI)                         │ │
+│  │                                                                        │ │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                │ │
+│  │  │  MVP-1       │  │  MVP       │  │  Shared      │                │ │
+│  │  │  Services    │  │  Services    │  │  Services    │                │ │
+│  │  │              │  │              │  │              │                │ │
+│  │  │  • Assets    │  │  • Pools     │  │  • Auth      │                │ │
+│  │  │  • Investors │  │  • uLP       │  │  • Config    │                │ │
+│  │  │  • Trades    │  │  • Mock Bank │  │  • Logging   │                │ │
+│  │  │  • Fraud     │  │  • Mock GDIZ │  │              │                │ │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘                │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                   │                                         │
+│                  ┌────────────────┼────────────────┐                        │
+│                  ▼                ▼                ▼                        │
+│          ┌──────────────┐ ┌──────────────┐ ┌──────────────┐                │
+│          │  PostgreSQL  │ │    Redis     │ │    Mock      │                │
+│          │  (Primary)   │ │   (Cache)    │ │    Data      │                │
+│          └──────────────┘ └──────────────┘ └──────────────┘                │
+│                                   │                                         │
+│                                   ▼                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                  BLOCKCHAIN LAYER (Polygon Amoy)                        │ │
+│  │                                                                        │ │
+│  │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐    │ │
+│  │  │  MVP-1 Contracts │  │  MVP Contracts │  │  Mock Contracts  │    │ │
+│  │  │                  │  │                  │  │                  │    │ │
+│  │  │  • Ujamaa Asset Token (UAT)  │  │  • uLPToken      │  │  • MockEscrow    │    │ │
+│  │  │  • Identity      │  │  • LiquidityPool │  │  • MockFiatRamp  │    │ │
+│  │  │  • Compliance    │  │                  │  │                  │    │ │
+│  │  └──────────────────┘  └──────────────────┘  └──────────────────┘    │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Data Flow: Institutional Investment</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                    INSTITUTIONAL INVESTMENT FLOW                              │
+│                                                                              │
+│  1. Investor Onboarding                                                      │
+│     ┌──────────────┐                                                         │
+│     │  Investor    │                                                         │
+│     │  (Logic Cap) │                                                         │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 1. Connect wallet (MetaMask)                                    │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  KYB Check   │  (Mock for MVP, real for production)                 │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 2. Whitelist address                                            │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Approved    │                                                         │
+│     └──────────────┘                                                         │
+│                                                                              │
+│  2. Deposit → uLP Minting                                                    │
+│            │                                                                  │
+│            │ 3. Deposit testnet Ujamaa Euro (UJEUR) (faucet or swap)                        │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Mock Bank   │  (Simulates wire transfer)                              │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 4. Convert to stablecoin                                        │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  MockEscrow  │  (Simulates escrow account)                             │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 5. Mint uLP tokens                                              │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  uLPToken    │  (Yield-bearing LP token)                               │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 6. Receive uLP (1:1 at inception)                               │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Investor    │  (Holds uLP tokens)                                     │
+│     │  Wallet      │                                                         │
+│     └──────────────┘                                                         │
+│                                                                              │
+│  3. Yield Accrual                                                            │
+│            │                                                                  │
+│            │ 7. Deploy to industrial financing                               │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │ LiquidityPool│  (Manages multiple financings)                          │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 8. Industrial repays with interest                              │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Mock GDIZ   │  (Simulates industrial repayment)                       │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 9. Add yield to pool                                            │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  uLPToken    │  (Value per share increases)                            │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 10. NAV updates (e.g., 1.00 → 1.10 Ujamaa Euro (UJEUR))                        │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Dashboard   │  (Shows increased value)                                │
+│     └──────────────┘                                                         │
+│                                                                              │
+│  4. Redemption                                                               │
+│            │                                                                  │
+│            │ 11. Request redemption                                          │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  uLPToken    │  (Burn uLP tokens)                                      │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 12. Receive Ujamaa Euro (UJEUR) (principal + yield)                            │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │ MockFiatRamp │  (Simulates fiat withdrawal)                            │
+│     └──────┬───────┘                                                         │
+│            │                                                                  │
+│            │ 13. Fiat to bank account                                        │
+│            ▼                                                                  │
+│     ┌──────────────┐                                                         │
+│     │  Investor    │  (Profit realized)                                      │
+│     │  Bank        │                                                         │
+│     └──────────────┘                                                         │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<h1>4. Core Features</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 uLPToken (Yield-Bearing LP Token)</h2>
+<h3>Description</h3>
+<p>ERC-3643 compliant yield-bearing token representing ownership in liquidity pool.</p>
+<h3>Token Mechanics</h3>
+<p><strong>Value-Accrual Model:</strong><br />
+- Token balance stays constant<br />
+- Value per token increases with yield<br />
+- NAV calculated on-chain</p>
+<p><strong>Example:</strong></p>
+<div class="docs-pre"><code>Initial: Investor deposits 10M Ujamaa Euro (UJEUR)
+→ Receives 10M uLP tokens (NAV = 1.00 Ujamaa Euro (UJEUR) per uLP)
+
+After 1 year (10% yield):
+→ Still holds 10M uLP tokens (balance unchanged)
+→ NAV = 1.10 Ujamaa Euro (UJEUR) per uLP
+→ Total value = 11M Ujamaa Euro (UJEUR)
+</code></div>
+<h3>Functions</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Gas Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deposit(uint256 eurcAmount)</code></td>
+<td>Deposit Ujamaa Euro (UJEUR), receive uLP</td>
+<td>~85,000</td>
+</tr>
+<tr>
+<td><code>redeem(uint256 shares)</code></td>
+<td>Burn uLP, receive Ujamaa Euro (UJEUR)</td>
+<td>~65,000</td>
+</tr>
+<tr>
+<td><code>getValue(address)</code></td>
+<td>Get current value in Ujamaa Euro (UJEUR)</td>
+<td>~2,500</td>
+</tr>
+<tr>
+<td><code>getValuePerShare()</code></td>
+<td>Get NAV per Ujamaa Pool Token (uLP)</td>
+<td>~2,500</td>
+</tr>
+<tr>
+<td><code>addYield(uint256)</code></td>
+<td>Add yield to pool (admin)</td>
+<td>~45,000</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Security Features</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ ERC-3643 compliance (transfer restrictions)</li>
+<li>✅ IS_PRODUCTION = false (testnet safety)</li>
+<li>✅ Max deposit limit (1M Ujamaa Euro (UJEUR) for demo)</li>
+<li>✅ Role-based access control</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 LiquidityPool (Pool Management)</h2>
+<h3>Description</h3>
+<p>Manages pool of funds for industrial financing with diversification and risk tracking.</p>
+<h3>Pool Mechanics</h3>
+<p><strong>Multiple Financings:</strong><br />
+- Pool can deploy to multiple industrials<br />
+- Each financing has: amount, interest rate, due date<br />
+- Diversification tracking (by asset, by industrial, by geography)</p>
+<p><strong>Example:</strong></p>
+<div class="docs-pre"><code>Pool: &quot;Ujamaa Industrial Finance Pool I&quot;
+Total Value: 10M Ujamaa Euro (UJEUR)
+├── Deployed: 7M Ujamaa Euro (UJEUR) (70%)
+│   ├── GDIZ Cotton #1: 2M Ujamaa Euro (UJEUR) @ 12% (due: 90 days)
+│   ├── GDIZ Soy #1: 3M Ujamaa Euro (UJEUR) @ 11% (due: 120 days)
+│   └── GDIZ Coffee #1: 2M Ujamaa Euro (UJEUR) @ 13% (due: 60 days)
+└── Available: 3M Ujamaa Euro (UJEUR) (30%)
+</code></div>
+<h3>Functions</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Gas Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createPool(string name)</code></td>
+<td>Create new pool</td>
+<td>~150,000</td>
+</tr>
+<tr>
+<td><code>deployToIndustrial(...)</code></td>
+<td>Deploy funds to industrial</td>
+<td>~120,000</td>
+</tr>
+<tr>
+<td><code>recordRepayment(...)</code></td>
+<td>Record repayment + interest</td>
+<td>~85,000</td>
+</tr>
+<tr>
+<td><code>getPoolStats(uint256)</code></td>
+<td>Get pool statistics</td>
+<td>~5,000</td>
+</tr>
+<tr>
+<td><code>getFinancing(...)</code></td>
+<td>Get financing details</td>
+<td>~3,000</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 MockEscrow (Bank Simulation)</h2>
+<h3>Description</h3>
+<p>Simulates escrow accounts for testnet. Interface designed for easy swap with real bank API.</p>
+<h3>Mock vs Real</h3>
+<p><strong>MVP (Mock):</strong><br />
+- In-memory account balances<br />
+- Simulated wire transfers<br />
+- No real money moves</p>
+<p><strong>Production (Real):</strong><br />
+- BIIC/MCB API integration<br />
+- Real escrow accounts<br />
+- Actual wire transfers</p>
+<h3>Interface Design</h3>
+<div class="docs-pre"><code># MVP Interface (same for mock and real)
+class BankService(ABC):
+    @abstractmethod
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        pass
+
+    @abstractmethod
+    def record_wire_transfer(self, from_account: str, to_account: str, amount: int) -&gt; str:
+        pass
+
+    @abstractmethod
+    def get_balance(self, account_id: str) -&gt; int:
+        pass
+
+# MVP Implementation (mock)
+class MockBankService(BankService):
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        # Mock implementation
+
+# Production Implementation (real)
+class BIICBankService(BankService):
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        # Real BIIC API integration
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.4 Institutional Dashboard</h2>
+<h3>Description</h3>
+<p>Real-time dashboard for institutional investors showing:<br />
+- uLP holdings and current value<br />
+- Yield accrued over time<br />
+- Pool allocation (by asset, by industrial)<br />
+- Transaction history<br />
+- Downloadable yield statements</p>
+<h3>Key Components</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portfolio Summary</strong></td>
+<td>Total invested, current value, yield earned</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td><strong>uLP Holdings</strong></td>
+<td>Token balance, NAV per share, value</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td><strong>Yield Chart</strong></td>
+<td>Historical NAV chart (line graph)</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td><strong>Pool Allocation</strong></td>
+<td>Pie chart: Cotton, Soy, Coffee, etc.</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td><strong>Transaction History</strong></td>
+<td>Deposits, redemptions, yield distributions</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td><strong>Yield Statement</strong></td>
+<td>Downloadable PDF for accounting</td>
+<td>MVP</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.5 Yield Calculation</h2>
+<h3>Description</h3>
+<p>Real financial math for yield accrual, using simulated data for MVP.</p>
+<h3>Calculation Logic</h3>
+<div class="docs-pre"><code># Simplified example
+def calculate_nav_per_share(pool_value, total_shares):
+    &quot;&quot;&quot;Calculate Net Asset Value per uLP share.&quot;&quot;&quot;
+    if total_shares == 0:
+        return 1e18  # Initial NAV: 1.0
+    return (pool_value * 1e18) / total_shares
+
+def calculate_yield_accrual(principal, annual_rate, days_elapsed):
+    &quot;&quot;&quot;Calculate yield accrued over time.&quot;&quot;&quot;
+    daily_rate = annual_rate / 365
+    accrued = principal * daily_rate * days_elapsed
+    return accrued
+
+# Example:
+# Principal: 10M Ujamaa Euro (UJEUR)
+# Annual rate: 10%
+# Days elapsed: 365
+# Accrued yield: 10M * 0.10 / 365 * 365 = 1M Ujamaa Euro (UJEUR)
+# New pool value: 11M Ujamaa Euro (UJEUR)
+# New NAV per share: 1.10 Ujamaa Euro (UJEUR)
+</code></div>
+<h3>Accuracy</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ Math verified by unit tests</li>
+<li>✅ Matches traditional finance formulas</li>
+<li>✅ Auditable calculation logic</li>
+</ul>
+<hr />
+</section>
+<h1>5. Technical Stack</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Smart Contracts</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td><strong>ApeWorX</strong></td>
+<td>0.7+ (Python-based)</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Solidity</td>
+<td>0.8.20+</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td><strong>ApeWorX + Pytest</strong></td>
+<td>Python 3.11</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td><strong>ApeWorX Coverage</strong></td>
+<td>&gt;95% required</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Slither + Mythril + Audit</td>
+<td>Critical paths</td>
+</tr>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td><strong>ERC-3643 (T-REX Protocol v3.0)</strong></td>
+<td>Tokeny reference implementation</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>Polygon Amoy (testnet)</td>
+<td>Chain ID: 80002</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>⚠️ CRITICAL COMPLIANCE REQUIREMENT:</strong> Per SRS v1.3 Section 4.2.3, smart contract development <strong>MUST</strong> use ApeWorX framework (no Hardhat, no Truffle). All tokens <strong>MUST</strong> implement ERC-3643 T-REX protocol for regulatory compliance.</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Backend</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>FastAPI</td>
+<td>0.109+</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Python</td>
+<td>3.11+</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Pydantic</td>
+<td>2.x</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL</td>
+<td>17 (latest)</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>Redis</td>
+<td>8.x</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>pytest + coverage</td>
+<td>&gt;90%</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.3 Frontend</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>React</td>
+<td>19.x</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>6.0+</td>
+</tr>
+<tr>
+<td><strong>Build Tool</strong></td>
+<td>Vite</td>
+<td>7.x</td>
+</tr>
+<tr>
+<td><strong>Web3</strong></td>
+<td>Wagmi + Viem</td>
+<td>Latest</td>
+</tr>
+<tr>
+<td><strong>Wallet UI</strong></td>
+<td>RainbowKit</td>
+<td>Latest</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>Tailwind CSS</td>
+<td>3.x</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Recharts</td>
+<td>2.x</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Vitest + React Testing Library</td>
+<td>Latest</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>6. Smart Contract Architecture</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Contract Inventory</h2>
+<div class="docs-pre"><code>contracts/
+├── MVP/                          # NEW - MVP contracts
+│   ├── uLPToken.sol               # Yield-bearing LP token
+│   ├── LiquidityPool.sol          # Pool management
+│   ├── MockEscrow.sol             # Bank simulation
+│   ├── MockFiatRamp.sol           # Fiat on/off ramp
+│   └── interfaces/
+│       ├── IBankService.sol       # Bank interface (for swap)
+│       └── IFiatRamp.sol          # Fiat ramp interface
+│
+├── tokens/                        # EXISTING - MVP-1
+│   └── Ujamaa Asset Token (UAT).sol           # Asset-specific token
+│
+├── compliance/                    # EXISTING - MVP-1
+    ├── IdentityRegistry.sol       # Identity verification
+    └── ComplianceModule.sol       # Transfer restrictions
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Contract Relationships</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                      MVP SMART CONTRACTS                                    │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                         uLPToken.sol                                     ││
+│  │                                                                          ││
+│  │  • Yield-bearing LP token                                               ││
+│  │  • Value-accrual model (balance constant, NAV increases)                ││
+│  │  • ERC-3643 compliant (transfer restrictions)                           ││
+│  │  • deposit() / redeem() functions                                       ││
+│  └────────────────────┬────────────────────────────────────────────────────┘│
+│                       │                                                       │
+│                       │ Calls addYield() when interest received              │
+│                       ▼                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                     LiquidityPool.sol                                    ││
+│  │                                                                          ││
+│  │  • Manages pool of funds                                                ││
+│  │  • Deploys to multiple industrials                                      ││
+│  │  • Records repayments (principal + interest)                            ││
+│  │  • Tracks diversification                                               ││
+│  └────────────────────┬────────────────────────────────────────────────────┘│
+│                       │                                                       │
+│                       │ Uses MockEscrow for simulated bank                  │
+│                       ▼                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                      MockEscrow.sol                                      ││
+│  │                                                                          ││
+│  │  • Simulates escrow accounts                                            ││
+│  │  • Interface designed for real bank swap                                ││
+│  │  • In-memory balances (no real money)                                   ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.3 Deployment Order</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>uLPToken</strong> (base token contract)</li>
+<li><strong>LiquidityPool</strong> (depends on uLPToken)</li>
+<li><strong>MockEscrow</strong> (standalone)</li>
+<li><strong>MockFiatRamp</strong> (standalone)</li>
+</ol>
+<hr />
+</section>
+<h1>7. Backend Services</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Service Inventory</h2>
+<div class="docs-pre"><code>backend/
+├── services/
+│   ├── MVP/                      # NEW - MVP services
+│   │   ├── yield_calculation.py   # Real math, simulated data
+│   │   ├── pool_manager.py        # Pool operations
+│   │   ├── mock_bank.py           # Bank simulation
+│   │   ├── mock_gdiz.py           # GDIZ simulation
+│   │   └── __init__.py
+│   └── mvp1/                      # EXISTING - MVP-1 services
+│       └── fraud_detection.py
+│
+├── api/
+│   ├── MVP/                      # NEW - MVP API routes
+│   │   ├── pools.py               # Pool endpoints
+│   │   ├── uLP.py                 # uLP endpoints
+│   │   └── __init__.py
+│   └── mvp1/                      # EXISTING - MVP-1 routes
+│       └── assets.py
+│
+└── models/
+    ├── MVP/                      # NEW - MVP models
+    │   ├── pool.py                # Pool data models
+    │   ├── uLP.py                 # uLP models
+    │   └── __init__.py
+    └── mvp1/                      # EXISTING - MVP-1 models
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 API Endpoints</h2>
+<h3>Pools API</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v2/pools/</code></td>
+<td>POST</td>
+<td>Create new pool</td>
+</tr>
+<tr>
+<td><code>/api/v2/pools/</code></td>
+<td>GET</td>
+<td>List all pools</td>
+</tr>
+<tr>
+<td><code>/api/v2/pools/{pool_id}</code></td>
+<td>GET</td>
+<td>Get pool details</td>
+</tr>
+<tr>
+<td><code>/api/v2/pools/{pool_id}/stats</code></td>
+<td>GET</td>
+<td>Get pool statistics</td>
+</tr>
+<tr>
+<td><code>/api/v2/pools/{pool_id}/financings</code></td>
+<td>GET</td>
+<td>Get pool financings</td>
+</tr>
+<tr>
+<td><code>/api/v2/pools/{pool_id}/deploy</code></td>
+<td>POST</td>
+<td>Deploy to industrial</td>
+</tr>
+</tbody>
+</table></div>
+<h3>uLP API</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v2/uLP/deposit</code></td>
+<td>POST</td>
+<td>Deposit Ujamaa Euro (UJEUR), receive uLP</td>
+</tr>
+<tr>
+<td><code>/api/v2/uLP/redeem</code></td>
+<td>POST</td>
+<td>Burn uLP, receive Ujamaa Euro (UJEUR)</td>
+</tr>
+<tr>
+<td><code>/api/v2/uLP/{address}/balance</code></td>
+<td>GET</td>
+<td>Get uLP balance</td>
+</tr>
+<tr>
+<td><code>/api/v2/uLP/{address}/value</code></td>
+<td>GET</td>
+<td>Get current value</td>
+</tr>
+<tr>
+<td><code>/api/v2/uLP/{address}/statement</code></td>
+<td>GET</td>
+<td>Generate yield statement</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>8. Frontend Components</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 Page Inventory</h2>
+<div class="docs-pre"><code>frontend/src/pages/
+├── MVP/                          # NEW - MVP pages
+│   ├── pools/
+│   │   ├── PoolList.tsx           # Browse liquidity pools
+│   │   ├── PoolDetail.tsx         # Pool details &amp; stats
+│   │   ├── PoolPerformance.tsx    # Historical NAV chart
+│   │   └── PoolAllocation.tsx     # Allocation breakdown
+│   ├── uLP/
+│   │   ├── Deposit.tsx            # Deposit Ujamaa Euro (UJEUR) → receive uLP
+│   │   ├── Redeem.tsx             # Burn uLP → receive Ujamaa Euro (UJEUR)
+│   │   └── MyHoldings.tsx         # View uLP holdings &amp; yield
+│   └── institutional/
+│       ├── Dashboard.tsx          # Institutional portfolio
+│       └── YieldStatement.tsx     # Download yield report
+│
+├── dashboard/                     # EXISTING - MVP-1
+│   ├── InvestorDashboard.tsx
+│   ├── IndustrialDashboard.tsx
+│   └── AdminDashboard.tsx
+│
+└── marketplace/                   # EXISTING - MVP-1
+    ├── AssetBrowse.tsx
+    └── AssetDetail.tsx
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 Navigation Structure</h2>
+<div class="docs-pre"><code>Header Navigation:
+├── Home
+├── Marketplace (MVP-1)
+├── Pools (MVP) ← NEW
+├── Dashboard
+│   ├── Retail (MVP-1)
+│   └── Institutional (MVP) ← NEW
+└── About
+
+Footer Navigation:
+├── Documentation
+├── MVP-1 Info
+├── MVP Info ← NEW
+├── Testnet Notice
+└── Contact
+</code></div>
+<hr />
+</section>
+<h1>9. Success Metrics</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 Functional Metrics</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLPToken Deployed</strong></td>
+<td>✅ On Polygon Amoy</td>
+<td>Block explorer verification</td>
+</tr>
+<tr>
+<td><strong>LiquidityPool Deployed</strong></td>
+<td>✅ On Polygon Amoy</td>
+<td>Block explorer verification</td>
+</tr>
+<tr>
+<td><strong>Deposit Flow</strong></td>
+<td>✅ Ujamaa Euro (UJEUR) → uLP working</td>
+<td>User testing</td>
+</tr>
+<tr>
+<td><strong>Redeem Flow</strong></td>
+<td>✅ uLP → Ujamaa Euro (UJEUR) working</td>
+<td>User testing</td>
+</tr>
+<tr>
+<td><strong>Yield Accrual</strong></td>
+<td>✅ NAV increases correctly</td>
+<td>Verified by tests</td>
+</tr>
+<tr>
+<td><strong>Dashboard Loads</strong></td>
+<td>✅ &lt;3s load time</td>
+<td>Lighthouse</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 Code Quality Metrics</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Coverage (SC)</strong></td>
+<td>&gt;90%</td>
+<td>solidity-coverage</td>
+</tr>
+<tr>
+<td><strong>Test Coverage (BE)</strong></td>
+<td>&gt;90%</td>
+<td>pytest --cov</td>
+</tr>
+<tr>
+<td><strong>Test Coverage (FE)</strong></td>
+<td>&gt;90%</td>
+<td>Vitest coverage</td>
+</tr>
+<tr>
+<td><strong>Critical Bugs</strong></td>
+<td>0</td>
+<td>Slither + manual review</td>
+</tr>
+<tr>
+<td><strong>TypeScript Errors</strong></td>
+<td>0</td>
+<td>tsc --noEmit</td>
+</tr>
+<tr>
+<td><strong>ESLint Errors</strong></td>
+<td>0</td>
+<td>eslint --max-warnings 0</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.3 Investor Readiness</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Demo Flow</strong></td>
+<td>Complete in &lt;10 min</td>
+<td>User testing</td>
+</tr>
+<tr>
+<td><strong>Disclaimers</strong></td>
+<td>Clear on every page</td>
+<td>Manual review</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Complete + accurate</td>
+<td>Technical writer review</td>
+</tr>
+<tr>
+<td><strong>Presentation</strong></td>
+<td>Investor-ready</td>
+<td>Demo day sign-off</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>10. Timeline &amp; Milestones</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Week-by-Week Breakdown</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MVP TIMELINE (6-8 WEEKS)                            │
+│                                                                              │
+│  Week 1-2: Smart Contracts                                                   │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Week 1                                                                │ │
+│  │  ├── uLPToken.sol (implementation)                                     │ │
+│  │  ├── uLPToken.test.ts (unit tests)                                     │ │
+│  │  ├── LiquidityPool.sol (implementation)                                │ │
+│  │  └── LiquidityPool.test.ts (unit tests)                                │ │
+│  │                                                                        │ │
+│  │  Week 2                                                                │ │
+│  │  ├── MockEscrow.sol (implementation)                                   │ │
+│  │  ├── MockFiatRamp.sol (implementation)                                 │ │
+│  │  ├── Integration tests                                                 │ │
+│  │  ├── Security review (Slither)                                         │ │
+│  │  └── Testnet deployment (Polygon Amoy)                                 │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  Week 3-4: Backend Services                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Week 3                                                                │ │
+│  │  ├── yield_calculation.py (implementation)                             │ │
+│  │  ├── yield_calculation_test.py (tests)                                 │ │
+│  │  ├── pool_manager.py (implementation)                                  │ │
+│  │  ├── pool_manager_test.py (tests)                                      │ │
+│  │  ├── mock_bank.py (implementation)                                     │ │
+│  │  └── mock_bank_test.py (tests)                                         │ │
+│  │                                                                        │ │
+│  │  Week 4                                                                │ │
+│  │  ├── mock_gdiz.py (implementation)                                     │ │
+│  │  ├── API endpoints (pools, uLP)                                        │ │
+│  │  ├── Integration tests                                                 │ │
+│  │  ├── Database schema (PostgreSQL)                                      │ │
+│  │  └── API documentation (OpenAPI)                                       │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  Week 5-6: Frontend                                                          │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Week 5                                                                │ │
+│  │  ├── PoolList.tsx (browse pools)                                       │ │
+│  │  ├── PoolDetail.tsx (pool stats)                                       │ │
+│  │  ├── PoolPerformance.tsx (NAV chart)                                   │ │
+│  │  ├── PoolAllocation.tsx (allocation pie)                               │ │
+│  │  └── Deposit.tsx (Ujamaa Euro (UJEUR) → uLP flow)                                     │ │
+│  │                                                                        │ │
+│  │  Week 6                                                                │ │
+│  │  ├── Redeem.tsx (uLP → Ujamaa Euro (UJEUR) flow)                                      │ │
+│  │  ├── MyHoldings.tsx (uLP portfolio)                                    │ │
+│  │  ├── InstitutionalDashboard.tsx                                        │ │
+│  │  ├── YieldStatement.tsx (PDF download)                                 │ │
+│  │  └── Integration with smart contracts                                  │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  Week 7-8: Testing + Polish                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Week 7                                                                │ │
+│  │  ├── End-to-end testing (full flow)                                    │ │
+│  │  ├── Bug fixes                                                         │ │
+│  │  ├── Performance optimization                                          │ │
+│  │  └── Documentation                                                     │ │
+│  │                                                                        │ │
+│  │  Week 8                                                                │ │
+│  │  ├── Security review (final)                                           │ │
+│  │  ├── Investor demo preparation                                         │ │
+│  │  ├── Disclaimers review                                                │ │
+│  │  └── MVP launch (testnet)                                            │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 Milestones</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Date</th>
+<th>Deliverables</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Smart Contracts Complete</strong></td>
+<td>Week 2</td>
+<td>uLPToken, LiquidityPool, MockEscrow, MockFiatRamp</td>
+<td>All tests pass, Slither review clean</td>
+</tr>
+<tr>
+<td><strong>Backend Complete</strong></td>
+<td>Week 4</td>
+<td>All services + API endpoints</td>
+<td>API documentation complete, tests pass</td>
+</tr>
+<tr>
+<td><strong>Frontend Complete</strong></td>
+<td>Week 6</td>
+<td>All MVP pages</td>
+<td>All flows functional, Lighthouse &gt;90</td>
+</tr>
+<tr>
+<td><strong>Integration Complete</strong></td>
+<td>Week 7</td>
+<td>End-to-end testing</td>
+<td>Full flow works in &lt;10 min</td>
+</tr>
+<tr>
+<td><strong>MVP Launch</strong></td>
+<td>Week 8</td>
+<td>Testnet deployment</td>
+<td>Public demo available</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>11. Risk Management</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.1 Technical Risks</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smart contract bugs</td>
+<td>Medium</td>
+<td>HIGH</td>
+<td>Extensive testing, Slither review, manual audit</td>
+</tr>
+<tr>
+<td>Yield calculation errors</td>
+<td>Low</td>
+<td>HIGH</td>
+<td>Unit tests, peer review, comparison with traditional finance</td>
+</tr>
+<tr>
+<td>Frontend integration issues</td>
+<td>Medium</td>
+<td>MEDIUM</td>
+<td>Early integration testing, component testing</td>
+</tr>
+<tr>
+<td>Mock service complexity</td>
+<td>Low</td>
+<td>MEDIUM</td>
+<td>Clean interfaces, dependency injection</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.2 Business Risks</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Misunderstood as "demo"</td>
+<td>High</td>
+<td>MEDIUM</td>
+<td>Clear branding as "MVP", not "demo"</td>
+</tr>
+<tr>
+<td>Investor confusion</td>
+<td>Medium</td>
+<td>MEDIUM</td>
+<td>Clear disclaimers, documentation, demo script</td>
+</tr>
+<tr>
+<td>Timeline slippage</td>
+<td>Medium</td>
+<td>HIGH</td>
+<td>Buffer in schedule, weekly check-ins</td>
+</tr>
+<tr>
+<td>Budget overrun</td>
+<td>Low</td>
+<td>MEDIUM</td>
+<td>Fixed-price contracts, scope management</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.3 Regulatory Risks</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Misunderstood as securities offering</td>
+<td>Medium</td>
+<td>HIGH</td>
+<td>Clear disclaimers: "Testnet only, no real money"</td>
+</tr>
+<tr>
+<td>Premature mainnet deployment</td>
+<td>Low</td>
+<td>CRITICAL</td>
+<td>Governance approval required for mainnet</td>
+</tr>
+<tr>
+<td>Compliance gaps</td>
+<td>Medium</td>
+<td>HIGH</td>
+<td>Legal review before mainnet, parallel legal track</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>12. MVP → Production Path</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.1 What Changes</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>MVP</th>
+<th>Production</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLPToken</strong></td>
+<td>Testnet deployment</td>
+<td>Mainnet deployment + audit</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td><strong>LiquidityPool</strong></td>
+<td>Testnet deployment</td>
+<td>Mainnet deployment + audit</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td><strong>MockEscrow</strong></td>
+<td>Mock bank service</td>
+<td>Real BIIC/MCB API</td>
+<td>2-3 weeks</td>
+</tr>
+<tr>
+<td><strong>MockFiatRamp</strong></td>
+<td>Mock fiat service</td>
+<td>Real Circle/bank API</td>
+<td>2-3 weeks</td>
+</tr>
+<tr>
+<td><strong>Mock GDIZ</strong></td>
+<td>Mock service</td>
+<td>Real GDIZ integration</td>
+<td>2-3 weeks</td>
+</tr>
+<tr>
+<td><strong>Yield Calculation</strong></td>
+<td>Same (real math)</td>
+<td>Same (real data)</td>
+<td>0 weeks</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Same UI/UX</td>
+<td>Same UI/UX</td>
+<td>0 weeks</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.2 What Stays the Same</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ uLPToken logic (yield-bearing mechanics)</li>
+<li>✅ LiquidityPool logic (pool management)</li>
+<li>✅ Yield calculation math</li>
+<li>✅ Frontend UI/UX</li>
+<li>✅ Dashboard components</li>
+<li>✅ API structure (same endpoints)</li>
+</ul>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.3 Production Requirements</h2>
+<p>Before mainnet deployment:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>✅ <strong>Security Audit</strong> - Third-party audit (CertiK/Trail of Bits)</li>
+<li>✅ <strong>Mauritius Entity</strong> - CIS Manager License</li>
+<li>✅ <strong>Bank Partnerships</strong> - BIIC/MCB escrow accounts</li>
+<li>✅ <strong>Legal Review</strong> - OHADA compliance, securities law</li>
+<li>✅ <strong>Compliance Officers</strong> - AML/CFT officer appointed</li>
+<li>✅ <strong>Governance Approval</strong> - Multi-sig for mainnet deployment</li>
+</ol>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.4 Transition Timeline</h2>
+<div class="docs-pre"><code>MVP (Testnet)                    Production (Mainnet)
+─────────────────                  ────────────────────
+Week 8: MVP launch               Week 9-16: Parallel tracks
+                                   ├── Legal (Mauritius entity)
+                                   ├── Banking (BIIC/MCB partnership)
+                                   ├── Audit (third-party security)
+                                   └── Compliance (officers hired)
+
+                                   Week 17-20: Production deployment
+                                   ├── Deploy audited contracts
+                                   ├── Integrate real bank APIs
+                                   ├── Mainnet launch
+                                   └── Onboard first institutional investor
+</code></div>
+<hr />
+</section>
+<h1>Appendix A: Glossary</h1>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ujamaa Pool Token (uLP)</strong></td>
+<td>Ujamaa Liquidity Provider token - yield-bearing LP token</td>
+</tr>
+<tr>
+<td><strong>NAV</strong></td>
+<td>Net Asset Value - value per Ujamaa Pool Token (uLP)</td>
+</tr>
+<tr>
+<td><strong>Yield-Bearing</strong></td>
+<td>Token that appreciates in value over time</td>
+</tr>
+<tr>
+<td><strong>Value-Accrual</strong></td>
+<td>Model where balance stays constant, value increases</td>
+</tr>
+<tr>
+<td><strong>Mock Service</strong></td>
+<td>Simulated service (bank, GDIZ) for testnet</td>
+</tr>
+<tr>
+<td><strong>Escrow</strong></td>
+<td>Regulated bank account holding investor funds</td>
+</tr>
+<tr>
+<td><strong>Pool</strong></td>
+<td>Liquidity pool managing multiple financings</td>
+</tr>
+<tr>
+<td><strong>MVP</strong></td>
+<td>Second iteration: Institutional architecture</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>Appendix B: Quick Start Commands</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Smart Contracts</h2>
+<p><strong>⚠️ IMPORTANT:</strong> Per SRS v2.0 Section 5.1, all smart contract development <strong>MUST</strong> use <strong>ApeWorX</strong> framework (no Hardhat, no Truffle).</p>
+<div class="docs-pre"><code># Install ApeWorX dependencies
+pip install eth-ape
+ape plugins install solidity
+ape plugins install foundry
+
+# Compile contracts
+ape compile
+
+# Run tests
+ape test
+
+# Run tests with coverage
+ape test --coverage
+
+# Deploy to testnet (Polygon Amoy)
+ape run scripts/MVP/deploy_MVP.py --network polygon-amoy
+
+# Deploy to local node
+ape run scripts/MVP/deploy_MVP.py --network localhost
+
+# Console for interactive development
+ape console --network polygon-amoy
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Backend</h2>
+<div class="docs-pre"><code># Install dependencies
+pip install -r requirements.txt
+
+# Run tests
+pytest backend/services/MVP/ --cov
+
+# Start server
+uvicorn backend.main:app --reload
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Frontend</h2>
+<div class="docs-pre"><code># Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+</code></div>
+<hr />
+<p><strong>Document Control:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>March 17, 2026</td>
+<td>Aziz Da Silva</td>
+<td>Initial MVP specification</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Next Review:</strong> After MVP launch (Week 8)</p>
+<p><strong>Related Documents:</strong><br />
+- <code>docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> - Full SRS<br />
+- <code>docs/02_MVP_EXECUTION/02_MVP_4WEEK_PLAN_V1.1.md</code> - MVP-1 plan<br />
+- <code>docs/13_NEXT/04_CONSOLIDATED_AUDIT_SUMMARY.md</code> - Gap analysis<br />
+- <code>docs/13_NEXT/06_DEMO_IMPLEMENTATION_PLAN.md</code> - Original demo plan</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

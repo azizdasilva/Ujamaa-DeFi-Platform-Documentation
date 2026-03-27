@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA Pool KPI Implementation Strategy - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA Pool KPI Implementation Strategy</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">📊 UJAMAA Pool KPI Implementation Strategy</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ 🔄 Implementation Plan | <strong>Last Updated:</strong> March 21, 2026</p></div>
+
+        <h1>📊 UJAMAA Pool KPI Implementation Strategy</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Document ID:</strong> UJAMAA-KPI-IMPL-001<br />
+<strong>Date:</strong> March 21, 2026<br />
+<strong>Status:</strong> 🔄 Implementation Plan</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p>This document outlines the implementation strategy for <strong>18 Key Performance Indicators (KPIs)</strong> across 5 categories for the Ujamaa DeFi Platform Liquidity Pool. The KPIs provide comprehensive visibility into financial performance, liquidity management, risk exposure, compliance status, and impact measurement.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>KPI Framework Overview</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>KPI Count</th>
+<th>Priority</th>
+<th>Implementation Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>4</td>
+<td>🔴 Critical</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>4</td>
+<td>🔴 Critical</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>4</td>
+<td>🟡 High</td>
+<td>Phase 2</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>3</td>
+<td>🟡 High</td>
+<td>Phase 2</td>
+</tr>
+<tr>
+<td><strong>Impact/ESG</strong></td>
+<td>3</td>
+<td>🟢 Medium</td>
+<td>Phase 3</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>18</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Detailed KPI Specifications</h2>
+<h3>1. Financial KPIs (Phase 1)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI</th>
+<th>Formula</th>
+<th>Data Source</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Net APY</strong></td>
+<td><code>(Gross Yield - Management Fee - Performance Fee) / TVL × 365 / days</code></td>
+<td>ULPToken.sol</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>NAV per Share</strong></td>
+<td><code>Total Pool Value / Total Shares Outstanding</code></td>
+<td>ULPToken.getNAV()</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Yield Variance</strong></td>
+<td><code>|Projected Yield - Actual Yield| / Projected Yield × 100</code></td>
+<td>Backend Calculation</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>Expense Ratio</strong></td>
+<td><code>(Management Fee + Performance Fee) / TVL × 100</code></td>
+<td>ULPToken.sol</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targets:</strong><br />
+- Net APY: 8-12% (pool dependent)<br />
+- NAV: Initial 1.00, growing &gt;1.0<br />
+- Yield Variance: &lt;±0.5%<br />
+- Expense Ratio: &lt;2.5% annualized</p>
+<hr />
+<h3>2. Liquidity KPIs (Phase 1)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI</th>
+<th>Formula</th>
+<th>Data Source</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TVL</strong></td>
+<td><code>Sum of all UJEUR in pool (deposited + deployed)</code></td>
+<td>LiquidityPool.sol</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Utilization Rate</strong></td>
+<td><code>Deployed Amount / Total Pool Value × 100</code></td>
+<td>LiquidityPool.sol</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>Cash Drag</strong></td>
+<td><code>(Undeployed Capital × Target APY) / TVL × 100</code></td>
+<td>Backend Calculation</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>Redemption Liquidity</strong></td>
+<td><code>Available UJEUR / Total TVL × 100</code></td>
+<td>LiquidityPool.sol</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targets:</strong><br />
+- TVL: €10M - €100M+<br />
+- Utilization: 85-92%<br />
+- Cash Drag: &lt;0.75% yield impact<br />
+- Redemption Liquidity: 5-10% of TVL</p>
+<hr />
+<h3>3. Risk KPIs (Phase 2)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI</th>
+<th>Formula</th>
+<th>Data Source</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default Rate (NPL)</strong></td>
+<td><code>Defaulted Amount / Total Deployed × 100</code></td>
+<td>LiquidityPool.financings</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>Concentration Risk</strong></td>
+<td><code>Largest Industrial Exposure / TVL × 100</code></td>
+<td>LiquidityPool.allocationPerIndustrial</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>Avg. Credit Rating</strong></td>
+<td><code>Σ(Credit Score × Principal) / ΣPrincipal</code></td>
+<td>RiskEngine</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Collateralization %</strong></td>
+<td><code>UGT Token Value / Deployed Funds × 100</code></td>
+<td>GuaranteeToken.sol</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targets:</strong><br />
+- Default Rate: &lt;2.0%<br />
+- Concentration: &lt;15% per industrial<br />
+- Credit Rating: BBB+ or higher<br />
+- Collateralization: &gt;125%</p>
+<hr />
+<h3>4. Compliance KPIs (Phase 2)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI</th>
+<th>Formula</th>
+<th>Data Source</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KYC/KYB Coverage</strong></td>
+<td><code>Verified Investors / Total Investors × 100</code></td>
+<td>Backend DB</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Whitelisted Wallets</strong></td>
+<td><code>COUNT(DISTINCT verified_wallets)</code></td>
+<td>Backend DB</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>Jurisdiction Diversity</strong></td>
+<td><code>COUNT(DISTINCT allowed_countries)</code></td>
+<td>Backend DB</td>
+<td>Weekly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targets:</strong><br />
+- KYC/KYB: 100% (hard requirement)<br />
+- Whitelisted: 20+ per pool<br />
+- Jurisdictions: &gt;5 countries</p>
+<hr />
+<h3>5. Impact/ESG KPIs (Phase 3)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI</th>
+<th>Formula</th>
+<th>Data Source</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Industrial Growth</strong></td>
+<td><code>(Current Capacity - Initial Capacity) / Initial × 100</code></td>
+<td>Industrial Gateway</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>Value-Add %</strong></td>
+<td><code>Processed Goods Value / Raw Commodity Value</code></td>
+<td>Industrial Gateway</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>Job Creation</strong></td>
+<td><code>Jobs Supported / (€1M Financing)</code></td>
+<td>Impact Database</td>
+<td>Quarterly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targets:</strong><br />
+- Industrial Growth: &gt;20% YoY<br />
+- Value-Add: &gt;2.5x<br />
+- Job Creation: 50-150 jobs per €1M</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Implementation Phases</h2>
+<h3>Phase 1: Core Financial &amp; Liquidity (Week 1-2) 🔴</h3>
+<p><strong>Priority:</strong> Critical for MVP launch</p>
+<p><strong>Backend Changes:</strong><br />
+1. Expand <code>PoolYield</code> dataclass in <code>yield_calculator.py</code><br />
+2. Add utilization rate calculation<br />
+3. Add expense ratio calculation<br />
+4. Create daily KPI snapshot service</p>
+<p><strong>Smart Contract Changes:</strong><br />
+1. Add <code>getUtilizationRate()</code> to LiquidityPool.sol<br />
+2. Add <code>getAvailableLiquidity()</code> to LiquidityPool.sol<br />
+3. Verify NAV calculation in ULPToken.sol</p>
+<p><strong>Frontend Changes:</strong><br />
+1. Update StatsCard component for new metrics<br />
+2. Create Pool Health Dashboard<br />
+3. Add real-time TVL display<br />
+4. Add utilization rate progress bar</p>
+<p><strong>Files to Modify:</strong><br />
+- <code>backend/services/MVP/yield_calculator.py</code><br />
+- <code>backend/api/pools.py</code><br />
+- <code>contracts/MVP/LiquidityPool.sol</code><br />
+- <code>contracts/MVP/ULPToken.sol</code><br />
+- <code>frontend/src/MVP/components/StatsCard.tsx</code><br />
+- <code>frontend/src/MVP/pages/pool/Dashboard.tsx</code> (new)</p>
+<hr />
+<h3>Phase 2: Risk &amp; Compliance (Week 3-4) 🟡</h3>
+<p><strong>Priority:</strong> High for institutional investors</p>
+<p><strong>Backend Changes:</strong><br />
+1. Create <code>RiskEngine</code> service<br />
+2. Implement credit rating calculation<br />
+3. Add concentration risk monitoring<br />
+4. Create compliance tracking service<br />
+5. Add default rate calculation</p>
+<p><strong>Smart Contract Changes:</strong><br />
+1. Add <code>getPoolHealth()</code> view function<br />
+2. Add <code>getConcentrationRisk()</code> function<br />
+3. Add <code>getCollateralizationRatio()</code> function</p>
+<p><strong>Frontend Changes:</strong><br />
+1. Create Risk Dashboard tab<br />
+2. Add Compliance Dashboard tab<br />
+3. Add credit rating visualization<br />
+4. Add concentration risk warnings</p>
+<p><strong>Files to Create:</strong><br />
+- <code>backend/services/MVP/risk_engine.py</code><br />
+- <code>backend/services/MVP/compliance_tracker.py</code><br />
+- <code>frontend/src/MVP/pages/pool/RiskDashboard.tsx</code><br />
+- <code>frontend/src/MVP/pages/pool/ComplianceDashboard.tsx</code></p>
+<hr />
+<h3>Phase 3: Impact/ESG (Week 5-6) 🟢</h3>
+<p><strong>Priority:</strong> Medium for reporting and marketing</p>
+<p><strong>Backend Changes:</strong><br />
+1. Create impact metrics database schema<br />
+2. Add Industrial Gateway integration<br />
+3. Implement job creation calculation<br />
+4. Add value-add ratio calculation</p>
+<p><strong>Smart Contract Changes:</strong><br />
+1. Add impact metrics events to IndustrialGateway.sol</p>
+<p><strong>Frontend Changes:</strong><br />
+1. Create Impact Dashboard tab<br />
+2. Add SDG alignment visualization<br />
+3. Add job creation counter<br />
+4. Add industrial growth charts</p>
+<p><strong>Files to Create:</strong><br />
+- <code>backend/services/MVP/impact_tracker.py</code><br />
+- <code>frontend/src/MVP/pages/pool/ImpactDashboard.tsx</code></p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Technical Architecture</h2>
+<h3>Backend KPI Calculation Flow</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                     KPI CALCULATION ENGINE                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+│  │   Blockchain │    │   Backend    │    │   External   │      │
+│  │    Reader    │    │     DB       │    │     APIs     │      │
+│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘      │
+│         │                   │                   │               │
+│         └───────────────────┼───────────────────┘               │
+│                             │                                   │
+│                    ┌────────▼────────┐                          │
+│                    │  KPI Calculator │                          │
+│                    │   (Python)      │                          │
+│                    └────────┬────────┘                          │
+│                             │                                   │
+│         ┌───────────────────┼───────────────────┐              │
+│         │                   │                   │               │
+│  ┌──────▼───────┐   ┌──────▼───────┐   ┌──────▼───────┐       │
+│  │  Financial   │   │    Risk &amp;    │   │   Impact &amp;   │       │
+│  │    KPIs      │   │  Compliance  │   │     ESG      │       │
+│  └──────┬───────┘   └──────┬───────┘   └──────┬───────┘       │
+│         │                   │                   │               │
+│         └───────────────────┼───────────────────┘               │
+│                             │                                   │
+│                    ┌────────▼────────┐                          │
+│                    │   KPI Cache     │                          │
+│                    │   (Redis)       │                          │
+│                    └────────┬────────┘                          │
+│                             │                                   │
+│                    ┌────────▼────────┐                          │
+│                    │   REST API      │                          │
+│                    │   Endpoints     │                          │
+│                    └─────────────────┘                          │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>Smart Contract Integration</h3>
+<div class="docs-pre"><code>// LiquidityPool.sol additions
+interface IPoolKPIs {
+    // Financial
+    function getNetAPY() external view returns (uint256);
+    function getYieldVariance() external view returns (int256);
+    function getExpenseRatio() external view returns (uint256);
+
+    // Liquidity
+    function getUtilizationRate() external view returns (uint256);
+    function getCashDrag() external view returns (uint256);
+    function getRedemptionLiquidity() external view returns (uint256);
+
+    // Risk
+    function getDefaultRate() external view returns (uint256);
+    function getConcentrationRisk() external view returns (uint256);
+    function getCollateralizationRatio() external view returns (uint256);
+
+    // Pool Health (composite)
+    function getPoolHealth() external view returns (PoolHealth memory);
+}
+
+struct PoolHealth {
+    uint256 utilizationRate;
+    uint256 defaultRate;
+    uint256 collateralization;
+    bool isHealthy;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>API Endpoints</h2>
+<h3>KPI Endpoints (Phase 1)</h3>
+<div class="docs-pre"><code># GET /api/v1/pool/kpis
+{
+    &quot;financial&quot;: {
+        &quot;net_apy&quot;: 10.5,
+        &quot;nav_per_share&quot;: 1.0234,
+        &quot;yield_variance&quot;: 0.23,
+        &quot;expense_ratio&quot;: 2.1
+    },
+    &quot;liquidity&quot;: {
+        &quot;tvl&quot;: 50000000,
+        &quot;utilization_rate&quot;: 87.5,
+        &quot;cash_drag&quot;: 0.45,
+        &quot;redemption_liquidity&quot;: 6250000
+    }
+}
+
+# GET /api/v1/pool/health
+{
+    &quot;is_healthy&quot;: true,
+    &quot;utilization_rate&quot;: 87.5,
+    &quot;default_rate&quot;: 1.2,
+    &quot;collateralization&quot;: 135.0,
+    &quot;risk_score&quot;: &quot;BBB+&quot;
+}
+
+# GET /api/v1/pool/kpis/history?days=30
+{
+    &quot;daily_snapshots&quot;: [...]
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Database Schema</h2>
+<h3>KPI Snapshots Table</h3>
+<div class="docs-pre"><code>CREATE TABLE pool_kpi_snapshots (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP NOT NULL DEFAULT NOW(),
+
+    -- Financial
+    net_apy DECIMAL(10, 4),
+    nav_per_share DECIMAL(18, 18),
+    yield_variance DECIMAL(10, 4),
+    expense_ratio DECIMAL(10, 4),
+
+    -- Liquidity
+    tvl DECIMAL(30, 0),
+    utilization_rate DECIMAL(5, 2),
+    cash_drag DECIMAL(10, 4),
+    redemption_liquidity DECIMAL(30, 0),
+
+    -- Risk
+    default_rate DECIMAL(5, 2),
+    concentration_risk DECIMAL(5, 2),
+    credit_rating VARCHAR(10),
+    collateralization_ratio DECIMAL(5, 2),
+
+    -- Compliance
+    kyc_coverage DECIMAL(5, 2),
+    whitelisted_wallets INTEGER,
+    jurisdiction_count INTEGER,
+
+    -- Impact
+    industrial_growth DECIMAL(5, 2),
+    value_add_ratio DECIMAL(5, 2),
+    jobs_per_million INTEGER
+);
+
+CREATE INDEX idx_kpi_timestamp ON pool_kpi_snapshots(timestamp);
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Frontend Dashboard Layout</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    UJAMAA POOL DASHBOARD                         │
+├─────────────────────────────────────────────────────────────────┤
+│  [Overview] [Financial] [Liquidity] [Risk] [Compliance] [Impact]│
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                    POOL HEALTH SCORE                      │  │
+│  │                    ████████░░ 85% Good                   │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌───────────┐ │
+│  │ TVL         │ │ Net APY     │ │ Utilization │ │ NAV       │ │
+│  │ €50.0M      │ │ 10.5%       │ │ 87.5%       │ │ 1.0234    │ │
+│  │ 🔹 +2.5%    │ │ 🔹 +0.3%    │ │ 🔸 -1.2%    │ │ 🔹 +2.3%  │ │
+│  └─────────────┘ └─────────────┘ └─────────────┘ └───────────┘ │
+│                                                                  │
+│  ┌─────────────────────────────┐ ┌────────────────────────────┐│
+│  │   UTILIZATION TREND         │ │   RISK INDICATORS          ││
+│  │   [████████████░░] 87.5%    │ │   Default Rate:   1.2% ✓   ││
+│  │   Target: 85-92%            │ │   Concentration: 12% ✓     ││
+│  │                             │ │   Collateral:   135% ✓     ││
+│  └─────────────────────────────┘ └────────────────────────────┘│
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────────┐│
+│  │                    ALERTS &amp; NOTIFICATIONS                   ││
+│  │  ⚠️ Utilization approaching upper limit (92%)              ││
+│  │  ✓ All compliance requirements met (100% KYC)              ││
+│  └────────────────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Testing Strategy</h2>
+<h3>Unit Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] KPI calculation accuracy</li>
+<li>[ ] Edge cases (zero division, overflow)</li>
+<li>[ ] Data validation</li>
+</ul>
+<h3>Integration Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Blockchain data sync</li>
+<li>[ ] API endpoint responses</li>
+<li>[ ] Database persistence</li>
+</ul>
+<h3>E2E Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Dashboard renders correctly</li>
+<li>[ ] Real-time updates work</li>
+<li>[ ] Historical data displays</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Success Metrics</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KPI Accuracy</strong></td>
+<td>&gt;99.5%</td>
+<td>Comparison with manual calculations</td>
+</tr>
+<tr>
+<td><strong>Update Latency</strong></td>
+<td>&lt;5 seconds</td>
+<td>Blockchain event to dashboard</td>
+</tr>
+<tr>
+<td><strong>Dashboard Load Time</strong></td>
+<td>&lt;2 seconds</td>
+<td>Page load to first render</td>
+</tr>
+<tr>
+<td><strong>Data Completeness</strong></td>
+<td>100%</td>
+<td>All 18 KPIs populated</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Risk Mitigation</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Risk</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle manipulation</td>
+<td>High</td>
+<td>Use Chainlink + backup oracles</td>
+</tr>
+<tr>
+<td>Calculation errors</td>
+<td>High</td>
+<td>Double-check with off-chain service</td>
+</tr>
+<tr>
+<td>Data sync delays</td>
+<td>Medium</td>
+<td>Implement retry logic + alerts</td>
+</tr>
+<tr>
+<td>Frontend performance</td>
+<td>Medium</td>
+<td>Cache KPI data, lazy load</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Next Steps</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Review and approve</strong> this implementation plan</li>
+<li><strong>Prioritize Phase 1</strong> KPIs for MVP launch</li>
+<li><strong>Assign developers</strong> to each workstream</li>
+<li><strong>Set up monitoring</strong> for KPI accuracy</li>
+<li><strong>Create test cases</strong> for each KPI calculation</li>
+</ol>
+<hr />
+<p><strong>Prepared by:</strong> AI Architecture Assistant<br />
+<strong>Date:</strong> March 21, 2026<br />
+<strong>Next Review:</strong> March 28, 2026<br />
+<strong>Target Launch:</strong> Phase 1 - April 4, 2026</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Operations</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

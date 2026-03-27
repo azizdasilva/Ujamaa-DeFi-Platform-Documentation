@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>07 Troubleshooting Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Troubleshooting</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">🔧 Troubleshooting Guide</h1>
+        <p class="docs-subtitle">Common issues and their solutions</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Audience:</strong> All Users</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This guide helps diagnose and resolve common issues with the UJAMAA DeFi Platform.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔐 Wallet Connection Issues</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Problem</th><th>Solution</th></tr></thead><tbody>
+            <tr><td>MetaMask not connecting</td><td>Refresh page, ensure MetaMask unlocked, check network</td></tr>
+            <tr><td>Wrong network</td><td>Switch to Polygon Amoy (Chain ID: 80002)</td></tr>
+            <tr><td>Transaction pending</td><td>Check Polygonscan, increase gas if stuck</td></tr>
+            <tr><td>Transaction failed</td><td>Check error message, ensure sufficient MATIC for gas</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">💻 Development Issues</h2>
+          <h3 style="margin:1.5rem 0 1rem">Backend Not Starting</h3>
+          <div class="docs-pre"><code># Check Python version
+python --version  # Should be 3.10+
+
+# Check dependencies
+pip install -r requirements.txt
+
+# Check environment
+cat .env  # Ensure all required vars set
+
+# Check logs
+tail -f backend/logs/app.log</code></div>
+          
+          <h3 style="margin:1.5rem 0 1rem">Frontend Build Failing</h3>
+          <div class="docs-pre"><code># Clear cache
+rm -rf node_modules/.cache
+rm -rf .next
+
+# Reinstall dependencies
+npm install
+
+# Check Node version
+node --version  # Should be 18+</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">⛓️ Smart Contract Issues</h3>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Problem</th><th>Solution</th></tr></thead><tbody>
+            <tr><td>Deployment failing</td><td>Check gas limit, verify private key, check network</td></tr>
+            <tr><td>Contract call failing</td><td>Check function signature, parameters, permissions</td></tr>
+            <tr><td>Out of gas</td><td>Increase gas limit, optimize contract</td></tr>
+            <tr><td>Revert error</td><td>Check require conditions, check permissions</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Database Issues</h2>
+          <div class="docs-callout docs-callout-warning"><div class="docs-callout-title">Common Database Problems</div>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li><strong>Connection refused:</strong> Check database is running, verify connection string</li>
+            <li><strong>Migration failed:</strong> Check migration files, rollback and retry</li>
+            <li><strong>Slow queries:</strong> Check query execution plan, add indexes</li>
+            <li><strong>Lock timeout:</strong> Check long-running transactions, optimize queries</li>
+          </ul></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🆘 Getting Help</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li><strong>Check Logs:</strong> Always check application logs first</li>
+            <li><strong>Search Issues:</strong> Search existing GitHub issues</li>
+            <li><strong>Slack:</strong> Post in #tech-help channel</li>
+            <li><strong>Documentation:</strong> Search this documentation site</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="02_OPERATIONAL_RUNBOOKS.html" style="color:#3B82F6">Operational Runbooks</a> | <a href="../03_OPERATIONS/index.html" style="color:#3B82F6">Operations</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Troubleshooting Guide<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Technical Guides</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

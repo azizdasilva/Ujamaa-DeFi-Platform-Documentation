@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Smart Contract Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Smart Contract Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Smart Contract Specification</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Smart Contract Developers, Security Auditors</p></div>
+
+        <h1>Smart Contract Specification</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>UJAMAA DEFI PLATFORM Tokenization Contracts</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
+<strong>Date:</strong> March 25, 2026<br />
+<strong>Classification:</strong> Technical<br />
+<strong>Audience:</strong> Smart Contract Developers, Security Auditors  </p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Updates Summary (v2.1)</h2>
+<h3>Institutional Architecture Additions</h3>
+<p><strong>New Contracts (SRS v2.1):</strong><br />
+- <strong>UjamaaPoolToken (uLP)</strong>: Yield-bearing ERC-3643 token for liquidity pool shares<br />
+- <strong>GuaranteeToken (UJG)</strong>: ERC-3643NFT (ERC-721 + compliance) for collateral representation<br />
+- <strong>LiquidityPool</strong>: Pool management with multi-asset financing<br />
+- <strong>NavOracle</strong>: NAV price feed for yield calculation</p>
+<p><strong>Updated Contracts:</strong><br />
+- Contract inventory expanded to include institutional architecture<br />
+- Token standards updated with ERC-3643NFT specification<br />
+- Compliance modules extended for uLP/UJG</p>
+<p><strong>SRS Reference:</strong> This specification implements <strong>SRS v2.1</strong> Section 5 (System Architecture) and Section 7 (Security Requirements).</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-token-standards">Token Standards</a></li>
+<li><a href="#3-contract-architecture">Contract Architecture</a></li>
+<li><a href="#4-erc-3643-fungible-token">ERC-3643 Fungible Token</a></li>
+<li><a href="#5-erc-3643-nft">ERC-3643 NFT</a></li>
+<li><a href="#6-compliance-modules">Compliance Modules</a></li>
+<li><a href="#7-upgrade-mechanism">Upgrade Mechanism</a></li>
+<li><a href="#8-gas-optimization">Gas Optimization</a></li>
+<li><a href="#9-security-considerations">Security Considerations</a></li>
+<li><a href="#10-deployment-configuration">Deployment Configuration</a></li>
+</ol>
+<hr />
+<h1>1. Executive Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Purpose</h2>
+<p>This specification defines the smart contract architecture for UJAMAA DEFI PLATFORM's tokenization system. All contracts implement <strong>ERC-3643 (T-REX protocol)</strong> for regulated securities, enabling:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>On-chain identity verification via ONCHAINID</li>
+<li>Transfer restrictions enforced at contract level</li>
+<li>Jurisdiction-specific compliance rules</li>
+<li>Automated regulatory audit trails</li>
+</ul>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Contract Inventory (SRS v2.1)</h2>
+<p><strong>Institutional Contracts (NEW in v2.1):</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Standard</th>
+<th>Chain</th>
+<th>Purpose</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UjamaaPoolToken (uLP)</code></td>
+<td>ERC-3643 + ERC-20</td>
+<td>Ethereum, Polygon</td>
+<td><strong>Yield-bearing</strong> LP token 🆕</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><code>GuaranteeToken (UJG)</code></td>
+<td>ERC-3643NFT (ERC-721 + compliance)</td>
+<td>Ethereum, Polygon</td>
+<td><strong>Collateral NFT</strong> 🆕</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><code>LiquidityPool</code></td>
+<td>Custom</td>
+<td>Polygon</td>
+<td><strong>Pool management</strong> (multi-asset financing) 🆕</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><code>NavOracle</code></td>
+<td>Custom</td>
+<td>Polygon</td>
+<td><strong>NAV price feed</strong> for yield calculation 🆕</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Retail Contracts (MVP-1, unchanged):</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Standard</th>
+<th>Chain</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UjamaaToken (UAT)</code></td>
+<td>ERC-3643 + ERC-20</td>
+<td>Ethereum, Polygon</td>
+<td>Fungible security tokens (asset-specific)</td>
+</tr>
+<tr>
+<td><code>UjamaaDeed (UJDEED)</code></td>
+<td>ERC-3643 + ERC-721</td>
+<td>Ethereum, Polygon</td>
+<td>Unique asset tokens (single properties, artwork)</td>
+</tr>
+<tr>
+<td><code>IdentityRegistry</code></td>
+<td>Custom</td>
+<td>Ethereum, Polygon</td>
+<td>Maps wallets to ONCHAINID identities</td>
+</tr>
+<tr>
+<td><code>ComplianceModule</code></td>
+<td>Custom</td>
+<td>Ethereum, Polygon</td>
+<td>Enforces transfer rules per asset class</td>
+</tr>
+<tr>
+<td><code>TrustedIssuersRegistry</code></td>
+<td>Custom</td>
+<td>Ethereum, Polygon</td>
+<td>Manages authorized Claim Issuers</td>
+</tr>
+<tr>
+<td><code>UjamaaBridge</code></td>
+<td>Custom</td>
+<td>Ethereum, Polygon</td>
+<td>Cross-chain token bridge</td>
+</tr>
+<tr>
+<td><code>TreasurySafe</code></td>
+<td>Gnosis Safe</td>
+<td>Ethereum, Polygon</td>
+<td>Multi-sig treasury management</td>
+</tr>
+<tr>
+<td><code>DistributionManager</code></td>
+<td>Custom</td>
+<td>Polygon</td>
+<td>Automated repayment distribution</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Development Stack</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>ApeWorX</td>
+<td>0.7+</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Solidity</td>
+<td>0.8.20+</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>ApeWorX + Pytest</td>
+<td>Python 3.11</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>ApeWorX Coverage</td>
+<td>95%+ required</td>
+</tr>
+<tr>
+<td><strong>Static Analysis</strong></td>
+<td>Slither, Mythril</td>
+<td>Latest</td>
+</tr>
+<tr>
+<td><strong>Formal Verification</strong></td>
+<td>Certora</td>
+<td>Critical paths</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Token Standards</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 ERC-3643 (T-REX) Overview</h2>
+<p>ERC-3643 extends ERC-20/ERC-721 with compliance primitives:</p>
+<div class="docs-pre"><code>interface IERC3643 {
+    // Identity registry reference
+    function identityRegistry() external view returns (address);
+
+    // Compliance module reference
+    function complianceModule() external view returns (address);
+
+    // Transfer with compliance check
+    function transfer(address to, uint256 value) external returns (bool);
+
+    // Forced transfer (admin only, for regulatory actions)
+    function forcedTransfer(address from, address to, uint256 value) external returns (bool);
+}
+</code></div>
+<p><strong>Key Properties:</strong><br />
+- Every transfer validates sender AND recipient identity<br />
+- Compliance rules enforced before transfer execution<br />
+- Admin can freeze tokens or force transfers (regulatory compliance)<br />
+- All events include identity claim references for audit trails</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 ONCHAINID Integration</h2>
+<div class="docs-pre"><code>interface IONCHAINID {
+    // Issue a claim (KYC approval, accreditation, etc.)
+    function issueClaim(
+        address claimTopic,
+        uint256 scheme,
+        address issuer,
+        bytes calldata signature,
+        bytes calldata data,
+        uint256 expiration
+    ) external returns (uint256 claimId);
+
+    // Verify a claim exists and is valid
+    function hasClaim(
+        address topic,
+        uint256 scheme,
+        address issuer
+    ) external view returns (bool);
+
+    // Get all claims for an identity
+    function getClaimsByTopic(uint256 topic) external view returns (Claim[] memory);
+}
+</code></div>
+<p><strong>Claim Topics Used:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Topic ID</th>
+<th>Claim Type</th>
+<th>Issuer</th>
+<th>Expiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KYC Verified</td>
+<td>Licensed KYC Provider</td>
+<td>12 months</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Accredited Investor</td>
+<td>Licensed Financial Advisor</td>
+<td>24 months</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jurisdiction: Nigeria</td>
+<td>National ID Commission</td>
+<td>60 months</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jurisdiction: Kenya</td>
+<td>Huduma Centre</td>
+<td>60 months</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Jurisdiction: South Africa</td>
+<td>Home Affairs</td>
+<td>60 months</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Jurisdiction: Ghana</td>
+<td>National Identification Authority</td>
+<td>60 months</td>
+</tr>
+<tr>
+<td>7</td>
+<td>AML Screening Passed</td>
+<td>Compliance Provider</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Sanctions Check Passed</td>
+<td>Compliance Provider</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Investment Cap Verified</td>
+<td>Platform Admin</td>
+<td>Per-offering</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Lock-up Period Active</td>
+<td>Platform Admin</td>
+<td>Per-offering</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>3. Contract Architecture</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 High-Level Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         SMART CONTRACT LAYER                                 │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                      TOKEN CONTRACTS                                      ││
+│  │  ┌──────────────────────────┐  ┌──────────────────────────┐             ││
+│  │  │   Ujamaa Pool Token (uLP)            │  │   Ujamaa Deed (UJDEED)              │             ││
+│  │  │   (ERC-3643 + ERC-20)    │  │   (ERC-3643 + ERC-721)   │             ││
+│  │  └───────────┬──────────────┘  └───────────┬──────────────┘             ││
+│  └──────────────┼─────────────────────────────┼──────────────────────────────┘│
+│                 │                             │                               │
+│  ┌──────────────▼─────────────────────────────▼──────────────────────────────┐│
+│  │                    COMPLIANCE LAYER                                        ││
+│  │  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐              ││
+│  │  │ Identity       │  │ Compliance     │  │ Trusted        │              ││
+│  │  │ Registry       │  │ Module         │  │ Issuers Reg    │              ││
+│  │  └────────────────┘  └────────────────┘  └────────────────┘              ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                 │                             │                               │
+│  ┌──────────────▼─────────────────────────────▼──────────────────────────────┐│
+│  │                    SUPPORTING CONTRACTS                                    ││
+│  │  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐              ││
+│  │  │ UjamaaBridge   │  │ Distribution   │  │ TreasurySafe   │              ││
+│  │  │ (Cross-chain)  │  │ Manager        │  │ (Gnosis Safe)  │              ││
+│  │  └────────────────┘  └────────────────┘  └────────────────┘              ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Inheritance Structure</h2>
+<div class="docs-pre"><code>Ujamaa Pool Token (uLP)
+├── ERC3643 (Tokeny)
+│   ├── ERC20 (OpenZeppelin)
+│   ├── IERC3643 (Tokeny)
+│   └── Pausable (OpenZeppelin)
+├── UUPSUpgradeable (OpenZeppelin)
+└── AccessControlEnumerable (OpenZeppelin)
+
+Ujamaa Deed (UJDEED)
+├── ERC3643NFT (Tokeny)
+│   ├── ERC721 (OpenZeppelin)
+│   ├── IERC3643 (Tokeny)
+│   └── Pausable (OpenZeppelin)
+├── UUPSUpgradeable (OpenZeppelin)
+└── AccessControlEnumerable (OpenZeppelin)
+
+IdentityRegistry
+├── IIdentityRegistry (Tokeny)
+├── UUPSUpgradeable (OpenZeppelin)
+└── AccessControlEnumerable (OpenZeppelin)
+
+ComplianceModule
+├── ICompliance (Tokeny)
+├── UUPSUpgradeable (OpenZeppelin)
+└── AccessControlEnumerable (OpenZeppelin)
+</code></div>
+<hr />
+</section>
+<h1>4. ERC-3643 Fungible Token</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Contract Specification</h2>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
+
+/**
+ * @title Ujamaa Pool Token (uLP)
+ * @notice ERC-3643 compliant fungible security token for asset pool tokenization
+ * @dev Supports fractional ownership with compliance-enforced transfers
+ */
+contract Ujamaa Pool Token (uLP) is ERC3643, UUPSUpgradeable, AccessControlEnumerableUpgradeable {
+
+    // Roles
+    bytes32 public constant MINTER_ROLE = keccak256(&quot;MINTER_ROLE&quot;);
+    bytes32 public constant BURNER_ROLE = keccak256(&quot;BURNER_ROLE&quot;);
+    bytes32 public constant COMPLIANCE_ADMIN = keccak256(&quot;COMPLIANCE_ADMIN&quot;);
+    bytes32 public constant PAUSER_ROLE = keccak256(&quot;PAUSER_ROLE&quot;);
+
+    // Asset metadata
+    string private s_assetName;      // e.g., &quot;Lagos Commercial REIT Class A&quot;
+    string private s_assetClass;     // e.g., &quot;REAL_ESTATE&quot;, &quot;AGRICULTURE&quot;
+    uint256 private s_totalShares;   // Total shares in underlying asset pool
+    uint256 private s_navPerShare;   // Net Asset Value per share (18 decimals)
+    uint256 private s_lastNavUpdate; // Timestamp of last NAV update
+
+    // Compliance configuration
+    struct ComplianceConfig {
+        uint256 minInvestment;       // Minimum tokens per transaction
+        uint256 maxInvestment;       // Maximum tokens per investor
+        uint256 lockupPeriod;        // Seconds before tokens can be transferred
+        bool onlyAccredited;         // Require accredited investor status
+        string[] allowedJurisdictions; // ISO 3166-1 alpha-2 country codes
+        uint256 distributionFeeBps;  // Basis points fee on distributions
+    }
+
+    mapping(bytes32 =&gt; ComplianceConfig) private s_assetConfigs;
+    mapping(address =&gt; uint256) private s_firstPurchaseTime;
+
+    // Events
+    event AssetConfigSet(bytes32 indexed assetId, ComplianceConfig config);
+    event NAVUpdated(uint256 navPerShare, uint256 timestamp);
+    event DistributionPaid(bytes32 indexed assetId, uint256 amountPerShare);
+    event TokensMinted(address indexed to, uint256 amount, bytes32 indexed assetId);
+    event TokensBurned(address indexed from, uint256 amount, bytes32 indexed assetId);
+
+    /**
+     * @notice Initialize token contract
+     * @param name Token name
+     * @param symbol Token symbol
+     * @param identityRegistry_ Identity registry address
+     * @param complianceModule_ Compliance module address
+     * @param admin_ Admin address (will have DEFAULT_ADMIN_ROLE)
+     */
+    function initialize(
+        string calldata name,
+        string calldata symbol,
+        address identityRegistry_,
+        address complianceModule_,
+        address admin_
+    ) external initializer {
+        __ERC3643_init(name, symbol, 18, identityRegistry_, complianceModule_);
+        __UUPSUpgradeable_init();
+        __AccessControlEnumerable_init();
+
+        _grantRole(DEFAULT_ADMIN_ROLE, admin_);
+        _grantRole(MINTER_ROLE, admin_);
+        _grantRole(BURNER_ROLE, admin_);
+        _grantRole(COMPLIANCE_ADMIN, admin_);
+        _grantRole(PAUSER_ROLE, admin_);
+    }
+
+    /**
+     * @notice Mint new tokens (compliance-gated)
+     * @dev Only callable by MINTER_ROLE, recipient must pass identity verification
+     * @param to Recipient address
+     * @param amount Amount to mint
+     * @param assetId Asset pool identifier
+     */
+    function mint(
+        address to,
+        uint256 amount,
+        bytes32 assetId
+    ) external onlyRole(MINTER_ROLE) {
+        require(to != address(0), &quot;Zero address&quot;);
+        require(_canTransfer(msg.sender, to, amount), &quot;Compliance check failed&quot;);
+
+        _mint(to, amount);
+        emit TokensMinted(to, amount, assetId);
+    }
+
+    /**
+     * @notice Burn tokens (for redemptions or regulatory actions)
+     * @param from Address to burn from
+     * @param amount Amount to burn
+     * @param assetId Asset pool identifier
+     */
+    function burn(
+        address from,
+        uint256 amount,
+        bytes32 assetId
+    ) external onlyRole(BURNER_ROLE) {
+        _burn(from, amount);
+        emit TokensBurned(from, amount, assetId);
+    }
+
+    /**
+     * @notice Set compliance configuration for an asset
+     * @param assetId Asset pool identifier
+     * @param config Compliance configuration struct
+     */
+    function setComplianceConfig(
+        bytes32 assetId,
+        ComplianceConfig calldata config
+    ) external onlyRole(COMPLIANCE_ADMIN) {
+        s_assetConfigs[assetId] = config;
+        emit AssetConfigSet(assetId, config);
+    }
+
+    /**
+     * @notice Update NAV per share
+     * @param navPerShare New NAV (18 decimals)
+     */
+    function updateNAV(uint256 navPerShare) external onlyRole(COMPLIANCE_ADMIN) {
+        s_navPerShare = navPerShare;
+        s_lastNavUpdate = block.timestamp;
+        emit NAVUpdated(navPerShare, block.timestamp);
+    }
+
+    /**
+     * @notice Check if transfer is allowed under compliance rules
+     * @dev Called automatically by ERC-3643 before every transfer
+     */
+    function _canTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) internal view override returns (bool) {
+        // Check identity verification
+        require(identityRegistry().isVerified(from), &quot;Sender not verified&quot;);
+        require(identityRegistry().isVerified(to), &quot;Recipient not verified&quot;);
+
+        // Check lock-up period for new investors
+        if (s_firstPurchaseTime[to] == 0) {
+            s_firstPurchaseTime[to] = block.timestamp;
+        }
+
+        // Additional compliance checks delegated to ComplianceModule
+        return true;
+    }
+
+    // ... additional functions (getters, admin functions, distribution logic)
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 State Variables</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Visibility</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s_assetName</code></td>
+<td>string</td>
+<td>private</td>
+<td>Human-readable asset name</td>
+</tr>
+<tr>
+<td><code>s_assetClass</code></td>
+<td>string</td>
+<td>private</td>
+<td>Asset classification code</td>
+</tr>
+<tr>
+<td><code>s_totalShares</code></td>
+<td>uint256</td>
+<td>private</td>
+<td>Total shares in asset pool</td>
+</tr>
+<tr>
+<td><code>s_navPerShare</code></td>
+<td>uint256</td>
+<td>private</td>
+<td>Current NAV per token (18 decimals)</td>
+</tr>
+<tr>
+<td><code>s_lastNavUpdate</code></td>
+<td>uint256</td>
+<td>private</td>
+<td>Timestamp of last NAV update</td>
+</tr>
+<tr>
+<td><code>s_assetConfigs</code></td>
+<td>mapping</td>
+<td>private</td>
+<td>Compliance config per asset</td>
+</tr>
+<tr>
+<td><code>s_firstPurchaseTime</code></td>
+<td>mapping</td>
+<td>private</td>
+<td>Track lock-up periods</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 Functions</h2>
+<h3>Core Functions</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Visibility</th>
+<th>Gas Estimate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialize()</code></td>
+<td>external</td>
+<td>~150,000</td>
+<td>Contract initialization</td>
+</tr>
+<tr>
+<td><code>mint()</code></td>
+<td>external</td>
+<td>~85,000</td>
+<td>Mint new tokens</td>
+</tr>
+<tr>
+<td><code>burn()</code></td>
+<td>external</td>
+<td>~45,000</td>
+<td>Burn tokens</td>
+</tr>
+<tr>
+<td><code>transfer()</code></td>
+<td>external</td>
+<td>~65,000</td>
+<td>Transfer tokens (with compliance)</td>
+</tr>
+<tr>
+<td><code>balanceOf()</code></td>
+<td>external view</td>
+<td>~2,500</td>
+<td>Get balance</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Admin Functions</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Visibility</th>
+<th>Gas Estimate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setComplianceConfig()</code></td>
+<td>external</td>
+<td>~50,000</td>
+<td>Set asset compliance rules</td>
+</tr>
+<tr>
+<td><code>updateNAV()</code></td>
+<td>external</td>
+<td>~25,000</td>
+<td>Update NAV per share</td>
+</tr>
+<tr>
+<td><code>pause()</code></td>
+<td>external</td>
+<td>~20,000</td>
+<td>Pause all transfers</td>
+</tr>
+<tr>
+<td><code>unpause()</code></td>
+<td>external</td>
+<td>~20,000</td>
+<td>Resume transfers</td>
+</tr>
+<tr>
+<td><code>forcedTransfer()</code></td>
+<td>external</td>
+<td>~70,000</td>
+<td>Regulatory forced transfer</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Gas Limits (Maximum Allowed)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Gas Limit</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deposit()</code></td>
+<td>&lt;100,000</td>
+<td>Must complete within block gas limit</td>
+</tr>
+<tr>
+<td><code>redeem()</code></td>
+<td>&lt;80,000</td>
+<td>Burn + transfer logic</td>
+</tr>
+<tr>
+<td><code>addYield()</code></td>
+<td>&lt;50,000</td>
+<td>Simple state update</td>
+</tr>
+<tr>
+<td><code>transfer()</code></td>
+<td>&lt;70,000</td>
+<td>ERC-3643 compliance checks</td>
+</tr>
+<tr>
+<td><code>mint()</code></td>
+<td>&lt;90,000</td>
+<td>Identity verification + minting</td>
+</tr>
+<tr>
+<td><code>burn()</code></td>
+<td>&lt;50,000</td>
+<td>Simple burn operation</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Note:</strong> All functions must be optimized to stay well below Ethereum block gas limit (30M gas) and Polygon block gas limit (15M gas). Functions exceeding limits require refactoring.</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.4 Events</h2>
+<div class="docs-pre"><code>event AssetConfigSet(bytes32 indexed assetId, ComplianceConfig config);
+event NAVUpdated(uint256 navPerShare, uint256 timestamp);
+event DistributionPaid(bytes32 indexed assetId, uint256 amountPerShare);
+event TokensMinted(address indexed to, uint256 amount, bytes32 indexed assetId);
+event TokensBurned(address indexed from, uint256 amount, bytes32 indexed assetId);
+event TransferWithCompliance(
+    address indexed from,
+    address indexed to,
+    uint256 amount,
+    bytes32 indexed assetId,
+    bool compliancePassed
+);
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.5 Yield-Bearing uLP Token Specification 🆕 (SRS v2.1)</h2>
+<h3>4.5.1 Value-Accrual Model</h3>
+<p>The Ujamaa Pool Token (uLP) implements a <strong>value-accrual model</strong> where:<br />
+- Token balance remains constant<br />
+- NAV (Net Asset Value) per token increases with pool yield<br />
+- No manual distribution required (automatic compounding)</p>
+<p><strong>NAV Calculation:</strong></p>
+<div class="docs-pre"><code>function getNAVPerShare() public view returns (uint256) {
+    uint256 totalPoolValue = liquidityPool.getTotalPoolValue();
+    uint256 totalShares = s_totalSupply;
+    return (totalPoolValue * 1e18) / totalShares; // 18 decimals
+}
+
+function getInvestorValue(address account) public view returns (uint256) {
+    uint256 navPerShare = getNAVPerShare();
+    uint256 balance = s_balances[account];
+    return (balance * navPerShare) / 1e18;
+}
+</code></div>
+<p><strong>Example:</strong></p>
+<div class="docs-pre"><code>Day 0 (Inception):
+- Pool Value: €10,000,000
+- uLP Shares: 10,000,000
+- NAV per Share: €1.00
+- Investor deposits €1,000,000 → receives 1,000,000 uLP
+
+Day 30 (12% APR):
+- Interest Earned: €100,000
+- Pool Value: €10,100,000
+- uLP Shares: 10,000,000 (unchanged)
+- NAV per Share: €1.01
+- Investor value: 1,000,000 × €1.01 = €1,010,000 (+1%)
+</code></div>
+<h3>4.5.2 Deposit/Redeem Mechanism</h3>
+<div class="docs-pre"><code>/**
+ * @notice Deposit Ujamaa Euro (UJEUR) to mint uLP tokens
+ * @param amountUJUR Amount of Ujamaa Euro (UJEUR) to deposit
+ * @return uLPMinted Amount of uLP tokens minted
+ */
+function deposit(uint256 amountUJUR) external returns (uint256) {
+    require(amountUJUR &gt; 0, &quot;Amount must be &gt; 0&quot;);
+
+    uint256 navPerShare = getNAVPerShare();
+    uint256 uLPMinted = (amountUJUR * 1e18) / navPerShare;
+
+    // Transfer UJEUR from user to pool
+    require(
+        UJEURToken.transferFrom(msg.sender, poolAddress, amountUJUR),
+        &quot;UJEUR transfer failed&quot;
+    );
+
+    // Mint uLP to user
+    _mint(msg.sender, uLPMinted);
+
+    // Notify pool of new liquidity
+    liquidityPool.addLiquidity(amountUJUR);
+
+    emit Deposit(msg.sender, amountUJUR, uLPMinted);
+    return uLPMinted;
+}
+
+/**
+ * @notice Redeem uLP tokens for Ujamaa Euro (UJEUR) + yield
+ * @param uLPAmount Amount of uLP tokens to burn
+ * @return amountUJUR Amount of UJEUR received (principal + yield)
+ */
+function redeem(uint256 uLPAmount) external returns (uint256) {
+    require(uLPAmount &gt; 0 &amp;&amp; uLPAmount &lt;= s_balances[msg.sender], &quot;Invalid amount&quot;);
+
+    uint256 navPerShare = getNAVPerShare();
+    uint256 amountUJUR = (uLPAmount * navPerShare) / 1e18;
+
+    // Burn uLP tokens
+    _burn(msg.sender, uLPAmount);
+
+    // Transfer UJEUR from pool to user
+    require(
+        UJEURToken.transfer(msg.sender, amountUJUR),
+        &quot;UJEUR transfer failed&quot;
+    );
+
+    // Notify pool of removed liquidity
+    liquidityPool.removeLiquidity(amountUJUR);
+
+    emit Redemption(msg.sender, uLPAmount, amountUJUR);
+    return amountUJUR;
+}
+</code></div>
+<h3>4.5.3 NAV Update Frequency</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Frequency</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-time</strong></td>
+<td>On-chain event</td>
+<td>Deposits, redemptions, new financings</td>
+</tr>
+<tr>
+<td><strong>Daily</strong></td>
+<td>Automated</td>
+<td>Yield accrual (interest calculation)</td>
+</tr>
+<tr>
+<td><strong>Event-triggered</strong></td>
+<td>On-chain event</td>
+<td>Default events, liquidations</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NAV Update Oracle:</strong></p>
+<div class="docs-pre"><code>// NavOracle.sol
+contract NavOracle {
+    struct NavUpdate {
+        uint256 navPerShare;
+        uint256 totalPoolValue;
+        uint256 totalShares;
+        uint256 timestamp;
+        bytes32 dataHash; // IPFS hash of supporting data
+    }
+
+    mapping(uint256 =&gt; NavUpdate) private s_navHistory;
+    uint256 private s_updateCount;
+
+    function updateNAV(
+        uint256 navPerShare,
+        uint256 totalPoolValue,
+        uint256 totalShares,
+        bytes32 dataHash
+    ) external onlyRole(POOL_MANAGER_ROLE) {
+        s_updateCount++;
+        s_navHistory[s_updateCount] = NavUpdate({
+            navPerShare: navPerShare,
+            totalPoolValue: totalPoolValue,
+            totalShares: totalShares,
+            timestamp: block.timestamp,
+            dataHash: dataHash
+        });
+
+        emit NAVUpdated(navPerShare, block.timestamp);
+    }
+
+    function getLatestNAV() external view returns (NavUpdate memory) {
+        return s_navHistory[s_updateCount];
+    }
+
+    function getNAVHistory(uint256 count) external view returns (NavUpdate[] memory) {
+        NavUpdate[] memory history = new NavUpdate[](count);
+        for (uint256 i = 0; i &lt; count; i++) {
+            history[i] = s_navHistory[s_updateCount - i];
+        }
+        return history;
+    }
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.6 Guarantee Token (UJG) Specification 🆕 (SRS v2.1)</h2>
+<h3>4.6.1 Purpose and Design</h3>
+<p>The Ujamaa Guarantee (UJG) is a <strong>non-transferable ERC-3643NFT</strong> (ERC-721 base + ERC-3643 compliance) that represents certified merchandise/collateral backing a financing operation.</p>
+<p><strong>Key Properties:</strong><br />
+- ✅ <strong>ERC-721 Base</strong>: Standard NFT for unique asset representation<br />
+- ✅ <strong>ERC-3643 Compliance</strong>: Identity registry and transfer validation<br />
+- ✅ <strong>Non-Transferable</strong>: Cannot be transferred by holder (only forced transfer)<br />
+- ✅ <strong>Collateral Representation</strong>: Token represents physical stock in warehouse<br />
+- ✅ <strong>Forced Transfer</strong>: Pool Manager can force transfer for redemption/liquidation</p>
+<h3>4.6.2 Contract Specification</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643NFT.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
+
+/**
+ * @title GuaranteeToken (UJG)
+ * @notice ERC-3643NFT representing certified merchandise collateral
+ * @dev Non-transferable except via forcedTransfer (Pool Manager only)
+ */
+contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
+
+    // Roles
+    bytes32 public constant MINTER_ROLE = keccak256(&quot;MINTER_ROLE&quot;);
+    bytes32 public constant POOL_MANAGER_ROLE = keccak256(&quot;POOL_MANAGER_ROLE&quot;);
+
+    // Guarantee structure
+    struct Guarantee {
+        uint256 certificateId;      // Industrial Gateway certificate
+        uint256 merchandiseValue;   // Value in Ujamaa Euro (UJEUR)
+        uint256 expiryDate;         // When invoice is due
+        address industrial;         // Original issuer
+        bool isRedeemed;            // Whether repaid
+        bool isDefaulted;           // Whether defaulted
+        bytes32 stockHash;          // IPFS hash of stock documents
+    }
+
+    mapping(uint256 =&gt; Guarantee) private s_guarantees;
+    uint256 private s_nextTokenId;
+
+    address public poolAddress;
+    address public gatewayAddress;
+    mapping(address =&gt; bool) public approvedAuctionWinners;
+
+    // Events
+    event GuaranteeMinted(
+        uint256 indexed tokenId,
+        address indexed industrial,
+        uint256 merchandiseValue,
+        uint256 expiryDate
+    );
+    event GuaranteeRedeemed(uint256 indexed tokenId);
+    event GuaranteeLiquidated(
+        uint256 indexed tokenId,
+        address indexed winner,
+        uint256 liquidationAmount
+    );
+
+    /**
+     * @notice Mint Guarantee Token (UJG) for certified merchandise
+     * @param industrial Address of industrial (must be verified)
+     * @param certificateId Industrial Gateway certificate ID
+     * @param value Merchandise value in UJEUR
+     * @param expiryDate Invoice due date
+     * @param stockHash IPFS hash of stock documents
+     * @return tokenId Minted token ID
+     */
+    function mintGuarantee(
+        address industrial,
+        uint256 certificateId,
+        uint256 value,
+        uint256 expiryDate,
+        bytes32 stockHash
+    ) external onlyRole(MINTER_ROLE) returns (uint256) {
+        require(industrial != address(0), &quot;Invalid industrial&quot;);
+        require(value &gt; 0, &quot;Value must be &gt; 0&quot;);
+        require(expiryDate &gt; block.timestamp, &quot;Expiry must be in future&quot;);
+
+        uint256 tokenId = s_nextTokenId++;
+        s_guarantees[tokenId] = Guarantee({
+            certificateId: certificateId,
+            merchandiseValue: value,
+            expiryDate: expiryDate,
+            industrial: industrial,
+            isRedeemed: false,
+            isDefaulted: false,
+            stockHash: stockHash
+        });
+
+        _safeMint(industrial, tokenId);
+
+        emit GuaranteeMinted(tokenId, industrial, value, expiryDate);
+        return tokenId;
+    }
+
+    /**
+     * @notice Redeem Guarantee Token (UJG) upon full repayment
+     * @param tokenId Token ID to redeem
+     */
+    function redeemGuarantee(uint256 tokenId) external onlyRole(POOL_MANAGER_ROLE) {
+        Guarantee storage guarantee = s_guarantees[tokenId];
+        require(!guarantee.isRedeemed, &quot;Already redeemed&quot;);
+        require(!guarantee.isDefaulted, &quot;Already defaulted&quot;);
+
+        guarantee.isRedeemed = true;
+
+        // Force transfer back to industrial
+        _forcedTransfer(tokenId, guarantee.industrial);
+
+        emit GuaranteeRedeemed(tokenId);
+    }
+
+    /**
+     * @notice Liquidate defaulted Guarantee Token (UJG) via auction
+     * @param tokenId Token ID to liquidate
+     * @param auctionWinner Auction winner address
+     */
+    function liquidateGuarantee(
+        uint256 tokenId,
+        address auctionWinner
+    ) external onlyRole(POOL_MANAGER_ROLE) {
+        Guarantee storage guarantee = s_guarantees[tokenId];
+        require(!guarantee.isRedeemed, &quot;Already redeemed&quot;);
+        require(!guarantee.isDefaulted, &quot;Already defaulted&quot;);
+        require(auctionWinner != address(0), &quot;Invalid winner&quot;);
+
+        guarantee.isDefaulted = true;
+        approvedAuctionWinners[auctionWinner] = true;
+
+        // Force transfer to auction winner
+        _forcedTransfer(tokenId, auctionWinner);
+
+        emit GuaranteeLiquidated(tokenId, auctionWinner, guarantee.merchandiseValue);
+    }
+
+    /**
+     * @notice Override transfer to prevent unauthorized transfers
+     * @dev UJG is non-transferable except via forcedTransfer
+     */
+    function transfer(address, uint256) public pure override returns (bool) {
+        revert(&quot;UJG is non-transferable; use forcedTransfer&quot;);
+    }
+
+    /**
+     * @notice Override safeTransferFrom to prevent unauthorized transfers
+     */
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override {
+        revert(&quot;UJG is non-transferable; use forcedTransfer&quot;);
+    }
+
+    /**
+     * @notice Forced transfer (Pool Manager only)
+     * @dev Only Pool, Industrial Gateway, or approved auction winner can receive
+     */
+    function _forcedTransfer(uint256 tokenId, address to) internal {
+        require(
+            to == poolAddress || 
+            to == gatewayAddress || 
+            approvedAuctionWinners[to],
+            &quot;Invalid recipient&quot;
+        );
+
+        address owner = ownerOf(tokenId);
+        _transfer(owner, to, tokenId);
+    }
+
+    /**
+     * @notice Get Guarantee details
+     * @param tokenId Token ID
+     * @return guarantee Guarantee struct
+     */
+    function getGuarantee(uint256 tokenId) 
+        external view returns (Guarantee memory) 
+    {
+        return s_guarantees[tokenId];
+    }
+
+    /**
+     * @notice Check if token is verified (ERC-3643 compliance)
+     * @dev Override to enforce identity verification
+     */
+    function _canTransfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal view override returns (bool) {
+        require(
+            identityRegistry().isVerified(from),
+            &quot;Sender not verified&quot;
+        );
+        require(
+            identityRegistry().isVerified(to),
+            &quot;Recipient not verified&quot;
+        );
+        // Only Pool, Industrial Gateway, or approved auction winner can receive
+        require(
+            to == poolAddress || 
+            to == gatewayAddress || 
+            approvedAuctionWinners[to],
+            &quot;Invalid recipient&quot;
+        );
+        return true;
+    }
+}
+</code></div>
+<h3>4.6.3 UJG Lifecycle</h3>
+<div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
+2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+3. UJG minted (ERC-3643NFT with metadata + compliance)
+4. Pool deploys funds to Industrial
+5. Pool holds UJG (collateral/security)
+6. Industrial repays (principal + interest)
+7. UJG redeemed → transferred back to Industrial
+8. [DEFAULT SCENARIO] If industrial defaults:
+   → UJG liquidated via approved auction
+   → Proceeds distributed to uLP holders
+   → Default recorded in compliance audit trail
+</code></div>
+<hr />
+</section>
+<h1>5. ERC-3643 NFT</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Contract Specification</h2>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643NFT.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
+
+/**
+ * @title Ujamaa Deed (UJDEED)
+ * @notice ERC-3643 compliant NFT for unique asset tokenization
+ * @dev Each NFT represents ownership of a single unique asset
+ *      (real estate deed, artwork, single invoice)
+ */
+contract Ujamaa Deed (UJDEED) is ERC3643NFT, UUPSUpgradeable, AccessControlEnumerableUpgradeable {
+
+    // Roles
+    bytes32 public constant MINTER_ROLE = keccak256(&quot;MINTER_ROLE&quot;);
+    bytes32 public constant BURNER_ROLE = keccak256(&quot;BURNER_ROLE&quot;);
+    bytes32 public constant METADATA_ADMIN = keccak256(&quot;METADATA_ADMIN&quot;);
+
+    // Asset metadata structure
+    struct AssetMetadata {
+        string assetType;        // &quot;REAL_ESTATE&quot;, &quot;ARTWORK&quot;, &quot;INVOICE&quot;
+        string jurisdiction;     // ISO country code
+        string legalDescription; // Legal description of asset
+        uint256 appraisedValue;  // Appraised value (18 decimals, USD)
+        uint256 appraisalDate;   // Timestamp of appraisal
+        string documentHash;     // IPFS hash of legal documents
+        address originator;      // Asset originator address
+        bool isIncomeGenerating; // Whether asset produces cash flow
+        uint256 lastDistribution;// Timestamp of last distribution
+    }
+
+    mapping(uint256 =&gt; AssetMetadata) private s_assetMetadata;
+    mapping(string =&gt; uint256[]) private s_assetsByType;
+    mapping(address =&gt; uint256[]) private s_assetsByOriginator;
+
+    uint256 private s_nextTokenId;
+
+    // Events
+    event AssetMinted(
+        uint256 indexed tokenId,
+        address indexed owner,
+        AssetMetadata metadata
+    );
+    event AssetMetadataUpdated(uint256 indexed tokenId, AssetMetadata metadata);
+    event AppraisalUpdated(uint256 indexed tokenId, uint256 newValue, uint256 date);
+    event DistributionRecorded(uint256 indexed tokenId, uint256 amount, uint256 timestamp);
+
+    /**
+     * @notice Initialize NFT contract
+     */
+    function initialize(
+        string calldata name,
+        string calldata symbol,
+        address identityRegistry_,
+        address complianceModule_,
+        address admin_
+    ) external initializer {
+        __ERC3643NFT_init(name, symbol, identityRegistry_, complianceModule_);
+        __UUPSUpgradeable_init();
+        __AccessControlEnumerable_init();
+
+        _grantRole(DEFAULT_ADMIN_ROLE, admin_);
+        _grantRole(MINTER_ROLE, admin_);
+        _grantRole(BURNER_ROLE, admin_);
+        _grantRole(METADATA_ADMIN, admin_);
+    }
+
+    /**
+     * @notice Mint new NFT representing unique asset
+     * @param to Owner address
+     * @param metadata Asset metadata
+     * @return tokenId New token ID
+     */
+    function mintAsset(
+        address to,
+        AssetMetadata calldata metadata
+    ) external onlyRole(MINTER_ROLE) returns (uint256) {
+        require(to != address(0), &quot;Zero address&quot;);
+        require(_canTransfer(msg.sender, to, 1), &quot;Compliance check failed&quot;);
+
+        uint256 tokenId = s_nextTokenId++;
+        _safeMint(to, tokenId);
+        s_assetMetadata[tokenId] = metadata;
+
+        s_assetsByType[metadata.assetType].push(tokenId);
+        s_assetsByOriginator[metadata.originator].push(tokenId);
+
+        emit AssetMinted(tokenId, to, metadata);
+        return tokenId;
+    }
+
+    /**
+     * @notice Update asset appraisal value
+     * @param tokenId Token ID
+     * @param newValue New appraised value
+     */
+    function updateAppraisal(
+        uint256 tokenId,
+        uint256 newValue
+    ) external onlyRole(METADATA_ADMIN) {
+        require(_exists(tokenId), &quot;Token does not exist&quot;);
+        s_assetMetadata[tokenId].appraisedValue = newValue;
+        s_assetMetadata[tokenId].appraisalDate = block.timestamp;
+
+        emit AppraisalUpdated(tokenId, newValue, block.timestamp);
+    }
+
+    /**
+     * @notice Get asset metadata
+     * @param tokenId Token ID
+     * @return metadata Asset metadata struct
+     */
+    function getAssetMetadata(
+        uint256 tokenId
+    ) external view returns (AssetMetadata memory) {
+        require(_exists(tokenId), &quot;Token does not exist&quot;);
+        return s_assetMetadata[tokenId];
+    }
+
+    /**
+     * @notice Get all token IDs by asset type
+     * @param assetType Asset type string
+     * @return tokenIds Array of token IDs
+     */
+    function getAssetsByType(
+        string calldata assetType
+    ) external view returns (uint256[] memory) {
+        return s_assetsByType[assetType];
+    }
+
+    // ... additional functions
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 NFT Use Cases</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Metadata Fields</th>
+<th>Special Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real Estate Deed</strong></td>
+<td><code>assetType=REAL_ESTATE</code>, <code>legalDescription=property deed</code>, <code>documentHash=title registry</code></td>
+<td>Requires land registry verification, jurisdiction-specific compliance</td>
+</tr>
+<tr>
+<td><strong>Artwork</strong></td>
+<td><code>assetType=ARTWORK</code>, <code>legalDescription=provenance chain</code>, <code>documentHash=authenticity certificate</code></td>
+<td>Requires expert appraisal, insurance documentation</td>
+</tr>
+<tr>
+<td><strong>Single Invoice</strong></td>
+<td><code>assetType=INVOICE</code>, <code>legalDescription=invoice terms</code>, <code>documentHash=invoice PDF</code></td>
+<td>Requires debtor verification, payment terms tracking</td>
+</tr>
+<tr>
+<td><strong>Commodity Lot</strong></td>
+<td><code>assetType=COMMODITY</code>, <code>legalDescription=warehouse receipt</code>, <code>documentHash=quality certificate</code></td>
+<td>Requires warehouse attestation, quality verification</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>6. Compliance Modules</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Compliance Module Specification</h2>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/modules/Compliance.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol&quot;;
+
+/**
+ * @title UjamaaComplianceModule
+ * @notice Enforces transfer restrictions per asset class and jurisdiction
+ */
+contract UjamaaComplianceModule is Compliance, UUPSUpgradeable {
+
+    // Transfer rules per asset class
+    struct TransferRule {
+        uint256 maxInvestors;           // Maximum number of token holders
+        uint256 minHoldingPeriod;       // Seconds before tokens can be sold
+        uint256 maxConcentration;       // Max % any single investor can hold
+        bool requireAccreditation;      // Require accredited investor status
+        string[] restrictedJurisdictions; // Blocked jurisdictions
+        uint256 minInvestmentUSD;       // Minimum investment in USD
+        uint256 maxInvestmentUSD;       // Maximum investment in USD
+    }
+
+    mapping(bytes32 =&gt; TransferRule) private s_transferRules;
+    mapping(address =&gt; uint256) private s_investorCount;
+    mapping(bytes32 =&gt; mapping(address =&gt; uint256)) private s_investorHoldings;
+
+    // Events
+    event TransferRuleSet(bytes32 indexed assetId, TransferRule rule);
+    event TransferBlocked(
+        address indexed from,
+        address indexed to,
+        bytes32 indexed assetId,
+        string reason
+    );
+
+    function initialize(address admin_) external initializer {
+        __UUPSUpgradeable_init();
+        // Initialize parent Compliance contract
+    }
+
+    /**
+     * @notice Check if transfer complies with all rules
+     * @dev Called automatically by ERC-3643 token before every transfer
+     */
+    function canTransfer(
+        address from,
+        address to,
+        uint256 value,
+        bytes calldata data
+    ) external view override returns (bool) {
+        bytes32 assetId = bytes32(data);
+
+        TransferRule memory rule = s_transferRules[assetId];
+
+        // Check holding period
+        if (rule.minHoldingPeriod &gt; 0) {
+            // Implementation checks first purchase time
+        }
+
+        // Check concentration limits
+        if (rule.maxConcentration &gt; 0) {
+            // Implementation checks investor's % of total supply
+        }
+
+        // Check restricted jurisdictions
+        for (uint256 i = 0; i &lt; rule.restrictedJurisdictions.length; i++) {
+            // Implementation checks investor's jurisdiction claim
+        }
+
+        // Check accreditation requirement
+        if (rule.requireAccreditation) {
+            // Implementation checks accredited investor claim
+        }
+
+        return true;
+    }
+
+    /**
+     * @notice Set transfer rules for an asset
+     */
+    function setTransferRule(
+        bytes32 assetId,
+        TransferRule calldata rule
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        s_transferRules[assetId] = rule;
+        emit TransferRuleSet(assetId, rule);
+    }
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Compliance Rule Matrix</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Rule</th>
+<th>Real Estate</th>
+<th>Agriculture</th>
+<th>Trade Finance</th>
+<th>Private Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Max Investors</td>
+<td>200</td>
+<td>500</td>
+<td>100</td>
+<td>99 (Reg D)</td>
+</tr>
+<tr>
+<td>Min Holding Period</td>
+<td>365 days</td>
+<td>180 days</td>
+<td>90 days</td>
+<td>730 days</td>
+</tr>
+<tr>
+<td>Max Concentration</td>
+<td>25%</td>
+<td>20%</td>
+<td>15%</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>Require Accreditation</td>
+<td>Yes</td>
+<td>No (retail allowed)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Restricted Jurisdictions</td>
+<td>OFAC list</td>
+<td>OFAC list</td>
+<td>OFAC + high-risk</td>
+<td>OFAC list</td>
+</tr>
+<tr>
+<td>Min Investment</td>
+<td>$1,000</td>
+<td>$100</td>
+<td>$5,000</td>
+<td>$50,000</td>
+</tr>
+<tr>
+<td>Max Investment</td>
+<td>$1M</td>
+<td>$500K</td>
+<td>$2M</td>
+<td>$5M</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>7. Upgrade Mechanism</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 UUPS Proxy Pattern</h2>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
+
+/**
+ * @title UjamaaTokenV2 (Example Upgrade)
+ * @notice Demonstrates upgrade pattern with new functionality
+ */
+contract UjamaaTokenV2 is Ujamaa Pool Token (uLP) {
+
+    // New state variable (storage gap respected)
+    uint256 private s_distributionYield;
+
+    /**
+     * @notice Version 2 initializer (called after upgrade)
+     */
+    function initializeV2() external reinitializer(2) {
+        s_distributionYield = 0;
+    }
+
+    /**
+     * @notice New function in V2
+     */
+    function setDistributionYield(uint256 yield_) external onlyRole(COMPLIANCE_ADMIN) {
+        s_distributionYield = yield_;
+    }
+
+    /**
+     * @notice Override _authorizeUpgrade for access control
+     */
+    function _authorizeUpgrade(
+        address newImplementation
+    ) internal override onlyRole(DEFAULT_ADMIN_ROLE) {}
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 Upgrade Process</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         UPGRADE WORKFLOW                                      │
+│                                                                              │
+│  1. Development                                                              │
+│     └─&gt; Write new contract version                                           │
+│     └─&gt; Unit tests (100% coverage on changed code)                           │
+│     └─&gt; Fork test on mainnet                                                 │
+│                                                                              │
+│  2. Security Review                                                          │
+│     └─&gt; Internal security review                                             │
+│     └─&gt; External audit (if breaking changes)                                 │
+│     └─&gt; Slither/Mythril analysis                                             │
+│                                                                              │
+│  3. Governance Approval                                                      │
+│     └─&gt; Submit upgrade proposal to multisig                                  │
+│     └─&gt; 5-of-9 multisig approval required                                    │
+│     └─&gt; 48-hour timelock before execution                                    │
+│                                                                              │
+│  4. Deployment                                                               │
+│     └─&gt; Deploy new implementation contract                                   │
+│     └─&gt; Verify on Etherscan/Polygonscan                                      │
+│     └─&gt; Execute upgrade via proxy                                            │
+│     └─&gt; Run post-upgrade validation tests                                    │
+│                                                                              │
+│  5. Monitoring                                                               │
+│     └─&gt; Monitor for unexpected behavior                                      │
+│     └─&gt; Alert on any failed transactions                                     │
+│     └─&gt; Document upgrade in changelog                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.3 Storage Layout</h2>
+<div class="docs-pre"><code>// Storage layout must be preserved across upgrades
+// Use storage gaps for future expansion
+
+contract UjamaaTokenV1 {
+    // Slot 0: string private s_assetName;
+    // Slot 1-2: string private s_assetClass;
+    // Slot 3: uint256 private s_totalShares;
+    // Slot 4: uint256 private s_navPerShare;
+    // Slot 5: uint256 private s_lastNavUpdate;
+    // ...
+
+    // Storage gap for future variables
+    uint256[50] private __gap;
+}
+</code></div>
+<hr />
+</section>
+<h1>8. Gas Optimization</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 Optimization Techniques</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Technique</th>
+<th>Gas Savings</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Packed Storage</strong></td>
+<td>40% on state vars</td>
+<td>Pack bools and uints &lt; 256 bits</td>
+</tr>
+<tr>
+<td><strong>Calldata vs Memory</strong></td>
+<td>2,000-5,000 per param</td>
+<td>Use <code>calldata</code> for external function arrays</td>
+</tr>
+<tr>
+<td><strong>Short-Circuit Logic</strong></td>
+<td>Variable</td>
+<td>Order conditions by failure likelihood</td>
+</tr>
+<tr>
+<td><strong>Event vs Storage</strong></td>
+<td>15,000+ per write</td>
+<td>Log to events, reconstruct off-chain</td>
+</tr>
+<tr>
+<td><strong>Batch Operations</strong></td>
+<td>50% per operation</td>
+<td>Batch mint, batch transfer</td>
+</tr>
+<tr>
+<td><strong>Immutable Variables</strong></td>
+<td>2,000 per access</td>
+<td>Use <code>immutable</code> for constants set at deploy</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 Gas Limits</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Operation</th>
+<th>Target Gas</th>
+<th>Max Gas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Token Transfer</td>
+<td>65,000</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td>Token Mint</td>
+<td>85,000</td>
+<td>150,000</td>
+</tr>
+<tr>
+<td>Token Burn</td>
+<td>45,000</td>
+<td>75,000</td>
+</tr>
+<tr>
+<td>Compliance Check</td>
+<td>50,000</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td>NFT Mint</td>
+<td>150,000</td>
+<td>250,000</td>
+</tr>
+<tr>
+<td>Bridge Lock</td>
+<td>120,000</td>
+<td>200,000</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td>80,000</td>
+<td>150,000</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.3 Batch Operations</h2>
+<div class="docs-pre"><code>/**
+ * @notice Batch mint tokens to multiple recipients
+ * @param recipients Array of recipient addresses
+ * @param amounts Array of amounts
+ * @param assetId Asset pool identifier
+ * @return success Boolean array indicating success per recipient
+ */
+function batchMint(
+    address[] calldata recipients,
+    uint256[] calldata amounts,
+    bytes32 assetId
+) external onlyRole(MINTER_ROLE) returns (bool[] memory success) {
+    require(recipients.length == amounts.length, &quot;Length mismatch&quot;);
+
+    success = new bool[](recipients.length);
+    for (uint256 i = 0; i &lt; recipients.length; i++) {
+        if (_canTransfer(msg.sender, recipients[i], amounts[i])) {
+            _mint(recipients[i], amounts[i]);
+            success[i] = true;
+        }
+    }
+}
+</code></div>
+<hr />
+</section>
+<h1>9. Security Considerations</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 Threat Model</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Threat</th>
+<th>Mitigation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reentrancy</strong></td>
+<td>Checks-Effects-Interactions pattern, ReentrancyGuard</td>
+<td>Mitigated</td>
+</tr>
+<tr>
+<td><strong>Integer Overflow</strong></td>
+<td>Solidity 0.8+ built-in checks</td>
+<td>Mitigated</td>
+</tr>
+<tr>
+<td><strong>Access Control Bypass</strong></td>
+<td>OpenZeppelin AccessControl, multisig for admin</td>
+<td>Mitigated</td>
+</tr>
+<tr>
+<td><strong>Oracle Manipulation</strong></td>
+<td>Chainlink decentralized Gateways, time-weighted prices</td>
+<td>Mitigated</td>
+</tr>
+<tr>
+<td><strong>Front-Running</strong></td>
+<td>Commit-reveal patterns for sensitive operations</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>Upgrade Attack</strong></td>
+<td>Timelock + multisig, audit before upgrade</td>
+<td>Mitigated</td>
+</tr>
+<tr>
+<td><strong>Identity Spoofing</strong></td>
+<td>ONCHAINID with trusted Claim Issuers</td>
+<td>Mitigated</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 Critical Security Functions</h2>
+<div class="docs-pre"><code>// Emergency pause - stops all transfers
+function pause() external onlyRole(PAUSER_ROLE) {
+    _pause();
+}
+
+// Forced transfer for regulatory compliance
+function forcedTransfer(
+    address from,
+    address to,
+    uint256 amount
+) external onlyRole(DEFAULT_ADMIN_ROLE) returns (bool) {
+    require(paused(), &quot;Only when paused&quot;);
+    // Regulatory authority can force transfer
+    _transfer(from, to, amount);
+    return true;
+}
+
+// Freeze specific address (court order, sanctions)
+function freezeAddress(address addr) external onlyRole(COMPLIANCE_ADMIN) {
+    identityRegistry().freezeIdentity(addr);
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.3 Audit Checklist</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] All external calls follow CEI pattern</li>
+<li>[ ] Access control on all admin functions</li>
+<li>[ ] Events emitted for all state changes</li>
+<li>[ ] Zero address checks on all transfers</li>
+<li>[ ] Reentrancy guards on value-transfer functions</li>
+<li>[ ] Upgrade mechanism tested on testnet</li>
+<li>[ ] Gas limits within acceptable ranges</li>
+<li>[ ] Storage layout documented and preserved</li>
+<li>[ ] Slither analysis passes with no high/medium issues</li>
+<li>[ ] Formal verification on critical paths (Certora)</li>
+</ul>
+<hr />
+</section>
+<h1>10. Deployment Configuration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Network Configuration</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Network</th>
+<th>Chain ID</th>
+<th>RPC URL</th>
+<th>Explorer</th>
+<th>Gas Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethereum Mainnet</td>
+<td>1</td>
+<td>https://mainnet.infura.io</td>
+<td>Etherscan</td>
+<td>ETH</td>
+</tr>
+<tr>
+<td>Polygon Mainnet</td>
+<td>137</td>
+<td>https://polygon-rpc.com</td>
+<td>Polygonscan</td>
+<td>MATIC</td>
+</tr>
+<tr>
+<td>Ethereum Sepolia</td>
+<td>11155111</td>
+<td>https://sepolia.infura.io</td>
+<td>Etherscan</td>
+<td>ETH</td>
+</tr>
+<tr>
+<td>Polygon Mumbai</td>
+<td>80001</td>
+<td>https://rpc-mumbai.maticvigil.com</td>
+<td>Polygonscan</td>
+<td>MATIC</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 Deployment Order</h2>
+<div class="docs-pre"><code>1. Deploy IdentityRegistry (Ethereum + Polygon)
+2. Deploy TrustedIssuersRegistry (Ethereum + Polygon)
+3. Deploy ComplianceModule (Ethereum + Polygon)
+4. Deploy Ujamaa Pool Token (uLP) implementation (Ethereum + Polygon)
+5. Deploy Ujamaa Pool Token (uLP) proxy (Ethereum + Polygon)
+6. Deploy Ujamaa Deed (UJDEED) implementation (Ethereum + Polygon)
+7. Deploy Ujamaa Deed (UJDEED) proxy (Ethereum + Polygon)
+8. Deploy UjamaaBridge (Ethereum + Polygon)
+9. Deploy DistributionManager (Polygon only)
+10. Configure Gnosis Safe multisigs
+11. Initialize all contracts
+12. Link contracts (set registry addresses in tokens)
+13. Register trusted Claim Issuers
+14. Deploy frontend contracts (if any)
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.3 Configuration Files</h2>
+<div class="docs-pre"><code># ape-config.yaml
+name: ujamaa-defi
+version: 1.0.0
+
+default_ecosystem: ethereum
+
+plugins:
+  - name: solidity
+  - name: vyper
+  - name: etherscan
+
+ethereum:
+  default_network: sepolia
+  sepolia:
+    default_provider: infura
+  mainnet:
+    default_provider: infura
+
+polygon:
+  default_network: mumbai
+  mumbai:
+    default_provider: alchemy
+  mainnet:
+    default_provider: alchemy
+
+solidity:
+  version: 0.8.20
+  evm_version: paris
+</code></div>
+<hr />
+</section>
+<h1>Appendix A: Complete ABI Exports</h1>
+<p>See <code>contracts/abi/</code> directory for complete JSON ABI files for all contracts.</p>
+<h1>Appendix B: Test Coverage Report</h1>
+<p>See <code>reports/coverage/</code> for detailed coverage reports (target: 95%+).</p>
+<h1>Appendix C: Gas Report</h1>
+<p>See <code>reports/gas/</code> for detailed gas consumption analysis per function.</p>
+<hr />
+<p><strong>Document Control</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-02-27</td>
+<td>System Architect</td>
+<td>Initial release</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related Documents</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> - Requirements specification</li>
+<li><code>02_ARCHITECTURE_SPECIFICATION.md</code> - System architecture</li>
+<li><code>06_API_SPECIFICATION.md</code> - Backend API for blockchain integration</li>
+<li><code>10_COMPLIANCE_FRAMEWORK.md</code> - Regulatory compliance requirements for smart contracts</li>
+<li><code>06_DEPLOYMENT_GUIDE.md</code> - Smart contract deployment procedures</li>
+<li><code>07_MONITORING_SPECIFICATION.md</code> - Blockchain and smart contract monitoring</li>
+</ul>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

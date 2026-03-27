@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ujamaa Liquidity Pool - Complete KPI Framework - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa Liquidity Pool - Complete KPI Framework</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Ujamaa Liquidity Pool - Complete KPI Framework</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ Complete Specification | <strong>Last Updated:</strong> March 21, 2026</p></div>
+
+        <h1>Ujamaa Liquidity Pool - Complete KPI Framework</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Document ID:</strong> UJAMAA-KPI-001<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> March 21, 2026<br />
+<strong>Status:</strong> ✅ Complete Specification</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p>This document defines all possible Key Performance Indicators (KPIs) for the Ujamaa DeFi Platform Liquidity Pool ecosystem. The KPIs are organized into <strong>6 categories</strong> covering <strong>financial performance</strong>, <strong>pool operations</strong>, <strong>risk management</strong>, <strong>investor metrics</strong>, <strong>impact measurement</strong>, and <strong>platform operations</strong>.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>KPI Categories Overview</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>KPI Count</th>
+<th>Primary Stakeholders</th>
+<th>Reporting Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Financial Performance</strong></td>
+<td>25</td>
+<td>Investors, Management</td>
+<td>Daily, Weekly, Monthly</td>
+</tr>
+<tr>
+<td><strong>2. Pool Operations</strong></td>
+<td>20</td>
+<td>Pool Managers, Operations</td>
+<td>Daily, Real-time</td>
+</tr>
+<tr>
+<td><strong>3. Risk Management</strong></td>
+<td>18</td>
+<td>Compliance, Risk Officers</td>
+<td>Daily, Weekly</td>
+</tr>
+<tr>
+<td><strong>4. Investor Metrics</strong></td>
+<td>15</td>
+<td>Investors, IR Team</td>
+<td>Monthly, Quarterly</td>
+</tr>
+<tr>
+<td><strong>5. Impact Measurement</strong></td>
+<td>12</td>
+<td>Impact Committee, Board</td>
+<td>Quarterly, Annually</td>
+</tr>
+<tr>
+<td><strong>6. Platform Operations</strong></td>
+<td>15</td>
+<td>Tech Team, Operations</td>
+<td>Real-time, Weekly</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>105</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. FINANCIAL PERFORMANCE KPIs</h2>
+<h3>1.1 Pool Value &amp; Growth</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FP-001</strong></td>
+<td><strong>Total Pool Value (TPV)</strong></td>
+<td>Sum of all assets in pool</td>
+<td>EUR (18 decimals)</td>
+<td>€50M (Y1)</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>FP-002</strong></td>
+<td><strong>Net Asset Value (NAV) per Share</strong></td>
+<td><code>Total Pool Value / Total Shares Outstanding</code></td>
+<td>EUR/share</td>
+<td>1.00 → 1.10+</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>FP-003</strong></td>
+<td><strong>NAV Growth Rate</strong></td>
+<td><code>(NAV_end - NAV_start) / NAV_start × 100</code></td>
+<td>%</td>
+<td>10-15% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-004</strong></td>
+<td><strong>Assets Under Management (AUM)</strong></td>
+<td>Total market value of all managed assets</td>
+<td>EUR</td>
+<td>€50M (Y1)</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-005</strong></td>
+<td><strong>Pool Capitalization</strong></td>
+<td>Total uLP supply × NAV per share</td>
+<td>EUR</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 Yield &amp; Returns</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FP-006</strong></td>
+<td><strong>Gross Yield Earned</strong></td>
+<td>Sum of all interest from financings</td>
+<td>EUR</td>
+<td>12-15% gross</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-007</strong></td>
+<td><strong>Net Yield to Investors</strong></td>
+<td><code>Gross Yield - Management Fee - Performance Fee</code></td>
+<td>EUR</td>
+<td>10-15% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-008</strong></td>
+<td><strong>Yield Accrual Rate</strong></td>
+<td><code>Pending Yield / Time Period</code></td>
+<td>EUR/day</td>
+<td>-</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-009</strong></td>
+<td><strong>Annualized Percentage Yield (APY)</strong></td>
+<td><code>(1 + periodic_rate)^periods - 1</code></td>
+<td>%</td>
+<td>10.5-15.8%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-010</strong></td>
+<td><strong>Internal Rate of Return (IRR)</strong></td>
+<td>Discount rate making NPV = 0</td>
+<td>%</td>
+<td>12%+</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>FP-011</strong></td>
+<td><strong>Return on Investment (ROI)</strong></td>
+<td><code>(Current Value - Principal) / Principal × 100</code></td>
+<td>%</td>
+<td>10-15%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>FP-012</strong></td>
+<td><strong>Yield per Share</strong></td>
+<td><code>Total Yield / Total Shares</code></td>
+<td>EUR/share</td>
+<td>-</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-013</strong></td>
+<td><strong>Accumulated Yield</strong></td>
+<td>Total yield accrued since inception</td>
+<td>EUR</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>FP-014</strong></td>
+<td><strong>Pending Yield</strong></td>
+<td>Yield not yet accrued/fees not calculated</td>
+<td>EUR</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>FP-015</strong></td>
+<td><strong>Yield Coverage Ratio</strong></td>
+<td><code>Net Yield / Operating Expenses</code></td>
+<td>Ratio</td>
+<td>&gt;2.0x</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.3 Fees &amp; Revenue</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FP-016</strong></td>
+<td><strong>Management Fee Revenue</strong></td>
+<td><code>AUM × 2.0% × (days/365)</code></td>
+<td>EUR</td>
+<td>2% p.a.</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-017</strong></td>
+<td><strong>Performance Fee Revenue</strong></td>
+<td><code>(Yield - Hurdle) × 20%</code> (above 8% hurdle)</td>
+<td>EUR</td>
+<td>Varies</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>FP-018</strong></td>
+<td><strong>Total Fee Revenue</strong></td>
+<td><code>Management Fee + Performance Fee</code></td>
+<td>EUR</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>FP-019</strong></td>
+<td><strong>Fee Rate (Effective)</strong></td>
+<td><code>Total Fees / Average AUM × 100</code></td>
+<td>%</td>
+<td>2-4%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>FP-020</strong></td>
+<td><strong>High-Water Mark</strong></td>
+<td>Highest NAV achieved (for performance fee calc)</td>
+<td>EUR/share</td>
+<td>-</td>
+<td>Quarterly</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.4 Pool Family Performance</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FP-021</strong></td>
+<td><strong>Pool Industrie Yield</strong></td>
+<td>Yield from industrial financings</td>
+<td>EUR</td>
+<td>10-12% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-022</strong></td>
+<td><strong>Pool Agriculture Yield</strong></td>
+<td>Yield from agriculture financings</td>
+<td>EUR</td>
+<td>12-15% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-023</strong></td>
+<td><strong>Pool Trade Finance Yield</strong></td>
+<td>Yield from trade finance</td>
+<td>EUR</td>
+<td>8-10% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-024</strong></td>
+<td><strong>Pool Renewable Energy Yield</strong></td>
+<td>Yield from renewable energy projects</td>
+<td>EUR</td>
+<td>9-11% APR</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>FP-025</strong></td>
+<td><strong>Pool Real Estate Yield</strong></td>
+<td>Yield from real estate assets</td>
+<td>EUR</td>
+<td>8-12% APR</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. POOL OPERATIONS KPIs</h2>
+<h3>2.1 Financing Portfolio</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PO-001</strong></td>
+<td><strong>Total Financings Active</strong></td>
+<td>Count of non-repaid financings</td>
+<td>Number</td>
+<td>50+ (Y1)</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-002</strong></td>
+<td><strong>Total Principal Deployed</strong></td>
+<td>Sum of all financing principals</td>
+<td>EUR</td>
+<td>80% of TPV</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-003</strong></td>
+<td><strong>Available Liquidity</strong></td>
+<td><code>Total Pool Value - Deployed Amount</code></td>
+<td>EUR</td>
+<td>20% of TPV</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-004</strong></td>
+<td><strong>Deployment Rate</strong></td>
+<td><code>Deployed / Available × 100</code></td>
+<td>%</td>
+<td>75-85%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-005</strong></td>
+<td><strong>Average Financing Size</strong></td>
+<td><code>Total Principal / Number of Financings</code></td>
+<td>EUR</td>
+<td>€100K-500K</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>PO-006</strong></td>
+<td><strong>Financing by Pool Family</strong></td>
+<td>Count per pool family</td>
+<td>Number</td>
+<td>Diversified</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-007</strong></td>
+<td><strong>Average Interest Rate</strong></td>
+<td><code>Σ(Principal × Rate) / ΣPrincipal</code></td>
+<td>% (bps)</td>
+<td>10-12%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-008</strong></td>
+<td><strong>Weighted Average Lock-up</strong></td>
+<td><code>Σ(Days × Principal) / ΣPrincipal</code></td>
+<td>Days</td>
+<td>180-365</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>PO-009</strong></td>
+<td><strong>Financing Maturity Schedule</strong></td>
+<td>Financings due per period</td>
+<td>Count/EUR</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>PO-010</strong></td>
+<td><strong>Repaid Financings Count</strong></td>
+<td>Count of fully repaid financings</td>
+<td>Number</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 Asset Allocation</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Limit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PO-011</strong></td>
+<td><strong>Per-Industrial Allocation</strong></td>
+<td>Total allocated to single industrial</td>
+<td>% of TPV</td>
+<td>Max 20%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-012</strong></td>
+<td><strong>Per-Asset-Class Allocation</strong></td>
+<td>Total allocated to asset class</td>
+<td>% of TPV</td>
+<td>Max 40%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-013</strong></td>
+<td><strong>Geographic Allocation</strong></td>
+<td>Allocation by country/region</td>
+<td>% of TPV</td>
+<td>Max 30%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-014</strong></td>
+<td><strong>Sector Concentration</strong></td>
+<td>Allocation by industry sector</td>
+<td>% of TPV</td>
+<td>Max 40%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-015</strong></td>
+<td><strong>Diversification Index</strong></td>
+<td>Herfindahl-Hirschman Index</td>
+<td>Index (0-1)</td>
+<td>&lt;0.15</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>PO-016</strong></td>
+<td><strong>Top 5 Exposure</strong></td>
+<td>Sum of top 5 industrials</td>
+<td>% of TPV</td>
+<td>Max 50%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-017</strong></td>
+<td><strong>Asset Class Utilization</strong></td>
+<td><code>Allocated / Max Allocation × 100</code></td>
+<td>%</td>
+<td>&lt;100%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>PO-018</strong></td>
+<td><strong>Pool Family Distribution</strong></td>
+<td>% allocation per pool family</td>
+<td>%</td>
+<td>Balanced</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-019</strong></td>
+<td><strong>Currency Exposure</strong></td>
+<td>Exposure by currency (EUR, USD, etc.)</td>
+<td>%</td>
+<td>Hedged</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PO-020</strong></td>
+<td><strong>Guarantee Token Coverage</strong></td>
+<td><code>Financings with UGT / Total Financings</code></td>
+<td>%</td>
+<td>100%</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. RISK MANAGEMENT KPIs</h2>
+<h3>3.1 Credit Risk</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Limit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RM-001</strong></td>
+<td><strong>Default Rate</strong></td>
+<td><code>Defaulted Amount / Total Deployed × 100</code></td>
+<td>%</td>
+<td>&lt;5%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>RM-002</strong></td>
+<td><strong>Non-Performing Financing Ratio</strong></td>
+<td><code>NPF Count / Total Count × 100</code></td>
+<td>%</td>
+<td>&lt;10%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-003</strong></td>
+<td><strong>Provision Coverage Ratio</strong></td>
+<td><code>Provisions / Expected Losses</code></td>
+<td>%</td>
+<td>&gt;100%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>RM-004</strong></td>
+<td><strong>Expected Credit Loss (ECL)</strong></td>
+<td><code>PD × LGD × EAD</code> (IFRS 9)</td>
+<td>EUR</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>RM-005</strong></td>
+<td><strong>Days Past Due (DPD)</strong></td>
+<td>Average days payments are late</td>
+<td>Days</td>
+<td>&lt;30</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-006</strong></td>
+<td><strong>Repayment Performance Rate</strong></td>
+<td><code>On-time Repayments / Total Due × 100</code></td>
+<td>%</td>
+<td>&gt;90%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-007</strong></td>
+<td><strong>Recovery Rate</strong></td>
+<td><code>Recovered / Defaulted Amount × 100</code></td>
+<td>%</td>
+<td>&gt;60%</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>RM-008</strong></td>
+<td><strong>Credit Quality Distribution</strong></td>
+<td>Financings by credit rating</td>
+<td>%</td>
+<td>Investment grade</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>RM-009</strong></td>
+<td><strong>Watchlist Count</strong></td>
+<td>Number of financings under monitoring</td>
+<td>Number</td>
+<td>&lt;10%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-010</strong></td>
+<td><strong>Concentration Risk Score</strong></td>
+<td>Composite score of concentration</td>
+<td>Score (1-10)</td>
+<td>&lt;6</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.2 Liquidity Risk</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Limit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RM-011</strong></td>
+<td><strong>Liquidity Reserve Ratio</strong></td>
+<td><code>Liquid Assets / Total Liabilities × 100</code></td>
+<td>%</td>
+<td>&gt;5%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>RM-012</strong></td>
+<td><strong>Redemption Coverage</strong></td>
+<td><code>Available Liquidity / Redemption Requests</code></td>
+<td>%</td>
+<td>&gt;100%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>RM-013</strong></td>
+<td><strong>Gate Trigger Monitor</strong></td>
+<td><code>Redemption Requests / NAV × 100</code></td>
+<td>%</td>
+<td>10% trigger</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>RM-014</strong></td>
+<td><strong>Maturity Mismatch Ratio</strong></td>
+<td><code>Short-term Assets / Short-term Liabilities</code></td>
+<td>Ratio</td>
+<td>&gt;1.0</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-015</strong></td>
+<td><strong>Cash Drag</strong></td>
+<td><code>Idle Cash / Total Pool × 100</code></td>
+<td>%</td>
+<td>&lt;10%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>RM-016</strong></td>
+<td><strong>Funding Gap</strong></td>
+<td><code>Maturing Liabilities - Maturing Assets</code></td>
+<td>EUR</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>RM-017</strong></td>
+<td><strong>Liquidity Buffer Days</strong></td>
+<td>Days of redemptions covered by liquid assets</td>
+<td>Days</td>
+<td>&gt;30</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>RM-018</strong></td>
+<td><strong>Stressed Liquidity Ratio</strong></td>
+<td>Liquidity under stress scenario</td>
+<td>%</td>
+<td>&gt;80%</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. INVESTOR METRICS KPIs</h2>
+<h3>4.1 Investor Base</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IM-001</strong></td>
+<td><strong>Total Investors</strong></td>
+<td>Count of uLP holders</td>
+<td>Number</td>
+<td>100+ (Y1)</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>IM-002</strong></td>
+<td><strong>New Investors (Period)</strong></td>
+<td>New uLP holders in period</td>
+<td>Number</td>
+<td>20+/month</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IM-003</strong></td>
+<td><strong>Investor Concentration</strong></td>
+<td>Top 10 holders / Total supply</td>
+<td>%</td>
+<td>&lt;50%</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>IM-004</strong></td>
+<td><strong>Average Investment Size</strong></td>
+<td><code>Total AUM / Number of Investors</code></td>
+<td>EUR</td>
+<td>€500K+</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IM-005</strong></td>
+<td><strong>Investor Type Distribution</strong></td>
+<td>% by type (Family Office, Fund, etc.)</td>
+<td>%</td>
+<td>Diversified</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IM-006</strong></td>
+<td><strong>Geographic Distribution</strong></td>
+<td>% by investor jurisdiction</td>
+<td>%</td>
+<td>Compliant</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IM-007</strong></td>
+<td><strong>Investor Retention Rate</strong></td>
+<td><code>Retained Investors / Total × 100</code></td>
+<td>%</td>
+<td>&gt;80%</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IM-008</strong></td>
+<td><strong>Churn Rate</strong></td>
+<td><code>Exited Investors / Total × 100</code></td>
+<td>%</td>
+<td>&lt;10%</td>
+<td>Quarterly</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 Investor Returns</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IM-009</strong></td>
+<td><strong>Investor Portfolio Value</strong></td>
+<td><code>Balance × NAV per Share</code></td>
+<td>EUR</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>IM-010</strong></td>
+<td><strong>Unrealized Gain/Loss</strong></td>
+<td><code>Current Value - Principal Invested</code></td>
+<td>EUR</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>IM-011</strong></td>
+<td><strong>Realized Gain/Loss</strong></td>
+<td><code>Redemption Value - Principal Redeemed</code></td>
+<td>EUR</td>
+<td>-</td>
+<td>Per Redemption</td>
+</tr>
+<tr>
+<td><strong>IM-012</strong></td>
+<td><strong>Total Return (Investor)</strong></td>
+<td><code>(Unrealized + Realized) / Principal × 100</code></td>
+<td>%</td>
+<td>10-15% APR</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IM-013</strong></td>
+<td><strong>Distribution Yield</strong></td>
+<td><code>Distributions Received / Investment × 100</code></td>
+<td>%</td>
+<td>Quarterly</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IM-014</strong></td>
+<td><strong>Time-Weighted Return</strong></td>
+<td>Geometric mean of periodic returns</td>
+<td>%</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IM-015</strong></td>
+<td><strong>Money-Weighted Return</strong></td>
+<td>IRR for individual investor cash flows</td>
+<td>%</td>
+<td>-</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. IMPACT MEASUREMENT KPIs</h2>
+<h3>5.1 Economic Impact</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target (Y1)</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IMP-001</strong></td>
+<td><strong>SMEs Financed</strong></td>
+<td>Count of SMEs receiving financing</td>
+<td>Number</td>
+<td>50+</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IMP-002</strong></td>
+<td><strong>Jobs Created</strong></td>
+<td>Direct jobs from financed SMEs</td>
+<td>Number</td>
+<td>1,000+</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-003</strong></td>
+<td><strong>Jobs Supported</strong></td>
+<td>Indirect jobs in value chain</td>
+<td>Number</td>
+<td>2,000+</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-004</strong></td>
+<td><strong>GDP Contribution</strong></td>
+<td>Economic value added by financed SMEs</td>
+<td>EUR</td>
+<td>€10M+</td>
+<td>Annually</td>
+</tr>
+<tr>
+<td><strong>IMP-005</strong></td>
+<td><strong>Tax Revenue Generated</strong></td>
+<td>Taxes paid by financed SMEs</td>
+<td>EUR</td>
+<td>€2M+</td>
+<td>Annually</td>
+</tr>
+<tr>
+<td><strong>IMP-006</strong></td>
+<td><strong>Export Revenue</strong></td>
+<td>Export earnings from financed SMEs</td>
+<td>EUR</td>
+<td>€5M+</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-007</strong></td>
+<td><strong>Local Content Ratio</strong></td>
+<td>% local inputs in financed operations</td>
+<td>%</td>
+<td>&gt;60%</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-008</strong></td>
+<td><strong>SME Revenue Growth</strong></td>
+<td>Average revenue growth of financed SMEs</td>
+<td>%</td>
+<td>20%+</td>
+<td>Annually</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 Social &amp; Environmental Impact</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target (Y1)</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IMP-009</strong></td>
+<td><strong>Women-Led Businesses</strong></td>
+<td>% financed SMEs led by women</td>
+<td>%</td>
+<td>30%+</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-010</strong></td>
+<td><strong>Youth Employment</strong></td>
+<td>% jobs created for youth (&lt;35)</td>
+<td>%</td>
+<td>50%+</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-011</strong></td>
+<td><strong>Renewable Energy Capacity</strong></td>
+<td>MW of renewable energy financed</td>
+<td>MW</td>
+<td>10+ MW</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-012</strong></td>
+<td><strong>CO2 Emissions Avoided</strong></td>
+<td>Tonnes CO2 equivalent avoided</td>
+<td>tCO2e</td>
+<td>5,000+</td>
+<td>Annually</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.3 SDG Alignment</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Alignment</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IMP-013</strong></td>
+<td><strong>SDG 1 (No Poverty)</strong></td>
+<td>Income generation for low-income</td>
+<td>10,000+ beneficiaries</td>
+<td>Annually</td>
+</tr>
+<tr>
+<td><strong>IMP-014</strong></td>
+<td><strong>SDG 5 (Gender Equality)</strong></td>
+<td>Women economic empowerment</td>
+<td>30% women-led</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-015</strong></td>
+<td><strong>SDG 8 (Decent Work)</strong></td>
+<td>Quality jobs created</td>
+<td>1,000+ jobs</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-016</strong></td>
+<td><strong>SDG 9 (Industry)</strong></td>
+<td>Industrial capacity built</td>
+<td>50+ SMEs</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>IMP-017</strong></td>
+<td><strong>SDG 10 (Reduced Inequalities)</strong></td>
+<td>Inclusive finance access</td>
+<td>40% underserved</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>IMP-018</strong></td>
+<td><strong>SDG 13 (Climate Action)</strong></td>
+<td>Green financing</td>
+<td>20% of portfolio</td>
+<td>Quarterly</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. PLATFORM OPERATIONS KPIs</h2>
+<h3>6.1 Smart Contract Operations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OP-001</strong></td>
+<td><strong>Contract Gas Efficiency</strong></td>
+<td>Average gas per transaction</td>
+<td>Gwei</td>
+<td>&lt;500K</td>
+<td>Per Tx</td>
+</tr>
+<tr>
+<td><strong>OP-002</strong></td>
+<td><strong>Transaction Success Rate</strong></td>
+<td><code>Successful Tx / Total Tx × 100</code></td>
+<td>%</td>
+<td>&gt;99%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-003</strong></td>
+<td><strong>Oracle Uptime</strong></td>
+<td>% time oracles providing data</td>
+<td>%</td>
+<td>&gt;99.9%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-004</strong></td>
+<td><strong>NAV Calculation Accuracy</strong></td>
+<td>Deviation from expected NAV</td>
+<td>%</td>
+<td>&lt;0.01%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>OP-005</strong></td>
+<td><strong>Yield Distribution Accuracy</strong></td>
+<td>Accuracy of yield calculations</td>
+<td>%</td>
+<td>100%</td>
+<td>Per Distribution</td>
+</tr>
+<tr>
+<td><strong>OP-006</strong></td>
+<td><strong>Compliance Check Pass Rate</strong></td>
+<td><code>Passed Checks / Total Checks × 100</code></td>
+<td>%</td>
+<td>100%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-007</strong></td>
+<td><strong>Identity Verification Rate</strong></td>
+<td><code>Verified Users / Total Users × 100</code></td>
+<td>%</td>
+<td>100%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>OP-008</strong></td>
+<td><strong>Transfer Restriction Triggers</strong></td>
+<td>Blocked transfers (sanctions, etc.)</td>
+<td>Count</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-009</strong></td>
+<td><strong>Guarantee Token Mint Rate</strong></td>
+<td>UGT minted per financing</td>
+<td>%</td>
+<td>100%</td>
+<td>Per Financing</td>
+</tr>
+<tr>
+<td><strong>OP-010</strong></td>
+<td><strong>Contract Upgrade Readiness</strong></td>
+<td>Proxy upgrade capability status</td>
+<td>Status</td>
+<td>Ready</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.2 Backend &amp; API Operations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OP-011</strong></td>
+<td><strong>API Response Time (P95)</strong></td>
+<td>95th percentile response time</td>
+<td>ms</td>
+<td>&lt;200ms</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-012</strong></td>
+<td><strong>API Availability</strong></td>
+<td>% uptime of API endpoints</td>
+<td>%</td>
+<td>&gt;99.9%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-013</strong></td>
+<td><strong>Database Query Performance</strong></td>
+<td>Average query execution time</td>
+<td>ms</td>
+<td>&lt;50ms</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-014</strong></td>
+<td><strong>Error Rate</strong></td>
+<td><code>Failed Requests / Total Requests × 100</code></td>
+<td>%</td>
+<td>&lt;0.1%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-015</strong></td>
+<td><strong>Data Sync Latency</strong></td>
+<td>Delay between on-chain and DB</td>
+<td>Seconds</td>
+<td>&lt;30s</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.3 Security &amp; Compliance</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI ID</th>
+<th>KPI Name</th>
+<th>Formula</th>
+<th>Unit</th>
+<th>Target</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OP-016</strong></td>
+<td><strong>Security Incident Count</strong></td>
+<td>Number of security incidents</td>
+<td>Count</td>
+<td>0</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-017</strong></td>
+<td><strong>Failed Login Attempts</strong></td>
+<td>Count of failed auth attempts</td>
+<td>Count</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-018</strong></td>
+<td><strong>KYC/AML Check Completion</strong></td>
+<td>% users completing checks</td>
+<td>%</td>
+<td>100%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td><strong>OP-019</strong></td>
+<td><strong>Sanctions Screening Hits</strong></td>
+<td>Matches against sanctions lists</td>
+<td>Count</td>
+<td>-</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>OP-020</strong></td>
+<td><strong>Audit Log Completeness</strong></td>
+<td>% actions logged</td>
+<td>%</td>
+<td>100%</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>KPI Dashboard Specifications</h2>
+<h3>Real-Time Dashboard (Operations)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Displayed KPIs</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pool Value</strong></td>
+<td>TPV, NAV, Available Liquidity</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Financings</strong></td>
+<td>Active Count, Deployed Amount</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Risk Limits</strong></td>
+<td>Per-Industrial, Per-Asset-Class</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Redemptions</strong></td>
+<td>Requests, Coverage Ratio</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Verification Rate, Blocked Transfers</td>
+<td>Real-time</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Daily Dashboard (Management)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Displayed KPIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>NAV Growth, Yield Earned, Fees Accrued</td>
+</tr>
+<tr>
+<td><strong>Operations</strong></td>
+<td>Deployment Rate, New Financings</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>Default Rate, Liquidity Reserve, DPD</td>
+</tr>
+<tr>
+<td><strong>Investors</strong></td>
+<td>Total Investors, Net Flows</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Monthly Report (Investors)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Displayed KPIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Returns</strong></td>
+<td>NAV Performance, Total Return, Distribution Yield</td>
+</tr>
+<tr>
+<td><strong>Portfolio</strong></td>
+<td>AUM, Financing Count, Pool Distribution</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>Default Rate, Provision Coverage, Concentration</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>SMEs Financed, Jobs Created, SDG Metrics</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Quarterly Report (Board/Regulators)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Displayed KPIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>All FP KPIs with trends</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>All RM KPIs with stress tests</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>All IMP KPIs with SDG alignment</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Regulatory compliance status</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>KPI Calculation Methods</h2>
+<h3>NAV Calculation</h3>
+<div class="docs-pre"><code>def calculate_nav(total_pool_value: int, total_shares: int) -&gt; int:
+    &quot;&quot;&quot;
+    Calculate Net Asset Value per share (18 decimals)
+
+    Formula: NAV = Total Pool Value / Total Shares Outstanding
+
+    Returns: NAV per share in wei (18 decimals)
+    &quot;&quot;&quot;
+    if total_shares == 0:
+        return 10**18  # Initial NAV = 1.00
+    return total_pool_value // total_shares
+</code></div>
+<h3>Yield Calculation</h3>
+<div class="docs-pre"><code>def calculate_yield(financings: list) -&gt; int:
+    &quot;&quot;&quot;
+    Calculate total yield from all financings
+
+    Formula: Σ(Principal × Interest Rate × Time)
+
+    Returns: Total yield in wei (18 decimals)
+    &quot;&quot;&quot;
+    total_yield = 0
+    for financing in financings:
+        interest = (financing.principal * financing.interest_rate) // 10000
+        total_yield += interest
+    return total_yield
+</code></div>
+<h3>Fee Calculation</h3>
+<div class="docs-pre"><code>def calculate_fees(
+    total_pool_value: int,
+    pending_yield: int,
+    management_fee_rate: int,
+    performance_fee_rate: int,
+    hurdle_rate: int,
+    time_elapsed: int
+) -&gt; tuple:
+    &quot;&quot;&quot;
+    Calculate management and performance fees
+
+    Returns: (management_fee, performance_fee, net_yield)
+    &quot;&quot;&quot;
+    year_in_seconds = 365 * 24 * 60 * 60
+
+    # Management fee (annual, pro-rated)
+    management_fee = (
+        total_pool_value * management_fee_rate * time_elapsed
+    ) // (10000 * year_in_seconds)
+
+    # Performance fee (on yield above hurdle)
+    if pending_yield &gt; (total_pool_value * hurdle_rate // 10000):
+        performance_fee = (pending_yield * performance_fee_rate) // 10000
+    else:
+        performance_fee = 0
+
+    net_yield = pending_yield - management_fee - performance_fee
+
+    return (management_fee, performance_fee, net_yield)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Data Sources</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Primary Data Source</th>
+<th>Backup Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>ULPToken.sol, LiquidityPool.sol</td>
+<td>Backend DB</td>
+</tr>
+<tr>
+<td><strong>Operations</strong></td>
+<td>LiquidityPool.sol</td>
+<td>Backend DB</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>LiquidityPool.sol, Compliance Oracle</td>
+<td>Backend Analytics</td>
+</tr>
+<tr>
+<td><strong>Investor</strong></td>
+<td>ULPToken.sol, Backend DB</td>
+<td>Blockchain Indexer</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>Backend DB, Manual Input</td>
+<td>External APIs</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>Smart Contracts, Backend Logs</td>
+<td>Monitoring Tools</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Reporting Schedule</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Report Type</th>
+<th>Frequency</th>
+<th>Recipients</th>
+<th>Key KPIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily Flash</strong></td>
+<td>Daily</td>
+<td>Management</td>
+<td>FP-001 to FP-005, PO-001 to PO-004</td>
+</tr>
+<tr>
+<td><strong>Weekly Summary</strong></td>
+<td>Weekly</td>
+<td>Management, Board</td>
+<td>All FP, PO, RM (summary)</td>
+</tr>
+<tr>
+<td><strong>Monthly Investor</strong></td>
+<td>Monthly</td>
+<td>Investors</td>
+<td>FP, IM, RM (detailed)</td>
+</tr>
+<tr>
+<td><strong>Quarterly Board</strong></td>
+<td>Quarterly</td>
+<td>Board, Regulators</td>
+<td>All categories</td>
+</tr>
+<tr>
+<td><strong>Annual Impact</strong></td>
+<td>Annually</td>
+<td>Public, Stakeholders</td>
+<td>All IMP KPIs</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>KPI Governance</h2>
+<h3>Ownership</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KPI Category</th>
+<th>Owner</th>
+<th>Reviewer</th>
+<th>Approver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>CFO</td>
+<td>CEO</td>
+<td>Board</td>
+</tr>
+<tr>
+<td><strong>Operations</strong></td>
+<td>COO</td>
+<td>CEO</td>
+<td>Board</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>CRO</td>
+<td>CEO</td>
+<td>Board/Risk Committee</td>
+</tr>
+<tr>
+<td><strong>Investor</strong></td>
+<td>Head of IR</td>
+<td>CFO</td>
+<td>CEO</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>Head of Impact</td>
+<td>CEO</td>
+<td>Board</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>CTO</td>
+<td>CEO</td>
+<td>Board</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Review Process</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Daily</strong>: Automated monitoring with alerts</li>
+<li><strong>Weekly</strong>: Operations review meeting</li>
+<li><strong>Monthly</strong>: Management review and investor reporting</li>
+<li><strong>Quarterly</strong>: Board review and regulatory reporting</li>
+<li><strong>Annually</strong>: External audit and impact verification</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix: KPI Definitions Glossary</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TPV</strong></td>
+<td>Total Pool Value - Sum of all assets in the liquidity pool</td>
+</tr>
+<tr>
+<td><strong>NAV</strong></td>
+<td>Net Asset Value - Value per uLP share</td>
+</tr>
+<tr>
+<td><strong>APR</strong></td>
+<td>Annual Percentage Rate - Simple interest rate</td>
+</tr>
+<tr>
+<td><strong>APY</strong></td>
+<td>Annual Percentage Yield - Compound interest rate</td>
+</tr>
+<tr>
+<td><strong>AUM</strong></td>
+<td>Assets Under Management - Total managed assets</td>
+</tr>
+<tr>
+<td><strong>DPD</strong></td>
+<td>Days Past Due - Number of days payment is late</td>
+</tr>
+<tr>
+<td><strong>ECL</strong></td>
+<td>Expected Credit Loss - IFRS 9 impairment calculation</td>
+</tr>
+<tr>
+<td><strong>LGD</strong></td>
+<td>Loss Given Default - % of exposure lost on default</td>
+</tr>
+<tr>
+<td><strong>PD</strong></td>
+<td>Probability of Default - Likelihood of default</td>
+</tr>
+<tr>
+<td><strong>EAD</strong></td>
+<td>Exposure at Default - Amount at risk on default</td>
+</tr>
+<tr>
+<td><strong>UGT</strong></td>
+<td>Guarantee Token - Collateral token for financings</td>
+</tr>
+<tr>
+<td><strong>uLP</strong></td>
+<td>Ujamaa Liquidity Provider Token - Yield-bearing pool token</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Control</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+<th>Approved By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1.0</strong></td>
+<td>March 21, 2026</td>
+<td>Lead Architect</td>
+<td>Initial KPI framework</td>
+<td>Board</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>© 2026 Ujamaa DeFi Platform. All Rights Reserved.</strong></p>
+<p><strong>Confidential - Internal Use Only</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Operations</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

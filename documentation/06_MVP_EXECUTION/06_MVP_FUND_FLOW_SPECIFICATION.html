@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MVP Fund Flow Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Fund Flow Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">MVP Fund Flow Specification</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> Smart Contract Developers, Backend Engineers, Frontend Developers</p></div>
+
+        <h1>MVP Fund Flow Specification</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>uLPToken, MockEscrow &amp; BIIC/MCB Simulation</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 17, 2026<br />
+<strong>Classification:</strong> Internal / Engineering<br />
+<strong>Audience:</strong> Smart Contract Developers, Backend Engineers, Frontend Developers</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-uLPToken-sol-specification">uLPToken.sol Specification</a></li>
+<li><a href="#3-mockescrow-sol-specification">MockEscrow.sol Specification</a></li>
+<li><a href="#4-fund-flow-simulation">Fund Flow Simulation</a></li>
+<li><a href="#5-biicmcb-production-swap">BIIC/MCB Production Swap</a></li>
+<li><a href="#6-testing-guide">Testing Guide</a></li>
+<li><a href="#7-security-considerations">Security Considerations</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Executive Summary</h2>
+<h3>1.1 Purpose</h3>
+<p>This document specifies how MVP handles:<br />
+- <strong>uLPToken.sol</strong> - Yield-bearing LP token smart contract<br />
+- <strong>MockEscrow.sol</strong> - Simulated bank escrow for testnet<br />
+- <strong>Fund Flow Simulation</strong> - BIIC/MCB bank integration mock</p>
+<h3>1.2 Key Components</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLPToken.sol</strong></td>
+<td>Smart Contract</td>
+<td>Yield-bearing ERC-3643 token</td>
+<td>✅ Specified</td>
+</tr>
+<tr>
+<td><strong>MockEscrow.sol</strong></td>
+<td>Smart Contract</td>
+<td>Simulated escrow accounts</td>
+<td>✅ Specified</td>
+</tr>
+<tr>
+<td><strong>MockBankService</strong></td>
+<td>Backend Service</td>
+<td>Bank API simulation</td>
+<td>✅ Specified</td>
+</tr>
+<tr>
+<td><strong>BIICBankService</strong></td>
+<td>Backend Service</td>
+<td>Production bank integration</td>
+<td>📅 Future</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.3 Document Relationship</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────┐
+│         MVP FUND FLOW SPECIFICATION                    │
+│              (This Document)                             │
+│                                                          │
+│  Detailed specification for:                             │
+│  • uLPToken (yield-bearing token)                        │
+│  • MockEscrow (bank simulation)                          │
+│  • Fund flow (deposit → invest → yield → redeem)         │
+└─────────────────────────────────────────────────────────┘
+         │                        │
+         │ references             │ references
+         ▼                        ▼
+┌──────────────────┐    ┌────────────────────────┐
+│ uLPToken.sol     │    │ MockEscrow.sol         │
+│ (Smart Contract) │    │ (Smart Contract)       │
+│                  │    │                        │
+│ • Yield-bearing  │    │ • Escrow accounts      │
+│ • ERC-3643       │    │ • Wire simulation      │
+│ • NAV tracking   │    │ • Balance tracking     │
+└──────────────────┘    └────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. uLPToken.sol Specification</h2>
+<h3>2.1 Overview</h3>
+<p><strong>File:</strong> <code>contracts/MVP/uLPToken.sol</code></p>
+<p><strong>Purpose:</strong> ERC-3643 compliant yield-bearing token representing ownership in liquidity pool.</p>
+<p><strong>Token Standard:</strong> ERC-3643 (T-REX protocol for permissioned tokens)</p>
+<p><strong>Pool Family Support:</strong> Each uLPToken is associated with a specific Pool Family (POOL_INDUSTRIE, POOL_AGRICULTURE, etc.)</p>
+<h3>2.2 Token Mechanics</h3>
+<h4>Value-Accrual Model</h4>
+<p>Unlike traditional tokens where balance increases, uLP uses <strong>value-accrual</strong>:</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────┐
+│              VALUE-ACCRUAL MODEL                         │
+│                                                          │
+│  Example: Pool Industrie                                 │
+│  Initial State:                                          │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │ Investor Balance: 10,000,000 uLP-INDUSTRIE       │   │
+│  │ NAV per uLP:     €1.00                           │   │
+│  │ Total Value:     €10,000,000                     │   │
+│  └──────────────────────────────────────────────────┘   │
+│                                                          │
+│  After 1 Year (10% yield):                               │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │ Investor Balance: 10,000,000 uLP-INDUSTRIE       │   │
+│  │            (UNCHANGED!)                          │   │
+│  │ NAV per uLP:     €1.10 (+10%)                    │   │
+│  │ Total Value:     €11,000,000 (+10%)              │   │
+│  └──────────────────────────────────────────────────┘   │
+│                                                          │
+│  Key Benefit:                                            │
+│  • No need to claim/restake rewards                     │
+│  • Yield automatically accrues                          │
+│  • Tax-efficient (accrual, not distribution)            │
+│  • Pool Family specific (uLP-INDUSTRIE ≠ uLP-AGRI)      │
+└─────────────────────────────────────────────────────────┘
+</code></div>
+<h4>Pool Families (per SRS v2.0 Section 1.2)</h4>
+<p><strong>Four Pool Families supported:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Pool Family</th>
+<th>Token Symbol</th>
+<th>Asset Classes</th>
+<th>Target Yield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>POOL_INDUSTRIE</strong></td>
+<td>uLP-INDUSTRIE</td>
+<td>Manufacturing, factories, production (GDIZ)</td>
+<td>10-12%</td>
+</tr>
+<tr>
+<td><strong>POOL_AGRICULTURE</strong></td>
+<td>uLP-AGRI</td>
+<td>Coffee, cocoa, cotton, cashews, food crops</td>
+<td>12-15%</td>
+</tr>
+<tr>
+<td><strong>POOL_TRADE_FINANCE</strong></td>
+<td>uLP-TRADE</td>
+<td>Invoice tokenization, receivables pools</td>
+<td>8-10%</td>
+</tr>
+<tr>
+<td><strong>POOL_RENEWABLE_ENERGY</strong></td>
+<td>uLP-ENERGY</td>
+<td>Solar, wind, hydroelectric projects</td>
+<td>9-11%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Important:</strong> Each pool family has its own separate uLPToken contract:<br />
+- <code>ULPTokenIndustrie.sol</code> - For Pool Industrie<br />
+- <code>ULPTokenAgriculture.sol</code> - For Pool Agriculture<br />
+- <code>ULPTokenTradeFinance.sol</code> - For Pool Trade Finance<br />
+- <code>ULPTokenRenewableEnergy.sol</code> - For Pool Renewable Energy</p>
+<h4>NAV Calculation</h4>
+<div class="docs-pre"><code>// Simplified NAV calculation (per pool family)
+function getValuePerShare() external view returns (uint256) {
+    uint256 totalPoolValue = liquidityPool.getTotalValue();
+    uint256 totalSupply = this.totalSupply();
+
+    if (totalSupply == 0) {
+        return 1e18; // Initial NAV: 1.0 (18 decimals)
+    }
+
+    return (totalPoolValue * 1e18) / totalSupply;
+}
+
+function getValue(address account) external view returns (uint256) {
+    uint256 balance = this.balanceOf(account);
+    uint256 navPerShare = this.getValuePerShare();
+
+    return (balance * navPerShare) / 1e18;
+}
+</code></div>
+<h3>2.3 Smart Contract Interface</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643.sol&quot;;
+import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol&quot;;
+
+/**
+ * @title uLPToken
+ * @notice Yield-bearing ERC-3643 token for liquidity pool ownership
+ * @dev Value-accrual model: balance constant, NAV increases
+ */
+contract uLPToken is ERC3643, UUPSUpgradeable {
+
+    // State variables
+    address public liquidityPool;
+    uint256 public totalValueAccrued;
+    uint256 public lastYieldUpdate;
+    bool public IS_MVP_TESTNET = true;
+
+    // Events
+    event YieldAccrued(uint256 amount, uint256 newNavPerShare);
+    event Deposited(address indexed investor, uint256 eurcAmount, uint256 ulpAmount);
+    event Redeemed(address indexed investor, uint256 ulpAmount, uint256 eurcAmount);
+
+    /**
+     * @notice Initialize token
+     * @param name Token name (e.g., &quot;Ujamaa Ujamaa Pool Token (uLP)&quot;)
+     * @param symbol Token symbol (e.g., &quot;uLP&quot;)
+     * @param identityRegistry_ Identity registry address
+     * @param complianceModule_ Compliance module address
+     * @param liquidityPool_ Liquidity pool address
+     */
+    function initialize(
+        string calldata name,
+        string calldata symbol,
+        address identityRegistry_,
+        address complianceModule_,
+        address liquidityPool_
+    ) external initializer {
+        __ERC3643_init(name, symbol, 18, identityRegistry_, complianceModule_);
+        __UUPSUpgradeable_init();
+
+        liquidityPool = liquidityPool_;
+        totalValueAccrued = 0;
+        lastYieldUpdate = block.timestamp;
+    }
+
+    /**
+     * @notice Deposit Ujamaa Euro (UJEUR) → mint uLP
+     * @param eurcAmount Amount of Ujamaa Euro (UJEUR) to deposit
+     * @return ulpAmount uLP tokens minted
+     */
+    function deposit(uint256 eurcAmount) external returns (uint256) {
+        require(eurcAmount &gt; 0, &quot;Amount must be &gt; 0&quot;);
+        require(eurcAmount &lt;= 1_000_000e18, &quot;Exceeds MVP limit (1M Ujamaa Euro (UJEUR))&quot;);
+
+        uint256 navPerShare = getValuePerShare();
+        uint256 ulpAmount = (eurcAmount * 1e18) / navPerShare;
+
+        // Transfer Ujamaa Euro (UJEUR) from investor to pool
+        IERC20(eurcAddress).transferFrom(msg.sender, liquidityPool, eurcAmount);
+
+        // Mint uLP to investor
+        _mint(msg.sender, ulpAmount);
+
+        emit Deposited(msg.sender, eurcAmount, ulpAmount);
+
+        return ulpAmount;
+    }
+
+    /**
+     * @notice Redeem uLP → receive Ujamaa Euro (UJEUR)
+     * @param ulpAmount uLP tokens to burn
+     * @return eurcAmount Ujamaa Euro (UJEUR) received
+     */
+    function redeem(uint256 ulpAmount) external returns (uint256) {
+        require(ulpAmount &gt; 0, &quot;Amount must be &gt; 0&quot;);
+        require(this.balanceOf(msg.sender) &gt;= ulpAmount, &quot;Insufficient balance&quot;);
+
+        uint256 navPerShare = getValuePerShare();
+        uint256 eurcAmount = (ulpAmount * navPerShare) / 1e18;
+
+        // Burn uLP tokens
+        _burn(msg.sender, ulpAmount);
+
+        // Transfer Ujamaa Euro (UJEUR) from pool to investor
+        IERC20(eurcAddress).transferFrom(liquidityPool, msg.sender, eurcAmount);
+
+        emit Redeemed(msg.sender, ulpAmount, eurcAmount);
+
+        return eurcAmount;
+    }
+
+    /**
+     * @notice Get current NAV per Ujamaa Pool Token (uLP)
+     * @return NAV per share (18 decimals)
+     */
+    function getValuePerShare() public view returns (uint256) {
+        uint256 totalPoolValue = ILiquidityPool(liquidityPool).getTotalValue();
+        uint256 totalSupply = this.totalSupply();
+
+        if (totalSupply == 0) {
+            return 1e18; // Initial NAV: 1.0
+        }
+
+        return (totalPoolValue * 1e18) / totalSupply;
+    }
+
+    /**
+     * @notice Get current value of investor's holdings
+     * @param account Investor address
+     * @return Value in Ujamaa Euro (UJEUR) (18 decimals)
+     */
+    function getValue(address account) external view returns (uint256) {
+        uint256 balance = this.balanceOf(account);
+        uint256 navPerShare = this.getValuePerShare();
+
+        return (balance * navPerShare) / 1e18;
+    }
+
+    /**
+     * @notice Add yield to pool (admin only)
+     * @param amount Yield amount in Ujamaa Euro (UJEUR)
+     */
+    function addYield(uint256 amount) external onlyRole(POOL_MANAGER_ROLE) {
+        require(amount &gt; 0, &quot;Amount must be &gt; 0&quot;);
+
+        totalValueAccrued += amount;
+        lastYieldUpdate = block.timestamp;
+
+        uint256 newNav = getValuePerShare();
+
+        emit YieldAccrued(amount, newNav);
+    }
+
+    // ... additional functions (transfers, compliance, etc.)
+}
+</code></div>
+<h3>2.4 Deployment Configuration</h3>
+<div class="docs-pre"><code># scripts/MVP/deploy_uLP_token.py
+from ape import project, accounts
+import json
+from datetime import datetime
+
+def main():
+    deployer = accounts.load('deployer')
+
+    print(f'Deploying uLPToken with account: {deployer.address}')
+
+    # Deploy uLPToken
+    ulp_token = deployer.deploy(project.uLPToken)
+    ulp_address = ulp_token.address
+    print(f'uLPToken deployed to: {ulp_address}')
+
+    # Initialize
+    ulp_token.initialize(
+        'Ujamaa Ujamaa Pool Token (uLP)',
+        'uLP',
+        identity_registry_address,
+        compliance_module_address,
+        liquidity_pool_address
+    )
+
+    print('uLPToken initialized')
+
+    # Save deployment info
+    deployment_info = {
+        'network': 'polygon-amoy',
+        'contract': 'uLPToken',
+        'address': ulp_address,
+        'deployer': deployer.address,
+        'timestamp': datetime.utcnow().isoformat(),
+    }
+
+    # Write to file
+    with open('deployments/MVP/uLP-token.json', 'w') as f:
+        json.dump(deployment_info, f, indent=2)
+
+if __name__ == '__main__':
+    main()
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. LiquidityPool.sol Specification</h2>
+<h3>3.1 Overview</h3>
+<p><strong>File:</strong> <code>contracts/MVP/LiquidityPool.sol</code></p>
+<p><strong>Purpose:</strong> Manages liquidity pools with <strong>Pool Family support</strong> for industrial financing with diversification and risk tracking.</p>
+<p><strong>Pool Families Supported:</strong><br />
+- POOL_INDUSTRIE (Manufacturing, GDIZ partners)<br />
+- POOL_AGRICULTURE (Coffee, cocoa, cotton, cashews)<br />
+- POOL_TRADE_FINANCE (Invoice tokenization, receivables)<br />
+- POOL_RENEWABLE_ENERGY (Solar, wind, hydroelectric)</p>
+<h3>3.2 Pool Family Architecture</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────┐
+│              POOL FAMILY STRUCTURE                       │
+│                                                          │
+│  LiquidityPool (Main Contract)                          │
+│  │                                                        │
+│  ├── Pool #1: &quot;Ujamaa Industrial Finance Pool I&quot;        │
+│  │   └── Family: POOL_INDUSTRIE                         │
+│  │   └── Assets: GDIZ Cotton, GDIZ Soy, GDIZ Coffee     │
+│  │   └── Target Yield: 10-12%                           │
+│  │   └── Risk Limits: 20% per industrial, 40% per class │
+│  │                                                        │
+│  ├── Pool #2: &quot;Ujamaa Agriculture Pool I&quot;               │
+│  │   └── Family: POOL_AGRICULTURE                       │
+│  │   └── Assets: Coffee Coop, Cocoa Farm, Cotton Co.    │
+│  │   └── Target Yield: 12-15%                           │
+│  │   └── Risk Limits: 20% per industrial, 40% per class │
+│  │                                                        │
+│  ├── Pool #3: &quot;Ujamaa Trade Finance Pool I&quot;             │
+│  │   └── Family: POOL_TRADE_FINANCE                     │
+│  │   └── Assets: Invoice #1, Invoice #2, Receivables    │
+│  │   └── Target Yield: 8-10%                            │
+│  │   └── Risk Limits: 20% per industrial, 40% per class │
+│  │                                                        │
+│  └── Pool #4: &quot;Ujamaa Renewable Energy Pool I&quot;          │
+│      └── Family: POOL_RENEWABLE_ENERGY                  │
+│      └── Assets: Solar Farm A, Wind Farm B, Hydro C     │
+│      └── Target Yield: 9-11%                            │
+│      └── Risk Limits: 20% per industrial, 40% per class │
+└─────────────────────────────────────────────────────────┘
+
+Key Points:
+• Each pool belongs to ONE family (set at creation)
+• Each family has separate uLPToken contract
+• Cross-family investment allowed for institutions
+• Family-level risk limits enforced
+• Separate NAV per pool family
+</code></div>
+<h3>3.3 Smart Contract Interface</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;./uLPToken.sol&quot;;
+
+/**
+ * @title LiquidityPool
+ * @notice Manages liquidity pools with Pool Family support
+ * @dev Supports POOL_INDUSTRIE, POOL_AGRICULTURE, POOL_TRADE_FINANCE, POOL_RENEWABLE_ENERGY
+ */
+contract LiquidityPool {
+
+    // Pool Family enum (per SRS v2.0 Section 1.2)
+    enum PoolFamily {
+        INDUSTRIE,           // Manufacturing, GDIZ partners
+        AGRICULTURE,         // Coffee, cocoa, cotton, cashews
+        TRADE_FINANCE,       // Invoice tokenization, receivables
+        RENEWABLE_ENERGY     // Solar, wind, hydroelectric
+    }
+
+    // Pool configuration
+    struct PoolConfig {
+        PoolFamily family;
+        uint256 maxExposurePerIndustrial; // 20% = 2000 (basis points)
+        uint256 maxExposurePerAssetClass; // 40% = 4000 (basis points)
+        uint256 minimumInvestment; // €100,000
+        uint256 managementFeeBps; // 200 = 2% annual
+        uint256 performanceFeeBps; // 2000 = 20% of yield
+    }
+
+    // Financing details
+    struct Financing {
+        uint256 poolId;
+        address industrial;
+        uint256 amount;
+        uint256 interestRate; // Basis points (12% = 1200)
+        uint256 dueDate;
+        bool isRepaid;
+        uint256 repaidAmount;
+    }
+
+    // Pool statistics
+    struct PoolStats {
+        string name;
+        PoolFamily family;
+        uint256 totalValue;
+        uint256 deployedValue;
+        uint256 availableValue;
+        uint256 financingCount;
+        uint256 navPerShare;
+    }
+
+    // State variables
+    mapping(uint256 =&gt; PoolConfig) public poolConfigs;
+    mapping(uint256 =&gt; Financing[]) public poolFinancings;
+    mapping(uint256 =&gt; address) public poolULPToken; // uLPToken per pool
+    uint256 public nextPoolId;
+
+    /**
+     * @notice Create new pool with family
+     * @param name Pool name
+     * @param family Pool family (cannot be changed)
+     * @return poolId New pool ID
+     */
+    function createPool(
+        string memory name,
+        PoolFamily family
+    ) external returns (uint256) {
+        uint256 poolId = nextPoolId++;
+
+        // Set pool configuration
+        poolConfigs[poolId] = PoolConfig({
+            family: family,
+            maxExposurePerIndustrial: 2000, // 20%
+            maxExposurePerAssetClass: 4000, // 40%
+            minimumInvestment: 100_000e18, // €100K
+            managementFeeBps: 200, // 2%
+            performanceFeeBps: 2000 // 20%
+        });
+
+        // Deploy uLPToken for this pool family
+        uLPToken uLPToken = new uLPToken();
+        uLPToken.initialize(
+            string(abi.encodePacked(&quot;Ujamaa uLP &quot;, _poolFamilyToString(family))),
+            string(abi.encodePacked(&quot;uLP-&quot;, _poolFamilyToSymbol(family))),
+            identityRegistry,
+            complianceModule,
+            address(this)
+        );
+
+        poolULPToken[poolId] = address(uLPToken);
+
+        emit PoolCreated(poolId, name, family);
+
+        return poolId;
+    }
+
+    /**
+     * @notice Deploy funds to industrial
+     * @param poolId Pool ID
+     * @param industrial Industrial address
+     * @param amount Amount to deploy
+     * @param interestRate Interest rate (basis points)
+     * @param duration Duration in days
+     * @return financingId Financing ID
+     */
+    function deployToIndustrial(
+        uint256 poolId,
+        address industrial,
+        uint256 amount,
+        uint256 interestRate,
+        uint256 duration
+    ) external returns (uint256) {
+        require(poolConfigs[poolId].family != PoolFamily.UNDEFINED, &quot;Invalid pool&quot;);
+
+        // Check diversification limits
+        uint256 totalDeployed = _getPoolDeployedValue(poolId);
+        uint256 maxPerIndustrial = (totalDeployed * poolConfigs[poolId].maxExposurePerIndustrial) / 10000;
+        require(amount &lt;= maxPerIndustrial, &quot;Exceeds 20% per industrial limit&quot;);
+
+        // Create financing
+        uint256 financingId = poolFinancings[poolId].length;
+        poolFinancings[poolId].push(Financing({
+            poolId: poolId,
+            industrial: industrial,
+            amount: amount,
+            interestRate: interestRate,
+            dueDate: block.timestamp + (duration * 1 days),
+            isRepaid: false,
+            repaidAmount: 0
+        }));
+
+        // Transfer Ujamaa Euro (UJEUR) to industrial
+        IERC20(eurcAddress).transferFrom(address(this), industrial, amount);
+
+        emit FinancingCreated(financingId, poolId, industrial, amount);
+
+        return financingId;
+    }
+
+    /**
+     * @notice Record repayment from industrial
+     * @param financingId Financing ID
+     * @param amount Repayment amount
+     */
+    function recordRepayment(
+        uint256 financingId,
+        uint256 amount
+    ) external {
+        // Update financing record
+        // Add yield to pool
+        // Update NAV
+    }
+
+    /**
+     * @notice Get pool statistics
+     * @param poolId Pool ID
+     * @return Pool statistics
+     */
+    function getPoolStats(uint256 poolId) external view returns (PoolStats memory) {
+        // Calculate and return pool stats
+    }
+
+    /**
+     * @notice Get pool family
+     * @param poolId Pool ID
+     * @return Pool family
+     */
+    function getPoolFamily(uint256 poolId) external view returns (PoolFamily) {
+        return poolConfigs[poolId].family;
+    }
+
+    // Helper function to convert PoolFamily to string
+    function _poolFamilyToString(PoolFamily family) internal pure returns (string memory) {
+        if (family == PoolFamily.INDUSTRIE) return &quot;Industrie&quot;;
+        if (family == PoolFamily.AGRICULTURE) return &quot;Agriculture&quot;;
+        if (family == PoolFamily.TRADE_FINANCE) return &quot;Trade Finance&quot;;
+        if (family == PoolFamily.RENEWABLE_ENERGY) return &quot;Renewable Energy&quot;;
+        return &quot;Unknown&quot;;
+    }
+
+    // Helper function to convert PoolFamily to symbol
+    function _poolFamilyToSymbol(PoolFamily family) internal pure returns (string memory) {
+        if (family == PoolFamily.INDUSTRIE) return &quot;INDUSTRIE&quot;;
+        if (family == PoolFamily.AGRICULTURE) return &quot;AGRI&quot;;
+        if (family == PoolFamily.TRADE_FINANCE) return &quot;TRADE&quot;;
+        if (family == PoolFamily.RENEWABLE_ENERGY) return &quot;ENERGY&quot;;
+        return &quot;UNK&quot;;
+    }
+}
+</code></div>
+<h3>3.1 Overview</h3>
+<p><strong>File:</strong> <code>contracts/MVP/MockEscrow.sol</code></p>
+<p><strong>Purpose:</strong> Simulates bank escrow accounts for investor funds on testnet.</p>
+<p><strong>Design Principle:</strong> Interface-compatible with production BIIC/MCB integration.</p>
+<h3>3.2 Smart Contract Interface</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title MockEscrow
+ * @notice Simulates bank escrow accounts for MVP testnet
+ * @dev Interface designed for easy swap with real BIIC/MCB integration
+ */
+contract MockEscrow {
+
+    // Events
+    event EscrowAccountCreated(
+        string indexed accountId,
+        address indexed investor,
+        uint256 timestamp
+    );
+
+    event WireTransferSimulated(
+        string indexed txId,
+        string fromAccount,
+        string toAccount,
+        uint256 amount,
+        uint256 timestamp
+    );
+
+    event BalanceUpdated(
+        string indexed accountId,
+        uint256 newBalance,
+        uint256 timestamp
+    );
+
+    // State
+    mapping(string =&gt; EscrowAccount) private accounts;
+    mapping(address =&gt; string) private investorToAccount;
+    string[] private transactionHistory;
+
+    struct EscrowAccount {
+        string accountId;
+        address investor;
+        uint256 balance;
+        bool isActive;
+        uint256 createdAt;
+        string bankName; // &quot;Mock Bank (MVP Testnet)&quot;
+    }
+
+    /**
+     * @notice Create escrow account for investor
+     * @param investor Investor address
+     * @return accountId Unique account identifier
+     */
+    function createEscrowAccount(address investor) 
+        external 
+        returns (string memory) 
+    {
+        require(investor != address(0), &quot;Invalid address&quot;);
+        require(investorToAccount[investor] == &quot;&quot;, &quot;Account exists&quot;);
+
+        // Generate unique account ID
+        string memory accountId = string(
+            abi.encodePacked(
+                &quot;MOCK-ESCROW-&quot;,
+                vm.toString(investor),
+                &quot;-&quot;,
+                vm.toString(block.timestamp)
+            )
+        );
+
+        // Create account with initial balance (10M test Ujamaa Euro (UJEUR))
+        accounts[accountId] = EscrowAccount({
+            accountId: accountId,
+            investor: investor,
+            balance: 10_000_000e18, // 10M test Ujamaa Euro (UJEUR)
+            isActive: true,
+            createdAt: block.timestamp,
+            bankName: &quot;Mock Bank (MVP Testnet)&quot;
+        });
+
+        investorToAccount[investor] = accountId;
+        transactionHistory.push(accountId);
+
+        emit EscrowAccountCreated(accountId, investor, block.timestamp);
+
+        return accountId;
+    }
+
+    /**
+     * @notice Simulate wire transfer between accounts
+     * @param fromAccount Source account ID
+     * @param toAccount Destination account ID
+     * @param amount Amount to transfer
+     * @return txId Transaction identifier
+     */
+    function simulateWireTransfer(
+        string memory fromAccount,
+        string memory toAccount,
+        uint256 amount
+    ) external returns (string memory) {
+        require(accounts[fromAccount].isActive, &quot;Invalid fromAccount&quot;);
+        require(accounts[toAccount].isActive, &quot;Invalid toAccount&quot;);
+        require(accounts[fromAccount].balance &gt;= amount, &quot;Insufficient balance&quot;);
+
+        // Execute transfer
+        accounts[fromAccount].balance -= amount;
+        accounts[toAccount].balance += amount;
+
+        // Generate transaction ID
+        string memory txId = string(
+            abi.encodePacked(
+                &quot;MOCK-WIRE-&quot;,
+                vm.toString(block.timestamp)
+            )
+        );
+
+        transactionHistory.push(txId);
+
+        emit WireTransferSimulated(
+            txId,
+            fromAccount,
+            toAccount,
+            amount,
+            block.timestamp
+        );
+
+        emit BalanceUpdated(fromAccount, accounts[fromAccount].balance, block.timestamp);
+        emit BalanceUpdated(toAccount, accounts[toAccount].balance, block.timestamp);
+
+        return txId;
+    }
+
+    /**
+     * @notice Get account balance
+     * @param accountId Account ID
+     * @return Balance in test Ujamaa Euro (UJEUR) (18 decimals)
+     */
+    function getBalance(string memory accountId) 
+        external 
+        view 
+        returns (uint256) 
+    {
+        require(accounts[accountId].isActive, &quot;Invalid account&quot;);
+        return accounts[accountId].balance;
+    }
+
+    /**
+     * @notice Get transaction history
+     * @return Array of transaction IDs
+     */
+    function getTransactionHistory() 
+        external 
+        view 
+        returns (string[] memory) 
+    {
+        return transactionHistory;
+    }
+
+    /**
+     * @notice Get account details
+     * @param accountId Account ID
+     * @return accountId, investor, balance, isActive, createdAt, bankName
+     */
+    function getAccountDetails(string memory accountId)
+        external
+        view
+        returns (
+            string memory,
+            address,
+            uint256,
+            bool,
+            uint256,
+            string memory
+        )
+    {
+        EscrowAccount memory account = accounts[accountId];
+        return (
+            account.accountId,
+            account.investor,
+            account.balance,
+            account.isActive,
+            account.createdAt,
+            account.bankName
+        );
+    }
+
+    /**
+     * @notice MVP safety flag
+     * @return true (always testnet)
+     */
+    function IS_MVP_TESTNET() external pure returns (bool) {
+        return true;
+    }
+}
+</code></div>
+<h3>3.3 Backend Service Integration</h3>
+<div class="docs-pre"><code># backend/services/MVP/mock_bank.py
+from typing import Dict, List, Optional
+from datetime import datetime
+import uuid
+
+class MockBankService:
+    &quot;&quot;&quot;
+    MVP Mock Bank Service
+
+    Simulates BIIC/MCB bank operations for testnet.
+    Interface compatible with production BIICBankService.
+    &quot;&quot;&quot;
+
+    def __init__(self, initial_balance: int = 10_000_000_000_000):
+        &quot;&quot;&quot;
+        Initialize mock bank.
+
+        Args:
+            initial_balance: Starting balance for demo accounts (10M test Ujamaa Euro (UJEUR))
+        &quot;&quot;&quot;
+        self.accounts: Dict[str, dict] = {}
+        self.transactions: List[dict] = []
+        self.initial_balance = initial_balance
+
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        &quot;&quot;&quot;
+        Create mock escrow account.
+
+        Args:
+            investor_id: Investor identifier
+
+        Returns:
+            Account ID (format: MOCK-ESCROW-{investor_id}-{uuid})
+        &quot;&quot;&quot;
+        account_id = f&quot;MOCK-ESCROW-{investor_id}-{uuid.uuid4().hex[:8]}&quot;
+
+        self.accounts[account_id] = {
+            'account_id': account_id,
+            'investor_id': investor_id,
+            'balance': self.initial_balance,
+            'currency': 'EURC_TEST',
+            'status': 'ACTIVE_MVP',
+            'created_at': datetime.utcnow().isoformat(),
+            'bank_name': 'Mock Bank (MVP Testnet)',
+        }
+
+        return account_id
+
+    def initiate_wire_transfer(
+        self,
+        from_account: str,
+        to_account: str,
+        amount: int
+    ) -&gt; str:
+        &quot;&quot;&quot;
+        Simulate wire transfer.
+
+        Args:
+            from_account: Source account ID
+            to_account: Destination account ID
+            amount: Amount to transfer (18 decimals)
+
+        Returns:
+            Transaction ID
+        &quot;&quot;&quot;
+        if from_account not in self.accounts:
+            raise ValueError(f&quot;Account not found: {from_account}&quot;)
+        if to_account not in self.accounts:
+            raise ValueError(f&quot;Account not found: {to_account}&quot;)
+        if self.accounts[from_account]['balance'] &lt; amount:
+            raise ValueError(&quot;Insufficient balance&quot;)
+
+        # Execute transfer
+        self.accounts[from_account]['balance'] -= amount
+        self.accounts[to_account]['balance'] += amount
+
+        # Create transaction record
+        tx_id = f&quot;MOCK-WIRE-{uuid.uuid4().hex[:12]}&quot;
+        self.transactions.append({
+            'tx_id': tx_id,
+            'from_account': from_account,
+            'to_account': to_account,
+            'amount': amount,
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'COMPLETED_MVP',
+        })
+
+        return tx_id
+
+    def get_balance(self, account_id: str) -&gt; int:
+        &quot;&quot;&quot;Get account balance.&quot;&quot;&quot;
+        if account_id not in self.accounts:
+            raise ValueError(f&quot;Account not found: {account_id}&quot;)
+        return self.accounts[account_id]['balance']
+
+    def get_account_details(self, account_id: str) -&gt; dict:
+        &quot;&quot;&quot;Get full account details.&quot;&quot;&quot;
+        if account_id not in self.accounts:
+            raise ValueError(f&quot;Account not found: {account_id}&quot;)
+        return self.accounts[account_id].copy()
+
+    def get_transactions(self, account_id: str) -&gt; List[dict]:
+        &quot;&quot;&quot;Get transaction history for account.&quot;&quot;&quot;
+        return [
+            tx for tx in self.transactions
+            if tx['from_account'] == account_id or tx['to_account'] == account_id
+        ]
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Fund Flow Simulation</h2>
+<h3>4.1 Complete Investment Flow</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                    MVP FUND FLOW (TESTNET)                             │
+│                                                                          │
+│  Step 1: Investor Onboarding                                            │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 1. Investor connects wallet (MetaMask)                           │  │
+│  │ 2. Completes KYB verification (mock for MVP)                   │  │
+│  │ 3. MockEscrow.createEscrowAccount(investor)                      │  │
+│  │    → Account ID: MOCK-ESCROW-0x1234...-abc123                    │  │
+│  │    → Initial Balance: 10M test Ujamaa Euro (UJEUR)                              │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                              │                                          │
+│                              ▼                                          │
+│  Step 2: Deposit Ujamaa Euro (UJEUR) → Mint uLP                                      │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 4. Investor calls uLPToken.deposit(10_000_000e18)                │  │
+│  │ 5. Ujamaa Euro (UJEUR) transferred from investor → LiquidityPool                │  │
+│  │ 6. uLP tokens minted to investor                                 │  │
+│  │    → uLP Balance: 10,000,000 uLP                                 │  │
+│  │    → NAV: €1.00/uLP                                              │  │
+│  │    → Total Value: €10,000,000                                    │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                              │                                          │
+│                              ▼                                          │
+│  Step 3: Pool Deploys to Industrials                                  │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 7. LiquidityPool.deployToIndustrial(...)                         │  │
+│  │    → GDIZ Cotton #1: €3M @ 12% (90 days)                         │  │
+│  │    → GDIZ Soy #1: €4M @ 11% (120 days)                           │  │
+│  │    → GDIZ Coffee #1: €3M @ 13% (60 days)                         │  │
+│  │ 8. Ujamaa Euro (UJEUR) transferred from Pool → Industrial escrow                │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                              │                                          │
+│                              ▼                                          │
+│  Step 4: Yield Accrual (Real Math, Simulated Data)                    │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 9. MockGDIZ.simulateRepayment(...)                               │  │
+│  │    → Principal: €3M                                              │  │
+│  │    → Interest: €3M × 12% × (90/365) = €88,767                   │  │
+│  │    → Total Repayment: €3,088,767                                 │  │
+│  │ 10. LiquidityPool.addYield(€88,767)                              │  │
+│  │ 11. uLPToken NAV increases:                                      │  │
+│  │     → New NAV: €1.0089/uLP (+0.89%)                              │  │
+│  │     → Investor Value: €10,089,000 (+€89,000)                     │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                              │                                          │
+│                              ▼                                          │
+│  Step 5: Redeem uLP → Receive Ujamaa Euro (UJEUR) + Yield                            │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 12. Investor calls uLPToken.redeem(10_000_000e18)                │  │
+│  │ 13. uLP tokens burned                                            │  │
+│  │ 14. Ujamaa Euro (UJEUR) transferred from Pool → Investor                        │  │
+│  │     → Principal: €10,000,000                                     │  │
+│  │     → Yield: €89,000                                             │  │
+│  │     → Total: €10,089,000                                         │  │
+│  │ 15. MockFiatRamp.offRamp() → Bank account                        │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>4.2 Smart Contract Interaction Sequence</h3>
+<div class="docs-pre"><code>// Frontend: Complete investment flow
+async function executeInvestmentFlow() {
+  // Step 1: Connect wallet
+  const { address } = await connectWallet();
+
+  // Step 2: Create escrow account (mock)
+  const mockEscrow = getMockEscrowContract();
+  const createTx = await mockEscrow.createEscrowAccount(address);
+  await createTx.wait();
+
+  const accountId = await mockEscrow.investorToAccount(address);
+  console.log('Escrow account created:', accountId);
+
+  // Step 3: Get test Ujamaa Euro (UJEUR) (mock faucet)
+  const mockFiatRamp = getMockFiatRampContract();
+  const mintTx = await mockFiatRamp.mintTestEURC(address, 10_000_000e18);
+  await mintTx.wait();
+
+  // Step 4: Approve Ujamaa Euro (UJEUR) spend
+  const eurcContract = getEURCContract();
+  const approveTx = await eurcContract.approve(
+    ULPTOKEN_ADDRESS,
+    10_000_000e18
+  );
+  await approveTx.wait();
+
+  // Step 5: Deposit Ujamaa Euro (UJEUR) → mint uLP
+  const uLPToken = getULPTokenContract();
+  const depositTx = await uLPToken.deposit(10_000_000e18);
+  await depositTx.wait();
+
+  const ulpBalance = await uLPToken.balanceOf(address);
+  console.log('uLP minted:', ethers.formatEther(ulpBalance));
+
+  // Step 6: Check NAV (should be 1.0 initially)
+  const nav = await uLPToken.getValuePerShare();
+  console.log('NAV per uLP:', ethers.formatEther(nav));
+
+  // ... wait for yield accrual ...
+
+  // Step 7: Redeem uLP → receive Ujamaa Euro (UJEUR) + yield
+  const redeemTx = await uLPToken.redeem(ulpBalance);
+  await redeemTx.wait();
+
+  const eurcBalance = await eurcContract.balanceOf(address);
+  console.log('Ujamaa Euro (UJEUR) received:', ethers.formatEther(eurcBalance));
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. BIIC/MCB Production Swap</h2>
+<h3>5.1 Interface Compatibility</h3>
+<p><strong>MVP (Mock) → Production (Real)</strong></p>
+<div class="docs-pre"><code># Same interface, different implementation
+class IBankService(ABC):
+    @abstractmethod
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        pass
+
+    @abstractmethod
+    def initiate_wire_transfer(
+        self,
+        from_account: str,
+        to_account: str,
+        amount: int
+    ) -&gt; str:
+        pass
+
+    @abstractmethod
+    def get_balance(self, account_id: str) -&gt; int:
+        pass
+
+# MVP Implementation
+class MockBankService(IBankService):
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        # Mock implementation (in-memory)
+        pass
+
+# Production Implementation
+class BIICBankService(IBankService):
+    def __init__(self, api_key: str, base_url: str):
+        self.api_key = api_key
+        self.base_url = base_url
+
+    def create_escrow_account(self, investor_id: str) -&gt; str:
+        # Real BIIC API call
+        response = requests.post(
+            f&quot;{self.base_url}/api/v1/escrow/create&quot;,
+            headers={'Authorization': f'Bearer {self.api_key}'},
+            json={'investor_id': investor_id}
+        )
+        return response.json()['account_id']
+</code></div>
+<h3>5.2 Configuration Swap</h3>
+<div class="docs-pre"><code># backend/config/settings.py
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    # MVP Mode
+    MVP_MODE: bool = True
+    MOCK_BANK: bool = True
+
+    # Production Bank (BIIC/MCB)
+    BIIC_API_KEY: Optional[str] = None
+    BIIC_BASE_URL: Optional[str] = None
+    MCB_API_KEY: Optional[str] = None
+    MCB_BASE_URL: Optional[str] = None
+
+settings = Settings()
+
+# Factory function
+def get_bank_service() -&gt; IBankService:
+    if settings.MVP_MODE and settings.MOCK_BANK:
+        return MockBankService()
+    else:
+        return BIICBankService(
+            api_key=settings.BIIC_API_KEY,
+            base_url=settings.BIIC_BASE_URL
+        )
+</code></div>
+<h3>5.3 Production Readiness Checklist</h3>
+<p><strong>Before swapping mock → production:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Legal entity established (Mauritius CIS Manager License)</li>
+<li>[ ] Bank partnership signed (BIIC or MCB)</li>
+<li>[ ] Regulatory approval obtained (FSC Mauritius)</li>
+<li>[ ] Compliance framework implemented</li>
+<li>[ ] Security audits completed (smart contracts + backend)</li>
+<li>[ ] Production environment ready</li>
+<li>[ ] Mainnet deployment approved</li>
+<li>[ ] Insurance coverage in place</li>
+<li>[ ] Mock services disabled</li>
+<li>[ ] Real bank API credentials configured</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Testing Guide</h2>
+<h3>6.1 Smart Contract Tests</h3>
+<div class="docs-pre"><code># tests/MVP/test_uLP_token.py
+from ape import project, accounts
+import pytest
+
+@pytest.fixture
+def deployer(accounts):
+    return accounts[0]
+
+@pytest.fixture
+def investor(accounts):
+    return accounts[1]
+
+@pytest.fixture
+def ulp_token(deployer, identity_registry, compliance_module, liquidity_pool):
+    ulp = deployer.deploy(project.uLPToken)
+    ulp.initialize(
+        'Ujamaa Ujamaa Pool Token (uLP)',
+        'uLP',
+        identity_registry,
+        compliance_module,
+        liquidity_pool
+    )
+    return ulp
+
+@pytest.fixture
+def liquidity_pool(deployer, ulp_token):
+    return deployer.deploy(project.LiquidityPool, ulp_token)
+
+def test_deposit_mints_tokens(ulp_token, mock_eurc, investor):
+    &quot;&quot;&quot;Should mint uLP tokens on deposit&quot;&quot;&quot;
+    # Approve Ujamaa Euro (UJEUR) spend
+    mock_eurc.approve(ulp_token, 10_000_000 * 10**18, sender=investor)
+
+    # Deposit
+    ulp_token.deposit(10_000_000 * 10**18, sender=investor)
+
+    # Check balance
+    balance = ulp_token.balanceOf(investor)
+    assert balance == 10_000_000 * 10**18
+
+def test_yield_increases_nav(ulp_token, liquidity_pool, pool_manager):
+    &quot;&quot;&quot;Should increase NAV on yield&quot;&quot;&quot;
+    # Initial NAV
+    initial_nav = ulp_token.getValuePerShare()
+    assert initial_nav == 10**18  # 1.0
+
+    # Add yield
+    liquidity_pool.addYield(100_000 * 10**18, sender=pool_manager)  # 100K Ujamaa Euro (UJEUR)
+
+    # New NAV
+    new_nav = ulp_token.getValuePerShare()
+    assert new_nav &gt; initial_nav
+
+def test_redeem_burns_tokens(ulp_token, mock_eurc, investor):
+    &quot;&quot;&quot;Should burn uLP on redeem&quot;&quot;&quot;
+    # Deposit first
+    mock_eurc.approve(ulp_token, 10_000_000 * 10**18, sender=investor)
+    ulp_token.deposit(10_000_000 * 10**18, sender=investor)
+
+    # Redeem
+    ulp_token.redeem(10_000_000 * 10**18, sender=investor)
+
+    # Check balance (should be 0)
+    balance = ulp_token.balanceOf(investor)
+    assert balance == 0
+</code></div>
+<h3>6.2 Backend Tests</h3>
+<div class="docs-pre"><code># tests/MVP/test_mock_bank.py
+import pytest
+from backend.services.MVP.mock_bank import MockBankService
+
+def test_create_escrow_account():
+    bank = MockBankService()
+    account_id = bank.create_escrow_account(&quot;INV-001&quot;)
+
+    assert account_id.startswith(&quot;MOCK-ESCROW&quot;)
+    assert bank.get_balance(account_id) == 10_000_000_000_000
+
+def test_wire_transfer():
+    bank = MockBankService()
+    acc1 = bank.create_escrow_account(&quot;INV-001&quot;)
+    acc2 = bank.create_escrow_account(&quot;INV-002&quot;)
+
+    initial_balance = bank.get_balance(acc1)
+    tx_id = bank.initiate_wire_transfer(acc1, acc2, 1_000_000_000_000)
+
+    assert tx_id.startswith(&quot;MOCK-WIRE&quot;)
+    assert bank.get_balance(acc1) == initial_balance - 1_000_000_000_000
+    assert bank.get_balance(acc2) == initial_balance + 1_000_000_000_000
+
+def test_insufficient_balance():
+    bank = MockBankService()
+    acc1 = bank.create_escrow_account(&quot;INV-001&quot;)
+    acc2 = bank.create_escrow_account(&quot;INV-002&quot;)
+
+    with pytest.raises(ValueError, match=&quot;Insufficient balance&quot;):
+        bank.initiate_wire_transfer(acc1, acc2, 100_000_000_000_000)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Security Considerations</h2>
+<h3>7.1 Testnet Safety</h3>
+<p><strong>MVP is TESTNET ONLY:</strong><br />
+- ✅ No real money handled<br />
+- ✅ Clear disclaimers on all UI<br />
+- ✅ <code>IS_MVP_TESTNET = true</code> flag in contracts<br />
+- ✅ Max deposit limits (1M Ujamaa Euro (UJEUR) for demo)<br />
+- ✅ Mock data clearly labeled</p>
+<h3>7.2 Private Key Security</h3>
+<p><strong>NEVER store private keys in:</strong><br />
+- ❌ Frontend code<br />
+- ❌ Backend environment variables (for user keys)<br />
+- ❌ Database<br />
+- ❌ Version control</p>
+<p><strong>ALWAYS use:</strong><br />
+- ✅ User's wallet (MetaMask, WalletConnect)<br />
+- ✅ HSM for platform keys (production only)<br />
+- ✅ Gnosis Safe for treasury</p>
+<h3>7.3 Production Swap Security</h3>
+<p><strong>Before enabling production:</strong><br />
+- [ ] All mock services disabled<br />
+- [ ] Real bank API credentials in secrets manager<br />
+- [ ] Smart contracts audited<br />
+- [ ] Mainnet deployment verified<br />
+- [ ] Legal/regulatory approval obtained</p>
+<hr />
+<p><strong>Document Control:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>March 17, 2026</td>
+<td>Aziz Da Silva</td>
+<td>Initial specification</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related Documents:</strong><br />
+- <code>01_MVP_SPECIFICATION.md</code> - MVP overview<br />
+- <code>04_MVP_MOCKING_AND_TESTNET_STRATEGY.md</code> - Mocking strategy<br />
+- <code>05_MVP_FRONTEND_SPECIFICATION.md</code> - Frontend integration</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

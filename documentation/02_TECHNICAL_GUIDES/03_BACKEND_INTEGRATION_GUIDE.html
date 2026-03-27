@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Backend Integration Guide - UJAMAA DEFI PLATFORM Frontend - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Backend Integration Guide - UJAMAA DEFI PLATFORM Frontend</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Backend Integration Guide - UJAMAA DEFI PLATFORM Frontend</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned) | <strong>Status:</strong> ✅ Ready for Backend Integration | <strong>Last Updated:</strong> March 17, 2026</p></div>
+
+        <h1>Backend Integration Guide - UJAMAA DEFI PLATFORM Frontend</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Date:</strong> March 17, 2026<br />
+<strong>Version:</strong> 2.0 (SRS v2.0 Aligned)<br />
+<strong>Status:</strong> Ready for Backend Integration</p>
+<p><strong>Aligned with:</strong> SRS v2.0 Section 4 (External Interface Requirements)</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Overview</h2>
+<p>This document provides backend developers with all necessary information to integrate the UJAMAA DEFI PLATFORM frontend with backend APIs.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Current Frontend Architecture</h2>
+<h3>Technology Stack</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+<th>SRS v2.0 Ref</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>React</td>
+<td>19.1+</td>
+<td>Section 10.49</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>React Router DOM</td>
+<td>7.x</td>
+<td>Section 10.49</td>
+</tr>
+<tr>
+<td><strong>HTTP Client</strong></td>
+<td>Axios</td>
+<td>1.x</td>
+<td>Section 10.49</td>
+</tr>
+<tr>
+<td><strong>State Management</strong></td>
+<td>React Context + Query</td>
+<td>Latest</td>
+<td>Section 10.49</td>
+</tr>
+<tr>
+<td><strong>TypeScript</strong></td>
+<td>TypeScript</td>
+<td>6.0+</td>
+<td>Section 10.49</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>API Integration Points</h2>
+<h3>1. <strong>Authentication &amp; User Management</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock wallet connection in <code>Header.tsx</code></li>
+<li>Mock role selection in <code>RoleSelector.tsx</code></li>
+<li>Local state management</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// User Authentication
+POST /api/v1/auth/wallet
+{
+  &quot;wallet&quot;: &quot;0x...&quot;,
+  &quot;signature&quot;: &quot;0x...&quot;,
+  &quot;message&quot;: &quot;Sign to authenticate&quot;
+}
+
+Response: {
+  &quot;token&quot;: &quot;jwt_token&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: &quot;uuid&quot;,
+    &quot;wallet&quot;: &quot;0x...&quot;,
+    &quot;role&quot;: &quot;INVESTOR | ORIGINATOR | ADMIN&quot;,
+    &quot;kycLevel&quot;: 0 | 1 | 2,
+    &quot;status&quot;: &quot;pending | approved | rejected&quot;
+  }
+}
+
+// Get User Profile
+GET /api/v1/users/:walletAddress
+Headers: Authorization: Bearer {token}
+
+Response: {
+  &quot;id&quot;: &quot;uuid&quot;,
+  &quot;wallet&quot;: &quot;0x...&quot;,
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;role&quot;: &quot;INVESTOR&quot;,
+  &quot;kycLevel&quot;: 2,
+  &quot;jurisdiction&quot;: &quot;CI&quot;,
+  &quot;createdAt&quot;: &quot;2026-03-02T10:00:00Z&quot;
+}
+
+// Update User Profile
+PUT /api/v1/users/:walletAddress
+{
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;jurisdiction&quot;: &quot;CI&quot;
+}
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/components/layout/Header.tsx</code> - Wallet connection</li>
+<li><code>src/components/ui/RoleSelector.tsx</code> - Role assignment</li>
+<li><code>src/contexts/AuthContext.tsx</code> - Create new file</li>
+</ul>
+<hr />
+<h3>2. <strong>KYC/KYB Onboarding</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Forms in <code>InvestorOnboarding.tsx</code> and <code>IndustrialOnboarding.tsx</code></li>
+<li>Mock file uploads</li>
+<li>No backend submission</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// KYC Submission (Individual)
+POST /api/v1/kyc/submit
+Headers: Authorization: Bearer {token}
+{
+  &quot;userId&quot;: &quot;uuid&quot;,
+  &quot;kycLevel&quot;: 1 | 2,
+  &quot;documents&quot;: [
+    {
+      &quot;type&quot;: &quot;passport | id_card | drivers_license&quot;,
+      &quot;url&quot;: &quot;https://storage.example.com/doc.pdf&quot;,
+      &quot;expiryDate&quot;: &quot;2030-01-01&quot;
+    },
+    {
+      &quot;type&quot;: &quot;proof_of_address&quot;,
+      &quot;url&quot;: &quot;https://storage.example.com/address.pdf&quot;
+    }
+  ],
+  &quot;selfie&quot;: &quot;https://storage.example.com/selfie.jpg&quot;
+}
+
+Response: {
+  &quot;submissionId&quot;: &quot;uuid&quot;,
+  &quot;status&quot;: &quot;pending&quot;,
+  &quot;submittedAt&quot;: &quot;2026-03-02T10:00:00Z&quot;
+}
+
+// KYB Submission (Company)
+POST /api/v1/kyb/submit
+Headers: Authorization: Bearer {token}
+{
+  &quot;companyId&quot;: &quot;uuid&quot;,
+  &quot;companyName&quot;: &quot;GDIZ Industries&quot;,
+  &quot;registrationNumber&quot;: &quot;CI-2024-12345&quot;,
+  &quot;industry&quot;: &quot;MANUFACTURING&quot;,
+  &quot;documents&quot;: [
+    {
+      &quot;type&quot;: &quot;registration_certificate&quot;,
+      &quot;url&quot;: &quot;https://storage.example.com/reg.pdf&quot;
+    },
+    {
+      &quot;type&quot;: &quot;proof_of_address&quot;,
+      &quot;url&quot;: &quot;https://storage.example.com/address.pdf&quot;
+    }
+  ]
+}
+
+Response: {
+  &quot;submissionId&quot;: &quot;uuid&quot;,
+  &quot;status&quot;: &quot;pending&quot;,
+  &quot;submittedAt&quot;: &quot;2026-03-02T10:00:00Z&quot;
+}
+
+// Check KYC/KYB Status
+GET /api/v1/kyc/status
+GET /api/v1/kyb/status
+
+Response: {
+  &quot;status&quot;: &quot;pending | approved | rejected&quot;,
+  &quot;level&quot;: 1 | 2,
+  &quot;reviewedAt&quot;: &quot;2026-03-03T10:00:00Z&quot;,
+  &quot;reviewedBy&quot;: &quot;admin_id&quot;
+}
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/onboarding/InvestorOnboarding.tsx</code></li>
+<li><code>src/pages/onboarding/IndustrialOnboarding.tsx</code></li>
+<li><code>src/utils/api.ts</code> - Create new file</li>
+</ul>
+<hr />
+<h3>3. <strong>Asset Marketplace</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock data in <code>AssetBrowse.tsx</code></li>
+<li>Static asset cards</li>
+<li>Client-side filtering</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// Get All Assets
+GET /api/v1/assets?class=Invoice&amp;status=active&amp;sort=yield
+
+Response: {
+  &quot;assets&quot;: [
+    {
+      &quot;id&quot;: &quot;uuid&quot;,
+      &quot;name&quot;: &quot;GDIZ Factory Invoice #001&quot;,
+      &quot;class&quot;: &quot;Invoice | Factory | Production&quot;,
+      &quot;originator&quot;: &quot;GDIZ Industries&quot;,
+      &quot;targetRaise&quot;: 50000,
+      &quot;currentRaise&quot;: 35000,
+      &quot;expectedYield&quot;: 8.5,
+      &quot;minInvestment&quot;: 100,
+      &quot;jurisdiction&quot;: &quot;CI&quot;,
+      &quot;status&quot;: &quot;active | pending | completed&quot;,
+      &quot;imageUrl&quot;: &quot;https://storage.example.com/asset.jpg&quot;
+    }
+  ],
+  &quot;total&quot;: 24,
+  &quot;page&quot;: 1,
+  &quot;pageSize&quot;: 20
+}
+
+// Get Asset Details
+GET /api/v1/assets/:assetId
+
+Response: {
+  &quot;id&quot;: &quot;uuid&quot;,
+  &quot;name&quot;: &quot;GDIZ Factory Invoice #001&quot;,
+  &quot;description&quot;: &quot;Short description&quot;,
+  &quot;class&quot;: &quot;Invoice&quot;,
+  &quot;originator&quot;: {
+    &quot;id&quot;: &quot;uuid&quot;,
+    &quot;name&quot;: &quot;GDIZ Industries&quot;,
+    &quot;verified&quot;: true
+  },
+  &quot;targetRaise&quot;: 50000,
+  &quot;currentRaise&quot;: 35000,
+  &quot;investorCount&quot;: 15,
+  &quot;expectedYield&quot;: 8.5,
+  &quot;term&quot;: 12,
+  &quot;minInvestment&quot;: 100,
+  &quot;jurisdiction&quot;: &quot;Côte d'Ivoire&quot;,
+  &quot;documents&quot;: [
+    {
+      &quot;type&quot;: &quot;prospectus&quot;,
+      &quot;url&quot;: &quot;https://storage.example.com/prospectus.pdf&quot;
+    }
+  ],
+  &quot;performance&quot;: {
+    &quot;totalRaised&quot;: 35000,
+    &quot;percentage&quot;: 70,
+    &quot;daysRemaining&quot;: 15
+  }
+}
+
+// Search Assets
+GET /api/v1/assets/search?q=GDIZ&amp;class=Invoice
+
+// Filter Assets
+GET /api/v1/assets/filter?class=Invoice&amp;minYield=5&amp;maxYield=10&amp;minInvestment=100
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/marketplace/AssetBrowse.tsx</code></li>
+<li><code>src/hooks/useAssets.ts</code> - Create new file</li>
+</ul>
+<hr />
+<h3>4. <strong>Investment Flow</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock investment in <code>InvestorDashboard.tsx</code></li>
+<li>No actual transactions</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// Create Investment
+POST /api/v1/investments
+Headers: Authorization: Bearer {token}
+{
+  &quot;assetId&quot;: &quot;uuid&quot;,
+  &quot;amount&quot;: 1000,
+  &quot;paymentMethod&quot;: &quot;USDC&quot;,
+  &quot;walletAddress&quot;: &quot;0x...&quot;
+}
+
+Response: {
+  &quot;investmentId&quot;: &quot;uuid&quot;,
+  &quot;status&quot;: &quot;pending | confirmed&quot;,
+  &quot;txHash&quot;: &quot;0x...&quot;,
+  &quot;shares&quot;: 100,
+  &quot;timestamp&quot;: &quot;2026-03-02T10:00:00Z&quot;
+}
+
+// Get User Investments
+GET /api/v1/investments?userId=:userId
+
+Response: {
+  &quot;investments&quot;: [
+    {
+      &quot;id&quot;: &quot;uuid&quot;,
+      &quot;assetId&quot;: &quot;uuid&quot;,
+      &quot;assetName&quot;: &quot;GDIZ Factory Invoice #001&quot;,
+      &quot;amount&quot;: 1000,
+      &quot;shares&quot;: 100,
+      &quot;currentValue&quot;: 1050,
+      &quot;returns&quot;: 5.0,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;investedAt&quot;: &quot;2026-03-02T10:00:00Z&quot;
+    }
+  ],
+  &quot;total&quot;: 5
+}
+
+// Get Investment Details
+GET /api/v1/investments/:investmentId
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/dashboard/InvestorDashboard.tsx</code></li>
+<li><code>src/hooks/useInvestments.ts</code> - Create new file</li>
+</ul>
+<hr />
+<h3>5. <strong>Industrial Asset Management</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock data in <code>IndustrialDashboard.tsx</code></li>
+<li>No actual asset creation</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// Create Asset
+POST /api/v1/assets
+Headers: Authorization: Bearer {token}
+{
+  &quot;name&quot;: &quot;Factory Invoice #001&quot;,
+  &quot;class&quot;: &quot;Invoice | Factory | Production&quot;,
+  &quot;targetRaise&quot;: 50000,
+  &quot;expectedYield&quot;: 8.5,
+  &quot;minInvestment&quot;: 100,
+  &quot;term&quot;: 12,
+  &quot;description&quot;: &quot;Asset description&quot;,
+  &quot;metadata&quot;: {
+    &quot;invoiceNumber&quot;: &quot;INV-2026-001&quot;,
+    &quot;dueDate&quot;: &quot;2026-06-01&quot;
+  }
+}
+
+Response: {
+  &quot;assetId&quot;: &quot;uuid&quot;,
+  &quot;status&quot;: &quot;draft | pending_approval&quot;,
+  &quot;createdAt&quot;: &quot;2026-03-02T10:00:00Z&quot;
+}
+
+// Get Originator Assets
+GET /api/v1/originator/assets
+
+// Update Asset
+PUT /api/v1/assets/:assetId
+
+// Delete Asset
+DELETE /api/v1/assets/:assetId
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/dashboard/IndustrialDashboard.tsx</code></li>
+<li><code>src/hooks/useOriginatorAssets.ts</code> - Create new file</li>
+</ul>
+<hr />
+<h3>6. <strong>Notarization (Production Data)</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock notarization in <code>IndustrialDashboard.tsx</code></li>
+<li>No blockchain interaction</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// Notarize Production Data
+POST /api/v1/notarize
+Headers: Authorization: Bearer {token}
+{
+  &quot;assetId&quot;: &quot;uuid&quot;,
+  &quot;dataType&quot;: &quot;production | invoice | shipment&quot;,
+  &quot;data&quot;: {
+    &quot;productionVolume&quot;: 1000,
+    &quot;timestamp&quot;: &quot;2026-03-02T10:00:00Z&quot;
+  },
+  &quot;dataHash&quot;: &quot;0x...&quot; // SHA-256 hash
+}
+
+Response: {
+  &quot;proofId&quot;: &quot;uuid&quot;,
+  &quot;txHash&quot;: &quot;0x...&quot;,
+  &quot;timestamp&quot;: &quot;2026-03-02T10:00:00Z&quot;,
+  &quot;blockNumber&quot;: 12345678,
+  &quot;status&quot;: &quot;confirmed&quot;
+}
+
+// Verify Notarization
+GET /api/v1/notarize/verify/:dataHash
+
+Response: {
+  &quot;exists&quot;: true,
+  &quot;timestamp&quot;: &quot;2026-03-02T10:00:00Z&quot;,
+  &quot;submitter&quot;: &quot;0x...&quot;,
+  &quot;blockNumber&quot;: 12345678
+}
+
+// Get Notarization History
+GET /api/v1/notarize/history?assetId=:assetId
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/dashboard/IndustrialDashboard.tsx</code></li>
+<li><code>src/hooks/useNotarization.ts</code> - Create new file</li>
+</ul>
+<hr />
+<h3>7. <strong>Admin Dashboard</strong></h3>
+<h4>Current State</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Mock data in <code>AdminDashboard.tsx</code></li>
+<li>No actual approvals</li>
+</ul>
+<h4>Required Endpoints</h4>
+<div class="docs-pre"><code>// Get Pending Users
+GET /api/v1/admin/pending-users
+
+Response: {
+  &quot;users&quot;: [
+    {
+      &quot;id&quot;: &quot;uuid&quot;,
+      &quot;name&quot;: &quot;GDIZ Industries&quot;,
+      &quot;email&quot;: &quot;contact@gdiz.ci&quot;,
+      &quot;role&quot;: &quot;ORIGINATOR&quot;,
+      &quot;kycLevel&quot;: 2,
+      &quot;submittedAt&quot;: &quot;2026-03-01T10:00:00Z&quot;
+    }
+  ]
+}
+
+// Approve User
+POST /api/v1/admin/approve-user
+{
+  &quot;userId&quot;: &quot;uuid&quot;,
+  &quot;action&quot;: &quot;approve | reject&quot;,
+  &quot;reason&quot;: &quot;Optional rejection reason&quot;
+}
+
+// Get Pending Assets
+GET /api/v1/admin/pending-assets
+
+// Approve Asset
+POST /api/v1/admin/approve-asset
+{
+  &quot;assetId&quot;: &quot;uuid&quot;,
+  &quot;action&quot;: &quot;approve | reject&quot;
+}
+
+// Get Fraud Alerts
+GET /api/v1/admin/fraud-alerts?severity=high&amp;status=unresolved
+
+Response: {
+  &quot;alerts&quot;: [
+    {
+      &quot;id&quot;: &quot;uuid&quot;,
+      &quot;severity&quot;: &quot;high | medium | low | critical&quot;,
+      &quot;rule&quot;: &quot;LARGE_TRANSACTION&quot;,
+      &quot;wallet&quot;: &quot;0x...&quot;,
+      &quot;amount&quot;: 75000,
+      &quot;timestamp&quot;: &quot;2026-03-02T10:00:00Z&quot;,
+      &quot;status&quot;: &quot;unresolved | resolved | escalated&quot;
+    }
+  ]
+}
+
+// Resolve Alert
+POST /api/v1/admin/resolve-alert
+{
+  &quot;alertId&quot;: &quot;uuid&quot;,
+  &quot;action&quot;: &quot;resolve | escalate&quot;,
+  &quot;notes&quot;: &quot;Resolution notes&quot;
+}
+</code></div>
+<h4>Files to Update</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>src/pages/dashboard/AdminDashboard.tsx</code></li>
+<li><code>src/hooks/useAdmin.ts</code> - Create new file</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Utility Files to Create</h2>
+<h3>1. <strong>API Client</strong> (<code>src/utils/api.ts</code>)</h3>
+<div class="docs-pre"><code>import axios from 'axios';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+export const api = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Request interceptor for auth token
+api.interceptors.request.use(
+  (config) =&gt; {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) =&gt; Promise.reject(error)
+);
+
+// Response interceptor for error handling
+api.interceptors.response.use(
+  (response) =&gt; response,
+  (error) =&gt; {
+    if (error.response?.status === 401) {
+      // Handle unauthorized - redirect to login
+      localStorage.removeItem('auth_token');
+      window.location.href = '/';
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;
+</code></div>
+<h3>2. <strong>Auth Context</strong> (<code>src/contexts/AuthContext.tsx</code>)</h3>
+<div class="docs-pre"><code>import React, { createContext, useContext, useState, useEffect } from 'react';
+import { api } from '../utils/api';
+
+type Role = 'INVESTOR' | 'ORIGINATOR' | 'ADMIN' | null;
+
+interface User {
+  id: string;
+  wallet: string;
+  role: Role;
+  kycLevel: number;
+  status: string;
+}
+
+interface AuthContextType {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  login: (wallet: string, signature: string) =&gt; Promise&lt;void&gt;;
+  logout: () =&gt; void;
+}
+
+const AuthContext = createContext&lt;AuthContextType | undefined&gt;(undefined);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState&lt;User | null&gt;(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() =&gt; {
+    // Check for existing session
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      loadUser();
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
+
+  async function loadUser() {
+    try {
+      const response = await api.get('/api/v1/users/me');
+      setUser(response.data);
+    } catch (error) {
+      localStorage.removeItem('auth_token');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function login(wallet: string, signature: string) {
+    const response = await api.post('/api/v1/auth/wallet', {
+      wallet,
+      signature,
+    });
+
+    localStorage.setItem('auth_token', response.data.token);
+    setUser(response.data.user);
+  }
+
+  function logout() {
+    localStorage.removeItem('auth_token');
+    setUser(null);
+  }
+
+  return (
+    &lt;AuthContext.Provider value={{
+      user,
+      isAuthenticated: !!user,
+      isLoading,
+      login,
+      logout,
+    }}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+}
+</code></div>
+<h3>3. <strong>Custom Hooks</strong></h3>
+<p>Create these hooks in <code>src/hooks/</code>:<br />
+- <code>useAssets.ts</code> - Asset marketplace data<br />
+- <code>useInvestments.ts</code> - Investment management<br />
+- <code>useOriginatorAssets.ts</code> - Industrial asset management<br />
+- <code>useNotarization.ts</code> - Production notarization<br />
+- <code>useAdmin.ts</code> - Admin dashboard data</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Environment Variables</h2>
+<p>Create <code>.env</code> file:</p>
+<div class="docs-pre"><code># API Configuration
+VITE_API_URL=https://api.ujamaa-defi.io
+VITE_WS_URL=wss://api.ujamaa-defi.io/ws
+
+# Blockchain Configuration
+VITE_POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+VITE_CHAIN_ID=80002
+VITE_USDC_CONTRACT_ADDRESS=0x...
+VITE_UJAMAA_TOKEN_ADDRESS=0x...
+VITE_ASSET_PROOF_ADDRESS=0x...
+
+# Feature Flags
+VITE_ENABLE_DARK_MODE=true
+VITE_ENABLE_FRAUD_DETECTION=true
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Integration Checklist</h2>
+<h3>Phase 1: Authentication (Week 3)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Create AuthContext</li>
+<li>[ ] Implement wallet connection</li>
+<li>[ ] Add JWT token management</li>
+<li>[ ] Update Header component</li>
+<li>[ ] Test login/logout flow</li>
+</ul>
+<h3>Phase 2: User Management (Week 3)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Create API client</li>
+<li>[ ] Implement KYC/KYB submission</li>
+<li>[ ] Add file upload to storage</li>
+<li>[ ] Update onboarding pages</li>
+<li>[ ] Test approval flow</li>
+</ul>
+<h3>Phase 3: Marketplace (Week 3)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Connect asset API</li>
+<li>[ ] Implement real-time filtering</li>
+<li>[ ] Add asset details page</li>
+<li>[ ] Test search functionality</li>
+</ul>
+<h3>Phase 4: Investments (Week 4)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Connect investment API</li>
+<li>[ ] Implement Web3 transactions</li>
+<li>[ ] Add portfolio tracking</li>
+<li>[ ] Test investment flow</li>
+</ul>
+<h3>Phase 5: Admin Features (Week 4)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Connect admin APIs</li>
+<li>[ ] Implement approval workflows</li>
+<li>[ ] Add fraud alert management</li>
+<li>[ ] Test admin dashboard</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Testing Strategy</h2>
+<h3>Unit Tests</h3>
+<div class="docs-pre"><code>npm run test
+</code></div>
+<h3>Integration Tests</h3>
+<div class="docs-pre"><code>npm run test:integration
+</code></div>
+<h3>E2E Tests (Future)</h3>
+<div class="docs-pre"><code>npm run test:e2e
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Support &amp; Contact</h2>
+<p>For questions or issues during integration:<br />
+- Check this documentation first<br />
+- Review API Swagger docs (when available)<br />
+- Contact frontend development team</p>
+<hr />
+<p><strong>Document Control:</strong><br />
+- <strong>Version:</strong> 1.0<br />
+- <strong>Created:</strong> March 2, 2026<br />
+- <strong>Status:</strong> Ready for Implementation<br />
+- <strong>Next Review:</strong> Backend API availability</p>
+<hr />
+<p><em>UJAMAA DEFI PLATFORM - Tokenize African Real-World Assets</em></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Web3 Architecture Guide: Why Wallet & Web3 Are Frontend-Only - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Web3 Architecture Guide: Why Wallet & Web3 Are Frontend-Only</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Web3 Architecture Guide: Why Wallet & Web3 Are Frontend-Only</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 15, 2026 | <strong>Audience:</strong> Developers, Architects, Stakeholders</p></div>
+
+        <h1>Web3 Architecture Guide: Why Wallet &amp; Web3 Are Frontend-Only</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Understanding the Fundamental Difference Between Web2 and Web3</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 15, 2026<br />
+<strong>Audience:</strong> Developers, Architects, Stakeholders</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📋 Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#core-principle-self-custody">Core Principle: Self-Custody</a></li>
+<li><a href="#why-wallet-must-be-frontend">Why Wallet Must Be Frontend</a></li>
+<li><a href="#architecture-breakdown">Architecture Breakdown</a></li>
+<li><a href="#security-comparison">Security Comparison</a></li>
+<li><a href="#what-backend-does-do">What Backend DOES Do</a></li>
+<li><a href="#what-backend-cannot-do">What Backend CANNOT Do</a></li>
+<li><a href="#correct-flow-ujamaa-defi">Correct Flow: Ujamaa DeFi Platform</a></li>
+<li><a href="#summary-table">Summary Table</a></li>
+<li><a href="#key-takeaway">Key Takeaway</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔑 Core Principle: Self-Custody</h2>
+<h3>Web2 Architecture (Traditional)</h3>
+<div class="docs-pre"><code>┌─────────────┐         ┌─────────────┐
+│   User      │  ────►  │   Backend   │
+│  (Browser)  │         │   (Server)  │
+│             │         │             │
+│ ❌ No keys  │         │ ✅ Holds    │
+│ ❌ No sign  │         │    keys     │
+│             │         │ ✅ Signs    │
+└─────────────┘         └─────────────┘
+</code></div>
+<p><strong>In Web2:</strong><br />
+- Backend holds all credentials<br />
+- Backend signs all transactions<br />
+- Users trust the server</p>
+<h3>Web3 Architecture (Decentralized)</h3>
+<div class="docs-pre"><code>┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+│   User      │  ────►  │   Backend   │  ────►  │  Blockchain │
+│  (Wallet)   │         │   (API)     │         │             │
+│             │         │             │         │             │
+│ ✅ Holds    │         │ ❌ No keys  │         │ ✅ Verifies │
+│    keys     │         │ ❌ Can't    │         │    signatures│
+│ ✅ Signs    │         │    sign     │         │             │
+└─────────────┘         └─────────────┘         └─────────────┘
+</code></div>
+<p><strong>In Web3:</strong><br />
+- <strong>Users hold their own keys</strong> (self-custody)<br />
+- <strong>Users sign transactions</strong> (not the backend)<br />
+- <strong>Backend cannot access user funds</strong></p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🎯 Why Wallet Must Be Frontend</h2>
+<h3>1. Security - Private Keys Never Leave User's Device</h3>
+<h4>❌ WRONG: Backend Should NEVER Have Private Keys</h4>
+<div class="docs-pre"><code># backend/services/wallet.py
+# 🚨 SECURITY RISK - NEVER DO THIS
+private_key = os.getenv(&quot;USER_PRIVATE_KEY&quot;)
+wallet = Account.from_key(private_key)
+</code></div>
+<p><strong>Why?</strong><br />
+- If backend holds keys → <strong>honeypot for hackers</strong><br />
+- If backend is compromised → <strong>all user funds stolen</strong><br />
+- Single point of failure</p>
+<h4>✅ CORRECT: User Signs in Their Own Wallet</h4>
+<div class="docs-pre"><code>// frontend/src/components/web3/WalletConnection.tsx
+import { useAccount } from 'wagmi';
+
+function WalletComponent() {
+  const { address, signMessage } = useAccount();
+
+  // User controls keys through MetaMask
+  // Frontend NEVER sees private keys
+  return &lt;div&gt;Connected: {address}&lt;/div&gt;;
+}
+</code></div>
+<p><strong>Benefits:</strong><br />
+- ✅ Decentralized risk (each user controls their own keys)<br />
+- ✅ No central honeypot for attackers<br />
+- ✅ User sovereignty over assets</p>
+<hr />
+<h3>2. User Sovereignty - Users Control Their Assets</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Traditional Finance (Web2)</th>
+<th>DeFi (Web3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank holds your money</td>
+<td>You hold your keys</td>
+</tr>
+<tr>
+<td>Bank signs transactions</td>
+<td>You sign transactions</td>
+</tr>
+<tr>
+<td>Bank can freeze account</td>
+<td>Non-custodial (can't freeze)</td>
+</tr>
+<tr>
+<td>Trust required</td>
+<td>Trustless</td>
+</tr>
+<tr>
+<td>Custodial</td>
+<td>Self-custody</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>3. Regulatory Compliance</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Backend Holds Keys (Custodial)</th>
+<th>Frontend Holds Keys (Non-Custodial)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Legal Classification</strong></td>
+<td>Money Service Business (MSB)</td>
+<td>Software Provider</td>
+</tr>
+<tr>
+<td><strong>Licenses Required</strong></td>
+<td>BitLicense, Money Transmitter</td>
+<td>None (typically)</td>
+</tr>
+<tr>
+<td><strong>KYC/AML Burden</strong></td>
+<td>Full compliance required</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Liability</strong></td>
+<td>High (custodial)</td>
+<td>Low (non-custodial)</td>
+</tr>
+<tr>
+<td><strong>Insurance Required</strong></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Audit Requirements</strong></td>
+<td>Annual SOC 2</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ujamaa DeFi Platform is non-custodial</strong> → Users hold keys → Lower regulatory burden</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🏗️ Architecture Breakdown</h2>
+<h3>What Happens Where</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                         FRONTEND (Browser)                       │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  RainbowKit / Wagmi                                      │  │
+│  │  • Connects to MetaMask/WalletConnect                    │  │
+│  │  • Displays wallet UI                                    │  │
+│  │  • Requests signatures from user                         │  │
+│  │  • NEVER sees private keys                               │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│                              │ User approves in MetaMask        │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  Smart Contract Call                                      │  │
+│  │  • mint() - Create tokens                                │  │
+│  │  • transfer() - Send tokens                              │  │
+│  │  • notarize() - Hash notarization                        │  │
+│  │  • Signed by USER's wallet                               │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              │ Broadcasts to blockchain
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                         BACKEND (FastAPI)                        │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  Fraud Detection                                         │  │
+│  │  • Validates investment amount                           │  │
+│  │  • Checks fraud rules                                    │  │
+│  │  • Stores alerts in database                             │  │
+│  │  • ❌ CANNOT sign blockchain transactions                │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  Database (PostgreSQL)                                    │  │
+│  │  • User profiles                                         │  │
+│  │  • Investment records                                    │  │
+│  │  • Fraud alerts                                          │  │
+│  │  • ❌ NO private keys stored                             │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔐 Security Comparison</h2>
+<h3>Scenario: Investment Transaction</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Step</th>
+<th>Frontend Web3 (Correct)</th>
+<th>Backend Web3 (Wrong)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. User clicks "Invest"</strong></td>
+<td>✅ MetaMask popup appears</td>
+<td>❌ Backend processes silently</td>
+</tr>
+<tr>
+<td><strong>2. User reviews tx</strong></td>
+<td>✅ User sees all details</td>
+<td>❌ User must trust backend</td>
+</tr>
+<tr>
+<td><strong>3. User signs</strong></td>
+<td>✅ User's private key signs</td>
+<td>❌ Backend's private key signs</td>
+</tr>
+<tr>
+<td><strong>4. Transaction sent</strong></td>
+<td>✅ From user's wallet</td>
+<td>❌ From backend wallet</td>
+</tr>
+<tr>
+<td><strong>5. Funds movement</strong></td>
+<td>✅ User → Contract</td>
+<td>❌ Backend → Contract</td>
+</tr>
+<tr>
+<td><strong>6. Security risk</strong></td>
+<td>✅ User controls funds</td>
+<td>❌ Backend controls ALL funds</td>
+</tr>
+<tr>
+<td><strong>7. If compromised</strong></td>
+<td>✅ Only affected user</td>
+<td>❌ ALL user funds stolen</td>
+</tr>
+<tr>
+<td><strong>8. Regulatory status</strong></td>
+<td>✅ Non-custodial</td>
+<td>❌ Custodial (MSB license required)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>💡 What Backend DOES Do</h2>
+<p>The backend is <strong>not useless</strong> - it has critical off-chain roles:</p>
+<h3>1. Off-Chain Data Storage</h3>
+<div class="docs-pre"><code># backend/api/investments.py
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+
+router = APIRouter()
+
+class InvestmentData(BaseModel):
+    wallet: str
+    amount: float
+    asset_id: str
+    tx_hash: str
+
+@router.post(&quot;/api/v1/investments&quot;)
+async def record_investment(investment: InvestmentData):
+    &quot;&quot;&quot;
+    Record investment in database (off-chain)
+
+    This does NOT move funds - just tracks it for:
+    - Portfolio tracking
+    - Tax reporting
+    - Analytics
+    &quot;&quot;&quot;
+    # Store in PostgreSQL
+    await db.execute(
+        &quot;&quot;&quot;
+        INSERT INTO investments (wallet, amount, asset_id, tx_hash, created_at)
+        VALUES ($1, $2, $3, $4, NOW())
+        &quot;&quot;&quot;,
+        investment.wallet,
+        investment.amount,
+        investment.asset_id,
+        investment.tx_hash
+    )
+
+    return {&quot;status&quot;: &quot;recorded&quot;}
+</code></div>
+<p><strong>Purpose:</strong> Track investments off-chain for better UX and analytics</p>
+<hr />
+<h3>2. Fraud Detection &amp; Validation</h3>
+<div class="docs-pre"><code># backend/services/fraud_detection.py
+from typing import List, Dict, Any
+from enum import Enum
+
+class Severity(str, Enum):
+    LOW = &quot;LOW&quot;
+    MEDIUM = &quot;MEDIUM&quot;
+    HIGH = &quot;HIGH&quot;
+    CRITICAL = &quot;CRITICAL&quot;
+
+class FraudDetectionEngine:
+    &quot;&quot;&quot;
+    Validate transaction BEFORE user signs
+    Returns warnings/alerts for user to review
+
+    Backend CANNOT stop transaction - only warn
+    &quot;&quot;&quot;
+
+    RULES = {
+        'LARGE_TRANSACTION': {
+            'threshold': 50_000,  # USD
+            'severity': Severity.HIGH,
+            'message': 'Transaction &gt; $50,000 without KYC Level 2'
+        },
+        'HIGH_VELOCITY': {
+            'threshold': 5,  # transactions per hour
+            'severity': Severity.MEDIUM,
+            'message': 'More than 5 transactions in 1 hour'
+        },
+    }
+
+    async def check_transaction(
+        self,
+        tx_data: Dict[str, Any],
+        user_data: Dict[str, Any]
+    ) -&gt; List[Dict]:
+        alerts = []
+
+        # Check large transaction rule
+        if tx_data['amount_usd'] &gt; self.RULES['LARGE_TRANSACTION']['threshold']:
+            if user_data.get('kyc_level', 0) &lt; 2:
+                alerts.append({
+                    'rule': 'LARGE_TRANSACTION',
+                    'severity': 'HIGH',
+                    'message': self.RULES['LARGE_TRANSACTION']['message']
+                })
+
+        return alerts
+</code></div>
+<p><strong>Purpose:</strong> Protect users with off-chain validation before they sign</p>
+<hr />
+<h3>3. Indexing &amp; Querying</h3>
+<div class="docs-pre"><code># backend/api/portfolio.py
+from fastapi import APIRouter
+from web3 import Web3
+
+router = APIRouter()
+
+@router.get(&quot;/api/v1/portfolio/{wallet}&quot;)
+async def get_portfolio(wallet: str):
+    &quot;&quot;&quot;
+    Query blockchain events + database
+    Return aggregated portfolio view
+
+    This is read-only - cannot modify state
+    &quot;&quot;&quot;
+    # Get on-chain data (read-only)
+    web3 = Web3(Web3.HTTPProvider(rpc_url))
+    token_balance = await token_contract.functions.balanceOf(wallet).call()
+
+    # Get off-chain data
+    investment_history = await db.fetch_all(
+        &quot;SELECT * FROM investments WHERE wallet = $1&quot;,
+        wallet
+    )
+
+    # Aggregate
+    return {
+        'wallet': wallet,
+        'token_balance': token_balance,
+        'total_invested': sum(inv['amount'] for inv in investment_history),
+        'investment_count': len(investment_history),
+        'investments': investment_history
+    }
+</code></div>
+<p><strong>Purpose:</strong> Provide rich portfolio data that's expensive to query on-chain</p>
+<hr />
+<h3>4. User Experience &amp; Metadata</h3>
+<div class="docs-pre"><code># backend/api/users.py
+from fastapi import APIRouter, HTTPException
+
+router = APIRouter()
+
+@router.get(&quot;/api/v1/users/{wallet}/role&quot;)
+async def get_user_role(wallet: str):
+    &quot;&quot;&quot;
+    Return user's role (Investor, Admin, etc.)
+
+    Used for UI rendering - NOT for authorization
+    On-chain verification happens in smart contracts
+    &quot;&quot;&quot;
+    user = await db.get_user(wallet)
+
+    if not user:
+        # User needs onboarding
+        return {
+            'exists': False,
+            'needs_onboarding': True
+        }
+
+    return {
+        'exists': True,
+        'role': user.role,
+        'kyc_level': user.kyc_level,
+        'jurisdiction': user.jurisdiction
+    }
+</code></div>
+<p><strong>Purpose:</strong> Improve UX with off-chain metadata</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🚫 What Backend CANNOT Do</h2>
+<h3>1. Cannot Sign Transactions for Users</h3>
+<div class="docs-pre"><code># ❌ WRONG - Backend should NEVER do this
+@app.post(&quot;/api/v1/invest&quot;)
+async def invest_for_user(wallet: str, amount: int):
+    &quot;&quot;&quot;
+    🚨 SECURITY RISK: Backend signing for user
+    🚨 CUSTODIAL MODEL: Requires MSB license
+    🚨 SINGLE POINT OF FAILURE: All funds at risk
+    &quot;&quot;&quot;
+    # 🚨 NEVER DO THIS
+    private_key = os.getenv(&quot;MASTER_PRIVATE_KEY&quot;)
+    account = Account.from_key(private_key)
+
+    tx = await contract.functions.mint(
+        account.address,
+        amount
+    )
+
+    return {&quot;tx_hash&quot;: tx.hash}
+</code></div>
+<p><strong>Why Wrong?</strong><br />
+- ❌ Backend holds private keys (custodial)<br />
+- ❌ Users don't control their funds<br />
+- ❌ Requires money transmitter license<br />
+- ❌ Single point of failure</p>
+<hr />
+<h3>2. Cannot Hold User Funds</h3>
+<div class="docs-pre"><code># ❌ WRONG - Custodial model
+@app.post(&quot;/api/v1/deposit&quot;)
+async def deposit_funds(wallet: str, amount: int):
+    &quot;&quot;&quot;
+    🚨 REGULATORY RISK: Backend holding funds
+    🚨 REQUIRES: BitLicense, Money Transmitter licenses
+    &quot;&quot;&quot;
+    # 🚨 NEVER DO THIS
+    await backend_wallet.transfer(amount)
+</code></div>
+<p><strong>Why Wrong?</strong><br />
+- ❌ Custodial model (like a bank)<br />
+- ❌ Requires extensive licensing<br />
+- ❌ High regulatory burden<br />
+- ❌ Insurance requirements</p>
+<hr />
+<h3>3. Cannot Access Private Keys</h3>
+<div class="docs-pre"><code># ❌ WRONG - Keys should never be in backend
+# environment variables, database, anywhere
+PRIVATE_KEY = &quot;0x1234...&quot;  # 🚨 NEVER DO THIS
+MNEMONIC_PHRASE = &quot;witch collapse practice...&quot;  # 🚨 NEVER DO THIS
+</code></div>
+<p><strong>Why Wrong?</strong><br />
+- ❌ If server is compromised → all keys stolen<br />
+- ❌ If logged → keys exposed forever<br />
+- ❌ If in environment → accessible via process list</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>✅ Correct Flow: Ujamaa DeFi Platform</h2>
+<h3>Step-by-Step Investment Flow</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│  Step 1: User Connects Wallet (Frontend)                        │
+│                                                                  │
+│  • RainbowKit shows &quot;Connect Wallet&quot; button                    │
+│  • User clicks MetaMask                                        │
+│  • MetaMask popup: &quot;Connect to Ujamaa DeFi Platform?&quot;                   │
+│  • User approves                                               │
+│  • Frontend receives: address = &quot;0x1234...&quot;                    │
+│  • Backend NEVER sees private key                              │
+│  • Backend only knows: user connected                          │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Step 2: User Initiates Investment (Frontend)                   │
+│                                                                  │
+│  • User enters amount: 5000 USDC                               │
+│  • Frontend calls backend: POST /api/v1/fraud/validate         │
+│  • Backend checks fraud rules (off-chain)                      │
+│  • Backend returns: {&quot;valid&quot;: true, &quot;alerts&quot;: []}              │
+│  • Backend CANNOT stop transaction - only warn                 │
+│  • User sees warnings and decides                              │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Step 3: User Signs Transaction (Frontend + MetaMask)           │
+│                                                                  │
+│  • Frontend calls: wagmi.mint({ args: [address, amount] })     │
+│  • MetaMask popup: &quot;Sign Transaction?&quot;                         │
+│  • Shows: Contract address, amount, gas fee                    │
+│  • User reviews details                                        │
+│  • User clicks &quot;Confirm&quot;                                       │
+│  • MetaMask signs with USER'S private key                      │
+│  • Transaction broadcast to Polygon Amoy                       │
+│  • Backend has NO access to signing process                    │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Step 4: Backend Records Transaction (Database)                 │
+│                                                                  │
+│  • Frontend notifies backend: tx_hash = &quot;0xabc...&quot;             │
+│  • Backend verifies tx on-chain (read-only)                    │
+│  • Backend stores in PostgreSQL:                               │
+│    INSERT INTO investments (wallet, amount, tx_hash)           │
+│  • Backend CANNOT modify or reverse transaction                │
+│  • Backend CANNOT access user funds                            │
+│  • Backend only tracks what happened (off-chain record)        │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📊 Summary Table</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Location</th>
+<th>Why?</th>
+<th>Can Backend Access?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wallet Connection</strong></td>
+<td>Frontend</td>
+<td>User controls keys</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Private Keys</strong></td>
+<td>User's device (MetaMask)</td>
+<td>Self-custody</td>
+<td>❌ Never</td>
+</tr>
+<tr>
+<td><strong>Transaction Signing</strong></td>
+<td>Frontend (MetaMask)</td>
+<td>User approves txs</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Transaction Broadcasting</strong></td>
+<td>Frontend (MetaMask)</td>
+<td>User-signed</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Blockchain Calls</strong></td>
+<td>Frontend (Wagmi)</td>
+<td>User-initiated</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Fraud Detection</strong></td>
+<td>Backend</td>
+<td>Off-chain validation</td>
+<td>✅ Yes (read-only)</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>Backend</td>
+<td>Off-chain storage</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>User Profiles</strong></td>
+<td>Backend</td>
+<td>Off-chain metadata</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Investment Records</strong></td>
+<td>Backend</td>
+<td>Off-chain tracking</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Smart Contract State</strong></td>
+<td>Blockchain</td>
+<td>On-chain truth</td>
+<td>✅ Read-only</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🎯 Key Takeaway</h2>
+<div class="docs-callout docs-callout-info"><div class="docs-callout-title">ℹ️</div>
+<h3><strong>"Not your keys, not your crypto"</strong></h3>
+<p>In Web3, the frontend is the <strong>user's agent</strong>, not the backend.<br />
+The backend is a <strong>service provider</strong>, not a custodian.</p>
+</div>
+<h3>The Fundamental Shift</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Web2</th>
+<th>Web3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trust Model</strong></td>
+<td>Trust backend</td>
+<td>Trust code (smart contracts)</td>
+</tr>
+<tr>
+<td><strong>Custody</strong></td>
+<td>Backend holds assets</td>
+<td>User holds assets</td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>Backend decides</td>
+<td>Smart contracts enforce</td>
+</tr>
+<tr>
+<td><strong>Frontend Role</strong></td>
+<td>UI for backend</td>
+<td>User's sovereign agent</td>
+</tr>
+<tr>
+<td><strong>Backend Role</strong></td>
+<td>Trusted intermediary</td>
+<td>Service provider</td>
+</tr>
+</tbody>
+</table></div>
+<h3>UJAMAA DEFI PLATFORM Architecture</h3>
+<p>UJAMAA DEFI PLATFORM follows the <strong>non-custodial Web3 model</strong> where:</p>
+<p>✅ <strong>Users hold their own keys</strong><br />
+✅ <strong>Users sign their own transactions</strong><br />
+✅ <strong>Backend cannot access user funds</strong><br />
+✅ <strong>Backend provides off-chain services only</strong><br />
+✅ <strong>Smart contracts enforce rules on-chain</strong>  </p>
+<p>This is <strong>by design</strong> for:<br />
+- 🔐 <strong>Security</strong> - No central honeypot<br />
+- 🗽 <strong>Sovereignty</strong> - Users control their assets<br />
+- ⚖️ <strong>Compliance</strong> - Non-custodial (lower regulatory burden)<br />
+- 🎯 <strong>Trustlessness</strong> - Code enforces rules, not people</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📚 Additional Resources</h2>
+<h3>Internal Documentation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="05_SMART_CONTRACT_INTEGRATION_GUIDE.html" style="color:#3B82F6">Web3 Configuration Guide</a></li>
+<li><a href="03_BACKEND_INTEGRATION_GUIDE.html" style="color:#3B82F6">Backend Integration Guide</a></li>
+<li><a href="02_TECHNOLOGY_STACK_REFERENCE.html" style="color:#3B82F6">Technology Stack Reference</a></li>
+</ul>
+<h3>External Resources</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="https://wagmi.sh/">Wagmi Documentation</a></li>
+<li><a href="https://www.rainbowkit.com/">RainbowKit Documentation</a></li>
+<li><a href="https://ethereum.org/en/wallets/">Ethereum.org - Wallets</a></li>
+<li><a href="https://www.coinbase.com/learn/crypto-basics/what-is-self-custody">Self-Custody Explained</a></li>
+</ul>
+<hr />
+<p><strong>Document Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> March 18, 2026<br />
+<strong>Maintained By:</strong> Development Team</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

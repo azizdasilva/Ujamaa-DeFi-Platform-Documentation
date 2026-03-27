@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Guide Complet des Algorithmes - Plateforme UJAMAA DeFi - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Algorithms</a><span class="docs-breadcrumb-separator">/</span><span>Guide Complet des Algorithmes - Plateforme UJAMAA DeFi</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Guide Complet des Algorithmes - Plateforme UJAMAA DeFi</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> 19 mars 2026</p></div>
+
+        <h1>Guide Complet des Algorithmes - Plateforme UJAMAA DeFi</h1>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> 19 mars 2026<br />
+<strong>Auteur:</strong> Aziz Da Silva - Architecte Principal<br />
+<strong>Classification:</strong> Interne / Ingénierie<br />
+<strong>Langue:</strong> Français  </p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Table des Matières</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-introduction-générale">Introduction Générale</a></li>
+<li><a href="#2-algorithmes-dévaluation-des-risques">Algorithmes d'Évaluation des Risques</a></li>
+<li><a href="#3-algorithmes-de-détection-de-fraude">Algorithmes de Détection de Fraude</a></li>
+<li><a href="#4-algorithmes-de-calcul-des-rendements-et-de-la-valeur-nette">Algorithmes de Calcul des Rendements et de la Valeur Nette</a></li>
+<li><a href="#5-algorithmes-de-gestion-des-pools-de-liquidité">Algorithmes de Gestion des Pools de Liquidité</a></li>
+<li><a href="#6-algorithmes-de-tokenisation-des-actifs">Algorithmes de Tokenisation des Actifs</a></li>
+<li><a href="#7-algorithmes-de-conformité-et-dadmissibilité">Algorithmes de Conformité et d'Admissibilité</a></li>
+<li><a href="#8-algorithmes-doracle-et-de-prix">Algorithmes d'Oracle et de Prix</a></li>
+<li><a href="#9-algorithmes-cryptographiques-et-de-sécurité">Algorithmes Cryptographiques et de Sécurité</a></li>
+<li><a href="#10-algorithmes-de-performance-et-doptimisation">Algorithmes de Performance et d'Optimisation</a></li>
+<li><a href="#11-résumé-et-points-clés">Résumé et Points Clés</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Introduction Générale</h2>
+<h3>1.1 Qu'est-ce que la Plateforme UJAMAA DeFi ?</h3>
+<p>La plateforme UJAMAA DeFi est un système financier décentralisé qui permet aux investisseurs institutionnels d'investir dans des actifs tokenisés (numérisés) tels que des factures, de l'immobilier, et d'autres instruments financiers. La plateforme utilise la technologie blockchain pour garantir la transparence, la sécurité et la conformité réglementaire.</p>
+<h3>1.2 Pourquoi des Algorithmes ?</h3>
+<p>Un <strong>algorithme</strong> est simplement une série d'instructions précises pour résoudre un problème ou accomplir une tâche. Dans notre plateforme, les algorithmes sont comme des "recettes de cuisine" qui disent à l'ordinateur comment :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Calculer le risque d'un investissement</li>
+<li>Détecter les transactions suspectes</li>
+<li>Calculer les rendements pour les investisseurs</li>
+<li>Vérifier que tout est conforme aux lois</li>
+</ul>
+<h3>1.3 Comment Lire ce Document ?</h3>
+<p>Ce document est conçu pour être compris par <strong>tout le monde</strong>, même sans connaissances techniques. Pour chaque algorithme, nous expliquons :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>🎯 Le But</strong> : À quoi sert cet algorithme ?</li>
+<li><strong>📝 En Termes Simples</strong> : Explication sans jargon technique</li>
+<li><strong>🔢 Comment ça Marche</strong> : Le fonctionnement détaillé</li>
+<li><strong>📊 Exemple Concret</strong> : Un exemple de la vie réelle</li>
+<li><strong>⚡ Performance</strong> : Rapidité et efficacité</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Algorithmes d'Évaluation des Risques</h2>
+<h3>2.1 Calcul du Score de Risque (ALG-04-01-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Cet algorithme calcule une <strong>note de risque</strong> (de 0 à 100) pour chaque actif financier. Plus le score est élevé, plus l'actif est risqué (c'est-à-dire plus il y a de chances que l'emprunteur ne rembourse pas).</p>
+<h4>📝 En Termes Simples</h4>
+<p>Imaginez que vous devez évaluer la fiabilité d'une personne à qui vous prêtez de l'argent. Vous allez regarder :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Ses revenus (est-ce qu'elle gagne bien sa vie ?)</li>
+<li>Ses dettes actuelles (est-ce qu'elle a déjà beaucoup de crédits ?)</li>
+<li>Son travail (est-ce qu'elle a un emploi stable ?)</li>
+<li>Sa réputation (est-ce qu'elle a bien remboursé ses précédents prêts ?)</li>
+</ul>
+<p>Notre algorithme fait exactement la même chose, mais pour des entreprises et des actifs financiers. Il examine <strong>10 critères différents</strong> et attribue une note.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Les 10 Critères d'Évaluation :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Force financière</strong></td>
+<td>20%</td>
+<td>La santé financière globale de l'entreprise</td>
+</tr>
+<tr>
+<td><strong>Profitabilité</strong></td>
+<td>15%</td>
+<td>Est-ce que l'entreprise gagne de l'argent ?</td>
+</tr>
+<tr>
+<td><strong>Stabilité des flux de trésorerie</strong></td>
+<td>15%</td>
+<td>Régularité des entrées d'argent</td>
+</tr>
+<tr>
+<td><strong>Niveau d'endettement</strong></td>
+<td>10%</td>
+<td>Combien l'entreprise doit-elle déjà ?</td>
+</tr>
+<tr>
+<td><strong>Qualité du management</strong></td>
+<td>10%</td>
+<td>Compétence des dirigeants</td>
+</tr>
+<tr>
+<td><strong>Position dans l'industrie</strong></td>
+<td>10%</td>
+<td>Part de marché, avantage concurrentiel</td>
+</tr>
+<tr>
+<td><strong>Risque opérationnel</strong></td>
+<td>10%</td>
+<td>Risques liés au modèle économique</td>
+</tr>
+<tr>
+<td><strong>Risque du pays</strong></td>
+<td>5%</td>
+<td>Stabilité du pays où l'entreprise opère</td>
+</tr>
+<tr>
+<td><strong>Risque réglementaire</strong></td>
+<td>3%</td>
+<td>Menaces liées aux changements de lois</td>
+</tr>
+<tr>
+<td><strong>Risque de marché</strong></td>
+<td>2%</td>
+<td>Conditions économiques générales</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>La Formule :</strong></p>
+<div class="docs-pre"><code>Score Final = (Force financière × 0,20) + (Profitabilité × 0,15) + ... + (Risque de marché × 0,02)
+</code></div>
+<p>Chaque critère reçoit une note de 0 à 100, puis on multiplie par son "poids" (son importance). On additionne tout et on obtient le score final.</p>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Entreprise : "TechSolutions SARL"</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Critère</th>
+<th>Note (0-100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Force financière</td>
+<td>85 (excellente)</td>
+</tr>
+<tr>
+<td>Profitabilité</td>
+<td>70 (bonne)</td>
+</tr>
+<tr>
+<td>Stabilité des flux</td>
+<td>60 (moyenne)</td>
+</tr>
+<tr>
+<td>Endettement</td>
+<td>40 (élevé)</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>75 (bon)</td>
+</tr>
+<tr>
+<td>Position industrie</td>
+<td>65 (correcte)</td>
+</tr>
+<tr>
+<td>Risque opérationnel</td>
+<td>50 (moyen)</td>
+</tr>
+<tr>
+<td>Risque pays</td>
+<td>20 (faible - pays stable)</td>
+</tr>
+<tr>
+<td>Risque réglementaire</td>
+<td>30 (faible)</td>
+</tr>
+<tr>
+<td>Risque marché</td>
+<td>25 (faible)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Calcul :</strong></p>
+<div class="docs-pre"><code>Score = (85×0,20) + (70×0,15) + (60×0,15) + (40×0,10) + (75×0,10) + 
+        (65×0,10) + (50×0,10) + (20×0,05) + (30×0,03) + (25×0,02)
+Score = 17 + 10,5 + 9 + 4 + 7,5 + 6,5 + 5 + 1 + 0,9 + 0,5
+Score = 61,9 sur 100
+</code></div>
+<p><strong>Résultat :</strong> Score de 61,9 → Risque <strong>MOYEN-ÉLEVÉ</strong></p>
+<h4>🏷️ Conversion en Note Lettre</h4>
+<p>Après avoir calculé le score numérique, on le convertit en une note lettre (comme les notes scolaires) :</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Score</th>
+<th>Note</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10</td>
+<td><strong>AAA</strong></td>
+<td>Risque extrêmement faible (excellent)</td>
+</tr>
+<tr>
+<td>10-20</td>
+<td><strong>A</strong></td>
+<td>Risque faible (très bon)</td>
+</tr>
+<tr>
+<td>20-35</td>
+<td><strong>BBB</strong></td>
+<td>Risque moyen (correct)</td>
+</tr>
+<tr>
+<td>35-50</td>
+<td><strong>BB</strong></td>
+<td>Risque moyen-élevé (spéculatif)</td>
+</tr>
+<tr>
+<td>50-65</td>
+<td><strong>B</strong></td>
+<td>Risque élevé (spéculatif)</td>
+</tr>
+<tr>
+<td>65-80</td>
+<td><strong>CCC</strong></td>
+<td>Risque très élevé (risqué)</td>
+</tr>
+<tr>
+<td>80-100</td>
+<td><strong>D</strong></td>
+<td>Risque extrême (probable défaut)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Pour notre exemple :</strong> 61,9 → Note <strong>B</strong> (risque élevé)</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané (moins d'une milliseconde)</li>
+<li><strong>Mémoire utilisée :</strong> Très faible (comme une calculatrice)</li>
+</ul>
+<hr />
+<h3>2.2 Calcul du Modificateur de Note (ALG-04-01-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Ajouter un signe <strong>+</strong> ou <strong>-</strong> à la note lettre pour affiner l'évaluation.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand deux entreprises ont la même note (par exemple "A"), comment savoir laquelle est <em>légèrement</em> meilleure ? On ajoute un modificateur :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>A+</strong> : Dans la partie haute de la catégorie A (proche de AAA)</li>
+<li><strong>A</strong> : Dans la partie moyenne de la catégorie A</li>
+<li><strong>A-</strong> : Dans la partie basse de la catégorie A (proche de BBB)</li>
+</ul>
+<h4>🔢 Comment ça Marche</h4>
+<p>On regarde où se situe le score dans la "tranche" de sa note :</p>
+<div class="docs-pre"><code>Note A = scores entre 10 et 20
+
+Position dans la tranche = (Score - Minimum) / (Maximum - Minimum)
+
+Si position &lt; 33% → Note+
+Si position entre 33% et 67% → Note (sans signe)
+Si position &gt; 67% → Note-
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Entreprise 1 :</strong> Score = 12 (dans la tranche A : 10-20)</p>
+<div class="docs-pre"><code>Position = (12 - 10) / (20 - 10) = 2 / 10 = 0,2 = 20%
+20% &lt; 33% → Note : A+
+</code></div>
+<p><strong>Entreprise 2 :</strong> Score = 18 (dans la tranche A : 10-20)</p>
+<div class="docs-pre"><code>Position = (18 - 10) / (20 - 10) = 8 / 10 = 0,8 = 80%
+80% &gt; 67% → Note : A-
+</code></div>
+<p><strong>Résultat :</strong> Même si les deux ont la note "A", l'entreprise 1 (A+) est meilleure que l'entreprise 2 (A-).</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané</li>
+<li><strong>Mémoire utilisée :</strong> Très faible</li>
+</ul>
+<hr />
+<h3>2.3 Comparaison avec les Références du Marché (ALG-04-04-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Comparer la note d'un actif avec les autres actifs similaires (même catégorie, même pays).</p>
+<h4>📝 En Termes Simples</h4>
+<p>C'est comme comparer un élève avec sa classe :<br />
+- "Comment cette entreprise se compare-t-elle aux autres entreprises du même secteur ?"<br />
+- "Est-elle meilleure ou moins bonne que la moyenne de son pays ?"</p>
+<h4>🔢 Comment ça Marche</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>On prend la note de l'actif</li>
+<li>On la compare avec toutes les notes des actifs similaires</li>
+<li>On calcule le <strong>percentile</strong> (classement en pourcentage)</li>
+</ol>
+<p><strong>Percentile =</strong> Pourcentage d'actifs qui ont une note <em>moins bonne</em></p>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Entreprise : "BioPharma Maroc"</strong><br />
+- Note : BBB<br />
+- Secteur : Pharmaceutique<br />
+- Pays : Maroc</p>
+<p><strong>Résultats de la comparaison :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Comparaison</th>
+<th>Percentile</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secteur pharmaceutique</td>
+<td>75%</td>
+<td>Meilleure que 75% des entreprises pharma</td>
+</tr>
+<tr>
+<td>Entreprises marocaines</td>
+<td>60%</td>
+<td>Meilleure que 60% des entreprises marocaines</td>
+</tr>
+<tr>
+<td>Moyenne globale</td>
+<td>67,5%</td>
+<td>Meilleure que 67,5% des entreprises similaires</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Conclusion :</strong> BioPharma Maroc est une <strong>bonne entreprise</strong> dans son secteur.</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Proportionnel au nombre d'actifs comparés</li>
+<li><strong>Mémoire utilisée :</strong> Dépend de la taille de la base de données</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Algorithmes de Détection de Fraude</h2>
+<h3>3.1 Détection d'Anomalies (ALG-07-01-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Repérer automatiquement les <strong>transactions suspectes</strong> qui ne ressemblent pas aux habitudes normales des utilisateurs.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Imaginez que vous avez l'habitude de :<br />
+- Faire des achats de 50-200 €<br />
+- Faire 2-3 transactions par semaine<br />
+- Acheter dans votre ville habituelle</p>
+<p>Soudain, votre carte est utilisée pour :<br />
+- Un achat de 5 000 €<br />
+- À 3h du matin<br />
+- Dans un pays étranger</p>
+<p>🚨 <strong>Alerte !</strong> Quelque chose ne va pas. C'est exactement ce que détecte cet algorithme.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p>L'algorithme utilise une <strong>Intelligence Artificielle</strong> appelée "Forêt d'Isolation" (Isolation Forest). Voici comment elle fonctionne :</p>
+<p><strong>Étape 1 : Apprentissage</strong><br />
+On montre à l'IA des millions de transactions normales. Elle apprend les habitudes typiques.</p>
+<p><strong>Étape 2 : Analyse en temps réel</strong><br />
+Pour chaque nouvelle transaction, l'IA examine 10 caractéristiques :</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Montant</td>
+<td>Combien d'argent ?</td>
+</tr>
+<tr>
+<td>Montant relatif</td>
+<td>Par rapport aux habitudes de l'utilisateur ?</td>
+</tr>
+<tr>
+<td>Fréquence (24h)</td>
+<td>Combien de transactions aujourd'hui ?</td>
+</tr>
+<tr>
+<td>Diversité des interlocuteurs</td>
+<td>Combien de personnes différentes ?</td>
+</tr>
+<tr>
+<td>Heure de la journée</td>
+<td>Est-ce une heure normale ?</td>
+</tr>
+<tr>
+<td>Jour de la semaine</td>
+<td>Est-ce un jour normal ?</td>
+</tr>
+<tr>
+<td>Distance géographique</td>
+<td>Loin de la position habituelle ?</td>
+</tr>
+<tr>
+<td>Risque de l'appareil</td>
+<td>Appareil connu ou suspect ?</td>
+</tr>
+<tr>
+<td>Risque de l'adresse IP</td>
+<td>IP suspecte ?</td>
+</tr>
+<tr>
+<td>Vitesse des transactions</td>
+<td>Trop rapide ?</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Étape 3 : Score d'anomalie</strong><br />
+L'IA donne un score de 0 à 1 :<br />
+- <strong>0-0,5</strong> : Transaction normale ✅<br />
+- <strong>0,5-0,9</strong> : Transaction inhabituelle ⚠️<br />
+- <strong>0,9-1,0</strong> : Transaction très suspecte 🚨</p>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Utilisateur : Ahmed</strong><br />
+- Habitudes : Transactions de 100-500 €, 2-3 par semaine, toujours au Maroc</p>
+<p><strong>Transaction 1 (Normale) :</strong><br />
+- Montant : 250 €<br />
+- Lieu : Casablanca<br />
+- Heure : 14h<br />
+- Appareil : Téléphone connu<br />
+- <strong>Score d'anomalie : 0,15</strong> → ✅ Normale</p>
+<p><strong>Transaction 2 (Suspecte) :</strong><br />
+- Montant : 8 000 €<br />
+- Lieu : Russie<br />
+- Heure : 3h du matin<br />
+- Appareil : Inconnu<br />
+- <strong>Score d'anomalie : 0,94</strong> → 🚨 ALERTE !</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Apprentissage :</strong> Quelques minutes pour des millions de transactions</li>
+<li><strong>Détection :</strong> Moins de 50 millisecondes par transaction</li>
+<li><strong>Précision :</strong> Détecte 95% des fraudes avec moins de 1% de fausses alertes</li>
+</ul>
+<hr />
+<h3>3.2 Détection du "Wash Trading" (ALG-07-02-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Détecter les <strong>fausses transactions</strong> où une personne s'échange des actifs à elle-même pour créer une illusion d'activité.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Le "wash trading", c'est comme si vous jouiez aux échecs contre vous-même et que vous annonciez "J'ai gagné !" pour impressionner les autres. Dans la finance, certains font semblant d'acheter et vendre des actifs pour :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Faire croire qu'il y a beaucoup d'activité</li>
+<li>Manipuler les prix</li>
+<li>Attirer de vrais investisseurs</li>
+</ul>
+<p>Notre algorithme détecte ces manipulations.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p>L'algorithme utilise un <strong>réseau de neurones LSTM</strong> (un type d'IA spécialisé dans les séquences temporelles).</p>
+<p><strong>Ce qu'il recherche :</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Portefeuilles connectés</strong> : Plusieurs portefeuilles contrôlés par la même personne (même IP, même appareil, même source de financement)</p>
+</li>
+<li>
+<p><strong>Motifs circulaires</strong> : <br />
+   - Portefeuille A vend à Portefeuille B<br />
+   - Portefeuille B vend à Portefeuille C<br />
+   - Portefeuille C vend à Portefeuille A<br />
+   - 🔄 C'est un cycle suspect !</p>
+</li>
+<li>
+<p><strong>Correspondance des prix</strong> : Les transactions se font à des prix presque identiques (&gt;80% de correspondance)</p>
+</li>
+<li>
+<p><strong>Fenêtre de temps courte</strong> : Tout se passe en moins de 24 heures</p>
+</li>
+</ol>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Scénario suspect détecté :</strong></p>
+<div class="docs-pre"><code>08:00 - Portefeuille 0x123 vend 100 tokens à 0x456 pour 1 000 €
+09:30 - Portefeuille 0x456 vend 100 tokens à 0x789 pour 1 005 €
+11:00 - Portefeuille 0x789 vend 100 tokens à 0x123 pour 1 010 €
+
+🔍 Analyse :
+- Même IP pour les 3 portefeuilles
+- Même appareil connecté
+- Prix quasi identiques
+- Cycle complet en 3 heures
+
+⚠️ Conclusion : WASH TRADING détecté (probabilité : 94%)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Analyse :</strong> Moins de 100 millisecondes pour 100 transactions</li>
+<li><strong>Précision :</strong> 92% de détection correcte</li>
+</ul>
+<hr />
+<h3>3.3 Détection du "Structuring" (ALG-07-03-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Détecter quand quelqu'un divise intentionnellement ses transactions pour éviter les déclarations obligatoires.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Dans de nombreux pays, les transactions de plus de 10 000 € doivent être déclarées aux autorités. Certains criminels essaient de contourner cette règle en faisant :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>❌ <strong>Une transaction de 10 000 €</strong> → Déclaration obligatoire</li>
+<li>✅ <strong>4 transactions de 2 500 €</strong> → Pas de déclaration (en apparence)</li>
+</ul>
+<p>C'est illégal et notre algorithme le détecte !</p>
+<h4>🔢 Comment ça Marche</h4>
+<p>L'algorithme surveille en temps réel et applique cette règle :</p>
+<div class="docs-pre"><code>SI (même portefeuille)
+ET (2 à 5 transactions en 24 heures)
+ET (chaque transaction &lt; 3 000 €)
+ET (total &gt; 10 000 €)
+ALORS 🚨 ALERTE STRUCTURING
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Utilisateur : Pierre</strong></p>
+<div class="docs-pre"><code>Lundi 10:00 - Transaction de 2 800 €
+Lundi 14:00 - Transaction de 2 900 €
+Lundi 18:00 - Transaction de 2 700 €
+Mardi 09:00 - Transaction de 2 500 €
+
+Total : 10 900 € en 24 heures
+Chaque transaction &lt; 3 000 €
+
+🚨 ALERTE : Structuring détecté !
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Détection :</strong> Temps réel (moins de 10 millisecondes)</li>
+<li><strong>Faux positifs :</strong> Moins de 0,5%</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Algorithmes de Calcul des Rendements et de la Valeur Nette</h2>
+<h3>4.1 Calcul de la Valeur Nette par Part (NAV) (ALG-10-01-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Calculer la <strong>valeur réelle</strong> de chaque part (token uLP) que possèdent les investisseurs dans le pool de liquidité.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Imaginez un gâteau (le pool de liquidité) coupé en parts égales (les tokens uLP). La <strong>NAV</strong> (Net Asset Value = Valeur Nette d'Actif), c'est la valeur de chaque part.</p>
+<p><strong>Formule simple :</strong></p>
+<div class="docs-pre"><code>Valeur d'une part = Valeur totale du gâteau / Nombre de parts
+</code></div>
+<p>Si le gâteau grandit (grâce aux rendements), chaque part vaut plus cher !</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Données nécessaires :</strong><br />
+- <code>ValeurTotalePool</code> : La valeur totale de tous les actifs dans le pool (en euros)<br />
+- <code>NombreTotalParts</code> : Le nombre total de tokens uLP en circulation</p>
+<p><strong>Calcul :</strong></p>
+<div class="docs-pre"><code>NAV = ValeurTotalePool / NombreTotalParts
+</code></div>
+<p><strong>Pour les dépôts :</strong></p>
+<div class="docs-pre"><code>Nombre de tokens reçus = Montant déposé / NAV
+</code></div>
+<p><strong>Pour les rachats :</strong></p>
+<div class="docs-pre"><code>Montant reçu = Nombre de tokens × NAV
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Situation Initiale (Jour 1) :</strong></p>
+<div class="docs-pre"><code>Valeur du pool : 1 000 000 €
+Nombre de tokens uLP : 1 000 000
+
+NAV = 1 000 000 / 1 000 000 = 1,00 € par token
+</code></div>
+<p><strong>Marie investit 10 000 € :</strong></p>
+<div class="docs-pre"><code>Tokens reçus = 10 000 / 1,00 = 10 000 uLP
+</code></div>
+<p><strong>Après 1 an (avec 5% de rendement) :</strong></p>
+<div class="docs-pre"><code>Valeur du pool : 1 050 000 € (les investissements ont rapporté)
+Nombre de tokens uLP : 1 010 000 (Marie a investi)
+
+NAV = 1 050 000 / 1 010 000 = 1,0396 € par token
+
+Marie rachète ses 10 000 tokens :
+Montant reçu = 10 000 × 1,0396 = 10 396 €
+
+Bénéfice de Marie : 396 € (environ 4%)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané</li>
+<li><strong>Précision :</strong> 18 décimales (extrêmement précis)</li>
+<li><strong>Exécution sur blockchain :</strong> Moins de 150 000 "gas" (coût faible)</li>
+</ul>
+<hr />
+<h3>4.2 Calcul de l'Accumulation des Rendements (ALG-10-04-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Calculer combien d'intérêts sont générés chaque jour par les financements industriels.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand une entreprise emprunte de l'argent via notre plateforme, elle paie des intérêts. Ces intérêts s'accumulent jour après jour. Cet algorithme calcule exactement combien est dû à chaque instant.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Formule de base :</strong></p>
+<div class="docs-pre"><code>Intérêts accumulés = Principal × Taux annuel × (Jours écoulés / 365)
+</code></div>
+<p><strong>Exemple :</strong><br />
+- Principal : 100 000 €<br />
+- Taux annuel : 8% (0,08)<br />
+- Jours écoulés : 90 jours</p>
+<div class="docs-pre"><code>Intérêts = 100 000 × 0,08 × (90/365)
+Intérêts = 100 000 × 0,08 × 0,247
+Intérêts = 1 978 €
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Financement de "Construction SARL" :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Montant prêté</td>
+<td>500 000 €</td>
+</tr>
+<tr>
+<td>Taux d'intérêt annuel</td>
+<td>7,5%</td>
+</tr>
+<tr>
+<td>Date de début</td>
+<td>1er janvier 2026</td>
+</tr>
+<tr>
+<td>Date de calcul</td>
+<td>31 mars 2026</td>
+</tr>
+</tbody>
+</table></div>
+<div class="docs-pre"><code>Jours écoulés = 90 jours
+
+Intérêts accumulés = 500 000 × 0,075 × (90/365)
+Intérêts accumulés = 500 000 × 0,075 × 0,247
+Intérêts accumulés = 9 250 €
+</code></div>
+<p><strong>Résultat :</strong> Après 90 jours, 9 250 € d'intérêts ont été générés pour les investisseurs.</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Moins d'une milliseconde par financement</li>
+<li><strong>Précision :</strong> Au centime d'euro près</li>
+</ul>
+<hr />
+<h3>4.3 Distribution des Rendements (ALG-10-04-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Répartir équitablement les rendements entre tous les détenteurs de tokens uLP.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand les investissements rapportent de l'argent, cet argent doit être distribué aux investisseurs. Mais au lieu de donner des tokens supplémentaires à chacun (ce qui serait compliqué), on fait augmenter la <strong>valeur de chaque token</strong>.</p>
+<p>C'est comme si votre part de gâteau devenait plus grosse sans que vous ayez plus de parts.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Processus en 2 étapes :</strong></p>
+<p><strong>Étape 1 : Ajouter les rendements au pool</strong></p>
+<div class="docs-pre"><code>NouvelleValeurPool = AncienneValeurPool + RendementsTotaux
+</code></div>
+<p><strong>Étape 2 : La NAV augmente automatiquement</strong></p>
+<div class="docs-pre"><code>NouvelleNAV = NouvelleValeurPool / NombreTotalParts
+</code></div>
+<p><strong>Calcul du gain individuel :</strong></p>
+<div class="docs-pre"><code>Gain de l'investisseur = Nombre de tokens × (NouvelleNAV - AncienneNAV)
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Situation :</strong></p>
+<div class="docs-pre"><code>Valeur initiale du pool : 2 000 000 €
+Nombre de tokens uLP : 2 000 000
+NAV initiale : 1,00 €
+
+Rendements du mois : 15 000 €
+
+Nouvelle valeur du pool : 2 015 000 €
+Nouvelle NAV : 2 015 000 / 2 000 000 = 1,0075 €
+</code></div>
+<p><strong>Investisseur : Fatima (possède 50 000 uLP)</strong></p>
+<div class="docs-pre"><code>Valeur initiale : 50 000 × 1,00 = 50 000 €
+Nouvelle valeur : 50 000 × 1,0075 = 50 375 €
+
+Gain de Fatima : 375 €
+</code></div>
+<p><strong>Avantage :</strong> Fatima n'a rien à faire. Elle garde ses 50 000 tokens, mais ils valent plus cher !</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané</li>
+<li><strong>Équité :</strong> 100% proportionnel au nombre de tokens</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Algorithmes de Gestion des Pools de Liquidité</h2>
+<h3>5.1 Vérification de la Diversification (ALG-10-03-01)</h3>
+<h4>🎯 Le But</h4>
+<p>S'assurer que le pool n'est pas trop concentré sur une seule entreprise ou un seul secteur.</p>
+<h4>📝 En Termes Simples</h4>
+<p>"Ne mettez pas tous vos œufs dans le même panier." </p>
+<p>Si un pool investit tout son argent dans une seule entreprise et que cette entreprise fait faillite, tous les investisseurs perdent tout. La diversification, c'est répartir le risque.</p>
+<p><strong>Règles de diversification :</strong><br />
+- Maximum <strong>20%</strong> dans une seule entreprise<br />
+- Maximum <strong>40%</strong> dans un seul secteur d'activité</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Vérification avant chaque nouvel investissement :</strong></p>
+<div class="docs-pre"><code>1. Calculer la nouvelle valeur totale du pool
+2. Calculer la nouvelle exposition à l'entreprise
+3. Calculer la nouvelle exposition au secteur
+4. Vérifier les limites :
+
+   Exposition Entreprise = (Montant Entreprise / Valeur Pool) × 100
+   → Doit être ≤ 20%
+
+   Exposition Secteur = (Montant Secteur / Valeur Pool) × 100
+   → Doit être ≤ 40%
+</code></div>
+<p><strong>Indice de Concentration (HHI) :</strong></p>
+<p>On utilise aussi un indicateur avancé appelé <strong>Indice Herfindahl-Hirschman</strong> :</p>
+<div class="docs-pre"><code>HHI = Somme des (parts de marché²)
+
+Interprétation :
+- HHI &lt; 1500 : Bien diversifié ✅
+- HHI 1500-2500 : Moyennement concentré ⚠️
+- HHI &gt; 2500 : Trop concentré 🚨
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Pool de liquidité : "Pool Méditerranée"</strong></p>
+<div class="docs-pre"><code>Valeur totale : 5 000 000 €
+
+Investissements actuels :
+- Construction SARL : 800 000 € (16%)
+- TechMaroc : 600 000 € (12%)
+- AgroFood : 500 000 € (10%)
+- Autres (10 entreprises) : 3 100 000 € (62%)
+
+Nouvel investissement proposé : Construction SARL demande 200 000 € €
+
+Vérification :
+Nouvelle exposition Construction = (800 000 + 200 000) / 5 200 000 = 19,2%
+→ ✅ ACCEPTÉ (moins de 20%)
+
+Mais si Construction demandait 300 000 € :
+Nouvelle exposition = (800 000 + 300 000) / 5 300 000 = 20,75%
+→ 🚨 REFUSÉ (dépasse 20%)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Moins d'une milliseconde</li>
+<li><strong>Précision :</strong> 100% fiable</li>
+</ul>
+<hr />
+<h3>5.2 Rééquilibrage du Pool (ALG-10-03-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Calculer automatiquement les ajustements nécessaires pour maintenir la diversification idéale.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Avec le temps, certains investissements prennent de la valeur et d'autres moins. Le pool peut devenir déséquilibré. Le rééquilibrage, c'est comme tailler un arbre : on coupe ce qui a trop poussé et on renforce ce qui est trop faible.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Objectif :</strong> Minimiser l'écart entre la situation actuelle et la situation idéale, tout en limitant les coûts de transaction.</p>
+<p><strong>Processus :</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Comparer</strong> la répartition actuelle avec la répartition cible</li>
+<li><strong>Calculer</strong> les trades nécessaires (achats/ventes)</li>
+<li><strong>Optimiser</strong> pour réduire les coûts de transaction</li>
+<li><strong>Respecter</strong> les contraintes de diversification</li>
+</ol>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Situation Actuelle :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Entreprise</th>
+<th>Valeur Actuelle</th>
+<th>% Actuel</th>
+<th>% Cible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Construction SARL</td>
+<td>1 200 000 €</td>
+<td>24%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>TechMaroc</td>
+<td>800 000 €</td>
+<td>16%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>AgroFood</td>
+<td>1 000 000 €</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Autres</td>
+<td>2 000 000 €</td>
+<td>40%</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rééquilibrage calculé :</strong></p>
+<div class="docs-pre"><code>- Vendre 200 000 € de Construction SARL (trop élevé : 24% → 20%)
+- Acheter 200 000 € de TechMaroc (trop faible : 16% → 20%)
+
+Coût estimé des transactions : 200 € (0,1%)
+Nouvel écart avec la cible : &lt; 1%
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Quelques secondes pour l'optimisation</li>
+<li><strong>Précision :</strong> Optimisation mathématique avancée</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Algorithmes de Conformité et d'Admissibilité</h2>
+<h3>6.1 Vérification de l'Admissibilité des Investisseurs (ALG-04-03-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Empêcher les investisseurs d'acheter des actifs trop risqués pour leur profil.</p>
+<h4>📝 En Termes Simples</h4>
+<p>On ne propose pas les mêmes investissements à tout le monde :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Un <strong>retraité prudent</strong> ne devrait pas investir dans des produits très risqués</li>
+<li>Un <strong>investisseur institutionnel</strong> peut prendre plus de risques</li>
+</ul>
+<p>C'est une obligation légale et une protection pour les investisseurs.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>4 Profils d'Investisseurs :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Profil</th>
+<th>Description</th>
+<th>Actifs Autorisés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prudent (Conservative)</strong></td>
+<td>Veut protéger son capital</td>
+<td>AAA, A, BBB (peu risqués)</td>
+</tr>
+<tr>
+<td><strong>Modéré (Moderate)</strong></td>
+<td>Accepte un peu de risque</td>
+<td>AAA à BB (risque moyen)</td>
+</tr>
+<tr>
+<td><strong>Dynamique (Aggressive)</strong></td>
+<td>Cherche la performance</td>
+<td>AAA à CCC (risque élevé)</td>
+</tr>
+<tr>
+<td><strong>Institutionnel</strong></td>
+<td>Investisseur professionnel</td>
+<td>Tous (AAA à D)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Règle de vérification :</strong></p>
+<div class="docs-pre"><code>SI (Note de l'actif ∈ Actifs Autorisés pour le profil)
+ALORS ✅ Transaction autorisée
+SINON 🚨 Transaction refusée
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Investisseur 1 : Monsieur Martin (Profil : Prudent)</strong><br />
+- Profil : Retraité, veut protéger ses économies<br />
+- Actifs autorisés : AAA, A, BBB</p>
+<div class="docs-pre"><code>Demande d'achat : Entreprise &quot;StableTech&quot; (Note : A)
+→ ✅ AUTORISÉ (A est dans la liste)
+
+Demande d'achat : Entreprise &quot;StartupRisk&quot; (Note : BB)
+→ 🚨 REFUSÉ (BB trop risqué pour un profil prudent)
+</code></div>
+<p><strong>Investisseur 2 : Fonds "Capital Ventures" (Profil : Institutionnel)</strong><br />
+- Profil : Fonds d'investissement professionnel<br />
+- Actifs autorisés : Tous</p>
+<div class="docs-pre"><code>Demande d'achat : Entreprise &quot;StartupRisk&quot; (Note : BB)
+→ ✅ AUTORISÉ (les institutionnels peuvent tout acheter)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané</li>
+<li><strong>Conformité :</strong> 100% conforme aux réglementations (MiCA, SEC, FATF)</li>
+</ul>
+<hr />
+<h3>6.2 Filtrage par Juridiction (ALG-04-03-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Bloquer les investissements provenant de ou vers des pays sous sanctions internationales.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Certains pays sont sous sanctions internationales (Iran, Corée du Nord, Syrie, etc.). Il est <strong>illégal</strong> de faire des affaires avec des entités de ces pays. Notre algorithme bloque automatiquement ces transactions.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>3 Listes de Pays :</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Liste NOIRE (Strictest Jurisdiction List)</strong> : Pays sous sanctions<br />
+   - Iran, Corée du Nord, Syrie, Cuba, Russie (partiel), etc.<br />
+   - 🚨 <strong>TOUTES les transactions sont bloquées</strong></p>
+</li>
+<li>
+<p><strong>Liste BLANCHE (EU Whitelist)</strong> : Pays approuvés par l'UE<br />
+   - Allemagne, France, Italie, Espagne, etc. (32 pays)<br />
+   - ✅ <strong>Transactions autorisées</strong></p>
+</li>
+<li>
+<p><strong>Liste GRIS</strong> : Autres pays<br />
+   - ⚠️ <strong>Vérification supplémentaire requise</strong></p>
+</li>
+</ol>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Scénario 1 : Investisseur iranien</strong></p>
+<div class="docs-pre"><code>Juridiction : IR (Iran)
+→ 🚨 BLOQUÉ (Iran est sur la liste noire OFAC/UN/EU)
+</code></div>
+<p><strong>Scénario 2 : Entreprise française</strong></p>
+<div class="docs-pre"><code>Juridiction : FR (France)
+→ ✅ AUTORISÉ (France est sur la liste blanche UE)
+</code></div>
+<p><strong>Scénario 3 : Actif marocain</strong></p>
+<div class="docs-pre"><code>Juridiction de l'actif : MA (Maroc)
+Juridiction de l'investisseur : DE (Allemagne)
+
+→ ✅ AUTORISÉ (le Maroc n'est pas sur la liste noire,
+                et l'Allemagne est dans l'UE)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Moins d'une milliseconde</li>
+<li><strong>Conformité :</strong> 100% conforme aux sanctions internationales</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Algorithmes de Tokenisation des Actifs</h2>
+<h3>6.1 Ujamaa Guarantee Token (UGT) - Token de Garantie (ALG-05-03-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Créer un <strong>token numérique (UGT)</strong> qui représente une garantie physique (marchandises, stock) pour sécuriser les investissements.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand une entreprise emprunte de l'argent via notre plateforme, elle doit fournir une <strong>garantie</strong> (comme une maison pour un crédit immobilier). </p>
+<p>Le token UGT, c'est comme un <strong>titre de propriété numérique</strong> qui prouve que :<br />
+- L'entreprise a des marchandises (ex: 10 000 vêtements)<br />
+- Ces marchandises servent de garantie pour le prêt<br />
+- Les investisseurs sont protégés en cas de défaut</p>
+<p><strong>Analogie :</strong> C'est comme le titre de propriété d'une maison, mais pour des marchandises stockées dans un entrepôt.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Le token UGT contient les informations suivantes :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Information</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>certificateId</code></td>
+<td>ID du certificat de marchandise</td>
+</tr>
+<tr>
+<td><code>merchandiseValue</code></td>
+<td>Valeur de la marchandise (en euros)</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td>Date d'échéance de la facture</td>
+</tr>
+<tr>
+<td><code>industrial</code></td>
+<td>Entreprise qui emprunte</td>
+</tr>
+<tr>
+<td><code>poolAddress</code></td>
+<td>Pool qui a investi</td>
+</tr>
+<tr>
+<td><code>isRedeemed</code></td>
+<td>Est-ce que le prêt a été remboursé ?</td>
+</tr>
+<tr>
+<td><code>isDefaulted</code></td>
+<td>Est-ce qu'il y a eu défaut de paiement ?</td>
+</tr>
+<tr>
+<td><code>stockHash</code></td>
+<td>Preuve numérique du stock (IPFS)</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description de la marchandise</td>
+</tr>
+<tr>
+<td><code>warehouseLocation</code></td>
+<td>Où est stockée la marchandise</td>
+</tr>
+</tbody>
+</table></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Entreprise : "TextileMaroc"</strong></p>
+<div class="docs-pre"><code>TextileMaroc reçoit une commande de ZARA : 2 millions €
+→ Besoin de financement pour produire les vêtements
+
+Étapes :
+
+1. TextileMaroc dépose les documents du stock
+   - 10 000 chemises en coton
+   - Valeur : 500 000 €
+   - Entrepôt : Tanger, Maroc
+   - Hash IPFS : QmX7K... (preuve numérique)
+
+2. La plateforme mint le token UGT #123
+   - Token ID : 123
+   - Valeur : 500 000 €
+   - Propriétaire : Pool &quot;Méditerranée&quot;
+
+3. Le pool investit 500 000 € dans TextileMaroc
+   - Le pool garde le token UGT #123 en garantie
+
+4. [SCÉNARIO A : Remboursement]
+   - TextileMaroc rembourse 500 000 € + 37 500 € d'intérêts
+   - Le token UGT #123 est rendu à TextileMaroc
+   - ✅ Tout le monde est content
+
+5. [SCÉNARIO B : Défaut]
+   - TextileMaroc ne rembourse pas
+   - Le token UGT #123 est vendu aux enchères
+   - Les investisseurs récupèrent leur argent
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de minting :</strong> Moins de 30 secondes (blockchain)</li>
+<li><strong>Sécurité :</strong> Token non-transférable (sauf cas autorisés)</li>
+<li><strong>Conformité :</strong> ERC-3643 (identité vérifiée requise)</li>
+</ul>
+<hr />
+<h3>6.2 Certification des Actifs (ALG-05-03-05)</h3>
+<h4>🎯 Le But</h4>
+<p>Vérifier que les marchandises existent <strong>réellement</strong> avant de créer le token UGT.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Avant de prêter de l'argent à une entreprise, on doit vérifier que ses marchandises existent vraiment. C'est comme un expert qui visite une maison avant qu'une banque ne prête de l'argent.</p>
+<p><strong>Qui vérifie ?</strong><br />
+- <strong>GDIZ</strong> (société d'inspection)<br />
+- <strong>SIPI</strong> (société d'inspection)<br />
+- Autres certificateurs approuvés</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Processus de certification :</strong></p>
+<div class="docs-pre"><code>Étape 1 : L'entreprise soumet les détails du stock
+  - Type : INVOICE, INVENTORY, PRODUCTION, SHIPMENT
+  - Valeur : 500 000 €
+  - Quantité : 10 000 unités
+  - Lieu : Tanger, Maroc
+  - Preuve numérique : Hash IPFS
+
+Étape 2 : Le certificateur vérifie physiquement
+  - Un inspecteur visite l'entrepôt
+  - Il compte les marchandises
+  - Il vérifie la qualité
+  - Il prend des photos
+
+Étape 3 : Certification numérique
+  - Le certificateur appelle : certifyAsset()
+  - Un certificat numérique est créé
+  - ID unique : #456
+  - Valable pendant 365 jours
+
+Étape 4 : Minting du token UGT
+  - Le certificat #456 déclenche le minting
+  - Token UGT #123 créé
+  - Le token est lié au certificat
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Certificateur : GDIZ</strong></p>
+<div class="docs-pre"><code>Date : 15 mars 2026
+Lieu : Entrepôt de Tanger, Maroc
+
+GDIZ vérifie :
+✅ 10 000 chemises en coton comptées
+✅ Qualité conforme aux documents
+✅ Stock bien entreposé
+✅ Documents en règle
+
+Certificat créé :
+- ID : #456
+- Entreprise : TextileMaroc
+- Type : INVENTORY
+- Valeur : 500 000 €
+- Valable jusqu'au : 15 mars 2027
+
+→ ✅ Certification validée
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de certification :</strong> 1-2 jours (inspection physique)</li>
+<li><strong>Validité :</strong> 365 jours</li>
+<li><strong>Traçabilité :</strong> 100% auditée sur la blockchain</li>
+</ul>
+<hr />
+<h3>6.2 Minting du Token UGT (ALG-05-03-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Créer le token UGT (Ujamaa Guarantee Token) qui sert de garantie numérique pour les marchandises.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand une entreprise fournit des marchandises en garantie, on crée un <strong>token numérique</strong> (comme un titre de propriété) qui représente ces marchandises. Ce token est gardé par le pool d'investisseurs jusqu'à ce que le prêt soit remboursé.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Fonction :</strong> <code>mintGuarantee()</code></p>
+<p><strong>Entrées :</strong><br />
+- <code>industrial</code> - Adresse de l'entreprise<br />
+- <code>certificateId</code> - ID du certificat Industrial Gateway<br />
+- <code>value</code> - Valeur en UJEUR (18 décimales)<br />
+- <code>expiryDate</code> - Date d'échéance<br />
+- <code>stockHash</code> - Hash IPFS des documents<br />
+- <code>description</code> - Description du stock<br />
+- <code>warehouseLocation</code> - Lieu d'entreposage</p>
+<p><strong>Algorithme :</strong></p>
+<div class="docs-pre"><code>1. Valider les entrées :
+   - value &gt; 0
+   - industrial != address(0)
+   - certificateId non utilisé
+
+2. Miner le nouveau ERC-3643NFT :
+   - tokenId = nextTokenId++
+   - _safeMint(industrial, tokenId)
+
+3. Stocker les données de garantie :
+   - s_guarantees[tokenId] = Guarantee(...)
+
+4. Mettre à jour les correspondances :
+   - tokenIdToCertificateId[tokenId] = certificateId
+   - certificateIdToTokenId[certificateId] = tokenId
+
+5. Émettre l'événement :
+   - GuaranteeMinted(tokenId, certificateId, industrial, value)
+
+6. Retourner tokenId
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>TextileMaroc demande un financement :</strong></p>
+<div class="docs-pre"><code>Entrées :
+- industrial : 0x1234...5678
+- certificateId : #456
+- value : 500 000 € (500000000000000000000 wei)
+- expiryDate : 15 juin 2026
+- stockHash : QmX7K... (hash IPFS)
+- description : &quot;10 000 chemises en coton&quot;
+- warehouseLocation : &quot;Tanger, Maroc&quot;
+
+Résultat :
+- Token UGT #123 minté
+- Token ID : 123
+- Propriétaire initial : TextileMaroc
+- Transféré au Pool &quot;Méditerranée&quot;
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de minting :</strong> Moins de 30 secondes (blockchain)</li>
+<li><strong>Gaz (Ethereum) :</strong> ~150 000 unités</li>
+<li><strong>Sécurité :</strong> Token non-transférable (sauf cas autorisés)</li>
+</ul>
+<hr />
+<h3>6.3 Redemption UGT (ALG-05-03-03)</h3>
+<h4>🎯 Le But</h4>
+<p>Transférer le token UGT back à l'entreprise après qu'elle a remboursé le financement.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand l'entreprise rembourse son prêt (principal + intérêts), le token UGT qui servait de garantie lui est rendu. C'est comme récupérer le titre de propriété de sa maison quand on a fini de payer le crédit.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Fonction :</strong> <code>redeemGuarantee()</code></p>
+<p><strong>Algorithme :</strong></p>
+<div class="docs-pre"><code>1. Valider :
+   - Le token existe
+   - L'appelant a POOL_MANAGER_ROLE
+   - Pas déjà remboursé
+
+2. Marquer comme remboursé :
+   - guarantee.isRedeemed = true
+
+3. Transférer à l'industriel :
+   - _safeTransfer(msg.sender, industrial, tokenId)
+
+4. Émettre l'événement :
+   - GuaranteeRedeemed(tokenId, industrial)
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>TextileMaroc rembourse :</strong></p>
+<div class="docs-pre"><code>Remboursement :
+- Principal : 500 000 €
+- Intérêts : 37 500 € (7,5% sur 1 an)
+- Total : 537 500 €
+
+Action du pool :
+- redeemGuarantee(tokenId: 123)
+
+Résultat :
+- Token UGT #123 transféré à TextileMaroc
+- guarantee.isRedeemed = true
+- ✅ Transaction terminée avec succès
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de transaction :</strong> &lt; 1 milliseconde (calcul) + temps blockchain</li>
+<li><strong>Gaz :</strong> ~50 000 unités</li>
+</ul>
+<hr />
+<h3>6.4 Liquidation UGT (ALG-05-03-04)</h3>
+<h4>🎯 Le But</h4>
+<p>Vendre le token UGT aux enchères quand l'entreprise ne rembourse pas (défaut).</p>
+<h4>📝 En Termes Simples</h4>
+<p>Si l'entreprise ne rembourse pas, le token UGT (qui représente les marchandises) est vendu aux enchères. L'argent récupéré est distribué aux investisseurs pour compenser leur perte.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Fonction :</strong> <code>liquidateGuarantee()</code></p>
+<p><strong>Algorithme :</strong></p>
+<div class="docs-pre"><code>1. Valider :
+   - Le token existe
+   - L'appelant a POOL_MANAGER_ROLE
+   - Token marqué comme en défaut
+
+2. Transférer au gagnant des enchères :
+   - _safeTransfer(msg.sender, auctionWinner, tokenId)
+
+3. Émettre l'événement :
+   - GuaranteeLiquidated(tokenId, auctionWinner, liquidationAmount)
+
+4. Distribuer les proceeds aux détenteurs de tokens uLP
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>TextileMaroc fait défaut :</strong></p>
+<div class="docs-pre"><code>Défaut constaté :
+- Token UGT #123 marqué comme en défaut
+- guarantee.isDefaulted = true
+
+Enchères :
+- AuctionHouse gagne à 450 000 €
+
+Résultat :
+- Token UGT #123 transféré à AuctionHouse
+- 450 000 € distribués aux investisseurs uLP
+- Perte restante : 50 000 € (prise en charge par le fonds de garantie)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de liquidation :</strong> &lt; 1 milliseconde (calcul) + temps blockchain</li>
+<li><strong>Gaz :</strong> ~75 000 unités</li>
+</ul>
+<hr />
+<h3>6.5 Certificate to UGT Minting (ALG-05-03-06)</h3>
+<h4>🎯 Le But</h4>
+<p>Créer automatiquement le token UGT à partir d'un certificat vérifié.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Quand un certificateur (GDIZ, SIPI) a vérifié et certifié des marchandises, cet algorithme crée automatiquement le token UGT correspondant. C'est le lien entre le monde physique (marchandises vérifiées) et le monde numérique (token blockchain).</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Fonction :</strong> <code>mintGuaranteeToken()</code></p>
+<p><strong>Algorithme :</strong></p>
+<div class="docs-pre"><code>1. Valider le certificat :
+   - Le certificat existe
+   - isVerified == true
+   - isRevoked == false
+   - guaranteeTokenId == 0 (pas déjà minté)
+
+2. Miner UGT :
+   - tokenId = guaranteeToken.mintGuarantee(
+       cert.industrial,
+       certificateId,
+       cert.value,
+       cert.expiryDate,
+       cert.stockHash,
+       cert.description,
+       cert.warehouseLocation
+   )
+
+3. Lier le certificat au token UGT :
+   - cert.guaranteeTokenId = tokenId
+
+4. Assigner UGT au pool :
+   - guaranteeToken.assignToPool(tokenId, msg.sender)
+
+5. Émettre l'événement :
+   - GuaranteeTokenMinted(certificateId, tokenId)
+
+6. Retourner tokenId
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Du certificat au token :</strong></p>
+<div class="docs-pre"><code>Certificat #456 (déjà vérifié par GDIZ) :
+- industrial : TextileMaroc
+- value : 500 000 €
+- assetType : INVENTORY
+- isVerified : true
+
+Appel : mintGuaranteeToken(certificateId: 456)
+
+Résultat :
+- Token UGT #123 créé
+- Certificat #456 lié au token #123
+- Token assigné au Pool &quot;Méditerranée&quot;
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de création :</strong> &lt; 1 milliseconde (calcul) + temps blockchain</li>
+<li><strong>Gaz :</strong> ~200 000 unités</li>
+</ul>
+<hr />
+<h3>6.6 UGT Compliance &amp; Security (ALG-05-03-08)</h3>
+<h4>🎯 Le But</h4>
+<p>Restreindre les transferts du token UGT uniquement aux entités autorisées et conformes.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Le token UGT n'est pas un token normal. On ne peut pas le transférer à n'importe qui. Il y a des règles strictes :<br />
+- ✅ Transfert autorisé : Pool → Industrial Gateway → Pool<br />
+- ❌ Transfert interdit : Entre utilisateurs non autorisés</p>
+<p>De plus, seul un entity avec une identité vérifiée (ERC-3643) peut posséder ce token.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>Restrictions de transfert :</strong></p>
+<div class="docs-pre"><code>function _update(address to, uint256 tokenId, uint256 auth) internal override returns (address) {
+    address from = _ownerOf(tokenId);
+
+    // Permettre le minting
+    if (from == address(0)) {
+        return super._update(to, tokenId, auth);
+    }
+
+    // Permettre les transferts vers/depuis le Pool ou Industrial Gateway uniquement
+    Guarantee memory guarantee = s_guarantees[tokenId];
+    if (
+        to == guarantee.poolAddress ||
+        to == guarantee.industrial ||
+        hasRole(POOL_MANAGER_ROLE, to)
+    ) {
+        return super._update(to, tokenId, auth);
+    }
+
+    // Rejeter les transferts non autorisés
+    revert(&quot;UGT: Transfer not allowed - compliance restriction&quot;);
+}
+</code></div>
+<p><strong>Vérification d'identité :</strong><br />
+- ✅ ERC-3643 (identité requise)<br />
+- ✅ ONCHAINID integration<br />
+- ✅ Audit trail complet</p>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Transferts autorisés :</strong></p>
+<div class="docs-pre"><code>✅ Pool &quot;Méditerranée&quot; → Industrial Gateway
+✅ Industrial Gateway → Pool &quot;Méditerranée&quot;
+✅ Pool → Auction Winner (en cas de liquidation)
+
+❌ Utilisateur A → Utilisateur B (INTERDIT)
+❌ Pool → Adresse non conforme (INTERDIT)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Vérification :</strong> &lt; 1 milliseconde</li>
+<li><strong>Gaz supplémentaire :</strong> ~5 000 unités par transfert</li>
+</ul>
+<hr />
+<h3>6.7 MVP Testnet Utilities (ALG-05-03-09)</h3>
+<h4>🎯 Le But</h4>
+<p>Fournir des fonctions simplifiées pour tester la tokenisation sur le réseau de test.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Pour faciliter les tests pendant la phase MVP, on a créé des versions simplifiées des fonctions de minting et de certification. Ces fonctions ne fonctionnent QUE sur le réseau de test (pas sur le réseau principal).</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>mintTestGuarantee() :</strong></p>
+<div class="docs-pre"><code>function mintTestGuarantee(
+    address industrial,
+    uint256 value,
+    string calldata description
+) external returns (uint256) {
+    require(IS_MVP_TESTNET, &quot;Only on testnet&quot;);
+
+    return this.mintGuarantee(
+        industrial,
+        s_nextTokenId,
+        value,
+        block.timestamp + (365 days),
+        keccak256(abi.encodePacked(&quot;test-stock-&quot;, s_nextTokenId)),
+        description,
+        &quot;MVP Test Warehouse&quot;
+    );
+}
+</code></div>
+<p><strong>createTestCertificate() :</strong></p>
+<div class="docs-pre"><code>function createTestCertificate(
+    address industrial,
+    string calldata assetType,
+    uint256 value,
+    string calldata description
+) external returns (uint256) {
+    require(IS_MVP_TESTNET, &quot;Only on testnet&quot;);
+
+    return this.certifyAsset(
+        industrial,
+        assetType,
+        value,
+        1000, // quantity
+        &quot;units&quot;,
+        &quot;MVP Test Warehouse&quot;,
+        keccak256(abi.encodePacked(&quot;test-&quot;, block.timestamp)),
+        description,
+        365 // validity days
+    );
+}
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Test sur Sepolia :</strong></p>
+<div class="docs-pre"><code>// Minting simplifié
+mintTestGuarantee(
+    industrial: 0x1234...5678,
+    value: 100000000000000000000, // 100 €
+    description: &quot;Test stock&quot;
+)
+
+→ Token UGT #1 minté
+→ Valable 365 jours
+→ Entrepôt : &quot;MVP Test Warehouse&quot;
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Restriction :</strong> Uniquement sur testnet (IS_MVP_TESTNET = true)</li>
+<li><strong>Gaz réduit :</strong> Paramètres simplifiés</li>
+</ul>
+<hr />
+<h3>6.8 Certification des Actifs (ALG-05-03-05)</h3>
+<h4>🎯 Le But</h4>
+<p>Décrire toutes les étapes depuis la soumission de l'actif jusqu'au remboursement.</p>
+<h4>📝 En Termes Simples</h4>
+<p>C'est le <strong>parcours complet</strong> d'un financement, comme un film qui montre toutes les scènes de l'histoire.</p>
+<h4>🔢 Les 5 Étapes</h4>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────┐
+│            FLUX DE TOKENISATION                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ÉTAPE 1 : Soumission de l'Actif                            │
+│  ────────────────────────                                    │
+│  • L'entreprise soumet les détails                          │
+│  • Fournit : valeur, quantité, entrepôt, preuve             │
+│  • Types : INVOICE, INVENTORY, PRODUCTION, SHIPMENT         │
+│                                                              │
+│          ↓                                                   │
+│                                                              │
+│  ÉTAPE 2 : Certification (GDIZ/SIPI)                        │
+│  ───────────────────────                                     │
+│  • Un certificateur vérifie l'actif                         │
+│  • Crée le certificat avec ID unique                        │
+│  • Certificat automatiquement vérifié                       │
+│                                                              │
+│          ↓                                                   │
+│                                                              │
+│  ÉTAPE 3 : Minting du Token UGT                             │
+│  ────────────────────────                                    │
+│  • Le manager du pool appelle : mintGuaranteeToken()        │
+│  • Token UGT (ERC-3643NFT) créé                             │
+│  • Le pool garde le token en garantie                       │
+│                                                              │
+│          ↓                                                   │
+│                                                              │
+│  ÉTAPE 4 : Création du Financement                          │
+│  ────────────────────────────                                │
+│  • LiquidityPool.createFinancing() appelé                   │
+│  • Fonds déployés vers l'entreprise                         │
+│  • Token UGT lié au financement                             │
+│                                                              │
+│          ↓                                                   │
+│                                                              │
+│  ÉTAPE 5 : Remboursement OU Défaut                          │
+│  ───────────────────────────                                 │
+│                                                              │
+│  [SCÉNARIO A : Remboursement]                               │
+│  • L'entreprise rembourse (principal + intérêts)            │
+│  • Le pool appelle : redeemGuarantee(tokenId)               │
+│  • Token UGT rendu à l'entreprise                           │
+│  • Certificat marqué comme remboursé                        │
+│                                                              │
+│  [SCÉNARIO B : Défaut]                                      │
+│  • L'entreprise ne rembourse pas                            │
+│  • Le pool marque le token UGT comme en défaut              │
+│  • Enchères conduites                                       │
+│  • Token UGT vendu au gagnant                               │
+│  • Proceeds distribués aux détenteurs de tokens uLP         │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Timeline complète :</strong></p>
+<div class="docs-pre"><code>Jour 1 : TextileMaroc soumet une demande
+  → Valeur : 500 000 €
+  → Stock : 10 000 chemises
+
+Jour 2 : GDIZ inspecte le stock
+  → Certificat #456 créé
+  → Vérifié ✅
+
+Jour 3 : Le pool &quot;Méditerranée&quot; mint le token UGT #123
+  → Token créé
+  → Pool garde le token en garantie
+
+Jour 3 : Le pool transfère 500 000 € à TextileMaroc
+  → Financement créé
+  → Durée : 90 jours
+  → Taux : 7,5%
+
+Jour 93 : TextileMaroc rembourse
+  → Principal : 500 000 €
+  → Intérêts : 9 375 €
+  → Token UGT #123 rendu à TextileMaroc
+
+→ ✅ Transaction terminée avec succès
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Durée totale :</strong> 3-5 jours (hors durée du prêt)</li>
+<li><strong>Transparence :</strong> 100% sur la blockchain</li>
+<li><strong>Sécurité :</strong> Garantie par les marchandises</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Algorithmes de Conformité et d'Admissibilité</h2>
+<h3>7.1 Vérification de l'Admissibilité des Investisseurs (ALG-04-03-01)</h3>
+<h4>🎯 Le But</h4>
+<p>Empêcher les investisseurs d'acheter des actifs trop risqués pour leur profil.</p>
+<h4>📝 En Termes Simples</h4>
+<p>On ne propose pas les mêmes investissements à tout le monde :</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Un <strong>retraité prudent</strong> ne devrait pas investir dans des produits très risqués</li>
+<li>Un <strong>investisseur institutionnel</strong> peut prendre plus de risques</li>
+</ul>
+<p>C'est une obligation légale et une protection pour les investisseurs.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p><strong>4 Profils d'Investisseurs :</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Profil</th>
+<th>Description</th>
+<th>Actifs Autorisés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prudent (Conservative)</strong></td>
+<td>Veut protéger son capital</td>
+<td>AAA, A, BBB (peu risqués)</td>
+</tr>
+<tr>
+<td><strong>Modéré (Moderate)</strong></td>
+<td>Accepte un peu de risque</td>
+<td>AAA à BB (risque moyen)</td>
+</tr>
+<tr>
+<td><strong>Dynamique (Aggressive)</strong></td>
+<td>Cherche la performance</td>
+<td>AAA à CCC (risque élevé)</td>
+</tr>
+<tr>
+<td><strong>Institutionnel</strong></td>
+<td>Investisseur professionnel</td>
+<td>Tous (AAA à D)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Règle de vérification :</strong></p>
+<div class="docs-pre"><code>SI (Note de l'actif ∈ Actifs Autorisés pour le profil)
+ALORS ✅ Transaction autorisée
+SINON 🚨 Transaction refusée
+</code></div>
+<h4>📊 Exemple Concret</h4>
+<p><strong>Investisseur 1 : Monsieur Martin (Profil : Prudent)</strong><br />
+- Profil : Retraité, veut protéger ses économies<br />
+- Actifs autorisés : AAA, A, BBB</p>
+<div class="docs-pre"><code>Demande d'achat : Entreprise &quot;StableTech&quot; (Note : A)
+→ ✅ AUTORISÉ (A est dans la liste)
+
+Demande d'achat : Entreprise &quot;StartupRisk&quot; (Note : BB)
+→ 🚨 REFUSÉ (BB trop risqué pour un profil prudent)
+</code></div>
+<p><strong>Investisseur 2 : Fonds "Capital Ventures" (Profil : Institutionnel)</strong><br />
+- Profil : Fonds d'investissement professionnel<br />
+- Actifs autorisés : Tous</p>
+<div class="docs-pre"><code>Demande d'achat : Entreprise &quot;StartupRisk&quot; (Note : BB)
+→ ✅ AUTORISÉ (les institutionnels peuvent tout acheter)
+</code></div>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Temps de calcul :</strong> Instantané</li>
+<li><strong>Conformité :</strong> 100% conforme aux réglementations (MiCA, SEC, FATF)</li>
+</ul>
+<hr />
+<h3>7.2 Filtrage par Juridiction (ALG-04-03-02)</h3>
+<h4>🎯 Le But</h4>
+<p>Bloquer les investissements provenant de ou vers des pays sous sanctions internationales.</p>
+<h4>📝 En Termes Simples</h4>
+<p>Certains pays sont sous sanctions internationales (Iran, Corée du Nord, Syrie, etc.). Il est <strong>illégal</strong> de faire des affaires avec des entités de ces pays. Notre algorithme bloque automatiquement ces transactions.</p>
+<h4>🔢 Comment ça Marche</h4>
+<p>→ B devient le plus récent<br />
+→ État : [A, C, D, B]</p>
+<p>Ajout de E (cache plein) :<br />
+→ A est le moins récemment utilisé → supprimé<br />
+→ État : [C, D, B, E]</p>
+<p>Accès à D :<br />
+→ D devient le plus récent<br />
+→ État : [C, B, E, D]</p>
+<p>Ajout de F :<br />
+→ C est supprimé<br />
+→ État : [B, E, D, F]</p>
+<div class="docs-pre"><code>
+**Application réelle :**
+
+</code></div>
+<p>Données en cache :<br />
+- Prix ETH/EUR (mis à jour il y a 1 seconde)<br />
+- NAV du pool (mis à jour il y a 5 secondes)<br />
+- Score de risque d'une entreprise (mis à jour il y a 1 minute)<br />
+- ...</p>
+<p>Quand un utilisateur demande le prix ETH/EUR :<br />
+→ ✅ Réponse immédiate (depuis le cache)<br />
+→ Temps : &lt; 1 milliseconde</p>
+<p>Sans cache :<br />
+→ ❌ Requête à la base de données<br />
+→ Temps : ~50 millisecondes<br />
+```</p>
+<h4>⚡ Performance</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Accès au cache :</strong> Moins de 1 milliseconde</li>
+<li><strong>Gain de performance :</strong> 50x à 100x plus rapide</li>
+<li><strong>Mémoire utilisée :</strong> Limitée et contrôlée</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Résumé et Points Clés</h2>
+<h3>10.1 Tableau Récapitulatif des Algorithmes</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Algorithme</th>
+<th>ID</th>
+<th>Utilité</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Risque</strong></td>
+<td>Score de risque</td>
+<td>ALG-04-01-01</td>
+<td>Évaluer la fiabilité d'un actif</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Risque</strong></td>
+<td>Modificateur de note</td>
+<td>ALG-04-01-02</td>
+<td>Affiner la notation</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Risque</strong></td>
+<td>Comparaison benchmark</td>
+<td>ALG-04-04-01</td>
+<td>Comparer avec le marché</td>
+<td>&lt; 10 ms</td>
+</tr>
+<tr>
+<td><strong>Fraude</strong></td>
+<td>Détection d'anomalies</td>
+<td>ALG-07-01-01</td>
+<td>Repérer transactions suspectes</td>
+<td>&lt; 50 ms</td>
+</tr>
+<tr>
+<td><strong>Fraude</strong></td>
+<td>Wash trading</td>
+<td>ALG-07-02-01</td>
+<td>Détecter manipulations</td>
+<td>&lt; 100 ms</td>
+</tr>
+<tr>
+<td><strong>Fraude</strong></td>
+<td>Structuring</td>
+<td>ALG-07-03-01</td>
+<td>Détecter contournement lois</td>
+<td>&lt; 10 ms</td>
+</tr>
+<tr>
+<td><strong>Rendement</strong></td>
+<td>NAV par token</td>
+<td>ALG-10-01-01</td>
+<td>Valeur d'une part</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Rendement</strong></td>
+<td>Accumulation</td>
+<td>ALG-10-04-01</td>
+<td>Calcul des intérêts</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Rendement</strong></td>
+<td>Distribution</td>
+<td>ALG-10-04-02</td>
+<td>Répartition équitable</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Pool</strong></td>
+<td>Diversification</td>
+<td>ALG-10-03-01</td>
+<td>Limiter les risques</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Pool</strong></td>
+<td>Rééquilibrage</td>
+<td>ALG-10-03-02</td>
+<td>Maintenir l'équilibre</td>
+<td>&lt; 5 s</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>UGT Token</td>
+<td>ALG-05-03-01</td>
+<td>Token de garantie ERC-3643NFT</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Minting UGT</td>
+<td>ALG-05-03-02</td>
+<td>Création du token de garantie</td>
+<td>&lt; 30 s</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Redemption UGT</td>
+<td>ALG-05-03-03</td>
+<td>Transfert après remboursement</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Liquidation UGT</td>
+<td>ALG-05-03-04</td>
+<td>Vente aux enchères en cas de défaut</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Certification</td>
+<td>ALG-05-03-05</td>
+<td>Vérification des actifs (GDIZ/SIPI)</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Cert→Token</td>
+<td>ALG-05-03-06</td>
+<td>Du certificat au token UGT</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Flux Complet</td>
+<td>ALG-05-03-07</td>
+<td>Tokenisation end-to-end</td>
+<td>&lt; 5 s</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Compliance UGT</td>
+<td>ALG-05-03-08</td>
+<td>Restrictions de transfert</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Tokenisation</strong></td>
+<td>Testnet Utils</td>
+<td>ALG-05-03-09</td>
+<td>Fonctions de test MVP</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Conformité</strong></td>
+<td>Admissibilité</td>
+<td>ALG-04-03-01</td>
+<td>Protéger investisseurs</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Conformité</strong></td>
+<td>Juridiction</td>
+<td>ALG-04-03-02</td>
+<td>Respecter sanctions</td>
+<td>&lt; 1 ms</td>
+</tr>
+<tr>
+<td><strong>Oracle</strong></td>
+<td>Agrégation de prix</td>
+<td>ALG-03-01-01</td>
+<td>Prix fiables</td>
+<td>&lt; 100 ms</td>
+</tr>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>Arbre de Merkle</td>
+<td>ALG-11-01-01</td>
+<td>Intégrité des données</td>
+<td>&lt; 10 ms</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Cache LRU</td>
+<td>ALG-09-01-01</td>
+<td>Accélérer l'accès</td>
+<td>&lt; 1 ms</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>TOTAL : 27 ALGORITHMES</strong></p>
+<h3>10.2 Points Clés à Retenir</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Sécurité avant tout</strong> : Tous les algorithmes sont conçus pour protéger les investisseurs et détecter les fraudes.</p>
+</li>
+<li>
+<p><strong>Conformité réglementaire</strong> : Les algorithmes respectent les réglementations internationales (MiCA, FATF, SEC, OFAC).</p>
+</li>
+<li>
+<p><strong>Performance</strong> : La plupart des algorithmes s'exécutent en moins d'une milliseconde.</p>
+</li>
+<li>
+<p><strong>Transparence</strong> : Tous les calculs sont vérifiables et auditables.</p>
+</li>
+<li>
+<p><strong>Équité</strong> : Les rendements sont distribués de manière proportionnelle et transparente.</p>
+</li>
+</ol>
+<h3>10.3 Glossaire des Termes Techniques</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Terme</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Actif tokenisé</strong></td>
+<td>Actif financier représenté sous forme de token numérique sur blockchain</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Registre numérique décentralisé et sécurisé</td>
+</tr>
+<tr>
+<td><strong>NAV (Net Asset Value)</strong></td>
+<td>Valeur Nette d'Actif, prix d'une part du pool</td>
+</tr>
+<tr>
+<td><strong>Oracle</strong></td>
+<td>Source de données externe qui fournit des informations à la blockchain</td>
+</tr>
+<tr>
+<td><strong>Pool de liquidité</strong></td>
+<td>Ensemble d'actifs regroupés pour l'investissement</td>
+</tr>
+<tr>
+<td><strong>Token uLP</strong></td>
+<td>Token représentant une part dans le pool de liquidité</td>
+</tr>
+<tr>
+<td><strong>Wash trading</strong></td>
+<td>Fausses transactions pour créer une illusion d'activité</td>
+</tr>
+<tr>
+<td><strong>Structuring</strong></td>
+<td>Division de transactions pour éviter les déclarations obligatoires</td>
+</tr>
+<tr>
+<td><strong>Arbre de Merkle</strong></td>
+<td>Structure cryptographique pour vérifier l'intégrité des données</td>
+</tr>
+<tr>
+<td><strong>Cache LRU</strong></td>
+<td>Mémoire temporaire qui garde les données les plus récemment utilisées</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Annexe : Statistiques de Performance</h2>
+<h3>Temps d'Exécution Moyen</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Type d'algorithme</th>
+<th>Temps moyen</th>
+<th>Objectif</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calculs financiers</td>
+<td>&lt; 1 ms</td>
+<td>&lt; 10 ms</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td>Détection de fraude</td>
+<td>&lt; 100 ms</td>
+<td>&lt; 500 ms</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td>Conformité</td>
+<td>&lt; 1 ms</td>
+<td>&lt; 10 ms</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td>Optimisation de pool</td>
+<td>&lt; 5 s</td>
+<td>&lt; 10 s</td>
+<td>✅ Bon</td>
+</tr>
+<tr>
+<td>Cryptographie</td>
+<td>&lt; 10 ms</td>
+<td>&lt; 100 ms</td>
+<td>✅ Excellent</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Précision des Algorithmes</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Algorithme</th>
+<th>Précision</th>
+<th>Faux Positifs</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Score de risque</td>
+<td>95%</td>
+<td>N/A</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td>Détection d'anomalies</td>
+<td>95%</td>
+<td>&lt; 1%</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td>Détection wash trading</td>
+<td>92%</td>
+<td>&lt; 3%</td>
+<td>✅ Bon</td>
+</tr>
+<tr>
+<td>Détection structuring</td>
+<td>98%</td>
+<td>&lt; 0,5%</td>
+<td>✅ Excellent</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Annexe C : État d'Implémentation (Mise à Jour Mars 2026)</h2>
+<h3>C.1 Algorithmes Implémentés - Smart Contracts (Solidity)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>ID Algorithme</th>
+<th>Nom</th>
+<th>Fichier</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALG-05-03-01</td>
+<td>Spécification Token UGT</td>
+<td><code>GuaranteeToken.sol</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-02</td>
+<td>Minting UGT</td>
+<td><code>GuaranteeToken.sol::mintGuarantee()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-03</td>
+<td>Redemption UGT</td>
+<td><code>GuaranteeToken.sol::redeemGuarantee()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-04</td>
+<td>Liquidation UGT</td>
+<td><code>GuaranteeToken.sol::liquidateGuarantee()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-05</td>
+<td>Certification d'Actifs</td>
+<td><code>IndustrialGateway.sol::certifyAsset()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-06</td>
+<td>Certificat vers UGT</td>
+<td><code>IndustrialGateway.sol::mintGuaranteeToken()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-07</td>
+<td>Flux de Tokenisation</td>
+<td>Multi-contrats</td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-08</td>
+<td>Compliance UGT</td>
+<td><code>GuaranteeToken.sol::_update()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-05-03-09</td>
+<td>Utilitaires Testnet</td>
+<td>Les deux contrats</td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-01-01</td>
+<td>Calcul NAV</td>
+<td><code>uLPToken.sol::calculateNAV()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-04-01</td>
+<td>Accumulation Rendement</td>
+<td><code>uLPToken.sol::addYield()</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-04-02</td>
+<td>Distribution Rendement</td>
+<td>Modèle NAV</td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-03-01</td>
+<td>Vérification Diversification</td>
+<td><code>LiquidityPool.sol</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-03-02</td>
+<td>Filtrage Juridiction</td>
+<td><code>JurisdictionCompliance.sol</code></td>
+<td>✅ Implémenté</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.2 Algorithmes Implémentés - Backend (Python)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>ID Algorithme</th>
+<th>Nom</th>
+<th>Fichier</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALG-10-04-01</td>
+<td>Accumulation Rendement</td>
+<td><code>yield_calculator.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-04-02</td>
+<td>Distribution Rendement</td>
+<td><code>yield_calculator.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-10-01-01</td>
+<td>Calcul NAV</td>
+<td><code>yield_calculator.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-03-02</td>
+<td>Filtrage Juridiction</td>
+<td><code>compliance.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-03-01</td>
+<td>Vérification Admissibilité</td>
+<td><code>compliance.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-01-01</td>
+<td>Calcul Score de Risque</td>
+<td><code>risk_scorer.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-01-02</td>
+<td>Modificateur de Note</td>
+<td><code>risk_scorer.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-04-04-01</td>
+<td>Comparaison Benchmark</td>
+<td><code>risk_scorer.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-07-01-01</td>
+<td>Détection d'Anomalies</td>
+<td><code>fraud_detector.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-07-02-01</td>
+<td>Détection Wash Trading</td>
+<td><code>fraud_detector.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+<tr>
+<td>ALG-07-03-01</td>
+<td>Détection Structuring</td>
+<td><code>fraud_detector.py</code></td>
+<td>✅ Implémenté</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.3 Algorithmes en Attente (Production)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>ID Algorithme</th>
+<th>Nom</th>
+<th>Priorité</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALG-07-01-01</td>
+<td>Détection d'Anomalies (ML)</td>
+<td>MOYENNE</td>
+<td>Version Scikit-learn Isolation Forest pour production</td>
+</tr>
+<tr>
+<td>ALG-07-02-01</td>
+<td>Wash Trading (LSTM)</td>
+<td>MOYENNE</td>
+<td>Version PyTorch LSTM pour production</td>
+</tr>
+<tr>
+<td>ALG-10-03-02</td>
+<td>Rééquilibrage de Pool</td>
+<td>FAIBLE</td>
+<td>Optimisation scipy pour production</td>
+</tr>
+<tr>
+<td>ALG-03-01-01</td>
+<td>Agrégation de Prix</td>
+<td>MOYENNE</td>
+<td>Intégration Oracle pour production</td>
+</tr>
+<tr>
+<td>ALG-11-01-01</td>
+<td>Arbre de Merkle</td>
+<td>FAIBLE</td>
+<td>Pour audit log production</td>
+</tr>
+<tr>
+<td>ALG-09-01-01</td>
+<td>Cache LRU</td>
+<td>FAIBLE</td>
+<td>Optimisation Redis pour production</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.4 Couverture Globale</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Total</th>
+<th>Implémenté</th>
+<th>En Attente</th>
+<th>Couverture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tokenisation (EPIC-5)</strong></td>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Risque (EPIC-4)</strong></td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>75% ⚠️</td>
+</tr>
+<tr>
+<td><strong>Fraude (EPIC-7)</strong></td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Rendement (EPIC-10)</strong></td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Pool (EPIC-10)</strong></td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>50% ⚠️</td>
+</tr>
+<tr>
+<td><strong>Conformité (EPIC-4,7)</strong></td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>100% ✅</td>
+</tr>
+<tr>
+<td><strong>Oracle (EPIC-3)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0% ⏳</td>
+</tr>
+<tr>
+<td><strong>Sécurité (EPIC-11)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0% ⏳</td>
+</tr>
+<tr>
+<td><strong>Performance (EPIC-9)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0% ⏳</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>27</strong></td>
+<td><strong>20</strong></td>
+<td><strong>7</strong></td>
+<td><strong>74%</strong> ✅</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Légende:</strong><br />
+- ✅ Complet : Implémentation et tests terminés<br />
+- ⚠️ Partiel : Implémentation MVP terminée, version production en attente<br />
+- ⏳ En Attente : Non encore implémenté</p>
+<hr />
+<p><strong>Fin du Document</strong></p>
+<hr />
+<p><strong>Document rédigé par :</strong> Aziz Da Silva - Architecte Principal<br />
+<strong>Date de rédaction :</strong> 19 mars 2026<br />
+<strong>Version :</strong> 1.0<br />
+<strong>Prochaine révision :</strong> T2 2026  </p>
+<p><strong>Contact :</strong><br />
+- Propriétaire du document : Architecte Système<br />
+- Lead Technique : Ingénieur Backend Principal<br />
+- Revue Conformité : Responsable Conformité<br />
+- Revue Sécurité : Auditeur de Sécurité</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Algorithms</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

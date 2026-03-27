@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>10 Incident Response Plan - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>Incident Response</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">🚨 Incident Response Plan</h1>
+        <p class="docs-subtitle">Procedures for responding to security and operational incidents</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Classification:</strong> Internal</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This document defines the incident response procedures for security and operational incidents affecting the UJAMAA DeFi Platform.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🚨 Incident Types</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Type</th><th>Examples</th><th>Severity</th></tr></thead><tbody>
+            <tr><td>Security Breach</td><td>Unauthorized access, data leak</td><td>P1</td></tr>
+            <tr><td>Service Outage</td><td>Platform unavailable</td><td>P1-P2</td></tr>
+            <tr><td>Smart Contract Issue</td><td>Contract bug, exploit attempt</td><td>P1</td></tr>
+            <tr><td>Data Loss</td><td>Database corruption</td><td>P1-P2</td></tr>
+            <tr><td>Performance Degradation</td><td>Slow response times</td><td>P2-P3</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📋 Response Phases</h2>
+          <h3 style="margin:1.5rem 0 1rem">Phase 1: Detection & Triage</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Incident detected (monitoring, user report)</li>
+            <li>Initial assessment and classification</li>
+            <li>Alert appropriate team members</li>
+            <li>Create incident ticket</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">Phase 2: Containment</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Isolate affected systems</li>
+            <li>Prevent further damage</li>
+            <li>Preserve evidence (for security incidents)</li>
+            <li>Implement temporary fixes</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">Phase 3: Eradication</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Identify root cause</li>
+            <li>Remove threat/fix issue</li>
+            <li>Verify fix effectiveness</li>
+            <li>Document findings</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">Phase 4: Recovery</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Restore systems to normal operation</li>
+            <li>Monitor for recurrence</li>
+            <li>Verify all services operational</li>
+            <li>Communicate resolution</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">Phase 5: Post-Incident</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Conduct post-incident review</li>
+            <li>Document lessons learned</li>
+            <li>Implement preventive measures</li>
+            <li>Update procedures as needed</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📞 Communication Plan</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Audience</th><th>Channel</th><th>Timeline</th></tr></thead><tbody>
+            <tr><td>Internal Team</td><td>Slack #incidents</td><td>Immediate</td></tr>
+            <tr><td>Management</td><td>Email/Phone</td><td>Within 1 hour</td></tr>
+            <tr><td>Users</td><td>Status page, Email</td><td>Within 2 hours</td></tr>
+            <tr><td>Regulators</td><td>Official channels</td><td>As required</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Incident Metrics</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li><strong>MTTD:</strong> Mean Time to Detect</li>
+            <li><strong>MTTR:</strong> Mean Time to Respond</li>
+            <li><strong>MTTF:</strong> Mean Time to Fix</li>
+            <li><strong>Incident Count:</strong> By severity and type</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="08_DISASTER_RECOVERY_PLAN.html" style="color:#3B82F6">Disaster Recovery Plan</a> | <a href="02_OPERATIONAL_RUNBOOKS.html" style="color:#3B82F6">Operational Runbooks</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Incident Response Plan<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Operations</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

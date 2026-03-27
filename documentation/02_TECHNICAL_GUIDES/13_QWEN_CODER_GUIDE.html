@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ujamaa DeFi Platform - Qwen Coder Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform - Qwen Coder Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Ujamaa DeFi Platform - Qwen Coder Guide</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ 🤖 Primary AI Coding Assistant | <strong>Last Updated:</strong> March 26, 2026</p></div>
+
+        <h1>Ujamaa DeFi Platform - Qwen Coder Guide</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 26, 2026<br />
+<strong>Status:</strong> 🤖 Primary AI Coding Assistant</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-overview">Overview</a></li>
+<li><a href="#2-why-qwen-coder-is-our-primary-choice">Why Qwen Coder is Our Primary Choice</a></li>
+<li><a href="#3-getting-started-with-qwen-coder">Getting Started with Qwen Coder</a></li>
+<li><a href="#4-best-practices-for-using-qwen-coder">Best Practices for Using Qwen Coder</a></li>
+<li><a href="#5-prompt-templates-for-common-tasks">Prompt Templates for Common Tasks</a></li>
+<li><a href="#6-qwen-coder-vs-other-ai-tools">Qwen Coder vs Other AI Tools</a></li>
+<li><a href="#7-security--compliance">Security &amp; Compliance</a></li>
+<li><a href="#8-troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Overview</h2>
+<p><strong>Qwen Coder</strong> is the official primary AI coding assistant for the UJAMAA DeFi Platform project. It provides intelligent code generation, refactoring, debugging, and documentation support across our entire technology stack.</p>
+<h3>What You Can Do with Qwen Coder</h3>
+<p>✅ Generate production-ready code (Python, Solidity, TypeScript, React)<br />
+✅ Refactor existing code for better readability and performance<br />
+✅ Write comprehensive unit tests with edge cases<br />
+✅ Debug errors and suggest fixes<br />
+✅ Generate technical documentation<br />
+✅ Explain complex code logic<br />
+✅ Review code for security issues<br />
+✅ Convert code between languages</p>
+<h3>Supported Technologies</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Language/Framework</th>
+<th>Use Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python 3.10+</strong></td>
+<td>Backend APIs (FastAPI), data processing, scripts</td>
+</tr>
+<tr>
+<td><strong>Solidity 0.8+</strong></td>
+<td>Smart contracts, ERC-3643 tokens, DeFi protocols</td>
+</tr>
+<tr>
+<td><strong>TypeScript 6.0+</strong></td>
+<td>Frontend (React 19), type definitions</td>
+</tr>
+<tr>
+<td><strong>JavaScript</strong></td>
+<td>Utility scripts, configurations</td>
+</tr>
+<tr>
+<td><strong>Markdown</strong></td>
+<td>Documentation, README files</td>
+</tr>
+<tr>
+<td><strong>JSON/YAML</strong></td>
+<td>Configuration files, deployment specs</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Why Qwen Coder is Our Primary Choice</h2>
+<p><strong>Qwen Coder</strong> has been selected as our primary AI coding assistant for the following reasons:</p>
+<h3>Key Advantages</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>🏆 Best-in-Class Code Generation</strong></td>
+<td>Trained on diverse codebases, excels at Python, Solidity, TypeScript, and React</td>
+</tr>
+<tr>
+<td><strong>🔒 Privacy-First</strong></td>
+<td>No code retention, enterprise-grade security for sensitive financial code</td>
+</tr>
+<tr>
+<td><strong>💰 Free &amp; Open</strong></td>
+<td>No subscription required, fully accessible for all team members</td>
+</tr>
+<tr>
+<td><strong>🧠 Context-Aware</strong></td>
+<td>Understands full project context, architecture patterns, and coding conventions</td>
+</tr>
+<tr>
+<td><strong>⚡ Multi-Language Support</strong></td>
+<td>Seamless switching between Solidity, Python, TypeScript, and documentation</td>
+</tr>
+<tr>
+<td><strong>📚 Documentation Excellence</strong></td>
+<td>Generates clear, comprehensive technical documentation</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Comparison with Other AI Tools</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Qwen Coder</th>
+<th>GitHub Copilot</th>
+<th>Cursor</th>
+<th>Claude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code Quality</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Context Understanding</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Multi-Language</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free</td>
+<td>$10/month</td>
+<td>Free/$20</td>
+<td>Free/$20</td>
+</tr>
+<tr>
+<td><strong>Privacy</strong></td>
+<td>No retention</td>
+<td>Microsoft policy</td>
+<td>Varies</td>
+<td>Anthropic policy</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Getting Started with Qwen Coder</h2>
+<h3>3.1 Access Methods</h3>
+<p><strong>Method A: Qwen Code IDE Integration (Recommended)</strong></p>
+<p>Qwen Coder is integrated directly into your development environment:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Open your project in the IDE</li>
+<li>Qwen Coder is automatically available</li>
+<li>Start coding - suggestions appear inline</li>
+<li>Use chat mode for complex tasks</li>
+</ol>
+<p><strong>Method B: Web Interface</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Access the Qwen web interface</li>
+<li>Paste your code or describe your task</li>
+<li>Review and copy the generated code</li>
+<li>Integrate into your project</li>
+</ol>
+<h3>3.2 First Steps</h3>
+<p><strong>Step 1: Understand the Context</strong></p>
+<p>Before asking Qwen Coder to generate code, provide context:</p>
+<div class="docs-pre"><code>I'm working on the UJAMAA DeFi Platform - a blockchain-based 
+real-world asset tokenization system for African SMEs.
+
+Our stack:
+- Backend: Python 3.10 + FastAPI
+- Frontend: React 19 + TypeScript 6.0
+- Smart Contracts: Solidity 0.8 + ERC-3643
+- Blockchain: Polygon (ERC-3643 compliant)
+</code></div>
+<p><strong>Step 2: Be Specific About Requirements</strong></p>
+<div class="docs-pre"><code>I need to create a Python function that:
+- Validates investor accreditation
+- Checks jurisdiction restrictions
+- Returns boolean + error message
+- Follows our existing validation pattern
+</code></div>
+<p><strong>Step 3: Review and Test</strong></p>
+<div class="docs-pre"><code>Always review AI-generated code:
+1. Check logic is correct
+2. Verify edge cases handled
+3. Run unit tests
+4. Ensure security best practices
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Best Practices for Using Qwen Coder</h2>
+<h3>4.1 Writing Effective Prompts</h3>
+<p><strong>DO:</strong><br />
+- Provide full context about the task<br />
+- Specify input/output types<br />
+- Mention existing patterns to follow<br />
+- Include error handling requirements<br />
+- Ask for tests alongside implementation</p>
+<p><strong>DON'T:</strong><br />
+- Paste sensitive data (API keys, private keys, user data)<br />
+- Ask for vague or overly broad tasks<br />
+- Accept code without review<br />
+- Skip testing AI-generated code</p>
+<h3>4.2 Code Review Checklist</h3>
+<p>When Qwen Coder generates code, verify:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Logic is correct and complete</li>
+<li>[ ] Edge cases are handled</li>
+<li>[ ] Error messages are clear</li>
+<li>[ ] Type hints are accurate</li>
+<li>[ ] Security best practices followed</li>
+<li>[ ] No hardcoded secrets</li>
+<li>[ ] Follows project style guide</li>
+<li>[ ] Tests included</li>
+</ul>
+<h3>4.3 Iterative Refinement</h3>
+<p>Don't settle for the first output. Refine with follow-up prompts:</p>
+<div class="docs-pre"><code>Initial: &quot;Write a function to calculate yield&quot;
+
+Follow-up 1: &quot;Add error handling for zero division&quot;
+
+Follow-up 2: &quot;Include type hints and docstring&quot;
+
+Follow-up 3: &quot;Generate pytest unit tests with edge cases&quot;
+
+Follow-up 4: &quot;Optimize for performance with large datasets&quot;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Prompt Templates for Common Tasks</h2>
+<h3>5.1 Generate Unit Tests</h3>
+<div class="docs-pre"><code>Write comprehensive pytest unit tests for this Python function.
+
+Include:
+1. Happy path tests (successful scenarios)
+2. Edge cases (empty inputs, boundary conditions)
+3. Error handling (invalid inputs, exceptions)
+4. Parametrized tests for multiple input combinations
+
+Function:
+[paste function code]
+</code></div>
+<h3>5.2 Refactor Code</h3>
+<div class="docs-pre"><code>Refactor this code to improve:
+- Readability and clarity
+- DRY principle (eliminate duplication)
+- Performance optimization
+- Error handling
+
+Current code:
+[paste code]
+
+Constraints:
+- Maintain existing API
+- Keep backward compatibility
+- Add type hints
+</code></div>
+<h3>5.3 Debug Error</h3>
+<div class="docs-pre"><code>I'm getting this error:
+[paste full error message]
+
+Here's my code:
+[paste relevant code]
+
+Context:
+- What I was trying to do
+- What I've already tried
+- Expected behavior
+
+Please:
+1. Explain the root cause
+2. Provide the fix
+3. Suggest prevention measures
+</code></div>
+<h3>5.4 Generate Documentation</h3>
+<div class="docs-pre"><code>Write comprehensive documentation for this module including:
+
+1. Module overview (2-3 sentences)
+2. Class/function descriptions
+3. Parameters with types and defaults
+4. Return values with types
+5. Exceptions that may be raised
+6. Example usage code
+7. Related functions/classes
+
+Code:
+[paste code]
+</code></div>
+<h3>5.5 Smart Contract Development</h3>
+<div class="docs-pre"><code>Write a Solidity 0.8 smart contract for [purpose].
+
+Requirements:
+- ERC-3643 compliant (permissioned transfers)
+- OpenZeppelin imports
+- Role-based access control
+- Events for all state changes
+- Gas optimization
+- Reentrancy protection
+
+Functions needed:
+- [function 1]
+- [function 2]
+
+Context: UJAMAA DeFi Platform - African RWA tokenization
+</code></div>
+<h3>5.6 API Endpoint Creation</h3>
+<div class="docs-pre"><code>Create a FastAPI endpoint for [purpose].
+
+Requirements:
+- RESTful design (POST/GET/PUT/DELETE)
+- Pydantic models for request/response
+- Async/await pattern
+- Error handling with HTTPException
+- Dependency injection for services
+- Type hints throughout
+- Docstring with OpenAPI docs
+
+Business logic:
+[describe what it should do]
+</code></div>
+<h3>5.7 React Component Generation</h3>
+<div class="docs-pre"><code>Create a React 19 functional component for [purpose].
+
+Requirements:
+- TypeScript 6.0 with strict types
+- Functional component with hooks
+- Tailwind CSS for styling
+- Responsive design
+- Error boundaries
+- Loading states
+- Accessibility (ARIA labels)
+
+Props:
+[describe props]
+
+Behavior:
+[describe component behavior]
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Qwen Coder vs Other AI Tools</h2>
+<h3>When to Use Each Tool</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Task</th>
+<th>Primary</th>
+<th>Secondary</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New feature development</strong></td>
+<td>Qwen Coder</td>
+<td>-</td>
+<td>Full context awareness</td>
+</tr>
+<tr>
+<td><strong>Code refactoring</strong></td>
+<td>Qwen Coder</td>
+<td>Claude</td>
+<td>Qwen for code, Claude for review</td>
+</tr>
+<tr>
+<td><strong>Bug fixing &amp; debugging</strong></td>
+<td>Qwen Coder</td>
+<td>ChatGPT-4</td>
+<td>Qwen first, then ChatGPT for complex issues</td>
+</tr>
+<tr>
+<td><strong>Writing unit tests</strong></td>
+<td>Qwen Coder</td>
+<td>Copilot</td>
+<td>Qwen for comprehensive suites</td>
+</tr>
+<tr>
+<td><strong>Code review</strong></td>
+<td>Qwen Coder</td>
+<td>Claude</td>
+<td>Both provide different insights</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Qwen Coder</td>
+<td>-</td>
+<td>Best for technical docs</td>
+</tr>
+<tr>
+<td><strong>Architecture decisions</strong></td>
+<td>Qwen Coder</td>
+<td>Claude</td>
+<td>Qwen for options, Claude for validation</td>
+</tr>
+<tr>
+<td><strong>Quick code completion</strong></td>
+<td>Copilot</td>
+<td>-</td>
+<td>IDE integration is faster</td>
+</tr>
+<tr>
+<td><strong>Exploring codebase</strong></td>
+<td>Cursor</td>
+<td>-</td>
+<td>Project-wide search</td>
+</tr>
+<tr>
+<td><strong>Complex problem solving</strong></td>
+<td>Qwen Coder</td>
+<td>ChatGPT-4</td>
+<td>Start with Qwen, escalate if needed</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Cost Comparison</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Free Tier</th>
+<th>Paid Tier</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qwen Coder</strong></td>
+<td>✅ Full features</td>
+<td>N/A</td>
+<td>Use for everything</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>❌</td>
+<td>$10/month</td>
+<td>Quick completions only</td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td>✅ Limited</td>
+<td>$20/month</td>
+<td>Codebase exploration</td>
+</tr>
+<tr>
+<td><strong>Claude</strong></td>
+<td>✅ Limited</td>
+<td>$20/month</td>
+<td>Code review, architecture</td>
+</tr>
+<tr>
+<td><strong>ChatGPT-4</strong></td>
+<td>✅ Limited</td>
+<td>$20/month</td>
+<td>Complex problem solving</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Security &amp; Compliance</h2>
+<h3>7.1 What NOT to Share with Qwen Coder</h3>
+<p>❌ <strong>Never paste:</strong><br />
+- Private keys or seed phrases<br />
+- API keys or secrets<br />
+- Database credentials<br />
+- User personal data (PII)<br />
+- Proprietary algorithms (unpublished)<br />
+- Production configuration files</p>
+<h3>7.2 Safe to Share</h3>
+<p>✅ <strong>OK to share:</strong><br />
+- Public code from the project<br />
+- Error messages (without secrets)<br />
+- Architecture diagrams<br />
+- Function signatures<br />
+- Test code<br />
+- Documentation drafts</p>
+<h3>7.3 Code Attribution</h3>
+<p>When committing AI-generated code:</p>
+<div class="docs-pre"><code># In your PR description:
+## AI Assistance
+This PR includes code generated with Qwen Coder (primary AI coding assistant).
+All AI-generated code has been reviewed and tested by human developers.
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Troubleshooting</h2>
+<h3>Problem: Qwen Coder suggestions are incorrect</h3>
+<p><strong>Solutions:</strong><br />
+1. Provide more context in your prompt<br />
+2. Specify the exact requirements<br />
+3. Show examples of desired output<br />
+4. Ask it to explain its reasoning first</p>
+<h3>Problem: Code doesn't follow our patterns</h3>
+<p><strong>Solutions:</strong><br />
+1. Share existing code examples to follow<br />
+2. Explicitly state naming conventions<br />
+3. Mention architectural patterns in use<br />
+4. Ask it to analyze existing code first</p>
+<h3>Problem: Generated code has bugs</h3>
+<p><strong>Solutions:</strong><br />
+1. Always run tests before committing<br />
+2. Ask Qwen Coder to write tests too<br />
+3. Use follow-up prompts to fix issues<br />
+4. Cross-check with documentation</p>
+<h3>Problem: Qwen Coder doesn't understand context</h3>
+<p><strong>Solutions:</strong><br />
+1. Provide project background upfront<br />
+2. Link to relevant documentation<br />
+3. Share related code snippets<br />
+4. Break complex tasks into smaller steps</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Quick Reference Card</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────┐
+│              QWEN CODER QUICK REFERENCE                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  PRIMARY USE CASES:                                          │
+│  ✅ Code generation (Python, Solidity, TypeScript)          │
+│  ✅ Refactoring &amp; optimization                               │
+│  ✅ Unit test generation                                     │
+│  ✅ Debugging &amp; error fixing                                 │
+│  ✅ Technical documentation                                  │
+│                                                              │
+│  PROMPT STRUCTURE:                                           │
+│  1. Context (project, purpose)                               │
+│  2. Task (what you need)                                     │
+│  3. Requirements (constraints, patterns)                     │
+│  4. Examples (if available)                                  │
+│                                                              │
+│  REVIEW CHECKLIST:                                           │
+│  □ Logic correct                                             │
+│  □ Edge cases handled                                        │
+│  □ Error handling complete                                   │
+│  □ Type hints accurate                                       │
+│  □ Security best practices                                   │
+│  □ Tests included                                            │
+│                                                              │
+│  SECURITY:                                                   │
+│  ❌ Never share: keys, secrets, user data                    │
+│  ✅ Always review before committing                          │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Related Documentation</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="../04_TEAM_PLAYBOOKS/01_DEVELOPMENT_METHODOLOGY_PLAYBOOK.html" style="color:#3B82F6">Development Methodology Playbook</a> - AI tools section</li>
+<li><a href="02_TECHNOLOGY_STACK_REFERENCE.html" style="color:#3B82F6">Technology Stack Reference</a> - Full tech stack details</li>
+<li><a href="../01_SPECIFICATIONS/05_SMART_CONTRACT_SPECIFICATION.html" style="color:#3B82F6">Smart Contract Specification</a> - Solidity patterns</li>
+</ul>
+<hr />
+<p><strong>Last Updated:</strong> March 26, 2026<br />
+<strong>Maintained By:</strong> Engineering Team<br />
+<strong>Next Review:</strong> April 26, 2026<br />
+<strong>Version:</strong> 1.0</p>
+<hr />
+<p><strong>END OF QWEN CODER GUIDE</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

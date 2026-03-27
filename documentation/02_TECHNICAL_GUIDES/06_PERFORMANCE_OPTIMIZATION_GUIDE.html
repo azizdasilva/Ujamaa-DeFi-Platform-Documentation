@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>06 Performance Optimization Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Performance Optimization</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">⚡ Performance Optimization Guide</h1>
+        <p class="docs-subtitle">Best practices for optimizing application performance</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Audience:</strong> Developers</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This guide provides best practices for optimizing performance across the UJAMAA DeFi Platform stack.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Performance Targets</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Metric</th><th>Target</th><th>Critical</th></tr></thead><tbody>
+            <tr><td>API Response Time (p95)</td><td>&lt; 200ms</td><td>&lt; 500ms</td></tr>
+            <tr><td>API Response Time (p99)</td><td>&lt; 500ms</td><td>&lt; 1000ms</td></tr>
+            <tr><td>Frontend Load Time</td><td>&lt; 2s</td><td>&lt; 5s</td></tr>
+            <tr><td>Blockchain Transaction</td><td>&lt; 15s</td><td>&lt; 30s</td></tr>
+            <tr><td>Database Query Time</td><td>&lt; 50ms</td><td>&lt; 100ms</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔧 Backend Optimization</h2>
+          <h3 style="margin:1.5rem 0 1rem">Database</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Use database indexes strategically</li>
+            <li>Implement query caching</li>
+            <li>Use connection pooling</li>
+            <li>Optimize N+1 queries</li>
+            <li>Use async database operations</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">Caching</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Cache frequently accessed data (Redis)</li>
+            <li>Implement cache invalidation strategy</li>
+            <li>Use CDN for static assets</li>
+            <li>Cache API responses where appropriate</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">💻 Frontend Optimization</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Code splitting for large bundles</li>
+            <li>Lazy loading for components</li>
+            <li>Image optimization (WebP, lazy loading)</li>
+            <li>Minimize re-renders (React.memo, useMemo)</li>
+            <li>Use service workers for offline support</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">⛓️ Blockchain Optimization</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Batch transactions where possible</li>
+            <li>Optimize gas usage in smart contracts</li>
+            <li>Use events instead of storage where possible</li>
+            <li>Implement efficient data structures</li>
+            <li>Use Layer 2 solutions (Polygon)</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📈 Monitoring</h2>
+          <div class="docs-callout docs-callout-info"><div class="docs-callout-title">Key Metrics to Track</div>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Response times (p50, p95, p99)</li>
+            <li>Error rates</li>
+            <li>Throughput (requests/second)</li>
+            <li>Resource utilization (CPU, memory)</li>
+            <li>Cache hit rates</li>
+          </ul></div>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="01_MONITORING_SPECIFICATION.html" style="color:#3B82F6">Monitoring Specification</a> | <a href="../03_OPERATIONS/index.html" style="color:#3B82F6">Operations</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Performance Optimization Guide<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Technical Guides</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

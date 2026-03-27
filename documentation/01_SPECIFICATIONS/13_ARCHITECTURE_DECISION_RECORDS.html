@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>02 Architecture Decision Records - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📋</span><span>Specifications</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Architecture Decisions</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">📋 Architecture Decision Records (ADRs)</h1>
+        <p class="docs-subtitle">Key architectural decisions and their rationale</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Type:</strong> Decision Records</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This document records key architectural decisions made during the development of UJAMAA DeFi Platform, including the context and rationale behind each decision.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📝 Decision Records</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>ADR #</th><th>Title</th><th>Date</th><th>Status</th></tr></thead><tbody>
+            <tr><td>001</td><td>Use ERC-3643 for Token Standard</td><td>Jan 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+            <tr><td>002</td><td>Choose Polygon as Primary Network</td><td>Jan 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></td></tr>
+            <tr><td>003</td><td>FastAPI for Backend Framework</td><td>Jan 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+            <tr><td>004</td><td>React 19 + TypeScript for Frontend</td><td>Jan 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+            <tr><td>005</td><td>Fireblocks for Institutional Custody</td><td>Feb 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+            <tr><td>006</td><td>Mock Services for MVP Development</td><td>Feb 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+            <tr><td>007</td><td>Qwen Coder as Primary AI Tool</td><td>Mar 2026</td><td><span class="docs-badge docs-badge-success">Accepted</span></td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Key Decisions Summary</h2>
+          <h3 style="margin:1.5rem 0 1rem">ADR-001: ERC-3643 Token Standard</h3>
+          <div class="docs-callout docs-callout-info"><div class="docs-callout-title">Decision</div>
+          <p>Use ERC-3643 (T-REX Protocol) for all platform tokens instead of ERC-20.</p>
+          <p><strong>Rationale:</strong> Built-in compliance features, permissioned transfers, regulatory compliance for securities tokens.</p></div>
+          
+          <h3 style="margin:1.5rem 0 1rem">ADR-002: Polygon Network</h3>
+          <div class="docs-callout docs-callout-info"><div class="docs-callout-title">Decision</div>
+          <p>Deploy on Polygon (Ethereum L2) as primary network.</p>
+          <p><strong>Rationale:</strong> Low gas fees, Ethereum compatibility, fast transactions, growing ecosystem.</p></div>
+          
+          <h3 style="margin:1.5rem 0 1rem">ADR-003: FastAPI Backend</h3>
+          <div class="docs-callout docs-callout-info"><div class="docs-callout-title">Decision</div>
+          <p>Use FastAPI (Python) for backend API development.</p>
+          <p><strong>Rationale:</strong> High performance, automatic API docs, type safety, async support, Python ecosystem.</p></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📋 Decision Process</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Proposal submitted by team member</li>
+            <li>Discussion in architecture review</li>
+            <li>Impact analysis completed</li>
+            <li>Team vote (majority required)</li>
+            <li>Decision recorded in ADR</li>
+            <li>Implementation begins</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="02_ARCHITECTURE_SPECIFICATION.html" style="color:#3B82F6">Architecture Specification</a> | <a href="../06_MVP_EXECUTION/index.html" style="color:#3B82F6">MVP Execution</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Architecture Decision Records<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Specifications</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

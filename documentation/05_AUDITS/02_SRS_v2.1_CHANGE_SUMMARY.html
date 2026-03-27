@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>SRS v2.1 Change Summary - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>SRS v2.1 Change Summary</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">SRS v2.1 Change Summary</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Documentation Teams, Smart Contract Developers, Backend Engineers, Compliance Officers</p></div>
+
+        <h1>SRS v2.1 Change Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - Software Requirements Specification v2.1</h2>
+<p><strong>Document Purpose:</strong> This document summarizes all changes introduced in SRS v2.1 and provides a migration guide for updating all related documentation.</p>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 25, 2026<br />
+<strong>Classification:</strong> Internal / Engineering<br />
+<strong>Audience:</strong> Documentation Teams, Smart Contract Developers, Backend Engineers, Compliance Officers</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p>SRS v2.1 introduces <strong>institutional-grade architecture</strong> with yield-bearing liquidity pool tokens (uLP), collateral representation tokens (UJG), enhanced authentication (SIWE + JWT), role-based access control (RBAC), and OWASP Top 10 mitigations.</p>
+<p>This is a <strong>major revision</strong> from v1.3 (development) and v2.0 (initial institutional architecture). All documentation must be updated for consistency.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Major Changes Summary</h2>
+<h3>1.1 Token Architecture Changes</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Token</th>
+<th>Standard</th>
+<th>Purpose</th>
+<th>Transferability</th>
+<th>Key Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ujamaa Pool Token (uLP)</strong></td>
+<td>ERC-3643 (Fungible)</td>
+<td>Investor's share in liquidity pool</td>
+<td>Yes (with compliance)</td>
+<td>🆕 <strong>Yield-bearing via value-accrual</strong></td>
+</tr>
+<tr>
+<td><strong>Ujamaa Guarantee (UJG)</strong></td>
+<td>ERC-3643NFT (ERC-721 + compliance)</td>
+<td>Pool's collateral representation</td>
+<td>No (forced transfer only)</td>
+<td>🆕 <strong>New collateral token</strong></td>
+</tr>
+<tr>
+<td><strong>Ujamaa Asset Token (UAT)</strong></td>
+<td>ERC-3643 (Fungible)</td>
+<td>Asset-specific tokenization</td>
+<td>Yes (with compliance)</td>
+<td>ℹ️ <strong>Rebranded from "UjamaaToken"</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Key Distinction:</strong><br />
+- <strong>uLP</strong> = Yield-bearing investment token (like fund shares)<br />
+- <strong>UJG</strong> = Non-transferable collateral token (like warehouse receipt)<br />
+- <strong>UAT</strong> = Asset-specific token (legacy/retail model)</p>
+<h3>1.2 Authentication &amp; Authorization</h3>
+<p><strong>New Authentication Method:</strong><br />
+- <strong>SIWE (Sign-In with Ethereum)</strong> + <strong>JWT (JSON Web Tokens)</strong><br />
+- Replaces: Ad-hoc wallet signature verification</p>
+<p><strong>Session Management:</strong><br />
+- Idle timeout: 15 minutes<br />
+- Absolute timeout: 8 hours<br />
+- Max concurrent sessions: 5 per wallet</p>
+<p><strong>Authorization Model:</strong><br />
+- <strong>RBAC (Role-Based Access Control)</strong> with explicit permission matrix<br />
+- 10+ roles defined (Enterprise Partner, Investor, Pool Manager, Compliance Officer, Regulator, Auditor, etc.)</p>
+<h3>1.3 Security Enhancements</h3>
+<p><strong>OWASP Top 10 (2025) Mitigations:</strong><br />
+- A01: Broken Access Control → RBAC + RLS<br />
+- A03: Injection → Parameterized queries + Pydantic validators<br />
+- A05: Security Misconfiguration → CIS benchmarks + Terraform validation<br />
+- A07: Authentication Failures → SIWE + rate limiting + MFA<br />
+- A08: Software/Data Integrity → Signed upgrades + HSM keys<br />
+- A09: Logging/Monitoring → Centralized logging + alerting<br />
+- A10: SSRF → Egress filtering + allowlists</p>
+<p><strong>Input Validation:</strong><br />
+- Explicit validation rules for all input types (text, email, amounts, wallet addresses, national IDs, files, dates)</p>
+<h3>1.4 Institutional Features</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fireblocks Custody</strong></td>
+<td>Institutional-grade MPC custody</td>
+<td>Platform treasury only</td>
+</tr>
+<tr>
+<td><strong>Bank Escrow</strong></td>
+<td>BIIC/MCB escrow accounts</td>
+<td>Production only</td>
+</tr>
+<tr>
+<td><strong>Mobile Money</strong></td>
+<td>M-Pesa, MTN, Airtel integration</td>
+<td>Production only</td>
+</tr>
+<tr>
+<td><strong>KYB Threshold</strong></td>
+<td>€100,000 enhanced due diligence</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td><strong>Institutional Minimum</strong></td>
+<td>€1,000,000 investment minimum</td>
+<td>Platform policy</td>
+</tr>
+<tr>
+<td><strong>Strictest Jurisdiction List</strong></td>
+<td>OFAC + UN + EU + FATF High-Risk</td>
+<td>Blocked</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.5 Yield Model</h3>
+<p><strong>Value-Accrual Model (uLP):</strong></p>
+<div class="docs-pre"><code>NAV_per_share(t) = Total_Pool_Value(t) / Total_uLP_Shares
+Investor_Value(t) = uLP_Balance × NAV_per_share(t)
+</code></div>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Token balance remains constant</li>
+<li>NAV per token increases with yield</li>
+<li>No manual distribution required (automatic accrual)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Documentation Migration Checklist</h2>
+<h3>2.1 Critical Documents (Must Update Immediately)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Key Changes Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01_ARCHITECTURE_SPECIFICATION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P0</td>
+<td>Add uLP/UJG architecture, Fireblocks integration, SIWE auth flow</td>
+</tr>
+<tr>
+<td><strong>05_SMART_CONTRACT_SPECIFICATION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P0</td>
+<td>Add uLP (ERC-3643) and UJG (ERC-3643NFT) contract specs, yield mechanics</td>
+</tr>
+<tr>
+<td><strong>06_API_SPECIFICATION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P0</td>
+<td>Add SIWE endpoints, RBAC middleware, session management</td>
+</tr>
+<tr>
+<td><strong>10_COMPLIANCE_FRAMEWORK.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P0</td>
+<td>Add KYB requirements, enhanced due diligence, strictest jurisdiction list</td>
+</tr>
+<tr>
+<td><strong>01_MVP_SPECIFICATION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P0</td>
+<td>Update to reference SRS v2.1 (not v2.0), add uLP/UJG specs</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 Technical Guides (Update Within Sprint)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Key Changes Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01_DEPLOYMENT_GUIDE.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add Fireblocks setup, bank escrow config</td>
+</tr>
+<tr>
+<td><strong>03_BACKEND_INTEGRATION_GUIDE.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add SIWE implementation, RBAC patterns</td>
+</tr>
+<tr>
+<td><strong>05_SMART_CONTRACT_INTEGRATION_GUIDE.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add uLP/UJG integration examples</td>
+</tr>
+<tr>
+<td><strong>09_NOMENCLATURE_NAMES.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Update token naming (uLP, UJG, UAT)</td>
+</tr>
+<tr>
+<td><strong>10_SMART_CONTRACT_NAMING_CONVENTION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add GuaranteeToken, LiquidityPool naming</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.3 Investor Documentation (Update Before External Comms)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Key Changes Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>05_WHITE_PAPER.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Update token economics (uLP yield model), add UJG explanation</td>
+</tr>
+<tr>
+<td><strong>04_INVESTMENT_MEMORANDUM.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Update investment structure (uLP shares)</td>
+</tr>
+<tr>
+<td><strong>03_INVESTOR_PITCH_DECK.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P2</td>
+<td>Add uLP/UJG slides</td>
+</tr>
+<tr>
+<td><strong>09_INVESTOR_FAQ.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P2</td>
+<td>Add uLP yield questions, UJG collateral questions</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.4 Algorithm Specifications (Update for Implementation)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Key Changes Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01_ALGORITHM_SPECIFICATIONS.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add NAV calculation algorithms, yield accrual algorithms</td>
+</tr>
+<tr>
+<td><strong>05_SRS_ALGORITHM_CROSS_REFERENCE.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P2</td>
+<td>Update cross-reference for uLP/UJG</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.5 Operations Documentation (Update Before Production)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Key Changes Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01_MONITORING_SPECIFICATION.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add uLP NAV monitoring, Fireblocks vault monitoring</td>
+</tr>
+<tr>
+<td><strong>02_OPERATIONAL_RUNBOOKS.md</strong></td>
+<td>⚠️ Pending</td>
+<td>P1</td>
+<td>Add uLP redemption runbook, UJG liquidation runbook</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Terminology Changes</h2>
+<h3>3.1 Deprecated Terms</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Deprecated Term</th>
+<th>Replacement</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"UjamaaToken"</td>
+<td><strong>Ujamaa Asset Token (UAT)</strong> or <strong>ERC-3643 fungible token</strong></td>
+<td>Generic token references</td>
+</tr>
+<tr>
+<td>"AssetProof"</td>
+<td><strong>Industrial Gateway</strong></td>
+<td>Stock certification system</td>
+</tr>
+<tr>
+<td>"asset_proofs" (table)</td>
+<td><strong>industrial_gateway_certificates</strong></td>
+<td>Database table name</td>
+</tr>
+<tr>
+<td>"yield distribution"</td>
+<td><strong>yield accrual</strong> (for uLP)</td>
+<td>uLP uses value-accrual, not distribution</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.2 New Terms</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+<th>First Used In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ujamaa Pool Token (uLP)</strong></td>
+<td>Yield-bearing ERC-3643 token representing pool ownership</td>
+<td>SRS v2.0</td>
+</tr>
+<tr>
+<td><strong>Ujamaa Guarantee (UJG)</strong></td>
+<td>ERC-3643NFT representing certified merchandise collateral</td>
+<td>SRS v2.1</td>
+</tr>
+<tr>
+<td><strong>Value-Accrual Model</strong></td>
+<td>Token economics where NAV increases, balance constant</td>
+<td>SRS v2.1</td>
+</tr>
+<tr>
+<td><strong>SIWE</strong></td>
+<td>Sign-In with Ethereum authentication</td>
+<td>SRS v2.1</td>
+</tr>
+<tr>
+<td><strong>RBAC</strong></td>
+<td>Role-Based Access Control</td>
+<td>SRS v2.1</td>
+</tr>
+<tr>
+<td><strong>KYB</strong></td>
+<td>Know Your Business (enhanced due diligence ≥€100K)</td>
+<td>SRS v2.1</td>
+</tr>
+<tr>
+<td><strong>Strictest Jurisdiction List</strong></td>
+<td>OFAC + UN + EU + FATF High-Risk</td>
+<td>SRS v2.1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Smart Contract Changes</h2>
+<h3>4.1 New Contracts Required</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Standard</th>
+<th>Purpose</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LiquidityPool.sol</strong></td>
+<td>Custom</td>
+<td>Pool management, asset allocation</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>UjamaaPoolToken.sol</strong></td>
+<td>ERC-3643 + ERC-20</td>
+<td>Yield-bearing uLP token</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>GuaranteeToken.sol</strong></td>
+<td>ERC-3643NFT (ERC-721 + compliance)</td>
+<td>Collateral NFT</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>NavOracle.sol</strong></td>
+<td>Custom</td>
+<td>NAV price feed</td>
+<td>P1</td>
+</tr>
+<tr>
+<td><strong>YieldDistributor.sol</strong></td>
+<td>Custom</td>
+<td>Yield statement generation</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 Contract Interface Changes</h3>
+<p><strong>UjamaaPoolToken (uLP):</strong></p>
+<div class="docs-pre"><code>interface IUjamaaPoolToken {
+    // Yield-bearing: balance constant, NAV increases
+    function balanceOf(address account) external view returns (uint256);
+    function getNAVPerShare() external view returns (uint256);
+    function getInvestorValue(address account) external view returns (uint256);
+
+    // Deposit/redeem
+    function deposit(uint256 amount) external returns (uint256 uLPMinted);
+    function redeem(uint256 uLPAmount) external returns (uint256 Ujamaa Euro (UJEUR)Received);
+}
+</code></div>
+<p><strong>GuaranteeToken (UJG):</strong></p>
+<div class="docs-pre"><code>interface IGuaranteeToken {
+    // Non-transferable (except forced)
+    function mintGuarantee(address industrial, uint256 value, bytes32 stockHash) external returns (uint256 tokenId);
+    function redeemGuarantee(uint256 tokenId) external;
+    function liquidateGuarantee(uint256 tokenId, address winner) external;
+
+    // Override transfer to prevent unauthorized transfers
+    function transfer(address, uint256) external pure override returns (bool);
+    function safeTransferFrom(address from, address to, uint256 tokenId) external override;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. API Changes</h2>
+<h3>5.1 New Endpoints</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+<th>Auth Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/v1/auth/nonce</code></td>
+<td>Request nonce for SIWE</td>
+<td>None</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/auth/login</code></td>
+<td>SIWE login (signature verification)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/auth/refresh</code></td>
+<td>Refresh JWT token</td>
+<td>Refresh token</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/auth/logout</code></td>
+<td>Invalidate sessions</td>
+<td>Access token</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/v1/pools</code></td>
+<td>List liquidity pools</td>
+<td>Institutional Investor</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/v1/pools/{id}/nav</code></td>
+<td>Get NAV per share</td>
+<td>Public</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/v1/pools/{id}/allocations</code></td>
+<td>Get asset allocation</td>
+<td>Institutional Investor</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/pools/{id}/deposit</code></td>
+<td>Deposit Ujamaa Euro (UJEUR) for uLP</td>
+<td>Institutional Investor</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/pools/{id}/redeem</code></td>
+<td>Redeem uLP for Ujamaa Euro (UJEUR) + yield</td>
+<td>Institutional Investor</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/v1/guarantees</code></td>
+<td>List Guarantee Tokens</td>
+<td>Pool Manager</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/guarantees</code></td>
+<td>Mint Guarantee Token</td>
+<td>Industrial Gateway</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/v1/guarantees/{id}/liquidate</code></td>
+<td>Liquidate defaulted collateral</td>
+<td>Pool Manager</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 Authentication Flow</h3>
+<div class="docs-pre"><code>1. GET /api/v1/auth/nonce?wallet=0x...
+   → Returns: { nonce: &quot;uuid-v4&quot;, expiresAt: &quot;ISO8601&quot; }
+
+2. User signs SIWE message with wallet
+
+3. POST /api/v1/auth/login
+   Body: { wallet, signature, nonce }
+   → Returns: { accessToken, refreshToken, expiresAt }
+
+4. Subsequent requests include: Authorization: Bearer &lt;accessToken&gt;
+
+5. Token refresh (before expiry):
+   POST /api/v1/auth/refresh
+   Body: { refreshToken }
+   → Returns: { accessToken, refreshToken } (rotated)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Database Schema Changes</h2>
+<h3>6.1 New Tables</h3>
+<div class="docs-pre"><code>-- Liquidity Pools
+CREATE TABLE liquidity_pools (
+    id UUID PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    pool_family VARCHAR(50) NOT NULL, -- POOL_INDUSTRIE, POOL_AGRICULTURE, etc.
+    total_value_locked DECIMAL(18,2) DEFAULT 0,
+    nav_per_share DECIMAL(18,8) DEFAULT 1.0,
+    total_shares DECIMAL(18,8) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- uLP Positions
+CREATE TABLE ulp_positions (
+    id UUID PRIMARY KEY,
+    investor_wallet VARCHAR(42) NOT NULL,
+    pool_id UUID REFERENCES liquidity_pools(id),
+    share_balance DECIMAL(18,8) NOT NULL,
+    avg_cost_basis DECIMAL(18,8),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Guarantee Tokens
+CREATE TABLE guarantee_tokens (
+    id UUID PRIMARY KEY,
+    token_id DECIMAL(78) NOT NULL, -- NFT token ID
+    industrial_wallet VARCHAR(42) NOT NULL,
+    pool_id UUID REFERENCES liquidity_pools(id),
+    certificate_id VARCHAR(255) NOT NULL,
+    merchandise_value DECIMAL(18,2) NOT NULL,
+    stock_hash VARCHAR(66) NOT NULL, -- IPFS hash
+    expiry_date TIMESTAMP NOT NULL,
+    is_redeemed BOOLEAN DEFAULT FALSE,
+    is_defaulted BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- NAV History
+CREATE TABLE nav_history (
+    id UUID PRIMARY KEY,
+    pool_id UUID REFERENCES liquidity_pools(id),
+    nav_per_share DECIMAL(18,8) NOT NULL,
+    total_pool_value DECIMAL(18,2) NOT NULL,
+    total_shares DECIMAL(18,8) NOT NULL,
+    calculated_at TIMESTAMP NOT NULL
+);
+
+-- Sessions (for session management)
+CREATE TABLE user_sessions (
+    id UUID PRIMARY KEY,
+    wallet_address VARCHAR(42) NOT NULL,
+    jwt_jti VARCHAR(255) UNIQUE NOT NULL, -- JWT ID for revocation
+    refresh_token_hash VARCHAR(64) NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    last_activity TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+</code></div>
+<h3>6.2 Renamed Tables</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Old Table Name</th>
+<th>New Table Name</th>
+<th>Migration Script</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset_proofs</code></td>
+<td><code>industrial_gateway_certificates</code></td>
+<td><code>ALTER TABLE asset_proofs RENAME TO industrial_gateway_certificates;</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Compliance Changes</h2>
+<h3>7.1 KYC/KYB Thresholds</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Investment Amount</th>
+<th>Requirement</th>
+<th>Approval Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; €1,000</td>
+<td><strong>Not permitted</strong> (below minimum)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>€1,000 - €99,999</td>
+<td>Standard KYC</td>
+<td>Compliance Officer</td>
+</tr>
+<tr>
+<td>€100,000 - €999,999</td>
+<td><strong>Enhanced KYB</strong> + UBO verification</td>
+<td>Senior Compliance Officer</td>
+</tr>
+<tr>
+<td>≥ €1,000,000</td>
+<td><strong>Enhanced KYB</strong> + Board approval</td>
+<td>Compliance Officer + CEO</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 Jurisdiction Filtering</h3>
+<p><strong>Blocked Jurisdictions (Strictest List):</strong><br />
+- OFAC Sanctioned Countries: Cuba, Iran, North Korea, Syria, Crimea/Donetsk/Luhansk<br />
+- UN Sanctioned Entities: [As per UN Security Council list]<br />
+- EU Sanctioned Countries: [As per EU sanctions map]<br />
+- FATF High-Risk Jurisdictions: Yemen, Myanmar, Syria, etc. (per FATF public statement)</p>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>STRICTEST_JURISDICTION_LIST = {
+    &quot;CU&quot;, &quot;IR&quot;, &quot;KP&quot;, &quot;SY&quot;,  # OFAC
+    &quot;YE&quot;, &quot;MM&quot;,  # FATF High-Risk
+    # ... (full list in compliance service)
+}
+
+def is_jurisdiction_allowed(country_code: str) -&gt; bool:
+    return country_code.upper() not in STRICTEST_JURISDICTION_LIST
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Testing Requirements</h2>
+<h3>8.1 Smart Contract Tests</h3>
+<p><strong>uLP Token Tests:</strong><br />
+- [ ] NAV calculation accuracy (18 decimal precision)<br />
+- [ ] Deposit mints correct uLP amount<br />
+- [ ] Redeem burns uLP and returns correct Ujamaa Euro (UJEUR) + yield<br />
+- [ ] Value accrual over time (simulate yield)<br />
+- [ ] ERC-3643 compliance (identity verification on transfer)<br />
+- [ ] Forced transfer (regulatory actions)</p>
+<p><strong>UJG Token Tests:</strong><br />
+- [ ] Mint only by Industrial Gateway<br />
+- [ ] Transfer blocked (except forced)<br />
+- [ ] Redemption by Pool Manager only<br />
+- [ ] Liquidation flow (auction winner receives UJG)<br />
+- [ ] ERC-3643NFT compliance</p>
+<p><strong>LiquidityPool Tests:</strong><br />
+- [ ] Asset allocation limits (max 10% per industrial)<br />
+- [ ] Diversification requirements (min 5 assets)<br />
+- [ ] NAV update triggers<br />
+- [ ] Yield statement generation</p>
+<h3>8.2 Backend Tests</h3>
+<p><strong>Authentication Tests:</strong><br />
+- [ ] SIWE signature verification<br />
+- [ ] JWT generation/validation<br />
+- [ ] Session timeout (idle + absolute)<br />
+- [ ] Concurrent session limit (max 5)<br />
+- [ ] Token refresh rotation</p>
+<p><strong>RBAC Tests:</strong><br />
+- [ ] Role-based permission enforcement<br />
+- [ ] Row-level security (multi-tenant isolation)<br />
+- [ ] Permission denial logging</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Migration Timeline</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Phase</th>
+<th>Week</th>
+<th>Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1: Smart Contracts</strong></td>
+<td>Week 1-2</td>
+<td>Implement uLP, UJG, LiquidityPool contracts; Write tests; Security audit</td>
+</tr>
+<tr>
+<td><strong>Phase 2: Backend</strong></td>
+<td>Week 2-4</td>
+<td>Implement SIWE auth, RBAC middleware, new API endpoints, database migrations</td>
+</tr>
+<tr>
+<td><strong>Phase 3: Frontend</strong></td>
+<td>Week 4-6</td>
+<td>Update investor dashboard for uLP, add institutional features, SIWE integration</td>
+</tr>
+<tr>
+<td><strong>Phase 4: Documentation</strong></td>
+<td>Week 6-7</td>
+<td>Update all specs, guides, investor docs</td>
+</tr>
+<tr>
+<td><strong>Phase 5: Testing</strong></td>
+<td>Week 7-8</td>
+<td>Integration testing, UAT, security testing</td>
+</tr>
+<tr>
+<td><strong>Phase 6: Deployment</strong></td>
+<td>Week 8-9</td>
+<td>Testnet deployment, bug fixes</td>
+</tr>
+<tr>
+<td><strong>Phase 7: Production</strong></td>
+<td>Week 10+</td>
+<td>Mainnet deployment, bank integration</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Acceptance Criteria</h2>
+<p><strong>SRS v2.1 Compliance:</strong><br />
+- [ ] All documents updated with uLP/UJG terminology<br />
+- [ ] Authentication uses SIWE + JWT<br />
+- [ ] RBAC implemented per authorization matrix<br />
+- [ ] OWASP Top 10 mitigations verified<br />
+- [ ] NAV calculation matches formula<br />
+- [ ] KYB threshold enforced (€100K)<br />
+- [ ] Strictest jurisdiction list implemented<br />
+- [ ] Fireblocks integration tested (treasury only)<br />
+- [ ] Bank escrow mock implemented (MVP)<br />
+- [ ] All tests passing (&gt;90% coverage)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix A: Quick Reference</h2>
+<p><strong>Token Quick Reference:</strong><br />
+| Token | Standard | Yield Model | Transferable | Use Case |<br />
+|-------|----------|-------------|--------------|----------|<br />
+| <strong>uLP</strong> | ERC-3643 | Value-accrual (NAV increases) | Yes (compliance) | Institutional investment |<br />
+| <strong>UJG</strong> | ERC-3643NFT | N/A (collateral) | No (forced only) | Collateral representation |<br />
+| <strong>UAT</strong> | ERC-3643 | Distribution-based | Yes (compliance) | Retail/asset-specific |</p>
+<p><strong>Auth Quick Reference:</strong><br />
+| Endpoint | Method | Auth | Rate Limit |<br />
+|----------|--------|------|------------|<br />
+| <code>/auth/nonce</code> | GET | None | 10/min |<br />
+| <code>/auth/login</code> | POST | None | 5/hour |<br />
+| <code>/auth/refresh</code> | POST | Refresh token | 10/min |<br />
+| <code>/auth/logout</code> | POST | Access token | 10/min |</p>
+<p><strong>Compliance Quick Reference:</strong><br />
+| Threshold | Requirement |<br />
+|-----------|-------------|<br />
+| &lt; €1K | Not permitted |<br />
+| €1K - €100K | Standard KYC |<br />
+| ≥ €100K | Enhanced KYB |<br />
+| ≥ €1M | Board approval |</p>
+<hr />
+<p><strong>Document End</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

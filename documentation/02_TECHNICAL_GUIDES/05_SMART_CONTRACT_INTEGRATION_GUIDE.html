@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Smart Contract Integration Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Smart Contract Integration Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Smart Contract Integration Guide</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 9, 2026 | <strong>Audience:</strong> Full-Stack Developers, Smart Contract Engineers</p></div>
+
+        <h1>Smart Contract Integration Guide</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Connecting Smart Contracts to Backend &amp; Frontend</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 9, 2026<br />
+<strong>Audience:</strong> Full-Stack Developers, Smart Contract Engineers</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-architecture-overview">Architecture Overview</a></li>
+<li><a href="#2-smart-contracts-week-2">Smart Contracts (Week 2)</a></li>
+<li><a href="#3-backend-integration">Backend Integration</a></li>
+<li><a href="#4-frontend-integration">Frontend Integration</a></li>
+<li><a href="#5-data-flow-examples">Data Flow Examples</a></li>
+<li><a href="#6-security-considerations">Security Considerations</a></li>
+</ol>
+<hr />
+<h1>1. Architecture Overview</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Three-Layer Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                         FRONTEND (React + TypeScript)                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐         │
+│  │  wagmi/viem     │  │  React Query    │  │  Axios HTTP     │         │
+│  │  (Direct SC)    │  │  (State Mgmt)   │  │  (Backend API)  │         │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘         │
+│           │                     │                     │                  │
+│           │ Web3 Calls          │ State Sync          │ REST API         │
+│           │ (Read/Write)        │ (Polling)           │ (CRUD)           │
+└───────────┼─────────────────────┼─────────────────────┼──────────────────┘
+            │                     │                     │
+            ▼                     ▼                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         BACKEND (FastAPI + Python)                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐         │
+│  │  Web3.py        │  │  PostgreSQL     │  │  Business Logic │         │
+│  │  (SC Listener)  │  │  (Data Store)   │  │  (Validation)   │         │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘         │
+│           │                     │                     │                  │
+│           │ Blockchain Events   │ Persistent Data     │ API Endpoints    │
+│           │ Indexing            │ + Indexing          │ + Auth           │
+└───────────┼─────────────────────┼─────────────────────┼──────────────────┘
+            │                     │                     │
+            ▼                     ▼                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      BLOCKCHAIN LAYER (Polygon Amoy)                      │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐         │
+│  │  UjamaaToken    │  │ IdentityReg.    │  │ ComplianceMod.  │         │
+│  │  (ERC-3643)     │  │  (KYC Status)   │  │  (Rules)        │         │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘         │
+│  ┌─────────────────┐                                                    │
+│  │  AssetProof     │                                                    │
+│  │  (Notarization) │                                                    │
+│  └─────────────────┘                                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Connection Strategies</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Use Case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direct Web3</strong></td>
+<td>Wallet connection, transactions</td>
+<td>Frontend → Contract (mint, transfer)</td>
+</tr>
+<tr>
+<td><strong>Backend API</strong></td>
+<td>Data queries, business logic</td>
+<td>Frontend → Backend → DB</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td>Complex flows</td>
+<td>Frontend → Backend → Contract → Frontend</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Smart Contracts (Week 2)</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Contract Addresses (After Deployment)</h2>
+<div class="docs-pre"><code>// frontend/src/web3/addresses.ts
+export const CONTRACT_ADDRESSES = {
+  UjamaaToken: '0x...',           // Deployed Week 2 Day 5
+  IdentityRegistry: '0x...',       // Deployed Week 2 Day 5
+  ComplianceModule: '0x...',       // Deployed Week 2 Day 5
+  AssetProof: '0x...',             // Deployed Week 2 Day 5
+} as const;
+
+export const CHAIN_ID = 80002; // Polygon Amoy
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Contract ABIs</h2>
+<p>After Week 2 deployment, ABIs are generated:</p>
+<div class="docs-pre"><code># ApeWorX generates these automatically
+contracts/artifacts/
+├── UjamaaToken.json
+├── IdentityRegistry.json
+├── ComplianceModule.json
+└── AssetProof.json
+</code></div>
+<p>Copy to frontend:</p>
+<div class="docs-pre"><code>cp artifacts/*.json frontend/src/web3/abi/
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.3 Key Contract Functions</h2>
+<h3>UjamaaToken (ERC-3643)</h3>
+<div class="docs-pre"><code>// Read functions (free, no gas)
+function balanceOf(address account) view returns (uint256)
+function totalSupply() view returns (uint256)
+function getNavPerShare() view returns (uint256)
+
+// Write functions (require gas)
+function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE)
+function burn(uint256 amount) external
+function transfer(address to, uint256 amount) external override
+</code></div>
+<h3>IdentityRegistry</h3>
+<div class="docs-pre"><code>// Read
+function isVerified(address user) external view returns (bool)
+function getKycLevel(address user) external view returns (uint8)
+
+// Write
+function verifyIdentity(address user, uint256 identityId, uint8 kycLevel, string calldata jurisdiction) external onlyRole(ADMIN_ROLE)
+function revokeIdentity(address user) external onlyRole(ADMIN_ROLE)
+</code></div>
+<h3>AssetProof</h3>
+<div class="docs-pre"><code>// Read
+function verify(bytes32 dataHash) external view returns (bool)
+function getTimestamp(bytes32 dataHash) external view returns (uint256)
+function getSubmitter(bytes32 dataHash) external view returns (address)
+
+// Write
+function notarize(bytes32 dataHash) external onlyRole(ORIGINATOR_ROLE) returns (bool)
+</code></div>
+<hr />
+</section>
+<h1>3. Backend Integration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Backend Setup</h2>
+<h3>Install Dependencies</h3>
+<div class="docs-pre"><code># backend/requirements.txt
+web3&gt;=6.0.0
+eth-ape&gt;=0.7.0
+pydantic&gt;=2.0.0
+fastapi&gt;=0.109.0
+uvicorn[standard]&gt;=0.27.0
+asyncpg&gt;=0.29.0
+</code></div>
+<h3>Environment Variables</h3>
+<div class="docs-pre"><code># backend/.env
+# Blockchain
+POLYGON_AMOY_RPC=https://rpc-amoy.polygon.technology/
+POLYGON_CHAIN_ID=80002
+
+# Contract Addresses (from Week 2 deployment)
+UJAMAA_TOKEN_ADDRESS=0x...
+IDENTITY_REGISTRY_ADDRESS=0x...
+COMPLIANCE_MODULE_ADDRESS=0x...
+ASSET_PROOF_ADDRESS=0x...
+
+# Admin
+ADMIN_PRIVATE_KEY=0x...  # Store in secrets manager!
+ADMIN_WALLET_ADDRESS=0x...
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Web3.py Service Layer</h2>
+<h3>File: <code>backend/services/blockchain.py</code></h3>
+<div class="docs-pre"><code>from web3 import Web3
+from web3.middleware import geth_poa_middleware
+import json
+import os
+from typing import Optional
+
+class BlockchainService:
+    def __init__(self):
+        # Connect to Polygon Amoy
+        self.w3 = Web3(Web3.HTTPProvider(os.getenv('POLYGON_AMOY_RPC')))
+        self.w3.middleware_onion.inject(geth_poa_middleware, layer=0)
+
+        # Load contract ABIs
+        with open('artifacts/UjamaaToken.json') as f:
+            self.token_abi = json.load(f)['abi']
+
+        with open('artifacts/IdentityRegistry.json') as f:
+            self.identity_abi = json.load(f)['abi']
+
+        with open('artifacts/AssetProof.json') as f:
+            self.asset_proof_abi = json.load(f)['abi']
+
+        # Initialize contract instances
+        self.token_contract = self.w3.eth.contract(
+            address=os.getenv('UJAMAA_TOKEN_ADDRESS'),
+            abi=self.token_abi
+        )
+
+        self.identity_contract = self.w3.eth.contract(
+            address=os.getenv('IDENTITY_REGISTRY_ADDRESS'),
+            abi=self.identity_abi
+        )
+
+        self.asset_proof_contract = self.w3.eth.contract(
+            address=os.getenv('ASSET_PROOF_ADDRESS'),
+            abi=self.asset_proof_abi
+        )
+
+    # === READ OPERATIONS (No gas) ===
+
+    def get_token_balance(self, wallet_address: str) -&gt; int:
+        &quot;&quot;&quot;Get token balance for a wallet&quot;&quot;&quot;
+        return self.token_contract.functions.balanceOf(wallet_address).call()
+
+    def is_identity_verified(self, wallet_address: str) -&gt; bool:
+        &quot;&quot;&quot;Check if wallet is KYC verified&quot;&quot;&quot;
+        return self.identity_contract.functions.isVerified(wallet_address).call()
+
+    def get_kyc_level(self, wallet_address: str) -&gt; int:
+        &quot;&quot;&quot;Get KYC level (1, 2, or 3)&quot;&quot;&quot;
+        return self.identity_contract.functions.getKycLevel(wallet_address).call()
+
+    def verify_production_hash(self, data_hash: str) -&gt; bool:
+        &quot;&quot;&quot;Verify if production data hash exists on-chain&quot;&quot;&quot;
+        return self.asset_proof_contract.functions.verify(data_hash).call()
+
+    def get_notarization_timestamp(self, data_hash: str) -&gt; int:
+        &quot;&quot;&quot;Get timestamp when hash was notarized&quot;&quot;&quot;
+        return self.asset_proof_contract.functions.getTimestamp(data_hash).call()
+
+    # === WRITE OPERATIONS (Require gas + private key) ===
+
+    def mint_tokens(self, to_address: str, amount: int) -&gt; str:
+        &quot;&quot;&quot;
+        Mint tokens to an address
+        Returns transaction hash
+        &quot;&quot;&quot;
+        admin_key = os.getenv('ADMIN_PRIVATE_KEY')
+        admin_address = os.getenv('ADMIN_WALLET_ADDRESS')
+
+        # Build transaction
+        tx = self.token_contract.functions.mint(
+            to_address,
+            amount
+        ).build_transaction({
+            'from': admin_address,
+            'nonce': self.w3.eth.get_transaction_count(admin_address),
+            'maxFeePerGas': self.w3.eth.gas_price,
+            'maxPriorityFeePerGas': self.w3.eth.gas_price,
+        })
+
+        # Sign and send
+        signed_tx = self.w3.eth.account.sign_transaction(tx, admin_key)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+
+        # Wait for confirmation
+        receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+
+        if receipt['status'] == 1:
+            return tx_hash.hex()
+        else:
+            raise Exception(&quot;Transaction failed&quot;)
+
+    def notarize_production_data(self, data_hash: str, originator_key: str) -&gt; str:
+        &quot;&quot;&quot;
+        Notarize production data hash on-chain
+        Returns transaction hash
+        &quot;&quot;&quot;
+        originator_address = self.w3.eth.account.from_key(originator_key).address
+
+        tx = self.asset_proof_contract.functions.notarize(data_hash).build_transaction({
+            'from': originator_address,
+            'nonce': self.w3.eth.get_transaction_count(originator_address),
+            'maxFeePerGas': self.w3.eth.gas_price,
+            'maxPriorityFeePerGas': self.w3.eth.gas_price,
+        })
+
+        signed_tx = self.w3.eth.account.sign_transaction(tx, originator_key)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+
+        receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+
+        if receipt['status'] == 1:
+            return tx_hash.hex()
+        else:
+            raise Exception(&quot;Notarization failed&quot;)
+
+    # === EVENT LISTENERS ===
+
+    def listen_to_mint_events(self, from_block: int = 'latest'):
+        &quot;&quot;&quot;Listen for mint events (for indexing)&quot;&quot;&quot;
+        mint_event = self.token_contract.events.TokensMinted()
+
+        # Get events
+        events = mint_event.get_logs(fromBlock=from_block)
+
+        for event in events:
+            yield {
+                'to': event['args']['to'],
+                'amount': event['args']['amount'],
+                'tx_hash': event['transactionHash'].hex(),
+                'block_number': event['blockNumber'],
+                'timestamp': self.w3.eth.get_block(event['blockNumber'])['timestamp']
+            }
+
+    def listen_to_notarization_events(self, from_block: int = 'latest'):
+        &quot;&quot;&quot;Listen for notarization events (for indexing)&quot;&quot;&quot;
+        proof_event = self.asset_proof_contract.events.ProofNotarized()
+
+        events = proof_event.get_logs(fromBlock=from_block)
+
+        for event in events:
+            yield {
+                'data_hash': event['args']['dataHash'].hex(),
+                'submitter': event['args']['submitter'],
+                'timestamp': event['args']['timestamp'],
+                'tx_hash': event['transactionHash'].hex(),
+                'block_number': event['blockNumber']
+            }
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 API Endpoints</h2>
+<h3>File: <code>backend/api/investments.py</code></h3>
+<div class="docs-pre"><code>from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import BaseModel
+from typing import Optional
+from backend.services.blockchain import BlockchainService
+from backend.database import db
+
+router = APIRouter()
+blockchain = BlockchainService()
+
+class InvestmentRequest(BaseModel):
+    asset_id: str
+    amount: float  # In USD
+    wallet_address: str
+
+class InvestmentResponse(BaseModel):
+    success: bool
+    tx_hash: Optional[str]
+    tokens_minted: int
+    message: str
+
+@router.post(&quot;/api/v1/investments&quot;, response_model=InvestmentResponse)
+async def create_investment(
+    request: InvestmentRequest,
+    current_user = Depends(get_current_user)  # Auth middleware
+):
+    &quot;&quot;&quot;
+    Create an investment:
+    1. Verify user KYC status on-chain
+    2. Mint tokens to user wallet
+    3. Record investment in database
+    &quot;&quot;&quot;
+
+    # Step 1: Check KYC on blockchain
+    is_verified = blockchain.is_identity_verified(request.wallet_address)
+    if not is_verified:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=&quot;Wallet not KYC verified. Please complete onboarding.&quot;
+        )
+
+    # Step 2: Check KYC level for investment limit
+    kyc_level = blockchain.get_kyc_level(request.wallet_address)
+    max_investment = get_max_investment_for_kyc_level(kyc_level)
+
+    if request.amount &gt; max_investment:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f&quot;Investment exceeds KYC level {kyc_level} limit of ${max_investment}&quot;
+        )
+
+    # Step 3: Mint tokens (backend manages MINTER_ROLE)
+    try:
+        tokens_to_mint = int(request.amount * 10**18)  # Convert to wei
+        tx_hash = blockchain.mint_tokens(request.wallet_address, tokens_to_mint)
+
+        # Step 4: Record in database
+        await db.execute(&quot;&quot;&quot;
+            INSERT INTO investments 
+            (user_id, asset_id, amount_usd, tokens, tx_hash, status)
+            VALUES ($1, $2, $3, $4, $5, 'confirmed')
+        &quot;&quot;&quot;, current_user.id, request.asset_id, request.amount, tokens_to_mint, tx_hash)
+
+        return InvestmentResponse(
+            success=True,
+            tx_hash=tx_hash,
+            tokens_minted=tokens_to_mint,
+            message=&quot;Investment successful&quot;
+        )
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f&quot;Blockchain transaction failed: {str(e)}&quot;
+        )
+
+@router.get(&quot;/api/v1/investments/{wallet_address}/balance&quot;)
+async def get_token_balance(wallet_address: str):
+    &quot;&quot;&quot;Get token balance from blockchain&quot;&quot;&quot;
+    balance = blockchain.get_token_balance(wallet_address)
+    return {
+        &quot;balance&quot;: balance,
+        &quot;balance_formatted&quot;: balance / 10**18,  # Convert from wei
+        &quot;wallet&quot;: wallet_address
+    }
+
+@router.get(&quot;/api/v1/investments/{wallet_address}/verified&quot;)
+async def check_kyc_status(wallet_address: str):
+    &quot;&quot;&quot;Check KYC verification status from blockchain&quot;&quot;&quot;
+    is_verified = blockchain.is_identity_verified(wallet_address)
+    kyc_level = blockchain.get_kyc_level(wallet_address)
+
+    return {
+        &quot;verified&quot;: is_verified,
+        &quot;kyc_level&quot;: kyc_level,
+        &quot;wallet&quot;: wallet_address
+    }
+</code></div>
+<h3>File: <code>backend/api/industrial.py</code></h3>
+<div class="docs-pre"><code>from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import BaseModel
+from typing import Optional, Dict, Any
+from backend.services.blockchain import BlockchainService
+from backend.database import db
+import hashlib
+import json
+
+router = APIRouter()
+blockchain = BlockchainService()
+
+class ProductionData(BaseModel):
+    factory_id: str
+    output: int
+    date: str
+    metadata: Optional[Dict[str, Any]] = None
+
+class NotarizationResponse(BaseModel):
+    success: bool
+    data_hash: str
+    tx_hash: str
+    timestamp: int
+    message: str
+
+@router.post(&quot;/api/v1/industrial/notarize&quot;, response_model=NotarizationResponse)
+async def notarize_production(
+    data: ProductionData,
+    current_user = Depends(get_current_user)
+):
+    &quot;&quot;&quot;
+    Notarize production data:
+    1. Calculate SHA-256 hash
+    2. Submit to AssetProof contract
+    3. Store encrypted data in database
+    &quot;&quot;&quot;
+
+    # Verify user has ORIGINATOR role
+    if current_user.role != 'ORIGINATOR':
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=&quot;Only originators can notarize production data&quot;
+        )
+
+    # Step 1: Calculate hash
+    data_dict = data.dict(sort_keys=True)
+    data_json = json.dumps(data_dict)
+    data_hash = hashlib.sha256(data_json.encode()).hexdigest()
+
+    # Step 2: Check if already notarized
+    exists = blockchain.verify_production_hash(f&quot;0x{data_hash}&quot;)
+    if exists:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=&quot;Data hash already notarized&quot;
+        )
+
+    # Step 3: Notarize on blockchain
+    try:
+        originator_key = get_originator_private_key(current_user.id)  # From secure vault
+        tx_hash = blockchain.notarize_production_data(data_hash, originator_key)
+
+        # Get timestamp from contract
+        timestamp = blockchain.get_notarization_timestamp(f&quot;0x{data_hash}&quot;)
+
+        # Step 4: Store in database (encrypted)
+        encrypted_data = encrypt_production_data(data_dict)
+        await db.execute(&quot;&quot;&quot;
+            INSERT INTO industrial_proofs 
+            (factory_id, data_hash, transaction_hash, data_encrypted, submitted_by, created_at)
+            VALUES ($1, $2, $3, $4, $5, NOW())
+        &quot;&quot;&quot;, data.factory_id, f&quot;0x{data_hash}&quot;, tx_hash, encrypted_data, current_user.id)
+
+        return NotarizationResponse(
+            success=True,
+            data_hash=f&quot;0x{data_hash}&quot;,
+            tx_hash=tx_hash,
+            timestamp=timestamp,
+            message=&quot;Production data notarized successfully&quot;
+        )
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f&quot;Notarization failed: {str(e)}&quot;
+        )
+
+@router.get(&quot;/api/v1/industrial/verify/{data_hash}&quot;)
+async def verify_notarization(data_hash: str):
+    &quot;&quot;&quot;Verify production data notarization&quot;&quot;&quot;
+    exists = blockchain.verify_production_hash(data_hash)
+
+    if not exists:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=&quot;Hash not found on blockchain&quot;
+        )
+
+    timestamp = blockchain.get_notarization_timestamp(data_hash)
+    submitter = blockchain.asset_proof_contract.functions.getSubmitter(data_hash).call()
+
+    return {
+        &quot;exists&quot;: exists,
+        &quot;timestamp&quot;: timestamp,
+        &quot;submitter&quot;: submitter,
+        &quot;data_hash&quot;: data_hash
+    }
+
+@router.get(&quot;/api/v1/industrial/proofs/{user_id}&quot;)
+async def get_user_proofs(user_id: str):
+    &quot;&quot;&quot;Get all notarized proofs for a user (from database)&quot;&quot;&quot;
+    proofs = await db.fetch_all(&quot;&quot;&quot;
+        SELECT data_hash, transaction_hash, factory_id, created_at
+        FROM industrial_proofs
+        WHERE submitted_by = $1
+        ORDER BY created_at DESC
+    &quot;&quot;&quot;, user_id)
+
+    return {&quot;proofs&quot;: proofs}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.4 Database Schema</h2>
+<h3>File: <code>backend/database/schema.sql</code></h3>
+<div class="docs-pre"><code>-- Investments table (tracks token minting)
+CREATE TABLE investments (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id),
+    asset_id UUID REFERENCES assets(id),
+    amount_usd DECIMAL(18, 2) NOT NULL,
+    tokens BIGINT NOT NULL,  -- Token amount in wei
+    tx_hash VARCHAR(66) NOT NULL,  -- Blockchain transaction hash
+    status VARCHAR(20) NOT NULL,  -- pending, confirmed, failed
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_investments_user ON investments(user_id);
+CREATE INDEX idx_investments_tx ON investments(tx_hash);
+
+-- Industrial proofs table (tracks notarizations)
+CREATE TABLE industrial_proofs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    factory_id VARCHAR(100) NOT NULL,
+    data_hash VARCHAR(66) NOT NULL UNIQUE,  -- SHA-256 hash
+    transaction_hash VARCHAR(66) NOT NULL,  -- Blockchain tx hash
+    data_encrypted TEXT NOT NULL,  -- Encrypted production data
+    submitted_by UUID REFERENCES users(id),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_proofs_hash ON industrial_proofs(data_hash);
+CREATE INDEX idx_proofs_submitter ON industrial_proofs(submitted_by);
+
+-- Blockchain events log (for indexing)
+CREATE TABLE blockchain_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type VARCHAR(50) NOT NULL,  -- TokensMinted, ProofNotarized, etc.
+    contract_address VARCHAR(42) NOT NULL,
+    tx_hash VARCHAR(66) NOT NULL,
+    block_number BIGINT NOT NULL,
+    event_data JSONB NOT NULL,
+    indexed_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_events_type ON blockchain_events(event_type);
+CREATE INDEX idx_events_tx ON blockchain_events(tx_hash);
+</code></div>
+<hr />
+</section>
+<h1>4. Frontend Integration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Web3 Configuration</h2>
+<h3>File: <code>frontend/src/web3/config.ts</code></h3>
+<div class="docs-pre"><code>import { configureChains, createConfig } from 'wagmi';
+import { polygonAmoy } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+
+export const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [polygonAmoy],
+  [publicProvider()]
+);
+
+export const config = createConfig({
+  autoConnect: true,
+  publicClient,
+  chains,
+});
+</code></div>
+<h3>File: <code>frontend/src/web3/addresses.ts</code></h3>
+<div class="docs-pre"><code>export const CONTRACT_ADDRESSES = {
+  UjamaaToken: '0x1234567890abcdef1234567890abcdef12345678',
+  IdentityRegistry: '0x2345678901abcdef2345678901abcdef23456789',
+  ComplianceModule: '0x3456789012abcdef3456789012abcdef34567890',
+  AssetProof: '0x4567890123abcdef4567890123abcdef45678901',
+} as const;
+
+export const EXPLORER_URL = 'https://amoy.polygonscan.com/tx/';
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Custom Hooks</h2>
+<h3>File: <code>frontend/src/hooks/useUjamaaToken.ts</code></h3>
+<div class="docs-pre"><code>import { useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
+import { useQueryClient } from '@tanstack/react-query';
+import UJAMAA_TOKEN_ABI from '../abi/UjamaaToken.json';
+import { CONTRACT_ADDRESSES } from '../web3/addresses';
+
+export function useUjamaaToken() {
+  const queryClient = useQueryClient();
+
+  // === READ OPERATIONS ===
+
+  const { data: balance, refetch: refetchBalance } = useContractRead({
+    address: CONTRACT_ADDRESSES.UjamaaToken,
+    abi: UJAMAA_TOKEN_ABI,
+    functionName: 'balanceOf',
+    args: [userAddress], // From useAccount()
+    watch: true, // Auto-refetch on block change
+  });
+
+  const { data: totalSupply } = useContractRead({
+    address: CONTRACT_ADDRESSES.UjamaaToken,
+    abi: UJAMAA_TOKEN_ABI,
+    functionName: 'totalSupply',
+  });
+
+  const { data: navPerShare } = useContractRead({
+    address: CONTRACT_ADDRESSES.UjamaaToken,
+    abi: UJAMAA_TOKEN_ABI,
+    functionName: 'getNavPerShare',
+  });
+
+  // === WRITE OPERATIONS ===
+
+  const {
+    write: mint,
+    data: mintTx,
+    isLoading: isMintLoading,
+    error: mintError,
+  } = useContractWrite({
+    address: CONTRACT_ADDRESSES.UjamaaToken,
+    abi: UJAMAA_TOKEN_ABI,
+    functionName: 'mint',
+  });
+
+  const {
+    isLoading: isConfirming,
+    isSuccess: isMintSuccess,
+    data: mintReceipt,
+  } = useWaitForTransaction({
+    hash: mintTx?.hash,
+  });
+
+  // === HELPER FUNCTIONS ===
+
+  const handleMint = async (toAddress: string, amount: number) =&gt; {
+    try {
+      const tokens = BigInt(amount * 1e18); // Convert to wei
+      await mint({ args: [toAddress, tokens] });
+
+      // Wait for confirmation
+      if (mintReceipt) {
+        // Invalidate queries to refresh data
+        queryClient.invalidateQueries({ queryKey: ['balance'] });
+        queryClient.invalidateQueries({ queryKey: ['totalSupply'] });
+
+        // Call backend to record investment
+        await fetch('/api/v1/investments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            toAddress,
+            amount,
+            txHash: mintReceipt.transactionHash,
+          }),
+        });
+      }
+
+      return { success: true, hash: mintReceipt?.transactionHash };
+    } catch (error) {
+      console.error('Mint failed:', error);
+      return { success: false, error };
+    }
+  };
+
+  return {
+    // Read
+    balance,
+    totalSupply,
+    navPerShare,
+
+    // Write
+    mint: handleMint,
+    isMintLoading,
+    isConfirming,
+    isMintSuccess,
+    mintError,
+
+    // Helpers
+    refetchBalance,
+  };
+}
+</code></div>
+<h3>File: <code>frontend/src/hooks/useIdentity.ts</code></h3>
+<div class="docs-pre"><code>import { useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
+import IDENTITY_REGISTRY_ABI from '../abi/IdentityRegistry.json';
+import { CONTRACT_ADDRESSES } from '../web3/addresses';
+
+export function useIdentity() {
+  // Check if wallet is verified
+  const { data: isVerified } = useContractRead({
+    address: CONTRACT_ADDRESSES.IdentityRegistry,
+    abi: IDENTITY_REGISTRY_ABI,
+    functionName: 'isVerified',
+    args: [userAddress],
+  });
+
+  // Get KYC level
+  const { data: kycLevel } = useContractRead({
+    address: CONTRACT_ADDRESSES.IdentityRegistry,
+    abi: IDENTITY_REGISTRY_ABI,
+    functionName: 'getKycLevel',
+    args: [userAddress],
+  });
+
+  // Get jurisdiction
+  const { data: jurisdiction } = useContractRead({
+    address: CONTRACT_ADDRESSES.IdentityRegistry,
+    abi: IDENTITY_REGISTRY_ABI,
+    functionName: 'getJurisdiction',
+    args: [userAddress],
+  });
+
+  return {
+    isVerified: isVerified ?? false,
+    kycLevel: kycLevel ?? 0,
+    jurisdiction: jurisdiction ?? 'Unknown',
+    isLoading: !isVerified &amp;&amp; !kycLevel,
+  };
+}
+</code></div>
+<h3>File: <code>frontend/src/hooks/useAssetProof.ts</code></h3>
+<div class="docs-pre"><code>import { useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
+import ASSET_PROOF_ABI from '../abi/AssetProof.json';
+import { CONTRACT_ADDRESSES } from '../web3/addresses';
+
+export function useAssetProof() {
+  // Verify hash
+  const { data: isVerified } = useContractRead({
+    address: CONTRACT_ADDRESSES.AssetProof,
+    abi: ASSET_PROOF_ABI,
+    functionName: 'verify',
+    args: [dataHash],
+  });
+
+  // Get timestamp
+  const { data: timestamp } = useContractRead({
+    address: CONTRACT_ADDRESSES.AssetProof,
+    abi: ASSET_PROOF_ABI,
+    functionName: 'getTimestamp',
+    args: [dataHash],
+  });
+
+  // Notarize
+  const {
+    write: notarize,
+    data: notarizeTx,
+    isLoading: isNotarizeLoading,
+  } = useContractWrite({
+    address: CONTRACT_ADDRESSES.AssetProof,
+    abi: ASSET_PROOF_ABI,
+    functionName: 'notarize',
+  });
+
+  const {
+    isLoading: isConfirming,
+    isSuccess: isNotarizeSuccess,
+  } = useWaitForTransaction({
+    hash: notarizeTx?.hash,
+  });
+
+  return {
+    isVerified: isVerified ?? false,
+    timestamp,
+    notarize,
+    isNotarizeLoading,
+    isConfirming,
+    isNotarizeSuccess,
+    txHash: notarizeTx?.hash,
+  };
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 React Components</h2>
+<h3>Investment Flow Component</h3>
+<h3>File: <code>frontend/src/components/invest/InvestForm.tsx</code></h3>
+<div class="docs-pre"><code>import { useState } from 'react';
+import { useAccount } from 'wagmi';
+import { useUjamaaToken } from '../../hooks/useUjamaaToken';
+import { useIdentity } from '../../hooks/useIdentity';
+import { Button, Input, Card } from '../ui';
+import { getExplorerUrl } from '../../utils/web3';
+
+interface InvestFormProps {
+  assetId: string;
+  assetName: string;
+  onSuccess?: () =&gt; void;
+}
+
+export function InvestForm({ assetId, assetName, onSuccess }: InvestFormProps) {
+  const { address, isConnected } = useAccount();
+  const { mint, isMintLoading, isConfirming, isMintSuccess, mintError } = useUjamaaToken();
+  const { isVerified, kycLevel } = useIdentity();
+  const [amount, setAmount] = useState('');
+
+  const handleInvest = async () =&gt; {
+    if (!isConnected) {
+      alert('Please connect wallet first');
+      return;
+    }
+
+    if (!isVerified) {
+      alert('Please complete KYC verification first');
+      return;
+    }
+
+    const result = await mint(address!, parseFloat(amount));
+
+    if (result.success) {
+      onSuccess?.();
+      setAmount('');
+    }
+  };
+
+  // Check investment limits based on KYC level
+  const getMaxInvestment = () =&gt; {
+    switch (kycLevel) {
+      case 1: return 10000;
+      case 2: return 100000;
+      case 3: return Infinity;
+      default: return 0;
+    }
+  };
+
+  const maxInvestment = getMaxInvestment();
+
+  return (
+    &lt;Card padding=&quot;lg&quot;&gt;
+      &lt;h3 className=&quot;text-lg font-bold mb-4&quot;&gt;Invest in {assetName}&lt;/h3&gt;
+
+      {!isConnected &amp;&amp; (
+        &lt;div className=&quot;text-center py-4&quot;&gt;
+          &lt;p className=&quot;text-gray-600 mb-4&quot;&gt;Connect wallet to invest&lt;/p&gt;
+          &lt;ConnectButton /&gt;
+        &lt;/div&gt;
+      )}
+
+      {!isVerified &amp;&amp; isConnected &amp;&amp; (
+        &lt;div className=&quot;text-center py-4&quot;&gt;
+          &lt;p className=&quot;text-orange-600 mb-4&quot;&gt;KYC verification required&lt;/p&gt;
+          &lt;Button onClick={() =&gt; navigate('/onboarding/investor')}&gt;
+            Complete KYC
+          &lt;/Button&gt;
+        &lt;/div&gt;
+      )}
+
+      {isVerified &amp;&amp; isConnected &amp;&amp; (
+        &lt;div className=&quot;space-y-4&quot;&gt;
+          &lt;Input
+            label=&quot;Investment Amount (USD)&quot;
+            type=&quot;number&quot;
+            value={amount}
+            onChange={(e) =&gt; setAmount(e.target.value)}
+            placeholder=&quot;1000&quot;
+            max={maxInvestment}
+            helperText={kycLevel &lt; 3 ? `Max: $${maxInvestment.toLocaleString()} (KYC Level ${kycLevel})` : 'No limit'}
+          /&gt;
+
+          &lt;Button
+            onClick={handleInvest}
+            loading={isMintLoading || isConfirming}
+            disabled={!amount || parseFloat(amount) &gt; maxInvestment}
+            fullWidth
+          &gt;
+            {isConfirming ? 'Confirming on Blockchain...' : 'Invest Now'}
+          &lt;/Button&gt;
+
+          {mintError &amp;&amp; (
+            &lt;div className=&quot;text-red-600 text-sm&quot;&gt;
+              Error: {mintError.message}
+            &lt;/div&gt;
+          )}
+
+          {isMintSuccess &amp;&amp; (
+            &lt;div className=&quot;bg-green-50 dark:bg-green-900/20 border border-green-200 p-4 rounded&quot;&gt;
+              &lt;p className=&quot;text-green-800 font-semibold&quot;&gt;✓ Investment Successful!&lt;/p&gt;
+              &lt;a
+                href={getExplorerUrl(mintTxHash!)}
+                target=&quot;_blank&quot;
+                rel=&quot;noopener noreferrer&quot;
+                className=&quot;text-green-600 hover:underline text-sm&quot;
+              &gt;
+                View on Polygonscan →
+              &lt;/a&gt;
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
+      )}
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<h3>Notarization Component</h3>
+<h3>File: <code>frontend/src/components/industrial/NotarizeForm.tsx</code></h3>
+<div class="docs-pre"><code>import { useState } from 'react';
+import { useAssetProof } from '../../hooks/useAssetProof';
+import { Button, Card, Input } from '../ui';
+import { calculateSHA256, getExplorerUrl } from '../../utils/web3';
+
+export function NotarizeForm() {
+  const { notarize, isNotarizeLoading, isConfirming, isNotarizeSuccess, txHash } = useAssetProof();
+  const [data, setData] = useState('');
+  const [hash, setHash] = useState('');
+  const [step, setStep] = useState&lt;'input' | 'review' | 'submit'&gt;('input');
+
+  const handleCalculateHash = async () =&gt; {
+    const calculatedHash = await calculateSHA256(data);
+    setHash(calculatedHash);
+    setStep('review');
+  };
+
+  const handleSubmit = async () =&gt; {
+    try {
+      // Call backend API first
+      const response = await fetch('/api/v1/industrial/notarize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: JSON.parse(data) }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStep('submit');
+      }
+    } catch (error) {
+      console.error('Notarization failed:', error);
+    }
+  };
+
+  return (
+    &lt;Card padding=&quot;lg&quot;&gt;
+      &lt;h3 className=&quot;text-lg font-bold mb-4&quot;&gt;Notarize Production Data&lt;/h3&gt;
+
+      {step === 'input' &amp;&amp; (
+        &lt;div className=&quot;space-y-4&quot;&gt;
+          &lt;div&gt;
+            &lt;label className=&quot;block text-sm font-medium mb-2&quot;&gt;
+              Production Data (JSON)
+            &lt;/label&gt;
+            &lt;textarea
+              className=&quot;w-full p-3 border rounded-lg font-mono text-sm&quot;
+              rows={8}
+              placeholder='{&quot;factory_id&quot;: &quot;GDIZ-001&quot;, &quot;output&quot;: 1000, &quot;date&quot;: &quot;2026-03-09&quot;}'
+              value={data}
+              onChange={(e) =&gt; setData(e.target.value)}
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;Button onClick={handleCalculateHash} disabled={!data} fullWidth&gt;
+            Calculate Hash
+          &lt;/Button&gt;
+        &lt;/div&gt;
+      )}
+
+      {step === 'review' &amp;&amp; (
+        &lt;div className=&quot;space-y-4&quot;&gt;
+          &lt;div className=&quot;p-4 bg-gray-50 dark:bg-gray-800 rounded-lg&quot;&gt;
+            &lt;label className=&quot;block text-sm font-medium mb-2&quot;&gt;SHA-256 Hash&lt;/label&gt;
+            &lt;code className=&quot;block p-2 bg-white dark:bg-gray-900 rounded text-xs break-all&quot;&gt;
+              {hash}
+            &lt;/code&gt;
+          &lt;/div&gt;
+
+          &lt;div className=&quot;flex gap-2&quot;&gt;
+            &lt;Button variant=&quot;ghost&quot; onClick={() =&gt; setStep('input')}&gt;
+              Back
+            &lt;/Button&gt;
+            &lt;Button onClick={handleSubmit} loading={isNotarizeLoading} fullWidth&gt;
+              Notarize on Blockchain
+            &lt;/Button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      )}
+
+      {step === 'submit' &amp;&amp; txHash &amp;&amp; (
+        &lt;div className=&quot;text-center py-8&quot;&gt;
+          &lt;div className=&quot;w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4&quot;&gt;
+            &lt;CheckCircle className=&quot;w-8 h-8 text-green-600&quot; /&gt;
+          &lt;/div&gt;
+          &lt;h4 className=&quot;text-xl font-bold mb-2&quot;&gt;Notarization Successful!&lt;/h4&gt;
+          &lt;p className=&quot;text-gray-600 mb-4&quot;&gt;Your production data has been recorded on Polygon Amoy&lt;/p&gt;
+          &lt;a
+            href={getExplorerUrl(txHash)}
+            target=&quot;_blank&quot;
+            rel=&quot;noopener noreferrer&quot;
+            className=&quot;text-ujamaa-primary hover:underline&quot;
+          &gt;
+            View Transaction →
+          &lt;/a&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/Card&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<h1>5. Data Flow Examples</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Investment Flow (Complete)</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                         INVESTMENT FLOW                                   │
+│                                                                           │
+│  1. User connects wallet (MetaMask)                                      │
+│     Frontend: useAccount() → address                                     │
+│                                                                           │
+│  2. User clicks &quot;Invest&quot; ($1000)                                         │
+│     Frontend: InvestForm.tsx                                             │
+│                                                                           │
+│  3. Check KYC on-chain                                                   │
+│     Frontend → Blockchain: isVerified(address)                           │
+│     Result: true (KYC Level 2)                                           │
+│                                                                           │
+│  4. Mint tokens (backend has MINTER_ROLE)                                │
+│     Frontend → Backend API: POST /api/v1/investments                     │
+│     Backend → Blockchain: token.mint(address, 1000 * 1e18)               │
+│     Blockchain: Transaction submitted (tx_hash: 0x...)                   │
+│     Backend → PostgreSQL: INSERT investment record                       │
+│     Backend → Frontend: { success: true, tx_hash: &quot;0x...&quot; }              │
+│                                                                           │
+│  5. Wait for confirmation                                                │
+│     Frontend: useWaitForTransaction({ hash })                            │
+│     Blockchain: Block confirmed (~2-5 seconds on Amoy)                   │
+│                                                                           │
+│  6. Update UI                                                            │
+│     Frontend: Query invalidation → refresh balance                       │
+│     Frontend: Show success message with Polygonscan link                 │
+│                                                                           │
+│  7. User sees tokens in dashboard                                        │
+│     Frontend → Blockchain: token.balanceOf(address)                      │
+│     Display: 1000 tokens                                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Notarization Flow (Complete)</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                       NOTARIZATION FLOW                                   │
+│                                                                           │
+│  1. Industrial user enters production data                               │
+│     Frontend: NotarizeForm.tsx                                           │
+│     Input: {&quot;factory_id&quot;: &quot;GDIZ-001&quot;, &quot;output&quot;: 1000}                    │
+│                                                                           │
+│  2. Calculate SHA-256 hash                                               │
+│     Frontend: calculateSHA256(data) → &quot;0x7d8f...&quot;                        │
+│                                                                           │
+│  3. Submit to backend                                                    │
+│     Frontend → Backend: POST /api/v1/industrial/notarize                 │
+│     Body: { data: {...} }                                                │
+│                                                                           │
+│  4. Backend notarizes on-chain                                           │
+│     Backend → Blockchain: assetProof.notarize(&quot;0x7d8f...&quot;)               │
+│     Blockchain: Transaction submitted                                    │
+│     Backend → PostgreSQL: INSERT proof record (encrypted data)           │
+│     Backend → Frontend: { success: true, tx_hash: &quot;0x...&quot;, hash: &quot;0x...&quot; }│
+│                                                                           │
+│  5. Wait for confirmation                                                │
+│     Frontend: useWaitForTransaction()                                    │
+│     Blockchain: Block confirmed                                          │
+│                                                                           │
+│  6. Display success                                                      │
+│     Frontend: Show success with Polygonscan link                         │
+│     Frontend: Add to notarization history                                │
+│                                                                           │
+│  7. Anyone can verify later                                              │
+│     Frontend → Backend: GET /api/v1/industrial/verify/0x7d8f...          │
+│     Backend → Blockchain: assetProof.verify(&quot;0x7d8f...&quot;) → true          │
+│     Backend → Frontend: { exists: true, timestamp: 1234567890 }          │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<h1>6. Security Considerations</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Private Key Management</h2>
+<p><strong>NEVER store private keys in:</strong><br />
+- ❌ Frontend code<br />
+- ❌ Environment variables (in production)<br />
+- ❌ Database<br />
+- ❌ Git repository</p>
+<p><strong>DO store private keys in:</strong><br />
+- ✅ HashiCorp Vault<br />
+- ✅ AWS Secrets Manager<br />
+- ✅ Azure Key Vault<br />
+- ✅ GCP Secret Manager</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Transaction Signing</h2>
+<p><strong>Backend Signing (for MINTER_ROLE):</strong></p>
+<div class="docs-pre"><code># Use secure key management
+from azure.keyvault.keys import KeyClient
+from web3 import Account
+
+# Get key from vault (not environment!)
+vault_client = KeyClient(vault_url=os.getenv('VAULT_URL'))
+private_key = vault_client.get_secret('admin-signing-key')
+
+# Sign transaction
+signed_tx = w3.eth.account.sign_transaction(tx, private_key)
+</code></div>
+<p><strong>Frontend Signing (user transactions):</strong></p>
+<div class="docs-pre"><code>// Users sign with their own wallets (MetaMask)
+// Backend never sees user private keys
+const { write } = useContractWrite({
+  // wagmi handles signing via browser wallet
+});
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.3 Access Control</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Role</th>
+<th>Who Has It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mint()</code></td>
+<td>MINTER_ROLE</td>
+<td>Backend service</td>
+</tr>
+<tr>
+<td><code>verifyIdentity()</code></td>
+<td>ADMIN_ROLE</td>
+<td>Admin users</td>
+</tr>
+<tr>
+<td><code>notarize()</code></td>
+<td>ORIGINATOR_ROLE</td>
+<td>Industrial partners</td>
+</tr>
+<tr>
+<td><code>transfer()</code></td>
+<td>Any verified user</td>
+<td>Investors</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.4 Rate Limiting</h2>
+<div class="docs-pre"><code># backend/middleware/rate_limit.py
+from fastapi import Request, HTTPException
+from slowapi import Limiter
+
+limiter = Limiter(key_func=get_remote_address)
+
+@router.post(&quot;/api/v1/investments&quot;)
+@limiter.limit(&quot;10/minute&quot;)  # Max 10 investments per minute
+async def create_investment(request: Request, ...):
+    ...
+</code></div>
+<hr />
+<p><strong>Document Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> March 9, 2026<br />
+<strong>Next Review:</strong> After Week 2 deployment</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

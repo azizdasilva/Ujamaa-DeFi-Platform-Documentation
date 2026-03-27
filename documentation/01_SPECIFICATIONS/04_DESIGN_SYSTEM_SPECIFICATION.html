@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DeFi Platform - Design & Technology Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DeFi Platform - Design & Technology Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DeFi Platform - Design & Technology Specification</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (Design-Only) | <strong>Last Updated:</strong> March 19, 2026</p></div>
+
+        <h1>UJAMAA DeFi Platform - Design &amp; Technology Specification</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 2.0 (Design-Only)<br />
+<strong>Last Updated:</strong> March 19, 2026<br />
+<strong>Purpose:</strong> Reusable design system and technology blueprint for future projects</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p>This document defines the <strong>design system, technology stack, and architectural patterns</strong> for building modern Web3 applications. It is <strong>content-agnostic</strong> and can be adapted to any project requiring:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Institutional-grade UI/UX</li>
+<li>Web3/blockchain integration</li>
+<li>Multi-role user dashboards</li>
+<li>Real-time data visualization</li>
+<li>Internationalization support</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Technology Stack</h2>
+<h3>1.1 Core Framework</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>React</td>
+<td>19.x</td>
+<td>UI framework</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>5.9.x</td>
+<td>Type safety</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>React Router</td>
+<td>7.x</td>
+<td>Client-side routing</td>
+</tr>
+<tr>
+<td><strong>Build Tool</strong></td>
+<td>Vite</td>
+<td>7.x</td>
+<td>Development &amp; bundling</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 Styling &amp; UI</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tailwind CSS</td>
+<td>4.x</td>
+<td>Utility-first CSS framework</td>
+</tr>
+<tr>
+<td>Lucide React</td>
+<td>Latest</td>
+<td>Icon library</td>
+</tr>
+<tr>
+<td>Framer Motion</td>
+<td>Latest</td>
+<td>Animation library</td>
+</tr>
+<tr>
+<td>Recharts</td>
+<td>Latest</td>
+<td>Data visualization</td>
+</tr>
+<tr>
+<td>Class Variance Authority</td>
+<td>Latest</td>
+<td>Component variants</td>
+</tr>
+<tr>
+<td>clsx + tailwind-merge</td>
+<td>Latest</td>
+<td>Conditional class utilities</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.3 Web3 Integration</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wagmi</td>
+<td>2.x</td>
+<td>React hooks for Ethereum</td>
+</tr>
+<tr>
+<td>Viem</td>
+<td>2.x</td>
+<td>TypeScript Ethereum interface</td>
+</tr>
+<tr>
+<td>RainbowKit</td>
+<td>2.x</td>
+<td>Wallet connection UI</td>
+</tr>
+<tr>
+<td>TanStack React Query</td>
+<td>5.x</td>
+<td>Data fetching &amp; caching</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.4 Supporting Libraries</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Axios</td>
+<td>1.x</td>
+<td>HTTP client</td>
+</tr>
+<tr>
+<td>i18next</td>
+<td>25.x</td>
+<td>Internationalization</td>
+</tr>
+<tr>
+<td>React i18next</td>
+<td>16.x</td>
+<td>React i18n bindings</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.5 Development Tools</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESLint</td>
+<td>9.x</td>
+<td>Code linting</td>
+</tr>
+<tr>
+<td>Vitest</td>
+<td>4.x</td>
+<td>Testing framework</td>
+</tr>
+<tr>
+<td>Testing Library</td>
+<td>6.x</td>
+<td>Component testing</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Design System</h2>
+<h3>2.1 Color Palette</h3>
+<div class="docs-pre"><code>colors: {
+  // Primary brand colors
+  primary: '#16A34A',      // Main brand color
+  secondary: '#0D9488',    // Supporting brand color
+  accent: '#F59E0B',       // Highlight/emphasis color
+
+  // Neutrals
+  dark: '#1F2937',         // Dark text/background
+  light: '#F9FAFB',        // Light background
+
+  // Semantic colors
+  success: '#10B981',      // Success states
+  warning: '#F59E0B',      // Warning states
+  error: '#EF4444',        // Error states
+  info: '#3B82F6',         // Information states
+}
+</code></div>
+<p><strong>Customization:</strong> Replace hex values to match your brand identity.</p>
+<h3>2.2 Typography</h3>
+<div class="docs-pre"><code>fontFamily: {
+  sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+  heading: ['Plus Jakarta Sans', 'Poppins', 'system-ui', 'sans-serif'],
+}
+</code></div>
+<p><strong>Font Size Scale (Responsive):</strong></p>
+<div class="docs-pre"><code>h1: clamp(2.5rem, 5vw, 4.5rem)
+h2: clamp(2rem, 4vw, 3.5rem)
+h3: clamp(1.5rem, 3vw, 2rem)
+</code></div>
+<h3>2.3 Shadows</h3>
+<div class="docs-pre"><code>boxShadow: {
+  'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+  'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.05)',
+  'glow-primary': '0 0 20px rgba(22, 163, 74, 0.3)',
+  'glow-secondary': '0 0 20px rgba(13, 148, 136, 0.3)',
+}
+</code></div>
+<h3>2.4 Animations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Duration</th>
+<th>Effect</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>6s</td>
+<td>Vertical floating</td>
+<td>Floating badges, decorative elements</td>
+</tr>
+<tr>
+<td><code>pulse-slow</code></td>
+<td>4s</td>
+<td>Slow pulse</td>
+<td>Loading states, attention</td>
+</tr>
+<tr>
+<td><code>fadeIn</code></td>
+<td>0.6s</td>
+<td>Fade in + slide up</td>
+<td>Page transitions, content reveal</td>
+</tr>
+<tr>
+<td><code>gradient-x</code></td>
+<td>20s</td>
+<td>Horizontal gradient</td>
+<td>Background animations</td>
+</tr>
+<tr>
+<td><code>gradient-y</code></td>
+<td>25s</td>
+<td>Vertical gradient</td>
+<td>Background animations</td>
+</tr>
+<tr>
+<td><code>carousel</code></td>
+<td>30s</td>
+<td>Horizontal scroll</td>
+<td>Logo carousels</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.5 Component Variants</h3>
+<h4>Button</h4>
+<div class="docs-pre"><code>variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white'
+size: 'sm' | 'md' | 'lg' | 'xl'
+</code></div>
+<h4>Badge</h4>
+<div class="docs-pre"><code>variant: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
+size: 'sm' | 'md' | 'lg'
+</code></div>
+<h4>Card</h4>
+<div class="docs-pre"><code>padding: 'sm' | 'md' | 'lg'
+hover: boolean  // Enables hover effects
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Architecture Patterns</h2>
+<h3>3.1 Project Structure</h3>
+<div class="docs-pre"><code>src/
+├── api/                  # API client &amp; types
+│   ├── client.ts         # HTTP client configuration
+│   └── types.ts          # API response types
+├── assets/               # Static assets (images, fonts)
+├── components/           # React components
+│   ├── features/         # Feature-specific components
+│   ├── layout/           # Layout components (Header, Footer, etc.)
+│   ├── ui/               # Reusable UI components
+│   └── [domain]/         # Domain-specific components (e.g., web3)
+├── contexts/             # React contexts
+│   ├── AuthContext.tsx   # Authentication state
+│   ├── DataContext.tsx   # Application data
+│   └── ThemeContext.tsx  # Theme state
+├── hooks/                # Custom hooks
+│   ├── contracts/        # Smart contract hooks
+│   └── [domain]/         # Domain-specific hooks
+├── i18n/                 # Internationalization
+│   ├── locales/          # Translation files
+│   │   ├── en/
+│   │   └── [lang]/
+│   └── config.ts         # i18n configuration
+├── lib/                  # Utility libraries
+│   └── utils.ts          # Helper functions
+├── pages/                # Page components
+│   ├── [module]/         # Module-specific pages
+│   └── [page].tsx
+├── types/                # TypeScript type definitions
+│   └── [domain].ts
+├── utils/                # Helper functions
+│   └── [utility].ts
+├── [domain]/             # Domain-specific modules
+│   ├── config.ts
+│   ├── providers.tsx
+│   └── [domain-specific]/
+├── App.tsx               # Main application
+├── App.css               # App-specific styles
+├── index.css             # Global styles
+└── main.tsx              # Entry point
+</code></div>
+<h3>3.2 Context Hierarchy</h3>
+<div class="docs-pre"><code>&lt;RootProvider&gt;              // Theme, i18n
+  └── &lt;DomainProvider&gt;      // Domain-specific providers (e.g., Web3)
+        └── &lt;AuthProvider&gt;  // Authentication &amp; authorization
+              └── &lt;DataProvider&gt;  // Application data
+                    └── &lt;App&gt;     // Routes &amp; pages
+</code></div>
+<h3>3.3 State Management Strategy</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>State Type</th>
+<th>Solution</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Domain State</strong></td>
+<td>Domain-specific provider</td>
+<td><code>domain/providers.tsx</code></td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>React Context</td>
+<td><code>contexts/AuthContext.tsx</code></td>
+</tr>
+<tr>
+<td><strong>Remote Data</strong></td>
+<td>React Query</td>
+<td>Via domain hooks</td>
+</tr>
+<tr>
+<td><strong>UI State</strong></td>
+<td>React <code>useState</code></td>
+<td>Component-level</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Context + localStorage</td>
+<td><code>contexts/ThemeContext.tsx</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.4 Routing Pattern</h3>
+<div class="docs-pre"><code>// Route categories
+{
+  public: '/', '/about', '/contact',
+  auth: '/dashboard', '/profile',
+  role: {
+    '[ROLE_A]': '/module-a',
+    '[ROLE_B]': '/module-b',
+  }
+}
+
+// Route protection
+&lt;Layout requireAuth allowedRoles={['ROLE_A', 'ROLE_B']}&gt;
+  &lt;ProtectedPage /&gt;
+&lt;/Layout&gt;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Component Library</h2>
+<h3>4.1 Base UI Components</h3>
+<h4>Button</h4>
+<div class="docs-pre"><code>interface ButtonProps extends ButtonHTMLAttributes&lt;HTMLButtonElement&gt; {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  isLoading?: boolean;
+  fullWidth?: boolean;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Loading state with spinner<br />
+- Disabled state handling<br />
+- Focus ring styles<br />
+- Active scale animation<br />
+- Icon support</p>
+<h4>Badge</h4>
+<div class="docs-pre"><code>interface BadgeProps {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+  className?: string;
+}
+</code></div>
+<h4>Card</h4>
+<div class="docs-pre"><code>interface CardProps {
+  padding?: 'sm' | 'md' | 'lg';
+  hover?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Consistent padding options<br />
+- Optional hover effects<br />
+- Dark mode support</p>
+<h4>Input</h4>
+<div class="docs-pre"><code>interface InputProps extends InputHTMLAttributes&lt;HTMLInputElement&gt; {
+  label?: string;
+  error?: string;
+  fullWidth?: boolean;
+  helperText?: string;
+}
+</code></div>
+<h4>Status Badge</h4>
+<div class="docs-pre"><code>interface StatusBadgeProps {
+  status: 'pending' | 'approved' | 'rejected' | 'active' | 'completed';
+  size?: 'sm' | 'md';
+}
+</code></div>
+<h3>4.2 Layout Components</h3>
+<h4>Header</h4>
+<div class="docs-pre"><code>interface HeaderProps {
+  isConnected?: boolean;
+  role?: string;
+  isLoading?: boolean;
+  needsOnboarding?: boolean;
+  darkMode?: boolean;
+  onToggleDarkMode?: () =&gt; void;
+  logo?: React.ReactNode;
+  navigation?: NavItem[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  icon?: React.ReactNode;
+  roles?: string[];  // Role-based visibility
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Logo/branding area<br />
+- Navigation links (role-based)<br />
+- Action buttons (wallet, settings, etc.)<br />
+- Dark mode toggle<br />
+- Mobile-responsive menu</p>
+<h4>Layout</h4>
+<div class="docs-pre"><code>interface LayoutProps {
+  children: React.ReactNode;
+  requireAuth?: boolean;
+  allowedRoles?: string[];
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Header + Footer wrapper<br />
+- Route protection<br />
+- Role-based access control<br />
+- Theme persistence</p>
+<h4>Footer</h4>
+<div class="docs-pre"><code>interface FooterProps {
+  links?: FooterLink[];
+  socialLinks?: SocialLink[];
+  copyright?: string;
+}
+</code></div>
+<h3>4.3 Feature Components</h3>
+<h4>DataTable</h4>
+<div class="docs-pre"><code>interface DataTableProps&lt;T&gt; {
+  data: T[];
+  columns: ColumnDef&lt;T&gt;[];
+  onRowClick?: (row: T) =&gt; void;
+  emptyState?: React.ReactNode;
+  isLoading?: boolean;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Sortable columns<br />
+- Search functionality<br />
+- Pagination<br />
+- Row actions<br />
+- Empty state</p>
+<h4>StatsCard</h4>
+<div class="docs-pre"><code>interface StatsCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string | number;
+  trend?: {
+    value: number;
+    direction: 'up' | 'down';
+  };
+  color?: 'blue' | 'green' | 'amber' | 'red' | 'purple';
+}
+</code></div>
+<h4>Chart Panel</h4>
+<div class="docs-pre"><code>interface ChartPanelProps {
+  title: string;
+  data: any[];
+  chartType: 'bar' | 'line' | 'pie' | 'area';
+  height?: number;
+}
+</code></div>
+<h4>ActivityFeed</h4>
+<div class="docs-pre"><code>interface ActivityFeedProps {
+  activities: Activity[];
+  onLoadMore?: () =&gt; void;
+}
+
+interface Activity {
+  id: string;
+  type: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  timestamp: string;
+  color: string;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Page Templates</h2>
+<h3>5.1 Landing Page Template</h3>
+<p><strong>Structure:</strong></p>
+<div class="docs-pre"><code>&lt;LandingLayout&gt;
+  &lt;HeroSection&gt;
+    - Headline
+    - Subheadline
+    - CTA buttons
+    - Trust badges
+  &lt;/HeroSection&gt;
+
+  &lt;ProductPreview&gt;
+    - Dashboard mockup
+    - Feature highlights
+  &lt;/ProductPreview&gt;
+
+  &lt;TrustSignals&gt;
+    - Animated counters
+    - Partner logos
+  &lt;/TrustSignals&gt;
+
+  &lt;FeaturesGrid&gt;
+    - Feature cards (4-6 items)
+  &lt;/FeaturesGrid&gt;
+
+  &lt;HowItWorks&gt;
+    - Step-by-step process
+  &lt;/HowItWorks&gt;
+
+  &lt;CTASection&gt;
+    - Final CTA
+  &lt;/CTASection&gt;
+&lt;/LandingLayout&gt;
+</code></div>
+<p><strong>Design Patterns:</strong><br />
+- Animated gradient backgrounds<br />
+- Glassmorphism effects<br />
+- Floating badges with CSS animations<br />
+- Counter animations on scroll<br />
+- Logo carousel</p>
+<h3>5.2 Dashboard Template</h3>
+<p><strong>Structure:</strong></p>
+<div class="docs-pre"><code>&lt;DashboardLayout&gt;
+  &lt;DashboardHeader&gt;
+    - Page title
+    - Subtitle
+    - Action buttons
+  &lt;/DashboardHeader&gt;
+
+  &lt;StatsGrid&gt;
+    - StatsCard × 4
+  &lt;/StatsGrid&gt;
+
+  &lt;MainContent&gt;
+    &lt;ChartSection&gt;
+      - Primary data visualization
+    &lt;/ChartSection&gt;
+
+    &lt;DataTableSection&gt;
+      - Primary data table
+    &lt;/DataTableSection&gt;
+
+    &lt;ActivityFeedSection&gt;
+      - Recent activity
+    &lt;/ActivityFeedSection&gt;
+  &lt;/MainContent&gt;
+
+  &lt;SidePanel&gt;
+    - Secondary information
+    - Quick actions
+  &lt;/SidePanel&gt;
+&lt;/DashboardLayout&gt;
+</code></div>
+<p><strong>Design Patterns:</strong><br />
+- Responsive grid layouts<br />
+- Card-based content organization<br />
+- Sticky headers<br />
+- Collapsible side panels</p>
+<h3>5.3 Detail Page Template</h3>
+<p><strong>Structure:</strong></p>
+<div class="docs-pre"><code>&lt;DetailLayout&gt;
+  &lt;DetailHeader&gt;
+    - Breadcrumb
+    - Title
+    - Action buttons
+    - Status badge
+  &lt;/DetailHeader&gt;
+
+  &lt;DetailContent&gt;
+    &lt;InfoSection&gt;
+      - Key information cards
+    &lt;/InfoSection&gt;
+
+    &lt;TabsSection&gt;
+      - Tabbed content areas
+    &lt;/TabsSection&gt;
+
+    &lt;RelatedSection&gt;
+      - Related items
+    &lt;/RelatedSection&gt;
+  &lt;/DetailContent&gt;
+
+  &lt;DetailSidebar&gt;
+    - Summary card
+    - Quick actions
+    - Metadata
+  &lt;/DetailSidebar&gt;
+&lt;/DetailLayout&gt;
+</code></div>
+<h3>5.4 Form/Multi-step Template</h3>
+<p><strong>Structure:</strong></p>
+<div class="docs-pre"><code>&lt;FormLayout&gt;
+  &lt;FormHeader&gt;
+    - Title
+    - Description
+    - Progress indicator
+  &lt;/FormHeader&gt;
+
+  &lt;FormSteps&gt;
+    &lt;Step1&gt;
+      - Step title
+      - Step description
+      - Form fields
+    &lt;/Step1&gt;
+
+    &lt;Step2&gt;
+      - ...
+    &lt;/Step2&gt;
+  &lt;/FormSteps&gt;
+
+  &lt;FormNavigation&gt;
+    - Back button
+    - Next/Submit button
+  &lt;/FormNavigation&gt;
+&lt;/FormLayout&gt;
+</code></div>
+<p><strong>Design Patterns:</strong><br />
+- Progress indicator<br />
+- Step validation<br />
+- Summary review before submit<br />
+- Draft auto-save</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Web3 Integration Pattern</h2>
+<h3>6.1 Provider Setup</h3>
+<div class="docs-pre"><code>// providers.tsx
+&lt;DomainProvider&gt;  // e.g., WagmiProvider
+  &lt;QueryClientProvider&gt;
+    &lt;UIProvider&gt;  // e.g., RainbowKit
+      {children}
+    &lt;/UIProvider&gt;
+  &lt;/QueryClientProvider&gt;
+&lt;/DomainProvider&gt;
+</code></div>
+<h3>6.2 Contract Hooks Pattern</h3>
+<div class="docs-pre"><code>// useDomainContract.ts
+export function useDomainContract() {
+  const { address } = useAccount();
+  const { writeContract } = useWriteContract();
+
+  // Read
+  const { data: readData } = useReadContract({
+    address: CONTRACT_ADDRESS,
+    abi: CONTRACT_ABI,
+    functionName: 'readFunction',
+    args: [arguments],
+  });
+
+  // Write
+  const writeFunction = async ({ args }: { args: any[] }) =&gt; {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'writeFunction',
+      args,
+    });
+  };
+
+  return {
+    data: readData,
+    writeFunction,
+    // ... additional utilities
+  };
+}
+</code></div>
+<h3>6.3 Wallet Connection Pattern</h3>
+<div class="docs-pre"><code>// WalletConnection.tsx
+export function WalletConnection({ variant = 'full' }) {
+  const { isConnected } = useAccount();
+  const { openConnectModal } = useConnectModal();
+
+  if (isConnected) {
+    return &lt;ConnectedView /&gt;;
+  }
+
+  return &lt;ConnectButton onClick={openConnectModal} /&gt;;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Authentication Pattern</h2>
+<h3>7.1 Auth Context</h3>
+<div class="docs-pre"><code>// AuthContext.tsx
+interface AuthContextType {
+  address: string | undefined;
+  isConnected: boolean;
+  role: string | null;  // Defined by inheriting project
+  isLoading: boolean;
+  error: Error | null;
+  refreshRole: () =&gt; void;
+}
+
+export function AuthProvider({ children }) {
+  const { address, isConnected } = useDomainAccount();
+  const [role, setRole] = useState&lt;string | null&gt;(null);
+
+  // Fetch role from API
+  const { data: userData, refetch } = useQuery({
+    queryKey: ['user', address],
+    queryFn: async () =&gt; {
+      if (!address) return null;
+      const response = await api.get(`/users/${address}`);
+      return response.data;
+    },
+    enabled: !!address,
+  });
+
+  // Sync role state
+  useEffect(() =&gt; {
+    setRole(userData?.role || null);
+  }, [userData]);
+
+  return (
+    &lt;AuthContext.Provider value={{ address, isConnected, role, ... }}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+}
+</code></div>
+<h3>7.2 Role-Based Access Control</h3>
+<div class="docs-pre"><code>// Layout.tsx
+export function Layout({ requireAuth, allowedRoles, children }) {
+  const { isConnected, role, isLoading } = useAuth();
+
+  // Check authentication
+  if (requireAuth &amp;&amp; !isConnected) {
+    return &lt;AuthRequired /&gt;;
+  }
+
+  // Check role authorization
+  if (allowedRoles &amp;&amp; role &amp;&amp; !allowedRoles.includes(role)) {
+    return &lt;Unauthorized /&gt;;
+  }
+
+  return (
+    &lt;div className=&quot;layout&quot;&gt;
+      &lt;Header /&gt;
+      &lt;main&gt;{children}&lt;/main&gt;
+      &lt;Footer /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></div>
+<h3>7.3 Onboarding Detection</h3>
+<div class="docs-pre"><code>// Hook to detect incomplete onboarding
+export function useOnboardingRequired() {
+  const { address, role, isLoading } = useAuth();
+  return !isLoading &amp;&amp; !!address &amp;&amp; !role;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Internationalization</h2>
+<h3>8.1 Configuration</h3>
+<div class="docs-pre"><code>// i18n/config.ts
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: enTranslations },
+      // Add more languages as needed
+    },
+    fallbackLng: 'en',
+    lng: 'en',
+    interpolation: {
+      escapeValue: false,  // React already escapes
+    },
+    detection: {
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage'],
+    },
+    react: {
+      useSuspense: false,
+    },
+    initImmediate: true,
+  });
+</code></div>
+<h3>8.2 Translation File Structure</h3>
+<div class="docs-pre"><code>{
+  &quot;nav&quot;: { ... },
+  &quot;common&quot;: { ... },
+  &quot;[module]&quot;: {
+    &quot;[feature]&quot;: {
+      &quot;title&quot;: &quot;...&quot;,
+      &quot;description&quot;: &quot;...&quot;,
+      &quot;actions&quot;: { ... }
+    }
+  }
+}
+</code></div>
+<h3>8.3 Usage Pattern</h3>
+<div class="docs-pre"><code>import { useTranslation } from 'react-i18next';
+
+function Component() {
+  const { t, i18n } = useTranslation();
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{t('[module].[feature].title')}&lt;/h1&gt;
+      &lt;button onClick={() =&gt; i18n.changeLanguage('fr')}&gt;
+        FR
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. API Integration</h2>
+<h3>9.1 API Client</h3>
+<div class="docs-pre"><code>// api/client.ts
+const api = axios.create({
+  baseURL: `${API_URL}/api/${API_VERSION}`,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Request interceptor
+api.interceptors.request.use((config) =&gt; {
+  const token = localStorage.getItem('auth_token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// Response interceptor
+api.interceptors.response.use(
+  (response) =&gt; response,
+  (error) =&gt; {
+    console.error('API Error:', error.response?.data || error.message);
+    return Promise.reject(error);
+  }
+);
+</code></div>
+<h3>9.2 Query Pattern</h3>
+<div class="docs-pre"><code>// Using React Query with API
+const { data, isLoading, error } = useQuery({
+  queryKey: ['resource', param],
+  queryFn: async () =&gt; {
+    const response = await api.get(`/resource/${param}`);
+    return response.data;
+  },
+  enabled: !!param,
+  staleTime: 5 * 60 * 1000,  // 5 minutes
+  retry: 2,
+});
+</code></div>
+<h3>9.3 Mutation Pattern</h3>
+<div class="docs-pre"><code>const mutation = useMutation({
+  mutationFn: async (data) =&gt; {
+    const response = await api.post('/resource', data);
+    return response.data;
+  },
+  onSuccess: () =&gt; {
+    queryClient.invalidateQueries(['resource']);
+  },
+});
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Build Configuration</h2>
+<h3>10.1 Vite Configuration</h3>
+<div class="docs-pre"><code>// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    minify: 'esbuild',
+    sourcemap: false,
+    chunkSizeWarningLimit: 500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'framework': ['react', 'react-dom', 'react-router-dom'],
+          'i18n': ['i18next', 'react-i18next'],
+          'ui': ['lucide-react', 'class-variance-authority', 'clsx'],
+        },
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
+});
+</code></div>
+<h3>10.2 Tailwind Configuration</h3>
+<div class="docs-pre"><code>// tailwind.config.js
+export default {
+  darkMode: 'class',
+  content: [
+    &quot;./index.html&quot;,
+    &quot;./src/**/*.{js,ts,jsx,tsx}&quot;,
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        secondary: '#0D9488',
+        accent: '#F59E0B',
+        // ... semantic colors
+      },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui'],
+        heading: ['Plus Jakarta Sans', 'Poppins', 'system-ui'],
+      },
+      boxShadow: {
+        'soft': '...',
+        'soft-lg': '...',
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'fadeIn': 'fadeIn 0.6s ease-out',
+      },
+    },
+  },
+  plugins: [],
+};
+</code></div>
+<h3>10.3 TypeScript Configuration</h3>
+<div class="docs-pre"><code>{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2020&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;ES2020&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;skipLibCheck&quot;: true,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;./src/*&quot;],
+      &quot;@components/*&quot;: [&quot;./src/components/*&quot;],
+      &quot;@hooks/*&quot;: [&quot;./src/hooks/*&quot;],
+    }
+  }
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Accessibility</h2>
+<h3>11.1 Implementation Checklist</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Skip to main content link</li>
+<li>[ ] Semantic HTML elements (<code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>)</li>
+<li>[ ] ARIA labels on interactive elements</li>
+<li>[ ] Focus management (visible focus states)</li>
+<li>[ ] Keyboard navigation support</li>
+<li>[ ] Screen reader announcements</li>
+<li>[ ] Color contrast compliance (WCAG AA)</li>
+<li>[ ] Form label associations</li>
+<li>[ ] Error message announcements</li>
+</ul>
+<h3>11.2 Key Patterns</h3>
+<div class="docs-pre"><code>// Skip link
+&lt;a href=&quot;#main-content&quot; className=&quot;sr-only focus:not-sr-only&quot;&gt;
+  Skip to main content
+&lt;/a&gt;
+
+// Semantic structure
+&lt;main id=&quot;main-content&quot; role=&quot;main&quot; aria-label=&quot;Page title&quot;&gt;
+  &lt;nav aria-label=&quot;Main navigation&quot;&gt;...&lt;/nav&gt;
+  &lt;section aria-labelledby=&quot;section-title&quot;&gt;
+    &lt;h2 id=&quot;section-title&quot;&gt;Section Title&lt;/h2&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+// Interactive elements
+&lt;button aria-label=&quot;Toggle dark mode&quot;&gt;
+&lt;input aria-label=&quot;Search&quot; /&gt;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12. Performance Optimizations</h2>
+<h3>12.1 Code Splitting</h3>
+<div class="docs-pre"><code>// Route-based lazy loading
+const Landing = lazy(() =&gt; import('./pages/Landing'));
+const Dashboard = lazy(() =&gt; import('./pages/Dashboard'));
+
+function App() {
+  return (
+    &lt;Suspense fallback={&lt;PageLoader /&gt;}&gt;
+      &lt;Routes&gt;
+        &lt;Route path=&quot;/&quot; element={&lt;Landing /&gt;} /&gt;
+        &lt;Route path=&quot;/dashboard&quot; element={&lt;Dashboard /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/Suspense&gt;
+  );
+}
+</code></div>
+<h3>12.2 React Query Optimization</h3>
+<div class="docs-pre"><code>const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      gcTime: 1000 * 60 * 60 * 24,  // 24 hours
+      staleTime: 1000 * 60 * 5,     // 5 minutes
+      retry: 2,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+</code></div>
+<h3>12.3 Image Optimization</h3>
+<div class="docs-pre"><code>// Use modern formats
+&lt;img src=&quot;/image.webp&quot; alt=&quot;...&quot; loading=&quot;lazy&quot; /&gt;
+
+// Responsive images
+&lt;picture&gt;
+  &lt;source srcSet=&quot;/image.avif&quot; type=&quot;image/avif&quot; /&gt;
+  &lt;source srcSet=&quot;/image.webp&quot; type=&quot;image/webp&quot; /&gt;
+  &lt;img src=&quot;/image.jpg&quot; alt=&quot;...&quot; /&gt;
+&lt;/picture&gt;
+</code></div>
+<h3>12.4 Bundle Targets</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial JS</td>
+<td>&lt; 150KB</td>
+</tr>
+<tr>
+<td>Total JS</td>
+<td>&lt; 500KB</td>
+</tr>
+<tr>
+<td>First Paint</td>
+<td>&lt; 1.5s</td>
+</tr>
+<tr>
+<td>LCP</td>
+<td>&lt; 2.5s</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. CSS Utilities</h2>
+<h3>13.1 Custom Animations</h3>
+<div class="docs-pre"><code>/* Fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient movement */
+@keyframes gradient-x {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 0) scale(1.1); }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 20s linear infinite;
+}
+</code></div>
+<h3>13.2 Glassmorphism</h3>
+<div class="docs-pre"><code>.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+</code></div>
+<h3>13.3 Screen Reader Only</h3>
+<div class="docs-pre"><code>.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Deployment</h2>
+<h3>14.1 Environment Variables</h3>
+<div class="docs-pre"><code># API Configuration
+VITE_API_URL=https://api.example.com
+VITE_API_VERSION=v1
+
+# Domain Configuration
+VITE_CHAIN_ID=1  # Ethereum Mainnet
+VITE_APP_NAME=&quot;My App&quot;
+</code></div>
+<h3>14.2 Build Commands</h3>
+<div class="docs-pre"><code>{
+  &quot;dev&quot;: &quot;vite&quot;,
+  &quot;build&quot;: &quot;tsc &amp;&amp; vite build&quot;,
+  &quot;lint&quot;: &quot;eslint .&quot;,
+  &quot;preview&quot;: &quot;vite preview&quot;
+}
+</code></div>
+<h3>14.3 Hosting Options</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Provider</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vercel</td>
+<td>Auto-deploy, Edge functions</td>
+</tr>
+<tr>
+<td>Netlify</td>
+<td>Simple deployment, Forms</td>
+</tr>
+<tr>
+<td>Cloudflare Pages</td>
+<td>Fast CDN, Edge compute</td>
+</tr>
+<tr>
+<td>AWS S3 + CloudFront</td>
+<td>Full control, Cost-effective</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>15. Reproduction Checklist</h2>
+<h3>Phase 1: Setup (1 hour)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Create Vite + React + TypeScript project</li>
+<li>[ ] Install core dependencies</li>
+<li>[ ] Install Web3 dependencies (if needed)</li>
+<li>[ ] Install styling dependencies</li>
+<li>[ ] Install i18n dependencies</li>
+</ul>
+<h3>Phase 2: Configuration (1 hour)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Initialize Tailwind CSS</li>
+<li>[ ] Configure design tokens (colors, fonts, shadows)</li>
+<li>[ ] Configure Vite build optimization</li>
+<li>[ ] Configure TypeScript paths</li>
+</ul>
+<h3>Phase 3: Core Setup (2 hours)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Create folder structure</li>
+<li>[ ] Set up domain providers</li>
+<li>[ ] Set up contexts (Auth, Theme, Data)</li>
+<li>[ ] Set up i18n</li>
+</ul>
+<h3>Phase 4: Component Library (4 hours)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Build base UI components (Button, Badge, Card, Input)</li>
+<li>[ ] Build layout components (Header, Footer, Layout)</li>
+<li>[ ] Build feature components (DataTable, StatsCard, Charts)</li>
+</ul>
+<h3>Phase 5: Pages (4 hours)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Build landing page template</li>
+<li>[ ] Build dashboard template</li>
+<li>[ ] Build detail page template</li>
+<li>[ ] Build form/multi-step template</li>
+</ul>
+<h3>Phase 6: Integration (2 hours)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Connect domain providers</li>
+<li>[ ] Connect API</li>
+<li>[ ] Set up routing with guards</li>
+</ul>
+<h3>Phase 7: Polish (2 hours)</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Add animations</li>
+<li>[ ] Implement dark mode</li>
+<li>[ ] Ensure responsive design</li>
+<li>[ ] Accessibility audit</li>
+<li>[ ] Performance optimization</li>
+</ul>
+<p><strong>Total Estimated Time:</strong> 16 hours</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>16. Customization Guide</h2>
+<h3>16.1 Brand Customization</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Update colors</strong> in <code>tailwind.config.js</code></li>
+<li><strong>Update fonts</strong> in <code>tailwind.config.js</code></li>
+<li><strong>Update logo</strong> in Header component</li>
+<li><strong>Update animations</strong> to match brand personality</li>
+</ol>
+<h3>16.2 Role System</h3>
+<p>The role system is <strong>project-defined</strong>. To customize:</p>
+<div class="docs-pre"><code>// Define your roles
+type UserRole = 'ROLE_A' | 'ROLE_B' | 'ROLE_C' | null;
+
+// Update AuthContext
+const [role, setRole] = useState&lt;UserRole&gt;(null);
+
+// Update route protection
+&lt;Layout allowedRoles={['ROLE_A', 'ROLE_B']}&gt;
+</code></div>
+<h3>16.3 Domain Integration</h3>
+<p>Replace Web3 domain with your domain:</p>
+<div class="docs-pre"><code>// Instead of web3/providers.tsx
+// Create your domain provider
+
+// domain/providers.tsx
+export function DomainProvider({ children }) {
+  const [state, setState] = useState();
+
+  return (
+    &lt;DomainContext.Provider value={state}&gt;
+      {children}
+    &lt;/DomainContext.Provider&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix: Quick Reference</h2>
+<h3>Color Palette</h3>
+<div class="docs-pre"><code>Primary:   #16A34A  (Green)
+Secondary: #0D9488  (Teal)
+Accent:    #F59E0B  (Amber)
+Success:   #10B981  (Green)
+Warning:   #F59E0B  (Amber)
+Error:     #EF4444  (Red)
+Info:      #3B82F6  (Blue)
+</code></div>
+<h3>Spacing Scale</h3>
+<div class="docs-pre"><code>1:  4px   (px-1)
+2:  8px   (px-2)
+3:  12px  (px-3)
+4:  16px  (px-4)
+6:  24px  (px-6)
+8:  32px  (px-8)
+10: 40px  (px-10)
+12: 48px  (px-12)
+</code></div>
+<h3>Breakpoints</h3>
+<div class="docs-pre"><code>sm:  640px   (Mobile landscape)
+md:  768px   (Tablets)
+lg:  1024px  (Desktops)
+xl:  1280px  (Large screens)
+</code></div>
+<hr />
+<p><strong>End of Design &amp; Technology Specification</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

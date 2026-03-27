@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Operational Runbooks - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>Operational Runbooks</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Operational Runbooks</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ {Investigating | Identified | Monitoring | Resolved} | <strong>Last Updated:</strong> February 27, 2026 | <strong>Audience:</strong> SREs, On-Call Engineers, DevOps, Platform Engineers</p></div>
+
+        <h1>Operational Runbooks</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform Incident Response &amp; Operations</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> February 27, 2026<br />
+<strong>Classification:</strong> Internal / Operations<br />
+<strong>Audience:</strong> SREs, On-Call Engineers, DevOps, Platform Engineers</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-runbook-index">Runbook Index</a></li>
+<li><a href="#2-incident-response-procedures">Incident Response Procedures</a></li>
+<li><a href="#3-service-outages">Service Outages</a></li>
+<li><a href="#4-database-issues">Database Issues</a></li>
+<li><a href="#5-cache-issues">Cache Issues</a></li>
+<li><a href="#6-kafka-issues">Kafka Issues</a></li>
+<li><a href="#7-blockchain-issues">Blockchain Issues</a></li>
+<li><a href="#8-smart-contract-emergencies">Smart Contract Emergencies</a></li>
+<li><a href="#9-security-incidents">Security Incidents</a></li>
+<li><a href="#10-performance-degradation">Performance Degradation</a></li>
+<li><a href="#11-deployment-failures">Deployment Failures</a></li>
+<li><a href="#12-data-recovery">Data Recovery</a></li>
+<li><a href="#13-disaster-recovery">Disaster Recovery</a></li>
+<li><a href="#14-maintenance-procedures">Maintenance Procedures</a></li>
+</ol>
+<hr />
+<h1>1. Runbook Index</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Runbook Quick Reference</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Runbook ID</th>
+<th>Title</th>
+<th>Category</th>
+<th>Severity</th>
+<th>Estimated Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RB-001</strong></td>
+<td>Service Down</td>
+<td>Outage</td>
+<td>Critical</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-002</strong></td>
+<td>High Error Rate</td>
+<td>Outage</td>
+<td>Critical</td>
+<td>15-45 min</td>
+</tr>
+<tr>
+<td><strong>RB-003</strong></td>
+<td>High Latency</td>
+<td>Performance</td>
+<td>Warning</td>
+<td>30-60 min</td>
+</tr>
+<tr>
+<td><strong>RB-004</strong></td>
+<td>Database Connection Exhaustion</td>
+<td>Database</td>
+<td>Critical</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-005</strong></td>
+<td>Database Replication Lag</td>
+<td>Database</td>
+<td>Warning</td>
+<td>30-60 min</td>
+</tr>
+<tr>
+<td><strong>RB-006</strong></td>
+<td>Redis Memory High</td>
+<td>Cache</td>
+<td>Warning</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-007</strong></td>
+<td>Redis Node Down</td>
+<td>Cache</td>
+<td>Critical</td>
+<td>10-20 min</td>
+</tr>
+<tr>
+<td><strong>RB-008</strong></td>
+<td>Kafka Consumer Lag High</td>
+<td>Kafka</td>
+<td>Warning</td>
+<td>30-60 min</td>
+</tr>
+<tr>
+<td><strong>RB-009</strong></td>
+<td>Kafka Broker Down</td>
+<td>Kafka</td>
+<td>Critical</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-010</strong></td>
+<td>Blockchain Sync Behind</td>
+<td>Blockchain</td>
+<td>Critical</td>
+<td>30-120 min</td>
+</tr>
+<tr>
+<td><strong>RB-011</strong></td>
+<td>Smart Contract Paused</td>
+<td>Smart Contract</td>
+<td>Critical</td>
+<td>5-15 min</td>
+</tr>
+<tr>
+<td><strong>RB-012</strong></td>
+<td>Bridge Transfer Stuck</td>
+<td>Blockchain</td>
+<td>Critical</td>
+<td>30-90 min</td>
+</tr>
+<tr>
+<td><strong>RB-013</strong></td>
+<td>DDoS Attack</td>
+<td>Security</td>
+<td>Critical</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td><strong>RB-014</strong></td>
+<td>Data Breach</td>
+<td>Security</td>
+<td>Critical</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td><strong>RB-015</strong></td>
+<td>API Key Compromise</td>
+<td>Security</td>
+<td>Critical</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-016</strong></td>
+<td>Deployment Failure</td>
+<td>Deployment</td>
+<td>Warning</td>
+<td>15-45 min</td>
+</tr>
+<tr>
+<td><strong>RB-017</strong></td>
+<td>Failed Rollback</td>
+<td>Deployment</td>
+<td>Critical</td>
+<td>30-60 min</td>
+</tr>
+<tr>
+<td><strong>RB-018</strong></td>
+<td>Data CorruLPion</td>
+<td>Data</td>
+<td>Critical</td>
+<td>1-4 hours</td>
+</tr>
+<tr>
+<td><strong>RB-019</strong></td>
+<td>Region Failover</td>
+<td>DR</td>
+<td>Critical</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>RB-020</strong></td>
+<td>Certificate Renewal</td>
+<td>Maintenance</td>
+<td>Scheduled</td>
+<td>30 min</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Severity Classification</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Response Time</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical (SEV1)</strong></td>
+<td>5 minutes</td>
+<td>Complete outage, data loss, security breach</td>
+<td>Service down, data breach, smart contract exploit</td>
+</tr>
+<tr>
+<td><strong>High (SEV2)</strong></td>
+<td>15 minutes</td>
+<td>Major feature broken, significant impact</td>
+<td>High error rate, database issues, blockchain sync</td>
+</tr>
+<tr>
+<td><strong>Medium (SEV3)</strong></td>
+<td>1 hour</td>
+<td>Partial degradation, workaround exists</td>
+<td>High latency, cache issues, single broker down</td>
+</tr>
+<tr>
+<td><strong>Low (SEV4)</strong></td>
+<td>4 hours</td>
+<td>Minor issue, low impact</td>
+<td>Warning alerts, non-critical failures</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Incident Response Procedures</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 General Incident Response Flow</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         INCIDENT RESPONSE FLOW                                │
+│                                                                              │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
+│  │  DETECTION  │───&gt;│   TRIAGE    │───&gt;│ DIAGNOSIS   │───&gt;│ RESOLUTION  │  │
+│  │             │    │             │    │             │    │             │  │
+│  │ • Alert     │    │ • Ack       │    │ • Runbook   │    │ • Fix       │  │
+│  │ • Page      │    │ • Severity  │    │ • Logs      │    │ • Verify    │  │
+│  │ • Ticket    │    │ • Impact    │    │ • Metrics   │    │ • Monitor   │  │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘  │
+│         │                                                          │        │
+│         │                                                          ▼        │
+│         │                                                 ┌─────────────┐  │
+│         │                                                 │ POST-MORTEM │  │
+│         │                                                 │             │  │
+│         └────────────────────────────────────────────────&gt;│ • Report    │  │
+│                                                           │ • Actions   │  │
+│                                                           │ • Learnings │  │
+│                                                           └─────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Time Targets:
+• Detection to Page: &lt;1 minute
+• Page to Ack: &lt;5 minutes (Critical), &lt;15 minutes (High)
+• Ack to Diagnosis: &lt;10 minutes
+• Diagnosis to Resolution: &lt;60 minutes (Critical)
+• Resolution to Close: &lt;15 minutes
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Incident Communication Template</h2>
+<div class="docs-pre"><code># Incident Update - {INCIDENT_ID}
+
+**Status:** {Investigating | Identified | Monitoring | Resolved}
+**Severity:** {SEV1 | SEV2 | SEV3 | SEV4}
+**Last Updated:** {timestamp}
+
+## Summary
+{One-line description of the incident}
+
+## Impact
+- **Services Affected:** {list}
+- **User Impact:** {description}
+- **Start Time:** {timestamp}
+- **Duration:** {elapsed time}
+
+## Current Status
+{What is happening now}
+
+## Next Update
+{When the next update is expected}
+
+## Contact
+- **Incident Commander:** {name}
+- **Slack Channel:** #{channel}
+- **Bridge:** {link if applicable}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.3 Escalation Matrix</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Time Elapsed</th>
+<th>Action</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 min</td>
+<td>Alert fires, on-call paged</td>
+<td>PagerDuty</td>
+</tr>
+<tr>
+<td>5 min</td>
+<td>If no ack, escalate to secondary</td>
+<td>PagerDuty</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>If no ack, escalate to team lead</td>
+<td>PagerDuty</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>Incident declared, war room opened</td>
+<td>On-call</td>
+</tr>
+<tr>
+<td>30 min</td>
+<td>If unresolved, escalate to engineering manager</td>
+<td>Incident Commander</td>
+</tr>
+<tr>
+<td>60 min</td>
+<td>If unresolved, escalate to VP Engineering</td>
+<td>Incident Commander</td>
+</tr>
+<tr>
+<td>120 min</td>
+<td>If unresolved, executive briefing</td>
+<td>VP Engineering</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>3. Service Outages</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-001: Service Down</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>ServiceDown</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Team:</strong> Platform</li>
+</ul>
+<h3>Description</h3>
+<p>A FastAPI service pod has been unreachable for more than 2 minutes.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Users cannot access the affected service</li>
+<li>API requests fail with 503 errors</li>
+<li>SLO availability impacted</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Pod Status</h4>
+<div class="docs-pre"><code># Get pod status
+kubectl get pods -n ujamaa-production -l app={service-name} -o wide
+
+# Expected: Running, Actual may be: CrashLoopBackOff, Error, Pending
+</code></div>
+<h4>Step 2: Describe Pod</h4>
+<div class="docs-pre"><code>kubectl describe pod {pod-name} -n ujamaa-production
+
+# Check:
+# - State: Waiting/Terminated/Running
+# - Reason: OOMKilled, Error, Evicted
+# - Events: scheduling issues, image pull errors
+# - Last State: previous crash reason
+</code></div>
+<h4>Step 3: Check Logs</h4>
+<div class="docs-pre"><code># Current logs
+kubectl logs {pod-name} -n ujamaa-production --tail=200
+
+# Previous instance (if crashed)
+kubectl logs {pod-name} -n ujamaa-production --previous --tail=200
+
+# Search for errors
+kubectl logs {pod-name} -n ujamaa-production | grep -i &quot;error\|exception\|panic\|fatal&quot;
+</code></div>
+<h4>Step 4: Check Grafana</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Open: https://grafana.ujamaa-defi.com/d/service-performance</li>
+<li>Check panels:<br />
+   - Request rate (should be &gt;0)<br />
+   - Error rate (should be 0%)<br />
+   - Latency p95 (should be &lt;500ms)</li>
+</ol>
+<h3>Resolution</h3>
+<h4>If CrashLoopBackOff</h4>
+<div class="docs-pre"><code># Check for OOM
+kubectl describe pod {pod-name} | grep -A 5 &quot;Last State&quot;
+
+# If OOMKilled, increase memory
+kubectl edit deployment/{service-name} -n ujamaa-production
+# Update: resources.limits.memory
+
+# If application error, check logs for root cause
+</code></div>
+<h4>If Pending</h4>
+<div class="docs-pre"><code># Check node resources
+kubectl top nodes
+
+# Check for scheduling issues
+kubectl describe pod {pod-name} | grep -A 10 &quot;Events:&quot;
+
+# If Insufficient CPU/Memory:
+# Option 1: Scale down other deployments
+# Option 2: Add nodes to cluster
+kubectl scale nodegroup {nodegroup-name} --nodes=+1
+</code></div>
+<h4>If ImagePullBackOff</h4>
+<div class="docs-pre"><code># Check image name and tag
+kubectl describe pod {pod-name} | grep -A 5 &quot;Image&quot;
+
+# Verify image exists in registry
+docker pull ghcr.io/ujamaa-defi/{service-name}:{tag}
+
+# Check image pull secrets
+kubectl get secret {registry-secret} -n ujamaa-production
+</code></div>
+<h4>Emergency Rollback</h4>
+<div class="docs-pre"><code># Rollback to previous version
+kubectl rollout undo deployment/{service-name} -n ujamaa-production
+
+# Watch rollout status
+kubectl rollout status deployment/{service-name} -n ujamaa-production
+
+# If rollback fails, force recreate
+kubectl delete deployment {service-name} -n ujamaa-production
+kubectl apply -f k8s/services/{service-name}.yaml
+</code></div>
+<h3>Verification</h3>
+<div class="docs-pre"><code># Pod is Running
+kubectl get pods -n ujamaa-production -l app={service-name}
+
+# Health check passes
+curl https://api.ujamaa-defi.com/health/ready
+
+# Check metrics in Grafana
+# - Error rate should be 0%
+# - Latency should be normal
+</code></div>
+<h3>Post-Incident</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Create incident report</li>
+<li>[ ] Schedule post-mortem if SEV1/SEV2</li>
+<li>[ ] Update runbook if new failure mode</li>
+<li>[ ] Add monitoring for root cause if missing</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-002: High Error Rate</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>HighErrorRate</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Threshold:</strong> &gt;1% error rate for 5 minutes</li>
+</ul>
+<h3>Description</h3>
+<p>Service is returning 5xx errors at a rate higher than 1%.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>User requests failing</li>
+<li>Potential data inconsistency</li>
+<li>SLO violation</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Identify Error Pattern</h4>
+<div class="docs-pre"><code># Check error rate by service
+# Grafana: service-performance dashboard
+
+# Check error logs
+kubectl logs -l app={service-name} -n ujamaa-production \
+  | grep -i &quot;error\|exception&quot; \
+  | tail -100
+</code></div>
+<h4>Step 2: Categorize Errors</h4>
+<div class="docs-pre"><code># In Grafana Explore (Loki)
+
+# 500 errors (internal server errors)
+{app=&quot;{service-name}&quot;} | json | status_code = 500
+
+# 502 errors (bad gateway)
+{app=&quot;{service-name}&quot;} | json | status_code = 502
+
+# 503 errors (service unavailable)
+{app=&quot;{service-name}&quot;} | json | status_code = 503
+
+# 504 errors (gateway timeout)
+{app=&quot;{service-name}&quot;} | json | status_code = 504
+</code></div>
+<h4>Step 3: Check Dependencies</h4>
+<div class="docs-pre"><code># Database
+kubectl exec {pod-name} -n ujamaa-production -- \
+  psql -h postgres -U ujamaa -c &quot;SELECT 1&quot;
+
+# Redis
+kubectl exec {pod-name} -n ujamaa-production -- \
+  redis-cli -h redis ping
+
+# Kafka
+kubectl exec {pod-name} -n ujamaa-production -- \
+  kafka-topics --bootstrap-server kafka:9092 --list
+</code></div>
+<h3>Resolution</h3>
+<h4>If Database Errors</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>See RB-004: Database Connection Exhaustion</li>
+<li>See RB-005: Database Replication Lag</li>
+</ul>
+<h4>If Redis Errors</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>See RB-006: Redis Memory High</li>
+<li>See RB-007: Redis Node Down</li>
+</ul>
+<h4>If Application Errors</h4>
+<div class="docs-pre"><code># Check for recent deployment
+kubectl rollout history deployment/{service-name} -n ujamaa-production
+
+# If recent deployment, rollback
+kubectl rollout undo deployment/{service-name} -n ujamaa-production
+
+# Check for resource exhaustion
+kubectl top pod {pod-name} -n ujamaa-production
+
+# If CPU throttling, increase CPU limits
+kubectl edit deployment/{service-name} -n ujamaa-production
+</code></div>
+<h4>If Upstream Service Errors</h4>
+<div class="docs-pre"><code># Check Istio service mesh
+kubectl get virtualservice -n ujamaa-production
+
+# Check for circuit breaker trips
+kubectl logs -l app=istio-proxy -n ujamaa-production \
+  | grep -i &quot;circuit\|upstream&quot;
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Error rate &lt;0.1% for 10 minutes</li>
+<li>[ ] No 5xx errors in logs</li>
+<li>[ ] All health checks passing</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-003: High Latency</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>HighLatency</code></li>
+<li><strong>Severity:</strong> Warning (SEV3)</li>
+<li><strong>Threshold:</strong> p95 &gt;1s for 10 minutes</li>
+</ul>
+<h3>Description</h3>
+<p>Service latency is exceeding acceptable thresholds.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Slow user experience</li>
+<li>Potential timeout errors</li>
+<li>SLO degradation</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Latency Distribution</h4>
+<div class="docs-pre"><code># Grafana: service-performance dashboard
+# Check:
+# - p50, p95, p99 latency
+# - Which endpoints are slow
+# - When latency increased
+</code></div>
+<h4>Step 2: Check Traces</h4>
+<div class="docs-pre"><code># Grafana: Tempo dashboard
+# Query: {service.name=&quot;{service-name}&quot;}
+# Look for:
+# - Slow spans
+# - Database query time
+# - External API calls
+</code></div>
+<h4>Step 3: Check Resource Utilization</h4>
+<div class="docs-pre"><code># CPU throttling
+kubectl top pod {pod-name} -n ujamaa-production
+
+# Check if hitting limits
+kubectl describe pod {pod-name} -n ujamaa-production \
+  | grep -A 5 &quot;Limits&quot;
+</code></div>
+<h4>Step 4: Check Database</h4>
+<div class="docs-pre"><code>-- Slow queries
+SELECT query, calls, total_time, mean_time
+FROM pg_stat_statements
+ORDER BY mean_time DESC
+LIMIT 10;
+
+-- Locks
+SELECT * FROM pg_locks WHERE NOT granted;
+
+-- Long running transactions
+SELECT pid, now() - pg_stat_activity.query_start AS duration, query
+FROM pg_stat_activity
+WHERE state = 'active'
+ORDER BY duration DESC;
+</code></div>
+<h3>Resolution</h3>
+<h4>If CPU Throttling</h4>
+<div class="docs-pre"><code># Increase CPU limits
+kubectl edit deployment/{service-name} -n ujamaa-production
+# spec.template.spec.containers[0].resources.limits.cpu
+</code></div>
+<h4>If Database Slow</h4>
+<div class="docs-pre"><code>-- Kill long-running query
+SELECT pg_terminate_backend(pid) 
+FROM pg_stat_activity 
+WHERE state = 'active' AND duration &gt; interval '5 minutes';
+
+-- Add missing index (if identified)
+CREATE INDEX CONCURRENTLY idx_name ON table_name(column);
+</code></div>
+<h4>If Cache Miss</h4>
+<div class="docs-pre"><code># Check cache hit rate
+# Grafana: cache dashboard
+
+# If low hit rate, check:
+# - Cache eviction (memory pressure)
+# - TTL too short
+# - Cache key changes
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] p95 latency &lt;500ms for 15 minutes</li>
+<li>[ ] p99 latency &lt;1s</li>
+<li>[ ] No timeout errors</li>
+</ul>
+<hr />
+</section>
+<h1>4. Database Issues</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-004: Database Connection Exhaustion</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>DatabaseConnectionsHigh</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Threshold:</strong> &gt;80% connections in use</li>
+</ul>
+<h3>Description</h3>
+<p>Database connection pool is nearly exhausted.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>New connections failing</li>
+<li>API requests timing out</li>
+<li>Service degradation</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Connection Count</h4>
+<div class="docs-pre"><code>-- Current connections
+SELECT count(*) FROM pg_stat_activity;
+
+-- Max connections
+SHOW max_connections;
+
+-- Connections by state
+SELECT state, count(*) 
+FROM pg_stat_activity 
+GROUP BY state;
+
+-- Connections by application
+SELECT application_name, count(*) 
+FROM pg_stat_activity 
+GROUP BY application_name;
+</code></div>
+<h4>Step 2: Check for Leaks</h4>
+<div class="docs-pre"><code># Check pod connection pool
+kubectl logs {pod-name} -n ujamaa-production \
+  | grep -i &quot;connection\|pool&quot;
+
+# Check for idle connections
+kubectl exec -it {pod-name} -n ujamaa-production -- \
+  python -c &quot;from app.db import get_pool_stats; print(get_pool_stats())&quot;
+</code></div>
+<h4>Step 3: Check for Locks</h4>
+<div class="docs-pre"><code>-- Active locks
+SELECT * FROM pg_locks WHERE NOT granted;
+
+-- Blocking queries
+SELECT blocked_locks.pid     AS blocked_pid,
+       blocked_activity.usename  AS blocked_user,
+       blocking_locks.pid     AS blocking_pid,
+       blocking_activity.usename AS blocking_user,
+       blocked_activity.query    AS blocked_statement
+FROM  pg_catalog.pg_locks         blocked_locks
+JOIN pg_catalog.pg_stat_activity blocked_activity  ON blocked_activity.pid = blocked_locks.pid
+JOIN pg_catalog.pg_locks         blocking_locks 
+    ON blocking_locks.locktype = blocked_locks.locktype
+    AND blocking_locks.database IS NOT DISTINCT FROM blocked_locks.database
+    AND blocking_locks.relation IS NOT DISTINCT FROM blocked_locks.relation
+    AND blocking_locks.page IS NOT DISTINCT FROM blocked_locks.page
+    AND blocking_locks.tuple IS NOT DISTINCT FROM blocked_locks.tuple
+    AND blocking_locks.virtualxid IS NOT DISTINCT FROM blocked_locks.virtualxid
+    AND blocking_locks.transactionid IS NOT DISTINCT FROM blocked_locks.transactionid
+    AND blocking_locks.classid IS NOT DISTINCT FROM blocked_locks.classid
+    AND blocking_locks.objid IS NOT DISTINCT FROM blocked_locks.objid
+    AND blocking_locks.objsubid IS NOT DISTINCT FROM blocked_locks.objsubid
+    AND blocking_locks.pid != blocked_locks.pid
+JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
+WHERE NOT blocked_locks.GRANTED;
+</code></div>
+<h3>Resolution</h3>
+<h4>Immediate: Kill Idle Connections</h4>
+<div class="docs-pre"><code>-- Terminate idle connections older than 10 minutes
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE state = 'idle'
+  AND query_start &lt; now() - interval '10 minutes';
+</code></div>
+<h4>If Connection Leak</h4>
+<div class="docs-pre"><code># Restart affected pods to reset pools
+kubectl rollout restart deployment/{service-name} -n ujamaa-production
+
+# Monitor connection count
+watch 'kubectl exec {pod-name} -n ujamaa-production -- python -c &quot;from app.db import get_pool_stats; print(get_pool_stats())&quot;'
+</code></div>
+<h4>If Legitimate High Load</h4>
+<div class="docs-pre"><code># Scale service horizontally
+kubectl scale deployment/{service-name} --replicas=+2 -n ujamaa-production
+
+# Long-term: Increase max_connections (requires DB restart)
+# aws rds modify-db-instance --db-instance-identifier ujamaa-prod \
+#   --parameter-group-name new-params --apply-immediately
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Connection usage &lt;60%</li>
+<li>[ ] No connection timeout errors</li>
+<li>[ ] Query latency normal</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-005: Database Replication Lag</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>DatabaseReplicationLag</code></li>
+<li><strong>Severity:</strong> Warning (SEV2)</li>
+<li><strong>Threshold:</strong> &gt;30 seconds lag</li>
+</ul>
+<h3>Description</h3>
+<p>Read replica is falling behind primary database.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Stale reads from replica</li>
+<li>Potential data inconsistency</li>
+<li>Failover risk</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Replication Status</h4>
+<div class="docs-pre"><code>-- On primary
+SELECT client_addr, state, sent_lsn, write_lsn, flush_lsn, replay_lsn,
+       (extract(epoch from now()) - extract(epoch from replay_lag))::int as lag_seconds
+FROM pg_stat_replication;
+
+-- On replica
+SELECT pg_is_in_recovery(),
+       pg_last_wal_receive_lsn(),
+       pg_last_wal_replay_lsn(),
+       pg_last_xact_replay_timestamp();
+</code></div>
+<h4>Step 2: Check for Long Queries</h4>
+<div class="docs-pre"><code>-- Long running queries on replica
+SELECT pid, now() - query_start AS duration, query
+FROM pg_stat_activity
+WHERE state = 'active'
+ORDER BY duration DESC;
+</code></div>
+<h4>Step 3: Check Network</h4>
+<div class="docs-pre"><code># Check network between primary and replica
+kubectl exec {pod-name} -n ujamaa-production -- \
+  ping -c 10 {replica-host}
+</code></div>
+<h3>Resolution</h3>
+<h4>If Long Queries</h4>
+<div class="docs-pre"><code>-- Kill long queries
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE state = 'active' 
+  AND query_start &lt; now() - interval '30 minutes';
+</code></div>
+<h4>If Network Issues</h4>
+<div class="docs-pre"><code># Check VPC peering, security groups
+# AWS Console: VPC &gt; Peering Connections
+
+# Check for packet loss
+mtr {replica-host}
+</code></div>
+<h4>If Persistent Lag</h4>
+<div class="docs-pre"><code># Consider read-heavy query optimization
+# Add read replicas
+# Use read-write splitting at application level
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Replication lag &lt;10 seconds</li>
+<li>[ ] Replica in sync state</li>
+<li>[ ] Read queries returning current data</li>
+</ul>
+<hr />
+</section>
+<h1>5. Cache Issues</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-006: Redis Memory High</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>RedisMemoryHigh</code></li>
+<li><strong>Severity:</strong> Warning (SEV2)</li>
+<li><strong>Threshold:</strong> &gt;85% memory used</li>
+</ul>
+<h3>Description</h3>
+<p>Redis instance is running low on memory.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Evictions may occur</li>
+<li>Cache miss rate increases</li>
+<li>Potential OOM</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Memory Usage</h4>
+<div class="docs-pre"><code># Connect to Redis
+redis-cli -h {redis-host}
+
+# Memory info
+INFO memory
+
+# Memory breakdown
+MEMORY STATS
+
+# Largest keys
+MEMORY DOCTOR
+</code></div>
+<h4>Step 2: Check Eviction</h4>
+<div class="docs-pre"><code># Eviction stats
+INFO stats | grep evicted
+
+# Eviction policy
+CONFIG GET maxmemory-policy
+</code></div>
+<h4>Step 3: Find Large Keys</h4>
+<div class="docs-pre"><code># Find large keys (careful in production)
+redis-cli --bigkeys
+
+# Or use memory usage command
+redis-cli MEMORY USAGE {key}
+</code></div>
+<h3>Resolution</h3>
+<h4>Immediate: Clear Expired Keys</h4>
+<div class="docs-pre"><code># Force cleanup
+redis-cli MEMORY PURGE
+
+# Check keys with TTL
+redis-cli SCAN 0 MATCH '*' COUNT 1000
+</code></div>
+<h4>If Specific Keys Too Large</h4>
+<div class="docs-pre"><code># Delete large non-critical keys
+redis-cli DEL {key-pattern}
+
+# Or set shorter TTL
+redis-cli EXPIRE {key} 3600
+</code></div>
+<h4>Long-term</h4>
+<div class="docs-pre"><code># Increase memory (ElastiCache)
+aws elasticache modify-cache-cluster \
+  --cache-cluster-id {cluster-name} \
+  --cache-node-type cache.r6g.large \
+  --apply-immediately
+
+# Or add more shards (cluster mode)
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Memory usage &lt;70%</li>
+<li>[ ] Eviction rate = 0</li>
+<li>[ ] Cache hit rate &gt;80%</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-007: Redis Node Down</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>RedisNodeDown</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Redis node is unreachable.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Cache unavailable</li>
+<li>Increased database load</li>
+<li>Service degradation</li>
+</ul>
+<h3>Diagnosis</h3>
+<div class="docs-pre"><code># Check Redis cluster status
+redis-cli -h {redis-host} CLUSTER INFO
+
+# Check node status
+redis-cli -h {redis-host} CLUSTER NODES
+
+# Ping test
+redis-cli -h {redis-host} ping
+</code></div>
+<h3>Resolution</h3>
+<h4>If Primary Down (ElastiCache)</h4>
+<div class="docs-pre"><code># AWS should auto-failover
+# Check failover status
+aws elasticache describe-cache-clusters \
+  --cache-cluster-id {cluster-name} \
+  --show-cache-node-info
+
+# If no failover, trigger manual
+aws elasticache test-failover \
+  --replication-group-id {group-id} \
+  --node-group-id {node-group} \
+  --cache-node-id {failed-node}
+</code></div>
+<h4>If Self-Managed</h4>
+<div class="docs-pre"><code># Restart failed node
+kubectl delete pod {redis-pod} -n ujamaa-production
+
+# Wait for re-election
+# Monitor cluster status
+watch 'redis-cli CLUSTER INFO'
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] All nodes showing as connected</li>
+<li>[ ] Cluster state = ok</li>
+<li>[ ] Read/write operations successful</li>
+</ul>
+<hr />
+</section>
+<h1>6. Kafka Issues</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-008: Kafka Consumer Lag High</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>KafkaConsumerLagHigh</code></li>
+<li><strong>Severity:</strong> Warning (SEV2)</li>
+<li><strong>Threshold:</strong> &gt;10,000 messages</li>
+</ul>
+<h3>Description</h3>
+<p>Kafka consumer is falling behind on message processing.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Delayed event processing</li>
+<li>Stale data in downstream systems</li>
+<li>Potential message backlog</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Consumer Lag</h4>
+<div class="docs-pre"><code># List consumer groups
+kafka-consumer-groups --bootstrap-server kafka:9092 --list
+
+# Describe lag
+kafka-consumer-groups --bootstrap-server kafka:9092 \
+  --describe --group {consumer-group}
+</code></div>
+<h4>Step 2: Check Consumer Logs</h4>
+<div class="docs-pre"><code>kubectl logs -l app={consumer-service} -n ujamaa-production \
+  | grep -i &quot;error\|slow\|timeout&quot; | tail -100
+</code></div>
+<h4>Step 3: Check Processing Time</h4>
+<div class="docs-pre"><code># Grafana: kafka dashboard
+# Check:
+# - Message processing duration
+# - Throughput (messages/second)
+# - Error rate
+</code></div>
+<h3>Resolution</h3>
+<h4>If Slow Processing</h4>
+<div class="docs-pre"><code># Scale consumer horizontally
+kubectl scale deployment/{consumer-service} --replicas=+2 -n ujamaa-production
+
+# Check for poison pills (messages causing errors)
+# May need to skip or DLQ specific messages
+</code></div>
+<h4>If Consumer Errors</h4>
+<div class="docs-pre"><code># Check for deserialization errors
+kubectl logs {pod-name} -n ujamaa-production | grep -i &quot;serialization&quot;
+
+# If schema changed, may need to:
+# 1. Fix consumer code
+# 2. Reset consumer offset
+kafka-consumer-groups --bootstrap-server kafka:9092 \
+  --group {group} --reset-offsets --to-latest --execute
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Consumer lag &lt;1,000 messages</li>
+<li>[ ] Processing rate &gt; production rate</li>
+<li>[ ] No consumer errors</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-009: Kafka Broker Down</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>KafkaBrokerDown</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Kafka broker is unreachable.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Producer failures</li>
+<li>Consumer rebalancing</li>
+<li>Potential data loss if ISR shrinks</li>
+</ul>
+<h3>Diagnosis</h3>
+<div class="docs-pre"><code># Check broker status
+kafka-broker-api-versions --bootstrap-server kafka:9092
+
+# Check cluster metadata
+kafka-metadata.sh --snapshot /var/kafka/data/__cluster_metadata-0/00000000000000000000.log
+
+# Check under-replicated partitions
+kafka-topics --bootstrap-server kafka:9092 \
+  --describe --under-replicated-partitions
+</code></div>
+<h3>Resolution</h3>
+<h4>If MSK (Managed Kafka)</h4>
+<div class="docs-pre"><code># AWS should auto-heal
+# Check broker status
+aws kafka list-nodes --cluster-arn {cluster-arn}
+
+# If broker not recovering, contact AWS support
+</code></div>
+<h4>If Self-Managed</h4>
+<div class="docs-pre"><code># Restart broker
+kubectl delete pod {kafka-broker-pod} -n kafka
+
+# Wait for broker to rejoin
+watch 'kafka-broker-api-versions --bootstrap-server kafka:9092'
+
+# Check for under-replicated partitions
+kafka-topics --bootstrap-server kafka:9092 \
+  --describe --under-replicated-partitions
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] All brokers online</li>
+<li>[ ] No under-replicated partitions</li>
+<li>[ ] Producer/consumer operations normal</li>
+</ul>
+<hr />
+</section>
+<h1>7. Blockchain Issues</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-010: Blockchain Sync Behind</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>BlockchainSyncBehind</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Threshold:</strong> &gt;20 blocks behind</li>
+</ul>
+<h3>Description</h3>
+<p>Blockchain node is significantly behind the network tip.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Stale blockchain data</li>
+<li>Transaction submission failures</li>
+<li>Compliance check failures</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Block Number</h4>
+<div class="docs-pre"><code># Check current block
+curl -X POST https://polygon-rpc.com \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:1}'
+
+# Compare with expected (polygonscan.com)
+</code></div>
+<h4>Step 2: Check Peer Count</h4>
+<div class="docs-pre"><code>curl -X POST https://polygon-rpc.com \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_peerCount&quot;,&quot;params&quot;:[],&quot;id&quot;:1}'
+</code></div>
+<h4>Step 3: Check Sync Status</h4>
+<div class="docs-pre"><code>curl -X POST https://polygon-rpc.com \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_syncing&quot;,&quot;params&quot;:[],&quot;id&quot;:1}'
+</code></div>
+<h3>Resolution</h3>
+<h4>If Using Third-Party RPC</h4>
+<div class="docs-pre"><code># Switch to backup RPC
+kubectl set env deployment/blockchain-exporter \
+  RPC_URL=https://polygon-mainnet.g.alchemy.com/v2/{key} \
+  -n monitoring
+
+# Update service configuration
+kubectl edit configmap service-config -n ujamaa-production
+# Update BLOCKCHAIN_RPC_URL
+</code></div>
+<h4>If Running Own Node</h4>
+<div class="docs-pre"><code># Check node logs
+kubectl logs -l app=polygon-node -n blockchain --tail=500
+
+# Restart node
+kubectl delete pod -l app=polygon-node -n blockchain
+
+# Wait for sync (may take hours)
+watch 'curl -s -X POST https://localhost:8545 -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;eth_blockNumber\&quot;,\&quot;params\&quot;:[],\&quot;id\&quot;:1}&quot;'
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Block lag &lt;10 blocks</li>
+<li>[ ] Peer count &gt;25</li>
+<li>[ ] Sync status = false (not syncing)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-011: Smart Contract Paused</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>SmartContractPaused</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Smart contract has been paused (emergency stop).</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>All contract functions blocked</li>
+<li>No transfers possible</li>
+<li>Complete service outage for affected asset</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Contract State</h4>
+<div class="docs-pre"><code>from web3 import Web3
+
+w3 = Web3(Web3.HTTPProvider(RPC_URL))
+contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=ABI)
+
+# Check paused status
+paused = contract.functions.paused().call()
+print(f&quot;Contract paused: {paused}&quot;)
+
+# Check who paused it (from events)
+events = contract.events.Paused().create_filter(
+    fromBlock='latest',
+    toBlock='latest'
+)
+for event in events.get_all_entries():
+    print(f&quot;Paused by: {event['account']}&quot;)
+</code></div>
+<h4>Step 2: Check Why Paused</h4>
+<div class="docs-pre"><code># Check recent alerts
+# Grafana: compliance dashboard
+
+# Check for exploit attempts
+# Check blockchain explorer for unusual transactions
+</code></div>
+<h3>Resolution</h3>
+<h4>If Intentional Pause (Security)</h4>
+<div class="docs-pre"><code># Do NOT unpause until investigation complete
+# Follow security incident procedures (RB-013)
+</code></div>
+<h4>If Accidental Pause</h4>
+<div class="docs-pre"><code># Unpause contract (requires admin multisig)
+# This must be done via Gnosis Safe
+
+# 1. Create transaction in Gnosis Safe
+# 2. Get required signatures (5-of-9)
+# 3. Execute transaction
+
+# Contract call:
+# contract.functions.unpause().transact({'from': ADMIN_ADDRESS})
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Contract unpaused</li>
+<li>[ ] Transfer functions working</li>
+<li>[ ] No unusual transactions during pause</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-012: Bridge Transfer Stuck</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Alert Name:</strong> <code>BridgeTransferDelayed</code></li>
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Threshold:</strong> &gt;30 minutes</li>
+</ul>
+<h3>Description</h3>
+<p>Cross-chain bridge transfer is not completing.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Users cannot move assets between chains</li>
+<li>Liquidity fragmentation</li>
+<li>User funds temporarily inaccessible</li>
+</ul>
+<h3>Diagnosis</h3>
+<h4>Step 1: Check Transfer Status</h4>
+<div class="docs-pre"><code># Check bridge contract events
+# Etherscan/Polygonscan: check transaction status
+
+# Check relayer status
+kubectl logs -l app=bridge-relayer -n ujamaa-production --tail=200
+</code></div>
+<h4>Step 2: Check Multisig</h4>
+<div class="docs-pre"><code># Check if relayers have signed
+# Bridge dashboard: pending transfers
+
+# Check multisig wallet
+# Gnosis Safe: check pending transactions
+</code></div>
+<h3>Resolution</h3>
+<h4>If Relayer Issue</h4>
+<div class="docs-pre"><code># Restart relayer
+kubectl rollout restart deployment/bridge-relayer -n ujamaa-production
+
+# Check relayer configuration
+kubectl describe pod -l app=bridge-relayer -n ujamaa-production
+</code></div>
+<h4>If Multisig Stuck</h4>
+<div class="docs-pre"><code># Contact relayer operators
+# May need manual intervention to complete transfer
+
+# As last resort, can initiate recovery via governance
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Transfer completed on both chains</li>
+<li>[ ] User received wrapped tokens</li>
+<li>[ ] Bridge balance reconciled</li>
+</ul>
+<hr />
+</section>
+<h1>8. Smart Contract Emergencies</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-013: Smart Contract Exploit</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+<li><strong>Team:</strong> Security + Platform</li>
+</ul>
+<h3>Description</h3>
+<p>Suspected or confirmed exploit of smart contract.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Potential loss of funds</li>
+<li>Protocol insolvency</li>
+<li>Reputational damage</li>
+</ul>
+<h3>Immediate Actions (First 15 Minutes)</h3>
+<h4>Step 1: Pause Contract</h4>
+<div class="docs-pre"><code># EMERGENCY: Pause all contracts via multisig
+# Gnosis Safe: execute pause() function
+# Requires 1-of-9 for emergency pause (if configured)
+
+# Or call pause() directly if you have PAUSER_ROLE
+</code></div>
+<h4>Step 2: Stop Bridge</h4>
+<div class="docs-pre"><code># Pause bridge contracts
+# Prevent further cross-chain movement
+</code></div>
+<h4>Step 3: Notify Team</h4>
+<div class="docs-pre"><code># Page security team
+# Create emergency war room
+# Notify legal/compliance
+</code></div>
+<h3>Diagnosis</h3>
+<h4>Step 1: Identify Exploit Vector</h4>
+<div class="docs-pre"><code># Check blockchain explorer for suspicious transactions
+# Analyze transaction patterns
+# Check for reentrancy, overflow, access control bypass
+</code></div>
+<h4>Step 2: Assess Damage</h4>
+<div class="docs-pre"><code># Check contract balances before/after
+# Calculate funds lost
+# Identify affected users
+</code></div>
+<h3>Resolution</h3>
+<h4>If Confirmed Exploit</h4>
+<div class="docs-pre"><code># 1. Keep contracts paused
+# 2. Engage security auditors
+# 3. Prepare communication
+# 4. Plan recovery (upgrade, migration, compensation)
+</code></div>
+<h3>Post-Incident</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Security audit</li>
+<li>[ ] Public disclosure</li>
+<li>[ ] User compensation plan</li>
+<li>[ ] Contract upgrade with fix</li>
+<li>[ ] Bug bounty payout</li>
+</ul>
+<hr />
+</section>
+<h1>9. Security Incidents</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-014: DDoS Attack</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Distributed denial of service attack detected.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Service unavailable</li>
+<li>Legitimate users blocked</li>
+<li>Infrastructure costs</li>
+</ul>
+<h3>Immediate Actions</h3>
+<h4>Step 1: Enable DDoS Protection</h4>
+<div class="docs-pre"><code># AWS Shield Advanced should auto-mitigate
+# Check AWS Shield console
+
+# Enable AWS WAF rate limiting
+aws wafv2 update-web-acl \
+  --name ujamaa-waf \
+  --scope REGIONAL \
+  --default-action Block
+</code></div>
+<h4>Step 2: Scale Infrastructure</h4>
+<div class="docs-pre"><code># Enable CloudFront caching
+# Scale ALB
+# Enable auto-scaling for EKS nodes
+</code></div>
+<h4>Step 3: Block Attack Vectors</h4>
+<div class="docs-pre"><code># Add IP blocks to WAF
+# Block geographic regions if appropriate
+# Implement CAPTCHA for suspicious traffic
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Attack traffic mitigated</li>
+<li>[ ] Legitimate traffic flowing</li>
+<li>[ ] Error rates normal</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-015: API Key Compromise</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>API key or secret has been leaked or compromised.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Unauthorized access</li>
+<li>Potential data breach</li>
+<li>Financial loss</li>
+</ul>
+<h3>Immediate Actions</h3>
+<h4>Step 1: Revoke Compromised Key</h4>
+<div class="docs-pre"><code># Rotate immediately
+aws secretsmanager rotate-secret --secret-id {secret-name}
+
+# Revoke API key
+kubectl delete secret {api-key-secret} -n ujamaa-production
+</code></div>
+<h4>Step 2: Audit Access</h4>
+<div class="docs-pre"><code># Check CloudTrail for unauthorized access
+aws cloudtrail lookup-events \
+  --lookup-attributes AttributeKey=AccessKeyId,AttributeValue={key-id}
+
+# Check application logs for suspicious activity
+</code></div>
+<h4>Step 3: Issue New Credentials</h4>
+<div class="docs-pre"><code># Generate new API key
+# Update all systems using the key
+# Notify affected parties
+</code></div>
+<h3>Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Old key revoked</li>
+<li>[ ] New key deployed</li>
+<li>[ ] No unauthorized access detected</li>
+</ul>
+<hr />
+</section>
+<h1>10. Performance Degradation</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-016: API Performance Degradation</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Warning (SEV3)</li>
+</ul>
+<h3>Description</h3>
+<p>API response times are degraded but not failing.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Poor user experience</li>
+<li>Potential SLO violation</li>
+</ul>
+<h3>Diagnosis</h3>
+<div class="docs-pre"><code># Check APM traces
+# Grafana: Tempo dashboard
+
+# Identify slow endpoints
+# Check database query times
+# Check external API dependencies
+</code></div>
+<h3>Resolution</h3>
+<h4>If Database Slow</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>See RB-004, RB-005</li>
+</ul>
+<h4>If Cache Issue</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>See RB-006, RB-007</li>
+</ul>
+<h4>If Code Issue</h4>
+<div class="docs-pre"><code># Check for recent deployment
+# Consider rollback
+kubectl rollout undo deployment/{service-name} -n ujamaa-production
+</code></div>
+<hr />
+</section>
+<h1>11. Deployment Failures</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-017: Deployment Failure</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Warning (SEV2)</li>
+</ul>
+<h3>Description</h3>
+<p>Kubernetes deployment failed to roll out.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>New features delayed</li>
+<li>Potential service impact if replacing pods</li>
+</ul>
+<h3>Diagnosis</h3>
+<div class="docs-pre"><code># Check rollout status
+kubectl rollout status deployment/{service-name} -n ujamaa-production
+
+# Check why stuck
+kubectl describe deployment {service-name} -n ujamaa-production
+
+# Check pod events
+kubectl get events -n ujamaa-production --sort-by='.lastTimestamp'
+</code></div>
+<h3>Resolution</h3>
+<h4>If Image Pull Error</h4>
+<div class="docs-pre"><code># Verify image exists
+docker pull ghcr.io/ujamaa-defi/{service}:{tag}
+
+# Fix image tag
+kubectl set image deployment/{service-name} \
+  {service-name}=ghcr.io/ujamaa-defi/{service}:{correct-tag} \
+  -n ujamaa-production
+</code></div>
+<h4>If Resource Issues</h4>
+<div class="docs-pre"><code># Check resource quotas
+kubectl describe quota -n ujamaa-production
+
+# Adjust resources
+kubectl edit deployment/{service-name} -n ujamaa-production
+</code></div>
+<h4>Rollback</h4>
+<div class="docs-pre"><code>kubectl rollout undo deployment/{service-name} -n ujamaa-production
+</code></div>
+<hr />
+</section>
+<h1>12. Data Recovery</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-018: Data CorruLPion</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Data corruLPion detected in database.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Data integrity compromised</li>
+<li>Potential financial impact</li>
+</ul>
+<h3>Recovery Steps</h3>
+<h4>Step 1: Stop Writes</h4>
+<div class="docs-pre"><code># Pause affected services
+kubectl scale deployment/{service-name} --replicas=0 -n ujamaa-production
+</code></div>
+<h4>Step 2: Assess Damage</h4>
+<div class="docs-pre"><code>-- Check affected tables
+-- Identify corruLPion scope
+</code></div>
+<h4>Step 3: Restore from Backup</h4>
+<div class="docs-pre"><code># Restore from latest clean backup
+aws rds restore-db-instance-to-point-in-time \
+  --source-db-instance-identifier ujamaa-prod \
+  --target-db-instance-identifier ujamaa-recovery \
+  --restore-time 2026-02-27T10:00:00Z
+</code></div>
+<h4>Step 4: Verify and Switch</h4>
+<div class="docs-pre"><code># Verify data integrity
+# Switch application to recovered database
+</code></div>
+<hr />
+</section>
+<h1>13. Disaster Recovery</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-019: Region Failover</h2>
+<h3>Alert Details</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Severity:</strong> Critical (SEV1)</li>
+</ul>
+<h3>Description</h3>
+<p>Primary region (AWS af-south-1) unavailable.</p>
+<h3>Impact</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Complete service outage in primary region</li>
+<li>Need to failover to DR (GCP africa-south1)</li>
+</ul>
+<h3>Failover Steps</h3>
+<h4>Step 1: Confirm Outage</h4>
+<div class="docs-pre"><code># Check AWS status
+# Check all services down
+# Confirm not network issue
+</code></div>
+<h4>Step 2: DNS Failover</h4>
+<div class="docs-pre"><code># Update Route53 health check
+# Failover to GCP
+# TTL should be low (60s)
+</code></div>
+<h4>Step 3: Scale DR</h4>
+<div class="docs-pre"><code># Scale GKE to production capacity
+kubectl scale deployment --all --replicas=3 -n ujamaa-production --context gcp-context
+
+# Promote database
+gcloud sql instances promote-replica ujamaa-dr
+</code></div>
+<h4>Step 4: Verify</h4>
+<div class="docs-pre"><code># Run health checks
+# Verify all services
+# Monitor error rates
+</code></div>
+<h3>Failback</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Wait for primary region recovery</li>
+<li>Re-establish replication</li>
+<li>Schedule maintenance window</li>
+<li>Execute controlled failback</li>
+</ul>
+<hr />
+</section>
+<h1>14. Maintenance Procedures</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-020: Certificate Renewal</h2>
+<h3>Schedule</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Frequency:</strong> Every 90 days (Let's Encrypt)</li>
+<li><strong>Window:</strong> Sunday 02:00-04:00 UTC</li>
+</ul>
+<h3>Steps</h3>
+<h4>Step 1: Pre-Renewal Check</h4>
+<div class="docs-pre"><code># Check current cert expiry
+openssl s_client -connect api.ujamaa-defi.com:443 \
+  | openssl x509 -noout -dates
+</code></div>
+<h4>Step 2: Renew Certificate</h4>
+<div class="docs-pre"><code># Certbot auto-renewal (should be automated)
+certbot renew --dry-run
+
+# Force renew if needed
+certbot renew --force-renewal
+</code></div>
+<h4>Step 3: Reload Services</h4>
+<div class="docs-pre"><code># Reload nginx/ingress
+kubectl rollout restart deployment/ingress-nginx -n ingress-nginx
+</code></div>
+<h4>Step 4: Verify</h4>
+<div class="docs-pre"><code># Check new cert
+openssl s_client -connect api.ujamaa-defi.com:443 \
+  | openssl x509 -noout -dates
+
+# Verify in browser
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>RB-021: Database Maintenance</h2>
+<h3>Schedule</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Frequency:</strong> Monthly</li>
+<li><strong>Window:</strong> Sunday 03:00-05:00 UTC</li>
+</ul>
+<h3>Steps</h3>
+<h4>Step 1: Pre-Maintenance</h4>
+<div class="docs-pre"><code># Notify users (48h advance)
+# Take backup
+aws rds create-db-snapshot \
+  --db-instance-identifier ujamaa-prod \
+  --db-snapshot-identifier pre-maintenance-$(date +%Y%m%d)
+</code></div>
+<h4>Step 2: Run Maintenance</h4>
+<div class="docs-pre"><code>-- Vacuum analyze
+VACUUM ANALYZE;
+
+-- Reindex
+REINDEX DATABASE ujamaa_prod;
+
+-- Update statistics
+ANALYZE;
+</code></div>
+<h4>Step 3: Verify</h4>
+<div class="docs-pre"><code># Check database performance
+# Run smoke tests
+</code></div>
+<hr />
+<p><strong>Document Control</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-02-27</td>
+<td>SRE Lead</td>
+<td>Initial release</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related Documents</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> - Requirements specification</li>
+<li><code>02_ARCHITECTURE_SPECIFICATION.md</code> - System architecture</li>
+<li><code>06_DEPLOYMENT_GUIDE.md</code> - Infrastructure details</li>
+<li><code>07_MONITORING_SPECIFICATION.md</code> - Alert definitions</li>
+</ul>
+<p><strong>Runbooks Repository</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>https://github.com/ujamaa-defi/runbooks</li>
+</ul>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Operations</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

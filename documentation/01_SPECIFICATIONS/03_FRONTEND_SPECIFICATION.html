@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DeFi Platform - Frontend Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DeFi Platform - Frontend Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DeFi Platform - Frontend Specification</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ Production-Ready MVP | <strong>Last Updated:</strong> March 19, 2026</p></div>
+
+        <h1>UJAMAA DeFi Platform - Frontend Specification</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> March 19, 2026<br />
+<strong>Status:</strong> Production-Ready MVP</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p>The UJAMAA DeFi Platform frontend is a <strong>modern, institutional-grade React application</strong> designed for tokenizing African real-world assets (RWA). Built with a focus on security, compliance, and user experience, it serves three distinct user roles: <strong>Investors</strong>, <strong>Originators (Industrial Partners)</strong>, and <strong>Administrators</strong>.</p>
+<h3>Key Characteristics</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Framework:</strong> React 19.2 with TypeScript</li>
+<li><strong>Build Tool:</strong> Vite 7.3 with optimized code splitting</li>
+<li><strong>Styling:</strong> Tailwind CSS 4.2 with custom design system</li>
+<li><strong>Web3 Integration:</strong> Wagmi 2.19 + RainbowKit 2.2 + Viem 2.47</li>
+<li><strong>Blockchain:</strong> Polygon Amoy Testnet</li>
+<li><strong>Compliance:</strong> ERC-3643 permissioned tokens</li>
+<li><strong>i18n:</strong> English &amp; French support</li>
+<li><strong>Accessibility:</strong> WCAG 2.1 compliant</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Technology Stack</h2>
+<h3>1.1 Core Dependencies</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td><code>react</code></td>
+<td>19.2.0</td>
+<td>UI framework</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td><code>react-router-dom</code></td>
+<td>7.13.1</td>
+<td>Client-side routing</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td><code>typescript</code></td>
+<td>5.9.3</td>
+<td>Type safety</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td><code>tailwindcss</code></td>
+<td>4.2.1</td>
+<td>Utility-first CSS</td>
+</tr>
+<tr>
+<td><strong>Icons</strong></td>
+<td><code>lucide-react</code></td>
+<td>0.576.0</td>
+<td>Icon library</td>
+</tr>
+<tr>
+<td><strong>Animations</strong></td>
+<td><code>framer-motion</code></td>
+<td>12.34.4</td>
+<td>Motion primitives</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td><code>recharts</code></td>
+<td>3.8.0</td>
+<td>Data visualization</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 Web3 Stack</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wagmi</code></td>
+<td>2.19.5</td>
+<td>React hooks for Ethereum</td>
+</tr>
+<tr>
+<td><code>viem</code></td>
+<td>2.47.4</td>
+<td>TypeScript interface for Ethereum</td>
+</tr>
+<tr>
+<td><code>@rainbow-me/rainbowkit</code></td>
+<td>2.2.10</td>
+<td>Wallet connection UI</td>
+</tr>
+<tr>
+<td><code>@tanstack/react-query</code></td>
+<td>5.90.21</td>
+<td>Data fetching &amp; caching</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.3 Supporting Libraries</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axios</code></td>
+<td>1.13.6</td>
+<td>HTTP client</td>
+</tr>
+<tr>
+<td><code>i18next</code></td>
+<td>25.8.13</td>
+<td>Internationalization</td>
+</tr>
+<tr>
+<td><code>react-i18next</code></td>
+<td>16.5.4</td>
+<td>React i18n bindings</td>
+</tr>
+<tr>
+<td><code>class-variance-authority</code></td>
+<td>0.7.1</td>
+<td>Component variants</td>
+</tr>
+<tr>
+<td><code>clsx</code> + <code>tailwind-merge</code></td>
+<td>2.1.1 + 3.5.0</td>
+<td>Conditional classes</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.4 Development Tools</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vite</code></td>
+<td>7.3.1</td>
+<td>Build tool &amp; dev server</td>
+</tr>
+<tr>
+<td><code>@vitejs/plugin-react</code></td>
+<td>5.1.1</td>
+<td>React Fast Refresh</td>
+</tr>
+<tr>
+<td><code>eslint</code></td>
+<td>9.39.1</td>
+<td>Linting</td>
+</tr>
+<tr>
+<td><code>vitest</code></td>
+<td>4.1.0</td>
+<td>Testing framework</td>
+</tr>
+<tr>
+<td><code>@testing-library/jest-dom</code></td>
+<td>6.9.1</td>
+<td>DOM testing utilities</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Architecture Overview</h2>
+<h3>2.1 Application Structure</h3>
+<div class="docs-pre"><code>temp-external/
+├── src/
+│   ├── api/                  # API client &amp; types
+│   │   ├── client.ts         # Axios instance with interceptors
+│   │   └── types.ts          # API response types
+│   ├── assets/               # Static assets
+│   ├── components/           # React components
+│   │   ├── features/         # Feature-specific components
+│   │   │   ├── AssetDepositForm.tsx
+│   │   │   ├── AssetList.tsx
+│   │   │   ├── FraudAlertsDashboard.tsx
+│   │   │   ├── ProductionProofHistory.tsx
+│   │   │   └── SmartContractsPanel.tsx
+│   │   ├── layout/           # Layout components
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   └── RoleNav.tsx
+│   │   ├── ui/               # Reusable UI components
+│   │   │   ├── Badge.tsx
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   └── RoleSelector.tsx
+│   │   └── web3/             # Web3-specific components
+│   │       ├── TransactionToast.tsx
+│   │       └── WalletConnection.tsx
+│   ├── contexts/             # React contexts
+│   │   ├── AuthContext.tsx   # Authentication &amp; role management
+│   │   ├── ContractContext.tsx # Contract hooks provider
+│   │   └── TransactionContext.tsx # Transaction state
+│   ├── hooks/                # Custom hooks
+│   │   ├── contracts/        # Contract interaction hooks
+│   │   │   ├── useAssetProof.ts
+│   │   │   ├── useComplianceModule.ts
+│   │   │   ├── useIdentityRegistry.ts
+│   │   │   └── useRWATokenizer.ts
+│   │   └── useRole.ts        # Role-based access hook
+│   ├── i18n/                 # Internationalization
+│   │   ├── locales/
+│   │   │   ├── en/translation.json
+│   │   │   └── fr/translation.json
+│   │   └── config.ts         # i18next configuration
+│   ├── lib/                  # Utility libraries
+│   │   └── utils.ts          # cn() helper for Tailwind
+│   ├── pages/                # Page components
+│   │   ├── admin/
+│   │   │   └── AdminFraudAlerts.tsx
+│   │   ├── dashboard/
+│   │   │   ├── AdminDashboard.tsx
+│   │   │   ├── AssetDeposit.tsx
+│   │   │   ├── IndustrialDashboard.tsx
+│   │   │   └── InvestorDashboard.tsx
+│   │   ├── marketplace/
+│   │   │   ├── AssetBrowse.tsx
+│   │   │   └── AssetDetail.tsx
+│   │   ├── onboarding/
+│   │   │   ├── InvestorOnboarding.tsx
+│   │   │   └── IndustrialOnboarding.tsx
+│   │   ├── DeepDive.tsx
+│   │   └── Landing.tsx
+│   ├── types/                # TypeScript type definitions
+│   │   ├── asset.ts          # Asset &amp; AssetFamily types
+│   │   └── fraud.ts          # Fraud detection types
+│   ├── utils/                # Helper functions
+│   │   ├── MockWallet.ts     # Mock wallet for testing
+│   │   └── web3.ts           # Web3 utility functions
+│   ├── web3/                 # Web3 configuration
+│   │   ├── abi/              # Contract ABIs
+│   │   │   ├── AssetProof.json.ts
+│   │   │   ├── ComplianceModule.json.ts
+│   │   │   ├── IdentityRegistry.json.ts
+│   │   │   └── RWATokenizer.json.ts
+│   │   ├── config.ts         # Wagmi configuration
+│   │   ├── contracts.ts      # Contract addresses
+│   │   └── providers.tsx     # Web3 context providers
+│   ├── App.tsx               # Main application component
+│   ├── App.css               # App-specific styles
+│   ├── index.css             # Global styles
+│   └── main.tsx              # Application entry point
+├── package.json
+├── vite.config.ts            # Vite configuration
+├── tailwind.config.js        # Tailwind configuration
+├── tsconfig.json             # TypeScript configuration
+└── index.html
+</code></div>
+<h3>2.2 Context Hierarchy</h3>
+<div class="docs-pre"><code>&lt;Web3Providers&gt;          // Wagmi + RainbowKit + React Query
+  └── &lt;AuthProvider&gt;     // Wallet connection + User role
+        └── &lt;ContractProvider&gt;  // Contract hooks
+              └── &lt;TransactionProvider&gt;  // Transaction state
+                    └── &lt;App&gt;  // Routes &amp; Pages
+</code></div>
+<h3>2.3 State Management Strategy</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>State Type</th>
+<th>Solution</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web3 State</strong></td>
+<td>Wagmi + RainbowKit</td>
+<td><code>web3/providers.tsx</code></td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>React Context</td>
+<td><code>contexts/AuthContext.tsx</code></td>
+</tr>
+<tr>
+<td><strong>Contract Data</strong></td>
+<td>React Query (via Wagmi)</td>
+<td><code>hooks/contracts/*</code></td>
+</tr>
+<tr>
+<td><strong>Server State</strong></td>
+<td>React Query</td>
+<td><code>api/client.ts</code></td>
+</tr>
+<tr>
+<td><strong>UI State</strong></td>
+<td>React <code>useState</code></td>
+<td>Component-level</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>localStorage + State</td>
+<td><code>contexts/AuthContext.tsx</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Design System</h2>
+<h3>3.1 Color Palette</h3>
+<div class="docs-pre"><code>colors: {
+  ujamaa: {
+    primary: '#16A34A',      // Green - Growth, Prosperity
+    secondary: '#0D9488',    // Teal - African Heritage
+    accent: '#F59E0B',       // Amber - Wealth, Value
+    dark: '#1F2937',         // Dark Gray - Professional
+    light: '#F9FAFB',        // Light Gray - Clean
+    success: '#10B981',      // Success Green
+    warning: '#F59E0B',      // Warning Amber
+    error: '#EF4444',        // Error Red
+    info: '#3B82F6',         // Info Blue
+  }
+}
+</code></div>
+<h3>3.2 Typography</h3>
+<div class="docs-pre"><code>fontFamily: {
+  sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+  heading: ['Plus Jakarta Sans', 'Poppins', 'system-ui', 'sans-serif'],
+}
+</code></div>
+<p><strong>Font Size Scale:</strong><br />
+- <code>h1</code>: clamp(2.5rem, 5vw, 4.5rem)<br />
+- <code>h2</code>: clamp(2rem, 4vw, 3.5rem)<br />
+- <code>h3</code>: clamp(1.5rem, 3vw, 2rem)</p>
+<h3>3.3 Shadows</h3>
+<div class="docs-pre"><code>boxShadow: {
+  'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+  'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.05)',
+  'glow-primary': '0 0 20px rgba(22, 163, 74, 0.3)',
+  'glow-secondary': '0 0 20px rgba(13, 148, 136, 0.3)',
+}
+</code></div>
+<h3>3.4 Animations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Duration</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>6s</td>
+<td>Vertical floating motion</td>
+</tr>
+<tr>
+<td><code>pulse-slow</code></td>
+<td>4s</td>
+<td>Slow pulse effect</td>
+</tr>
+<tr>
+<td><code>fadeIn</code></td>
+<td>0.6s</td>
+<td>Fade in with upward motion</td>
+</tr>
+<tr>
+<td><code>gradient-x</code></td>
+<td>20s</td>
+<td>Horizontal gradient animation</td>
+</tr>
+<tr>
+<td><code>gradient-y</code></td>
+<td>25s</td>
+<td>Vertical gradient animation</td>
+</tr>
+<tr>
+<td><code>carousel</code></td>
+<td>30s</td>
+<td>Logo carousel scroll</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.5 Component Variants</h3>
+<h4>Button Component</h4>
+<div class="docs-pre"><code>variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white'
+size: 'sm' | 'md' | 'lg' | 'xl'
+</code></div>
+<h4>Badge Component</h4>
+<div class="docs-pre"><code>variant: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
+size: 'sm' | 'md' | 'lg'
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Pages &amp; Routes</h2>
+<h3>4.1 Route Configuration</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Path</th>
+<th>Component</th>
+<th>Access</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td><code>Landing.tsx</code></td>
+<td>Public</td>
+<td>Landing page</td>
+</tr>
+<tr>
+<td><code>/marketplace</code></td>
+<td><code>AssetBrowse.tsx</code></td>
+<td>Public</td>
+<td>Asset marketplace</td>
+</tr>
+<tr>
+<td><code>/marketplace/:id</code></td>
+<td><code>AssetDetail.tsx</code></td>
+<td>Public</td>
+<td>Asset details</td>
+</tr>
+<tr>
+<td><code>/deep-dive</code></td>
+<td><code>DeepDive.tsx</code></td>
+<td>Public</td>
+<td>Platform deep dive</td>
+</tr>
+<tr>
+<td><code>/onboarding/investor</code></td>
+<td><code>InvestorOnboarding.tsx</code></td>
+<td>Auth Required</td>
+<td>Investor registration</td>
+</tr>
+<tr>
+<td><code>/onboarding/originator</code></td>
+<td><code>IndustrialOnboarding.tsx</code></td>
+<td>Auth Required</td>
+<td>Originator registration</td>
+</tr>
+<tr>
+<td><code>/dashboard/investor</code></td>
+<td><code>InvestorDashboard.tsx</code></td>
+<td>INVESTOR</td>
+<td>Investor dashboard</td>
+</tr>
+<tr>
+<td><code>/dashboard/originator</code></td>
+<td><code>IndustrialDashboard.tsx</code></td>
+<td>ORIGINATOR</td>
+<td>Originator dashboard</td>
+</tr>
+<tr>
+<td><code>/dashboard/admin</code></td>
+<td><code>AdminDashboard.tsx</code></td>
+<td>ADMIN</td>
+<td>Admin dashboard</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 Page Specifications</h3>
+<h4>4.2.1 Landing Page (<code>Landing.tsx</code>)</h4>
+<p><strong>Purpose:</strong> Convert visitors into users</p>
+<p><strong>Key Sections:</strong><br />
+1. <strong>Hero Section</strong><br />
+   - Animated gradient background<br />
+   - Value proposition headline<br />
+   - 3 CTA buttons (Browse, Invest, Tokenize)<br />
+   - Trust badges (ERC-3643, Polygon, Ethereum)</p>
+<ol start="2">
+<li>
+<p><strong>Product Preview</strong><br />
+   - Glassmorphism dashboard mockup<br />
+   - Animated stats cards<br />
+   - Floating certification badges</p>
+</li>
+<li>
+<p><strong>Trust Signals</strong><br />
+   - Animated counters (Assets, TVL, Investors, Countries)<br />
+   - Partner logo carousel</p>
+</li>
+<li>
+<p><strong>Features Grid</strong><br />
+   - 4 feature cards with icons<br />
+   - Compliance, Security, African Focus, Transparency</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br />
+   - 4-step process with connected timeline<br />
+   - Browse → KYC → Invest → Track</p>
+</li>
+<li>
+<p><strong>CTA Section</strong><br />
+   - Final conversion push<br />
+   - Dual CTAs for investors and originators</p>
+</li>
+</ol>
+<p><strong>Technical Features:</strong><br />
+- Dark mode toggle<br />
+- Language switcher (EN/FR)<br />
+- Mobile-responsive navigation<br />
+- CSS-based animations (no JavaScript)</p>
+<h4>4.2.2 Investor Dashboard (<code>InvestorDashboard.tsx</code>)</h4>
+<p><strong>Purpose:</strong> Portfolio management and investment tracking</p>
+<p><strong>Key Features:</strong><br />
+1. <strong>Portfolio Summary Cards</strong><br />
+   - Total Invested<br />
+   - Current Value<br />
+   - Total Returns (with percentage)<br />
+   - Active Investments count</p>
+<ol start="2">
+<li>
+<p><strong>KYC Status Indicator</strong><br />
+   - Level badge (1, 2, or 3)<br />
+   - Status (verified/pending/rejected)</p>
+</li>
+<li>
+<p><strong>Fraud Alert Banner</strong> (conditional)<br />
+   - Warning notification<br />
+   - Review/Dismiss actions</p>
+</li>
+<li>
+<p><strong>Investments Table</strong><br />
+   - Sortable columns<br />
+   - Search functionality<br />
+   - Status filters (Active/Pending/Completed)<br />
+   - Actions: View, Sell</p>
+</li>
+</ol>
+<p><strong>Data Requirements:</strong><br />
+- User portfolio data<br />
+- Investment history<br />
+- KYC verification status<br />
+- Fraud alert status</p>
+<h4>4.2.3 Industrial Dashboard (<code>IndustrialDashboard.tsx</code>)</h4>
+<p><strong>Purpose:</strong> Asset management and production notarization</p>
+<p><strong>Key Features:</strong><br />
+1. <strong>Stats Summary</strong><br />
+   - Total Assets<br />
+   - Pending Approval count<br />
+   - Total Raised (USDC)<br />
+   - Proofs Notarized count</p>
+<ol start="2">
+<li>
+<p><strong>Assets List Component</strong><br />
+   - Asset cards with progress bars<br />
+   - Funding percentage visualization<br />
+   - Actions: View, Edit, Notarize</p>
+</li>
+<li>
+<p><strong>Production Proof History</strong><br />
+   - Notarization timeline<br />
+   - Transaction hash links<br />
+   - Verification status</p>
+</li>
+<li>
+<p><strong>Notarization Modal</strong><br />
+   - SHA-256 hash submission<br />
+   - Blockchain transaction flow<br />
+   - Explorer link generation</p>
+</li>
+</ol>
+<p><strong>Smart Contract Interactions:</strong><br />
+- <code>AssetProof.notarize(hash)</code> - Submit production data hash<br />
+- <code>AssetProof.getProofs(originator)</code> - Retrieve notarization history</p>
+<h4>4.2.4 Admin Dashboard (<code>AdminDashboard.tsx</code>)</h4>
+<p><strong>Purpose:</strong> Platform oversight and compliance monitoring</p>
+<p><strong>Tab Navigation:</strong><br />
+1. <strong>Overview Tab</strong><br />
+   - Platform KPIs (Users, Assets, Volume, Alerts)<br />
+   - Transaction volume chart (BarChart)<br />
+   - Alert severity distribution (PieChart)<br />
+   - Recent activity feed<br />
+   - User/Asset distribution charts</p>
+<ol start="2">
+<li>
+<p><strong>Smart Contracts Tab</strong><br />
+   - Contract address display<br />
+   - Contract interaction panel<br />
+   - Gas tracking</p>
+</li>
+<li>
+<p><strong>Fraud Alerts Tab</strong> (<code>FraudAlertsDashboard.tsx</code>)<br />
+   - Alert severity filters<br />
+   - Search functionality<br />
+   - Alert resolution workflow<br />
+   - Detection rules overview</p>
+</li>
+<li>
+<p><strong>Users Tab</strong><br />
+   - User management table<br />
+   - KYC approval workflow<br />
+   - Role assignment</p>
+</li>
+<li>
+<p><strong>Assets Tab</strong><br />
+   - Asset approval workflow<br />
+   - Asset status management</p>
+</li>
+</ol>
+<p><strong>Real-time Features:</strong><br />
+- Auto-refresh every 30 seconds<br />
+- Manual refresh button<br />
+- Last updated timestamp</p>
+<h4>4.2.5 Asset Deposit (<code>AssetDeposit.tsx</code>)</h4>
+<p><strong>Purpose:</strong> Tokenize new assets</p>
+<p><strong>Multi-step Form:</strong><br />
+1. <strong>Basic Information</strong><br />
+   - Asset name<br />
+   - Asset class (dropdown)<br />
+   - Target raise (USDC)<br />
+   - Expected yield (%)<br />
+   - Minimum investment (USDC)</p>
+<ol start="2">
+<li>
+<p><strong>Description &amp; Jurisdiction</strong><br />
+   - Detailed description (textarea)<br />
+   - Jurisdiction selection (African countries)</p>
+</li>
+<li>
+<p><strong>Document Upload</strong><br />
+   - Drag-and-drop file upload<br />
+   - Supported formats: PDF, PNG, JPG<br />
+   - Max file size: 10MB</p>
+</li>
+<li>
+<p><strong>Confirmation</strong><br />
+   - Summary review<br />
+   - Submit for approval</p>
+</li>
+</ol>
+<p><strong>Validation Rules:</strong><br />
+- Target raise &gt; 0<br />
+- Expected yield: 0-100%<br />
+- Minimum investment &gt; 0<br />
+- Valid JSON metadata</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Smart Contract Integration</h2>
+<h3>5.1 Contract Architecture</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────┐
+│                 UJAMAA Protocol                      │
+├─────────────────────────────────────────────────────┤
+│  RWATokenizer    │  Tokenize RWA, mint/burn tokens  │
+│  IdentityRegistry│  ERC-3643 compliance, KYC checks │
+│  ComplianceModule│  Investment rules, restrictions  │
+│  AssetProof      │  Production data notarization    │
+└─────────────────────────────────────────────────────┘
+</code></div>
+<h3>5.2 Contract Hooks</h3>
+<h4><code>useRWATokenizer</code></h4>
+<div class="docs-pre"><code>// Read
+balance: bigint
+navPerShare: bigint
+totalAssetValue: bigint
+assetFamily: AssetFamily
+
+// Write
+mint(address, amount)
+burn(amount)
+updateNAV(timestamp, value)
+assignAssetFamily(address, family)
+</code></div>
+<h4><code>useIdentityRegistry</code></h4>
+<div class="docs-pre"><code>// Read
+isVerified(address): boolean
+kycLevel(address): number
+identityInfo(address): IdentityInfo
+
+// Write
+registerIdentity(info)
+updateKycLevel(address, level)
+revokeIdentity(address)
+</code></div>
+<h4><code>useComplianceModule</code></h4>
+<div class="docs-pre"><code>// Read
+canInvest(address, amount): boolean
+investmentLimit(address): bigint
+complianceStatus(address): ComplianceStatus
+
+// Write
+setInvestmentLimit(address, limit)
+addComplianceRule(rule)
+</code></div>
+<h4><code>useAssetProof</code></h4>
+<div class="docs-pre"><code>// Read
+getProofs(originator): Proof[]
+verifyProof(hash): boolean
+
+// Write
+notarize(hash)
+</code></div>
+<h3>5.3 Contract Addresses (Polygon Amoy)</h3>
+<div class="docs-pre"><code>CONTRACT_ADDRESSES = {
+  RWATokenizer: '0x0000000000000000000000000000000000000001',
+  IdentityRegistry: '0x0000000000000000000000000000000000000002',
+  ComplianceModule: '0x0000000000000000000000000000000000000003',
+  AssetProof: '0x0000000000000000000000000000000000000004',
+}
+</code></div>
+<p><strong>Note:</strong> Update addresses after deployment</p>
+<h3>5.4 Web3 Configuration</h3>
+<div class="docs-pre"><code>// wagmi config
+chains: [polygonAmoy]
+transports: { [polygonAmoy.id]: http() }
+ssr: false  // Client-side only
+
+// RainbowKit
+modalSize: 'compact'
+showRecentTransactions: true
+appName: 'UJAMAA DeFi'
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Authentication &amp; Authorization</h2>
+<h3>6.1 Authentication Flow</h3>
+<div class="docs-pre"><code>1. User connects wallet (RainbowKit)
+   ↓
+2. AuthContext fetches user data from API
+   ↓
+3. Role assigned (INVESTOR | ORIGINATOR | ADMIN | null)
+   ↓
+4. Route protection based on role
+</code></div>
+<h3>6.2 Role-Based Access Control (RBAC)</h3>
+<div class="docs-pre"><code>type UserRole = 'INVESTOR' | 'ORIGINATOR' | 'ADMIN' | null;
+
+// Layout component enforces access
+&lt;Layout requireAuth allowedRoles={['INVESTOR']}&gt;
+  &lt;InvestorDashboard /&gt;
+&lt;/Layout&gt;
+</code></div>
+<h3>6.3 Onboarding Detection</h3>
+<div class="docs-pre"><code>// Hook to detect incomplete onboarding
+useOnboardingRequired() → boolean
+
+// Returns true when:
+// - Wallet is connected
+// - No role assigned (user not in database)
+</code></div>
+<h3>6.4 API Integration</h3>
+<div class="docs-pre"><code>// User fetch endpoint
+GET /api/v1/users/:address
+
+// Response
+{
+  address: string,
+  role: UserRole,
+  kycLevel: number,
+  isVerified: boolean
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Internationalization (i18n)</h2>
+<h3>7.1 Supported Languages</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Code</th>
+<th>Language</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>en</code></td>
+<td>English</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><code>fr</code></td>
+<td>French</td>
+<td>Complete</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 Translation Structure</h3>
+<div class="docs-pre"><code>{
+  &quot;nav&quot;: { ... },
+  &quot;landing&quot;: { ... },
+  &quot;onboarding&quot;: { ... },
+  &quot;dashboard&quot;: { ... },
+  &quot;marketplace&quot;: { ... },
+  &quot;common&quot;: { ... }
+}
+</code></div>
+<h3>7.3 Language Detection Order</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><code>localStorage</code> - User preference</li>
+<li><code>navigator</code> - Browser language</li>
+<li><code>htmlTag</code> - HTML lang attribute</li>
+</ol>
+<h3>7.4 Usage Example</h3>
+<div class="docs-pre"><code>import { useTranslation } from 'react-i18next';
+
+function Component() {
+  const { t, i18n } = useTranslation();
+
+  return (
+    &lt;h1&gt;{t('landing.hero.title')}&lt;/h1&gt;
+  );
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. API Integration</h2>
+<h3>8.1 API Client Configuration</h3>
+<div class="docs-pre"><code>// Base configuration
+baseURL: `${API_URL}/api/${API_VERSION}`
+headers: { 'Content-Type': 'application/json' }
+
+// Interceptors
+- Request: Add Bearer token from localStorage
+- Response: Error logging
+</code></div>
+<h3>8.2 API Endpoints</h3>
+<h4>Fraud Detection</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/fraud/validate</code></td>
+<td>Validate investment</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/fraud/alerts</code></td>
+<td>Get alerts with filters</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/fraud/stats</code></td>
+<td>Get fraud statistics</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/fraud/rules</code></td>
+<td>Get detection rules</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/fraud/alerts/:id/resolve</code></td>
+<td>Resolve alert</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/fraud/check</code></td>
+<td>Quick fraud check</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Investments</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/investments</code></td>
+<td>Create investment</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/investments/history/:wallet</code></td>
+<td>Get history</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Users</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/users/:wallet</code></td>
+<td>Get user by wallet</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/users/profile</code></td>
+<td>Update profile</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.3 Type Definitions</h3>
+<div class="docs-pre"><code>interface FraudAlert {
+  id: string;
+  rule_id: string;
+  severity: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  message: string;
+  wallet_address: string;
+  transaction_id?: string;
+  asset_id?: string;
+  amount_usd?: number;
+  metadata?: Record&lt;string, any&gt;;
+  created_at: string;
+  resolved: boolean;
+}
+
+interface FraudStats {
+  total_alerts: number;
+  unresolved_alerts: number;
+  critical_alerts: number;
+  high_alerts: number;
+  medium_alerts: number;
+  low_alerts: number;
+  alerts_last_24h: number;
+  alerts_last_7d: number;
+  total_resolved: number;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Component Library</h2>
+<h3>9.1 UI Components</h3>
+<h4>Button (<code>Button.tsx</code>)</h4>
+<div class="docs-pre"><code>interface ButtonProps extends ButtonHTMLAttributes&lt;HTMLButtonElement&gt; {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  isLoading?: boolean;
+  fullWidth?: boolean;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Loading state with spinner<br />
+- Disabled state handling<br />
+- Focus ring styles<br />
+- Active scale animation</p>
+<h4>Badge (<code>Badge.tsx</code>)</h4>
+<div class="docs-pre"><code>interface BadgeProps {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+}
+</code></div>
+<h4>Card (<code>Card.tsx</code>)</h4>
+<div class="docs-pre"><code>interface CardProps {
+  padding?: 'sm' | 'md' | 'lg';
+  hover?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}
+</code></div>
+<h4>Input (<code>Input.tsx</code>)</h4>
+<div class="docs-pre"><code>interface InputProps extends InputHTMLAttributes&lt;HTMLInputElement&gt; {
+  label?: string;
+  error?: string;
+  fullWidth?: boolean;
+}
+</code></div>
+<h4>RoleSelector (<code>RoleSelector.tsx</code>)</h4>
+<div class="docs-pre"><code>interface RoleSelectorProps {
+  onSelectRole: (role: Role) =&gt; void;
+}
+
+type Role = 'INVESTOR' | 'ORIGINATOR' | 'ADMIN';
+</code></div>
+<p><strong>Features:</strong><br />
+- 3 role cards with icons<br />
+- Hover animations<br />
+- Click selection</p>
+<h3>9.2 Layout Components</h3>
+<h4>Header (<code>Header.tsx</code>)</h4>
+<div class="docs-pre"><code>interface HeaderProps {
+  isConnected?: boolean;
+  role?: Role;
+  isLoading?: boolean;
+  needsOnboarding?: boolean;
+  walletAddress?: `0x${string}`;
+  darkMode?: boolean;
+  onToggleDarkMode?: () =&gt; void;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Logo and branding<br />
+- Navigation links (role-based)<br />
+- Wallet connection button<br />
+- Dark mode toggle<br />
+- Language switcher<br />
+- Role display badge</p>
+<h4>Layout (<code>Layout.tsx</code>)</h4>
+<div class="docs-pre"><code>interface LayoutProps {
+  children: React.ReactNode;
+  requireAuth?: boolean;
+  allowedRoles?: Role[];
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Header + Footer wrapper<br />
+- Route protection<br />
+- Role-based access control<br />
+- Dark mode persistence</p>
+<h3>9.3 Feature Components</h3>
+<h4>AssetList (<code>AssetList.tsx</code>)</h4>
+<div class="docs-pre"><code>interface AssetListProps {
+  assets?: Asset[];
+  onViewAsset?: (asset: Asset) =&gt; void;
+  onEditAsset?: (asset: Asset) =&gt; void;
+  onNotarize?: (asset: Asset) =&gt; void;
+  showAll?: boolean;
+}
+</code></div>
+<p><strong>Features:</strong><br />
+- Asset cards with progress bars<br />
+- Status badges<br />
+- Funding percentage<br />
+- Action buttons</p>
+<h4>FraudAlertsDashboard (<code>FraudAlertsDashboard.tsx</code>)</h4>
+<div class="docs-pre"><code>// No props - fetches own data
+
+// Sub-components
+- StatCard
+- FilterButton
+- AlertDetailModal
+</code></div>
+<p><strong>Features:</strong><br />
+- Real-time alert fetching<br />
+- Severity filters<br />
+- Search functionality<br />
+- Alert resolution workflow<br />
+- Detection rules display</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Build Configuration</h2>
+<h3>10.1 Vite Configuration (<code>vite.config.ts</code>)</h3>
+<div class="docs-pre"><code>{
+  plugins: [react()],
+  build: {
+    minify: 'esbuild',
+    sourcemap: false,
+    chunkSizeWarningLimit: 500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'i18n-vendor': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          'ui-vendor': ['lucide-react', 'class-variance-authority', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
+}
+</code></div>
+<h3>10.2 Code Splitting Strategy</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Chunk</th>
+<th>Contents</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>react-vendor</code></td>
+<td>React, ReactDOM, React Router</td>
+<td>Core framework</td>
+</tr>
+<tr>
+<td><code>i18n-vendor</code></td>
+<td>i18next, react-i18next</td>
+<td>Internationalization</td>
+</tr>
+<tr>
+<td><code>ui-vendor</code></td>
+<td>Lucide, CVA, clsx</td>
+<td>UI utilities</td>
+</tr>
+<tr>
+<td><code>web3-vendor</code></td>
+<td>Wagmi, Viem, RainbowKit</td>
+<td>Web3 (lazy loaded)</td>
+</tr>
+<tr>
+<td><code>pages/*</code></td>
+<td>Individual page components</td>
+<td>Route-based splitting</td>
+</tr>
+</tbody>
+</table></div>
+<h3>10.3 npm Scripts</h3>
+<div class="docs-pre"><code>{
+  &quot;dev&quot;: &quot;vite&quot;,                    // Start dev server
+  &quot;build&quot;: &quot;tsc -b &amp;&amp; vite build&quot;,  // Type check + build
+  &quot;lint&quot;: &quot;eslint .&quot;,               // Run ESLint
+  &quot;preview&quot;: &quot;vite preview&quot;         // Preview production build
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Accessibility (a11y)</h2>
+<h3>11.1 Implementation Checklist</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ Skip to main content link</li>
+<li>✅ Semantic HTML elements</li>
+<li>✅ ARIA labels on interactive elements</li>
+<li>✅ Focus management</li>
+<li>✅ Keyboard navigation</li>
+<li>✅ Screen reader announcements</li>
+<li>✅ Color contrast compliance (WCAG AA)</li>
+<li>✅ Form label associations</li>
+</ul>
+<h3>11.2 Key Accessibility Features</h3>
+<div class="docs-pre"><code>// Skip link
+&lt;a href=&quot;#main-content&quot; className=&quot;sr-only focus:not-sr-only&quot;&gt;
+  Skip to main content
+&lt;/a&gt;
+
+// ARIA labels
+&lt;nav aria-label=&quot;Main navigation&quot;&gt;
+&lt;button aria-label=&quot;Toggle dark mode&quot;&gt;
+&lt;input aria-label=&quot;Search investments&quot;&gt;
+
+// Role attributes
+&lt;main role=&quot;main&quot; aria-label=&quot;Investor Dashboard&quot;&gt;
+&lt;table role=&quot;table&quot;&gt;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12. Performance Optimizations</h2>
+<h3>12.1 Implemented Strategies</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Lazy Loading</strong><br />
+   ```typescript<br />
+   const Landing = lazy(() =&gt; import('./pages/Landing'));</li>
+</ol>
+<p><Suspense fallback={\<PageLoader />}><br />
+     <Routes>...</Routes><br />
+   </Suspense><br />
+   ```</p>
+<ol start="2">
+<li>
+<p><strong>Code Splitting</strong><br />
+   - Route-based chunking<br />
+   - Vendor library separation<br />
+   - Dynamic imports for heavy components</p>
+</li>
+<li>
+<p><strong>React Query Optimization</strong><br />
+<code>typescript
+   {
+     gcTime: 1_000 * 60 * 60 * 24,  // 24 hours cache
+     staleTime: 1_000 * 60 * 5,     // 5 minutes fresh
+     retry: 2,
+     refetchOnWindowFocus: false,
+   }</code></p>
+</li>
+<li>
+<p><strong>CSS Animations</strong><br />
+   - Hardware-accelerated transforms<br />
+   - No JavaScript animations for backgrounds<br />
+   - Reduced motion support</p>
+</li>
+</ol>
+<h3>12.2 Bundle Size Targets</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Current</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial JS</td>
+<td>&lt; 150KB</td>
+<td>~120KB</td>
+</tr>
+<tr>
+<td>Total JS</td>
+<td>&lt; 500KB</td>
+<td>~380KB</td>
+</tr>
+<tr>
+<td>First Paint</td>
+<td>&lt; 1.5s</td>
+<td>~1.2s</td>
+</tr>
+<tr>
+<td>LCP</td>
+<td>&lt; 2.5s</td>
+<td>~2.0s</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. Security Considerations</h2>
+<h3>13.1 Implemented Security Measures</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Input Validation</strong><br />
+   - Form validation on client-side<br />
+   - File type checking<br />
+   - File size limits</p>
+</li>
+<li>
+<p><strong>XSS Prevention</strong><br />
+   - React's built-in escaping<br />
+   - i18next <code>escapeValue: false</code> (safe with React)</p>
+</li>
+<li>
+<p><strong>CSRF Protection</strong><br />
+   - Bearer token authentication<br />
+   - Token stored in localStorage</p>
+</li>
+<li>
+<p><strong>Wallet Security</strong><br />
+   - Non-custodial (user controls keys)<br />
+   - RainbowKit secure connection<br />
+   - No private key handling</p>
+</li>
+<li>
+<p><strong>Rate Limiting</strong><br />
+   - API client retry limits<br />
+   - Query retry: 2 attempts</p>
+</li>
+</ol>
+<h3>13.2 Security Best Practices</h3>
+<div class="docs-pre"><code>// Environment variables for sensitive config
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+// Secure error handling
+try {
+  await api.post('/fraud/validate', data);
+} catch (error) {
+  console.error('API Error:', error.response?.data || error.message);
+  // Don't expose internal errors to UI
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Testing Strategy</h2>
+<h3>14.1 Testing Stack</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vitest</code></td>
+<td>Unit tests</td>
+<td>Utils, hooks</td>
+</tr>
+<tr>
+<td><code>@testing-library/react</code></td>
+<td>Component tests</td>
+<td>UI components</td>
+</tr>
+<tr>
+<td><code>@testing-library/jest-dom</code></td>
+<td>DOM assertions</td>
+<td>All tests</td>
+</tr>
+</tbody>
+</table></div>
+<h3>14.2 Test Structure</h3>
+<div class="docs-pre"><code>src/
+├── __tests__/
+│   ├── components/
+│   │   ├── Button.test.tsx
+│   │   ├── Badge.test.tsx
+│   │   └── ...
+│   ├── hooks/
+│   │   ├── useRole.test.ts
+│   │   └── ...
+│   └── utils/
+│       ├── web3.test.ts
+│       └── ...
+</code></div>
+<h3>14.3 Test Coverage Targets</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Components</td>
+<td>&gt; 80%</td>
+</tr>
+<tr>
+<td>Hooks</td>
+<td>&gt; 90%</td>
+</tr>
+<tr>
+<td>Utils</td>
+<td>&gt; 95%</td>
+</tr>
+<tr>
+<td>Pages</td>
+<td>&gt; 60%</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>15. Deployment</h2>
+<h3>15.1 Build Process</h3>
+<div class="docs-pre"><code># 1. Install dependencies
+npm install
+
+# 2. Type check
+npm run type-check
+
+# 3. Lint
+npm run lint
+
+# 4. Test
+npm test
+
+# 5. Build
+npm run build
+
+# Output: dist/
+</code></div>
+<h3>15.2 Environment Variables</h3>
+<div class="docs-pre"><code>VITE_API_URL=https://api.ujamaa-defi.io
+VITE_API_VERSION=v1
+VITE_CHAIN_ID=80002  # Polygon Amoy
+</code></div>
+<h3>15.3 Hosting Recommendations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Provider</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Auto-deploy, Edge functions</td>
+<td>Vendor lock-in</td>
+</tr>
+<tr>
+<td><strong>Netlify</strong></td>
+<td>Simple, Forms support</td>
+<td>Limited edge compute</td>
+</tr>
+<tr>
+<td><strong>Cloudflare Pages</strong></td>
+<td>Fast CDN, Durable Objects</td>
+<td>Newer platform</td>
+</tr>
+<tr>
+<td><strong>AWS S3 + CloudFront</strong></td>
+<td>Full control, Cheap</td>
+<td>More setup</td>
+</tr>
+</tbody>
+</table></div>
+<h3>15.4 Post-Deployment Checklist</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Update contract addresses in <code>contracts.ts</code></li>
+<li>[ ] Configure environment variables</li>
+<li>[ ] Set up CDN caching rules</li>
+<li>[ ] Enable HTTPS</li>
+<li>[ ] Configure custom domain</li>
+<li>[ ] Set up monitoring (Sentry, LogRocket)</li>
+<li>[ ] Configure analytics</li>
+<li>[ ] Test all user flows</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>16. Reproduction Guide</h2>
+<h3>16.1 Step-by-Step Recreation</h3>
+<h4>Phase 1: Project Setup (30 minutes)</h4>
+<div class="docs-pre"><code># 1. Create new Vite + React + TypeScript project
+npm create vite@latest ujamaa-frontend -- --template react-ts
+cd ujamaa-frontend
+
+# 2. Install core dependencies
+npm install react-router-dom axios
+
+# 3. Install Web3 dependencies
+npm install wagmi viem @rainbow-me/rainbowkit @tanstack/react-query
+
+# 4. Install styling dependencies
+npm install tailwindcss @tailwindcss/postcss autoprefixer
+npm install lucide-react framer-motion recharts
+npm install class-variance-authority clsx tailwind-merge
+
+# 5. Install i18n dependencies
+npm install i18next react-i18next i18next-browser-languagedetector
+
+# 6. Install dev dependencies
+npm install -D @types/node eslint typescript
+</code></div>
+<h4>Phase 2: Configuration (1 hour)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Initialize Tailwind</strong><br />
+<code>bash
+   npx tailwindcss init -p</code></p>
+</li>
+<li>
+<p><strong>Configure <code>tailwind.config.js</code></strong><br />
+   - Add UJAMAA color palette<br />
+   - Configure fonts<br />
+   - Add custom shadows<br />
+   - Add animations</p>
+</li>
+<li>
+<p><strong>Configure <code>vite.config.ts</code></strong><br />
+   - Add React plugin<br />
+   - Configure code splitting<br />
+   - Set up build optimization</p>
+</li>
+<li>
+<p><strong>Configure <code>tsconfig.json</code></strong><br />
+   - Set up path aliases<br />
+   - Enable strict mode</p>
+</li>
+</ol>
+<h4>Phase 3: Core Setup (2 hours)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Create folder structure</strong><br />
+<code>src/
+   ├── api/
+   ├── components/
+   ├── contexts/
+   ├── hooks/
+   ├── i18n/
+   ├── lib/
+   ├── pages/
+   ├── types/
+   ├── utils/
+   ├── web3/
+   └── ...</code></p>
+</li>
+<li>
+<p><strong>Set up Web3 providers</strong><br />
+   - Create <code>web3/config.ts</code><br />
+   - Create <code>web3/providers.tsx</code><br />
+   - Configure Wagmi + RainbowKit</p>
+</li>
+<li>
+<p><strong>Set up contexts</strong><br />
+   - <code>AuthContext.tsx</code> - Wallet + Role<br />
+   - <code>ContractContext.tsx</code> - Contract hooks<br />
+   - <code>TransactionContext.tsx</code> - Transaction state</p>
+</li>
+<li>
+<p><strong>Set up i18n</strong><br />
+   - Create locale files<br />
+   - Configure i18next</p>
+</li>
+</ol>
+<h4>Phase 4: Component Library (4 hours)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Build UI components</strong><br />
+   - Button (5 variants × 4 sizes)<br />
+   - Badge (6 variants × 3 sizes)<br />
+   - Card (3 padding options)<br />
+   - Input (with label + error)<br />
+   - RoleSelector</p>
+</li>
+<li>
+<p><strong>Build layout components</strong><br />
+   - Header (with navigation)<br />
+   - Footer<br />
+   - Layout wrapper</p>
+</li>
+<li>
+<p><strong>Build feature components</strong><br />
+   - AssetList<br />
+   - AssetDepositForm<br />
+   - FraudAlertsDashboard<br />
+   - ProductionProofHistory</p>
+</li>
+</ol>
+<h4>Phase 5: Pages (6 hours)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Landing Page</strong><br />
+   - Hero section<br />
+   - Features grid<br />
+   - How it works<br />
+   - Trust signals</p>
+</li>
+<li>
+<p><strong>Dashboards</strong><br />
+   - Investor Dashboard<br />
+   - Industrial Dashboard<br />
+   - Admin Dashboard</p>
+</li>
+<li>
+<p><strong>Onboarding Flows</strong><br />
+   - Investor onboarding<br />
+   - Industrial onboarding</p>
+</li>
+<li>
+<p><strong>Marketplace</strong><br />
+   - Asset browse<br />
+   - Asset detail</p>
+</li>
+</ol>
+<h4>Phase 6: Integration (3 hours)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Connect smart contracts</strong><br />
+   - Deploy contracts<br />
+   - Update addresses<br />
+   - Test interactions</p>
+</li>
+<li>
+<p><strong>Connect API</strong><br />
+   - Set up API client<br />
+   - Implement endpoints<br />
+   - Error handling</p>
+</li>
+<li>
+<p><strong>Set up routing</strong><br />
+   - Configure routes<br />
+   - Add route guards<br />
+   - Lazy loading</p>
+</li>
+</ol>
+<h4>Phase 7: Polish (2 hours)</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Add animations</strong></li>
+<li><strong>Dark mode</strong></li>
+<li><strong>Responsive design</strong></li>
+<li><strong>Accessibility audit</strong></li>
+<li><strong>Performance optimization</strong></li>
+</ol>
+<p><strong>Total Estimated Time:</strong> 18-20 hours</p>
+<h3>16.2 Critical Files to Reproduce</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>web3/providers.tsx</code></td>
+<td>Web3 context</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td><code>contexts/AuthContext.tsx</code></td>
+<td>Auth + RBAC</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td><code>App.tsx</code></td>
+<td>Routing</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td><code>tailwind.config.js</code></td>
+<td>Design system</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td><code>vite.config.ts</code></td>
+<td>Build config</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td><code>i18n/config.ts</code></td>
+<td>i18n setup</td>
+<td>High</td>
+</tr>
+<tr>
+<td><code>api/client.ts</code></td>
+<td>API integration</td>
+<td>High</td>
+</tr>
+<tr>
+<td><code>components/layout/Layout.tsx</code></td>
+<td>Layout wrapper</td>
+<td>High</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>17. Maintenance &amp; Updates</h2>
+<h3>17.1 Dependency Update Schedule</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Dependency Type</th>
+<th>Frequency</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security patches</td>
+<td>Immediate</td>
+<td>npm audit</td>
+</tr>
+<tr>
+<td>Minor updates</td>
+<td>Monthly</td>
+<td>npm update</td>
+</tr>
+<tr>
+<td>Major updates</td>
+<td>Quarterly</td>
+<td>Manual review</td>
+</tr>
+</tbody>
+</table></div>
+<h3>17.2 Monitoring Recommendations</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sentry</strong></td>
+<td>Error tracking</td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>LogRocket</strong></td>
+<td>Session replay</td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Google Analytics</strong></td>
+<td>User analytics</td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>uLPime Robot</strong></td>
+<td>uLPime monitoring</td>
+<td>Infrastructure</td>
+</tr>
+</tbody>
+</table></div>
+<h3>17.3 Common Issues &amp; Solutions</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wallet disconnects</td>
+<td>Check chainId, refresh page</td>
+</tr>
+<tr>
+<td>Stale contract data</td>
+<td>Increase staleTime in React Query</td>
+</tr>
+<tr>
+<td>i18n not loading</td>
+<td>Check <code>initImmediate: true</code></td>
+</tr>
+<tr>
+<td>Dark mode flicker</td>
+<td>Load preference in <code>&lt;head&gt;</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix A: File Templates</h2>
+<h3>A.1 Component Template</h3>
+<div class="docs-pre"><code>import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+export interface ComponentNameProps {
+  // Props definition
+}
+
+export const ComponentName: React.FC&lt;ComponentNameProps&gt; = ({
+  // Destructured props
+}) =&gt; {
+  const { t } = useTranslation();
+
+  return (
+    &lt;div className=&quot;&quot;&gt;
+      {/* Component content */}
+    &lt;/div&gt;
+  );
+};
+
+export default ComponentName;
+</code></div>
+<h3>A.2 Hook Template</h3>
+<div class="docs-pre"><code>import { useState, useEffect } from 'react';
+
+export function useCustomHook() {
+  // Hook logic
+
+  return {
+    // Return values
+  };
+}
+</code></div>
+<h3>A.3 Page Template</h3>
+<div class="docs-pre"><code>import React from 'react';
+import { Layout } from '../../components/layout';
+import { useTranslation } from 'react-i18next';
+
+export const PageName: React.FC = () =&gt; {
+  const { t } = useTranslation();
+
+  return (
+    &lt;Layout requireAuth allowedRoles={['ROLE']}&gt;
+      &lt;div className=&quot;max-w-7xl mx-auto px-4 py-8&quot;&gt;
+        {/* Page content */}
+      &lt;/div&gt;
+    &lt;/Layout&gt;
+  );
+};
+
+export default PageName;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix B: Quick Reference</h2>
+<h3>B.1 Color Codes</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Hex</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Green</td>
+<td><code>#16A34A</code></td>
+<td>Primary actions</td>
+</tr>
+<tr>
+<td>Secondary Teal</td>
+<td><code>#0D9488</code></td>
+<td>Secondary actions</td>
+</tr>
+<tr>
+<td>Accent Amber</td>
+<td><code>#F59E0B</code></td>
+<td>Highlights</td>
+</tr>
+<tr>
+<td>Success</td>
+<td><code>#10B981</code></td>
+<td>Success states</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td><code>#F59E0B</code></td>
+<td>Warning states</td>
+</tr>
+<tr>
+<td>Error</td>
+<td><code>#EF4444</code></td>
+<td>Error states</td>
+</tr>
+<tr>
+<td>Info</td>
+<td><code>#3B82F6</code></td>
+<td>Info states</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B.2 Breakpoints</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Min Width</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sm</code></td>
+<td>640px</td>
+<td>Mobile landscape</td>
+</tr>
+<tr>
+<td><code>md</code></td>
+<td>768px</td>
+<td>Tablets</td>
+</tr>
+<tr>
+<td><code>lg</code></td>
+<td>1024px</td>
+<td>Desktops</td>
+</tr>
+<tr>
+<td><code>xl</code></td>
+<td>1280px</td>
+<td>Large screens</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B.3 Spacing Scale</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Class</th>
+<th>Pixels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>px-1</code></td>
+<td>4px</td>
+</tr>
+<tr>
+<td><code>px-2</code></td>
+<td>8px</td>
+</tr>
+<tr>
+<td><code>px-3</code></td>
+<td>12px</td>
+</tr>
+<tr>
+<td><code>px-4</code></td>
+<td>16px</td>
+</tr>
+<tr>
+<td><code>px-6</code></td>
+<td>24px</td>
+</tr>
+<tr>
+<td><code>px-8</code></td>
+<td>32px</td>
+</tr>
+<tr>
+<td><code>px-10</code></td>
+<td>40px</td>
+</tr>
+<tr>
+<td><code>px-12</code></td>
+<td>48px</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document History</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-03-19</td>
+<td>AI Analysis</td>
+<td>Initial specification from temp-external analysis</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>End of Specification</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

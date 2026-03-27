@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>03 API Security Best Practices - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>API Security</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">🔐 API Security Best Practices</h1>
+        <p class="docs-subtitle">Security best practices for API development and usage</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Audience:</strong> Developers</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This guide outlines security best practices for developing and consuming APIs in the UJAMAA DeFi Platform.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔐 Authentication</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Method</th><th>Use Case</th><th>Security Level</th></tr></thead><tbody>
+            <tr><td>JWT Tokens</td><td>User authentication</td><td>High</td></tr>
+            <tr><td>API Keys</td><td>Service-to-service</td><td>Medium</td></tr>
+            <tr><td>OAuth 2.0</td><td>Third-party integration</td><td>High</td></tr>
+          </tbody></table></div>
+          
+          <h3 style="margin:1.5rem 0 1rem">JWT Best Practices</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Use strong signing algorithms (RS256)</li>
+            <li>Set appropriate expiration times</li>
+            <li>Include only necessary claims</li>
+            <li>Validate tokens on every request</li>
+            <li>Use HTTPS for token transmission</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🛡️ Input Validation</h2>
+          <div class="docs-callout docs-callout-warning"><div class="docs-callout-title">Never Trust User Input</div>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Validate all input parameters</li>
+            <li>Use allowlists, not denylists</li>
+            <li>Sanitize output to prevent XSS</li>
+            <li>Use parameterized queries (SQL injection prevention)</li>
+            <li>Validate content types</li>
+          </ul></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">⚡ Rate Limiting</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Endpoint Type</th><th>Rate Limit</th><th>Window</th></tr></thead><tbody>
+            <tr><td>Authentication</td><td>10 requests</td><td>per minute</td></tr>
+            <tr><td>Standard API</td><td>100 requests</td><td>per minute</td></tr>
+            <tr><td>Heavy Operations</td><td>10 requests</td><td>per minute</td></tr>
+            <tr><td>Public Endpoints</td><td>1000 requests</td><td>per hour</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Security Headers</h2>
+          <div class="docs-pre"><code># Required Security Headers
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self'
+Referrer-Policy: strict-origin-when-cross-origin</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔍 Logging & Monitoring</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Log all authentication attempts</li>
+            <li>Log API errors (without sensitive data)</li>
+            <li>Monitor for unusual patterns</li>
+            <li>Set up alerts for security events</li>
+            <li>Retain logs for compliance period</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="06_API_SPECIFICATION.html" style="color:#3B82F6">API Specification</a> | <a href="../01_SPECIFICATIONS/10_COMPLIANCE_FRAMEWORK.html" style="color:#3B82F6">Compliance Framework</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - API Security Best Practices<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Technical Guides</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>02 Contributor Guidelines - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Contributor Guidelines</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">✍️ Contributor Guidelines</h1>
+        <p class="docs-subtitle">Guidelines for contributing to the UJAMAA DeFi Platform project</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Audience:</strong> All Contributors</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>Thank you for contributing to UJAMAA DeFi Platform! This guide explains how to contribute effectively to the project.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔧 How to Contribute</h2>
+          <h3 style="margin:1.5rem 0 1rem">1. Find an Issue</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Browse open issues on GitHub</li>
+            <li>Look for labels matching your skills</li>
+            <li>Comment on issue to claim it</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">2. Create Branch</h3>
+          <div class="docs-pre"><code>git checkout develop
+git checkout -b feature/your-feature-name</code></div>
+          
+          <h3 style="margin:1.5rem 0 1rem">3. Make Changes</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Follow coding standards</li>
+            <li>Write tests for new features</li>
+            <li>Update documentation</li>
+          </ul>
+          
+          <h3 style="margin:1.5rem 0 1rem">4. Submit Pull Request</h3>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>Push your branch to GitHub</li>
+            <li>Create PR against <code class="docs-code">develop</code> branch</li>
+            <li>Fill out PR template</li>
+            <li>Request review from maintainers</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📝 Code Style</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Language</th><th>Style Guide</th><th>Tool</th></tr></thead><tbody>
+            <tr><td>Python</td><td>PEP 8</td><td>black, flake8</td></tr>
+            <tr><td>TypeScript</td><td>Standard</td><td>ESLint, Prettier</td></tr>
+            <tr><td>Solidity</td><td>Solidity Style Guide</td><td>solhint</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">✅ PR Checklist</h2>
+          <div class="docs-callout docs-callout-success"><div class="docs-callout-title">Before Submitting PR</div>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li>☐ Code follows style guide</li>
+            <li>☐ Tests added and passing</li>
+            <li>☐ Documentation updated</li>
+            <li>☐ No security issues</li>
+            <li>☐ Performance considered</li>
+            <li>☐ Error handling complete</li>
+          </ul></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 Review Process</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Step</th><th>Timeline</th><th>Responsible</th></tr></thead><tbody>
+            <tr><td>PR Created</td><td>Day 0</td><td>Contributor</td></tr>
+            <tr><td>Initial Review</td><td>1-2 days</td><td>Maintainer</td></tr>
+            <tr><td>Revisions</td><td>As needed</td><td>Contributor</td></tr>
+            <tr><td>Final Approval</td><td>1 day</td><td>Maintainer</td></tr>
+            <tr><td>Merge</td><td>After approval</td><td>Maintainer</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="../04_TEAM_PLAYBOOKS/02_GIT_GITHUB_WORKFLOW_GUIDE.html" style="color:#3B82F6">Git Workflow</a> | <a href="../04_TEAM_PLAYBOOKS/01_DEVELOPMENT_METHODOLOGY_PLAYBOOK.html" style="color:#3B82F6">Development Methodology</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Contributor Guidelines<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Technical Guides</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

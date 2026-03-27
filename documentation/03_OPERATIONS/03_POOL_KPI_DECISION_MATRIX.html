@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>03 Pool KPI Decision Matrix - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list"><li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li></ul></div>
+        <div class="docs-nav-section"><div class="docs-nav-title">📁 Folders</div><ul class="docs-nav-list">
+          <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a></li>
+        </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>KPI Matrix</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">📊 Pool KPI Decision Matrix</h1>
+        <p class="docs-subtitle">KPI thresholds and decision framework for pool management</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Format:</strong> CSV Data</p></div>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📑 Overview</h2>
+          <p>This document contains the KPI decision matrix used for pool management decisions. The matrix defines thresholds and corresponding actions for various KPI metrics.</p>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📊 KPI Thresholds</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>KPI</th><th>Green</th><th>Amber</th><th>Red</th><th>Action</th></tr></thead><tbody>
+            <tr><td>NAV Change (Daily)</td><td>&lt; 2%</td><td>2-5%</td><td>&gt; 5%</td><td>Review if amber, investigate if red</td></tr>
+            <tr><td>Default Rate</td><td>&lt; 1%</td><td>1-2%</td><td>&gt; 2%</td><td>Enhanced monitoring if amber, action plan if red</td></tr>
+            <tr><td>Pool Utilization</td><td>80-95%</td><td>70-80% or 95-100%</td><td>&lt; 70% or 100%</td><td>Adjust deployment strategy</td></tr>
+            <tr><td>Concentration</td><td>&lt; 10%</td><td>10-15%</td><td>&gt; 15%</td><td>Reduce exposure if amber, immediate rebalance if red</td></tr>
+            <tr><td>Liquidity Ratio</td><td>&gt; 10%</td><td>5-10%</td><td>&lt; 5%</td><td>Prepare liquidity if amber, emergency measures if red</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">🔄 Decision Framework</h2>
+          <div class="docs-pre"><code>Decision Matrix Logic:
+────────────────────
+
+IF KPI = Green:
+  → Continue normal operations
+  → Standard reporting
+
+IF KPI = Amber:
+  → Increase monitoring frequency
+  → Notify management
+  → Prepare contingency plan
+  → Weekly reporting
+
+IF KPI = Red:
+  → Immediate management notification
+  → Implement action plan
+  → Daily monitoring
+  → Board notification if persists &gt; 5 days</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📋 Escalation Matrix</h2>
+          <div class="docs-table-wrapper"><table class="docs-table"><thead><tr><th>Level</th><th>Trigger</th><th>Responder</th><th>Timeline</th></tr></thead><tbody>
+            <tr><td>Level 1</td><td>Single amber KPI</td><td>Pool Manager</td><td>24 hours</td></tr>
+            <tr><td>Level 2</td><td>Multiple amber OR single red</td><td>Investment Committee</td><td>12 hours</td></tr>
+            <tr><td>Level 3</td><td>Multiple red KPIs</td><td>Board of Directors</td><td>Immediate</td></tr>
+          </tbody></table></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title">📈 Reporting Frequency</h2>
+          <ul class="docs-list" style="padding-left:1.5rem">
+            <li><strong>Green Status:</strong> Monthly reporting</li>
+            <li><strong>Amber Status:</strong> Weekly reporting</li>
+            <li><strong>Red Status:</strong> Daily reporting until resolved</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Related:</strong> <a href="06_POOL_KPI_FRAMEWORK.html" style="color:#3B82F6">Pool KPI Framework</a> | <a href="05_KPI_IMPLEMENTATION_PLAN.html" style="color:#3B82F6">KPI Implementation Plan</a></p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Pool KPI Decision Matrix<br><span style="font-size:0.75rem;color:#94A3B8">© 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#">Top</a><a href="index.html">Operations</a><a href="../index.html">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

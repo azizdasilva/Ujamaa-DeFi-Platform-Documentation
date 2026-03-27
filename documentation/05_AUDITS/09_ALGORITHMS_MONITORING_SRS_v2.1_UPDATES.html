@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Algorithm Specifications & Monitoring - SRS v2.1 Updates - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>Algorithm Specifications & Monitoring - SRS v2.1 Updates</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Algorithm Specifications & Monitoring - SRS v2.1 Updates</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Ready for Implementation | <strong>Last Updated:</strong> March 25, 2026</p></div>
+
+        <h1>Algorithm Specifications &amp; Monitoring - SRS v2.1 Updates</h1>
+<p><strong>Date:</strong> March 25, 2026<br />
+<strong>Phase:</strong> P1 Complete<br />
+<strong>Status:</strong> Ready for Implementation  </p>
+<hr />
+<h1>Part 1: Algorithm Specifications 🆕</h1>
+<p><strong>Target:</strong> <code>docs/09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md</code><br />
+<strong>Version Update:</strong> v1.0 → v2.1  </p>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<p>This document adds institutional architecture algorithms to the existing Algorithm Specifications document.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Pool Management Algorithms 🆕 (SRS v2.1)</h2>
+<h3>ALG-10-01-01: NAV Per Share Calculation</h3>
+<p><strong>Purpose:</strong> Calculate Net Asset Value (NAV) per uLP share  </p>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>NAV_per_share(t) = Total_Pool_Value(t) / Total_uLP_Shares
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal, ROUND_DOWN
+
+def calculate_nav_per_share(
+    total_pool_value: Decimal,
+    total_shares: Decimal
+) -&gt; Decimal:
+    &quot;&quot;&quot;
+    Calculate NAV per uLP share with 18 decimal precision.
+
+    Args:
+        total_pool_value: Total value of pool assets in UJEUR (18 decimals)
+        total_shares: Total uLP shares outstanding (18 decimals)
+
+    Returns:
+        NAV per share (18 decimals, rounded down)
+    &quot;&quot;&quot;
+    if total_shares == 0:
+        return Decimal(&quot;1.000000000000000000&quot;)  # Initial NAV
+
+    nav = total_pool_value / total_shares
+
+    # Round down to 18 decimals (conservative for investors)
+    return nav.quantize(Decimal(&quot;0.000000000000000001&quot;), rounding=ROUND_DOWN)
+
+# Example usage:
+# Pool Value: €10,523,456.70
+# Total Shares: 10,000,000 uLP
+# NAV = 10,523,456.70 / 10,000,000 = €1.05234567 per share
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Precision:</strong> 18 decimals (1e18)<br />
+<strong>Update Frequency:</strong> Real-time (on deposits/redemptions), Daily (yield accrual)</p>
+<hr />
+<h3>ALG-10-01-02: Daily Yield Accrual</h3>
+<p><strong>Purpose:</strong> Calculate daily yield accrual for pool  </p>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>daily_yield = principal × (APR / 365)
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+
+def calculate_daily_yield(
+    principal: Decimal,
+    apr: Decimal  # Annual Percentage Rate (e.g., 0.12 for 12%)
+) -&gt; Decimal:
+    &quot;&quot;&quot;
+    Calculate daily yield accrual.
+
+    Args:
+        principal: Total pool value in UJEUR
+        apr: Annual Percentage Rate (decimal)
+
+    Returns:
+        Daily yield in UJEUR (2 decimals)
+    &quot;&quot;&quot;
+    daily_rate = apr / Decimal(&quot;365&quot;)
+    daily_yield = principal * daily_rate
+
+    # Round to 2 decimals (euro cents)
+    return daily_yield.quantize(Decimal(&quot;0.01&quot;), rounding=ROUND_HALF_UP)
+
+# Example:
+# Principal: €10,000,000
+# APR: 12% (0.12)
+# Daily Yield = 10,000,000 × (0.12 / 365) = €3,287.67
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Precision:</strong> 2 decimals (euro cents)<br />
+<strong>Update Frequency:</strong> Daily (midnight UTC)</p>
+<hr />
+<h3>ALG-10-02-01: uLP Deposit Calculation</h3>
+<p><strong>Purpose:</strong> Calculate uLP tokens to mint on deposit  </p>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>uLP_minted = (deposit_amount × 1e18) / NAV_per_share
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+
+def calculate_ulp_minted(
+    deposit_amount: Decimal,  # In UJEUR (2 decimals)
+    nav_per_share: Decimal    # In EUR (18 decimals)
+) -&gt; Decimal:
+    &quot;&quot;&quot;
+    Calculate uLP tokens to mint for deposit.
+
+    Args:
+        deposit_amount: Amount of UJEUR to deposit (2 decimals)
+        nav_per_share: Current NAV per share (18 decimals)
+
+    Returns:
+        uLP tokens to mint (18 decimals)
+    &quot;&quot;&quot;
+    # Convert deposit to 18 decimals for calculation
+    deposit_wei = deposit_amount * Decimal(&quot;1e18&quot;)
+
+    ulp_minted = deposit_wei / nav_per_share
+
+    # Round down to 18 decimals (conservative for investor)
+    return ulp_minted.quantize(Decimal(&quot;0.000000000000000001&quot;), rounding=ROUND_DOWN)
+
+# Example:
+# Deposit: €1,000,000
+# NAV: €1.05234567
+# uLP Minted = (1,000,000 × 1e18) / 1.05234567 = 950,226.217421120000 uLP
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Precision:</strong> 18 decimals<br />
+<strong>Use Case:</strong> Investor deposits UJEUR → receives uLP</p>
+<hr />
+<h3>ALG-10-02-02: uLP Redemption Calculation</h3>
+<p><strong>Purpose:</strong> Calculate UJEUR received on redemption  </p>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>redemption_value = (uLP_amount × NAV_per_share) / 1e18
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+
+def calculate_redemption_value(
+    ulp_amount: Decimal,    # uLP tokens (18 decimals)
+    nav_per_share: Decimal  # NAV per share (18 decimals)
+) -&gt; Decimal:
+    &quot;&quot;&quot;
+    Calculate UJEUR received on redemption.
+
+    Args:
+        ulp_amount: Amount of uLP to redeem (18 decimals)
+        nav_per_share: Current NAV per share (18 decimals)
+
+    Returns:
+        UJEUR received (2 decimals)
+    &quot;&quot;&quot;
+    redemption_wei = ulp_amount * nav_per_share
+
+    # Convert from 18 decimals to 2 decimals (euro cents)
+    redemption_value = redemption_wei / Decimal(&quot;1e18&quot;)
+
+    # Round down to 2 decimals (conservative for pool)
+    return redemption_value.quantize(Decimal(&quot;0.01&quot;), rounding=ROUND_DOWN)
+
+# Example:
+# Redeem: 100,000 uLP
+# NAV: €1.05234567
+# Redemption = (100,000 × 1.05234567) / 1 = €105,234.57
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Precision:</strong> 2 decimals (euro cents)<br />
+<strong>Use Case:</strong> Investor redeems uLP → receives UJEUR + yield</p>
+<hr />
+<h3>ALG-10-03-01: Pool Diversification Check</h3>
+<p><strong>Purpose:</strong> Verify pool meets diversification requirements  </p>
+<p><strong>Rules:</strong><br />
+- Max 10% per single industrial<br />
+- Min 5 assets in pool<br />
+- Max 25% in single geography</p>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+from typing import List, Dict
+
+def check_diversification(
+    pool_id: str,
+    industrial: str,
+    new_amount: Decimal,
+    current_allocations: Dict[str, Decimal],  # industrial -&gt; amount
+    total_pool_value: Decimal
+) -&gt; tuple[bool, str]:
+    &quot;&quot;&quot;
+    Check if new deployment meets diversification rules.
+
+    Args:
+        pool_id: Pool identifier
+        industrial: Industrial identifier
+        new_amount: Amount to deploy
+        current_allocations: Current allocations by industrial
+        total_pool_value: Total pool value
+
+    Returns:
+        (is_valid, error_message)
+    &quot;&quot;&quot;
+    # Rule 1: Max 10% per industrial
+    current_allocation = current_allocations.get(industrial, Decimal(&quot;0&quot;))
+    new_allocation = current_allocation + new_amount
+    allocation_pct = (new_allocation * 100) / total_pool_value
+
+    if allocation_pct &gt; Decimal(&quot;10&quot;):
+        return (
+            False,
+            f&quot;Would exceed 10% per industrial (current: {allocation_pct:.2f}%)&quot;
+        )
+
+    # Rule 2: Min 5 assets (check after deployment)
+    num_assets = len(current_allocations)
+    if current_allocation == 0:  # New industrial
+        num_assets += 1
+
+    if num_assets &lt; 5:
+        return (
+            False,
+            f&quot;Pool must have minimum 5 assets (current: {num_assets})&quot;
+        )
+
+    # Rule 3: Max 25% per geography (requires geography mapping)
+    # geography_allocations = get_geography_allocations(pool_id)
+    # ... similar check
+
+    return (True, &quot;Diversification check passed&quot;)
+</code></div>
+<p><strong>Complexity:</strong> O(n) where n = number of industrials<br />
+<strong>Precision:</strong> 2 decimals for percentages<br />
+<strong>Use Case:</strong> Pool Manager deploys capital to industrial</p>
+<hr />
+<h3>ALG-10-03-02: Concentration Risk Calculation</h3>
+<p><strong>Purpose:</strong> Calculate pool concentration risk metric  </p>
+<p><strong>Formula:</strong></p>
+<div class="docs-pre"><code>Herfindahl-Hirschman Index (HHI) = Σ (allocation_pct_i)²
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+from typing import List
+
+def calculate_concentration_risk(
+    allocations: List[Decimal]  # List of allocation percentages
+) -&gt; tuple[Decimal, str]:
+    &quot;&quot;&quot;
+    Calculate concentration risk using HHI.
+
+    Args:
+        allocations: List of allocation percentages (sum to 100)
+
+    Returns:
+        (HHI, risk_level)
+
+    HHI Interpretation:
+        &lt; 1000: Low concentration (diversified)
+        1000-1800: Moderate concentration
+        &gt; 1800: High concentration
+    &quot;&quot;&quot;
+    hhi = sum((pct ** 2) for pct in allocations)
+
+    if hhi &lt; 1000:
+        risk_level = &quot;LOW&quot;
+    elif hhi &lt; 1800:
+        risk_level = &quot;MEDIUM&quot;
+    else:
+        risk_level = &quot;HIGH&quot;
+
+    return (hhi, risk_level)
+
+# Example:
+# Allocations: [20%, 20%, 20%, 20%, 20%]
+# HHI = 20² + 20² + 20² + 20² + 20² = 2000
+# Risk Level: HIGH (concentrated)
+</code></div>
+<p><strong>Complexity:</strong> O(n)<br />
+<strong>Precision:</strong> 2 decimals<br />
+<strong>Use Case:</strong> Risk monitoring, regulatory reporting</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Compliance &amp; Suitability Algorithms 🆕</h2>
+<h3>ALG-04-01-03: KYB Threshold Check</h3>
+<p><strong>Purpose:</strong> Determine if KYB is required based on investment amount  </p>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>from decimal import Decimal
+
+KYB_THRESHOLD = Decimal(&quot;100000.00&quot;)  # €100K
+INSTITUTIONAL_MINIMUM = Decimal(&quot;1000000.00&quot;)  # €1M
+
+def check_kyb_requirement(
+    investment_amount: Decimal,
+    cumulative_30d: Decimal
+) -&gt; dict:
+    &quot;&quot;&quot;
+    Check KYB requirements for investment.
+
+    Args:
+        investment_amount: Current investment amount
+        cumulative_30d: Cumulative investments in last 30 days
+
+    Returns:
+        Dictionary with KYB requirements
+    &quot;&quot;&quot;
+    total_exposure = investment_amount + cumulative_30d
+
+    requires_kyb = total_exposure &gt;= KYB_THRESHOLD
+    requires_board_approval = total_exposure &gt;= INSTITUTIONAL_MINIMUM
+
+    return {
+        &quot;requires_kyb&quot;: requires_kyb,
+        &quot;requires_board_approval&quot;: requires_board_approval,
+        &quot;kyc_only&quot;: not requires_kyb,
+        &quot;tier&quot;: get_investor_tier(total_exposure)
+    }
+
+def get_investor_tier(total_exposure: Decimal) -&gt; str:
+    if total_exposure &lt; KYB_THRESHOLD:
+        return &quot;RETAIL&quot;
+    elif total_exposure &lt; INSTITUTIONAL_MINIMUM:
+        return &quot;INSTITUTIONAL&quot;
+    else:
+        return &quot;LARGE_INSTITUTIONAL&quot;
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Use Case:</strong> Investor onboarding, compliance checks</p>
+<hr />
+<h3>ALG-04-01-04: Jurisdiction Eligibility Check</h3>
+<p><strong>Purpose:</strong> Verify if investor jurisdiction is allowed  </p>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>STRICTEST_JURISDICTION_LIST = {
+    &quot;CU&quot;,  # Cuba - OFAC
+    &quot;IR&quot;,  # Iran - OFAC
+    &quot;KP&quot;,  # North Korea - OFAC
+    &quot;SY&quot;,  # Syria - OFAC
+    &quot;YE&quot;,  # Yemen - FATF High-Risk
+    &quot;MM&quot;,  # Myanmar - FATF High-Risk
+    # ... (dynamic list)
+}
+
+TIER_1_JURISDICTIONS = {
+    &quot;DE&quot;, &quot;FR&quot;, &quot;IT&quot;, &quot;ES&quot;,  # EU
+    &quot;US&quot;, &quot;CA&quot;,  # North America
+    &quot;GB&quot;,  # UK
+    &quot;JP&quot;, &quot;SG&quot;,  # Asia
+    &quot;AU&quot;, &quot;NZ&quot;,  # Oceania
+}
+
+def check_jurisdiction_eligibility(
+    country_code: str,
+    product_type: str  # &quot;ULP&quot;, &quot;UAT&quot;
+) -&gt; tuple[bool, str]:
+    &quot;&quot;&quot;
+    Check if jurisdiction is eligible for product.
+
+    Args:
+        country_code: ISO 3166-1 alpha-2 country code
+        product_type: Product type
+
+    Returns:
+        (is_eligible, reason)
+    &quot;&quot;&quot;
+    country_code = country_code.upper()
+
+    # Check strictest list (always blocked)
+    if country_code in STRICTEST_JURISDICTION_LIST:
+        return (False, &quot;Jurisdiction is on blocked list&quot;)
+
+    # Product-specific restrictions
+    if product_type == &quot;ULP&quot;:
+        # uLP: Tier 3+4 blocked
+        if not is_tier_1_or_2(country_code):
+            return (False, &quot;Jurisdiction not eligible for institutional product&quot;)
+
+    return (True, &quot;Jurisdiction eligible&quot;)
+</code></div>
+<p><strong>Complexity:</strong> O(1)<br />
+<strong>Use Case:</strong> Investor onboarding, transfer validation</p>
+<hr />
+</section>
+<h1>Part 2: Monitoring Specification 🆕</h1>
+<p><strong>Target:</strong> <code>docs/03_OPERATIONS/01_MONITORING_SPECIFICATION.md</code><br />
+<strong>Version Update:</strong> v1.0 → v2.1  </p>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<p>This document adds institutional architecture metrics to the existing Monitoring Specification.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. Institutional Architecture Metrics 🆕</h2>
+<h3>13.1 uLP Token Metrics</h3>
+<p><strong>NAV Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ulp_nav_per_share Current NAV per uLP share
+# TYPE gauge
+ulp_nav_per_share{pool_id=&quot;pool_industrie_001&quot;} 1.05234567
+
+# HELP ulp_total_shares Total uLP shares outstanding
+# TYPE gauge
+ulp_total_shares{pool_id=&quot;pool_industrie_001&quot;} 10000000.00000000
+
+# HELP ulp_total_pool_value Total pool value in UJEUR
+# TYPE gauge
+ulp_total_pool_value{pool_id=&quot;pool_industrie_001&quot;} 10523456.70
+
+# HELP ulp_nav_last_update_timestamp Timestamp of last NAV update
+# TYPE gauge
+ulp_nav_last_update_timestamp 1711382400
+</code></div>
+<p><strong>Deposit/Redeem Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ulp_deposit_total Total UJEUR deposited
+# TYPE counter
+ulp_deposit_total{pool_id=&quot;pool_industrie_001&quot;} 15000000.00
+
+# HELP ulp_deposit_count Number of deposits
+# TYPE counter
+ulp_deposit_count{pool_id=&quot;pool_industrie_001&quot;} 25
+
+# HELP ulp_redemption_total Total UJEUR redeemed
+# TYPE counter
+ulp_redemption_total{pool_id=&quot;pool_industrie_001&quot;} 5000000.00
+
+# HELP ulp_redemption_count Number of redemptions
+# TYPE counter
+ulp_redemption_count{pool_id=&quot;pool_industrie_001&quot;} 8
+
+# HELP ulp_net_flow Net flow (deposits - redemptions)
+# TYPE gauge
+ulp_net_flow{pool_id=&quot;pool_industrie_001&quot;} 10000000.00
+</code></div>
+<p><strong>Yield Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ulp_yield_accrued_total Total yield accrued since inception
+# TYPE counter
+ulp_yield_accrued_total{pool_id=&quot;pool_industrie_001&quot;} 523456.70
+
+# HELP ulp_yield_daily Daily yield accrual
+# TYPE gauge
+ulp_yield_daily{pool_id=&quot;pool_industrie_001&quot;} 3287.67
+
+# HELP ulp_apr_current Current Annual Percentage Rate
+# TYPE gauge
+ulp_apr_current{pool_id=&quot;pool_industrie_001&quot;} 0.1234
+
+# HELP ulp_yield_investor_total Total yield earned by investor
+# TYPE counter
+ulp_yield_investor_total{investor=&quot;0x742d...&quot;} 52345.67
+</code></div>
+<hr />
+<h3>13.2 UJG Token Metrics</h3>
+<p><strong>Minting Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ujg_total_minted Total UJG tokens minted
+# TYPE counter
+ujg_total_minted 15
+
+# HELP ujg_total_value_minted Total value of UJG minted (EUR)
+# TYPE counter
+ujg_total_value_minted 30000000.00
+
+# HELP ujg_outstanding_count UJG tokens currently outstanding (not redeemed)
+# TYPE gauge
+ujg_outstanding_count 10
+
+# HELP ujg_outstanding_value Total value of outstanding UJG (EUR)
+# TYPE gauge
+ujg_outstanding_value 20000000.00
+</code></div>
+<p><strong>Redemption/Liquidation Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ujg_total_redeemed Total UJG tokens redeemed
+# TYPE counter
+ujg_total_redeemed 5
+
+# HELP ujg_total_liquidated Total UJG tokens liquidated (default)
+# TYPE counter
+ujg_total_liquidated 0
+
+# HELP ujg_default_rate Default rate (liquidated / minted)
+# TYPE gauge
+ujg_default_rate 0.00
+
+# HELP ujg_average_time_to_redeem Average days to redemption
+# TYPE gauge
+ujg_average_time_to_redeem 365
+</code></div>
+<p><strong>Collateral Metrics:</strong></p>
+<div class="docs-pre"><code># HELP ujg_collateral_value Total collateral value (EUR)
+# TYPE gauge
+ujg_collateral_value 20000000.00
+
+# HELP ujg_collateral_coverage Collateral coverage ratio
+# TYPE gauge
+ujg_collateral_coverage 2.0
+
+# HELP ujg_expiry_soon Count of UJG expiring within 30 days
+# TYPE gauge
+ujg_expiry_soon 2
+</code></div>
+<hr />
+<h3>13.3 Pool Management Metrics</h3>
+<p><strong>Diversification Metrics:</strong></p>
+<div class="docs-pre"><code># HELP pool_asset_count Number of assets in pool
+# TYPE gauge
+pool_asset_count{pool_id=&quot;pool_industrie_001&quot;} 5
+
+# HELP pool_concentration_max Maximum concentration (single industrial %)
+# TYPE gauge
+pool_concentration_max{pool_id=&quot;pool_industrie_001&quot;} 20.0
+
+# HELP pool_concentration_hhi Herfindahl-Hirschman Index
+# TYPE gauge
+pool_concentration_hhi{pool_id=&quot;pool_industrie_001&quot;} 2000
+
+# HELP pool_geography_concentration Max concentration by geography
+# TYPE gauge
+pool_geography_concentration{pool_id=&quot;pool_industrie_001&quot;} 40.0
+</code></div>
+<p><strong>Performance Metrics:</strong></p>
+<div class="docs-pre"><code># HELP pool_management_fee_total Total management fees collected
+# TYPE counter
+pool_management_fee_total{pool_id=&quot;pool_industrie_001&quot;} 100000.00
+
+# HELP pool_performance_fee_total Total performance fees collected
+# TYPE counter
+pool_performance_fee_total{pool_id=&quot;pool_industrie_001&quot;} 104691.34
+
+# HELP pool_irr Internal Rate of Return
+# TYPE gauge
+pool_irr{pool_id=&quot;pool_industrie_001&quot;} 0.1234
+
+# HELP pool_moic Multiple on Invested Capital
+# TYPE gauge
+pool_moic{pool_id=&quot;pool_industrie_001&quot;} 1.05
+</code></div>
+<hr />
+<h3>13.4 Authentication Metrics</h3>
+<p><strong>SIWE Authentication Metrics:</strong></p>
+<div class="docs-pre"><code># HELP auth_login_success_total Successful login count
+# TYPE counter
+auth_login_success_total 1250
+
+# HELP auth_login_failure_total Failed login count
+# TYPE counter
+auth_login_failure_total 45
+
+# HELP auth_login_failure_rate Login failure rate
+# TYPE gauge
+auth_login_failure_rate 0.035
+
+# HELP auth_nonce_generated_total Nonces generated
+# TYPE counter
+auth_nonce_generated_total 1500
+
+# HELP auth_nonce_expired_total Expired nonces (not used)
+# TYPE counter
+auth_nonce_expired_total 250
+</code></div>
+<p><strong>Session Metrics:</strong></p>
+<div class="docs-pre"><code># HELP auth_active_sessions Current active sessions
+# TYPE gauge
+auth_active_sessions 342
+
+# HELP auth_sessions_max_concurrent Max concurrent sessions per user
+# TYPE gauge
+auth_sessions_max_concurrent{wallet=&quot;0x742d...&quot;} 3
+
+# HELP auth_session_timeout_idle_total Idle timeout events
+# TYPE counter
+auth_session_timeout_idle_total 125
+
+# HELP auth_session_timeout_absolute_total Absolute timeout events
+# TYPE counter
+auth_session_timeout_absolute_total 89
+</code></div>
+<p><strong>Token Metrics:</strong></p>
+<div class="docs-pre"><code># HELP auth_jwt_issued_total JWT tokens issued
+# TYPE counter
+auth_jwt_issued_total 2500
+
+# HELP auth_jwt_refreshed_total JWT tokens refreshed
+# TYPE counter
+auth_jwt_refreshed_total 1800
+
+# HELP auth_jwt_revoked_total JWT tokens revoked (logout)
+# TYPE counter
+auth_jwt_revoked_total 450
+
+# HELP auth_jwt_validation_failed_total JWT validation failures
+# TYPE counter
+auth_jwt_validation_failed_total 78
+</code></div>
+<hr />
+<h3>13.5 Fireblocks Custody Metrics</h3>
+<p><strong>Vault Metrics:</strong></p>
+<div class="docs-pre"><code># HELP fireblocks_vault_balance Fireblocks vault balance
+# TYPE gauge
+fireblocks_vault_balance{asset=&quot;UJEUR&quot;,vault=&quot;platform_treasury&quot;} 5000000.00
+
+# HELP fireblocks_vault_asset_count Number of assets in vault
+# TYPE gauge
+fireblocks_vault_asset_count{vault=&quot;platform_treasury&quot;} 3
+</code></div>
+<p><strong>Transaction Metrics:</strong></p>
+<div class="docs-pre"><code># HELP fireblocks_transaction_initiated_total Transactions initiated
+# TYPE counter
+fireblocks_transaction_initiated_total 45
+
+# HELP fireblocks_transaction_completed_total Transactions completed
+# TYPE counter
+fireblocks_transaction_completed_total 42
+
+# HELP fireblocks_transaction_pending_total Transactions pending approval
+# TYPE gauge
+fireblocks_transaction_pending_total 3
+
+# HELP fireblocks_transaction_rejected_total Transactions rejected
+# TYPE counter
+fireblocks_transaction_rejected_total 0
+
+# HELP fireblocks_transaction_value_total Total transaction value
+# TYPE counter
+fireblocks_transaction_value_total{asset=&quot;UJEUR&quot;} 8000000.00
+</code></div>
+<p><strong>Multisig Metrics:</strong></p>
+<div class="docs-pre"><code># HELP fireblocks_multisig_approvals_total Multisig approvals
+# TYPE counter
+fireblocks_multisig_approvals_total 135
+
+# HELP fireblocks_multisig_avg_approval_time Average approval time (seconds)
+# TYPE gauge
+fireblocks_multisig_avg_approval_time 7200
+</code></div>
+<hr />
+<h3>13.6 Bank Escrow Metrics</h3>
+<p><strong>Account Metrics:</strong></p>
+<div class="docs-pre"><code># HELP bank_escrow_balance Escrow account balance
+# TYPE gauge
+bank_escrow_balance{bank=&quot;BIIC&quot;,account=&quot;investor_escrow&quot;} 10000000.00
+
+# HELP bank_escrow_account_count Number of escrow accounts
+# TYPE gauge
+bank_escrow_account_count 5
+</code></div>
+<p><strong>Wire Transfer Metrics:</strong></p>
+<div class="docs-pre"><code># HELP bank_wire_transfer_initiated_total Wire transfers initiated
+# TYPE counter
+bank_wire_transfer_initiated_total 35
+
+# HELP bank_wire_transfer_completed_total Wire transfers completed
+# TYPE counter
+bank_wire_transfer_completed_total 32
+
+# HELP bank_wire_transfer_pending_total Wire transfers pending
+# TYPE gauge
+bank_wire_transfer_pending_total 3
+
+# HELP bank_wire_transfer_value_total Total wire transfer value
+# TYPE counter
+bank_wire_transfer_value_total{direction=&quot;inbound&quot;} 15000000.00
+bank_wire_transfer_value_total{direction=&quot;outbound&quot;} 5000000.00
+
+# HELP bank_wire_transfer_avg_settlement_time Average settlement time (hours)
+# TYPE gauge
+bank_wire_transfer_avg_settlement_time 24
+</code></div>
+<p><strong>Mobile Money Metrics:</strong></p>
+<div class="docs-pre"><code># HELP mobile_money_deposit_total Mobile money deposits
+# TYPE counter
+mobile_money_deposit_total{provider=&quot;M-PESA&quot;} 150
+
+# HELP mobile_money_deposit_value_total Mobile money deposit value
+# TYPE counter
+mobile_money_deposit_value_total{provider=&quot;M-PESA&quot;} 750000.00
+
+# HELP mobile_money_transaction_success_rate Success rate
+# TYPE gauge
+mobile_money_transaction_success_rate 0.98
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Alert Rules 🆕</h2>
+<h3>14.1 uLP Token Alerts</h3>
+<div class="docs-pre"><code># alerts/ulp_alerts.yaml
+groups:
+  - name: ulp_token
+    rules:
+      - alert: ULPPoolValueDeviation
+        expr: |
+          abs(ulp_total_pool_value - expected_pool_value) / expected_pool_value &gt; 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: &quot;Pool value deviation &gt; 5%&quot;
+          description: &quot;Pool {{ $labels.pool_id }} value deviates by {{ $value | humanizePercentage }}&quot;
+
+      - alert: ULPNavStale
+        expr: |
+          (time() - ulp_nav_last_update_timestamp) &gt; 86400
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;NAV not updated in 24 hours&quot;
+          description: &quot;Pool {{ $labels.pool_id }} NAV is stale&quot;
+
+      - alert: ULPNetFlowNegative
+        expr: |
+          rate(ulp_net_flow[1h]) &lt; -100000
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;Large net outflow from pool&quot;
+          description: &quot;Pool {{ $labels.pool_id }} experiencing outflows&quot;
+</code></div>
+<h3>14.2 UJG Token Alerts</h3>
+<div class="docs-pre"><code># alerts/ujg_alerts.yaml
+groups:
+  - name: ujg_token
+    rules:
+      - alert: UJGExpiringSoon
+        expr: |
+          ujg_expiry_soon &gt; 0
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;UJG tokens expiring within 30 days&quot;
+          description: &quot;{{ $value }} UJG tokens expiring soon&quot;
+
+      - alert: UJGDefaultDetected
+        expr: |
+          rate(ujg_total_liquidated[1d]) &gt; 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: &quot;UJG default/liquidation detected&quot;
+          description: &quot;{{ $value }} UJG tokens liquidated&quot;
+
+      - alert: UJGCollateralCoverageLow
+        expr: |
+          ujg_collateral_coverage &lt; 1.5
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;Collateral coverage below 1.5x&quot;
+          description: &quot;Coverage ratio: {{ $value }}&quot;
+</code></div>
+<h3>14.3 Authentication Alerts</h3>
+<div class="docs-pre"><code># alerts/auth_alerts.yaml
+groups:
+  - name: authentication
+    rules:
+      - alert: AuthHighFailureRate
+        expr: |
+          rate(auth_login_failure_total[1h]) / rate(auth_nonce_generated_total[1h]) &gt; 0.1
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;High authentication failure rate&quot;
+          description: &quot;Failure rate: {{ $value | humanizePercentage }}&quot;
+
+      - alert: AuthBruteForceDetected
+        expr: |
+          rate(auth_login_failure_total{wallet=&quot;0x742d...&quot;}[5m]) &gt; 10
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: &quot;Possible brute force attack&quot;
+          description: &quot;Wallet {{ $labels.wallet }} has {{ $value }} failures in 5m&quot;
+
+      - alert: AuthSessionLimitExceeded
+        expr: |
+          auth_sessions_max_concurrent &gt; 5
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;User exceeded max concurrent sessions&quot;
+          description: &quot;Wallet {{ $labels.wallet }} has {{ $value }} sessions&quot;
+</code></div>
+<h3>14.4 Fireblocks Alerts</h3>
+<div class="docs-pre"><code># alerts/fireblocks_alerts.yaml
+groups:
+  - name: fireblocks
+    rules:
+      - alert: FireblocksTransactionPending
+        expr: |
+          fireblocks_transaction_pending_total &gt; 5
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;Many transactions pending approval&quot;
+          description: &quot;{{ $value }} transactions pending&quot;
+
+      - alert: FireblocksVaultBalanceLow
+        expr: |
+          fireblocks_vault_balance{asset=&quot;UJEUR&quot;} &lt; 1000000
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: &quot;Fireblocks vault balance low&quot;
+          description: &quot;Balance: €{{ $value }}&quot;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>15. Grafana Dashboards 🆕</h2>
+<h3>15.1 Institutional Dashboard</h3>
+<p><strong>Dashboard JSON:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;dashboard&quot;: {
+    &quot;title&quot;: &quot;Institutional Architecture Overview&quot;,
+    &quot;panels&quot;: [
+      {
+        &quot;title&quot;: &quot;uLP NAV Per Share&quot;,
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;ulp_nav_per_share&quot;,
+            &quot;legendFormat&quot;: &quot;{{pool_id}}&quot;
+          }
+        ]
+      },
+      {
+        &quot;title&quot;: &quot;Pool Total Value Locked&quot;,
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;ulp_total_pool_value&quot;
+          }
+        ]
+      },
+      {
+        &quot;title&quot;: &quot;uLP Deposits vs Redemptions&quot;,
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;rate(ulp_deposit_count[1h])&quot;,
+            &quot;legendFormat&quot;: &quot;Deposits&quot;
+          },
+          {
+            &quot;expr&quot;: &quot;rate(ulp_redemption_count[1h])&quot;,
+            &quot;legendFormat&quot;: &quot;Redemptions&quot;
+          }
+        ]
+      },
+      {
+        &quot;title&quot;: &quot;UJG Outstanding&quot;,
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;ujg_outstanding_count&quot;
+          }
+        ]
+      },
+      {
+        &quot;title&quot;: &quot;Active Sessions&quot;,
+        &quot;targets&quot;: [
+          {
+            &quot;expr&quot;: &quot;auth_active_sessions&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></div>
+<hr />
+<p><strong>Document End</strong></p>
+<p><strong>Merge Instructions:</strong><br />
+1. Add algorithms to <code>01_ALGORITHM_SPECIFICATIONS.md</code> as Sections 10-11<br />
+2. Add monitoring metrics to <code>01_MONITORING_SPECIFICATION.md</code> as Sections 13-15<br />
+3. Update version numbers (v2.1)<br />
+4. Update dates (March 25, 2026)<br />
+5. Test all algorithm implementations<br />
+6. Deploy Prometheus alert rules</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

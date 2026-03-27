@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Compliance Framework - SRS v2.1 Updates - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>Compliance Framework - SRS v2.1 Updates</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Compliance Framework - SRS v2.1 Updates</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Required for Production | <strong>Last Updated:</strong> March 25, 2026</p></div>
+
+        <h1>Compliance Framework - SRS v2.1 Updates</h1>
+<p><strong>Date:</strong> March 25, 2026<br />
+<strong>Source:</strong> SRS v2.1 Section 1.2 (Institutional Features), Section 10 (Compliance Requirements)<br />
+<strong>Target:</strong> <code>docs/01_SPECIFICATIONS/10_COMPLIANCE_FRAMEWORK.md</code>  </p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<p>This document provides the complete updates needed for the Compliance Framework to align with SRS v2.1. These updates should be merged into the existing Compliance Framework document.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. New Section: KYB Requirements 🆕</h2>
+<h3>1.1 Know Your Business (KYB) Specification</h3>
+<p><strong>KYB Trigger Threshold:</strong> €100,000 (regulatory requirement)</p>
+<p><strong>When KYB is Required:</strong><br />
+- Institutional investment ≥€100,000<br />
+- Enterprise partner onboarding<br />
+- Pool Manager role assignment<br />
+- Any transaction exceeding €100,000 cumulative (30-day rolling window)</p>
+<p><strong>KYB Documentation Requirements:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document Type</th>
+<th>Description</th>
+<th>Validity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Certificate of Incorporation</strong></td>
+<td>Official registration document</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td><strong>Memorandum &amp; Articles of Association</strong></td>
+<td>Corporate governance documents</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td><strong>Register of Directors</strong></td>
+<td>Current board members</td>
+<td>Updated annually</td>
+</tr>
+<tr>
+<td><strong>Register of Shareholders</strong></td>
+<td>All shareholders with &gt;25% ownership (UBO)</td>
+<td>Updated quarterly</td>
+</tr>
+<tr>
+<td><strong>Proof of Registered Address</strong></td>
+<td>Utility bill or bank statement (&lt;3 months)</td>
+<td>3 months</td>
+</tr>
+<tr>
+<td><strong>Tax Identification Number</strong></td>
+<td>TIN or equivalent</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td><strong>Source of Funds Declaration</strong></td>
+<td>Notarized declaration of fund origin</td>
+<td>12 months</td>
+</tr>
+<tr>
+<td><strong>Audited Financial Statements</strong></td>
+<td>Last 2 years (if available)</td>
+<td>24 months</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>UBO (Ultimate Beneficial Owner) Identification:</strong><br />
+- Any natural person owning or controlling &gt;25% of shares/voting rights<br />
+- If no individual meets 25% threshold, identify senior managing officials<br />
+- UBO verification requires:<br />
+  - Government-issued ID (passport, national ID)<br />
+  - Proof of address (&lt;3 months)<br />
+  - PEP (Politically Exposed Person) screening<br />
+  - Sanctions list screening (OFAC, UN, EU)</p>
+<p><strong>KYB Approval Workflow:</strong></p>
+<div class="docs-pre"><code>Investment Amount          Approval Required
+─────────────────────────────────────────────────
+€100,000 - €999,999   →   Senior Compliance Officer
+≥€1,000,000           →   Compliance Officer + CEO
+≥€5,000,000           →   Board Approval
+</code></div>
+<p><strong>KYB Review Frequency:</strong><br />
+- <strong>Annual Review:</strong> Standard institutional investors<br />
+- <strong>Semi-Annual Review:</strong> High-risk jurisdictions, PEP involvement<br />
+- <strong>Event-Driven Review:</strong> Change in UBO, adverse media, sanctions listing</p>
+<h3>1.2 Enhanced Due Diligence (EDD)</h3>
+<p><strong>EDD Triggers:</strong><br />
+- Investment ≥€1,000,000<br />
+- High-risk jurisdiction (FATF grey list)<br />
+- PEP (Politically Exposed Person) involvement<br />
+- Complex ownership structures (&gt;3 layers)<br />
+- Cash-intensive businesses<br />
+- Cryptocurrency/nirtual asset businesses</p>
+<p><strong>EDD Additional Requirements:</strong><br />
+- Enhanced source of wealth verification<br />
+- Independent verification of business activities<br />
+- Site visit (physical or virtual)<br />
+- Enhanced ongoing monitoring (quarterly vs annual)<br />
+- Senior management approval required</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Updated Section: Jurisdiction Controls 🆕</h2>
+<h3>2.1 Strictest Jurisdiction List</h3>
+<p><strong>Blocked Jurisdictions:</strong> Combined OFAC + UN + EU + FATF High-Risk</p>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code>STRICTEST_JURISDICTION_LIST = {
+    # OFAC Sanctioned Countries
+    &quot;CU&quot;,  # Cuba
+    &quot;IR&quot;,  # Iran
+    &quot;KP&quot;,  # North Korea
+    &quot;SY&quot;,  # Syria
+    &quot;UA-43&quot;,  # Crimea (region code)
+    &quot;UA-14&quot;,  # Donetsk (region code)
+    &quot;UA-09&quot;,  # Luhansk (region code)
+
+    # FATF High-Risk Jurisdictions (per public statement)
+    &quot;YE&quot;,  # Yemen
+    &quot;MM&quot;,  # Myanmar
+    # ... (updated per FATF public statements)
+
+    # UN Sanctioned Entities
+    # (Dynamic list, updated via UN Security Council resolutions)
+
+    # EU Sanctioned Countries
+    # (Dynamic list, updated via EU Council decisions)
+}
+
+def is_jurisdiction_allowed(country_code: str) -&gt; bool:
+    &quot;&quot;&quot;
+    Check if jurisdiction is allowed for platform participation.
+
+    Args:
+        country_code: ISO 3166-1 alpha-2 country code
+
+    Returns:
+        bool: True if allowed, False if blocked
+    &quot;&quot;&quot;
+    return country_code.upper() not in STRICTEST_JURISDICTION_LIST
+</code></div>
+<p><strong>Jurisdiction Risk Tiers:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tier</th>
+<th>Risk Level</th>
+<th>Jurisdictions</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1</strong></td>
+<td>Low</td>
+<td>EU, US, UK, Canada, Australia, Japan, Singapore</td>
+<td>Standard KYC</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong></td>
+<td>Medium</td>
+<td>Most emerging markets, OECD countries</td>
+<td>Enhanced KYC</td>
+</tr>
+<tr>
+<td><strong>Tier 3</strong></td>
+<td>High</td>
+<td>FATF grey list, weak AML regimes</td>
+<td>EDD + Senior approval</td>
+</tr>
+<tr>
+<td><strong>Tier 4</strong></td>
+<td>Prohibited</td>
+<td>OFAC/UN/EU sanctions, FATF high-risk</td>
+<td>BLOCKED</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Geographic Restrictions by Product:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Product</th>
+<th>Restricted Jurisdictions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLP Tokens (Institutional)</strong></td>
+<td>Tier 3 + Tier 4</td>
+</tr>
+<tr>
+<td><strong>UAT Tokens (Retail)</strong></td>
+<td>Tier 4 only</td>
+</tr>
+<tr>
+<td><strong>Pool Manager Role</strong></td>
+<td>Tier 1 + Tier 2 only</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. New Section: uLP Token Compliance 🆕</h2>
+<h3>3.1 Regulatory Classification</h3>
+<p><strong>uLP Token Classification:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Classification</th>
+<th>Regulatory Framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU (MiCA)</strong></td>
+<td>Asset-Referenced Token (ART)</td>
+<td>Article 22 reporting required</td>
+</tr>
+<tr>
+<td><strong>US (SEC)</strong></td>
+<td>Investment Contract (Howey Test)</td>
+<td>Reg D 506(b) or 506(c)</td>
+</tr>
+<tr>
+<td><strong>Mauritius</strong></td>
+<td>CIS (Collective Investment Scheme)</td>
+<td>FSC CIS Manager License</td>
+</tr>
+<tr>
+<td><strong>Nigeria</strong></td>
+<td>Digital Token (Security)</td>
+<td>SEC Nigeria Rules</td>
+</tr>
+<tr>
+<td><strong>Kenya</strong></td>
+<td>Security</td>
+<td>Capital Markets Act</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MiCA Compliance (Article 22):</strong><br />
+- Whitepaper requirement (unless exempt)<br />
+- Ongoing disclosure obligations<br />
+- NAV attestation by approved auditor<br />
+- Quarterly reserve composition reports<br />
+- Annual audit of pool assets</p>
+<p><strong>SEC Reg D Compliance:</strong><br />
+- 506(b): No general solicitation, accredited investors only<br />
+- 506(c): General solicitation permitted, verified accredited investors<br />
+- Form D filing within 15 days of first sale<br />
+- Blue sky filings (state-level)</p>
+<h3>3.2 Investor Suitability</h3>
+<p><strong>uLP Token Investor Requirements:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Retail</th>
+<th>Institutional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Minimum Investment</strong></td>
+<td>Not applicable (use UAT)</td>
+<td>€100,000</td>
+</tr>
+<tr>
+<td><strong>KYC/KYB</strong></td>
+<td>Standard KYC</td>
+<td>Enhanced KYB</td>
+</tr>
+<tr>
+<td><strong>Accreditation</strong></td>
+<td>Not required</td>
+<td>Required (Reg D)</td>
+</tr>
+<tr>
+<td><strong>Jurisdiction</strong></td>
+<td>Tier 4 blocked</td>
+<td>Tier 3+4 blocked</td>
+</tr>
+<tr>
+<td><strong>Lock-up Period</strong></td>
+<td>N/A</td>
+<td>12 months (configurable)</td>
+</tr>
+<tr>
+<td><strong>Transfer Restrictions</strong></td>
+<td>ERC-3643 enforced</td>
+<td>ERC-3643 enforced</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Accredited Investor Definition (Reg D):</strong></p>
+<p>Natural person qualifies if:<br />
+- Individual net worth &gt;$1M (excluding primary residence), OR<br />
+- Individual income &gt;$200K in each of last 2 years ($300K joint), OR<br />
+- Professional credentials (Series 7, 65, 82 licenses)</p>
+<p>Entity qualifies if:<br />
+- Total assets &gt;$5M, OR<br />
+- All equity owners are accredited investors</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. New Section: UJG Token Compliance 🆕</h2>
+<h3>4.1 Collateral Token Regulatory Treatment</h3>
+<p><strong>UJG Token Classification:</strong><br />
+- <strong>NOT a security</strong> (no investment contract, no expectation of profit)<br />
+- <strong>Digital warehouse receipt</strong> representing certified merchandise<br />
+- <strong>Non-transferable</strong> by design (except forced transfer)</p>
+<p><strong>Regulatory Rationale:</strong><br />
+- UJG represents physical collateral, not investment<br />
+- No yield or profit expectation<br />
+- Non-transferable prevents secondary market trading<br />
+- Forced transfer only for redemption/liquidation (contractual, not market)</p>
+<h3>4.2 Collateral Management Compliance</h3>
+<p><strong>Collateral Requirements:</strong><br />
+- <strong>Existence Verification:</strong> Industrial Gateway certification (SIPI/GDIZ)<br />
+- <strong>Valuation:</strong> Independent appraiser, updated quarterly<br />
+- <strong>Insurance:</strong> Collateral must be insured (fire, theft, damage)<br />
+- <strong>Storage:</strong> Approved warehouse with regular inspections<br />
+- <strong>Lien Perfection:</strong> Security interest filed per local law</p>
+<p><strong>Default &amp; Liquidation:</strong><br />
+- <strong>Default Trigger:</strong> 90 days past due (configurable)<br />
+- <strong>Liquidation Process:</strong> Approved auction, transparent bidding<br />
+- <strong>Proceeds Distribution:</strong> uLP holders pro-rata<br />
+- <strong>Deficiency Handling:</strong> Legal recourse against industrial</p>
+<p><strong>Compliance Documentation:</strong><br />
+- Certificate of Existence (Industrial Gateway)<br />
+- Certificate of Valuation (Independent Appraiser)<br />
+- Insurance Policy (Licensed Insurer)<br />
+- Warehouse Receipt (Approved Facility)<br />
+- Security Agreement (Legal Counsel)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Updated Section: Licensing Requirements 🆕</h2>
+<h3>5.1 Mauritius FSC CIS Manager License</h3>
+<p><strong>License Type:</strong> Category 1 CIS Manager License<br />
+<strong>Issuing Authority:</strong> Financial Services Commission (FSC) Mauritius<br />
+<strong>Status:</strong> Required for Production  </p>
+<p><strong>License Requirements:</strong><br />
+- Minimum share capital: MUR 5,000,000 (~€100,000)<br />
+- Fit and proper test for directors/officers<br />
+- Compliance officer (resident in Mauritius)<br />
+- Physical office in Mauritius<br />
+- Professional indemnity insurance<br />
+- Audited financial statements (annual)</p>
+<p><strong>Ongoing Obligations:</strong><br />
+- Quarterly regulatory filings<br />
+- Annual license fee<br />
+- AML/CFT reporting<br />
+- Client asset safeguarding (segregated accounts)<br />
+- Risk management framework</p>
+<h3>5.2 Additional Licenses by Jurisdiction</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>License Type</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU (MiCA)</strong></td>
+<td>CASP (Crypto-Asset Service Provider)</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Nigeria</strong></td>
+<td>Digital Token Issuer</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Kenya</strong></td>
+<td>Capital Markets Dealer</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>South Africa</strong></td>
+<td>FSP (Financial Services Provider)</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Ghana</strong></td>
+<td>Capital Markets Intermediary</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Updated Section: AML/CFT Framework 🆕</h2>
+<h3>6.1 Transaction Monitoring</h3>
+<p><strong>Thresholds for Reporting:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Transaction Type</th>
+<th>Threshold</th>
+<th>Report Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cash Transaction</strong></td>
+<td>€10,000+</td>
+<td>CTR (Cash Transaction Report)</td>
+</tr>
+<tr>
+<td><strong>Wire Transfer</strong></td>
+<td>€1,000+ (cross-border)</td>
+<td>Travel Rule</td>
+</tr>
+<tr>
+<td><strong>Suspicious Activity</strong></td>
+<td>Any amount</td>
+<td>STR (Suspicious Transaction Report)</td>
+</tr>
+<tr>
+<td><strong>Structured Transactions</strong></td>
+<td>Pattern &lt;€10,000</td>
+<td>STR (Structuring)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Red Flags for uLP Tokens:</strong><br />
+- Rapid deposit/redemption cycles (potential layering)<br />
+- Multiple small deposits just below KYB threshold (structuring)<br />
+- Redemption to different wallet than deposit (potential money laundering)<br />
+- Investment from high-risk jurisdiction without EDD<br />
+- Unusual redemption patterns (e.g., immediate redemption after deposit)</p>
+<h3>6.2 Sanctions Screening</h3>
+<p><strong>Screening Requirements:</strong><br />
+- <strong>Pre-Transaction:</strong> All investors screened before onboarding<br />
+- <strong>Ongoing:</strong> Daily screening of existing investors<br />
+- <strong>Event-Driven:</strong> Ad-hoc screening on sanctions list updates</p>
+<p><strong>Screening Lists:</strong><br />
+- OFAC SDN (Specially Designated Nationals)<br />
+- UN Security Council Consolidated List<br />
+- EU Consolidated List of Sanctions<br />
+- World Bank Debarred Entities<br />
+- PEP (Politically Exposed Persons) database</p>
+<p><strong>Match Handling:</strong><br />
+1. <strong>True Positive:</strong> Block transaction, file STR, escalate to Compliance Officer<br />
+2. <strong>False Positive:</strong> Document rationale, retain evidence<br />
+3. <strong>Potential Match:</strong> Enhanced due diligence, escalate for review</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Updated Section: GDPR Data Protection 🆕</h2>
+<h3>7.1 Data Classification</h3>
+<p><strong>PII (Personal Identifiable Information):</strong><br />
+- Name, address, date of birth<br />
+- National ID numbers<br />
+- Email, phone number<br />
+- Wallet addresses (pseudonymized)<br />
+- KYC/KYB documentation</p>
+<p><strong>Special Category Data:</strong><br />
+- Political opinions (PEP status)<br />
+- Biometric data (ID verification)</p>
+<h3>7.2 Data Processing Lawful Basis</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Processing Activity</th>
+<th>Lawful Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KYC/KYB verification</td>
+<td>Legal obligation (AML/CFT)</td>
+</tr>
+<tr>
+<td>Transaction monitoring</td>
+<td>Legal obligation (AML/CFT)</td>
+</tr>
+<tr>
+<td>Regulatory reporting</td>
+<td>Legal obligation (securities laws)</td>
+</tr>
+<tr>
+<td>Service provision</td>
+<td>Contract performance</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>Consent (opt-in)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.3 Data Subject Rights</h3>
+<p><strong>Rights Implementation:</strong><br />
+- <strong>Right to Access:</strong> Investor portal with downloadable data export<br />
+- <strong>Right to Rectification:</strong> Update profile via portal, re-verify if needed<br />
+- <strong>Right to Erasure:</strong> Limited by AML retention requirements (5-10 years)<br />
+- <strong>Right to Portability:</strong> JSON/CSV export of all data<br />
+- <strong>Right to Object:</strong> Opt-out of marketing, not regulatory processing</p>
+<p><strong>Cryptographic Erasure:</strong><br />
+- PII encrypted with AES-256<br />
+- Encryption key stored in HSM<br />
+- Erasure request → destroy key → data irrecoverable<br />
+- On-chain hashes remain but reference unrecoverable data</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Updated Section: Regulatory Reporting 🆕</h2>
+<h3>8.1 Reporting Schedule</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Report</th>
+<th>Frequency</th>
+<th>Recipient</th>
+<th>Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MiCA Article 22 Report</strong></td>
+<td>Quarterly</td>
+<td>National Competent Authority</td>
+<td>30 days after quarter-end</td>
+</tr>
+<tr>
+<td><strong>Form D (SEC)</strong></td>
+<td>One-time + Annual</td>
+<td>SEC</td>
+<td>15 days after first sale</td>
+</tr>
+<tr>
+<td><strong>AML/CFT Report</strong></td>
+<td>Quarterly</td>
+<td>FIU (Financial Intelligence Unit)</td>
+<td>30 days after quarter-end</td>
+</tr>
+<tr>
+<td><strong>Suspicious Activity Report</strong></td>
+<td>Event-driven</td>
+<td>FIU</td>
+<td>Within 24 hours of detection</td>
+</tr>
+<tr>
+<td><strong>Large Transaction Report</strong></td>
+<td>Monthly</td>
+<td>Central Bank</td>
+<td>15 days after month-end</td>
+</tr>
+<tr>
+<td><strong>Audited Financial Statements</strong></td>
+<td>Annual</td>
+<td>FSC Mauritius + Investors</td>
+<td>6 months after year-end</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.2 Report Content</h3>
+<p><strong>MiCA Article 22 Report:</strong><br />
+- Total pool value (TVL)<br />
+- NAV per share<br />
+- Asset allocation (by class, geography, industrial)<br />
+- Reserve composition<br />
+- Risk metrics (diversification ratio, concentration)<br />
+- Performance (yield, APR, historical NAV)<br />
+- Material events (defaults, liquidations)</p>
+<p><strong>AML/CFT Report:</strong><br />
+- Total transactions by volume/value<br />
+- CTRs filed (cash transactions &gt;€10K)<br />
+- STRs filed (suspicious activities)<br />
+- Sanctions screening results<br />
+- High-risk customer count<br />
+- Training completion rates</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Implementation Checklist</h2>
+<h3>KYB Implementation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] KYB workflow engine (approval routing)</li>
+<li>[ ] UBO identification and verification</li>
+<li>[ ] PEP screening integration</li>
+<li>[ ] Sanctions list screening (OFAC, UN, EU)</li>
+<li>[ ] Document management system</li>
+<li>[ ] KYB review scheduling (annual, semi-annual)</li>
+<li>[ ] EDD workflow for high-risk cases</li>
+</ul>
+<h3>Jurisdiction Controls</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Strictest jurisdiction list in database</li>
+<li>[ ] Real-time jurisdiction validation on onboarding</li>
+<li>[ ] Geolocation IP checks (secondary verification)</li>
+<li>[ ] Automated blocking of prohibited jurisdictions</li>
+<li>[ ] Jurisdiction risk tier assignment</li>
+</ul>
+<h3>uLP Compliance</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Accredited investor verification (Reg D)</li>
+<li>[ ] Investment minimum enforcement (€100K)</li>
+<li>[ ] Lock-up period tracking</li>
+<li>[ ] Transfer restriction enforcement (ERC-3643)</li>
+<li>[ ] MiCA Article 22 report generation</li>
+</ul>
+<h3>UJG Compliance</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Industrial Gateway certification validation</li>
+<li>[ ] Collateral valuation tracking</li>
+<li>[ ] Insurance policy expiry monitoring</li>
+<li>[ ] Default trigger detection (90 days past due)</li>
+<li>[ ] Auction process documentation</li>
+</ul>
+<h3>AML/CFT</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Transaction monitoring rules engine</li>
+<li>[ ] Red flag detection algorithms</li>
+<li>[ ] STR generation workflow</li>
+<li>[ ] Sanctions screening integration</li>
+<li>[ ] PEP database integration</li>
+</ul>
+<h3>GDPR</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] PII encryption (AES-256)</li>
+<li>[ ] HSM key management</li>
+<li>[ ] Data subject rights portal</li>
+<li>[ ] Cryptographic erasure implementation</li>
+<li>[ ] Data retention policy enforcement</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Testing Requirements</h2>
+<h3>KYB Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] KYB trigger at €100K threshold</li>
+<li>[ ] UBO identification (&gt;25% ownership)</li>
+<li>[ ] PEP screening (positive and negative matches)</li>
+<li>[ ] Sanctions list screening (all lists)</li>
+<li>[ ] Approval workflow (tiered by amount)</li>
+<li>[ ] KYB review scheduling</li>
+</ul>
+<h3>Jurisdiction Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Blocked jurisdiction enforcement</li>
+<li>[ ] Tier assignment (1-4)</li>
+<li>[ ] Geolocation IP verification</li>
+<li>[ ] Product restrictions by jurisdiction</li>
+</ul>
+<h3>AML/CFT Tests</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Transaction threshold detection</li>
+<li>[ ] Structuring detection (pattern recognition)</li>
+<li>[ ] Red flag alerts</li>
+<li>[ ] STR generation</li>
+<li>[ ] Sanctions match handling</li>
+</ul>
+<hr />
+<p><strong>Document End</strong></p>
+<p><strong>Merge Instructions:</strong><br />
+1. Add Section 4.3 (KYB Requirements) after existing KYC section<br />
+2. Add Section 2.2 (Strictest Jurisdiction List) to Regulatory Landscape<br />
+3. Add Section 6.5 (uLP Token Compliance) to MiCA Compliance<br />
+4. Add Section 6.6 (UJG Token Compliance) to MiCA Compliance<br />
+5. Update Section 2.2 (Licensing) with Mauritius FSC CIS Manager<br />
+6. Add Section 9.5 (Regulatory Reporting) to Regulator Audit Trails</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

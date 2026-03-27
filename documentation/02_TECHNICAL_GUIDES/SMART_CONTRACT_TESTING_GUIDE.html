@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Smart Contract Testing Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Smart Contract Testing Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Smart Contract Testing Guide</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0.0-MVP | <strong>Last Updated:</strong> March 2026</p></div>
+
+        <h1>Smart Contract Testing Guide</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - MVP Testnet</h2>
+<p><strong>Network:</strong> Polygon Amoy Testnet (Chain ID: 80002)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📋 Prerequisites</h2>
+<h3>1. Install MetaMask</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Download from <a href="https://metamask.io/">metamask.io</a></li>
+<li>Create a new wallet or import existing</li>
+<li><strong>⚠️ Use a test wallet only - never use mainnet private keys on testnet</strong></li>
+</ul>
+<h3>2. Add Polygon Amoy Network</h3>
+<p>Add to MetaMask:<br />
+- <strong>Network Name:</strong> Polygon Amoy Testnet<br />
+- <strong>RPC URL:</strong> <code>https://rpc-amoy.polygon.technology/</code><br />
+- <strong>Chain ID:</strong> <code>80002</code><br />
+- <strong>Currency Symbol:</strong> <code>POL</code><br />
+- <strong>Block Explorer:</strong> <code>https://amoy.polygonscan.com/</code></p>
+<p>Or use <a href="https://chainlist.org/">Chainlist</a> to add automatically.</p>
+<h3>3. Get Test POL Tokens</h3>
+<p>Get test tokens from faucets:<br />
+- <strong>Official Faucet:</strong> https://faucet.polygon.technology/<br />
+- <strong>Alternative:</strong> https://amoyfaucet.com/</p>
+<p>You'll need ~0.1 POL for testing.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🚀 Quick Start</h2>
+<h3>Option 1: Frontend Testing (Recommended for UI)</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Start the frontend:</strong><br />
+<code>bash
+   cd frontend
+   npm run dev</code></p>
+</li>
+<li>
+<p><strong>Open browser:</strong> <code>http://localhost:5173</code></p>
+</li>
+<li>
+<p><strong>Connect wallet:</strong><br />
+   - Click "Connect Wallet" in navigation<br />
+   - Approve MetaMask connection<br />
+   - Switch to Polygon Amoy if prompted</p>
+</li>
+<li>
+<p><strong>Access Contract Dashboard:</strong><br />
+   - Navigate to <code>/contract-test</code><br />
+   - Or go to http://localhost:5173/contract-test</p>
+</li>
+<li>
+<p><strong>Test contracts:</strong><br />
+   - View pool families<br />
+   - Check token balances<br />
+   - Interact with deployed contracts</p>
+</li>
+</ol>
+<hr />
+<h3>Option 2: Foundry Testing (Recommended for Development)</h3>
+<h4>Install Foundry</h4>
+<div class="docs-pre"><code># Install foundryup
+curl -L https://foundry.paradigm.xyz | bash
+
+# Install foundry
+foundryup
+</code></div>
+<h4>Install Dependencies</h4>
+<div class="docs-pre"><code>npm install
+</code></div>
+<h4>Compile Contracts</h4>
+<div class="docs-pre"><code>forge build
+</code></div>
+<h4>Run Tests</h4>
+<div class="docs-pre"><code># Run all tests
+forge test
+
+# Run with gas report
+forge test --gas-report
+
+# Run specific test
+forge test --match-test testDeposit
+
+# Run with verbosity
+forge test -vvv
+</code></div>
+<h4>Deploy to Testnet</h4>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Set environment variables:</strong><br />
+<code>bash
+   export PRIVATE_KEY=your_deployer_private_key
+   export RPC_URL=https://rpc-amoy.polygon.technology/
+   export POLYGONSCAN_API_KEY=your_api_key  # Optional, for verification</code></p>
+</li>
+<li>
+<p><strong>Deploy:</strong><br />
+<code>bash
+   forge script script/DeployMVP.s.sol:DeployMVP \
+     --rpc-url polygon_amoy \
+     --broadcast \
+     --verify \
+     -vvvv</code></p>
+</li>
+<li>
+<p><strong>Save contract addresses:</strong><br />
+   - Copy deployed addresses from output<br />
+   - Update <code>frontend/src/config/web3.ts</code><br />
+   - Update <code>frontend/src/hooks/useContractInteraction.ts</code></p>
+</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📊 Contract Overview</h2>
+<h3>Deployed Contracts</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Description</th>
+<th>Test Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ULPToken</strong></td>
+<td>Yield-bearing LP token (ERC-3643)</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>GuaranteeToken</strong></td>
+<td>Collateral-backed guarantee token</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>LiquidityPool</strong></td>
+<td>Multi-asset pool manager</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>JurisdictionCompliance</strong></td>
+<td>KYC/AML compliance checker</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>MockEscrow</strong></td>
+<td>Mock escrow service (testnet)</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>MockFiatRamp</strong></td>
+<td>Mock fiat on/off ramp</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Pool Families</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Pool</th>
+<th>Target APY</th>
+<th>Term</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>POOL_INDUSTRIE</strong></td>
+<td>10-12%</td>
+<td>365 days</td>
+<td>Manufacturing, GDIZ partners</td>
+</tr>
+<tr>
+<td><strong>POOL_AGRICULTURE</strong></td>
+<td>12-15%</td>
+<td>180 days</td>
+<td>Coffee, cocoa, cotton</td>
+</tr>
+<tr>
+<td><strong>POOL_TRADE_FINANCE</strong></td>
+<td>8-10%</td>
+<td>90 days</td>
+<td>Invoice tokenization</td>
+</tr>
+<tr>
+<td><strong>POOL_RENEWABLE_ENERGY</strong></td>
+<td>9-11%</td>
+<td>730 days</td>
+<td>Solar, wind, hydro</td>
+</tr>
+<tr>
+<td><strong>POOL_REAL_ESTATE</strong></td>
+<td>8-12%</td>
+<td>1095 days</td>
+<td>Commercial &amp; residential</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🧪 Testing Scenarios</h2>
+<h3>1. Token Operations</h3>
+<div class="docs-pre"><code># Test uLP token minting
+forge test --match-test testMint
+
+# Test uLP token burning
+forge test --match-test testBurn
+
+# Test NAV calculation
+forge test --match-test testNAVCalculation
+</code></div>
+<h3>2. Pool Operations</h3>
+<div class="docs-pre"><code># Test deposit
+forge test --match-test testDeposit
+
+# Test redemption
+forge test --match-test testRedeem
+
+# Test yield distribution
+forge test --match-test testYieldDistribution
+</code></div>
+<h3>3. Compliance</h3>
+<div class="docs-pre"><code># Test jurisdiction check
+forge test --match-test testJurisdictionCheck
+
+# Test blocked jurisdictions
+forge test --match-test testBlockedJurisdictions
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔍 Frontend Integration</h2>
+<h3>Update Contract Addresses</h3>
+<p>After deployment, update these files:</p>
+<p><strong><code>frontend/src/config/web3.ts</code>:</strong></p>
+<div class="docs-pre"><code>CONTRACTS: {
+  ULP_TOKEN: '0x...', // Your deployed address
+  UAT_TOKEN: '0x...',
+  UGT_TOKEN: '0x...',
+  LIQUIDITY_POOL: '0x...',
+  // ...
+}
+</code></div>
+<p><strong><code>frontend/src/hooks/useContractInteraction.ts</code>:</strong></p>
+<div class="docs-pre"><code>const CONTRACT_ADDRESSES = {
+  ULP_TOKEN: '0x...',
+  UJEUR_TOKEN: '0x...',
+  LIQUIDITY_POOL: '0x...',
+  // ...
+} as const;
+</code></div>
+<h3>Test Contract Interaction</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Connect wallet</strong> in the frontend</li>
+<li><strong>Navigate to</strong> <code>/contract-test</code></li>
+<li><strong>Click "Refresh"</strong> to load pool data</li>
+<li><strong>View contract addresses</strong> in Tokens tab</li>
+<li><strong>Test deployment</strong> in Deployment tab</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🛠️ Troubleshooting</h2>
+<h3>"User rejected the request"</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>User denied MetaMask popup</li>
+<li>Click "Connect Wallet" again and approve</li>
+</ul>
+<h3>"Wrong network"</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>MetaMask is on a different network</li>
+<li>Click "Switch Network" or manually switch to Polygon Amoy</li>
+</ul>
+<h3>"Insufficient funds for gas"</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Need test POL tokens</li>
+<li>Get from faucet: https://faucet.polygon.technology/</li>
+</ul>
+<h3>"Contract not deployed"</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Contracts show <code>0x0000...0000</code> addresses</li>
+<li>Deploy contracts using Foundry script</li>
+<li>Update addresses in config files</li>
+</ul>
+<h3>"Transaction reverted"</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Check MetaMask for error details</li>
+<li>Verify contract is deployed correctly</li>
+<li>Check you have correct roles/permissions</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📚 Additional Resources</h2>
+<h3>Documentation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="/investors-room/white-paper" style="color:#3B82F6">White Paper</a></li>
+<li><a href="/deep-dive" style="color:#3B82F6">Deep Dive</a></li>
+<li><a href="/docs/02_TECHNICAL_GUIDES/" style="color:#3B82F6">Technical Specs</a></li>
+</ul>
+<h3>External Links</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><a href="https://amoy.polygonscan.com/">Polygon Amoy Explorer</a></li>
+<li><a href="https://docs.polygon.technology/">Polygon Docs</a></li>
+<li><a href="https://book.getfoundry.sh/">Foundry Book</a></li>
+<li><a href="https://wagmi.sh/">Wagmi Docs</a></li>
+<li><a href="https://viem.sh/">Viem Docs</a></li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>⚠️ Important Notices</h2>
+<h3>MVP TESTNET</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>This is a TESTNET deployment</strong></li>
+<li><strong>NO REAL MONEY is involved</strong></li>
+<li>All tokens are TEST TOKENS only</li>
+<li>For testing and development purposes only</li>
+</ul>
+<h3>Security</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Never use mainnet private keys on testnet</li>
+<li>Use a dedicated test wallet</li>
+<li>Do not share your private keys</li>
+<li>Keep test and production environments separate</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📞 Support</h2>
+<p>For issues or questions:<br />
+- Check the <a href="../README.html" style="color:#3B82F6">README.md</a><br />
+- Review <a href="../docs/03_MVP_MOCKING_AND_TESTNET_STRATEGY.html" style="color:#3B82F6">03_MVP_MOCKING_AND_TESTNET_STRATEGY.md</a><br />
+- Contact: Lead Architect - Aziz Da Silva</p>
+<hr />
+<p><strong>Last Updated:</strong> March 2026<br />
+<strong>Version:</strong> 2.0.0-MVP</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

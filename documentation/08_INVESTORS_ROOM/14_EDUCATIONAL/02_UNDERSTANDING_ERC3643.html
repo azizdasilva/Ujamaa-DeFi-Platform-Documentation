@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Understanding ERC-3643 Tokens - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="../..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="../..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Investors Room</a><span class="docs-breadcrumb-separator">/</span><span>Understanding ERC-3643 Tokens</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Understanding ERC-3643 Tokens</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 12, 2026</p></div>
+
+        <h1>Understanding ERC-3643 Tokens</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Technical Guide for Investors</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Document ID:</strong> UJAMAA-EDU-002<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 12, 2026</p>
+<hr />
+</section>
+<h1>UNDERSTANDING ERC-3643 TOKENS</h1>
+<p><strong>This guide provides a technical overview of ERC-3643 tokens for investors who want to understand the underlying technology.</strong></p>
+<hr />
+<h1>TABLE OF CONTENTS</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-introduction-to-token-standards">Introduction to Token Standards</a></li>
+<li><a href="#2-what-makes-erc-3643-different">What Makes ERC-3643 Different</a></li>
+<li><a href="#3-key-components">Key Components</a></li>
+<li><a href="#4-how-transfers-work">How Transfers Work</a></li>
+<li><a href="#5-compliance-features">Compliance Features</a></li>
+<li><a href="#6-security-considerations">Security Considerations</a></li>
+<li><a href="#7-comparison-with-other-standards">Comparison with Other Standards</a></li>
+</ol>
+<hr />
+<h1>1. INTRODUCTION TO TOKEN STANDARDS</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 What is a Token Standard?</h2>
+<p>A <strong>token standard</strong> is a set of rules that defines how a token behaves on a blockchain. It specifies:<br />
+- How tokens are created (minted)<br />
+- How tokens are transferred<br />
+- How balances are tracked<br />
+- What events are emitted</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Common Token Standards</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Standard</th>
+<th>Purpose</th>
+<th>Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ERC-20</strong></td>
+<td>Fungible tokens</td>
+<td>Anyone can hold and transfer</td>
+</tr>
+<tr>
+<td><strong>ERC-721</strong></td>
+<td>Non-fungible tokens (NFTs)</td>
+<td>Unique tokens, one-of-a-kind</td>
+</tr>
+<tr>
+<td><strong>ERC-1155</strong></td>
+<td>Multi-token standard</td>
+<td>Both fungible and non-fungible</td>
+</tr>
+<tr>
+<td><strong>ERC-3643</strong></td>
+<td>Regulated securities</td>
+<td>Permissioned transfers with identity verification</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. WHAT MAKES ERC-3643 DIFFERENT</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Permissioned vs. Permissionless</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>ERC-20 (Permissionless)</th>
+<th>ERC-3643 (Permissioned)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Who can hold?</strong></td>
+<td>Anyone with a wallet</td>
+<td>Only verified investors</td>
+</tr>
+<tr>
+<td><strong>Who can transfer?</strong></td>
+<td>Anyone</td>
+<td>Only verified investors</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>None built-in</td>
+<td>Built-in compliance checks</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Cryptocurrencies, utilities</td>
+<td>Securities, regulated assets</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Key Innovations</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Identity Registry:</strong> On-chain verification status</li>
+<li><strong>Compliance Module:</strong> Rule enforcement at token level</li>
+<li><strong>Transfer Validation:</strong> Every transfer checked before execution</li>
+<li><strong>Forced Transfer:</strong> Admin can transfer for regulatory compliance</li>
+<li><strong>Pause Mechanism:</strong> Emergency stop functionality</li>
+</ol>
+<hr />
+</section>
+<h1>3. KEY COMPONENTS</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 System Architecture</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    ERC-3643 ECOSYSTEM                             │
+│                                                                  │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
+│  │   TOKEN     │───▶│  IDENTITY   │───▶│ COMPLIANCE  │         │
+│  │  CONTRACT   │    │  REGISTRY   │    │   MODULE    │         │
+│  └─────────────┘    └─────────────┘    └─────────────┘         │
+│       │                   │                   │                 │
+│       │                   │                   │                 │
+│       ▼                   ▼                   ▼                 │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
+│  │  Balance    │    │   KYC       │    │   Rules     │         │
+│  │  Tracking   │    │  Status     │    │  Engine     │         │
+│  └─────────────┘    └─────────────┘    └─────────────┘         │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Identity Registry</h2>
+<p>The Identity Registry stores:<br />
+- <strong>Verification Status:</strong> Is this wallet verified?<br />
+- <strong>KYC Level:</strong> What level of verification (1, 2, or 3)?<br />
+- <strong>Jurisdiction:</strong> What country is the investor in?<br />
+- <strong>Identity ID:</strong> Reference to off-chain KYC data</p>
+<p><strong>Important:</strong> No PII (Personally Identifiable Information) is stored on-chain.</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 Compliance Module</h2>
+<p>The Compliance Module enforces:<br />
+- <strong>Holding Periods:</strong> Time-based transfer restrictions<br />
+- <strong>Jurisdiction Rules:</strong> Geographic restrictions<br />
+- <strong>Investment Limits:</strong> Min/max transfer amounts<br />
+- <strong>Investor Types:</strong> Accredited/institutional only modes</p>
+<hr />
+</section>
+<h1>4. HOW TRANSFERS WORK</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Transfer Process</h2>
+<div class="docs-pre"><code>// Simplified ERC-3643 transfer logic
+function transfer(address to, uint256 amount) public returns (bool) {
+    // Step 1: Check sender is verified
+    require(identityRegistry.isVerified(msg.sender), &quot;Sender not verified&quot;);
+
+    // Step 2: Check recipient is verified
+    require(identityRegistry.isVerified(to), &quot;Recipient not verified&quot;);
+
+    // Step 3: Run compliance checks
+    require(complianceModule.canTransfer(msg.sender, to, amount), &quot;Compliance check failed&quot;);
+
+    // Step 4: Execute transfer
+    _transfer(msg.sender, to, amount);
+
+    return true;
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Transfer Scenarios</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verified → Verified, rules met</td>
+<td>✓ Transfer succeeds</td>
+</tr>
+<tr>
+<td>Unverified → Verified</td>
+<td>✗ Fails: "Sender not verified"</td>
+</tr>
+<tr>
+<td>Verified → Unverified</td>
+<td>✗ Fails: "Recipient not verified"</td>
+</tr>
+<tr>
+<td>Verified → Verified, holding period not met</td>
+<td>✗ Fails: "Holding period not met"</td>
+</tr>
+<tr>
+<td>Verified → Verified, jurisdiction restricted</td>
+<td>✗ Fails: "Jurisdiction restricted"</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>5. COMPLIANCE FEATURES</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Built-in Compliance</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KYC Enforcement</strong></td>
+<td>Only verified wallets can hold tokens</td>
+</tr>
+<tr>
+<td><strong>Transfer Restrictions</strong></td>
+<td>Rules enforced at smart contract level</td>
+</tr>
+<tr>
+<td><strong>Jurisdiction Controls</strong></td>
+<td>Blocked countries cannot receive tokens</td>
+</tr>
+<tr>
+<td><strong>Holding Periods</strong></td>
+<td>Time-based lockups enforced automatically</td>
+</tr>
+<tr>
+<td><strong>Investor Caps</strong></td>
+<td>Maximum ownership limits enforced</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Rule Types</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Rule Type</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JURISDICTION_RESTRICTION</strong></td>
+<td>Block specific countries</td>
+<td>No US investors</td>
+</tr>
+<tr>
+<td><strong>HOLDING_PERIOD</strong></td>
+<td>Minimum holding time</td>
+<td>12-month lockup</td>
+</tr>
+<tr>
+<td><strong>MIN_TRANSFER_AMOUNT</strong></td>
+<td>Minimum transaction size</td>
+<td>Min $1,000 transfer</td>
+</tr>
+<tr>
+<td><strong>MAX_TRANSFER_AMOUNT</strong></td>
+<td>Maximum transaction size</td>
+<td>Max $1M per transfer</td>
+</tr>
+<tr>
+<td><strong>ACCREDITED_INVESTOR_ONLY</strong></td>
+<td>Require accreditation</td>
+<td>Accredited investors only</td>
+</tr>
+<tr>
+<td><strong>INSTITUTIONAL_ONLY</strong></td>
+<td>Require institutional status</td>
+<td>Institutions only</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>6. SECURITY CONSIDERATIONS</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Smart Contract Security</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Measure</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audits</strong></td>
+<td>Third-party security audits before deployment</td>
+</tr>
+<tr>
+<td><strong>Formal Verification</strong></td>
+<td>Mathematical proof of contract correctness</td>
+</tr>
+<tr>
+<td><strong>Bug Bounties</strong></td>
+<td>Rewards for finding vulnerabilities</td>
+</tr>
+<tr>
+<td><strong>Upgrade Mechanism</strong></td>
+<td>UUPS proxy for secure upgrades</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Access Control</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DEFAULT_ADMIN</strong></td>
+<td>Full administrative access</td>
+</tr>
+<tr>
+<td><strong>MINTER_ROLE</strong></td>
+<td>Can mint new tokens</td>
+</tr>
+<tr>
+<td><strong>COMPLIANCE_ADMIN</strong></td>
+<td>Can update compliance rules</td>
+</tr>
+<tr>
+<td><strong>PAUSER_ROLE</strong></td>
+<td>Can pause transfers in emergency</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.3 Upgrade Pattern</h2>
+<p>ERC-3643 tokens use <strong>UUPS (Universal Upgradeable Proxy Standard)</strong>:<br />
+- Logic can be upgraded while preserving state<br />
+- Requires admin approval<br />
+- Timelock for security<br />
+- Backwards compatible</p>
+<hr />
+</section>
+<h1>7. COMPARISON WITH OTHER STANDARDS</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Feature Comparison</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>ERC-20</th>
+<th>ERC-721</th>
+<th>ERC-3643</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fungibility</strong></td>
+<td>Fungible</td>
+<td>Non-fungible</td>
+<td>Fungible</td>
+</tr>
+<tr>
+<td><strong>Permissioned</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Identity Required</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Compliance Built-in</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Transfer Restrictions</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Regulatory Focus</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Cryptocurrencies</td>
+<td>NFTs</td>
+<td>Securities</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 When to Use ERC-3643</h2>
+<p><strong>Use ERC-3643 when:</strong><br />
+- Token represents a security<br />
+- Regulatory compliance is required<br />
+- Investor verification is needed<br />
+- Transfer restrictions are necessary</p>
+<p><strong>Use ERC-20 when:</strong><br />
+- Token is a utility token<br />
+- No regulatory restrictions<br />
+- Open access is desired</p>
+<p><strong>Use ERC-721 when:</strong><br />
+- Each token is unique<br />
+- Representing collectibles or unique assets</p>
+<hr />
+</section>
+<h1>GLOSSARY</h1>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Smart Contract</strong></td>
+<td>Self-executing code on blockchain</td>
+</tr>
+<tr>
+<td><strong>Proxy Pattern</strong></td>
+<td>Upgradeable contract architecture</td>
+</tr>
+<tr>
+<td><strong>UUPS</strong></td>
+<td>Universal Upgradeable Proxy Standard</td>
+</tr>
+<tr>
+<td><strong>KYC</strong></td>
+<td>Know Your Customer verification</td>
+</tr>
+<tr>
+<td><strong>PII</strong></td>
+<td>Personally Identifiable Information</td>
+</tr>
+<tr>
+<td><strong>On-chain</strong></td>
+<td>Data stored on blockchain</td>
+</tr>
+<tr>
+<td><strong>Off-chain</strong></td>
+<td>Data stored outside blockchain</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Document ID:</strong> UJAMAA-EDU-002<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> March 12, 2026</p>
+<hr />
+<p><em>This educational material is for informational purposes only and does not constitute technical or investment advice.</em></p>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Investors Room</a><a href="../../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../../assets/app.js"></script>
+</body>
+</html>

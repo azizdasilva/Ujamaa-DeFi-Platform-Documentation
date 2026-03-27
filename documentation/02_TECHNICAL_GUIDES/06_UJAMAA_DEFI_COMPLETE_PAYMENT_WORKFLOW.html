@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DEFI PLATFORM — Complete Payment Workflow - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DEFI PLATFORM — Complete Payment Workflow</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DEFI PLATFORM — Complete Payment Workflow</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (ERC-3643 Aligned) | <strong>Last Updated:</strong> March 15, 2026 | <strong>Audience:</strong> Backend Engineers, Smart Contract Developers, Compliance Officers, Integration Partners</p></div>
+
+        <h1>UJAMAA DEFI PLATFORM — Complete Payment Workflow</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Critical Technical Specification: From Investor to Asset Originator</h2>
+<p><strong>Version:</strong> 2.0 (ERC-3643 Aligned)<br />
+<strong>Date:</strong> March 15, 2026<br />
+<strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Classification:</strong> Technical<br />
+<strong>Audience:</strong> Backend Engineers, Smart Contract Developers, Compliance Officers, Integration Partners</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
+<p><strong>CRITICAL UPDATE:</strong> This document has been revised to align with the <strong>Software Requirements Specification (SRS) v1.3</strong> and <strong>Smart Contract Specification v1.0</strong>. All references to ERC-1400 have been replaced with <strong>ERC-3643 (T-REX Protocol)</strong>, and contract names have been updated to reflect the actual implementation (<code>UjamaaTokenizer</code>, <code>IdentityRegistry</code>, <code>ComplianceModule</code>, <code>AssetProof</code>).</p>
+<h3>Key Changes from Previous Version</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Previous (v1.0)</th>
+<th>Updated (v2.0)</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td>ERC-1400</td>
+<td><strong>ERC-3643 (T-REX)</strong></td>
+<td>Smart contract code, compliance logic</td>
+</tr>
+<tr>
+<td><strong>Token Contract</strong></td>
+<td><code>UjamaaToken</code></td>
+<td><strong><code>UjamaaTokenizer</code></strong></td>
+<td>All integration code</td>
+</tr>
+<tr>
+<td><strong>Identity System</strong></td>
+<td>Generic KYC</td>
+<td><strong>ONCHAINID</strong></td>
+<td>Compliance architecture</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Basic rules</td>
+<td><strong>ERC-3643 Compliance Modules</strong></td>
+<td>Transfer restrictions</td>
+</tr>
+<tr>
+<td><strong>Asset Provenance</strong></td>
+<td>Not specified</td>
+<td><strong>AssetProof (SHA-256)</strong></td>
+<td>Audit trail</td>
+</tr>
+<tr>
+<td><strong>Document Location</strong></td>
+<td><code>docs/</code></td>
+<td><strong><code>docs/03_TECHNICAL_GUIDES/</code></strong></td>
+<td>Information architecture</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Critical Architecture Reframing</h2>
+<p>Since UJAMAA <strong>is</strong> the tokenization platform (not a broker or aggregator), its role is fundamentally different from traditional financial intermediaries. UJAMAA is simultaneously:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Function</th>
+<th>Smart Contract Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Arranger</strong></td>
+<td>Structures the tokenization deal with the asset originator</td>
+<td>Off-chain (legal structuring)</td>
+</tr>
+<tr>
+<td><strong>Issuer</strong></td>
+<td>Creates and deploys SPV, mints ERC-3643 security tokens</td>
+<td><code>UjamaaTokenizer.mint()</code></td>
+</tr>
+<tr>
+<td><strong>Transfer Agent</strong></td>
+<td>Manages investor registry, token lifecycle, corporate actions</td>
+<td><code>IdentityRegistry</code> + <code>ComplianceModule</code></td>
+</tr>
+<tr>
+<td><strong>Distribution Platform</strong></td>
+<td>Onboards investors, collects subscription funds</td>
+<td>Frontend + Flutterwave integration</td>
+</tr>
+<tr>
+<td><strong>Paying Agent</strong></td>
+<td>Distributes yields and returns to investors</td>
+<td><code>DistributionManager</code> contract</td>
+</tr>
+<tr>
+<td><strong>Compliance Enforcer</strong></td>
+<td>Ensures regulatory adherence on every transfer</td>
+<td><code>ComplianceModule.canTransfer()</code></td>
+</tr>
+<tr>
+<td><strong>Audit Trail Manager</strong></td>
+<td>Maintains immutable record of all transactions</td>
+<td><code>AssetProof.notarize()</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>CRITICAL:</strong> This means <strong>every fund flow is governed by ERC-3643 smart contracts and legal documentation</strong> — not by a third-party platform. UJAMAA owns the infrastructure and bears the compliance obligation.</p>
+<h3>1.1 SRS Alignment</h3>
+<p>This workflow specification aligns with the following SRS v1.3 requirements:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>SRS Section</th>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Section 2.2</strong></td>
+<td>ERC-3643 fungible token minting</td>
+<td><code>UjamaaTokenizer</code> contract</td>
+</tr>
+<tr>
+<td><strong>Section 3.1</strong></td>
+<td>Identity verification via ONCHAINID</td>
+<td><code>IdentityRegistry</code> contract</td>
+</tr>
+<tr>
+<td><strong>Section 3.4</strong></td>
+<td>Transfer restriction enforcement</td>
+<td><code>ComplianceModule</code> contract</td>
+</tr>
+<tr>
+<td><strong>Section 3.6</strong></td>
+<td>Automated repayment distribution</td>
+<td><code>DistributionManager</code> contract</td>
+</tr>
+<tr>
+<td><strong>Section 5.3</strong></td>
+<td>Blockchain layer (Polygon)</td>
+<td>Polygon Amoy/Mainnet</td>
+</tr>
+<tr>
+<td><strong>Section 7.1</strong></td>
+<td>ERC-3643 transfer enforcement</td>
+<td>Built into every transfer</td>
+</tr>
+<tr>
+<td><strong>Section 10.2</strong></td>
+<td>AML/KYC via ONCHAINID</td>
+<td>Claim Issuer integration</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. The Five Parties in the UJAMAA Ecosystem (Updated)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Party</th>
+<th>Role</th>
+<th>Smart Contract Interaction</th>
+<th>Custody</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Asset Originator</strong></td>
+<td>African business, developer, or project owner bringing an asset to tokenize</td>
+<td>Receives USDC from SPV wallet after round closes</td>
+<td>Bank account (fiat) or USDC wallet</td>
+</tr>
+<tr>
+<td><strong>UJAMAA Platform</strong></td>
+<td>Tokenizer, issuer, arranger, transfer agent, paying agent, compliance enforcer</td>
+<td>Deploys contracts, mints tokens, enforces compliance</td>
+<td>Gnosis Safe multisig (4-of-7)</td>
+</tr>
+<tr>
+<td><strong>SPV</strong></td>
+<td>Legally isolated entity created by UJAMAA per asset, holds legal title to asset</td>
+<td>Receives proceeds from token sale, holds USDC for operations</td>
+<td>Dedicated USDC wallet per SPV</td>
+</tr>
+<tr>
+<td><strong>Investor</strong></td>
+<td>Retail or institutional — pays via mobile money, bank transfer, or Web3 wallet</td>
+<td>Receives ERC-3643 tokens, receives distributions</td>
+<td>Self-custody (Web3) or Fireblocks custody (mobile money)</td>
+</tr>
+<tr>
+<td><strong>Custodian</strong></td>
+<td>Fireblocks or in-house — holds private keys on behalf of mobile money investors</td>
+<td>MPC custody for non-Web3 users</td>
+<td>Institutional-grade MPC</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.1 Critical Distinction: Custody Models</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Investor Type</th>
+<th>Custody Model</th>
+<th>Private Key Holder</th>
+<th>Regulatory Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web3 Native</strong></td>
+<td>Self-custody</td>
+<td>Investor (MetaMask, WalletConnect)</td>
+<td>Investor bears key management risk</td>
+</tr>
+<tr>
+<td><strong>Mobile Money</strong></td>
+<td>Custodial (Fireblocks)</td>
+<td>UJAMAA (MPC custody)</td>
+<td>UJAMAA bears fiduciary duty</td>
+</tr>
+<tr>
+<td><strong>Institutional</strong></td>
+<td>Qualified custodian</td>
+<td>Licensed third-party</td>
+<td>Regulatory compliance per jurisdiction</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Pre-Investment: Asset Onboarding by UJAMAA (Critical Path)</h2>
+<p>Before any investor sends a single franc, UJAMAA completes the following steps as the tokenization platform:</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  PHASE 1: ASSET ORIGINATION                                                 │
+│                                                                              │
+│  ASSET ORIGINATOR                                                            │
+│  (Farmer, Developer, Infrastructure Owner, Factory Owner...)                │
+│          │                                                                   │
+│          │ 1. Submits asset for tokenization via UJAMAA platform            │
+│          │    • Asset details (type, location, value, expected yield)       │
+│          │    • Legal documentation (title, permits, insurance)             │
+│          │    • Financial projections (3-5 year cash flow model)            │
+│          ▼                                                                   │
+│  UJAMAA DUE DILIGENCE (OFF-CHAIN)                                           │
+│          │                                                                   │
+│          │ 2. Legal title verification — CRITICAL GATE                      │
+│          │    • Asset must be debt-free and clear of encumbrances          │
+│          │    • Title search conducted by local law firm                   │
+│          │    • Opinion letter issued: &quot;Title is marketable&quot;               │
+│          │                                                                   │
+│          │ 3. Independent asset valuation by certified auditor              │
+│          │    • Valuation firm must be licensed in asset jurisdiction      │
+│          │    • Valuation report includes: DCF, comparables, replacement   │
+│          │    • Valid for 12 months from issue date                        │
+│          │                                                                   │
+│          │ 4. Originator KYB (Know Your Business) and AML screening         │
+│          │    • Corporate documents verified (registration, bylaws)        │
+│          │    • Beneficial owners identified (&gt;10% ownership)              │
+│          │    • Sanctions screening (OFAC, UN, EU, UK HMT)                 │
+│          │    • PEP (Politically Exposed Person) screening                 │
+│          │    • Adverse media search                                       │
+│          ▼                                                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PHASE 2: LEGAL STRUCTURING                                                 │
+│                                                                              │
+│  UJAMAA LEGAL TEAM + LOCAL COUNSEL                                          │
+│          │                                                                   │
+│          │ 5. UJAMAA creates a dedicated SPV per asset                      │
+│          │    • Jurisdiction selected (Mauritius, Delaware, local LLC)     │
+│          │    • SPV is bankruLPcy-remote from UJAMAA and originator        │
+│          │    • SPV Operating Agreement drafted                            │
+│          │                                                                   │
+│          │ 6. Asset title transferred from Originator into SPV              │
+│          │    • Legally a &quot;true sale&quot; — isolates asset from originator     │
+│          │    • Recorded in local land registry / asset registry           │
+│          │    • SPV now holds legal title to the asset                     │
+│          │                                                                   │
+│          │ 7. UJAMAA drafts offering documents (SEC/MiCA compliant)         │
+│          │    • Private Placement Memorandum (PPM)                         │
+│          │    • Token Subscription Agreement (ERC-3643 gated)              │
+│          │    • SPV Operating Agreement (investor rights)                  │
+│          │    • Risk Disclosure Statement (mandatory per jurisdiction)     │
+│          │    • Investment Questionnaire (accreditation verification)      │
+│          ▼                                                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PHASE 3: SMART CONTRACT DEPLOYMENT (Polygon)                               │
+│                                                                              │
+│  UJAMAA SMART CONTRACTS                                                     │
+│          │                                                                   │
+│          │ 8. ERC-3643 security token contract deployed on Polygon          │
+│          │    • Contract: UjamaaTokenizer (per-asset deployment)           │
+│          │    • Standard: ERC-3643 (T-REX Protocol)                        │
+│          │    • Chain: Polygon Mainnet (or Amoy for testnet)               │
+│          │                                                                   │
+│          │ 9. Token parameters configured in smart contract:                │
+│          │    • Total supply: e.g., 1,000,000 tokens                       │
+│          │    • Price per token: e.g., $1.00 USDC                          │
+│          │    • Minimum investment: e.g., $100 (retail) / $10,000 (inst.)  │
+│          │    • Funding target: e.g., $1,000,000 USDC                      │
+│          │    • Deadline: e.g., 90 days from listing                       │
+│          │    • Yield schedule: e.g., quarterly distributions              │
+│          │    • Lock-up period: e.g., 365 days (no transfers before)       │
+│          │    • Jurisdiction restrictions: e.g., no US persons             │
+│          │                                                                   │
+│          │ 10. Compliance configuration in ComplianceModule:                │
+│          │    • Max investors: e.g., 200 (Reg D) / 500 (Reg A+)            │
+│          │    • Max concentration: e.g., no investor &gt;25% of supply        │
+│          │    • Accreditation required: yes/no per asset class             │
+│          │    • Restricted jurisdictions: OFAC list + high-risk countries  │
+│          │                                                                   │
+│          │ 11. Smart contract escrow deployed — no funds released until    │
+│          │     target met OR deadline passed                                │
+│          │                                                                   │
+│          ▼                                                                   │
+│  ASSET LISTED ON UJAMAA PLATFORM                                            │
+│          │                                                                   │
+│          │ 12. Asset goes live for investor subscription                    │
+│          │     • Asset page created with full disclosure                    │
+│          │     • PPM, risk factors, financials available for download       │
+│          │     • Investment calculator: ROI projection                      │
+│          │     • &quot;Invest Now&quot; button active                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>3.1 Critical Compliance Gates</h3>
+<p>Before an asset can be listed, ALL of the following must be TRUE:</p>
+<div class="docs-pre"><code># Pseudocode: Asset listing compliance check
+def can_list_asset(asset):
+    # Gate 1: Legal title verified
+    assert asset.title_verified == True, &quot;Title not verified&quot;
+    assert asset.title_opinion_letter == &quot;Marketable&quot;, &quot;Title opinion negative&quot;
+
+    # Gate 2: Valuation current
+    assert asset.valuation_date &gt;= today - timedelta(days=365), &quot;Valuation expired&quot;
+    assert asset.valuation_firm.licensed == True, &quot;Valuation firm not licensed&quot;
+
+    # Gate 3: Originator KYB passed
+    assert asset.originator.kyb_status == &quot;APPROVED&quot;, &quot;KYB not approved&quot;
+    assert asset.originator.aml_status == &quot;CLEARED&quot;, &quot;AML screening failed&quot;
+    assert asset.originator.sanctions_check == &quot;CLEAR&quot;, &quot;Sanctions match found&quot;
+
+    # Gate 4: Legal documents complete
+    assert asset.ppm_signed == True, &quot;PPM not signed&quot;
+    assert asset.subscription_agreement_template == True, &quot;Subscription agreement missing&quot;
+    assert asset.risk_disclosure_published == True, &quot;Risk disclosure missing&quot;
+
+    # Gate 5: Smart contract deployed
+    assert asset.token_contract_deployed == True, &quot;Token contract not deployed&quot;
+    assert asset.token_contract_standard == &quot;ERC-3643&quot;, &quot;Wrong token standard&quot;
+    assert asset.compliance_module_configured == True, &quot;Compliance not configured&quot;
+
+    # Gate 6: Regulatory approval (if required)
+    if asset.jurisdiction.requires_regulatory_approval:
+        assert asset.regulatory_approval_received == True, &quot;Regulatory approval pending&quot;
+
+    return True  # All gates passed - asset can be listed
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Investment Flow — Path A: Mobile Money (No Web3 Wallet)</h2>
+<p><strong>CRITICAL:</strong> This flow abstracts all blockchain complexity from the user while maintaining full ERC-3643 compliance.</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  MOBILE MONEY INVESTMENT FLOW (ERC-3643 Compliant)                          │
+│                                                                              │
+│  INVESTOR                                                                    │
+│  (MTN MoMo / Orange Money / Airtel Money / M-Pesa)                          │
+│          │                                                                   │
+│          │ 1. Browses assets on UJAMAA mobile-first web app                 │
+│          │    • Asset displayed with local currency minimum                  │
+│          │      (e.g., 5,000 XOF for Côte d'Ivoire investor)                │
+│          │    • ERC-3643 compliance badge visible                            │
+│          │    • Expected yield shown in local currency                       │
+│          │                                                                   │
+│          │ 2. Selects asset — amount displayed in local currency            │
+│          │    (XOF, NGN, KES, GHS, ZAR — auto-detected by country)          │
+│          │                                                                   │
+│          │ 3. Completes KYC inline (if not already verified)                │
+│          │    • National ID or passport upload                              │
+│          │    • Selfie verification (liveness check)                        │
+│          │    • Phone number verification via OTP                           │
+│          │    • For mobile money users: phone number matched to              │
+│          │      registered mobile money number (additional assurance)       │
+│          │                                                                   │
+│          │ 4. KYC submitted to ONCHAINID Claim Issuer                       │
+│          │    • Third-party provider (Youverify, Smile Identity, Dojah)     │
+│          │    • Verification completed within 24-48 hours                   │
+│          │    • Upon approval: Claim issued and stored in                   │
+│          │      IdentityRegistry smart contract                             │
+│          │    • User wallet address now: isVerified() == true               │
+│          ▼                                                                   │
+│  FLUTTERWAVE PAYMENT GATEWAY                                                 │
+│          │                                                                   │
+│          │ 5. Investor enters investment amount in local currency           │
+│          │    • Real-time USDC equivalent displayed                         │
+│          │    • Token quantity calculated (amount / price per token)        │
+│          │    • Estimated annual return shown                               │
+│          │                                                                   │
+│          │ 6. Investor selects mobile money operator                        │
+│          │    • MTN, Orange, Airtel, M-Pesa, Vodafone                       │
+│          │    • Operator logo displayed with brand colors                   │
+│          │    • List populated dynamically via Flutterwave API              │
+│          │                                                                   │
+│          │ 7. Investor confirms mobile money number                         │
+│          │    • Pre-filled if provided at registration                      │
+│          │    • Note: &quot;You will receive a payment prompt on this number&quot;    │
+│          │                                                                   │
+│          │ 8. Flutterwave sends USSD push / in-app prompt                  │
+│          │    • Prompt appears on investor's mobile phone                   │
+│          │    • Shows: amount, merchant name (UJAMAA), transaction ref      │
+│          │                                                                   │
+│          │ 9. Investor approves payment on mobile operator app              │
+│          │    • Enters PIN on operator USSD interface                       │
+│          │    • Payment authorized                                          │
+│          │                                                                   │
+│          │ 10. Flutterwave confirms payment — fires webhook to UJAMAA       │
+│          │     • Webhook payload:                                           │
+│          │       {                                                          │
+│          │         &quot;transaction_id&quot;: &quot;FLW-MOMO-12345&quot;,                      │
+│          │         &quot;amount&quot;: 10000,                                         │
+│          │         &quot;currency&quot;: &quot;XOF&quot;,                                       │
+│          │         &quot;status&quot;: &quot;SUCCESS&quot;,                                     │
+│          │         &quot;phone_number&quot;: &quot;+22912345678&quot;,                          │
+│          │         &quot;network&quot;: &quot;MTN&quot;                                         │
+│          │       }                                                          │
+│          │     • Webhook signature verified via HMAC-SHA256                 │
+│          ▼                                                                   │
+│  UJAMAA BACKEND (FastAPI + PostgreSQL)                                      │
+│          │                                                                   │
+│          │ 11. Backend verifies webhook authenticity                        │
+│          │     • HMAC signature validation                                  │
+│          │     • Transaction ID checked for replay attacks                  │
+│          │                                                                   │
+│          │ 12. Backend checks KYC clearance in PostgreSQL                   │
+│          │     • SELECT kyc_level FROM investors WHERE phone = ...          │
+│          │     • Must be KYC Level 1 or higher                              │
+│          │                                                                   │
+│          │ 13. Backend records subscription in investor registry            │
+│          │     • INSERT INTO subscriptions (...)                            │
+│          │     • Status: &quot;PAYMENT_RECEIVED&quot;                                 │
+│          │     • Audit trail: timestamp, IP address, device fingerprint     │
+│          ▼                                                                   │
+│  ONAFRIQ + CIRCLE ON-RAMP                                                    │
+│          │                                                                   │
+│          │ 14. Fiat (XOF, NGN, KES...) converted to USDC at locked rate     │
+│          │     • Rate locked for 15 minutes at payment confirmation         │
+│          │     • Onafriq API: POST /convert                                 │
+│          │     • Response: USDC amount, Circle transaction ID               │
+│          │                                                                   │
+│          │ 15. USDC sent to UJAMAA smart contract escrow on Polygon         │
+│          │     • From: Onafriq settlement wallet                            │
+│          │     • To: UjamaaTokenizer escrow address                         │
+│          │     • Transaction hash recorded in PostgreSQL                    │
+│          ▼                                                                   │
+│  SMART CONTRACT ESCROW (Polygon)                                             │
+│          │                                                                   │
+│          │ 16. USDC held in escrow — locked until funding target met        │
+│          │     • Escrow balance updated: total_raised += amount            │
+│          │     • Event emitted: SubscriptionReceived(investor, amount)      │
+│          │                                                                   │
+│          │ 17. ERC-3643 compliance check (AUTOMATIC)                        │
+│          │     • IdentityRegistry.isVerified(investor_wallet) == true       │
+│          │     • ComplianceModule.canTransfer(...) == true                  │
+│          │     • If check fails: transaction reverted, funds returned       │
+│          │                                                                   │
+│          │ 18. ERC-3643 tokens minted to investor's custodial wallet        │
+│          │     • UjamaaTokenizer.mint(investor_wallet, token_amount)        │
+│          │     • Tokens held in Fireblocks MPC custody                      │
+│          │     • Gas fee paid from platform treasury (user doesn't see)     │
+│          │                                                                   │
+│          │ 19. AssetProof notarizes investment record                       │
+│          │     • SHA-256 hash of investment data computed                   │
+│          │     • AssetProof.notarize(investment_hash)                       │
+│          │     • Immutable audit trail created on Polygon                   │
+│          ▼                                                                   │
+│  INVESTOR DASHBOARD                                                          │
+│          │                                                                   │
+│          │ 20. Investor sees token holdings and investment confirmation     │
+│          │     • Token quantity: e.g., &quot;10,000 UJAA tokens&quot;                 │
+│          │     • Asset name: e.g., &quot;Côte d'Ivoire Cocoa Cooperative&quot;        │
+│          │     • Transaction hash (clickable to Polygonscan)                │
+│          │     • Expected next distribution date                            │
+│          │                                                                   │
+│          │ 21. SMS confirmation sent to mobile number                       │
+│          │     • &quot;UJAMAA: Investment confirmed. 10,000 tokens acquired.     │
+│          │        Ref: FLW-MOMO-12345. View: ujamaa-defi.com/portfolio&quot;     │
+│          │                                                                   │
+│          │ 22. PDF investment receipt available for download                │
+│          │     • Includes: investor details, asset details, token qty,      │
+│          │       transaction ref, compliance statements                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>4.1 Critical Technical Details</h3>
+<h4>4.1.1 Webhook Security</h4>
+<div class="docs-pre"><code># FastAPI webhook endpoint with HMAC verification
+from fastapi import APIRouter, HTTPException, Request
+import hmac
+import hashlib
+
+router = APIRouter()
+
+@router.post(&quot;/webhooks/flutterwave&quot;)
+async def flutterwave_webhook(request: Request):
+    # Get webhook signature from headers
+    signature = request.headers.get(&quot;X-Flutterwave-Signature&quot;)
+    if not signature:
+        raise HTTPException(status_code=401, detail=&quot;Missing signature&quot;)
+
+    # Read raw payload
+    payload = await request.body()
+
+    # Verify HMAC-SHA256 signature
+    secret = settings.FLUTTERWAVE_WEBHOOK_SECRET
+    expected_signature = hmac.new(
+        secret.encode(),
+        payload,
+        hashlib.sha256
+    ).hexdigest()
+
+    if not hmac.compare_digest(signature, expected_signature):
+        raise HTTPException(status_code=401, detail=&quot;Invalid signature&quot;)
+
+    # Check for replay attacks
+    data = json.loads(payload)
+    if await is_duplicate_transaction(data[&quot;transaction_id&quot;]):
+        raise HTTPException(status_code=400, detail=&quot;Duplicate transaction&quot;)
+
+    # Process payment
+    await process_mobile_money_payment(data)
+
+    return {&quot;status&quot;: &quot;success&quot;}
+</code></div>
+<h4>4.1.2 ERC-3643 Compliance Check</h4>
+<div class="docs-pre"><code>// Smart contract: ERC-3643 transfer validation
+function _canTransfer(
+    address from,
+    address to,
+    uint256 amount
+) internal view override returns (bool) {
+    // Check 1: Identity verification (BOTH parties)
+    require(
+        identityRegistry().isVerified(from),
+        &quot;Sender not verified&quot;
+    );
+    require(
+        identityRegistry().isVerified(to),
+        &quot;Recipient not verified&quot;
+    );
+
+    // Check 2: KYC level sufficient
+    require(
+        identityRegistry().getKycLevel(to) &gt;= requiredKycLevel,
+        &quot;KYC level insufficient&quot;
+    );
+
+    // Check 3: Jurisdiction not restricted
+    string memory investorJurisdiction = identityRegistry().getJurisdiction(to);
+    require(
+        !complianceModule().isJurisdictionRestricted(investorJurisdiction),
+        &quot;Jurisdiction restricted&quot;
+    );
+
+    // Check 4: Holding period (if applicable)
+    if (lockupPeriod &gt; 0) {
+        require(
+            block.timestamp &gt;= firstPurchaseTime[to] + lockupPeriod,
+            &quot;Lock-up period not elapsed&quot;
+        );
+    }
+
+    // Check 5: Concentration limit
+    uint256 investorBalance = balanceOf(to) + amount;
+    uint256 totalSupply = totalSupply();
+    require(
+        (investorBalance * 100) / totalSupply &lt;= maxConcentration,
+        &quot;Concentration limit exceeded&quot;
+    );
+
+    return true;
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Investment Flow — Path B: Web3 Wallet (Crypto-Native Investor)</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  WEB3 WALLET INVESTMENT FLOW (ERC-3643 Compliant)                           │
+│                                                                              │
+│  INVESTOR                                                                    │
+│  (MetaMask / WalletConnect / Rainbow / Trust Wallet)                        │
+│          │                                                                   │
+│          │ 1. Connects wallet to UJAMAA platform                            │
+│          │    • WalletConnect QR code or MetaMask popup                    │
+│          │    • Wallet address captured: 0x...                              │
+│          │                                                                   │
+│          │ 2. Completes KYC (if not already verified)                       │
+│          │    • Same KYC flow as mobile money (ID, selfie, OTP)            │
+│          │    • Wallet address linked to ONCHAINID identity                │
+│          │    • Claim Issuer signs KYC approval claim                      │
+│          │    • IdentityRegistry.isVerified(wallet) == true                │
+│          │                                                                   │
+│          │ 3. Browses assets — amounts shown in USDC                        │
+│          │    • Local currency secondary display (optional)                │
+│          │    • ERC-3643 compliance badge visible                          │
+│          │                                                                   │
+│          │ 4. Selects asset and enters amount in USDC                      │
+│          │    • Token quantity calculated in real-time                     │
+│          │    • Polygon gas fee estimate displayed                         │
+│          │    • Compliance notice: &quot;Only verified wallets can hold&quot;        │
+│          │                                                                   │
+│          │ 5. Pre-compliance check (OFFCHAIN)                               │
+│          │    • Backend checks: IdentityRegistry.isVerified(wallet)        │
+│          │    • If false: &quot;Please complete KYC before investing&quot;           │
+│          │    • If true: Proceed to transaction                            │
+│          ▼                                                                   │
+│  POLYGON NETWORK                                                             │
+│          │                                                                   │
+│          │ 6. Investor approves USDC transfer to escrow                     │
+│          │    • MetaMask popup: &quot;Approve USDC transfer&quot;                    │
+│          │    • Amount: e.g., 1,000 USDC                                   │
+│          │    • Spender: UjamaaTokenizer escrow address                    │
+│          │    • Gas fee: ~$0.001 (Polygon)                                 │
+│          │                                                                   │
+│          │ 7. USDC transferred directly to smart contract escrow            │
+│          │    • Transaction: USDC.transferFrom(investor, escrow, amount)   │
+│          │    • Transaction hash recorded on-chain                         │
+│          │    • Event emitted: SubscriptionReceived(investor, amount)      │
+│          ▼                                                                   │
+│  SMART CONTRACT ESCROW (Polygon)                                             │
+│          │                                                                   │
+│          │ 8. USDC held in escrow pending funding target                   │
+│          │    • Escrow balance updated                                     │
+│          │    • Progress bar updated on frontend                           │
+│          │                                                                   │
+│          │ 9. ERC-3643 tokens minted and sent to investor's wallet          │
+│          │    • UjamaaTokenizer.mint(investor, token_amount)               │
+│          │    • Tokens held in investor's self-custody wallet              │
+│          │    • Event emitted: TokensMinted(investor, amount)              │
+│          │                                                                   │
+│          │ 10. AssetProof notarizes investment record                       │
+│          │     • SHA-256 hash of investment data                            │
+│          │     • AssetProof.notarize(investment_hash)                       │
+│          ▼                                                                   │
+│  INVESTOR DASHBOARD                                                          │
+│          │                                                                   │
+│          │ 11. Investor sees token holdings + Polygonscan link              │
+│          │     • Token balance: e.g., &quot;1,000 UJAA&quot;                          │
+│          │     • Transaction hash: 0x... (clickable)                        │
+│          │     • Asset details and expected yield                           │
+│          │     • Downloadable investment receipt (PDF)                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Investment Flow — Path C: Bank Transfer (Institutional Investor)</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  INSTITUTIONAL INVESTMENT FLOW (Bank Transfer / SWIFT)                      │
+│                                                                              │
+│  INSTITUTIONAL INVESTOR                                                      │
+│  (Pension Fund, Family Office, Insurance Company, DFI)                      │
+│          │                                                                   │
+│          │ 1. Completes enhanced KYC/KYB off-platform                       │
+│          │    • Corporate documents (registration, bylaws, AML policy)      │
+│          │    • Beneficial owner disclosure (&gt;10% ownership)                │
+│          │    • Board resolution authorizing investment                    │
+│          │    • Investment mandate documentation                           │
+│          │    • Regulatory licenses (if required)                          │
+│          │                                                                   │
+│          │ 2. Signs Subscription Agreement and PPM acknowledgment          │
+│          │    • DocuSign or physical signature                             │
+│          │    • Legal review by institutional counsel                      │
+│          │    • Accreditation verification (if required by jurisdiction)    │
+│          │                                                                   │
+│          │ 3. UJAMAA issues bank transfer instruction                       │
+│          │    • Unique reference code: &quot;UJAMAA-[ASSET_ID]-[INVESTOR_ID]&quot;   │
+│          │    • SPV subscription account details                           │
+│          │    • Bank: Regulated partner bank (e.g., Mauritius Commercial)  │
+│          │    • Currency: USD, EUR, or local currency                      │
+│          │    • SWIFT/BIC code provided                                    │
+│          ▼                                                                   │
+│  UJAMAA SPV SUBSCRIPTION ACCOUNT                                             │
+│  (Regulated Bank — Escrow Account dedicated to this asset's SPV)            │
+│          │                                                                   │
+│          │ 4. Wire transfer received in SPV account                         │
+│          │    • SWIFT MT103 message received                               │
+│          │    • Amount verified against subscription                       │
+│          │    • Reference code matched to investor                         │
+│          │                                                                   │
+│          │ 5. UJAMAA compliance team verifies source of funds               │
+│          │    • AML screening: source of wealth documentation              │
+│          │    • Sanctions check: OFAC, UN, EU, UK HMT                      │
+│          │    • PEP screening: beneficial owners                           │
+│          │    • Adverse media search                                       │
+│          │                                                                   │
+│          │ 6. Fiat recorded against investor's subscription                 │
+│          │    • PostgreSQL: subscriptions table updated                    │
+│          │    • Status: &quot;FUNDS_RECEIVED&quot;                                   │
+│          │    • Audit trail: compliance officer sign-off                   │
+│          ▼                                                                   │
+│  UJAMAA BACKEND                                                              │
+│          │                                                                   │
+│          │ 7. On-ramp converts fiat → USDC on Polygon                       │
+│          │    • Circle Mint (for institutional amounts &gt;$100K)             │
+│          │    • Or OTC desk partner (for large conversions)                │
+│          │    • Exchange rate locked at time of conversion                 │
+│          │                                                                   │
+│          │ 8. USDC deposited into smart contract escrow                     │
+│          │    • From: SPV settlement wallet                                │
+│          │    • To: UjamaaTokenizer escrow address                         │
+│          │    • Transaction hash recorded                                  │
+│          ▼                                                                   │
+│  SMART CONTRACT ESCROW (Polygon)                                             │
+│          │                                                                   │
+│          │ 9. USDC held in escrow pending round completion                 │
+│          │    • Escrow balance updated                                     │
+│          │    • Progress toward funding target                             │
+│          │                                                                   │
+│          │ 10. ERC-3643 tokens minted to investor's whitelisted wallet      │
+│          │     • UjamaaTokenizer.mint(institution_wallet, token_amount)    │
+│          │     • Or held in UJAMAA custodial wallet if requested           │
+│          │     • Event emitted: TokensMinted(institution, amount)          │
+│          ▼                                                                   │
+│  INSTITUTIONAL INVESTOR DASHBOARD                                            │
+│          │                                                                   │
+│          │ 11. Investor sees confirmed token allocation                     │
+│          │     • Token quantity and asset details                          │
+│          │     • Transaction hash (Polygonscan link)                       │
+│          │     • Official confirmation letter (PDF download)               │
+│          │     • Investor relations contact information                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Round Closure &amp; Capital Release to Asset Originator (Critical Gate)</h2>
+<p><strong>CRITICAL:</strong> This is the most critical gate in the entire flow. <strong>No capital ever reaches the asset originator until the funding round is fully validated by the smart contract AND all compliance checks pass.</strong></p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  ROUND CLOSURE: SUCCESS SCENARIO                                            │
+│                                                                              │
+│  SMART CONTRACT ESCROW (Polygon)                                             │
+│          │                                                                   │
+│          │ [CONDITION A — Funding target reached BEFORE deadline]           │
+│          │                                                                   │
+│          │ Smart contract continuously monitors:                            │
+│          │   if (total_raised &gt;= funding_target &amp;&amp;                          │
+│          │       block.timestamp &lt;= deadline) {                             │
+│          │       emit FundingTargetReached();                               │
+│          │   }                                                              │
+│          ▼                                                                   │
+│  UJAMAA BACKEND (Automated Trigger)                                          │
+│          │                                                                   │
+│          │ 1. Smart contract emits FundingTargetReached event              │
+│          │    • Backend listener detects event                             │
+│          │    • Round closure process initiated                            │
+│          │                                                                   │
+│          │ 2. UJAMAA compliance performs final AML sweep                    │
+│          │    • All subscriptions re-screened against sanctions lists      │
+│          │    • Any matches flagged for manual review                      │
+│          │    • If match found: subscription frozen, funds quarantined     │
+│          │                                                                   │
+│          │ 3. Round officially declared closed on-chain                     │
+│          │    • UjamaaTokenizer.closeRound() called                        │
+│          │    • State changed: is_closed = true                            │
+│          │    • Event emitted: RoundClosed(asset_id, total_raised)         │
+│          ▼                                                                   │
+│  SPV ACCOUNT (Asset-Dedicated Legal Entity)                                  │
+│          │                                                                   │
+│          │ 4. Smart contract releases USDC from escrow to SPV wallet        │
+│          │    • Escrow.transfer(spv_wallet, total_raised)                  │
+│          │    • Transaction hash recorded on-chain                         │
+│          │                                                                   │
+│          │ 5. UJAMAA platform fee deducted automatically                    │
+│          │    • Fee percentage encoded in smart contract at issuance       │
+│          │    • Example: 2% issuance fee on $1M = $20,000 USDC             │
+│          │    • Fee transferred to UJAMAA treasury wallet                  │
+│          │    • Transparent: visible on Polygonscan                        │
+│          │                                                                   │
+│          │ 6. SPV converts USDC → local fiat via banking partner            │
+│          │    • For large amounts: OTC desk or Circle Mint redeem          │
+│          │    • For smaller amounts: Flutterwave FX                        │
+│          │    • Fiat deposited into SPV operating account                  │
+│          ▼                                                                   │
+│  ASSET ORIGINATOR                                                            │
+│          │                                                                   │
+│          │ 7. Originator receives net capital proceeds                      │
+│          │    • Bank transfer to originator's operating account            │
+│          │    • Amount: total_raised - issuance_fee - conversion_costs     │
+│          │                                                                   │
+│          │ 8. Capital use governed by SPV Operating Agreement               │
+│          │    • Originator contractually bound to stated use of funds      │
+│          │    • Misuse = breach of contract = legal recourse               │
+│          │    • UJAMAA may require periodic proof of use of funds          │
+│          │                                                                   │
+│          │ 9. All fund release events recorded immutably on Polygon         │
+│          │     • AssetProof.notarize(fund_release_hash)                    │
+│          │     • Audit trail: who, what, when, how much                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>7.1 Critical Compliance: Final AML Sweep</h3>
+<div class="docs-pre"><code># Pseudocode: Final AML sweep before round closure
+async def final_aml_sweep(subscriptions):
+    &quot;&quot;&quot;
+    Perform final AML screening on all subscriptions
+    before releasing funds to SPV.
+    &quot;&quot;&quot;
+    flagged = []
+
+    for sub in subscriptions:
+        # Screen investor against sanctions lists
+        sanctions_result = await screen_sanctions(
+            name=sub.investor_name,
+            dob=sub.investor_dob,
+            nationality=sub.investor_nationality
+        )
+
+        if sanctions_result.match_found:
+            flagged.append({
+                'subscription_id': sub.id,
+                'reason': f&quot;Sanctions match: {sanctions_result.list_name}&quot;,
+                'action': 'QUARANTINE_FUNDS'
+            })
+            continue
+
+        # Screen for PEP status
+        pep_result = await screen_pep(
+            name=sub.investor_name,
+            country=sub.investor_country
+        )
+
+        if pep_result.is_pep:
+            # PEPs allowed but require enhanced due diligence
+            if not sub.edd_completed:
+                flagged.append({
+                    'subscription_id': sub.id,
+                    'reason': 'PEP without EDD',
+                    'action': 'REQUEST_EDD'
+                })
+
+        # Adverse media check
+        adverse_result = await screen_adverse_media(
+            name=sub.investor_name
+        )
+
+        if adverse_result.high_risk:
+            flagged.append({
+                'subscription_id': sub.id,
+                'reason': f&quot;High-risk adverse media: {adverse_result.headline}&quot;,
+                'action': 'MANUAL_REVIEW'
+            })
+
+    if flagged:
+        # Round closure paused - compliance team must review
+        await notify_compliance_team(flagged)
+        return False  # Round cannot close yet
+
+    return True  # All clear - round can close
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Failed Round — Automatic Investor Refund</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  ROUND CLOSURE: FAILURE SCENARIO (Automatic Refund)                         │
+│                                                                              │
+│  SMART CONTRACT ESCROW (Polygon)                                             │
+│          │                                                                   │
+│          │ [CONDITION B — Deadline reached, funding target NOT met]         │
+│          │                                                                   │
+│          │ Smart contract continuously monitors:                            │
+│          │   if (block.timestamp &gt; deadline &amp;&amp;                              │
+│          │       total_raised &lt; funding_target) {                           │
+│          │       emit RoundFailed();                                        │
+│          │   }                                                              │
+│          ▼                                                                   │
+│  SMART CONTRACT (Automatic Execution)                                        │
+│          │                                                                   │
+│          │ 1. Contract detects deadline passed with insufficient funds      │
+│          │    • No manual action required — automatic by code              │
+│          │    • State changed: is_failed = true                            │
+│          │                                                                   │
+│          │ 2. Refund condition triggered automatically                      │
+│          │    • For each subscription in escrow:                           │
+│          │      refunds[subscriber] += subscription_amount                 │
+│          │                                                                   │
+│          │ 3. All minted tokens burned on-chain                             │
+│          │    • UjamaaTokenizer.burn(tokens)                               │
+│          │    • Event emitted: TokensBurned(holder, amount)                │
+│          │    • Tokens cease to exist — no residual value                  │
+│          ▼                                                                   │
+│          ├─────────────────────────────────────────────┐                    │
+│          ▼                                             ▼                    │
+│  WEB3 WALLET INVESTORS                     MOBILE MONEY &amp; BANK INVESTORS    │
+│          │                                             │                    │
+│          │ USDC returned directly                      │ USDC → fiat via    │
+│          │ to investor's wallet on-chain               │ Onafriq/Circle     │
+│          │                                             │                    │
+│          │ claimRefund() called by investor            │ Flutterwave        │
+│          │ or automatically pushed                     │ disburses to       │
+│          │                                             │ mobile money       │
+│          │ Transaction hash provided                   │ wallet or bank     │
+│          │ Polygonscan link included                   │                    │
+│          │                                             │ SMS confirmation   │
+│          │                                             │ sent               │
+│          ▼                                             ▼                    │
+│  UJAMAA PLATFORM                                                             │
+│          │                                                                   │
+│          │ 4. Investor notified via app + SMS + email                       │
+│          │     • &quot;Round failed for [Asset Name]. Refund processed.&quot;         │
+│          │     • Refund amount and transaction details included             │
+│          │                                                                   │
+│          │ 5. Asset originator notified — round failed                      │
+│          │     • Reason provided: &quot;Funding target not met&quot;                  │
+│          │     • Option to relist at revised terms (UJAMAA decision)        │
+│          │                                                                   │
+│          │ 6. Asset may be relisted at revised terms                        │
+│          │     • Lower funding target                                       │
+│          │     • Extended deadline                                          │
+│          │     • Revised token price                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>8.1 Critical: Refund Claim Mechanism</h3>
+<div class="docs-pre"><code>// Smart contract: Refund claim function
+function claimRefund() external nonReentrant {
+    require(roundFailed, &quot;Round has not failed&quot;);
+
+    uint256 refundAmount = refunds[msg.sender];
+    require(refundAmount &gt; 0, &quot;No refund available&quot;);
+
+    // Reset refund balance before transfer (reentrancy protection)
+    refunds[msg.sender] = 0;
+
+    // Transfer refund
+    usdcToken.transfer(msg.sender, refundAmount);
+
+    emit RefundClaimed(msg.sender, refundAmount);
+}
+
+// For mobile money investors (custodial), backend initiates refund
+function processCustodialRefund(address investor, uint256 amount) 
+    external 
+    onlyAdmin 
+{
+    require(roundFailed, &quot;Round has not failed&quot;);
+    require(isCustodialInvestor(investor), &quot;Not a custodial investor&quot;);
+
+    // Burn tokens from custodial wallet
+    token.burnFrom(custodialWallet, getCustodialTokenBalance(investor));
+
+    // Convert USDC to fiat and disburse via Flutterwave
+    uint256 fiatAmount = convertTo Fiat(amount, investor.country);
+    flutterwave.disburse(investor.phoneNumber, fiatAmount);
+
+    emit CustodialRefundProcessed(investor, amount);
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Yield &amp; Returns Distribution Workflow</h2>
+<p><strong>CRITICAL:</strong> Smart contracts automate minting, transfers, and compliance checks — including dividend payouts — executing automatically when predefined conditions are met.</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  YIELD DISTRIBUTION FLOW (Automated via Smart Contract)                     │
+│                                                                              │
+│  REAL-WORLD ASSET                                                            │
+│  (Farm revenue / Rental income / Infrastructure fees / Factory output)      │
+│          │                                                                   │
+│          │ 1. Asset generates revenue in local currency                     │
+│          │    • Farm: Crop sales (cocoa, coffee, cashews)                  │
+│          │    • Real estate: Monthly rent payments                         │
+│          │    • Infrastructure: Toll fees, port charges                    │
+│          │    • Factory: Product sales revenue                             │
+│          ▼                                                                   │
+│  SPV ACCOUNT (Asset-Dedicated Legal Entity)                                  │
+│          │                                                                   │
+│          │ 2. Revenue received into SPV bank account                        │
+│          │    • Local currency (XOF, NGN, KES, etc.)                       │
+│          │    • Bank statement imported into UJAMAA accounting system      │
+│          │                                                                   │
+│          │ 3. Waterfall applied in STRICT ORDER (per SPV Operating Agmt)   │
+│          │                                                                   │
+│          │    a. Operating expenses paid                                   │
+│          │       • Property management fees                                 │
+│          │       • Insurance premiums                                       │
+│          │       • Maintenance costs                                        │
+│          │       • Property taxes / land rates                              │
+│          │                                                                   │
+│          │    b. Asset maintenance reserve funded                          │
+│          │       • Typically 10-20% of revenue                              │
+│          │       • Held in reserve for CapEx, repairs, replacements        │
+│          │       • Accumulates over time for major expenses                │
+│          │                                                                   │
+│          │    c. UJAMAA management fee deducted                            │
+│          │       • Pre-defined in smart contract (e.g., 1% of AUM/year)    │
+│          │       • Transparent: visible on-chain                           │
+│          │       • Deducted before investor distributions                  │
+│          │                                                                   │
+│          │    d. Net yield available for distribution                      │
+│          │       • Remaining amount after (a), (b), (c)                    │
+│          │       • This is what investors receive                          │
+│          ▼                                                                   │
+│  UJAMAA SMART CONTRACT (Polygon)                                             │
+│          │                                                                   │
+│          │ 4. SPV converts net yield fiat → USDC via on-ramp               │
+│          │    • Flutterwave FX for smaller amounts                         │
+│          │    • Circle Mint or OTC desk for large amounts                  │
+│          │    • Exchange rate locked at time of conversion                 │
+│          │                                                                   │
+│          │ 5. USDC deposited into UJAMAA distribution contract              │
+│          │    • DistributionManager.deposit(asset_id, amount)              │
+│          │    • Event emitted: YieldDeposited(asset_id, amount)            │
+│          │                                                                   │
+│          │ 6. Smart contract calculates each token holder's pro-rata share │
+│          │    • Snapshot taken: token balances at block height X           │
+│          │    • yield_per_token = net_yield / total_supply                 │
+│          │    • individual_payout = yield_per_token × tokens_held          │
+│          │                                                                   │
+│          │ 7. Distribution event recorded on-chain — publicly auditable     │
+│          │    • Event: DistributionDeclared(asset_id, yield_per_token)     │
+│          │    • Visible on Polygonscan                                     │
+│          │    • Audit trail: who declared, when, how much                  │
+│          ▼                                                                   │
+│          ├─────────────────────────────────────────────┐                    │
+│          ▼                                             ▼                    │
+│  WEB3 WALLET INVESTORS                     MOBILE MONEY INVESTORS           │
+│          │                                             │                    │
+│          │ USDC sent directly to wallet                │ USDC → fiat via    │
+│          │ Claimable anytime on-chain                  │ Flutterwave        │
+│          │                                             │                    │
+│          │ claimDistribution() called                  │ Disbursed directly │
+│          │ by investor or auto-push                    │ to mobile money    │
+│          │                                             │ wallet             │
+│          │ Transaction hash provided                   │                    │
+│          │ Polygonscan link included                   │ SMS confirmation   │
+│          │                                             │ sent               │
+│          ▼                                             ▼                    │
+│  INVESTOR DASHBOARD                                                          │
+│          │                                                                   │
+│          │ 8. Yield received shown in local currency                        │
+│          │     • Amount: e.g., &quot;5,000 XOF&quot; or &quot;8.50 USDC&quot;                  │
+│          │     • Annualized yield: e.g., &quot;12% APY&quot;                         │
+│          │     • Payment date recorded                                     │
+│          │                                                                   │
+│          │ 9. Full yield history available — every distribution on-chain    │
+│          │     • Exportable CSV for tax purposes                           │
+│          │     • Transaction hashes linked                                 │
+│          │     • Annual tax statement generated                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>9.1 Critical: Distribution Smart Contract</h3>
+<div class="docs-pre"><code>// Smart contract: DistributionManager
+contract DistributionManager {
+
+    struct Distribution {
+        uint256 assetId;
+        uint256 yieldPerToken;
+        uint256 totalYield;
+        uint256 snapshotBlock;
+        bool claimed;
+        mapping(address =&gt; uint256) claims;
+    }
+
+    mapping(uint256 =&gt; Distribution) public distributions;
+    uint256 public distributionCount;
+
+    /**
+     * @notice Declare a distribution for an asset
+     * @dev Only callable by authorized distributor (SPV manager)
+     */
+    function declareDistribution(
+        uint256 assetId,
+        uint256 totalYield
+    ) external onlyRole(DISTRIBUTOR_ROLE) {
+        require(totalYield &gt; 0, &quot;Yield must be &gt; 0&quot;);
+
+        Distribution storage dist = distributions[distributionCount];
+        dist.assetId = assetId;
+        dist.totalYield = totalYield;
+        dist.snapshotBlock = block.number;
+
+        // Calculate yield per token
+        uint256 totalSupply = token.totalSupply();
+        dist.yieldPerToken = (totalYield * 1e18) / totalSupply;
+
+        // Record claim for each token holder
+        // (In practice, this is done off-chain with Merkle root)
+        _recordClaims(assetId, dist.yieldPerToken);
+
+        distributionCount++;
+
+        emit DistributionDeclared(assetId, dist.yieldPerToken, totalYield);
+    }
+
+    /**
+     * @notice Claim distribution payout
+     */
+    function claimDistribution(uint256 distributionId) external {
+        Distribution storage dist = distributions[distributionId];
+        require(dist.claims[msg.sender] &gt; 0, &quot;No claim available&quot;);
+
+        uint256 amount = dist.claims[msg.sender];
+        dist.claims[msg.sender] = 0; // Reset claim
+
+        usdcToken.transfer(msg.sender, amount);
+
+        emit DistributionClaimed(msg.sender, distributionId, amount);
+    }
+}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. UJAMAA Platform Fee Structure (Transparency by Design)</h2>
+<p><strong>CRITICAL:</strong> All UJAMAA fees are <strong>encoded in the smart contract at issuance</strong> — visible to every investor before they commit a single franc.</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Fee</th>
+<th>When Charged</th>
+<th>Mechanism</th>
+<th>Typical Rate</th>
+<th>Smart Contract Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Issuance fee</strong></td>
+<td>At round closure</td>
+<td>Deducted from proceeds before release to SPV</td>
+<td>1-3% of total raised</td>
+<td><code>closeRound()</code></td>
+</tr>
+<tr>
+<td><strong>Management fee</strong></td>
+<td>On each yield distribution</td>
+<td>Deducted from yield waterfall in smart contract</td>
+<td>0.5-2% of AUM/year</td>
+<td><code>declareDistribution()</code></td>
+</tr>
+<tr>
+<td><strong>Transaction fee</strong></td>
+<td>On secondary market transfers</td>
+<td>Applied via ERC-3643 transfer hook</td>
+<td>0.1-0.5% of transfer value</td>
+<td><code>_canTransfer()</code></td>
+</tr>
+<tr>
+<td><strong>Exit fee</strong> (if applicable)</td>
+<td>On token redemption at maturity</td>
+<td>Deducted from redemption proceeds</td>
+<td>1-2% of redemption value</td>
+<td><code>redeemTokens()</code></td>
+</tr>
+<tr>
+<td><strong>Performance fee</strong> (if applicable)</td>
+<td>On returns exceeding hurdle rate</td>
+<td>Carried interest from excess returns</td>
+<td>10-20% of excess returns</td>
+<td><code>calculatePerformanceFee()</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NO HIDDEN FEES.</strong> No discretionary deductions. Every number is in the contract and visible on Polygonscan.</p>
+<h3>10.1 Fee Transparency Example</h3>
+<div class="docs-pre"><code>// Smart contract: Fee configuration (visible on-chain)
+struct FeeConfig {
+    uint256 issuanceFeeBps;      // 200 = 2.00%
+    uint256 managementFeeBps;    // 150 = 1.50% per annum
+    uint256 transactionFeeBps;   // 25 = 0.25%
+    uint256 exitFeeBps;          // 100 = 1.00%
+    uint256 performanceFeeBps;   // 2000 = 20.00% of excess returns
+    uint256 hurdleRateBps;       // 800 = 8.00% annual return threshold
+}
+
+FeeConfig public fees = FeeConfig({
+    issuanceFeeBps: 200,
+    managementFeeBps: 150,
+    transactionFeeBps: 25,
+    exitFeeBps: 100,
+    performanceFeeBps: 2000,
+    hurdleRateBps: 800
+});
+
+// Example: Investor can query fees before investing
+// Web3 call: contract.fees()
+// Returns: {200, 150, 25, 100, 2000, 800}
+// Frontend displays: &quot;Issuance: 2%, Management: 1.5%/yr, Transaction: 0.25%, Exit: 1%, Performance: 20% above 8% hurdle&quot;
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Complete Flow Summary (ERC-3643 Updated)</h2>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  END-TO-END PAYMENT WORKFLOW (ERC-3643 Compliant)                           │
+│                                                                              │
+│  ASSET ORIGINATOR                                                            │
+│          │ Submits asset for tokenization                                   │
+│          ▼                                                                   │
+│  UJAMAA PLATFORM                                                             │
+│  (Due diligence + SPV creation + ERC-3643 token issuance)                   │
+│          │                                                                   │
+│          │ • Legal title verified                                           │
+│          │ • Independent valuation obtained                                 │
+│          │ • Originator KYB/AML completed                                   │
+│          │ • SPV created (bankruLPcy-remote)                                │
+│          │ • Asset transferred to SPV (true sale)                           │
+│          │ • UjamaaTokenizer contract deployed on Polygon                   │
+│          │ • ComplianceModule configured                                    │
+│          │ • IdentityRegistry integrated (ONCHAINID)                        │
+│          │                                                                   │
+│          │ Lists asset on platform                                          │
+│          ▼                                                                   │
+│  INVESTOR                                                                    │
+│  (Mobile Money / Bank Transfer / Web3 Wallet)                               │
+│          │                                                                   │
+│          │ Subscribes + pays                                                │
+│          │ • KYC completed (ONCHAINID claim issued)                         │
+│          │ • Payment made (mobile money, wire, or USDC)                     │
+│          │ • Compliance check: IdentityRegistry.isVerified()                │
+│          ▼                                                                   │
+│  FLUTTERWAVE / BANK / POLYGON                                                │
+│  (Payment collection + fiat on-ramp)                                        │
+│          │                                                                   │
+│          │ Confirms payment                                                 │
+│          • Webhook fired to UJAMAA backend                                  │
+│          • Fiat converted to USDC (Onafriq/Circle)                          │
+│          • USDC sent to Polygon escrow                                      │
+│          ▼                                                                   │
+│  SMART CONTRACT ESCROW on POLYGON                                            │
+│          │                                                                   │
+│          │ Holds USDC until:                                                │
+│          │ [A] Target met → Round closes → Mints ERC-3643 tokens           │
+│          │ [B] Target missed → Round fails → Auto-refund                   │
+│          ▼                                                                   │
+│          ├── [Target met] ──→ Releases USDC to SPV → Originator receives   │
+│          │   capital (minus fees)                                           │
+│          │                                                                  │
+│          └── [Target missed] ──→ Auto-refund to all investors              │
+│              (USDC → fiat → mobile money/bank)                              │
+│              ▼                                                              │
+│  SPV                                                                         │
+│  (Manages asset operations)                                                  │
+│          │                                                                   │
+│          │ Generates revenue                                                │
+│          • Farm: crop sales                                                 │
+│          • Real estate: rent                                                │
+│          • Infrastructure: fees                                             │
+│          ▼                                                                   │
+│  UJAMAA DISTRIBUTION CONTRACT (Polygon)                                      │
+│          │                                                                   │
+│          │ Calculates + distributes yield                                   │
+│          • Waterfall applied (OpEx → Reserve → Fees → Investors)           │
+│          • Pro-rata distribution per token held                             │
+│          • On-chain record of every distribution                            │
+│          ▼                                                                   │
+│  INVESTORS RECEIVE RETURNS                                                   │
+│  (Mobile money / Wallet / Bank)                                              │
+│          │                                                                   │
+│          • Web3: USDC to wallet                                             │
+│          • Mobile money: Fiat to MoMo wallet                                │
+│          • Bank: Wire transfer                                              │
+│          • SMS + email confirmation                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12. Risk Mitigation Matrix (Updated)</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Risk</th>
+<th>Who Bears It</th>
+<th>Mitigation (Technical + Legal)</th>
+<th>SRS Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UJAMAA misusing investor funds</strong></td>
+<td>Investors</td>
+<td>Smart contract escrow — UJAMAA cannot access funds unilaterally; funds released only when <code>total_raised &gt;= funding_target</code></td>
+<td>Section 3.6</td>
+</tr>
+<tr>
+<td><strong>Originator receiving funds before round completes</strong></td>
+<td>Investors</td>
+<td>Hard-coded funding target condition in smart contract; <code>closeRound()</code> reverts if target not met</td>
+<td>Section 3.6</td>
+</tr>
+<tr>
+<td><strong>Failed round — investor capital trapped</strong></td>
+<td>Investors</td>
+<td>Automatic on-chain refund via <code>claimRefund()</code>; no manual claim required; code-enforced</td>
+<td>Section 3.6</td>
+</tr>
+<tr>
+<td><strong>Originator misusing capital post-release</strong></td>
+<td>Investors / SPV</td>
+<td>SPV Operating Agreement legally constrains use of funds; UJAMAA may require proof of use</td>
+<td>Legal</td>
+</tr>
+<tr>
+<td><strong>Fiat/USDC conversion rate loss</strong></td>
+<td>Investors</td>
+<td>Rate locked at time of payment confirmation (15-minute window); Onafriq/Circle API guarantee</td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td><strong>Smart contract exploit</strong></td>
+<td>Platform &amp; Investors</td>
+<td>ERC-3643 audited contracts (CertiK, OpenZeppelin); bug bounty ($100K max); UUPS upgradeable with timelock</td>
+<td>Section 7.1</td>
+</tr>
+<tr>
+<td><strong>KYC/AML breach</strong></td>
+<td>Regulatory</td>
+<td>Inline KYC before any transaction; ONCHAINID claims; Travel Rule compliance via Fireblocks</td>
+<td>Section 10.2</td>
+</tr>
+<tr>
+<td><strong>Asset valuation fraud</strong></td>
+<td>Investors</td>
+<td>Independent certified auditor required before listing; valuation valid for 12 months only</td>
+<td>Section 3</td>
+</tr>
+<tr>
+<td><strong>UJAMAA platform insolvency</strong></td>
+<td>Investors</td>
+<td>SPV is legally isolated — UJAMAA insolvency cannot touch investor assets; bankruLPcy-remote</td>
+<td>Legal</td>
+</tr>
+<tr>
+<td><strong>Regulatory non-compliance per country</strong></td>
+<td>Platform</td>
+<td>Per-country legal opinion required before listing; jurisdiction restrictions in <code>ComplianceModule</code></td>
+<td>Section 10</td>
+</tr>
+<tr>
+<td><strong>Identity verification failure</strong></td>
+<td>Platform &amp; Investors</td>
+<td>ONCHAINID with licensed Claim Issuers; claims expire and must be renewed; <code>isVerified()</code> check on every transfer</td>
+<td>Section 3.1</td>
+</tr>
+<tr>
+<td><strong>Transfer to unverified wallet</strong></td>
+<td>Platform</td>
+<td>ERC-3643 <code>_canTransfer()</code> reverts if <code>!isVerified(to)</code>; enforced at contract level</td>
+<td>Section 3.4</td>
+</tr>
+<tr>
+<td><strong>Mobile money payment failure</strong></td>
+<td>Investors</td>
+<td>Flutterwave webhook verification (HMAC-SHA256); idempotency keys prevent double-charging; automatic retry</td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td><strong>Oracle manipulation (yield calculation)</strong></td>
+<td>Investors</td>
+<td>Multiple data sources for revenue verification; bank statements + third-party attestation; manual override with multisig</td>
+<td>Section 3.6</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. Compliance Checklist (Pre-Launch)</h2>
+<p>Before any asset can accept investments, ALL of the following must be verified:</p>
+<h3>13.1 Smart Contract Compliance</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] <code>UjamaaTokenizer</code> contract deployed on Polygon (Amoy for test, Mainnet for production)</li>
+<li>[ ] Contract verified on Polygonscan (source code published)</li>
+<li>[ ] <code>IdentityRegistry</code> address configured</li>
+<li>[ ] <code>ComplianceModule</code> address configured</li>
+<li>[ ] Fee configuration set and immutable (or governance-protected)</li>
+<li>[ ] Funding target and deadline configured</li>
+<li>[ ] Escrow mechanism tested (target met and target missed scenarios)</li>
+<li>[ ] Distribution mechanism tested (yield calculation and payout)</li>
+<li>[ ] Emergency pause function tested (multisig-controlled)</li>
+</ul>
+<h3>13.2 Legal Compliance</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] PPM signed by all required parties</li>
+<li>[ ] Subscription Agreement template approved by legal</li>
+<li>[ ] Risk Disclosure Statement published</li>
+<li>[ ] SPV Operating Agreement executed</li>
+<li>[ ] Asset title transferred to SPV (registered)</li>
+<li>[ ] Regulatory approval obtained (if required by jurisdiction)</li>
+<li>[ ] Legal opinion obtained (securities law compliance)</li>
+</ul>
+<h3>13.3 Operational Compliance</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Asset originator KYB completed</li>
+<li>[ ] Beneficial owners identified and screened</li>
+<li>[ ] Sanctions screening passed (OFAC, UN, EU, UK HMT)</li>
+<li>[ ] PEP screening completed</li>
+<li>[ ] Adverse media search cleared</li>
+<li>[ ] Independent valuation obtained (current, &lt;12 months)</li>
+<li>[ ] Title opinion letter obtained ("Marketable")</li>
+<li>[ ] Insurance coverage verified (property, liability)</li>
+</ul>
+<h3>13.4 Technical Integration</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Flutterwave webhook endpoint live and secured (HMAC verification)</li>
+<li>[ ] Onafriq/Circle on-ramp integration tested</li>
+<li>[ ] Fireblocks custody configured (for mobile money investors)</li>
+<li>[ ] Gnosis Safe multisig configured (4-of-7 for admin operations)</li>
+<li>[ ] Monitoring and alerting configured (Datadog, PagerDuty)</li>
+<li>[ ] Database backups configured (PostgreSQL, encrypted)</li>
+<li>[ ] API rate limiting configured (prevent abuse)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Document Control</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Original]</td>
+<td>UJAMAA Team</td>
+<td>Initial document (ERC-1400)</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>March 15, 2026</td>
+<td>UJAMAA Team</td>
+<td>ERC-3643 alignment, contract name updates, SRS compliance</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Related Documents</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>SRS v1.3:</strong> <code>docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code></li>
+<li><strong>Smart Contract Spec:</strong> <code>docs/01_SPECIFICATIONS/05_SMART_CONTRACT_SPECIFICATION.md</code></li>
+<li><strong>Mobile Money Integration:</strong> <code>docs/03_TECHNICAL_GUIDES/UJAMAA_DeFi_Mobile_Money_Integration.md</code></li>
+<li><strong>Compliance Framework:</strong> <code>docs/01_SPECIFICATIONS/10_COMPLIANCE_FRAMEWORK.md</code></li>
+</ul>
+<hr />
+<p><strong>Document Version:</strong> 2.0 (ERC-3643 Aligned)<br />
+<strong>Last Updated:</strong> March 15, 2026<br />
+<strong>Next Review:</strong> April 15, 2026<br />
+<strong>Owner:</strong> UJAMAA DEFI PLATFORM Technical Team</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

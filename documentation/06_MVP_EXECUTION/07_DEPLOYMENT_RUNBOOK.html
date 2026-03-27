@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MVP Deployment Runbook - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Deployment Runbook</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">MVP Deployment Runbook</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 18, 2026</p></div>
+
+        <h1>MVP Deployment Runbook</h1>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 18, 2026<br />
+<strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Classification:</strong> Internal / Operations</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-pre-deployment-checklist">Pre-Deployment Checklist</a></li>
+<li><a href="#2-smart-contract-deployment">Smart Contract Deployment</a></li>
+<li><a href="#3-backend-deployment">Backend Deployment</a></li>
+<li><a href="#4-frontend-deployment">Frontend Deployment</a></li>
+<li><a href="#5-post-deployment-verification">Post-Deployment Verification</a></li>
+<li><a href="#6-rollback-procedures">Rollback Procedures</a></li>
+<li><a href="#7-emergency-contacts">Emergency Contacts</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Pre-Deployment Checklist</h2>
+<h3>1.1 Code Review</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] All PRs merged to <code>main</code> branch</li>
+<li>[ ] Code review completed (2 approvals minimum)</li>
+<li>[ ] Security scan passed (0 critical, 0 high findings)</li>
+<li>[ ] All tests passing (unit, integration, E2E)</li>
+<li>[ ] Load tests completed (P95 &lt; 500ms)</li>
+</ul>
+<h3>1.2 Environment Preparation</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Polygon Amoy RPC endpoint verified</li>
+<li>[ ] Deployer wallet funded (minimum 1 MATIC)</li>
+<li>[ ] Database backup completed</li>
+<li>[ ] Redis cache cleared</li>
+<li>[ ] Environment variables updated</li>
+</ul>
+<h3>1.3 Communication</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Deployment announcement sent</li>
+<li>[ ] On-call team notified</li>
+<li>[ ] Stakeholders informed</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Smart Contract Deployment</h2>
+<h3>2.1 Prerequisites</h3>
+<div class="docs-pre"><code># Verify Node.js version
+node --version  # Should be 18+
+
+# Install dependencies
+cd contracts
+npm install
+</code></div>
+<h3>2.2 Set Environment Variables</h3>
+<div class="docs-pre"><code># Create .env file
+cat &gt; .env &lt;&lt; EOF
+DEPLOYER_PRIVATE_KEY=${DEPLOYER_PRIVATE_KEY}
+RPC_URL=https://rpc-amoy.polygon.technology/
+POLYGONSCAN_API_KEY=${POLYGONSCAN_API_KEY}
+EOF
+</code></div>
+<h3>2.3 Deploy Contracts</h3>
+<div class="docs-pre"><code># Run deployment script
+npm run deploy:amoy
+
+# Expected output:
+# ============================================================
+# 🚀 MVP Smart Contract Deployment
+# ============================================================
+# 📝 Deploying with account: 0x...
+# 💰 Account balance: X MATIC
+# 🌐 Network: polygon-amoy (Chain ID: 80002)
+# 
+# ✅ uLPToken deployed to: 0x...
+# ✅ LiquidityPool deployed to: 0x...
+# ✅ MockEscrow deployed to: 0x...
+# ✅ MockFiatRamp deployed to: 0x...
+</code></div>
+<h3>2.4 Verify Contracts</h3>
+<div class="docs-pre"><code># Verify on Polygonscan
+npm run verify:amoy &lt;CONTRACT_ADDRESS&gt;
+
+# Or manually:
+npx hardhat verify \
+  --network polygon-amoy \
+  &lt;CONTRACT_ADDRESS&gt; \
+  &lt;CONSTRUCTOR_ARGS&gt;
+</code></div>
+<h3>2.5 Record Deployed Addresses</h3>
+<p>Save deployed addresses to secure location:</p>
+<div class="docs-pre"><code>uLPToken:          0x...
+LiquidityPool:     0x...
+MockEscrow:        0x...
+MockFiatRamp:      0x...
+</code></div>
+<h3>2.6 Update Frontend Configuration</h3>
+<div class="docs-pre"><code># Update frontend/.env.MVP
+VITE_uLP_TOKEN_ADDRESS=0x...
+VITE_LIQUIDITY_POOL_ADDRESS=0x...
+VITE_MOCK_ESCROW_ADDRESS=0x...
+VITE_MOCK_FIAT_RAMP_ADDRESS=0x...
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Backend Deployment</h2>
+<h3>3.1 Prerequisites</h3>
+<div class="docs-pre"><code># Verify Python version
+python --version  # Should be 3.10+
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+.\venv\Scripts\activate  # Windows
+</code></div>
+<h3>3.2 Install Dependencies</h3>
+<div class="docs-pre"><code>cd backend
+pip install -r requirements.txt
+</code></div>
+<h3>3.3 Database Migration</h3>
+<div class="docs-pre"><code># Run migrations
+alembic upgrade head
+
+# Verify migration
+alembic current
+</code></div>
+<h3>3.4 Start Backend Service</h3>
+<div class="docs-pre"><code># Development
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# Production (with gunicorn)
+gunicorn main:app \
+  --workers 4 \
+  --worker-class uvicorn.workers.UvicornWorker \
+  --bind 0.0.0.0:8000 \
+  --timeout 120
+</code></div>
+<h3>3.5 Health Check</h3>
+<div class="docs-pre"><code># Verify API is running
+curl http://localhost:8000/api/v2/health
+
+# Expected response:
+# {&quot;status&quot;: &quot;healthy&quot;, &quot;service&quot;: &quot;ujamaa-MVP&quot;, &quot;version&quot;: &quot;2.0.0&quot;}
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Frontend Deployment</h2>
+<h3>4.1 Prerequisites</h3>
+<div class="docs-pre"><code># Verify Node.js version
+node --version  # Should be 18+
+npm --version   # Should be 9+
+</code></div>
+<h3>4.2 Install Dependencies</h3>
+<div class="docs-pre"><code>cd frontend
+npm install
+</code></div>
+<h3>4.3 Environment Configuration</h3>
+<div class="docs-pre"><code># Copy environment template
+cp .env.MVP .env.production
+
+# Update with deployed contract addresses
+# (See Section 2.6)
+</code></div>
+<h3>4.4 Build Frontend</h3>
+<div class="docs-pre"><code># Run build
+npm run build
+
+# Verify build output
+ls -la dist/
+</code></div>
+<h3>4.5 Deploy to CDN/Hosting</h3>
+<div class="docs-pre"><code># Example: Deploy to Vercel
+vercel --prod
+
+# Example: Deploy to Netlify
+netlify deploy --prod --dir=dist
+
+# Example: Deploy to S3 + CloudFront
+aws s3 sync dist/ s3://ujamaa-MVP-frontend/
+aws cloudfront create-invalidation --distribution-id &lt;ID&gt; --paths &quot;/*&quot;
+</code></div>
+<h3>4.6 Verify Deployment</h3>
+<div class="docs-pre"><code># Check homepage loads
+curl -I https://testnet.ujamaa-defi.com/
+
+# Expected: HTTP/2 200
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Post-Deployment Verification</h2>
+<h3>5.1 Smart Contract Verification</h3>
+<div class="docs-pre"><code># Check contract balances
+# (Use ethers.js or web3.py)
+
+# Verify uLPToken total supply
+# Expected: 0 (initial)
+
+# Verify LiquidityPool pool count
+# Expected: 0 (initial)
+</code></div>
+<h3>5.2 API Endpoint Verification</h3>
+<div class="docs-pre"><code># List pools
+curl https://api.testnet.ujamaa-defi.com/api/v2/pools
+
+# Expected: {&quot;pools&quot;: [], &quot;total&quot;: 0}
+
+# Get bank stats
+curl https://api.testnet.ujamaa-defi.com/api/v2/bank/stats
+
+# Expected: {&quot;total_accounts&quot;: 0, ...}
+</code></div>
+<h3>5.3 Frontend Verification</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Homepage loads without errors</li>
+<li>[ ] MVP banner visible</li>
+<li>[ ] Testnet notice displayed</li>
+<li>[ ] Dashboard accessible</li>
+<li>[ ] Pool marketplace loads</li>
+<li>[ ] Compliance page functional</li>
+<li>[ ] Wallet connection works</li>
+</ul>
+<h3>5.4 Integration Test</h3>
+<div class="docs-pre"><code># Run smoke tests
+cd tests
+npm run smoke-test
+
+# Expected: All tests pass
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Rollback Procedures</h2>
+<h3>6.1 Smart Contract Rollback</h3>
+<p><strong>Note:</strong> Smart contracts cannot be rolled back once deployed. In case of critical bug:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Pause contracts (if pause mechanism exists)</li>
+<li>Deploy new contracts with fix</li>
+<li>Migrate users to new contracts</li>
+<li>Announce migration plan</li>
+</ol>
+<h3>6.2 Backend Rollback</h3>
+<div class="docs-pre"><code># Revert to previous version
+git checkout &lt;previous-commit&gt;
+pip install -r requirements.txt
+alembic downgrade -1
+systemctl restart ujamaa-backend
+</code></div>
+<h3>6.3 Frontend Rollback</h3>
+<div class="docs-pre"><code># Revert to previous build
+git checkout &lt;previous-commit&gt;
+npm install
+npm run build
+vercel --prod  # or your hosting provider
+</code></div>
+<h3>6.4 Database Rollback</h3>
+<div class="docs-pre"><code># Restore from backup
+pg_restore -d ujamaa_MVP backup_20260318.dump
+
+# Or restore from replica
+# (Contact DBA)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Emergency Contacts</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On-Call Engineer</strong></td>
+<td>TBD</td>
+<td>oncall@ujamaa-defi.com</td>
+</tr>
+<tr>
+<td><strong>DevOps Lead</strong></td>
+<td>TBD</td>
+<td>devops@ujamaa-defi.com</td>
+</tr>
+<tr>
+<td><strong>Security Lead</strong></td>
+<td>TBD</td>
+<td>security@ujamaa-defi.com</td>
+</tr>
+<tr>
+<td><strong>Product Owner</strong></td>
+<td>TBD</td>
+<td>product@ujamaa-defi.com</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Emergency Procedures</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Critical Bug:</strong> Page on-call engineer, create incident channel</li>
+<li><strong>Security Issue:</strong> Contact security lead immediately, do not disclose publicly</li>
+<li><strong>Performance Degradation:</strong> Scale infrastructure, investigate root cause</li>
+<li><strong>Data Loss:</strong> Stop all writes, restore from backup, notify stakeholders</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix A: Deployment Checklist Template</h2>
+<div class="docs-pre"><code>## Deployment: [DATE]
+
+### Pre-Deployment
+- [ ] Code review complete
+- [ ] Tests passing
+- [ ] Security scan passed
+- [ ] Backup completed
+
+### Smart Contracts
+- [ ] Deployed to Polygon Amoy
+- [ ] Verified on Polygonscan
+- [ ] Addresses recorded
+
+### Backend
+- [ ] Deployed to production
+- [ ] Health check passed
+- [ ] Database migrated
+
+### Frontend
+- [ ] Built successfully
+- [ ] Deployed to CDN
+- [ ] Homepage loads
+
+### Post-Deployment
+- [ ] Smoke tests passed
+- [ ] Monitoring active
+- [ ] Stakeholders notified
+
+### Sign-off
+- Deployer: ________________
+- Reviewer: ________________
+- Time: ________________
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix B: Environment Variables Reference</h2>
+<h3>Smart Contracts</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEPLOYER_PRIVATE_KEY</code></td>
+<td>Deployer wallet private key</td>
+<td><code>0x...</code></td>
+</tr>
+<tr>
+<td><code>RPC_URL</code></td>
+<td>Polygon Amoy RPC endpoint</td>
+<td><code>https://rpc-amoy...</code></td>
+</tr>
+<tr>
+<td><code>POLYGONSCAN_API_KEY</code></td>
+<td>Polygonscan API key</td>
+<td><code>ABC123...</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Backend</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>PostgreSQL connection string</td>
+<td><code>postgresql://...</code></td>
+</tr>
+<tr>
+<td><code>REDIS_URL</code></td>
+<td>Redis connection string</td>
+<td><code>redis://...</code></td>
+</tr>
+<tr>
+<td><code>MVP_MODE</code></td>
+<td>Enable MVP mode</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Frontend</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VITE_uLP_TOKEN_ADDRESS</code></td>
+<td>uLPToken contract address</td>
+<td><code>0x...</code></td>
+</tr>
+<tr>
+<td><code>VITE_RPC_URL</code></td>
+<td>Polygon Amoy RPC endpoint</td>
+<td><code>https://rpc-amoy...</code></td>
+</tr>
+<tr>
+<td><code>VITE_CHAIN_ID</code></td>
+<td>Chain ID</td>
+<td><code>80002</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>END OF RUNBOOK</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

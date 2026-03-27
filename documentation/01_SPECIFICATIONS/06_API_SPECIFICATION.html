@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>API Specification - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>API Specification</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">API Specification</h1>
+        <p class="docs-subtitle">Asset origination, tokenization, and lifecycle management</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Backend Engineers, Frontend Engineers, Integration Partners</p></div>
+
+        <h1>API Specification</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>UJAMAA DEFI PLATFORM REST &amp; gRPC APIs</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
+<strong>Date:</strong> March 25, 2026<br />
+<strong>Classification:</strong> Technical<br />
+<strong>Audience:</strong> Backend Engineers, Frontend Engineers, Integration Partners  </p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Updates Summary (v2.1)</h2>
+<h3>Institutional Architecture Additions</h3>
+<p><strong>New Services (SRS v2.1):</strong><br />
+- <strong>Authentication Service</strong>: SIWE (Sign-In with Ethereum) + JWT token management<br />
+- <strong>Liquidity Pools Service</strong>: Pool management, uLP deposit/redeem, NAV tracking<br />
+- <strong>Guarantee Tokens Service</strong>: UJG lifecycle (mint, redeem, liquidate)</p>
+<p><strong>Updated Services:</strong><br />
+- Authentication &amp; Authorization section completely rewritten (SIWE + JWT)<br />
+- RBAC middleware for all institutional endpoints<br />
+- Session management (Redis-backed)<br />
+- Fireblocks custody integration endpoints<br />
+- Bank escrow integration endpoints (BIIC/MCB)</p>
+<p><strong>New Endpoints:</strong><br />
+- <code>/api/v1/auth/*</code> - SIWE authentication (nonce, login, refresh, logout)<br />
+- <code>/api/v1/pools/*</code> - Liquidity pool operations<br />
+- <code>/api/v1/guarantees/*</code> - Guarantee token (UJG) operations<br />
+- <code>/api/v1/fireblocks/*</code> - Fireblocks custody operations (platform treasury)</p>
+<p><strong>SRS Reference:</strong> This specification implements <strong>SRS v2.1</strong> Section 1.2.1 (Authentication), Section 1.2.2 (Authorization), and Section 4 (External Interface Requirements).</p>
+<hr />
+</section>
+<h1>Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-api-gateway-configuration">API Gateway Configuration</a></li>
+<li><a href="#3-assets-service">Assets Service</a></li>
+<li><a href="#4-investors-service">Investors Service</a></li>
+<li><a href="#5-trades-service">Trades Service</a></li>
+<li><a href="#6-compliance-service">Compliance Service</a></li>
+<li><a href="#7-reporting-service">Reporting Service</a></li>
+<li><a href="#8-gateway-service-grpc">Gateway Service (gRPC)</a></li>
+<li><a href="#9-authentication--authorization">Authentication &amp; Authorization</a></li>
+<li><a href="#10-error-handling">Error Handling</a></li>
+<li><a href="#11-rate-limiting">Rate Limiting</a></li>
+<li><a href="#12-webhooks--events">Webhooks &amp; Events</a></li>
+</ol>
+<hr />
+<h1>1. Executive Summary</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 API Architecture</h2>
+<p>UJAMAA DEFI PLATFORM exposes functionality through two API paradigms:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>API Type</th>
+<th>Protocol</th>
+<th>Use Case</th>
+<th>Services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>REST</strong></td>
+<td>HTTP/1.1 + JSON</td>
+<td>CRUD operations, user-facing endpoints</td>
+<td>Assets, Investors, Trades, Compliance, Reporting</td>
+</tr>
+<tr>
+<td><strong>gRPC</strong></td>
+<td>HTTP/2 + Protobuf</td>
+<td>High-throughput, low-latency, streaming</td>
+<td>Gateway, Real-time analytics, Blockchain events</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Service Inventory</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Base Path</th>
+<th>Protocol</th>
+<th>Port</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets Service</td>
+<td><code>/api/v1/assets</code></td>
+<td>REST</td>
+<td>8000</td>
+<td>Asset origination, tokenization, management</td>
+</tr>
+<tr>
+<td>Investors Service</td>
+<td><code>/api/v1/investors</code></td>
+<td>REST</td>
+<td>8001</td>
+<td>Investor onboarding, KYC, portfolio</td>
+</tr>
+<tr>
+<td>Trades Service</td>
+<td><code>/api/v1/trades</code></td>
+<td>REST</td>
+<td>8002</td>
+<td>Primary issuance, secondary trading</td>
+</tr>
+<tr>
+<td>Compliance Service</td>
+<td><code>/api/v1/compliance</code></td>
+<td>REST</td>
+<td>8003</td>
+<td>KYC/AML, transfer restrictions, audit</td>
+</tr>
+<tr>
+<td>Reporting Service</td>
+<td><code>/api/v1/reports</code></td>
+<td>REST</td>
+<td>8004</td>
+<td>Regulatory reports, analytics, exports</td>
+</tr>
+<tr>
+<td>Gateway Service</td>
+<td><code>gateway.v1.Gateway</code></td>
+<td>gRPC</td>
+<td>9000</td>
+<td>Price feeds, blockchain events, off-chain data</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Technology Stack</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>FastAPI</td>
+<td>0.109+</td>
+</tr>
+<tr>
+<td><strong>Serialization</strong></td>
+<td>Pydantic v2</td>
+<td>2.5+</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>OpenAPI 3.1</td>
+<td>Auto-generated</td>
+</tr>
+<tr>
+<td><strong>gRPC</strong></td>
+<td>grpcio + grpc-tools</td>
+<td>1.60+</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Pydantic + custom validators</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>JWT + OAuth2 + API Keys</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. API Gateway Configuration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Kong Gateway Routes</h2>
+<div class="docs-pre"><code># kong.yaml
+_format_version: &quot;3.0&quot;
+
+services:
+  - name: assets-service
+    url: http://assets-service:8000
+    routes:
+      - name: assets-route
+        paths:
+          - /api/v1/assets
+        strip_path: false
+        protocols:
+          - http
+          - https
+
+  - name: investors-service
+    url: http://investors-service:8001
+    routes:
+      - name: investors-route
+        paths:
+          - /api/v1/investors
+        strip_path: false
+
+  - name: trades-service
+    url: http://trades-service:8002
+    routes:
+      - name: trades-route
+        paths:
+          - /api/v1/trades
+        strip_path: false
+
+  - name: compliance-service
+    url: http://compliance-service:8003
+    routes:
+      - name: compliance-route
+        paths:
+          - /api/v1/compliance
+        strip_path: false
+
+  - name: reporting-service
+    url: http://reporting-service:8004
+    routes:
+      - name: reporting-route
+        paths:
+          - /api/v1/reports
+        strip_path: false
+
+  - name: oracle-service
+    protocol: grpc
+    url: http://oracle-service:9000
+    routes:
+      - name: oracle-route
+        paths:
+          - /oracle.v1.Oracle
+        strip_path: false
+
+plugins:
+  - name: rate-limiting
+    config:
+      minute: 100
+      hour: 1000
+      policy: redis
+      redis_host: redis
+      redis_port: 6379
+
+  - name: jwt
+    config:
+      key_claim_name: iss
+      secret_is_base64: false
+      claims_to_verify:
+        - exp
+
+  - name: cors
+    config:
+      origins:
+        - https://ujamaa-defi.com
+        - https://app.ujamaa-defi.com
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      headers:
+        - Accept
+        - Content-Type
+        - Authorization
+      exposed_headers:
+        - X-Request-Id
+      credentials: true
+      max_age: 86400
+
+  - name: request-transformer
+    config:
+      add:
+        headers:
+          - X-Forwarded-Proto:https
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 TLS Configuration</h2>
+<div class="docs-pre"><code>Minimum TLS Version: TLS 1.3
+Cipher Suites:
+  - TLS_AES_256_GCM_SHA384
+  - TLS_CHACHA20_POLY1305_SHA256
+  - TLS_AES_128_GCM_SHA256
+
+Certificate: Let's Encrypt or AWS ACM
+HSTS: max-age=31536000; includeSubDomains; preload
+</code></div>
+<hr />
+</section>
+<h1>3. Assets Service</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Overview</h2>
+<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/assets</code><br />
+<strong>Port:</strong> 8000<br />
+<strong>Description:</strong> Asset origination, tokenization, and lifecycle management</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Endpoints</h2>
+<h3>3.2.1 Create Asset</h3>
+<div class="docs-pre"><code>POST /api/v1/assets
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+  &quot;asset_class&quot;: &quot;REAL_ESTATE&quot;,
+  &quot;jurisdiction&quot;: &quot;NG&quot;,
+  &quot;description&quot;: &quot;Prime commercial real estate portfolio in Lagos CBD&quot;,
+  &quot;originator_id&quot;: &quot;orig_123456&quot;,
+  &quot;legal_structure&quot;: &quot;SPV&quot;,
+  &quot;target_raise&quot;: {
+    &quot;amount&quot;: 10000000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;minimum_investment&quot;: {
+    &quot;amount&quot;: 1000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;maximum_investment&quot;: {
+    &quot;amount&quot;: 1000000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;expected_yield_bps&quot;: 1200,
+  &quot;investment_period_months&quot;: 60,
+  &quot;compliance_config&quot;: {
+    &quot;only_accredited&quot;: true,
+    &quot;allowed_jurisdictions&quot;: [&quot;NG&quot;, &quot;KE&quot;, &quot;ZA&quot;, &quot;GH&quot;, &quot;MU&quot;],
+    &quot;restricted_jurisdictions&quot;: [&quot;KP&quot;, &quot;IR&quot;, &quot;SY&quot;, &quot;CU&quot;],
+    &quot;lockup_period_days&quot;: 365,
+    &quot;max_concentration_bps&quot;: 2500
+  },
+  &quot;documents&quot;: [
+    {
+      &quot;type&quot;: &quot;OFFERING_MEMORANDUM&quot;,
+      &quot;ipfs_hash&quot;: &quot;QmX7Kz9...&quot;,
+      &quot;hash&quot;: &quot;0xabc123...&quot;
+    },
+    {
+      &quot;type&quot;: &quot;TITLE_DEED&quot;,
+      &quot;ipfs_hash&quot;: &quot;QmY8La0...&quot;,
+      &quot;hash&quot;: &quot;0xdef456...&quot;
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;property_count&quot;: 5,
+    &quot;total_area_sqm&quot;: 15000,
+    &quot;occupancy_rate_bps&quot;: 9200,
+    &quot;valuation_date&quot;: &quot;2026-01-15&quot;,
+    &quot;appraiser&quot;: &quot;Knight Frank Nigeria&quot;
+  }
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;id&quot;: &quot;asset_789xyz&quot;,
+  &quot;name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+  &quot;asset_class&quot;: &quot;REAL_ESTATE&quot;,
+  &quot;status&quot;: &quot;PENDING_APPROVAL&quot;,
+  &quot;created_at&quot;: &quot;2026-02-27T10:30:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2026-02-27T10:30:00Z&quot;,
+  &quot;token_contract&quot;: null,
+  &quot;token_symbol&quot;: null,
+  &quot;blockchain&quot;: null,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/assets/asset_789xyz&quot;,
+    &quot;documents&quot;: &quot;/api/v1/assets/asset_789xyz/documents&quot;,
+    &quot;submit_for_approval&quot;: &quot;/api/v1/assets/asset_789xyz/approval/submit&quot;
+  }
+}
+</code></div>
+<h3>3.2.2 Get Asset</h3>
+<div class="docs-pre"><code>GET /api/v1/assets/{asset_id}
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;id&quot;: &quot;asset_789xyz&quot;,
+  &quot;name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+  &quot;asset_class&quot;: &quot;REAL_ESTATE&quot;,
+  &quot;jurisdiction&quot;: &quot;NG&quot;,
+  &quot;description&quot;: &quot;Prime commercial real estate portfolio in Lagos CBD&quot;,
+  &quot;originator_id&quot;: &quot;orig_123456&quot;,
+  &quot;status&quot;: &quot;ACTIVE&quot;,
+  &quot;legal_structure&quot;: &quot;SPV&quot;,
+  &quot;target_raise&quot;: {
+    &quot;amount&quot;: 10000000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;raised_amount&quot;: {
+    &quot;amount&quot;: 7500000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;progress_bps&quot;: 7500,
+  &quot;minimum_investment&quot;: {
+    &quot;amount&quot;: 1000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;maximum_investment&quot;: {
+    &quot;amount&quot;: 1000000,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;expected_yield_bps&quot;: 1200,
+  &quot;investment_period_months&quot;: 60,
+  &quot;compliance_config&quot;: {
+    &quot;only_accredited&quot;: true,
+    &quot;allowed_jurisdictions&quot;: [&quot;NG&quot;, &quot;KE&quot;, &quot;ZA&quot;, &quot;GH&quot;, &quot;MU&quot;],
+    &quot;restricted_jurisdictions&quot;: [&quot;KP&quot;, &quot;IR&quot;, &quot;SY&quot;, &quot;CU&quot;],
+    &quot;lockup_period_days&quot;: 365,
+    &quot;max_concentration_bps&quot;: 2500
+  },
+  &quot;token_contract&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+  &quot;blockchain&quot;: &quot;POLYGON&quot;,
+  &quot;total_shares&quot;: 10000000,
+  &quot;shares_outstanding&quot;: 7500000,
+  &quot;nav_per_share&quot;: {
+    &quot;amount&quot;: 1.05,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;last_nav_update&quot;: &quot;2026-02-25T00:00:00Z&quot;,
+  &quot;created_at&quot;: &quot;2026-02-27T10:30:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2026-02-27T14:45:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/assets/asset_789xyz&quot;,
+    &quot;documents&quot;: &quot;/api/v1/assets/asset_789xyz/documents&quot;,
+    &quot;investors&quot;: &quot;/api/v1/assets/asset_789xyz/investors&quot;,
+    &quot;trades&quot;: &quot;/api/v1/assets/asset_789xyz/trades&quot;,
+    &quot;distributions&quot;: &quot;/api/v1/assets/asset_789xyz/distributions&quot;
+  }
+}
+</code></div>
+<h3>3.2.3 List Assets</h3>
+<div class="docs-pre"><code>GET /api/v1/assets
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Query Parameters:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset_class</code></td>
+<td>string</td>
+<td>-</td>
+<td>Filter by asset class</td>
+</tr>
+<tr>
+<td><code>jurisdiction</code></td>
+<td>string</td>
+<td>-</td>
+<td>Filter by jurisdiction (ISO code)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>-</td>
+<td>Filter by status (PENDING, ACTIVE, CLOSED)</td>
+</tr>
+<tr>
+<td><code>originator_id</code></td>
+<td>string</td>
+<td>-</td>
+<td>Filter by originator</td>
+</tr>
+<tr>
+<td><code>blockchain</code></td>
+<td>string</td>
+<td>-</td>
+<td>Filter by blockchain (ETHEREUM, POLYGON)</td>
+</tr>
+<tr>
+<td><code>min_yield_bps</code></td>
+<td>integer</td>
+<td>-</td>
+<td>Minimum expected yield</td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td>string</td>
+<td><code>created_at</code></td>
+<td>Sort field</td>
+</tr>
+<tr>
+<td><code>sort_order</code></td>
+<td>string</td>
+<td><code>desc</code></td>
+<td>Sort order (asc, desc)</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>integer</td>
+<td>1</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>integer</td>
+<td>20</td>
+<td>Items per page</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;items&quot;: [
+    {
+      &quot;id&quot;: &quot;asset_789xyz&quot;,
+      &quot;name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+      &quot;asset_class&quot;: &quot;REAL_ESTATE&quot;,
+      &quot;status&quot;: &quot;ACTIVE&quot;,
+      &quot;raised_amount&quot;: { &quot;amount&quot;: 7500000, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;target_raise&quot;: { &quot;amount&quot;: 10000000, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;progress_bps&quot;: 7500,
+      &quot;expected_yield_bps&quot;: 1200,
+      &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+      &quot;blockchain&quot;: &quot;POLYGON&quot;,
+      &quot;_links&quot;: {
+        &quot;self&quot;: &quot;/api/v1/assets/asset_789xyz&quot;
+      }
+    }
+  ],
+  &quot;pagination&quot;: {
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 20,
+    &quot;total_items&quot;: 47,
+    &quot;total_pages&quot;: 3,
+    &quot;_links&quot;: {
+      &quot;self&quot;: &quot;/api/v1/assets?page=1&quot;,
+      &quot;next&quot;: &quot;/api/v1/assets?page=2&quot;,
+      &quot;last&quot;: &quot;/api/v1/assets?page=3&quot;
+    }
+  }
+}
+</code></div>
+<h3>3.2.4 Update Asset</h3>
+<div class="docs-pre"><code>PUT /api/v1/assets/{asset_id}
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong> (partial update, same schema as Create)</p>
+<div class="docs-pre"><code>{
+  &quot;description&quot;: &quot;Updated description...&quot;,
+  &quot;metadata&quot;: {
+    &quot;occupancy_rate_bps&quot;: 9500
+  }
+}
+</code></div>
+<h3>3.2.5 Submit Asset for Approval</h3>
+<div class="docs-pre"><code>POST /api/v1/assets/{asset_id}/approval/submit
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;status&quot;: &quot;UNDER_REVIEW&quot;,
+  &quot;submitted_at&quot;: &quot;2026-02-27T15:00:00Z&quot;,
+  &quot;estimated_review_completion&quot;: &quot;2026-03-03T15:00:00Z&quot;,
+  &quot;reviewer_id&quot;: &quot;compliance_officer_456&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/assets/asset_789xyz&quot;,
+    &quot;approval_status&quot;: &quot;/api/v1/assets/asset_789xyz/approval/status&quot;
+  }
+}
+</code></div>
+<h3>3.2.6 Get Asset Documents</h3>
+<div class="docs-pre"><code>GET /api/v1/assets/{asset_id}/documents
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;documents&quot;: [
+    {
+      &quot;id&quot;: &quot;doc_001&quot;,
+      &quot;type&quot;: &quot;OFFERING_MEMORANDUM&quot;,
+      &quot;filename&quot;: &quot;offering_memorandum.pdf&quot;,
+      &quot;ipfs_hash&quot;: &quot;QmX7Kz9...&quot;,
+      &quot;hash&quot;: &quot;0xabc123...&quot;,
+      &quot;size_bytes&quot;: 2500000,
+      &quot;uploaded_at&quot;: &quot;2026-02-27T10:30:00Z&quot;,
+      &quot;verified&quot;: true,
+      &quot;verified_at&quot;: &quot;2026-02-27T11:00:00Z&quot;,
+      &quot;_links&quot;: {
+        &quot;download&quot;: &quot;/api/v1/assets/asset_789xyz/documents/doc_001/download&quot;
+      }
+    }
+  ]
+}
+</code></div>
+<h3>3.2.7 Get Asset Investors (Cap Table)</h3>
+<div class="docs-pre"><code>GET /api/v1/assets/{asset_id}/investors
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+  &quot;total_shares&quot;: 10000000,
+  &quot;shares_outstanding&quot;: 7500000,
+  &quot;investor_count&quot;: 145,
+  &quot;investors&quot;: [
+    {
+      &quot;investor_id&quot;: &quot;inv_001&quot;,
+      &quot;wallet_address&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+      &quot;shares_held&quot;: 500000,
+      &quot;percentage_bps&quot;: 500,
+      &quot;first_purchase_date&quot;: &quot;2026-01-15T09:00:00Z&quot;,
+      &quot;last_transaction_date&quot;: &quot;2026-02-20T14:30:00Z&quot;,
+      &quot;jurisdiction&quot;: &quot;NG&quot;,
+      &quot;investor_type&quot;: &quot;INSTITUTIONAL&quot;,
+      &quot;lockup_expires&quot;: &quot;2027-01-15T09:00:00Z&quot;
+    }
+  ],
+  &quot;concentration&quot;: {
+    &quot;top_10_bps&quot;: 3500,
+    &quot;herfindahl_index&quot;: 0.08
+  },
+  &quot;pagination&quot;: {
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 50,
+    &quot;total_items&quot;: 145
+  }
+}
+</code></div>
+<h3>3.2.8 Record Distribution</h3>
+<div class="docs-pre"><code>POST /api/v1/assets/{asset_id}/distributions
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;distribution_type&quot;: &quot;DIVIDEND&quot;,
+  &quot;amount_per_share&quot;: {
+    &quot;amount&quot;: 0.025,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;total_amount&quot;: {
+    &quot;amount&quot;: 187500,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;record_date&quot;: &quot;2026-03-15&quot;,
+  &quot;payment_date&quot;: &quot;2026-03-30&quot;,
+  &quot;payment_token&quot;: &quot;USDC&quot;,
+  &quot;description&quot;: &quot;Q1 2026 dividend distribution&quot;
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;distribution_id&quot;: &quot;dist_456abc&quot;,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;status&quot;: &quot;SCHEDULED&quot;,
+  &quot;distribution_type&quot;: &quot;DIVIDEND&quot;,
+  &quot;amount_per_share&quot;: { &quot;amount&quot;: 0.025, &quot;currency&quot;: &quot;USD&quot; },
+  &quot;total_amount&quot;: { &quot;amount&quot;: 187500, &quot;currency&quot;: &quot;USD&quot; },
+  &quot;record_date&quot;: &quot;2026-03-15&quot;,
+  &quot;payment_date&quot;: &quot;2026-03-30&quot;,
+  &quot;eligible_investors&quot;: 145,
+  &quot;created_at&quot;: &quot;2026-02-27T16:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/assets/asset_789xyz/distributions/dist_456abc&quot;,
+    &quot;execute&quot;: &quot;/api/v1/assets/asset_789xyz/distributions/dist_456abc/execute&quot;
+  }
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 Data Models</h2>
+<h3>AssetClass Enum</h3>
+<div class="docs-pre"><code>class AssetClass(str, Enum):
+    REAL_ESTATE = &quot;REAL_ESTATE&quot;
+    AGRICULTURE = &quot;AGRICULTURE&quot;
+    MINING = &quot;MINING&quot;
+    RENEWABLE_ENERGY = &quot;RENEWABLE_ENERGY&quot;
+    INFRASTRUCTURE = &quot;INFRASTRUCTURE&quot;
+    OIL_AND_GAS = &quot;OIL_AND_GAS&quot;
+    TRADE_FINANCE = &quot;TRADE_FINANCE&quot;
+    PRIVATE_EQUITY = &quot;PRIVATE_EQUITY&quot;
+    ART_AND_CULTURE = &quot;ART_AND_CULTURE&quot;
+</code></div>
+<h3>AssetStatus Enum</h3>
+<div class="docs-pre"><code>class AssetStatus(str, Enum):
+    DRAFT = &quot;DRAFT&quot;
+    PENDING_APPROVAL = &quot;PENDING_APPROVAL&quot;
+    UNDER_REVIEW = &quot;UNDER_REVIEW&quot;
+    APPROVED = &quot;APPROVED&quot;
+    ACTIVE = &quot;ACTIVE&quot;
+    SUSPENDED = &quot;SUSPENDED&quot;
+    CLOSED = &quot;CLOSED&quot;
+    LIQUIDATED = &quot;LIQUIDATED&quot;
+</code></div>
+<h3>Blockchain Enum</h3>
+<div class="docs-pre"><code>class Blockchain(str, Enum):
+    ETHEREUM = &quot;ETHEREUM&quot;
+    POLYGON = &quot;POLYGON&quot;
+</code></div>
+<hr />
+</section>
+<h1>4. Investors Service</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 Overview</h2>
+<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/investors</code><br />
+<strong>Port:</strong> 8001<br />
+<strong>Description:</strong> Investor onboarding, KYC/AML verification, portfolio management</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Endpoints</h2>
+<h3>4.2.1 Create Investor (Onboard)</h3>
+<div class="docs-pre"><code>POST /api/v1/investors
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;type&quot;: &quot;INDIVIDUAL&quot;,
+  &quot;email&quot;: &quot;investor@example.com&quot;,
+  &quot;phone&quot;: &quot;+2348012345678&quot;,
+  &quot;personal_details&quot;: {
+    &quot;first_name&quot;: &quot;Chukwu&quot;,
+    &quot;last_name&quot;: &quot;Okafor&quot;,
+    &quot;date_of_birth&quot;: &quot;1985-06-15&quot;,
+    &quot;nationality&quot;: &quot;NG&quot;,
+    &quot;tax_id&quot;: &quot;12345678-0001&quot;,
+    &quot;occupation&quot;: &quot;Business Owner&quot;
+  },
+  &quot;address&quot;: {
+    &quot;street&quot;: &quot;15 Victoria Island Way&quot;,
+    &quot;city&quot;: &quot;Lagos&quot;,
+    &quot;state&quot;: &quot;Lagos&quot;,
+    &quot;postal_code&quot;: &quot;101241&quot;,
+    &quot;country&quot;: &quot;NG&quot;
+  },
+  &quot;investment_profile&quot;: {
+    &quot;investor_type&quot;: &quot;RETAIL&quot;,
+    &quot;accreditation_status&quot;: &quot;NOT_ACCREDITED&quot;,
+    &quot;risk_tolerance&quot;: &quot;MODERATE&quot;,
+    &quot;investment_experience_years&quot;: 5,
+    &quot;annual_income_range&quot;: &quot;100K_500K&quot;,
+    &quot;net_worth_range&quot;: &quot;500K_1M&quot;,
+    &quot;source_of_funds&quot;: &quot;BUSINESS_INCOME&quot;,
+    &quot;preferred_asset_classes&quot;: [&quot;REAL_ESTATE&quot;, &quot;AGRICULTURE&quot;],
+    &quot;target_allocation_bps&quot;: {
+      &quot;REAL_ESTATE&quot;: 5000,
+      &quot;AGRICULTURE&quot;: 3000,
+      &quot;TRADE_FINANCE&quot;: 2000
+    }
+  },
+  &quot;wallet_addresses&quot;: [
+    {
+      &quot;blockchain&quot;: &quot;POLYGON&quot;,
+      &quot;address&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+      &quot;is_primary&quot;: true
+    }
+  ],
+  &quot;kyc_consent&quot;: {
+    &quot;consent_given&quot;: true,
+    &quot;consent_timestamp&quot;: &quot;2026-02-27T10:00:00Z&quot;,
+    &quot;ip_address&quot;: &quot;197.210.57.123&quot;,
+    &quot;user_agent&quot;: &quot;Mozilla/5.0...&quot;
+  }
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;id&quot;: &quot;inv_001&quot;,
+  &quot;type&quot;: &quot;INDIVIDUAL&quot;,
+  &quot;email&quot;: &quot;investor@example.com&quot;,
+  &quot;status&quot;: &quot;PENDING_KYC&quot;,
+  &quot;kyc_status&quot;: &quot;NOT_STARTED&quot;,
+  &quot;aml_status&quot;: &quot;NOT_STARTED&quot;,
+  &quot;created_at&quot;: &quot;2026-02-27T10:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/investors/inv_001&quot;,
+    &quot;submit_kyc&quot;: &quot;/api/v1/investors/inv_001/kyc/submit&quot;,
+    &quot;wallets&quot;: &quot;/api/v1/investors/inv_001/wallets&quot;
+  }
+}
+</code></div>
+<h3>4.2.2 Submit KYC Documents</h3>
+<div class="docs-pre"><code>POST /api/v1/investors/{investor_id}/kyc/submit
+Content-Type: multipart/form-data
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body (multipart):</strong></p>
+<div class="docs-pre"><code>investor_id: inv_001
+document_type: NATIONAL_ID
+document_front: [file upload]
+document_back: [file upload]
+selfie: [file upload]
+proof_of_address: [file upload]
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;kyc_status&quot;: &quot;UNDER_REVIEW&quot;,
+  &quot;submitted_at&quot;: &quot;2026-02-27T10:30:00Z&quot;,
+  &quot;documents&quot;: [
+    {
+      &quot;id&quot;: &quot;kyc_doc_001&quot;,
+      &quot;type&quot;: &quot;NATIONAL_ID&quot;,
+      &quot;status&quot;: &quot;UPLOADED&quot;,
+      &quot;uploaded_at&quot;: &quot;2026-02-27T10:30:00Z&quot;
+    }
+  ],
+  &quot;estimated_review_time_hours&quot;: 48,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/investors/inv_001&quot;,
+    &quot;kyc_status&quot;: &quot;/api/v1/investors/inv_001/kyc/status&quot;
+  }
+}
+</code></div>
+<h3>4.2.3 Get KYC Status</h3>
+<div class="docs-pre"><code>GET /api/v1/investors/{investor_id}/kyc/status
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;kyc_status&quot;: &quot;APPROVED&quot;,
+  &quot;kyc_provider&quot;: &quot;SMILE_IDENTITY&quot;,
+  &quot;approved_at&quot;: &quot;2026-02-28T14:00:00Z&quot;,
+  &quot;approved_by&quot;: &quot;kyc_officer_123&quot;,
+  &quot;onchainid_claim_id&quot;: &quot;claim_789xyz&quot;,
+  &quot;expiry_date&quot;: &quot;2027-02-28&quot;,
+  &quot;verified_claims&quot;: [
+    {
+      &quot;claim_type&quot;: &quot;KYC_VERIFIED&quot;,
+      &quot;claim_topic&quot;: 1,
+      &quot;issuer&quot;: &quot;0xClaimIssuerAddress...&quot;,
+      &quot;issued_at&quot;: &quot;2026-02-28T14:00:00Z&quot;,
+      &quot;expires_at&quot;: &quot;2027-02-28T14:00:00Z&quot;
+    },
+    {
+      &quot;claim_type&quot;: &quot;JURISDICTION&quot;,
+      &quot;claim_topic&quot;: 3,
+      &quot;value&quot;: &quot;NG&quot;,
+      &quot;issuer&quot;: &quot;0xClaimIssuerAddress...&quot;,
+      &quot;issued_at&quot;: &quot;2026-02-28T14:00:00Z&quot;
+    }
+  ],
+  &quot;_links&quot;: {
+    &quot;investor&quot;: &quot;/api/v1/investors/inv_001&quot;
+  }
+}
+</code></div>
+<h3>4.2.4 Get Investor Portfolio</h3>
+<div class="docs-pre"><code>GET /api/v1/investors/{investor_id}/portfolio
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;total_value_usd&quot;: 125750.50,
+  &quot;total_invested_usd&quot;: 120000.00,
+  &quot;total_gain_loss_usd&quot;: 5750.50,
+  &quot;total_gain_loss_bps&quot;: 479,
+  &quot;holdings&quot;: [
+    {
+      &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+      &quot;asset_name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+      &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+      &quot;shares_held&quot;: 50000,
+      &quot;average_cost_per_share&quot;: 1.00,
+      &quot;current_nav_per_share&quot;: 1.05,
+      &quot;market_value_usd&quot;: 52500.00,
+      &quot;cost_basis_usd&quot;: 50000.00,
+      &quot;gain_loss_usd&quot;: 2500.00,
+      &quot;gain_loss_bps&quot;: 500,
+      &quot;percentage_of_portfolio_bps&quot;: 4175,
+      &quot;first_purchase_date&quot;: &quot;2026-01-15T09:00:00Z&quot;,
+      &quot;lockup_expires&quot;: &quot;2027-01-15T09:00:00Z&quot;,
+      &quot;pending_distributions_usd&quot;: 1250.00
+    }
+  ],
+  &quot;allocation_by_asset_class&quot;: [
+    {
+      &quot;asset_class&quot;: &quot;REAL_ESTATE&quot;,
+      &quot;value_usd&quot;: 52500.00,
+      &quot;percentage_bps&quot;: 4175
+    },
+    {
+      &quot;asset_class&quot;: &quot;AGRICULTURE&quot;,
+      &quot;value_usd&quot;: 45000.00,
+      &quot;percentage_bps&quot;: 3578
+    },
+    {
+      &quot;asset_class&quot;: &quot;TRADE_FINANCE&quot;,
+      &quot;value_usd&quot;: 28250.50,
+      &quot;percentage_bps&quot;: 2247
+    }
+  ],
+  &quot;performance&quot;: {
+    &quot;daily_change_bps&quot;: 12,
+    &quot;weekly_change_bps&quot;: 45,
+    &quot;monthly_change_bps&quot;: 120,
+    &quot;ytd_change_bps&quot;: 479
+  },
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/investors/inv_001/portfolio&quot;,
+    &quot;transactions&quot;: &quot;/api/v1/investors/inv_001/transactions&quot;,
+    &quot;distributions&quot;: &quot;/api/v1/investors/inv_001/distributions&quot;
+  }
+}
+</code></div>
+<h3>4.2.5 Get Investor Transactions</h3>
+<div class="docs-pre"><code>GET /api/v1/investors/{investor_id}/transactions
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Query Parameters:</strong><br />
+| Parameter | Type | Description |<br />
+|-----------|------|-------------|<br />
+| <code>asset_id</code> | string | Filter by asset |<br />
+| <code>transaction_type</code> | string | PURCHASE, REDEMPTION, TRANSFER, DISTRIBUTION |<br />
+| <code>start_date</code> | date | Filter from date |<br />
+| <code>end_date</code> | date | Filter to date |<br />
+| <code>page</code> | integer | Page number |<br />
+| <code>page_size</code> | integer | Page size |</p>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;transactions&quot;: [
+    {
+      &quot;id&quot;: &quot;txn_001&quot;,
+      &quot;type&quot;: &quot;PURCHASE&quot;,
+      &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+      &quot;asset_name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+      &quot;shares&quot;: 50000,
+      &quot;price_per_share&quot;: { &quot;amount&quot;: 1.00, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;total_amount&quot;: { &quot;amount&quot;: 50000.00, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;payment_token&quot;: &quot;USDC&quot;,
+      &quot;blockchain&quot;: &quot;POLYGON&quot;,
+      &quot;transaction_hash&quot;: &quot;0xabc123...&quot;,
+      &quot;status&quot;: &quot;COMPLETED&quot;,
+      &quot;timestamp&quot;: &quot;2026-01-15T09:00:00Z&quot;,
+      &quot;compliance_status&quot;: &quot;VERIFIED&quot;,
+      &quot;_links&quot;: {
+        &quot;asset&quot;: &quot;/api/v1/assets/asset_789xyz&quot;,
+        &quot;blockchain_tx&quot;: &quot;https://polygonscan.com/tx/0xabc123...&quot;
+      }
+    }
+  ],
+  &quot;pagination&quot;: {
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 20,
+    &quot;total_items&quot;: 15
+  }
+}
+</code></div>
+<h3>4.2.6 Add Wallet Address</h3>
+<div class="docs-pre"><code>POST /api/v1/investors/{investor_id}/wallets
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;blockchain&quot;: &quot;POLYGON&quot;,
+  &quot;address&quot;: &quot;0xNewWalletAddress...&quot;,
+  &quot;is_primary&quot;: false
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;wallet_id&quot;: &quot;wallet_002&quot;,
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;blockchain&quot;: &quot;POLYGON&quot;,
+  &quot;address&quot;: &quot;0xNewWalletAddress...&quot;,
+  &quot;is_primary&quot;: false,
+  &quot;verified&quot;: false,
+  &quot;verification_required&quot;: true,
+  &quot;_links&quot;: {
+    &quot;verify&quot;: &quot;/api/v1/investors/inv_001/wallets/wallet_002/verify&quot;
+  }
+}
+</code></div>
+<h3>4.2.7 Verify Wallet Ownership</h3>
+<div class="docs-pre"><code>POST /api/v1/investors/{investor_id}/wallets/{wallet_id}/verify
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;signature&quot;: &quot;0xSignatureOfChallengeMessage...&quot;
+}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;wallet_id&quot;: &quot;wallet_002&quot;,
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;verified&quot;: true,
+  &quot;verified_at&quot;: &quot;2026-02-27T11:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;wallet&quot;: &quot;/api/v1/investors/inv_001/wallets/wallet_002&quot;
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>5. Trades Service</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Overview</h2>
+<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/trades</code><br />
+<strong>Port:</strong> 8002<br />
+<strong>Description:</strong> Primary market issuance and secondary market trading</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 Endpoints</h2>
+<h3>5.2.1 Create Purchase Order (Primary Market)</h3>
+<div class="docs-pre"><code>POST /api/v1/trades/purchase
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;order_type&quot;: &quot;MARKET&quot;,
+  &quot;amount_usd&quot;: 10000.00,
+  &quot;payment_token&quot;: &quot;USDC&quot;,
+  &quot;wallet_address&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;blockchain&quot;: &quot;POLYGON&quot;
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;order_id&quot;: &quot;order_123abc&quot;,
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;order_type&quot;: &quot;PURCHASE&quot;,
+  &quot;market_type&quot;: &quot;PRIMARY&quot;,
+  &quot;status&quot;: &quot;PENDING_COMPLIANCE&quot;,
+  &quot;amount_usd&quot;: 10000.00,
+  &quot;estimated_shares&quot;: 9523.81,
+  &quot;price_per_share&quot;: { &quot;amount&quot;: 1.05, &quot;currency&quot;: &quot;USD&quot; },
+  &quot;payment_token&quot;: &quot;USDC&quot;,
+  &quot;payment_address&quot;: &quot;0xPaymentEscrowAddress...&quot;,
+  &quot;payment_amount&quot;: &quot;10000.00&quot;,
+  &quot;compliance_checks&quot;: {
+    &quot;kyc_verified&quot;: true,
+    &quot;jurisdiction_allowed&quot;: true,
+    &quot;investment_limit_ok&quot;: true,
+    &quot;lockup_period_ok&quot;: true,
+    &quot;accreditation_ok&quot;: true
+  },
+  &quot;expires_at&quot;: &quot;2026-02-27T12:00:00Z&quot;,
+  &quot;created_at&quot;: &quot;2026-02-27T11:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/trades/purchase/order_123abc&quot;,
+    &quot;pay&quot;: &quot;/api/v1/trades/purchase/order_123abc/pay&quot;,
+    &quot;status&quot;: &quot;/api/v1/trades/purchase/order_123abc/status&quot;
+  }
+}
+</code></div>
+<h3>5.2.2 Execute Payment</h3>
+<div class="docs-pre"><code>POST /api/v1/trades/purchase/{order_id}/pay
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;transaction_hash&quot;: &quot;0xPaymentTransactionHash...&quot;
+}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;order_id&quot;: &quot;order_123abc&quot;,
+  &quot;status&quot;: &quot;PAYMENT_CONFIRMED&quot;,
+  &quot;payment_verified_at&quot;: &quot;2026-02-27T11:05:00Z&quot;,
+  &quot;blockchain_confirmations&quot;: 1,
+  &quot;required_confirmations&quot;: 3,
+  &quot;estimated_completion&quot;: &quot;2026-02-27T11:20:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/trades/purchase/order_123abc&quot;,
+    &quot;status&quot;: &quot;/api/v1/trades/purchase/order_123abc/status&quot;
+  }
+}
+</code></div>
+<h3>5.2.3 Create Sell Order (Secondary Market)</h3>
+<div class="docs-pre"><code>POST /api/v1/trades/sell
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;order_type&quot;: &quot;LIMIT&quot;,
+  &quot;shares&quot;: 5000,
+  &quot;limit_price&quot;: {
+    &quot;amount&quot;: 1.10,
+    &quot;currency&quot;: &quot;USD&quot;
+  },
+  &quot;wallet_address&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;blockchain&quot;: &quot;POLYGON&quot;,
+  &quot;time_in_force&quot;: &quot;GTC&quot;
+}
+</code></div>
+<p><strong>Response (201 Created):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;order_id&quot;: &quot;order_456def&quot;,
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;order_type&quot;: &quot;SELL&quot;,
+  &quot;market_type&quot;: &quot;SECONDARY&quot;,
+  &quot;status&quot;: &quot;OPEN&quot;,
+  &quot;shares&quot;: 5000,
+  &quot;limit_price&quot;: { &quot;amount&quot;: 1.10, &quot;currency&quot;: &quot;USD&quot; },
+  &quot;filled_shares&quot;: 0,
+  &quot;remaining_shares&quot;: 5000,
+  &quot;average_fill_price&quot;: null,
+  &quot;time_in_force&quot;: &quot;GTC&quot;,
+  &quot;compliance_checks&quot;: {
+    &quot;lockup_period_ok&quot;: true,
+    &quot;transfer_allowed&quot;: true
+  },
+  &quot;created_at&quot;: &quot;2026-02-27T11:30:00Z&quot;,
+  &quot;expires_at&quot;: null,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/trades/sell/order_456def&quot;,
+    &quot;cancel&quot;: &quot;/api/v1/trades/sell/order_456def/cancel&quot;,
+    &quot;order_book&quot;: &quot;/api/v1/trades/orderbook?asset_id=asset_789xyz&quot;
+  }
+}
+</code></div>
+<h3>5.2.4 Get Order Book</h3>
+<div class="docs-pre"><code>GET /api/v1/trades/orderbook?asset_id={asset_id}
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+  &quot;last_price&quot;: { &quot;amount&quot;: 1.05, &quot;currency&quot;: &quot;USD&quot; },
+  &quot;spread_bps&quot;: 200,
+  &quot;bids&quot;: [
+    {
+      &quot;price&quot;: { &quot;amount&quot;: 1.04, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;shares&quot;: 10000,
+      &quot;order_count&quot;: 3
+    },
+    {
+      &quot;price&quot;: { &quot;amount&quot;: 1.03, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;shares&quot;: 25000,
+      &quot;order_count&quot;: 7
+    }
+  ],
+  &quot;asks&quot;: [
+    {
+      &quot;price&quot;: { &quot;amount&quot;: 1.06, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;shares&quot;: 8000,
+      &quot;order_count&quot;: 2
+    },
+    {
+      &quot;price&quot;: { &quot;amount&quot;: 1.07, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;shares&quot;: 15000,
+      &quot;order_count&quot;: 5
+    }
+  ],
+  &quot;updated_at&quot;: &quot;2026-02-27T11:35:00Z&quot;
+}
+</code></div>
+<h3>5.2.5 Get Order Status</h3>
+<div class="docs-pre"><code>GET /api/v1/trades/{order_id}/status
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;order_id&quot;: &quot;order_123abc&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;fills&quot;: [
+    {
+      &quot;fill_id&quot;: &quot;fill_001&quot;,
+      &quot;shares&quot;: 9523.81,
+      &quot;price_per_share&quot;: { &quot;amount&quot;: 1.05, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;total_amount&quot;: { &quot;amount&quot;: 10000.00, &quot;currency&quot;: &quot;USD&quot; },
+      &quot;counterparty&quot;: &quot;0xLiquidityProvider...&quot;,
+      &quot;transaction_hash&quot;: &quot;0xMintTransactionHash...&quot;,
+      &quot;timestamp&quot;: &quot;2026-02-27T11:15:00Z&quot;
+    }
+  ],
+  &quot;completed_at&quot;: &quot;2026-02-27T11:15:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;order&quot;: &quot;/api/v1/trades/order_123abc&quot;,
+    &quot;blockchain_tx&quot;: &quot;https://polygonscan.com/tx/0xMintTransactionHash...&quot;
+  }
+}
+</code></div>
+<h3>5.2.6 Cancel Order</h3>
+<div class="docs-pre"><code>POST /api/v1/trades/{order_id}/cancel
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;order_id&quot;: &quot;order_456def&quot;,
+  &quot;status&quot;: &quot;CANCELLED&quot;,
+  &quot;cancelled_at&quot;: &quot;2026-02-27T11:45:00Z&quot;,
+  &quot;reason&quot;: &quot;USER_REQUESTED&quot;,
+  &quot;refunded_shares&quot;: 5000,
+  &quot;_links&quot;: {
+    &quot;self&quot;: &quot;/api/v1/trades/order_456def&quot;
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>6. Compliance Service</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Overview</h2>
+<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/compliance</code><br />
+<strong>Port:</strong> 8003<br />
+<strong>Description:</strong> KYC/AML verification, transfer restrictions, regulatory audit</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Endpoints</h2>
+<h3>6.2.1 Verify Transfer Eligibility</h3>
+<div class="docs-pre"><code>POST /api/v1/compliance/transfers/verify
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;from_address&quot;: &quot;0xSenderAddress...&quot;,
+  &quot;to_address&quot;: &quot;0xRecipientAddress...&quot;,
+  &quot;amount&quot;: 5000
+}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;eligible&quot;: true,
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;from_address&quot;: &quot;0xSenderAddress...&quot;,
+  &quot;to_address&quot;: &quot;0xRecipientAddress...&quot;,
+  &quot;amount&quot;: 5000,
+  &quot;checks_performed&quot;: [
+    {
+      &quot;check_type&quot;: &quot;SENDER_IDENTITY_VERIFIED&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;ONCHAINID claim verified&quot;
+    },
+    {
+      &quot;check_type&quot;: &quot;RECIPIENT_IDENTITY_VERIFIED&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;ONCHAINID claim verified&quot;
+    },
+    {
+      &quot;check_type&quot;: &quot;JURISDICTION_ALLOWED&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;Recipient jurisdiction NG is allowed&quot;
+    },
+    {
+      &quot;check_type&quot;: &quot;LOCKUP_PERIOD&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;Lockup period expired&quot;
+    },
+    {
+      &quot;check_type&quot;: &quot;INVESTMENT_LIMIT&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;Within maximum investment limit&quot;
+    },
+    {
+      &quot;check_type&quot;: &quot;CONCENTRATION_LIMIT&quot;,
+      &quot;passed&quot;: true,
+      &quot;details&quot;: &quot;Below 25% concentration threshold&quot;
+    }
+  ],
+  &quot;verified_at&quot;: &quot;2026-02-27T12:00:00Z&quot;,
+  &quot;valid_until&quot;: &quot;2026-02-27T12:05:00Z&quot;
+}
+</code></div>
+<h3>6.2.2 Get Compliance Report for Investor</h3>
+<div class="docs-pre"><code>GET /api/v1/compliance/investors/{investor_id}/report
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;kyc_status&quot;: &quot;APPROVED&quot;,
+  &quot;kyc_expiry&quot;: &quot;2027-02-28&quot;,
+  &quot;aml_status&quot;: &quot;CLEARED&quot;,
+  &quot;aml_last_screening&quot;: &quot;2026-02-27T00:00:00Z&quot;,
+  &quot;sanctions_status&quot;: &quot;CLEARED&quot;,
+  &quot;pep_status&quot;: &quot;NOT_PEP&quot;,
+  &quot;adverse_media_status&quot;: &quot;CLEARED&quot;,
+  &quot;risk_score&quot;: 25,
+  &quot;risk_level&quot;: &quot;LOW&quot;,
+  &quot;allowed_jurisdictions&quot;: [&quot;NG&quot;, &quot;KE&quot;, &quot;ZA&quot;, &quot;GH&quot;, &quot;MU&quot;],
+  &quot;investment_limits&quot;: {
+    &quot;daily_limit_usd&quot;: 50000,
+    &quot;monthly_limit_usd&quot;: 200000,
+    &quot;per_asset_limit_usd&quot;: 100000,
+    &quot;remaining_daily_usd&quot;: 40000,
+    &quot;remaining_monthly_usd&quot;: 150000
+  },
+  &quot;restrictions&quot;: [],
+  &quot;last_review_date&quot;: &quot;2026-02-27&quot;,
+  &quot;next_review_date&quot;: &quot;2027-02-27&quot;,
+  &quot;_links&quot;: {
+    &quot;investor&quot;: &quot;/api/v1/investors/inv_001&quot;,
+    &quot;screening_history&quot;: &quot;/api/v1/compliance/investors/inv_001/screenings&quot;
+  }
+}
+</code></div>
+<h3>6.2.3 Run AML Screening</h3>
+<div class="docs-pre"><code>POST /api/v1/compliance/investors/{investor_id}/aml/screen
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;screening_id&quot;: &quot;aml_screen_001&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;screening_timestamp&quot;: &quot;2026-02-27T12:30:00Z&quot;,
+  &quot;results&quot;: {
+    &quot;sanctions_match&quot;: false,
+    &quot;pep_match&quot;: false,
+    &quot;adverse_media_match&quot;: false,
+    &quot;watchlist_match&quot;: false,
+    &quot;risk_indicators&quot;: []
+  },
+  &quot;risk_score&quot;: 20,
+  &quot;risk_level&quot;: &quot;LOW&quot;,
+  &quot;cleared_for_trading&quot;: true,
+  &quot;next_screening_due&quot;: &quot;2026-03-27T00:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;report&quot;: &quot;/api/v1/compliance/investors/inv_001/report&quot;
+  }
+}
+</code></div>
+<h3>6.2.4 Get Audit Trail</h3>
+<div class="docs-pre"><code>GET /api/v1/compliance/audit-trail
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Query Parameters:</strong><br />
+| Parameter | Type | Description |<br />
+|-----------|------|-------------|<br />
+| <code>asset_id</code> | string | Filter by asset |<br />
+| <code>investor_id</code> | string | Filter by investor |<br />
+| <code>event_type</code> | string | KYC_SUBMITTED, TRANSFER, DISTRIBUTION, etc. |<br />
+| <code>start_date</code> | date | Filter from date |<br />
+| <code>end_date</code> | date | Filter to date |<br />
+| <code>page</code> | integer | Page number |<br />
+| <code>page_size</code> | integer | Page size |</p>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;events&quot;: [
+    {
+      &quot;event_id&quot;: &quot;audit_001&quot;,
+      &quot;event_type&quot;: &quot;TRANSFER&quot;,
+      &quot;timestamp&quot;: &quot;2026-02-27T12:00:00Z&quot;,
+      &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+      &quot;investor_id&quot;: &quot;inv_001&quot;,
+      &quot;details&quot;: {
+        &quot;from_address&quot;: &quot;0xSenderAddress...&quot;,
+        &quot;to_address&quot;: &quot;0xRecipientAddress...&quot;,
+        &quot;amount&quot;: 5000,
+        &quot;transaction_hash&quot;: &quot;0xTransferTxHash...&quot;,
+        &quot;compliance_checks_passed&quot;: 6
+      },
+      &quot;blockchain&quot;: &quot;POLYGON&quot;,
+      &quot;block_number&quot;: 52847561,
+      &quot;auditor&quot;: &quot;SYSTEM&quot;
+    }
+  ],
+  &quot;pagination&quot;: {
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 50,
+    &quot;total_items&quot;: 1247
+  }
+}
+</code></div>
+<h3>6.2.5 Export Audit Trail (Regulatory)</h3>
+<div class="docs-pre"><code>POST /api/v1/compliance/audit-trail/export
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;export_format&quot;: &quot;PDF&quot;,
+  &quot;date_range&quot;: {
+    &quot;start_date&quot;: &quot;2026-01-01&quot;,
+    &quot;end_date&quot;: &quot;2026-01-31&quot;
+  },
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;report_type&quot;: &quot;REGULATORY_FILING&quot;,
+  &quot;jurisdiction&quot;: &quot;NG&quot;,
+  &quot;regulator&quot;: &quot;SEC_NIGERIA&quot;
+}
+</code></div>
+<p><strong>Response (202 Accepted):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;export_id&quot;: &quot;export_001&quot;,
+  &quot;status&quot;: &quot;PROCESSING&quot;,
+  &quot;estimated_completion&quot;: &quot;2026-02-27T12:35:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;status&quot;: &quot;/api/v1/compliance/audit-trail/export/export_001/status&quot;,
+    &quot;download&quot;: &quot;/api/v1/compliance/audit-trail/export/export_001/download&quot;
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>7. Reporting Service</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Overview</h2>
+<p><strong>Base URL:</strong> <code>https://api.ujamaa-defi.com/api/v1/reports</code><br />
+<strong>Port:</strong> 8004<br />
+<strong>Description:</strong> Regulatory reports, analytics dashboards, data exports</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 Endpoints</h2>
+<h3>7.2.1 Get Platform Analytics</h3>
+<div class="docs-pre"><code>GET /api/v1/reports/analytics/platform
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;as_of_date&quot;: &quot;2026-02-27&quot;,
+  &quot;summary&quot;: {
+    &quot;total_assets&quot;: 47,
+    &quot;active_assets&quot;: 35,
+    &quot;total_aum_usd&quot;: 125000000,
+    &quot;total_investors&quot;: 2847,
+    &quot;verified_investors&quot;: 2654,
+    &quot;total_transactions_24h&quot;: 342,
+    &quot;volume_24h_usd&quot;: 1250000
+  },
+  &quot;assets_by_class&quot;: [
+    { &quot;class&quot;: &quot;REAL_ESTATE&quot;, &quot;count&quot;: 15, &quot;aum_usd&quot;: 45000000 },
+    { &quot;class&quot;: &quot;AGRICULTURE&quot;, &quot;count&quot;: 12, &quot;aum_usd&quot;: 28000000 },
+    { &quot;class&quot;: &quot;TRADE_FINANCE&quot;, &quot;count&quot;: 10, &quot;aum_usd&quot;: 32000000 },
+    { &quot;class&quot;: &quot;RENEWABLE_ENERGY&quot;, &quot;count&quot;: 5, &quot;aum_usd&quot;: 12000000 },
+    { &quot;class&quot;: &quot;PRIVATE_EQUITY&quot;, &quot;count&quot;: 5, &quot;aum_usd&quot;: 8000000 }
+  ],
+  &quot;investors_by_jurisdiction&quot;: [
+    { &quot;jurisdiction&quot;: &quot;NG&quot;, &quot;count&quot;: 1245 },
+    { &quot;jurisdiction&quot;: &quot;KE&quot;, &quot;count&quot;: 567 },
+    { &quot;jurisdiction&quot;: &quot;ZA&quot;, &quot;count&quot;: 423 },
+    { &quot;jurisdiction&quot;: &quot;GH&quot;, &quot;count&quot;: 312 },
+    { &quot;jurisdiction&quot;: &quot;MU&quot;, &quot;count&quot;: 189 }
+  ],
+  &quot;performance&quot;: {
+    &quot;average_yield_bps&quot;: 1150,
+    &quot;median_yield_bps&quot;: 1100,
+    &quot;total_distributions_ytd_usd&quot;: 4250000,
+    &quot;average_nav_change_bps&quot;: 350
+  },
+  &quot;compliance&quot;: {
+    &quot;kyc_approval_rate_bps&quot;: 9200,
+    &quot;average_kyc_time_hours&quot;: 36,
+    &quot;aml_alerts_24h&quot;: 3,
+    &quot;transfers_blocked_24h&quot;: 12
+  }
+}
+</code></div>
+<h3>7.2.2 Get Asset Performance Report</h3>
+<div class="docs-pre"><code>GET /api/v1/reports/assets/{asset_id}/performance
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Query Parameters:</strong><br />
+| Parameter | Type | Description |<br />
+|-----------|------|-------------|<br />
+| <code>period</code> | string | 1M, 3M, 6M, YTD, 1Y, ALL |<br />
+| <code>granularity</code> | string | DAILY, WEEKLY, MONTHLY |</p>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+  &quot;asset_name&quot;: &quot;Lagos Commercial Property Portfolio&quot;,
+  &quot;token_symbol&quot;: &quot;LCREIT&quot;,
+  &quot;period&quot;: &quot;YTD&quot;,
+  &quot;as_of_date&quot;: &quot;2026-02-27&quot;,
+  &quot;performance&quot;: {
+    &quot;nav_start&quot;: { &quot;amount&quot;: 1.00, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;nav_end&quot;: { &quot;amount&quot;: 1.05, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;nav_change&quot;: { &quot;amount&quot;: 0.05, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;nav_change_bps&quot;: 500,
+    &quot;distributions_paid&quot;: { &quot;amount&quot;: 0.025, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;total_return_bps&quot;: 750,
+    &quot;annualized_return_bps&quot;: 1800
+  },
+  &quot;nav_history&quot;: [
+    { &quot;date&quot;: &quot;2026-01-31&quot;, &quot;nav&quot;: 1.01 },
+    { &quot;date&quot;: &quot;2026-02-28&quot;, &quot;nav&quot;: 1.05 }
+  ],
+  &quot;investor_metrics&quot;: {
+    &quot;investor_count&quot;: 145,
+    &quot;investor_change&quot;: 23,
+    &quot;concentration_top_10_bps&quot;: 3500,
+    &quot;average_holding_usd&quot;: 51724
+  },
+  &quot;trading_metrics&quot;: {
+    &quot;volume_ytd_usd&quot;: 2500000,
+    &quot;transaction_count_ytd&quot;: 456,
+    &quot;average_spread_bps&quot;: 150,
+    &quot;liquidity_ratio_bps&quot;: 1500
+  }
+}
+</code></div>
+<h3>7.2.3 Generate Regulatory Report</h3>
+<div class="docs-pre"><code>POST /api/v1/reports/regulatory/generate
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Request Body:</strong></p>
+<div class="docs-pre"><code>{
+  &quot;report_type&quot;: &quot;MICA_ARTICLE_22&quot;,
+  &quot;jurisdiction&quot;: &quot;EU&quot;,
+  &quot;period&quot;: {
+    &quot;start_date&quot;: &quot;2026-01-01&quot;,
+    &quot;end_date&quot;: &quot;2026-01-31&quot;
+  },
+  &quot;format&quot;: &quot;XML&quot;,
+  &quot;include_annexes&quot;: true
+}
+</code></div>
+<p><strong>Response (202 Accepted):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;report_id&quot;: &quot;reg_report_001&quot;,
+  &quot;report_type&quot;: &quot;MICA_ARTICLE_22&quot;,
+  &quot;status&quot;: &quot;GENERATING&quot;,
+  &quot;estimated_completion&quot;: &quot;2026-02-27T13:00:00Z&quot;,
+  &quot;_links&quot;: {
+    &quot;status&quot;: &quot;/api/v1/reports/regulatory/reg_report_001/status&quot;,
+    &quot;download&quot;: &quot;/api/v1/reports/regulatory/reg_report_001/download&quot;
+  }
+}
+</code></div>
+<h3>7.2.4 Get Investor Tax Report</h3>
+<div class="docs-pre"><code>GET /api/v1/reports/investors/{investor_id}/tax
+Authorization: Bearer {jwt_token}
+</code></div>
+<p><strong>Query Parameters:</strong><br />
+| Parameter | Type | Description |<br />
+|-----------|------|-------------|<br />
+| <code>tax_year</code> | integer | Tax year (e.g., 2026) |<br />
+| <code>jurisdiction</code> | string | Tax jurisdiction (ISO code) |<br />
+| <code>format</code> | string | PDF, CSV, JSON |</p>
+<p><strong>Response (200 OK):</strong></p>
+<div class="docs-pre"><code>{
+  &quot;investor_id&quot;: &quot;inv_001&quot;,
+  &quot;tax_year&quot;: 2026,
+  &quot;jurisdiction&quot;: &quot;NG&quot;,
+  &quot;generated_at&quot;: &quot;2026-02-27T13:00:00Z&quot;,
+  &quot;summary&quot;: {
+    &quot;total_invested_usd&quot;: 120000,
+    &quot;total_distributions_usd&quot;: 4500,
+    &quot;dividend_income_usd&quot;: 3200,
+    &quot;capital_gains_realized_usd&quot;: 1300,
+    &quot;capital_losses_realized_usd&quot;: 0,
+    &quot;withholding_tax_paid_usd&quot;: 450
+  },
+  &quot;transactions&quot;: [
+    {
+      &quot;date&quot;: &quot;2026-01-15&quot;,
+      &quot;type&quot;: &quot;PURCHASE&quot;,
+      &quot;asset&quot;: &quot;LCREIT&quot;,
+      &quot;amount_usd&quot;: 50000,
+      &quot;shares&quot;: 50000,
+      &quot;cost_basis_per_share&quot;: 1.00
+    },
+    {
+      &quot;date&quot;: &quot;2026-02-15&quot;,
+      &quot;type&quot;: &quot;DISTRIBUTION&quot;,
+      &quot;asset&quot;: &quot;LCREIT&quot;,
+      &quot;amount_usd&quot;: 1250,
+      &quot;shares&quot;: 50000,
+      &quot;distribution_type&quot;: &quot;DIVIDEND&quot;,
+      &quot;withholding_tax_usd&quot;: 125
+    }
+  ],
+  &quot;_links&quot;: {
+    &quot;download_pdf&quot;: &quot;/api/v1/reports/investors/inv_001/tax?format=PDF&quot;,
+    &quot;download_csv&quot;: &quot;/api/v1/reports/investors/inv_001/tax?format=CSV&quot;
+  }
+}
+</code></div>
+<hr />
+</section>
+<h1>8. Gateway Service (gRPC)</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 Protocol Buffer Definition</h2>
+<div class="docs-pre"><code>// gateway/v1/gateway.proto
+syntax = &quot;proto3&quot;;
+
+package gateway.v1;
+
+option go_package = &quot;github.com/ujamaa-defi/gateway/pkg/proto&quot;;
+
+// Gateway Service
+service Gateway {
+  // Get latest price for an asset
+  rpc GetPrice(PriceRequest) returns (PriceResponse);
+
+  // Stream price updates
+  rpc StreamPrices(PriceStreamRequest) returns (stream PriceResponse);
+
+  // Get blockchain events
+  rpc GetBlockchainEvents(BlockchainEventsRequest) returns (BlockchainEventsResponse);
+
+  // Stream blockchain events
+  rpc StreamBlockchainEvents(BlockchainEventsRequest) returns (stream BlockchainEvent);
+
+  // Get NAV for an asset
+  rpc GetNAV(NavRequest) returns (NavResponse);
+
+  // Submit price (Gateway nodes only)
+  rpc SubmitPrice(SubmitPriceRequest) returns (SubmitPriceResponse);
+}
+
+message PriceRequest {
+  string asset_id = 1;
+  string base_currency = 2;  // e.g., &quot;USD&quot;
+  string quote_currency = 3; // e.g., &quot;USDC&quot;
+}
+
+message PriceResponse {
+  string asset_id = 1;
+  string base_currency = 2;
+  string quote_currency = 3;
+  string price = 4;          // Decimal string
+  uint64 timestamp = 5;
+  uint64 block_number = 6;
+  string source = 7;         // &quot;CHAINLINK&quot;, &quot;INTERNAL&quot;, &quot;MANUAL&quot;
+  uint32 confidence_bps = 8; // Confidence interval in basis points
+}
+
+message PriceStreamRequest {
+  repeated string asset_ids = 1;
+  uint32 heartbeat_seconds = 2;
+}
+
+message BlockchainEventsRequest {
+  string blockchain = 1;     // &quot;ETHEREUM&quot;, &quot;POLYGON&quot;
+  string contract_address = 2;
+  string event_type = 3;     // &quot;TRANSFER&quot;, &quot;MINT&quot;, &quot;BURN&quot;
+  uint64 from_block = 4;
+  uint64 to_block = 5;
+}
+
+message BlockchainEventsResponse {
+  repeated BlockchainEvent events = 1;
+  uint64 last_block = 2;
+}
+
+message BlockchainEvent {
+  string event_id = 1;
+  string blockchain = 2;
+  string contract_address = 3;
+  string event_type = 4;
+  uint64 block_number = 5;
+  uint64 timestamp = 6;
+  string transaction_hash = 7;
+  map&lt;string, string&gt; data = 8;
+}
+
+message NavRequest {
+  string asset_id = 1;
+}
+
+message NavResponse {
+  string asset_id = 1;
+  string nav_per_share = 2;  // Decimal string
+  uint64 timestamp = 3;
+  string currency = 4;
+  uint64 total_shares = 5;
+  uint64 shares_outstanding = 6;
+  string total_aum = 7;      // Decimal string
+}
+
+message SubmitPriceRequest {
+  string asset_id = 1;
+  string price = 2;
+  bytes signature = 3;
+  uint64 timestamp = 4;
+}
+
+message SubmitPriceResponse {
+  bool accepted = 1;
+  string submission_id = 2;
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 gRPC Service Configuration</h2>
+<div class="docs-pre"><code># grpc_config.yaml
+server:
+  port: 9000
+  max_message_size: 4194304  # 4MB
+  keepalive:
+    time: 300s
+    timeout: 20s
+    max_age: 120s
+
+clients:
+  chainlink:
+    enabled: true
+    eth_rpc: &quot;https://mainnet.infura.io/v3/...&quot;
+    polygon_rpc: &quot;https://polygon-rpc.com&quot;
+    price_feed_addresses:
+      ETH_USD: &quot;0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419&quot;
+      MATIC_USD: &quot;0x7bAC85A8a13A4BcD8abb3eB7d6b4d632c1a9730e&quot;
+      USDC_USD: &quot;0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6&quot;
+
+  internal:
+    enabled: true
+    update_interval_seconds: 60
+    deviation_threshold_bps: 500  # 5%
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.7 Fireblocks Custody Service 🆕 (SRS v2.1)</h2>
+<p><strong>Base Path:</strong> <code>/api/v1/fireblocks</code><br />
+<strong>Authentication:</strong> JWT + MFA required<br />
+<strong>Authorization:</strong> DevOps Engineer, Platform Admin only  </p>
+<h3>8.7.1 Vault Account Management</h3>
+<p><strong>GET /api/v1/fireblocks/vaults</strong></p>
+<div class="docs-pre"><code>Description: List all Fireblocks vault accounts (platform treasury)
+Auth: JWT (DevOps Engineer role)
+Response:
+{
+  &quot;vaults&quot;: [
+    {
+      &quot;id&quot;: &quot;vault_001&quot;,
+      &quot;name&quot;: &quot;Platform Treasury&quot;,
+      &quot;assets&quot;: [
+        {&quot;asset&quot;: &quot;UJEUR&quot;, &quot;balance&quot;: &quot;5000000.00&quot;, &quot;locked&quot;: &quot;0&quot;},
+        {&quot;asset&quot;: &quot;USDC&quot;, &quot;balance&quot;: &quot;2000000.00&quot;, &quot;locked&quot;: &quot;0&quot;},
+        {&quot;asset&quot;: &quot;uLP&quot;, &quot;balance&quot;: &quot;1000000.00&quot;, &quot;locked&quot;: &quot;0&quot;}
+      ]
+    }
+  ]
+}
+</code></div>
+<p><strong>POST /api/v1/fireblocks/vaults/{vaultId}/transfer</strong></p>
+<div class="docs-pre"><code>Description: Initiate transfer from Fireblocks vault (requires 3-of-5 multisig)
+Auth: JWT + MFA (DevOps Engineer + Platform Admin)
+Request:
+{
+  &quot;asset&quot;: &quot;UJEUR&quot;,
+  &quot;amount&quot;: &quot;100000.00&quot;,
+  &quot;destinationAddress&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;note&quot;: &quot;Pool deployment - Factory A financing&quot;
+}
+Response:
+{
+  &quot;transactionId&quot;: &quot;tx_fireblocks_001&quot;,
+  &quot;status&quot;: &quot;PENDING_APPROVAL&quot;,
+  &quot;requiredApprovals&quot;: 3,
+  &quot;currentApprovals&quot;: 1,
+  &quot;approvers&quot;: [&quot;admin_001&quot;]
+}
+</code></div>
+<h3>8.7.2 Transaction Management</h3>
+<p><strong>GET /api/v1/fireblocks/transactions/{txId}</strong></p>
+<div class="docs-pre"><code>Description: Get Fireblocks transaction status
+Response:
+{
+  &quot;txId&quot;: &quot;tx_fireblocks_001&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;asset&quot;: &quot;UJEUR&quot;,
+  &quot;amount&quot;: &quot;100000.00&quot;,
+  &quot;destinationAddress&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;,
+  &quot;txHash&quot;: &quot;0xabc123...&quot;,
+  &quot;completedAt&quot;: &quot;2026-03-25T14:30:00Z&quot;
+}
+</code></div>
+<p><strong>Scope Note:</strong> Fireblocks integration is for <strong>platform treasury and pool assets only</strong>, NOT for end-user custody. Users retain self-custody via MetaMask/WalletConnect.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.8 Bank Escrow Service 🆕 (SRS v2.1)</h2>
+<p><strong>Base Path:</strong> <code>/api/v1/bank-escrow</code><br />
+<strong>Authentication:</strong> JWT + Service Account<br />
+<strong>Authorization:</strong> Pool Manager, Compliance Officer  </p>
+<h3>8.8.1 Escrow Account Management</h3>
+<p><strong>GET /api/v1/bank-escrow/accounts</strong></p>
+<div class="docs-pre"><code>Description: List escrow accounts (BIIC/MCB)
+Auth: JWT (Pool Manager, Compliance Officer)
+Response:
+{
+  &quot;accounts&quot;: [
+    {
+      &quot;accountId&quot;: &quot;escrow_001&quot;,
+      &quot;bank&quot;: &quot;BIIC&quot;,
+      &quot;accountNumber&quot;: &quot;MU23BIIC01234567890123456&quot;,
+      &quot;type&quot;: &quot;INVESTOR_ESCROW&quot;,
+      &quot;poolId&quot;: &quot;pool_industrie_001&quot;,
+      &quot;balance&quot;: &quot;10000000.00&quot;,
+      &quot;currency&quot;: &quot;EUR&quot;
+    },
+    {
+      &quot;accountId&quot;: &quot;escrow_002&quot;,
+      &quot;bank&quot;: &quot;MCB&quot;,
+      &quot;accountNumber&quot;: &quot;MU45MCB09876543210987654&quot;,
+      &quot;type&quot;: &quot;INDUSTRIAL_REPAYMENT&quot;,
+      &quot;industrialId&quot;: &quot;ind_factory_a&quot;,
+      &quot;balance&quot;: &quot;2000000.00&quot;,
+      &quot;currency&quot;: &quot;EUR&quot;
+    }
+  ]
+}
+</code></div>
+<h3>8.8.2 Wire Transfer Operations</h3>
+<p><strong>POST /api/v1/bank-escrow/wire-transfers</strong></p>
+<div class="docs-pre"><code>Description: Initiate wire transfer (investor deposit or industrial disbursement)
+Auth: JWT + MFA (Pool Manager)
+Request:
+{
+  &quot;accountId&quot;: &quot;escrow_001&quot;,
+  &quot;type&quot;: &quot;INVESTOR_DEPOSIT&quot;,
+  &quot;amount&quot;: &quot;1000000.00&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;counterparty&quot;: {
+    &quot;name&quot;: &quot;Logic Capital&quot;,
+    &quot;accountNumber&quot;: &quot;LU1234567890&quot;,
+    &quot;bankCode&quot;: &quot;BCEELULL&quot;,
+    &quot;reference&quot;: &quot;uLP Deposit - Pool Industrie 001&quot;
+  }
+}
+Response:
+{
+  &quot;wireTransferId&quot;: &quot;wire_001&quot;,
+  &quot;status&quot;: &quot;PENDING&quot;,
+  &quot;estimatedArrival&quot;: &quot;2026-03-26T10:00:00Z&quot;
+}
+</code></div>
+<p><strong>GET /api/v1/bank-escrow/wire-transfers/{wireId}</strong></p>
+<div class="docs-pre"><code>Description: Get wire transfer status
+Response:
+{
+  &quot;wireTransferId&quot;: &quot;wire_001&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;amount&quot;: &quot;1000000.00&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;completedAt&quot;: &quot;2026-03-26T09:45:00Z&quot;,
+  &quot;bankReference&quot;: &quot;BIIC-REF-20260326-001&quot;
+}
+</code></div>
+<h3>8.8.3 Mobile Money Integration (Production)</h3>
+<p><strong>POST /api/v1/bank-escrow/mobile-money/deposit</strong></p>
+<div class="docs-pre"><code>Description: Initiate Mobile Money deposit (M-Pesa, MTN, Airtel)
+Request:
+{
+  &quot;provider&quot;: &quot;M-PESA&quot;,
+  &quot;phoneNumber&quot;: &quot;+254700123456&quot;,
+  &quot;amount&quot;: &quot;50000&quot;,
+  &quot;currency&quot;: &quot;KES&quot;,
+  &quot;investorWallet&quot;: &quot;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&quot;
+}
+Response:
+{
+  &quot;transactionId&quot;: &quot;mm_001&quot;,
+  &quot;status&quot;: &quot;PENDING_USSD_CONFIRMATION&quot;,
+  &quot;ussdCode&quot;: &quot;*123*456789#&quot;,
+  &quot;expiresAt&quot;: &quot;2026-03-25T15:05:00Z&quot;
+}
+</code></div>
+<p><strong>MVP vs Production:</strong><br />
+- <strong>MVP (Testnet):</strong> MockBankEscrowService simulates wire transfers<br />
+- <strong>Production:</strong> Real BIIC/MCB API integration + Mobile Money providers</p>
+<hr />
+</section>
+<h1>9. Authentication &amp; Authorization (SRS v2.1)</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 Authentication Methods</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Use Case</th>
+<th>Token Type</th>
+<th>Expiry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JWT</strong></td>
+<td>User sessions, API access</td>
+<td>Bearer token</td>
+<td>1 hour (access), 7 days (refresh)</td>
+</tr>
+<tr>
+<td><strong>API Key</strong></td>
+<td>Server-to-server, partners</td>
+<td>X-API-Key header</td>
+<td>1 year (revocable)</td>
+</tr>
+<tr>
+<td><strong>OAuth2</strong></td>
+<td>Third-party integrations</td>
+<td>Bearer token</td>
+<td>Per provider</td>
+</tr>
+<tr>
+<td><strong>Wallet Signature</strong></td>
+<td>Web3 authentication</td>
+<td>SIWE message</td>
+<td>24 hours</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 JWT Token Structure</h2>
+<div class="docs-pre"><code>{
+  &quot;iss&quot;: &quot;ujamaa-defi-auth&quot;,
+  &quot;sub&quot;: &quot;inv_001&quot;,
+  &quot;aud&quot;: &quot;ujamaa-defi-api&quot;,
+  &quot;exp&quot;: 1709049600,
+  &quot;iat&quot;: 1709046000,
+  &quot;jti&quot;: &quot;jwt_abc123&quot;,
+  &quot;email&quot;: &quot;investor@example.com&quot;,
+  &quot;roles&quot;: [&quot;INVESTOR&quot;],
+  &quot;permissions&quot;: [
+    &quot;assets:read&quot;,
+    &quot;portfolio:read&quot;,
+    &quot;trades:create&quot;,
+    &quot;trades:read&quot;
+  ],
+  &quot;kyc_status&quot;: &quot;APPROVED&quot;,
+  &quot;jurisdiction&quot;: &quot;NG&quot;
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.3 Permission Matrix</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Assets</th>
+<th>Investors</th>
+<th>Trades</th>
+<th>Compliance</th>
+<th>Reporting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INVESTOR</strong></td>
+<td>R</td>
+<td>Self R/W</td>
+<td>CRUD</td>
+<td>Self R</td>
+<td>Self R</td>
+</tr>
+<tr>
+<td><strong>ORIGINATOR</strong></td>
+<td>CRUD</td>
+<td>-</td>
+<td>R</td>
+<td>R</td>
+<td>Limited R</td>
+</tr>
+<tr>
+<td><strong>COMPLIANCE_OFFICER</strong></td>
+<td>R</td>
+<td>R/W</td>
+<td>R</td>
+<td>CRUD</td>
+<td>R/W</td>
+</tr>
+<tr>
+<td><strong>ADMIN</strong></td>
+<td>CRUD</td>
+<td>CRUD</td>
+<td>CRUD</td>
+<td>CRUD</td>
+<td>CRUD</td>
+</tr>
+<tr>
+<td><strong>REGULATOR</strong></td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>CRUD</td>
+<td>CRUD</td>
+</tr>
+<tr>
+<td><strong>AUDITOR</strong></td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>CRUD</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>10. Error Handling</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Error Response Format</h2>
+<div class="docs-pre"><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;COMPLIANCE_CHECK_FAILED&quot;,
+    &quot;message&quot;: &quot;Transfer violates compliance rules&quot;,
+    &quot;details&quot;: {
+      &quot;failed_checks&quot;: [
+        {
+          &quot;check&quot;: &quot;LOCKUP_PERIOD&quot;,
+          &quot;reason&quot;: &quot;Tokens are locked until 2027-01-15&quot;
+        }
+      ]
+    },
+    &quot;request_id&quot;: &quot;req_abc123&quot;,
+    &quot;timestamp&quot;: &quot;2026-02-27T12:00:00Z&quot;,
+    &quot;_links&quot;: {
+      &quot;documentation&quot;: &quot;https://docs.ujamaa-defi.com/errors/COMPLIANCE_CHECK_FAILED&quot;
+    }
+  }
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 Error Codes</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Error Code</th>
+<th>HTTP Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VALIDATION_ERROR</code></td>
+<td>400</td>
+<td>Request validation failed</td>
+</tr>
+<tr>
+<td><code>AUTHENTICATION_REQUIRED</code></td>
+<td>401</td>
+<td>Missing or invalid authentication</td>
+</tr>
+<tr>
+<td><code>FORBIDDEN</code></td>
+<td>403</td>
+<td>Insufficient permissions</td>
+</tr>
+<tr>
+<td><code>NOT_FOUND</code></td>
+<td>404</td>
+<td>Resource not found</td>
+</tr>
+<tr>
+<td><code>CONFLICT</code></td>
+<td>409</td>
+<td>Resource conflict (e.g., duplicate)</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT_EXCEEDED</code></td>
+<td>429</td>
+<td>Too many requests</td>
+</tr>
+<tr>
+<td><code>COMPLIANCE_CHECK_FAILED</code></td>
+<td>422</td>
+<td>Transfer blocked by compliance</td>
+</tr>
+<tr>
+<td><code>INSUFFICIENT_LIQUIDITY</code></td>
+<td>422</td>
+<td>Not enough liquidity for trade</td>
+</tr>
+<tr>
+<td><code>INTERNAL_ERROR</code></td>
+<td>500</td>
+<td>Internal server error</td>
+</tr>
+<tr>
+<td><code>SERVICE_UNAVAILABLE</code></td>
+<td>503</td>
+<td>Service temporarily unavailable</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>11. Rate Limiting</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.1 Rate Limits by Tier</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tier</th>
+<th>Requests/min</th>
+<th>Requests/hour</th>
+<th>Burst</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FREE</strong></td>
+<td>30</td>
+<td>500</td>
+<td>10</td>
+<td>Public endpoints, unauthenticated</td>
+</tr>
+<tr>
+<td><strong>AUTHENTICATED</strong></td>
+<td>100</td>
+<td>1000</td>
+<td>30</td>
+<td>Logged-in users</td>
+</tr>
+<tr>
+<td><strong>PREMIUM</strong></td>
+<td>500</td>
+<td>5000</td>
+<td>100</td>
+<td>High-volume traders</td>
+</tr>
+<tr>
+<td><strong>PARTNER</strong></td>
+<td>1000</td>
+<td>10000</td>
+<td>200</td>
+<td>API partners, integrations</td>
+</tr>
+<tr>
+<td><strong>INTERNAL</strong></td>
+<td>10000</td>
+<td>100000</td>
+<td>500</td>
+<td>Internal services</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.2 Rate Limit Headers</h2>
+<div class="docs-pre"><code>X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1709049660
+Retry-After: 60  (when limit exceeded)
+</code></div>
+<hr />
+</section>
+<h1>12. Webhooks &amp; Events</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.1 Webhook Event Types</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset.created</code></td>
+<td>Asset object</td>
+<td>Notify originators</td>
+</tr>
+<tr>
+<td><code>asset.approved</code></td>
+<td>Asset object</td>
+<td>Notify investors</td>
+</tr>
+<tr>
+<td><code>trade.completed</code></td>
+<td>Trade object</td>
+<td>Update portfolios</td>
+</tr>
+<tr>
+<td><code>distribution.scheduled</code></td>
+<td>Distribution object</td>
+<td>Notify investors</td>
+</tr>
+<tr>
+<td><code>distribution.paid</code></td>
+<td>Distribution object</td>
+<td>Confirm payment</td>
+</tr>
+<tr>
+<td><code>kyc.approved</code></td>
+<td>KYC status</td>
+<td>Enable trading</td>
+</tr>
+<tr>
+<td><code>kyc.rejected</code></td>
+<td>KYC status + reason</td>
+<td>Request resubmission</td>
+</tr>
+<tr>
+<td><code>compliance.alert</code></td>
+<td>Alert object</td>
+<td>Notify compliance team</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.2 Webhook Payload Example</h2>
+<div class="docs-pre"><code>{
+  &quot;id&quot;: &quot;evt_abc123&quot;,
+  &quot;type&quot;: &quot;trade.completed&quot;,
+  &quot;created_at&quot;: &quot;2026-02-27T12:00:00Z&quot;,
+  &quot;data&quot;: {
+    &quot;trade_id&quot;: &quot;trade_xyz789&quot;,
+    &quot;investor_id&quot;: &quot;inv_001&quot;,
+    &quot;asset_id&quot;: &quot;asset_789xyz&quot;,
+    &quot;type&quot;: &quot;PURCHASE&quot;,
+    &quot;shares&quot;: 9523.81,
+    &quot;price_per_share&quot;: { &quot;amount&quot;: 1.05, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;total_amount&quot;: { &quot;amount&quot;: 10000.00, &quot;currency&quot;: &quot;USD&quot; },
+    &quot;transaction_hash&quot;: &quot;0x...&quot;
+  },
+  &quot;_links&quot;: {
+    &quot;trade&quot;: &quot;/api/v1/trades/trade_xyz789&quot;
+  }
+}
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.3 Webhook Signature Verification</h2>
+<div class="docs-pre"><code>X-Webhook-Signature: sha256=abc123...
+X-Webhook-Timestamp: 1709049600
+X-Webhook-ID: evt_abc123
+</code></div>
+<hr />
+<p><strong>Document Control</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-02-27</td>
+<td>System Architect</td>
+<td>Initial release</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related Documents</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> - Requirements specification</li>
+<li><code>02_ARCHITECTURE_SPECIFICATION.md</code> - System architecture</li>
+<li><code>05_SMART_CONTRACT_SPECIFICATION.md</code> - Smart contract event integration</li>
+<li><code>10_COMPLIANCE_FRAMEWORK.md</code> - Compliance API requirements</li>
+<li><code>06_DEPLOYMENT_GUIDE.md</code> - API deployment configuration</li>
+<li><code>07_MONITORING_SPECIFICATION.md</code> - API monitoring and alerting</li>
+<li><code>08_OPERATIONAL_RUNBOOKS.md</code> - API incident response procedures</li>
+</ul>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

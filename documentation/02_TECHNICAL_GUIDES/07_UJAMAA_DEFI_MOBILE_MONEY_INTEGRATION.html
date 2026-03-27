@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned) | <strong>Last Updated:</strong> March 17, 2026 | <strong>Audience:</strong> Backend Engineers, Smart Contract Developers, Integration Partners</p></div>
+
+        <h1>UJAMAA DEFI PLATFORM — Mobile Money Payment Integration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Technical Specification &amp; Implementation Guide</h2>
+<p><strong>Version:</strong> 2.0 (SRS v2.0 Aligned)<br />
+<strong>Date:</strong> March 17, 2026<br />
+<strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Classification:</strong> Technical<br />
+<strong>Audience:</strong> Backend Engineers, Smart Contract Developers, Integration Partners</p>
+<p><strong>Aligned with:</strong> SRS v2.0 Section 4.3 (Software Interfaces - Mobile Money APIs)</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Overview &amp; Rationale</h2>
+<p>UJAMAA DEFI PLATFORM is an institutional-grade tokenization platform enabling fractional ownership of African real-world assets (RWAs) through <strong>ERC-3643 compliant blockchain-based digital securities</strong>. To maximize financial inclusion across African markets, the platform supports two parallel payment rails:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Web3 wallets</strong> with stablecoins (USDC/USDT/EURC) for crypto-native users</li>
+<li><strong>Mobile money</strong> for the majority of African users who do not hold a Web3 wallet but actively use MTN MoMo, Orange Money, Airtel Money, M-Pesa, and similar services</li>
+</ul>
+<p>Mobile money is the dominant financial infrastructure across Sub-Saharan Africa, accounting for nearly 50% of global mobile money accounts and $2.5 billion in daily transactions. Supporting it is not optional — it is the primary gateway to financial inclusion at scale.</p>
+<h3>1.1 Alignment with SRS v2.0</h3>
+<p>This document aligns with the <strong>Software Requirements Specification (SRS) v2.0</strong> and integrates with the following platform components:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>SRS v2.0 Component</th>
+<th>Specification Reference</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td>ERC-3643 (T-REX Protocol)</td>
+<td><code>Ujamaa Asset Token (UAT)</code> contract</td>
+</tr>
+<tr>
+<td><strong>Identity System</strong></td>
+<td>ONCHAINID</td>
+<td><code>IdentityRegistry</code> contract</td>
+</tr>
+<tr>
+<td><strong>Compliance Layer</strong></td>
+<td>ERC-3643 Compliance Modules</td>
+<td><code>ComplianceModule</code> contract</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Polygon Amoy (testnet) / Polygon Mainnet</td>
+<td>EVM-compatible L2</td>
+</tr>
+<tr>
+<td><strong>Stablecoin</strong></td>
+<td>USDC (Circle), EURC</td>
+<td>Native Polygon USDC/EURC</td>
+</tr>
+<tr>
+<td><strong>Industrial Gateway</strong></td>
+<td>Production data notarization</td>
+<td><code>IndustrialGateway</code> contract</td>
+</tr>
+<tr>
+<td><strong>Mobile Money APIs</strong></td>
+<td>Section 4.3</td>
+<td>M-Pesa, MTN, Airtel integration</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Technology Stack</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Specification</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mobile Money Collection</strong></td>
+<td>Flutterwave</td>
+<td>REST API v3</td>
+<td>Pan-African coverage, 30+ currencies, bidirectional payments</td>
+</tr>
+<tr>
+<td><strong>Mobile Money Operators</strong></td>
+<td>MTN MoMo, Orange Money, Airtel Money, M-Pesa, Vodafone Cash</td>
+<td>Operator APIs via Flutterwave</td>
+<td>Direct integration through unified API</td>
+</tr>
+<tr>
+<td><strong>Fiat → Stablecoin On-ramp</strong></td>
+<td>Onafriq + Circle</td>
+<td>USDC on Polygon</td>
+<td>1B+ wallets connected, regulatory compliance</td>
+</tr>
+<tr>
+<td><strong>Blockchain Layer</strong></td>
+<td>Polygon</td>
+<td>EVM-compatible L2</td>
+<td>Low fees (&lt;$0.01), high throughput, institutional credibility</td>
+</tr>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td><strong>ERC-3643 (T-REX)</strong></td>
+<td><code>UjamaaTokenizer</code> contract</td>
+<td>Regulatory-compliant security token with identity verification</td>
+</tr>
+<tr>
+<td><strong>Smart Contracts</strong></td>
+<td>Solidity 0.8.20</td>
+<td>UUPS Upgradeable Proxy</td>
+<td>Security, upgradeability, gas optimization</td>
+</tr>
+<tr>
+<td><strong>Identity Verification</strong></td>
+<td>ONCHAINID</td>
+<td>Claim-based identity</td>
+<td>GDPR-compliant, no PII on-chain</td>
+</tr>
+<tr>
+<td><strong>Stablecoin</strong></td>
+<td>USDC (Circle)</td>
+<td>Native Polygon deployment</td>
+<td>Regulatory compliance, institutional trust</td>
+</tr>
+<tr>
+<td><strong>Custodial Wallet</strong></td>
+<td>Fireblocks / In-house</td>
+<td>MPC custody</td>
+<td>Abstracts Web3 complexity from mobile money users</td>
+</tr>
+<tr>
+<td><strong>Backend Framework</strong></td>
+<td>FastAPI (Python 3.11)</td>
+<td>Async webhook processing</td>
+<td>High-performance, type-safe</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL 15</td>
+<td>Partitioned tables</td>
+<td>GDPR compliance, audit trails</td>
+</tr>
+<tr>
+<td><strong>Node Provider</strong></td>
+<td>Alchemy / Infura</td>
+<td>Polygon RPC</td>
+<td>Reliable blockchain access</td>
+</tr>
+<tr>
+<td><strong>User Interface</strong></td>
+<td>React 18 + TypeScript</td>
+<td>Mobile-first PWA</td>
+<td>No Web3 UX exposed to mobile money users</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Why Flutterwave</h2>
+<p>Flutterwave is the chosen payment gateway for UJAMAA for the following reasons:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Pan-African coverage</strong> — supports MTN MoMo, Orange Money, Airtel Money, M-Pesa, Vodafone Cash and more through a single unified API, eliminating the need for separate operator agreements</li>
+<li><strong>Multi-currency</strong> — natively handles XOF, NGN, KES, GHS, ZAR, XAF and 30+ African currencies, enabling local currency investing without manual conversion on the user side</li>
+<li><strong>Proven infrastructure</strong> — trusted by large enterprises across Africa with built-in KYC/AML compliance that aligns with UJAMAA's regulatory obligations</li>
+<li><strong>Simple API</strong> — a single REST API call initiates a mobile money charge, keeping backend integration lean and maintainable</li>
+<li><strong>Bidirectional payments</strong> — Flutterwave handles both collections (investments) and disbursements (dividends, returns) back to mobile money wallets, making it a complete payment loop for an investment platform</li>
+<li><strong>Webhook Support</strong> — Real-time payment confirmations enable instant token minting on Polygon</li>
+</ul>
+<h3>3.1 Supported Mobile Money Operators</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Countries</th>
+<th>Currency</th>
+<th>Integration Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MTN MoMo</strong></td>
+<td>Nigeria, Ghana, Uganda, Rwanda, Cameroon, Côte d'Ivoire, Benin, Togo, Zambia, Liberia</td>
+<td>NGN, GHS, UGX, RWF, XAF, XOF, ZMW, LRD</td>
+<td>✅ Via Flutterwave</td>
+</tr>
+<tr>
+<td><strong>Orange Money</strong></td>
+<td>Senegal, Côte d'Ivoire, Mali, Burkina Faso, Niger, Cameroon, Guinea, Madagascar</td>
+<td>XOF, XAF, GNF, MGA</td>
+<td>✅ Via Flutterwave</td>
+</tr>
+<tr>
+<td><strong>Airtel Money</strong></td>
+<td>Nigeria, Kenya, Uganda, Tanzania, Malawi, Zambia, Zimbabwe, DRC, Chad, CAR</td>
+<td>NGN, KES, UGX, TZS, MWK, ZMW, ZWL, CDF, XAF</td>
+<td>✅ Via Flutterwave</td>
+</tr>
+<tr>
+<td><strong>M-Pesa</strong></td>
+<td>Kenya, Tanzania, Mozambique, DRC, Lesotho, Egypt</td>
+<td>KES, TZS, MZN, CDF, LSL, EGP</td>
+<td>✅ Via Flutterwave</td>
+</tr>
+<tr>
+<td><strong>Vodafone Cash</strong></td>
+<td>Ghana, Egypt, Tanzania</td>
+<td>GHS, EGP, TZS</td>
+<td>✅ Via Flutterwave</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Why Polygon</h2>
+<p>Polygon is the chosen blockchain layer for UJAMAA for the following reasons:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Low transaction fees</strong> — gas fees are fractions of a cent ($0.001-$0.01), making micro-investments economically viable for low-income users across Africa</li>
+<li><strong>EVM compatibility</strong> — full compatibility with Ethereum smart contract standards, including <strong>ERC-3643</strong> for regulated security tokens</li>
+<li><strong>High throughput</strong> — capable of handling thousands of transactions per second, providing the scale required for a pan-African user base</li>
+<li><strong>Institutional credibility</strong> — Mastercard and JP Morgan have both run RWA tokenization pilots on Polygon, providing regulatory and enterprise confidence</li>
+<li><strong>Native USDC support</strong> — Circle's USDC is natively deployed on Polygon, eliminating cross-chain bridging complexity and reducing settlement risk</li>
+<li><strong>African Market Presence</strong> — Polygon has established partnerships with African governments and financial institutions for blockchain adoption</li>
+</ul>
+<h3>4.1 Network Configuration</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Network</th>
+<th>Chain ID</th>
+<th>RPC URL</th>
+<th>Block Explorer</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Polygon Amoy (Testnet)</strong></td>
+<td>80002</td>
+<td><code>https://rpc-amoy.polygon.technology/</code></td>
+<td><code>https://amoy.polygonscan.com/</code></td>
+<td>Development &amp; Testing</td>
+</tr>
+<tr>
+<td><strong>Polygon Mainnet</strong></td>
+<td>137</td>
+<td><code>https://polygon-rpc.com/</code></td>
+<td><code>https://polygonscan.com/</code></td>
+<td>Production</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Architecture — The Stablecoin Bridge</h2>
+<p>The core architectural challenge is converting mobile money payments into on-chain tokenized asset ownership while maintaining <strong>ERC-3643 compliance</strong>. The bridge operates as follows:</p>
+<h3>5.1 High-Level Flow</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                    MOBILE MONEY INVESTMENT FLOW                              │
+│                                                                              │
+│  User (Mobile Money) → Flutterwave Payment Gateway                          │
+│          ↓                                                                    │
+│  Fiat received in local currency (XOF, NGN, KES, GHS...)                    │
+│          ↓                                                                    │
+│  Auto-convert to stablecoin (USDC) via Onafriq + Circle                     │
+│          ↓                                                                    │
+│  Backend triggers ERC-3643 compliance checks                                │
+│          ↓                                                                    │
+│  IdentityRegistry verifies user KYC status                                  │
+│          ↓                                                                    │
+│  ComplianceModule validates transfer rules                                  │
+│          ↓                                                                    │
+│  UjamaaTokenizer mints tokens to user's custodial wallet                    │
+│          ↓                                                                    │
+│  AssetProof notarizes investment record (SHA-256 hash)                      │
+│          ↓                                                                    │
+│  User sees confirmed investment on dashboard (no Web3 knowledge needed)     │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>5.2 Smart Contract Integration</h3>
+<p>The systems — Flutterwave and Polygon — are connected at the UJAMAA backend layer through smart contracts:</p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                    SMART CONTRACT INTEGRATION LAYER                          │
+│                                                                              │
+│  Flutterwave Webhook (payment confirmed)                                    │
+│          ↓                                                                    │
+│  UJAMAA Backend (FastAPI + PostgreSQL)                                      │
+│          ↓                                                                    │
+│  Compliance Check (OFFCHAIN)                                                │
+│    • Verify user KYC status in database                                     │
+│    • Check investment limits per SRS requirements                           │
+│    • Validate jurisdiction restrictions                                     │
+│          ↓                                                                    │
+│  Polygon RPC Call (via Alchemy/Infura)                                      │
+│          ↓                                                                    │
+│  Smart Contract Execution:                                                   │
+│    1. IdentityRegistry.isVerified(user) → bool                              │
+│    2. ComplianceModule.canTransfer(...) → bool                              │
+│    3. UjamaaTokenizer.mint(user, amount)                                    │
+│    4. AssetProof.notarize(investment_hash)                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<p>Flutterwave fires a webhook the moment a mobile money payment is confirmed. The backend listens, performs off-chain compliance checks, triggers the on-chain transaction on Polygon, and the entire flow is seamless to the end user — they simply see their investment confirmed within seconds.</p>
+<h3>5.3 Contract Addresses (Testnet)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Address (Polygon Amoy)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UjamaaTokenizer</code></td>
+<td><code>0x...</code> (deployed)</td>
+<td>ERC-3643 security token for asset pools</td>
+</tr>
+<tr>
+<td><code>IdentityRegistry</code></td>
+<td><code>0x...</code> (deployed)</td>
+<td>Maps wallets to ONCHAINID identities</td>
+</tr>
+<tr>
+<td><code>ComplianceModule</code></td>
+<td><code>0x...</code> (deployed)</td>
+<td>Enforces transfer rules per asset class</td>
+</tr>
+<tr>
+<td><code>AssetProof</code></td>
+<td><code>0x...</code> (deployed)</td>
+<td>Notarizes investment records</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Detailed Payment Flows</h2>
+<h3>6.1 Investment Flow — Mobile Money → ERC-3643 Token</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  STEP-BY-STEP: MOBILE MONEY INVESTMENT                                      │
+│                                                                              │
+│  1. User opens the UJAMAA app and selects an asset                         │
+│     • Asset displayed with local currency minimum (e.g., 5,000 XOF)        │
+│     • ERC-3643 compliance badge visible (regulated security token)         │
+│                                                                              │
+│  2. User enters investment amount in their local currency                  │
+│     • Real-time USDC equivalent displayed                                  │
+│     • Token quantity calculated based on NAV per share                     │
+│     • Expected annual yield shown in local currency                        │
+│                                                                              │
+│  3. System performs pre-compliance check (OFFCHAIN)                        │
+│     • Verify user KYC status (KYC Level 1/2/3 per SRS)                     │
+│     • Check jurisdiction eligibility                                       │
+│     • Validate investment limits (min/max per asset class)                 │
+│                                                                              │
+│  4. Flutterwave initiates a mobile money payment prompt                    │
+│     • USSD push to user's registered phone number                          │
+│     • Operator logo and brand colors displayed                             │
+│     • Amount shown in local currency                                       │
+│                                                                              │
+│  5. User confirms the payment on their mobile money app                    │
+│     • MTN, Orange, Airtel, M-Pesa, etc.                                    │
+│     • PIN entry on operator USSD interface                                 │
+│                                                                              │
+│  6. Flutterwave confirms payment and fires webhook to UJAMAA backend       │
+│     • Payment ID, transaction reference, timestamp                         │
+│     • Webhook signature verified for authenticity                          │
+│                                                                              │
+│  7. Backend performs final compliance validation                           │
+│     • IdentityRegistry.isVerified(user_wallet)                             │
+│     • ComplianceModule.canTransfer(...)                                    │
+│     • Investment recorded in PostgreSQL audit table                        │
+│                                                                              │
+│  8. Backend calls minting function on Polygon                              │
+│     • UjamaaTokenizer.mint(user_wallet, token_amount)                      │
+│     • Gas fee paid from platform treasury (user doesn't see)               │
+│                                                                              │
+│  9. AssetProof notarizes investment record                                 │
+│     • SHA-256 hash of investment data stored on-chain                      │
+│     • Immutable audit trail created                                        │
+│                                                                              │
+│  10. User sees confirmed investment summary on dashboard                   │
+│      • Token quantity received                                             │
+│      • Transaction hash (clickable to Polygonscan)                         │
+│      • Downloadable investment receipt (PDF)                               │
+│      • SMS confirmation sent to registered phone                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>6.2 Returns Flow — ERC-3643 Token → Mobile Money</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  STEP-BY-STEP: DIVIDEND/DISTRIBUTION PAYMENT                                │
+│                                                                              │
+│  1. Yield or dividend is generated on-chain via Polygon smart contract     │
+│     • DistributionManager calculates pro-rata allocation                   │
+│     • USDC transferred to platform distribution wallet                     │
+│                                                                              │
+│  2. Backend processes distribution list                                    │
+│     • Query PostgreSQL for token holders per asset                         │
+│     • Calculate each user's share based on token balance                   │
+│     • Filter users by payout preference (mobile money vs. wallet)          │
+│                                                                              │
+│  3. For mobile money users: Convert USDC to local fiat                     │
+│     • Circle API: USDC → USD                                               │
+│     • Flutterwave FX: USD → Local currency (XOF, NGN, KES, etc.)           │
+│     • Exchange rate locked for 15 minutes                                  │
+│                                                                              │
+│  4. Flutterwave disburses to user's mobile money wallet                    │
+│     • Batch payout API call                                                │
+│     • Transaction fee deducted from distribution amount                    │
+│                                                                              │
+│  5. User receives SMS confirmation from mobile operator                    │
+│     • &quot;You received X XOF from UJAMAA DEFI PLATFORM - Investment Return&quot;            │
+│     • Transaction reference included                                       │
+│                                                                              │
+│  6. Backend updates distribution status in PostgreSQL                      │
+│     • Mark distribution as paid                                            │
+│     • Record transaction hash and timestamp                                │
+│     • Emit event for audit trail                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>6.3 Secondary Market Transfer Flow</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  ERC-3643 TRANSFER WITH COMPLIANCE ENFORCEMENT                              │
+│                                                                              │
+│  1. Seller initiates transfer on UJAMAA marketplace                        │
+│     • Selects tokens to sell                                               │
+│     • Sets price in local currency or USDC                                 │
+│                                                                              │
+│  2. Buyer expresses interest                                               │
+│     • For mobile money users: Funds held in escrow via Flutterwave         │
+│     • For wallet users: USDC escrowed in smart contract                    │
+│                                                                              │
+│  3. ERC-3643 compliance checks (AUTOMATIC)                                 │
+│     • IdentityRegistry.isVerified(buyer) → MUST be true                    │
+│     • ComplianceModule.canTransfer(seller, buyer, amount) → MUST pass      │
+│     • Check holding period (if applicable per asset class)                 │
+│     • Check jurisdiction restrictions                                      │
+│     • Check investor concentration limits                                  │
+│                                                                              │
+│  4. If compliance passes: Execute transfer                                 │
+│     • UjamaaTokenizer.transferFrom(seller, buyer, amount)                  │
+│     • USDC released to seller (or fiat via Flutterwave)                    │
+│     • AssetProof.notarize(transfer_hash)                                   │
+│                                                                              │
+│  5. If compliance fails: Block transfer                                    │
+│     • Transaction reverted with reason code                                │
+│     • Funds returned to buyer                                              │
+│     • Compliance alert logged for admin review                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. UX/UI Frontend Approach</h2>
+<h3>7.1 Design Philosophy</h3>
+<p>The frontend must serve two distinct user profiles without compromising the experience of either:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Web3-native users</strong> comfortable with crypto wallets, stablecoins, and on-chain transactions</li>
+<li><strong>Mobile-first African users</strong> who use mobile money daily but have never interacted with blockchain</li>
+</ul>
+<p>All blockchain complexity must be fully abstracted from the second group. Neither user should feel they are using a product designed for the other.</p>
+<h3>7.2 Onboarding Flow</h3>
+<p>The first screen after registration presents a single, clear choice: <strong>"How would you like to invest?"</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Crypto Wallet</strong> — connects an existing Web3 wallet (MetaMask, WalletConnect, Rainbow)</li>
+<li><strong>Mobile Money</strong> — pays via MTN, Orange, Airtel, M-Pesa, or other local operators</li>
+</ul>
+<p>This choice sets the user's default payment method for all subsequent sessions and can be updated at any time in account settings. No technical jargon appears on this screen.</p>
+<p><strong>KYC Requirement Notice:</strong></p>
+<div class="docs-callout docs-callout-info"><div class="docs-callout-title">ℹ️</div>
+<p>"Before investing, you must complete identity verification. This is required by financial regulations to protect all investors."</p>
+</div>
+<h3>7.3 Asset Discovery Screen</h3>
+<p>The asset browsing experience is identical for both user types and displays:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Asset name and category (Agriculture, Real Estate, Infrastructure, Mining, Energy, etc.)</li>
+<li>Country and issuer (e.g., "Côte d'Ivoire - Cocoa Cooperative")</li>
+<li>Expected annual yield (%)</li>
+<li><strong>Minimum investment amount</strong> shown in <strong>local currency</strong> for mobile money users and in <strong>USDC</strong> for wallet users</li>
+<li>Funding progress bar showing the percentage of the offering already filled</li>
+<li><strong>ERC-3643 Compliance Badge</strong> indicating regulated security token</li>
+<li>A prominent "Invest Now" call to action</li>
+</ul>
+<p>Currency display is dynamic — the platform detects the user's payment preference and country and renders all amounts accordingly. A mobile money user in Cotonou sees amounts in XOF, not in USDC.</p>
+<h3>7.4 Mobile Money Investment Flow — Step by Step</h3>
+<p><strong>Step 1 — Amount Selection</strong><br />
+The user enters the investment amount in local currency. The interface shows in real time:<br />
+- The USDC equivalent (for transparency)<br />
+- The number of ERC-3643 tokens to be received (based on current NAV)<br />
+- The estimated annual return in local currency<br />
+- Any applicable fees (Flutterwave transaction fee, platform fee)</p>
+<p>Pre-set quick-select buttons (e.g., 5,000 / 10,000 / 25,000 / 50,000 XOF) reduce typing friction.</p>
+<p><strong>Step 2 — Payment Method Selection</strong><br />
+The user selects their mobile money operator from a dynamically filtered list based on their country. Each operator is displayed with its official logo and brand colors for instant recognition. This list is populated in real time via the Flutterwave API.</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Country</th>
+<th>Available Operators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Benin</strong></td>
+<td>MTN MoMo, Moov Money</td>
+</tr>
+<tr>
+<td><strong>Côte d'Ivoire</strong></td>
+<td>Orange Money, MTN MoMo, Moov Money</td>
+</tr>
+<tr>
+<td><strong>Senegal</strong></td>
+<td>Orange Money, Wave, Free Money</td>
+</tr>
+<tr>
+<td><strong>Nigeria</strong></td>
+<td>MTN MoMo, Airtel Money, M-Pesa</td>
+</tr>
+<tr>
+<td><strong>Kenya</strong></td>
+<td>M-Pesa, Airtel Money</td>
+</tr>
+<tr>
+<td><strong>Ghana</strong></td>
+<td>MTN MoMo, Vodafone Cash, AirtelTigo Money</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Step 3 — Mobile Number Confirmation</strong><br />
+The user confirms or enters the mobile money number to be charged. If provided at registration, this field is pre-filled. A plain-language note reads: <em>"You will receive a payment confirmation on this number."</em></p>
+<p><strong>Step 4 — Payment Prompt &amp; Confirmation</strong><br />
+Flutterwave initiates the mobile money charge. The user receives a USSD push or in-app prompt from their operator. The UJAMAA app displays a waiting screen: <em>"Waiting for your confirmation on [operator name]..."</em> with a timeout indicator (typically 5 minutes).</p>
+<p><strong>Step 5 — Processing Screen</strong><br />
+Once Flutterwave confirms payment, the backend silently handles:<br />
+- Fiat-to-USDC conversion via Onafriq/Circle<br />
+- ERC-3643 compliance verification<br />
+- Token minting on Polygon<br />
+- AssetProof notarization</p>
+<p>The user sees: <em>"Securing your investment on the blockchain..."</em> — no technical details are exposed.</p>
+<p><strong>Step 6 — Success Confirmation</strong><br />
+The confirmation screen displays:<br />
+- Amount invested in local currency<br />
+- Asset name and ERC-3643 token quantity received<br />
+- Transaction hash (clickable to Polygonscan)<br />
+- Estimated next return date<br />
+- A downloadable investment receipt (PDF or image)</p>
+<p>An SMS confirmation is simultaneously sent to the user's mobile number.</p>
+<h3>7.5 Web3 Wallet Investment Flow</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>User connects wallet via WalletConnect, MetaMask, or Rainbow</li>
+<li>Selects asset and enters amount in USDC</li>
+<li>Reviews transaction details including:</li>
+<li>Polygon gas fee (typically $0.001-$0.01)</li>
+<li>Token quantity to receive</li>
+<li>ERC-3643 compliance notice</li>
+<li>Signs transaction in their wallet</li>
+<li>Confirmation screen displays:</li>
+<li>Transaction hash with Polygonscan link</li>
+<li>Token balance updated</li>
+<li>Downloadable receipt</li>
+</ul>
+<h3>7.6 Portfolio Dashboard</h3>
+<p>The dashboard adapts its display by payment profile:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Mobile money users</strong> see portfolio value in local currency with a USDC secondary display</li>
+<li><strong>Web3 users</strong> see portfolio value in USDC with a local currency secondary display</li>
+<li>Both profiles see:</li>
+<li>Total invested</li>
+<li>Current value (updated with latest NAV)</li>
+<li>Total returns earned</li>
+<li>List of held assets with individual performance</li>
+<li>ERC-3643 token balances per asset</li>
+<li>Upcoming distribution dates</li>
+<li>A <strong>"Withdraw Returns"</strong> button initiates the reverse flow — for mobile money users, returns are disbursed directly to their mobile money wallet via Flutterwave</li>
+</ul>
+<h3>7.7 Returns &amp; Withdrawal Flow (Mobile Money)</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  WITHDRAWAL FLOW: TOKEN RETURNS → MOBILE MONEY                              │
+│                                                                              │
+│  1. User receives in-app notification and SMS:                             │
+│     &quot;Your return of X XOF is ready to withdraw.&quot;                           │
+│                                                                              │
+│  2. User taps &quot;Withdraw to Mobile Money&quot;                                   │
+│     • Withdrawal amount displayed in local currency                        │
+│     • Exchange rate shown (if converting from USDC)                        │
+│     • Transaction fee disclosed                                            │
+│                                                                              │
+│  3. User confirms their mobile money number                                │
+│     • Pre-filled if previously used                                        │
+│     • Operator logo displayed                                              │
+│                                                                              │
+│  4. Backend processes withdrawal                                           │
+│     • USDC converted to fiat via Flutterwave                               │
+│     • Payout initiated to mobile money wallet                              │
+│     • Processing time: 1-5 minutes (typically instant)                     │
+│                                                                              │
+│  5. User receives operator SMS confirming receipt                          │
+│     • &quot;You received X XOF from UJAMAA DEFI PLATFORM&quot;                                │
+│     • Transaction reference included                                       │
+│                                                                              │
+│  6. Withdrawal complete                                                    │
+│     • In-app confirmation displayed                                        │
+│     • Transaction recorded in audit trail                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<p>No bank account is required at any step.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. KYC/AML Integration</h2>
+<h3>8.1 KYC Requirements (Per SRS)</h3>
+<p>KYC is mandatory before any investment regardless of payment method. The KYC flow is integrated with <strong>ONCHAINID</strong> and includes:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>KYC Level</th>
+<th>Requirements</th>
+<th>Investment Limit</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level 1 (Basic)</strong></td>
+<td>• National ID or passport upload<br>• Selfie verification<br>• Phone number verification (OTP)</td>
+<td>Up to $1,000</td>
+<td>Retail investors, micro-investments</td>
+</tr>
+<tr>
+<td><strong>Level 2 (Enhanced)</strong></td>
+<td>• Level 1 requirements<br>• Proof of address (utility bill)<br>• Source of funds declaration</td>
+<td>Up to $10,000</td>
+<td>Accredited retail investors</td>
+</tr>
+<tr>
+<td><strong>Level 3 (Institutional)</strong></td>
+<td>• Level 2 requirements<br>• Corporate documents<br>• Beneficial owner disclosure<br>• AML screening</td>
+<td>No limit</td>
+<td>Institutional investors, family offices</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.2 ONCHAINID Integration</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  ONCHAINID IDENTITY VERIFICATION FLOW                                       │
+│                                                                              │
+│  1. User submits KYC documents via UJAMAA frontend                         │
+│     • Documents encrypted and stored off-chain (IPFS/encrypted S3)         │
+│     • PII never stored on blockchain                                       │
+│                                                                              │
+│  2. Licensed KYC provider verifies documents                               │
+│     • Third-party provider (e.g., Youverify, Smile Identity, Dojah)        │
+│     • Verification completed within 24-48 hours                            │
+│                                                                              │
+│  3. Claim Issuer signs KYC approval claim                                  │
+│     • Claim includes: KYC level, jurisdiction, expiration date             │
+│     • Claim hash stored on-chain via IdentityRegistry                      │
+│     • User's wallet address linked to ONCHAINID identity                   │
+│                                                                              │
+│  4. IdentityRegistry updated                                               │
+│     • isVerified(user_wallet) → true                                       │
+│     • getKycLevel(user_wallet) → 1/2/3                                     │
+│     • getJurisdiction(user_wallet) → ISO country code                      │
+│                                                                              │
+│  5. For mobile money users: Phone number matching                          │
+│     • Registered mobile money number matched to KYC phone number           │
+│     • Additional identity assurance layer                                  │
+│                                                                              │
+│  6. User can now invest in ERC-3643 tokens                                 │
+│     • Compliance checks automatic on every transfer                        │
+│     • Identity verification valid for 12-24 months (per KYC level)         │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>8.3 AML Screening</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Automated Screening:</strong> All users screened against sanctions lists (OFAC, UN, EU, UK HMT)</li>
+<li><strong>Ongoing Monitoring:</strong> Transactions monitored for suspicious patterns (structuring, layering)</li>
+<li><strong>PEP Screening:</strong> Politically Exposed Persons flagged for enhanced due diligence</li>
+<li><strong>Adverse Media:</strong> News screening for negative associations</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Language &amp; Accessibility</h2>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>The platform supports <strong>French and English</strong> as primary languages, defaulting based on the user's country</li>
+<li>All amounts respect local <strong>number formatting conventions</strong> (e.g., spaces as thousand separators in francophone Africa: <code>10 000 XOF</code>)</li>
+<li>Mobile money flow screens use <strong>simple, conversational language</strong> with no financial or technical jargon</li>
+<li>Font sizes and tap targets are optimized for <strong>mid-range Android devices</strong>, which are dominant across African markets</li>
+<li>Every critical action triggers an <strong>SMS fallback confirmation</strong> for users in low-connectivity environments</li>
+<li><strong>USSD Support:</strong> For feature phone users, basic investment functions available via USSD codes (e.g., <code>*123*UJAMAA#</code>)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Regulatory Context</h2>
+<h3>10.1 African Continental Free Trade Area (AfCFTA)</h3>
+<p>The African Continental Free Trade Area adopted its <strong>Protocol on Digital Trade</strong> in February 2024, introducing harmonized rules for digital payments across member states and calling for interoperability between digital payment systems. This regulatory direction is favorable for a pan-African platform like UJAMAA.</p>
+<h3>10.2 Regional Regulatory Frameworks</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Region</th>
+<th>Regulatory Body</th>
+<th>Framework</th>
+<th>Compliance Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UEMOA/WAEMU</strong></td>
+<td>AMF-UEMOA, BCEAO</td>
+<td>Harmonized securities regulations</td>
+<td>✅ ERC-3643 compliant</td>
+</tr>
+<tr>
+<td><strong>Nigeria</strong></td>
+<td>SEC Nigeria</td>
+<td>Digital Assets Rules</td>
+<td>✅ Compliant</td>
+</tr>
+<tr>
+<td><strong>Kenya</strong></td>
+<td>CMA Kenya</td>
+<td>Virtual Asset Service Providers</td>
+<td>✅ Compliant</td>
+</tr>
+<tr>
+<td><strong>Ghana</strong></td>
+<td>SEC Ghana</td>
+<td>Digital Assets Regulations</td>
+<td>✅ Compliant</td>
+</tr>
+<tr>
+<td><strong>South Africa</strong></td>
+<td>FSCA</td>
+<td>Crypto Asset Provider License</td>
+<td>✅ Compliant</td>
+</tr>
+<tr>
+<td><strong>Mauritius</strong></td>
+<td>FSC Mauritius</td>
+<td>CIS Manager License</td>
+<td>✅ Compliant</td>
+</tr>
+</tbody>
+</table></div>
+<h3>10.3 ERC-3643 Compliance</h3>
+<p>The <strong>ERC-3643 (T-REX) protocol</strong> ensures regulatory compliance by:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Identity Verification:</strong> Every token holder must have a verified ONCHAINID identity</li>
+<li><strong>Transfer Restrictions:</strong> Only verified wallets can hold or transfer tokens</li>
+<li><strong>Jurisdiction Controls:</strong> Assets can be restricted from certain jurisdictions</li>
+<li><strong>Investor Caps:</strong> Maximum concentration limits enforced per investor</li>
+<li><strong>Holding Periods:</strong> Minimum holding periods enforced at contract level</li>
+<li><strong>Audit Trail:</strong> All transfers recorded on-chain with identity references</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Security Considerations</h2>
+<h3>11.1 Smart Contract Security</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Audits:</strong> All contracts audited by third-party firms (e.g., CertiK, Trail of Bits, OpenZeppelin)</li>
+<li><strong>Bug Bounty:</strong> Immunefi bug bounty program with rewards up to $100,000</li>
+<li><strong>Upgrade Mechanism:</strong> UUPS proxy pattern with timelock and multisig governance</li>
+<li><strong>Pause Functionality:</strong> Emergency pause for critical vulnerabilities</li>
+</ul>
+<h3>11.2 Payment Security</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Webhook Verification:</strong> Flutterwave webhook signatures verified using HMAC-SHA256</li>
+<li><strong>Encryption:</strong> All sensitive data encrypted at rest (AES-256) and in transit (TLS 1.3)</li>
+<li><strong>Fraud Detection:</strong> Machine learning models detect suspicious transaction patterns</li>
+<li><strong>Rate Limiting:</strong> API rate limits prevent abuse</li>
+</ul>
+<h3>11.3 Custody</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Fireblocks:</strong> MPC (Multi-Party Computation) custody for platform treasury</li>
+<li><strong>Gnosis Safe:</strong> Multisig (4-of-7) for admin operations</li>
+<li><strong>Insurance:</strong> Custody insurance up to $100M via Fireblocks</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12. API Reference</h2>
+<h3>12.1 Flutterwave Integration</h3>
+<div class="docs-pre"><code># Initialize Flutterwave payment
+POST https://api.flutterwave.com/v3/charges?type=mobile_money_franchise
+
+{
+    &quot;amount&quot;: 10000,
+    &quot;currency&quot;: &quot;XOF&quot;,
+    &quot;email&quot;: &quot;user@example.com&quot;,
+    &quot;phone_number&quot;: &quot;+22912345678&quot;,
+    &quot;network&quot;: &quot;MTN&quot;,
+    &quot;tx_ref&quot;: &quot;UJAMAA_INV_12345&quot;,
+    &quot;redirect_url&quot;: &quot;https://ujamaa-defi.com/investment/success&quot;,
+    &quot;meta&quot;: {
+        &quot;user_id&quot;: &quot;user_123&quot;,
+        &quot;asset_id&quot;: &quot;asset_456&quot;,
+        &quot;investment_type&quot;: &quot;primary&quot;
+    }
+}
+
+# Response
+{
+    &quot;status&quot;: &quot;success&quot;,
+    &quot;message&quot;: &quot;Payment initiated&quot;,
+    &quot;data&quot;: {
+        &quot;authorization_url&quot;: &quot;https://checkout.flutterwave.com/...&quot;,
+        &quot;flw_ref&quot;: &quot;FLW-MOMO-12345&quot;
+    }
+}
+</code></div>
+<h3>12.2 Smart Contract Interaction</h3>
+<div class="docs-pre"><code># Mint ERC-3643 tokens (backend call)
+from web3 import Web3
+
+# Connect to Polygon
+w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com'))
+
+# Load contract
+contract = w3.eth.contract(address=UJAMAA_TOKENIZER_ADDRESS, abi=ABI)
+
+# Mint tokens
+tx = contract.functions.mint(
+    user_wallet_address,
+    token_amount_wei
+).build_transaction({
+    'from': PLATFORM_WALLET,
+    'nonce': w3.eth.get_transaction_count(PLATFORM_WALLET),
+    'gas': 200000,
+    'gasPrice': w3.eth.gas_price
+})
+
+# Sign and send
+signed_tx = w3.eth.account.sign_transaction(tx, private_key=PLATFORM_PRIVATE_KEY)
+tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+
+# Wait for confirmation
+receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. Summary of Key Design Principles</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Principle</th>
+<th>Implementation</th>
+<th>SRS Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Currency localization</strong></td>
+<td>All amounts shown in the user's local currency by default</td>
+<td>Section 2.1</td>
+</tr>
+<tr>
+<td><strong>Blockchain abstraction</strong></td>
+<td>All on-chain steps hidden from mobile money users</td>
+<td>Section 7.1</td>
+</tr>
+<tr>
+<td><strong>Operator recognition</strong></td>
+<td>Mobile money providers shown with official logos and brand colors</td>
+<td>Section 7.4</td>
+</tr>
+<tr>
+<td><strong>Real-time feedback</strong></td>
+<td>Live conversion rates and processing states at every step</td>
+<td>Section 7.4</td>
+</tr>
+<tr>
+<td><strong>Dual-path design</strong></td>
+<td>Wallet and mobile money flows are parallel and never merged</td>
+<td>Section 7.1</td>
+</tr>
+<tr>
+<td><strong>SMS fallback</strong></td>
+<td>Every key action triggers an SMS confirmation</td>
+<td>Section 9</td>
+</tr>
+<tr>
+<td><strong>Bidirectional payments</strong></td>
+<td>Flutterwave handles both investment collection and return disbursement</td>
+<td>Section 3</td>
+</tr>
+<tr>
+<td><strong>Security token compliance</strong></td>
+<td><strong>ERC-3643 standard</strong> used for all RWA token issuance on Polygon</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td><strong>Identity verification</strong></td>
+<td>ONCHAINID integration for KYC/AML compliance</td>
+<td>Section 8.2</td>
+</tr>
+<tr>
+<td><strong>Custodial wallet</strong></td>
+<td>Fireblocks or in-house custody abstracts key management from mobile money users</td>
+<td>Section 11.3</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>French/English support, large tap targets, optimized for mid-range Android</td>
+<td>Section 9</td>
+</tr>
+<tr>
+<td><strong>Audit trail</strong></td>
+<td>AssetProof notarizes all investment records</td>
+<td>Section 5.1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Deployment Checklist</h2>
+<h3>14.1 Pre-Deployment</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] All smart contracts audited (Slither, CertiK, OpenZeppelin)</li>
+<li>[ ] Flutterwave sandbox testing complete</li>
+<li>[ ] Mobile money operator testing complete (MTN, Orange, Airtel, M-Pesa)</li>
+<li>[ ] ONCHAINID Claim Issuer configured</li>
+<li>[ ] Backend webhook endpoints secured (HMAC verification)</li>
+<li>[ ] PostgreSQL GDPR compliance configured (encryption, pseudonymization)</li>
+<li>[ ] FastAPI rate limiting configured</li>
+<li>[ ] SMS gateway integration tested (Twilio, Africa's Talking)</li>
+</ul>
+<h3>14.2 Testnet Deployment</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Contracts deployed to Polygon Amoy</li>
+<li>[ ] Contracts verified on Polygonscan Amoy</li>
+<li>[ ] Test investments completed end-to-end</li>
+<li>[ ] Test distributions completed</li>
+<li>[ ] Secondary market transfers tested</li>
+<li>[ ] Compliance rules tested (holding periods, jurisdiction blocks)</li>
+</ul>
+<h3>14.3 Production Deployment</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>[ ] Contracts deployed to Polygon Mainnet</li>
+<li>[ ] Contracts verified on Polygonscan</li>
+<li>[ ] Flutterwave production credentials configured</li>
+<li>[ ] Onafriq/Circle production integration complete</li>
+<li>[ ] Fireblocks custody configured</li>
+<li>[ ] Gnosis Safe multisig configured (4-of-7)</li>
+<li>[ ] Monitoring and alerting configured (Datadog, PagerDuty)</li>
+<li>[ ] Customer support trained on mobile money flows</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>15. Support &amp; Contact</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Contact</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Technical Support</strong></td>
+<td><code>tech@ujamaa-defi.com</code></td>
+<td>24 hours</td>
+</tr>
+<tr>
+<td><strong>Compliance Queries</strong></td>
+<td><code>compliance@ujamaa-defi.com</code></td>
+<td>48 hours</td>
+</tr>
+<tr>
+<td><strong>Flutterwave Integration</strong></td>
+<td><code>developers@flutterwavego.com</code></td>
+<td>24 hours</td>
+</tr>
+<tr>
+<td><strong>Security Issues</strong></td>
+<td><code>security@ujamaa-defi.com</code></td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td><strong>General Inquiries</strong></td>
+<td><code>info@ujamaa-defi.com</code></td>
+<td>48 hours</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Document Version:</strong> 2.0 (ERC-3643 Aligned)<br />
+<strong>Last Updated:</strong> March 15, 2026<br />
+<strong>Next Review:</strong> April 15, 2026</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

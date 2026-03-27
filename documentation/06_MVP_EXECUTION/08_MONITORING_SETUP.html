@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MVP Monitoring and Alerting Setup - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Monitoring and Alerting Setup</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">MVP Monitoring and Alerting Setup</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Status:</strong> ✅ Investigating/Identified/Monitoring/Resolved | <strong>Last Updated:</strong> March 18, 2026</p></div>
+
+        <h1>MVP Monitoring and Alerting Setup</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 18, 2026</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Overview</h2>
+<p>This document describes the monitoring and alerting setup for MVP deployment on Polygon Amoy testnet.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Monitoring Stack</h2>
+<h3>1.1 Components</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>Provider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application Monitoring</strong></td>
+<td>Error tracking, performance</td>
+<td>Sentry</td>
+</tr>
+<tr>
+<td><strong>Infrastructure Monitoring</strong></td>
+<td>Server metrics, logs</td>
+<td>AWS CloudWatch / Grafana</td>
+</tr>
+<tr>
+<td><strong>Blockchain Monitoring</strong></td>
+<td>Contract events, transactions</td>
+<td>The Graph / Alchemy</td>
+</tr>
+<tr>
+<td><strong>uLPime Monitoring</strong></td>
+<td>Service availability</td>
+<td>uLPimeRobot / Pingdom</td>
+</tr>
+<tr>
+<td><strong>Log Aggregation</strong></td>
+<td>Centralized logging</td>
+<td>ELK Stack / Datadog</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 Architecture</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────┐
+│                    Monitoring Stack                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │   Sentry     │  │   Grafana    │  │  CloudWatch  │      │
+│  │   (Errors)   │  │  (Metrics)   │  │   (Infra)    │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+│         │                 │                 │               │
+│         └─────────────────┼─────────────────┘               │
+│                           │                                 │
+│                    ┌──────▼──────┐                          │
+│                    │  Alerting   │                          │
+│                    │  (PagerDuty)│                          │
+│                    └──────┬──────┘                          │
+│                           │                                 │
+│         ┌─────────────────┼─────────────────┐              │
+│         │                 │                 │              │
+│    ┌────▼────┐      ┌────▼────┐      ┌────▼────┐         │
+│    │  Slack  │      │  Email  │      │  SMS    │         │
+│    └─────────┘      └─────────┘      └─────────┘         │
+└─────────────────────────────────────────────────────────────┘
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Application Monitoring (Sentry)</h2>
+<h3>2.1 Setup</h3>
+<div class="docs-pre"><code># Install Sentry SDK
+pip install sentry-sdk  # Backend
+npm install @sentry/react  # Frontend
+</code></div>
+<h3>2.2 Backend Configuration</h3>
+<div class="docs-pre"><code># backend/main.py
+import sentry_sdk
+from sentry_sdk.integrations.fastapi import FastApiIntegration
+
+sentry_sdk.init(
+    dsn=os.getenv(&quot;SENTRY_DSN&quot;),
+    integrations=[FastApiIntegration()],
+    traces_sample_rate=1.0,
+    environment=os.getenv(&quot;ENVIRONMENT&quot;, &quot;development&quot;),
+    release=f&quot;MVP@{__version__}&quot;,
+)
+</code></div>
+<h3>2.3 Frontend Configuration</h3>
+<div class="docs-pre"><code>// frontend/src/main.tsx
+import * as Sentry from &quot;@sentry/react&quot;;
+
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN,
+  environment: import.meta.env.VITE_ENVIRONMENT,
+  release: &quot;MVP@1.0.0&quot;,
+  integrations: [
+    Sentry.browserTracingIntegration(),
+    Sentry.replayIntegration(),
+  ],
+  tracesSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+});
+</code></div>
+<h3>2.4 Alert Rules</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Alert</th>
+<th>Condition</th>
+<th>Severity</th>
+<th>Channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error Rate Spike</td>
+<td>&gt;1% of requests</td>
+<td>Critical</td>
+<td>Slack + SMS</td>
+</tr>
+<tr>
+<td>New Error Type</td>
+<td>Any new error</td>
+<td>High</td>
+<td>Slack</td>
+</tr>
+<tr>
+<td>API Latency P95</td>
+<td>&gt;1000ms</td>
+<td>High</td>
+<td>Slack</td>
+</tr>
+<tr>
+<td>Frontend JS Errors</td>
+<td>&gt;10/min</td>
+<td>Medium</td>
+<td>Slack</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Infrastructure Monitoring</h2>
+<h3>3.1 Metrics to Track</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Threshold</th>
+<th>Alert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Usage</td>
+<td>&gt;80%</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>&gt;85%</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td>Disk Usage</td>
+<td>&gt;90%</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>Network I/O</td>
+<td>Unusual spike</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td>Request Rate</td>
+<td>&gt;1000 req/s</td>
+<td>Info</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.2 CloudWatch Alarms (AWS)</h3>
+<div class="docs-pre"><code>{
+  &quot;AlarmName&quot;: &quot;MVP-Backend-HighCPU&quot;,
+  &quot;MetricName&quot;: &quot;CPUUtilization&quot;,
+  &quot;Threshold&quot;: 80,
+  &quot;Period&quot;: 300,
+  &quot;EvaluationPeriods&quot;: 2,
+  &quot;ComparisonOperator&quot;: &quot;GreaterThanThreshold&quot;,
+  &quot;AlarmActions&quot;: [&quot;arn:aws:sns:...&quot;],
+  &quot;OKActions&quot;: [&quot;arn:aws:sns:...&quot;]
+}
+</code></div>
+<h3>3.3 Grafana Dashboards</h3>
+<p>Create dashboards for:<br />
+- <strong>API Performance:</strong> Request rate, latency, error rate<br />
+- <strong>Backend Health:</strong> CPU, memory, disk, connections<br />
+- <strong>Database:</strong> Query latency, connections, slow queries<br />
+- <strong>Blockchain:</strong> Gas prices, transaction confirmations</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Blockchain Monitoring</h2>
+<h3>4.1 Contract Events</h3>
+<p>Monitor these contract events:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Event</th>
+<th>Contract</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Deposited</code></td>
+<td>uLPToken</td>
+<td>Track deposits</td>
+</tr>
+<tr>
+<td><code>Redeemed</code></td>
+<td>uLPToken</td>
+<td>Track redemptions</td>
+</tr>
+<tr>
+<td><code>PoolCreated</code></td>
+<td>LiquidityPool</td>
+<td>Track new pools</td>
+</tr>
+<tr>
+<td><code>FundDeployed</code></td>
+<td>LiquidityPool</td>
+<td>Track financings</td>
+</tr>
+<tr>
+<td><code>RepaymentRecorded</code></td>
+<td>LiquidityPool</td>
+<td>Track repayments</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 The Graph Subgraph</h3>
+<div class="docs-pre"><code># subgraph/schema.graphql
+type Deposit @entity {
+  id: ID!
+  investor: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Pool @entity {
+  id: ID!
+  name: String!
+  family: String!
+  totalValue: BigInt!
+  createdAt: BigInt!
+}
+</code></div>
+<h3>4.3 Alchemy Notify</h3>
+<p>Set up Alchemy Notify for:<br />
+- Mined transactions (contract addresses)<br />
+- Activity alerts (large transfers)<br />
+- Gas price alerts</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. uLPime Monitoring</h2>
+<h3>5.1 Endpoints to Monitor</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Check Interval</th>
+<th>Timeout</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>https://testnet.ujamaa-defi.com/</code></td>
+<td>1 min</td>
+<td>10s</td>
+<td>HTTP 200</td>
+</tr>
+<tr>
+<td><code>https://api.testnet.ujamaa-defi.com/api/v2/health</code></td>
+<td>1 min</td>
+<td>5s</td>
+<td>HTTP 200</td>
+</tr>
+<tr>
+<td><code>https://rpc-amoy.polygon.technology/</code></td>
+<td>5 min</td>
+<td>10s</td>
+<td>HTTP 200</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 uLPimeRobot Setup</h3>
+<div class="docs-pre"><code>{
+  &quot;monitor_type&quot;: 1,
+  &quot;url&quot;: &quot;https://api.testnet.ujamaa-defi.com/api/v2/health&quot;,
+  &quot;friendly_name&quot;: &quot;MVP API Health&quot;,
+  &quot;interval&quot;: 60,
+  &quot;timeout&quot;: 5,
+  &quot;alert_contacts&quot;: [123456]
+}
+</code></div>
+<h3>5.3 Alert Escalation</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Downtime Duration</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 minute</td>
+<td>Slack notification</td>
+</tr>
+<tr>
+<td>5 minutes</td>
+<td>Email on-call</td>
+</tr>
+<tr>
+<td>15 minutes</td>
+<td>SMS on-call</td>
+</tr>
+<tr>
+<td>30 minutes</td>
+<td>Page engineering lead</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Log Aggregation</h2>
+<h3>6.1 Log Format</h3>
+<div class="docs-pre"><code>{
+  &quot;timestamp&quot;: &quot;2026-03-18T10:00:00Z&quot;,
+  &quot;level&quot;: &quot;INFO&quot;,
+  &quot;service&quot;: &quot;ujamaa-MVP-backend&quot;,
+  &quot;environment&quot;: &quot;testnet&quot;,
+  &quot;trace_id&quot;: &quot;abc123&quot;,
+  &quot;message&quot;: &quot;Investment processed successfully&quot;,
+  &quot;data&quot;: {
+    &quot;investor_id&quot;: &quot;INV-001&quot;,
+    &quot;pool_id&quot;: &quot;POOL-001&quot;,
+    &quot;amount&quot;: &quot;1000000&quot;
+  }
+}
+</code></div>
+<h3>6.2 Log Levels</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Level</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERROR</code></td>
+<td>Errors that require attention</td>
+</tr>
+<tr>
+<td><code>WARN</code></td>
+<td>Potential issues, degraded performance</td>
+</tr>
+<tr>
+<td><code>INFO</code></td>
+<td>Normal operations, user actions</td>
+</tr>
+<tr>
+<td><code>DEBUG</code></td>
+<td>Detailed debugging information</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.3 Log Retention</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Environment</th>
+<th>Retention Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Testnet</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>Production</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td>Audit logs</td>
+<td>7 years</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Alerting Configuration</h2>
+<h3>7.1 PagerDuty Integration</h3>
+<div class="docs-pre"><code># pagerduty.yml
+service:
+  name: &quot;MVP Platform&quot;
+  escalation_policy:
+    - name: &quot;Primary On-Call&quot;
+      delay_minutes: 0
+      targets:
+        - type: schedule
+          id: &quot;SCHEDULE_ID&quot;
+    - name: &quot;Secondary On-Call&quot;
+      delay_minutes: 15
+      targets:
+        - type: user
+          id: &quot;USER_ID&quot;
+</code></div>
+<h3>7.2 Alert Templates</h3>
+<p><strong>Critical Alert:</strong></p>
+<div class="docs-pre"><code>🚨 CRITICAL: {service_name} - {alert_name}
+
+Status: {status}
+Severity: Critical
+Started: {started_at}
+
+Description:
+{alert_description}
+
+Runbook: {runbook_url}
+Dashboard: {dashboard_url}
+
+@channel
+</code></div>
+<p><strong>Warning Alert:</strong></p>
+<div class="docs-pre"><code>⚠️ WARNING: {service_name} - {alert_name}
+
+Status: {status}
+Severity: Warning
+
+Description:
+{alert_description}
+
+Dashboard: {dashboard_url}
+</code></div>
+<h3>7.3 Notification Channels</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Slack</th>
+<th>Email</th>
+<th>SMS</th>
+<th>PagerDuty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>High</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Dashboard Templates</h2>
+<h3>8.1 Executive Dashboard</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Total Value Locked (TVL)</li>
+<li>Total Investors</li>
+<li>Total Yield Distributed</li>
+<li>Platform uLPime (%)</li>
+<li>Average APY</li>
+</ul>
+<h3>8.2 Operations Dashboard</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>API Request Rate</li>
+<li>API Latency (P50, P90, P95, P99)</li>
+<li>Error Rate (%)</li>
+<li>Active Connections</li>
+<li>Database Query Latency</li>
+</ul>
+<h3>8.3 Security Dashboard</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Failed Login Attempts</li>
+<li>Blocked Jurisdictions Checks</li>
+<li>Frozen Accounts</li>
+<li>Suspicious Activity Alerts</li>
+<li>Rate Limit Hits</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Incident Response</h2>
+<h3>9.1 Severity Levels</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Response Time</th>
+<th>Resolution Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 (Critical)</td>
+<td>5 minutes</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>P1 (High)</td>
+<td>15 minutes</td>
+<td>4 hours</td>
+</tr>
+<tr>
+<td>P2 (Medium)</td>
+<td>1 hour</td>
+<td>24 hours</td>
+</tr>
+<tr>
+<td>P3 (Low)</td>
+<td>4 hours</td>
+<td>1 week</td>
+</tr>
+</tbody>
+</table></div>
+<h3>9.2 Incident Template</h3>
+<div class="docs-pre"><code>## Incident: [Brief Description]
+
+**Severity:** P0/P1/P2/P3
+**Status:** Investigating/Identified/Monitoring/Resolved
+**Started:** [Time]
+**Resolved:** [Time]
+
+### Impact
+- Affected users: X
+- Affected services: [List]
+- Duration: X minutes
+
+### Timeline
+- [Time] - Alert triggered
+- [Time] - On-call engaged
+- [Time] - Root cause identified
+- [Time] - Fix deployed
+- [Time] - Service restored
+
+### Root Cause
+[Description]
+
+### Resolution
+[Actions taken]
+
+### Follow-up Actions
+- [ ] Action item 1
+- [ ] Action item 2
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Environment Variables</h2>
+<div class="docs-pre"><code># Sentry
+SENTRY_DSN=https://xxx@ingest.sentry.io/xxx
+SENTRY_ENVIRONMENT=testnet
+
+# CloudWatch
+AWS_ACCESS_KEY_ID=xxx
+AWS_SECRET_ACCESS_KEY=xxx
+AWS_REGION=us-east-1
+
+# PagerDuty
+PAGERDUTY_SERVICE_KEY=xxx
+PAGERDUTY_API_KEY=xxx
+
+# Slack
+SLACK_WEBHOOK_URL=https://hooks.slack.com/xxx
+SLACK_CHANNEL=#MVP-alerts
+
+# uLPime
+uLPIMEROBOT_API_KEY=xxx
+</code></div>
+<hr />
+<p><strong>END OF MONITORING SETUP</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

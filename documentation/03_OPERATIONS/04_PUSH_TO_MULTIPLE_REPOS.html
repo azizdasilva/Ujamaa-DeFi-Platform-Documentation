@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Push Same Code to Multiple Git Repositories - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Operations</a><span class="docs-breadcrumb-separator">/</span><span>Push Same Code to Multiple Git Repositories</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Push Same Code to Multiple Git Repositories</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete</p></div>
+
+        <h1>Push Same Code to Multiple Git Repositories</h1>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect</p>
+<p>This guide explains how to push the same codebase to two different GitHub repositories (e.g., personal repo + organization repo).</p>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Overview</h2>
+<p>When you need to maintain the same code in multiple repositories, you can configure <strong>multiple remotes</strong> in your local Git repository. This allows you to push to both repos from a single local codebase.</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Setup Steps</h2>
+<h3>1. Check Existing Remotes</h3>
+<p>First, see what remotes are currently configured:</p>
+<div class="docs-pre"><code>git remote -v
+</code></div>
+<p>Typical output shows <code>origin</code> (your primary repo):</p>
+<div class="docs-pre"><code>origin  https://github.com/azizdasilva/UJAMAA-DeFi.git (fetch)
+origin  https://github.com/azizdasilva/UJAMAA-DeFi.git (push)
+</code></div>
+<h3>2. Add a Second Remote</h3>
+<p>Add the second repository with a descriptive name (e.g., <code>ujamaa</code> for the org repo):</p>
+<div class="docs-pre"><code>git remote add ujamaa git@github.com:Ujamaa-DeFi/MVP-R1.git
+</code></div>
+<p>Or use HTTPS (recommended for multi-account setups):</p>
+<div class="docs-pre"><code>git remote add ujamaa https://github.com/Ujamaa-DeFi/MVP-R1.git
+</code></div>
+<h3>3. Verify Remotes</h3>
+<div class="docs-pre"><code>git remote -v
+</code></div>
+<p>You should now see both:</p>
+<div class="docs-pre"><code>origin   https://github.com/azizdasilva/UJAMAA-DeFi.git (fetch)
+origin   https://github.com/azizdasilva/UJAMAA-DeFi.git (push)
+upstream https://github.com/Ujamaa-DeFi/MVP-R1.git (fetch)
+upstream https://github.com/Ujamaa-DeFi/MVP-R1.git (push)
+</code></div>
+<h3>4. Push to the Second Remote</h3>
+<div class="docs-pre"><code>git push -u ujamaa main
+</code></div>
+<p>The <code>-u</code> flag sets up tracking so future pushes can use just <code>git push ujamaa main</code>.</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ongoing Workflow</h2>
+<h3>Push to Both Repositories</h3>
+<p>After making commits, push to both remotes:</p>
+<div class="docs-pre"><code>git push origin main
+git push ujamaa main
+</code></div>
+<h3>Create a Git Alias (Optional)</h3>
+<p>To simplify pushing to both repos at once, create a custom Git alias:</p>
+<div class="docs-pre"><code>git config --global alias.pushall '!git push origin main &amp;&amp; git push ujamaa main'
+</code></div>
+<p>Then use:</p>
+<div class="docs-pre"><code>git pushall
+</code></div>
+<h3>Push All Branches</h3>
+<p>To push all branches to both remotes:</p>
+<div class="docs-pre"><code>git push origin --all
+git push ujamaa --all
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Authentication Notes</h2>
+<h3>SSH vs HTTPS</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SSH</strong> (<code>git@github.com:...</code>)</td>
+<td>No credential prompts after key setup</td>
+<td>Requires separate SSH keys for different GitHub accounts</td>
+</tr>
+<tr>
+<td><strong>HTTPS</strong> (<code>https://github.com/...</code>)</td>
+<td>Works with Git Credential Manager</td>
+<td>May prompt for credentials/token</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Multi-Account SSH Setup</h3>
+<p>If using SSH with multiple GitHub accounts, configure SSH config (<code>~/.ssh/config</code>):</p>
+<div class="docs-pre"><code># Personal account
+Host github.com-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+
+# Organization account
+Host github.com-org
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_org
+</code></div>
+<p>Then use corresponding URLs:</p>
+<div class="docs-pre"><code>git remote add origin git@github.com-personal:azizdasilva/UJAMAA-DeFi.git
+git remote add ujamaa git@github.com-org:Ujamaa-DeFi/MVP-R1.git
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Troubleshooting</h2>
+<h3>Permission Denied (publickey)</h3>
+<p>Switch from SSH to HTTPS:</p>
+<div class="docs-pre"><code>git remote set-url ujamaa https://github.com/Ujamaa-DeFi/MVP-R1.git
+git push ujamaa main
+</code></div>
+<h3>Check Remote URL</h3>
+<div class="docs-pre"><code>git remote get-url ujamaa
+</code></div>
+<h3>Update Remote URL</h3>
+<div class="docs-pre"><code>git remote set-url ujamaa &lt;new-url&gt;
+</code></div>
+<h3>Remove a Remote</h3>
+<div class="docs-pre"><code>git remote remove upstream
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git remote -v</code></td>
+<td>List all remotes</td>
+</tr>
+<tr>
+<td><code>git remote add &lt;name&gt; &lt;url&gt;</code></td>
+<td>Add a new remote</td>
+</tr>
+<tr>
+<td><code>git remote set-url &lt;name&gt; &lt;url&gt;</code></td>
+<td>Change remote URL</td>
+</tr>
+<tr>
+<td><code>git push &lt;remote&gt; &lt;branch&gt;</code></td>
+<td>Push to specific remote</td>
+</tr>
+<tr>
+<td><code>git remote remove &lt;name&gt;</code></td>
+<td>Remove a remote</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Operations</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

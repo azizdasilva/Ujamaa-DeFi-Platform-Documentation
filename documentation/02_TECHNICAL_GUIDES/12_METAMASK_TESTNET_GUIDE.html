@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ujamaa DeFi Platform - MetaMask & Testnet Integration Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform - MetaMask & Testnet Integration Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">🚀 Ujamaa DeFi Platform - MetaMask & Testnet Integration Guide</h1>
+        <p class="docs-subtitle">UJAMAA DeFi Platform Documentation</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0.0-mvp | <strong>Status:</strong> ✅ Production Ready for Testnet | <strong>Last Updated:</strong> March 24, 2026</p></div>
+
+        <h1>🚀 Ujamaa DeFi Platform - MetaMask &amp; Testnet Integration Guide</h1>
+<p><strong>Version:</strong> 2.0.0-mvp<br />
+<strong>Network:</strong> Polygon Amoy Testnet<br />
+<strong>Chain ID:</strong> 80002<br />
+<strong>Status:</strong> ✅ Production Ready for Testnet</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📋 Table of Contents</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#network-configuration">Network Configuration</a></li>
+<li><a href="#metamask-setup">MetaMask Setup</a></li>
+<li><a href="#web3-integration">Web3 Integration</a></li>
+<li><a href="#component-usage">Component Usage</a></li>
+<li><a href="#testing-guide">Testing Guide</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#file-structure">File Structure</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📖 Overview</h2>
+<p>The Ujamaa DeFi Platform is now fully integrated with MetaMask and configured for the <strong>Polygon Amoy Testnet</strong>. This integration allows users to:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Connect their MetaMask wallet</li>
+<li>Switch to Polygon Amoy network automatically</li>
+<li>View POL token balances</li>
+<li>Sign messages and transactions</li>
+<li>Interact with smart contracts (when deployed)</li>
+</ul>
+<p><strong>Important:</strong> This is a <strong>TESTNET</strong> deployment. No real money is involved.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🌐 Network Configuration</h2>
+<h3>Polygon Amoy Testnet Parameters</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Network Name</strong></td>
+<td>Polygon Amoy Testnet</td>
+</tr>
+<tr>
+<td><strong>Chain ID</strong></td>
+<td>80002 (0x13882 in hex)</td>
+</tr>
+<tr>
+<td><strong>RPC URL</strong></td>
+<td>https://rpc-amoy.polygon.technology/</td>
+</tr>
+<tr>
+<td><strong>Block Explorer</strong></td>
+<td>https://amoy.polygonscan.com/</td>
+</tr>
+<tr>
+<td><strong>Native Token</strong></td>
+<td>POL</td>
+</tr>
+<tr>
+<td><strong>Token Decimals</strong></td>
+<td>18</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Manual Network Setup in MetaMask</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Open MetaMask</li>
+<li>Click network dropdown → "Add Network"</li>
+<li>Enter the following:<br />
+   - <strong>Network Name:</strong> Polygon Amoy Testnet<br />
+   - <strong>RPC URL:</strong> https://rpc-amoy.polygon.technology/<br />
+   - <strong>Chain ID:</strong> 80002<br />
+   - <strong>Currency Symbol:</strong> POL<br />
+   - <strong>Block Explorer:</strong> https://amoy.polygonscan.com/</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🦊 MetaMask Setup</h2>
+<h3>Step 1: Install MetaMask</h3>
+<p><strong>Download:</strong> https://metamask.io/download/</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Available for Chrome, Firefox, Brave, Edge</li>
+<li>Mobile apps for iOS and Android</li>
+<li><strong>⚠️ Warning:</strong> Only download from official website!</li>
+</ul>
+<h3>Step 2: Create a Wallet</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Click "Create a Wallet"</li>
+<li>Set a strong password</li>
+<li><strong>Securely store your seed phrase</strong> (12-24 words)</li>
+<li>Never share your seed phrase with anyone!</li>
+</ol>
+<h3>Step 3: Add Polygon Amoy Network</h3>
+<p>The platform will automatically prompt to switch networks when you connect. Or follow manual setup above.</p>
+<h3>Step 4: Get Test POL Tokens</h3>
+<p><strong>Faucet:</strong> https://faucet.polygon.technology/</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Copy your MetaMask address</li>
+<li>Paste into faucet</li>
+<li>Request test tokens</li>
+<li>Wait ~15 seconds for confirmation</li>
+</ol>
+<p><strong>Alternative Faucets:</strong><br />
+- https://amoyfaucet.com/<br />
+- https://faucet.quicknode.com/polygon/amoy</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔗 Web3 Integration</h2>
+<h3>Configuration File</h3>
+<p><strong>Location:</strong> <code>frontend/src/config/web3.ts</code></p>
+<div class="docs-pre"><code>export const web3Config = {
+  NETWORK: {
+    NAME: 'Polygon Amoy Testnet',
+    CHAIN_ID: '0x13882',
+    CHAIN_ID_DECIMAL: 80002,
+    RPC_URL: 'https://rpc-amoy.polygon.technology/',
+    BLOCK_EXPLORER: 'https://amoy.polygonscan.com/',
+  },
+  CONTRACTS: {
+    ULP_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Deploy
+    UAT_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Deploy
+    // ... add deployed contract addresses
+  },
+}
+</code></div>
+<h3>useWallet Hook</h3>
+<p><strong>Location:</strong> <code>frontend/src/MVP/hooks/useWallet.ts</code></p>
+<p><strong>Usage:</strong></p>
+<div class="docs-pre"><code>import { useWallet } from './hooks/useWallet';
+
+function MyComponent() {
+  const {
+    isConnected,
+    address,
+    chainId,
+    balance,
+    connect,
+    disconnect,
+    switchNetwork,
+    signMessage,
+    sendTransaction,
+  } = useWallet();
+
+  return (
+    &lt;div&gt;
+      {isConnected ? (
+        &lt;p&gt;Connected: {address}&lt;/p&gt;
+      ) : (
+        &lt;button onClick={connect}&gt;Connect Wallet&lt;/button&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+</code></div>
+<p><strong>Available Methods:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>connect()</code></td>
+<td>Connect MetaMask wallet</td>
+<td>Promise<void></td>
+</tr>
+<tr>
+<td><code>disconnect()</code></td>
+<td>Disconnect wallet</td>
+<td>void</td>
+</tr>
+<tr>
+<td><code>switchNetwork()</code></td>
+<td>Switch to Polygon Amoy</td>
+<td>Promise<void></td>
+</tr>
+<tr>
+<td><code>signMessage(msg)</code></td>
+<td>Sign a message</td>
+<td>Promise<string></td>
+</tr>
+<tr>
+<td><code>sendTransaction(tx)</code></td>
+<td>Send transaction</td>
+<td>Promise<string> (tx hash)</td>
+</tr>
+<tr>
+<td><code>refreshBalance()</code></td>
+<td>Refresh balance</td>
+<td>Promise<void></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🧩 Component Usage</h2>
+<h3>WalletConnect Component</h3>
+<p><strong>Location:</strong> <code>frontend/src/MVP/components/WalletConnect.tsx</code></p>
+<p><strong>Features:</strong><br />
+- One-click MetaMask connection<br />
+- Automatic network switching<br />
+- Balance display<br />
+- Network status indicator<br />
+- Error handling</p>
+<p><strong>Usage:</strong></p>
+<div class="docs-pre"><code>import WalletConnect from './components/WalletConnect';
+
+function Header() {
+  return (
+    &lt;header&gt;
+      &lt;WalletConnect 
+        onConnect={() =&gt; console.log('Wallet connected')}
+        onDisconnect={() =&gt; console.log('Wallet disconnected')}
+      /&gt;
+    &lt;/header&gt;
+  );
+}
+</code></div>
+<p><strong>Props:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onConnect</code></td>
+<td>() =&gt; void</td>
+<td>-</td>
+<td>Callback on wallet connect</td>
+</tr>
+<tr>
+<td><code>onDisconnect</code></td>
+<td>() =&gt; void</td>
+<td>-</td>
+<td>Callback on wallet disconnect</td>
+</tr>
+<tr>
+<td><code>className</code></td>
+<td>string</td>
+<td>''</td>
+<td>Additional CSS classes</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🧪 Testing Guide</h2>
+<h3>1. Access Testnet Guide</h3>
+<p>Navigate to: <code>http://localhost:5173/testnet-guide</code></p>
+<p>This page provides:<br />
+- Complete setup tutorial<br />
+- Network configuration details<br />
+- Test POL faucet links<br />
+- FAQ section</p>
+<h3>2. Test Wallet Connection</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Click "Connect MetaMask" button</li>
+<li>Approve connection in MetaMask popup</li>
+<li>Verify address displays correctly</li>
+<li>Check POL balance shows</li>
+</ol>
+<h3>3. Test Network Switching</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>If on wrong network, amber "Switch Network" button appears</li>
+<li>Click to switch to Polygon Amoy</li>
+<li>MetaMask will prompt for approval</li>
+<li>Page reloads automatically on success</li>
+</ol>
+<h3>4. Test Transactions</h3>
+<div class="docs-pre"><code>// Example transaction
+const txHash = await sendTransaction(
+  '0xRecipientAddress',
+  '0x01', // Value in wei (hex)
+  '0x'    // Data (optional)
+);
+console.log('Transaction sent:', txHash);
+</code></div>
+<h3>5. Test Message Signing</h3>
+<div class="docs-pre"><code>// Example message signing
+const signature = await signMessage('Hello, Ujamaa DeFi!');
+console.log('Signature:', signature);
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔧 Troubleshooting</h2>
+<h3>MetaMask Not Detected</h3>
+<p><strong>Error:</strong> "MetaMask not installed"</p>
+<p><strong>Solutions:</strong><br />
+1. Install MetaMask from https://metamask.io<br />
+2. Refresh the page<br />
+3. Check browser console for errors<br />
+4. Try a different browser</p>
+<h3>Wrong Network</h3>
+<p><strong>Error:</strong> "Wrong network. Please switch to Polygon Amoy Testnet."</p>
+<p><strong>Solutions:</strong><br />
+1. Click "Switch Network" button<br />
+2. Approve in MetaMask<br />
+3. If fails, manually add network (see Network Configuration)</p>
+<h3>Transaction Fails</h3>
+<p><strong>Error:</strong> "Transaction rejected" or "Insufficient balance"</p>
+<p><strong>Solutions:</strong><br />
+1. Ensure you have test POL for gas fees<br />
+2. Check you're on Polygon Amoy network<br />
+3. Verify contract addresses are correct<br />
+4. Check Polygonscan for transaction details</p>
+<h3>Balance Not Showing</h3>
+<p><strong>Solutions:</strong><br />
+1. Refresh balance: <code>refreshBalance()</code><br />
+2. Disconnect and reconnect wallet<br />
+3. Check RPC URL is accessible<br />
+4. Verify you're on correct network</p>
+<h3>Connection Lost on Refresh</h3>
+<p><strong>Expected Behavior:</strong> Wallet should auto-reconnect</p>
+<p><strong>If not:</strong><br />
+1. Check MetaMask is unlocked<br />
+2. Ensure site has permission<br />
+3. Re-approve connection when prompted</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📁 File Structure</h2>
+<div class="docs-pre"><code>frontend/src/
+├── config/
+│   ├── index.ts
+│   └── web3.ts                          # ✅ Web3 configuration
+│
+├── MVP/
+│   ├── components/
+│   │   ├── index.ts
+│   │   └── WalletConnect.tsx            # ✅ MetaMask connection UI
+│   │
+│   ├── hooks/
+│   │   ├── index.ts                     # ✅ Updated exports
+│   │   └── useWallet.ts                 # ✅ Wallet connection hook
+│   │
+│   └── pages/
+│       ├── TestnetGuide.tsx             # ✅ User guide page
+│       └── ...
+│
+└── App.tsx                              # ✅ Routes updated
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📝 Contract Deployment Checklist</h2>
+<p>When ready to deploy smart contracts:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>
+<p><strong>Deploy to Polygon Amoy:</strong><br />
+<code>bash
+   npx hardhat run scripts/deploy.ts --network polygonAmoy</code></p>
+</li>
+<li>
+<p><strong>Update Contract Addresses:</strong><br />
+   - Edit <code>frontend/src/config/web3.ts</code><br />
+   - Replace placeholder addresses with deployed addresses</p>
+</li>
+<li>
+<p><strong>Verify on Polygonscan:</strong><br />
+<code>bash
+   npx hardhat verify --network polygonAmoy &lt;CONTRACT_ADDRESS&gt;</code></p>
+</li>
+<li>
+<p><strong>Test Integration:</strong><br />
+   - Connect wallet<br />
+   - Test each contract function<br />
+   - Verify transactions on Polygonscan</p>
+</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🔐 Security Best Practices</h2>
+<h3>For Users:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ Never share seed phrase</li>
+<li>✅ Only download MetaMask from official site</li>
+<li>✅ Verify URLs before connecting</li>
+<li>✅ Use hardware wallet for large amounts (production)</li>
+<li>✅ Enable MetaMask phishing detection</li>
+</ul>
+<h3>For Developers:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>✅ Validate all user inputs</li>
+<li>✅ Use environment variables for sensitive data</li>
+<li>✅ Implement rate limiting</li>
+<li>✅ Add transaction confirmation modals</li>
+<li>✅ Log all wallet interactions</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📞 Support &amp; Resources</h2>
+<h3>Documentation:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>MetaMask Docs:</strong> https://docs.metamask.io/</li>
+<li><strong>Polygon Docs:</strong> https://docs.polygon.technology/</li>
+<li><strong>Ethers.js:</strong> https://docs.ethers.org/</li>
+</ul>
+<h3>Community:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>MetaMask Support:</strong> https://support.metamask.io/</li>
+<li><strong>Polygon Discord:</strong> https://discord.gg/polygon</li>
+<li><strong>Ujamaa Support:</strong> [Add support contact]</li>
+</ul>
+<h3>Testnet Resources:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Faucet:</strong> https://faucet.polygon.technology/</li>
+<li><strong>Explorer:</strong> https://amoy.polygonscan.com/</li>
+<li><strong>RPC Status:</strong> https://polygon.status.io/</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🚀 Next Steps</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Deploy Smart Contracts</strong> to Polygon Amoy</li>
+<li><strong>Update Contract Addresses</strong> in <code>web3.ts</code></li>
+<li><strong>Test All Features</strong> with testnet tokens</li>
+<li><strong>Security Audit</strong> before mainnet deployment</li>
+<li><strong>Mainnet Deployment</strong> (Polygon Chain ID: 137)</li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>⚠️ Disclaimer</h2>
+<p><strong>THIS IS A TESTNET DEPLOYMENT</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>No real money is involved</li>
+<li>All tokens are test tokens with no value</li>
+<li>For testing and development purposes only</li>
+<li>Production deployment will use real stablecoins and bank integrations</li>
+</ul>
+<hr />
+<p><strong>Last Updated:</strong> March 24, 2026<br />
+<strong>Version:</strong> 2.0.0-mvp<br />
+<strong>Network:</strong> Polygon Amoy Testnet (80002)</p>
+<hr />
+<p><strong>📄 Save this guide for reference during development and testing.</strong></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

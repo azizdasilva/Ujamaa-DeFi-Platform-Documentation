@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ujamaa DeFi Platform Git & GitHub Workflow Guide - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Team Playbooks</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform Git & GitHub Workflow Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Ujamaa DeFi Platform Git & GitHub Workflow Guide</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 1, 2026 | <strong>Audience:</strong> All Developers (New & Existing)</p></div>
+
+        <h1>Ujamaa DeFi Platform Git &amp; GitHub Workflow Guide</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>The Complete Developer's Guide to Version Control</h2>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 1, 2026<br />
+<strong>Classification:</strong> Internal / Team<br />
+<strong>Audience:</strong> All Developers (New &amp; Existing)</p>
+<hr />
+</section>
+<h1>📖 Table of Contents</h1>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-git-setup--configuration">Git Setup &amp; Configuration</a></li>
+<li><a href="#3-repository-structure">Repository Structure</a></li>
+<li><a href="#4-branching-strategy">Branching Strategy</a></li>
+<li><a href="#5-daily-git-workflow">Daily Git Workflow</a></li>
+<li><a href="#6-commit-message-standards">Commit Message Standards</a></li>
+<li><a href="#7-pull-request-process">Pull Request Process</a></li>
+<li><a href="#8-code-review-guidelines">Code Review Guidelines</a></li>
+<li><a href="#9-merge-conflict-resolution">Merge Conflict Resolution</a></li>
+<li><a href="#10-git-safety--best-practices">Git Safety &amp; Best Practices</a></li>
+<li><a href="#11-common-scenarios--solutions">Common Scenarios &amp; Solutions</a></li>
+<li><a href="#12-troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+<h1>1. Introduction</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 Why Git Matters</h2>
+<p>Git is our <strong>time machine</strong> for code. It lets us:<br />
+- Track every change ever made<br />
+- Work on features without breaking production<br />
+- Collaborate without stepping on each other's code<br />
+- Undo mistakes easily<br />
+- Understand who changed what and why</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.2 Our Git Philosophy</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Principle</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Main is Sacred</strong></td>
+<td><code>main</code> branch always reflects production. Never break it.</td>
+</tr>
+<tr>
+<td><strong>Small Commits</strong></td>
+<td>Commit often with clear messages. No mega-commits.</td>
+</tr>
+<tr>
+<td><strong>Review Everything</strong></td>
+<td>No code merges without 2+ approvals</td>
+</tr>
+<tr>
+<td><strong>Test Before Push</strong></td>
+<td>If it's not tested, it's not committed</td>
+</tr>
+<tr>
+<td><strong>Clean History</strong></td>
+<td>Rebase to keep history readable</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 Tools We Use</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Git CLI</strong></td>
+<td>Core version control</td>
+<td>Install from git-scm.com</td>
+</tr>
+<tr>
+<td><strong>GitHub Desktop</strong></td>
+<td>Visual Git client (optional)</td>
+<td>Download from desktop.github.com</td>
+</tr>
+<tr>
+<td><strong>VS Code Git Integration</strong></td>
+<td>Built-in Git tools</td>
+<td>Enabled by default</td>
+</tr>
+<tr>
+<td><strong>GitKraken</strong></td>
+<td>Advanced visual client (optional)</td>
+<td>Free for open source</td>
+</tr>
+<tr>
+<td><strong>GitHub CLI (gh)</strong></td>
+<td>Command-line GitHub access</td>
+<td><code>brew install gh</code> or <code>choco install gh</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>2. Git Setup &amp; Configuration</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.1 Installation</h2>
+<h3>Windows</h3>
+<div class="docs-pre"><code># Using Chocolatey
+choco install git -y
+
+# Or download from https://git-scm.com/download/win
+</code></div>
+<h3>macOS</h3>
+<div class="docs-pre"><code># Using Homebrew
+brew install git
+
+# Or use Xcode Command Line Tools
+xcode-select --install
+</code></div>
+<h3>Linux (Ubuntu/Debian)</h3>
+<div class="docs-pre"><code>sudo apt update
+sudo apt install git -y
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Initial Configuration</h2>
+<div class="docs-pre"><code># Set your identity (appears on every commit)
+git config --global user.name &quot;Aziz Da Silva&quot;
+git config --global user.email &quot;aziz@ujamaa-defi.com&quot;
+
+# Use main as default branch
+git config --global init.defaultBranch main
+
+# Set default editor (VS Code)
+git config --global core.editor &quot;code --wait&quot;
+
+# Enable color output
+git config --global color.ui true
+
+# Configure credential helper (saves your GitHub credentials)
+git config --global credential.helper store
+
+# Show useful Git status info
+git config --global status.short true
+git config --global status.branch true
+
+# Verify your configuration
+git config --list
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.3 SSH Key Setup (Required for GitHub)</h2>
+<div class="docs-pre"><code># Generate new SSH key
+ssh-keygen -t ed25519 -C &quot;aziz@ujamaa-defi.com&quot;
+
+# Press Enter to accept default location (~/.ssh/id_ed25519)
+# Enter a secure passphrase (remember it!)
+
+# Start SSH agent
+eval &quot;$(ssh-agent -s)&quot;
+
+# Add your SSH key to agent
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard
+# Windows:
+clip &lt; ~/.ssh/id_ed25519.pub
+# macOS:
+pbcopy &lt; ~/.ssh/id_ed25519.pub
+# Linux:
+xclip -sel clip &lt; ~/.ssh/id_ed25519.pub
+
+# Add key to GitHub:
+# 1. Go to github.com/settings/keys
+# 2. Click &quot;New SSH key&quot;
+# 3. Paste your key
+# 4. Give it a title (e.g., &quot;Aziz's Laptop&quot;)
+# 5. Click &quot;Add SSH key&quot;
+
+# Test connection
+ssh -T git@github.com
+# Should see: &quot;Hi username! You've successfully authenticated...&quot;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.4 Verify Setup</h2>
+<div class="docs-pre"><code># Check Git version
+git --version
+
+# Check your identity
+git config user.name
+git config user.email
+
+# Test GitHub connection
+ssh -T git@github.com
+</code></div>
+<hr />
+</section>
+<h1>3. Repository Structure</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.1 Our Repositories</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Repository</th>
+<th>Purpose</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ujamaa-defi/backend</strong></td>
+<td>FastAPI backend services</td>
+<td>github.com/ujamaa-defi/backend</td>
+</tr>
+<tr>
+<td><strong>ujamaa-defi/frontend</strong></td>
+<td>React TypeScript frontend</td>
+<td>github.com/ujamaa-defi/frontend</td>
+</tr>
+<tr>
+<td><strong>ujamaa-defi/contracts</strong></td>
+<td>Solidity smart contracts</td>
+<td>github.com/ujamaa-defi/contracts</td>
+</tr>
+<tr>
+<td><strong>ujamaa-defi/infrastructure</strong></td>
+<td>Terraform, Kubernetes configs</td>
+<td>github.com/ujamaa-defi/infrastructure</td>
+</tr>
+<tr>
+<td><strong>ujamaa-defi/docs</strong></td>
+<td>Documentation (SRS, architecture, etc.)</td>
+<td>github.com/ujamaa-defi/docs</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.2 Cloning Repositories</h2>
+<div class="docs-pre"><code># Create project directory
+mkdir ~/ujamaa-defi
+cd ~/ujamaa-defi
+
+# Clone all repositories
+git clone git@github.com:ujamaa-defi/backend.git
+git clone git@github.com:ujamaa-defi/frontend.git
+git clone git@github.com:ujamaa-defi/contracts.git
+git clone git@github.com:ujamaa-defi/infrastructure.git
+git clone git@github.com:ujamaa-defi/docs.git
+
+# Verify clone
+cd backend
+git status
+# Should show: &quot;On branch main&quot; and &quot;Your branch is up to date&quot;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3.3 Repository Layout</h2>
+<div class="docs-pre"><code>ujamaa-defi/
+├── backend/
+│   ├── .git/              # Git metadata (don't touch!)
+│   ├── src/               # Source code
+│   ├── tests/             # Test files
+│   ├── .gitignore         # Files Git should ignore
+│   └── README.md          # Repository documentation
+├── frontend/
+├── contracts/
+└── docs/
+</code></div>
+<hr />
+</section>
+<h1>4. Branching Strategy</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.1 GitHub Flow (Our Branching Model)</h2>
+<p>We use <strong>GitHub Flow</strong> — a simple, powerful workflow:</p>
+<div class="docs-pre"><code>main (production-ready)
+  │
+  ├─── feature/user-login ─────┐
+  │                            │
+  ├─── feature/dashboard ──────┼──→ PR → Review → Merge
+  │                            │
+  └─── fix/login-bug ──────────┘
+</code></div>
+<p><strong>Key Rules:</strong><br />
+1. <code>main</code> is always deployable<br />
+2. Create a branch for each feature/fix<br />
+3. Open a PR when ready<br />
+4. Merge after review and tests pass<br />
+5. Delete branch after merge</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.2 Branch Naming Conventions</h2>
+<p><strong>Format:</strong> <code>type/description</code></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>When to Use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feature/</code></td>
+<td>New features</td>
+<td><code>feature/wallet-connect</code></td>
+</tr>
+<tr>
+<td><code>fix/</code></td>
+<td>Bug fixes</td>
+<td><code>fix/transaction-timestamp</code></td>
+</tr>
+<tr>
+<td><code>hotfix/</code></td>
+<td>Emergency production fixes</td>
+<td><code>hotfix/critical-auth-bug</code></td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>Documentation only</td>
+<td><code>docs/api-auth-examples</code></td>
+</tr>
+<tr>
+<td><code>test/</code></td>
+<td>Adding tests only</td>
+<td><code>test/add-payment-tests</code></td>
+</tr>
+<tr>
+<td><code>refactor/</code></td>
+<td>Code cleanup (no behavior change)</td>
+<td><code>refactor/cleanup-auth-module</code></td>
+</tr>
+<tr>
+<td><code>chore/</code></td>
+<td>Maintenance tasks</td>
+<td><code>chore/update-dependencies</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>✅ GOOD Branch Names:</strong></p>
+<div class="docs-pre"><code>feature/user-kyc-verification
+fix/incorrect-balance-calculation
+docs/update-architecture-diagrams
+test/add-integration-tests-for-payments
+refactor/simplify-error-handling
+</code></div>
+<p><strong>❌ BAD Branch Names:</strong></p>
+<div class="docs-pre"><code>patch-1                    # Too vague
+test                       # What test?
+my-branch                  # Whose? What for?
+fix-stuff                  # What stuff?
+aziz-test                  # Not descriptive
+asdfasdf                   # Just don't
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.3 Branch Protection Rules</h2>
+<p>Our <code>main</code> branch is <strong>protected</strong>:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Rule</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No direct pushes</strong></td>
+<td>Must use Pull Request</td>
+</tr>
+<tr>
+<td><strong>Require 2 reviews</strong></td>
+<td>Need 2 approvals before merge</td>
+</tr>
+<tr>
+<td><strong>Require status checks</strong></td>
+<td>All CI tests must pass</td>
+</tr>
+<tr>
+<td><strong>Require linear history</strong></td>
+<td>No merge commits (rebase only)</td>
+</tr>
+<tr>
+<td><strong>Include administrators</strong></td>
+<td>Applies to everyone (even admins)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>5. Daily Git Workflow</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 Starting Your Work Day</h2>
+<div class="docs-pre"><code># 1. Navigate to your project
+cd ~/ujamaa-defi/backend
+
+# 2. Switch to main branch
+git checkout main
+
+# 3. Get latest changes from GitHub
+git pull origin main
+
+# 4. Create a new branch for your work
+git checkout -b feature/your-feature-name
+
+# 5. Verify you're on the right branch
+git branch
+# Your branch should have a * next to it
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 During Development</h2>
+<div class="docs-pre"><code># Check what files changed
+git status
+
+# See what changed in detail
+git diff
+
+# Add files to staging (do this when ready to commit)
+git add src/auth/login.py
+git add tests/test_login.py
+
+# OR add all changed files
+git add .
+
+# Commit with clear message
+git commit -m &quot;feat: add user login endpoint&quot;
+
+# Continue coding...
+git add .
+git commit -m &quot;test: add login validation tests&quot;
+
+# Push to GitHub (first time needs -u flag)
+git push -u origin feature/your-feature-name
+
+# Subsequent pushes
+git push
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.3 End of Day</h2>
+<div class="docs-pre"><code># Make sure all work is committed
+git status
+
+# Push any pending commits
+git push
+
+# Optional: Switch back to main
+git checkout main
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.4 Complete Workflow Example</h2>
+<div class="docs-pre"><code># Monday Morning: Start new feature
+cd ~/ujamaa-defi/backend
+git checkout main
+git pull origin main
+git checkout -b feature/password-reset
+
+# Monday Afternoon: First commit
+# ... code code code ...
+git add src/auth/password.py
+git commit -m &quot;feat: add password reset request endpoint&quot;
+git push -u origin feature/password-reset
+
+# Tuesday: More work
+# ... more code ...
+git add .
+git commit -m &quot;feat: add password reset confirmation&quot;
+git add .
+git commit -m &quot;test: add password reset tests&quot;
+git push
+
+# Wednesday: Ready for review
+# Create PR on GitHub
+# Address review feedback
+git add .
+git commit -m &quot;fix: address PR feedback - add rate limiting&quot;
+git push
+
+# Thursday: Merged!
+# Delete local branch
+git checkout main
+git pull origin main
+git branch -d feature/password-reset
+</code></div>
+<hr />
+</section>
+<h1>6. Commit Message Standards</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.1 Commit Message Format</h2>
+<div class="docs-pre"><code>type: short description
+
+[optional body with more details]
+
+[optional footer for references]
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.2 Commit Types</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>When to Use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat:</code></td>
+<td>New feature</td>
+<td><code>feat: add two-factor authentication</code></td>
+</tr>
+<tr>
+<td><code>fix:</code></td>
+<td>Bug fix</td>
+<td><code>fix: correct balance calculation</code></td>
+</tr>
+<tr>
+<td><code>docs:</code></td>
+<td>Documentation change</td>
+<td><code>docs: update API authentication guide</code></td>
+</tr>
+<tr>
+<td><code>style:</code></td>
+<td>Formatting (no code change)</td>
+<td><code>style: fix indentation in auth module</code></td>
+</tr>
+<tr>
+<td><code>refactor:</code></td>
+<td>Code cleanup</td>
+<td><code>refactor: simplify error handling logic</code></td>
+</tr>
+<tr>
+<td><code>test:</code></td>
+<td>Adding tests</td>
+<td><code>test: add unit tests for payment service</code></td>
+</tr>
+<tr>
+<td><code>chore:</code></td>
+<td>Maintenance</td>
+<td><code>chore: update dependencies to latest</code></td>
+</tr>
+<tr>
+<td><code>perf:</code></td>
+<td>Performance improvement</td>
+<td><code>perf: optimize database queries</code></td>
+</tr>
+<tr>
+<td><code>security:</code></td>
+<td>Security fix</td>
+<td><code>security: patch XSS vulnerability</code></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.3 Good vs Bad Commit Messages</h2>
+<p><strong>❌ BAD:</strong></p>
+<div class="docs-pre"><code>fixed stuff
+update
+WIP
+asdfasdf
+fix bug
+changes
+</code></div>
+<p><strong>✅ GOOD:</strong></p>
+<div class="docs-pre"><code>feat: add user login with email and password
+
+Implements POST /api/v1/auth/login endpoint with:
+- Email validation
+- Password hashing with bcrypt
+- JWT token generation
+- Rate limiting (5 attempts per hour)
+
+Closes #123
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6.4 Writing Great Commit Messages</h2>
+<h3>Subject Line Rules:</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>50 characters max</strong> (ideal)</li>
+<li><strong>Start with type</strong> (<code>feat:</code>, <code>fix:</code>, etc.)</li>
+<li><strong>Use imperative mood</strong> ("add" not "added")</li>
+<li><strong>No period at end</strong></li>
+<li><strong>Be specific</strong></li>
+</ol>
+<h3>Body Rules:</h3>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Wrap at 72 characters</strong></li>
+<li><strong>Explain WHAT and WHY</strong> (not HOW)</li>
+<li><strong>Include context</strong> if needed</li>
+<li><strong>Reference tickets</strong> (Closes #123)</li>
+</ol>
+<h3>Examples:</h3>
+<p><strong>Good:</strong></p>
+<div class="docs-pre"><code>feat: add password reset functionality
+
+Implements complete password reset flow:
+1. Request reset (POST /auth/reset/request)
+2. Confirm reset (POST /auth/reset/confirm)
+3. Update password (PUT /auth/password)
+
+Includes email template and rate limiting.
+
+Closes #456
+</code></div>
+<p><strong>Bad:</strong></p>
+<div class="docs-pre"><code>fixed password thing
+</code></div>
+<hr />
+</section>
+<h1>7. Pull Request Process</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 When to Create a PR</h2>
+<p>Create a PR when:<br />
+- ✅ All code is committed and pushed<br />
+- ✅ All tests pass locally<br />
+- ✅ You've tested it manually<br />
+- ✅ Documentation is updated<br />
+- ✅ No secrets or sensitive data committed</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.2 Creating a PR</h2>
+<h3>Step 1: Push Your Branch</h3>
+<div class="docs-pre"><code>git push -u origin feature/your-feature-name
+</code></div>
+<h3>Step 2: Go to GitHub</h3>
+<div class="docs-pre"><code>1. Open browser
+2. Navigate to github.com/ujamaa-defi/[repo]
+3. Click &quot;Pull requests&quot; tab
+4. Click &quot;New pull request&quot;
+5. Select your branch
+</code></div>
+<h3>Step 3: Fill Out PR Template</h3>
+<div class="docs-pre"><code>## Description
+Brief description of what this PR does.
+
+## Changes
+- [ ] Added login API endpoint
+- [ ] Updated user model with email verification
+- [ ] Added unit tests (15 tests)
+- [ ] Updated API documentation
+
+## Testing
+How did you test this?
+- [ ] Unit tests pass (run: pytest)
+- [ ] Integration tests pass (run: pytest tests/integration)
+- [ ] Tested locally with Postman
+- [ ] No console errors in browser
+
+## Screenshots (if UI change)
+[Add screenshots here]
+
+## Checklist
+- [ ] Code follows style guide
+- [ ] Tests added/updated
+- [ ] Documentation updated
+- [ ] No security issues introduced
+- [ ] No breaking changes (or documented below)
+
+## Breaking Changes (if any)
+Describe any breaking changes and migration steps.
+</code></div>
+<h3>Step 4: Assign Reviewers</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Add <strong>at least 2 reviewers</strong></li>
+<li>Include 1 senior developer</li>
+<li>Include someone familiar with the code</li>
+</ul>
+<h3>Step 5: Add Labels</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><code>feature</code> for new features</li>
+<li><code>bugfix</code> for bug fixes</li>
+<li><code>documentation</code> for docs</li>
+<li><code>needs-tests</code> if tests needed</li>
+</ul>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.3 PR Size Guidelines</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Size</th>
+<th>Lines Changed</th>
+<th>Review Time</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Small</strong></td>
+<td>&lt; 100</td>
+<td>&lt; 30 min</td>
+<td>✅ Ideal</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>100-400</td>
+<td>30-60 min</td>
+<td>✅ Acceptable</td>
+</tr>
+<tr>
+<td><strong>Large</strong></td>
+<td>400-800</td>
+<td>1-2 hours</td>
+<td>⚠️ Try to split</td>
+</tr>
+<tr>
+<td><strong>Too Big</strong></td>
+<td>&gt; 800</td>
+<td>2+ hours</td>
+<td>❌ Must split</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>If your PR is too big:</strong><br />
+- Split into multiple PRs<br />
+- Each PR should be independently mergeable<br />
+- Reference related PRs in description</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.4 PR Status Checks</h2>
+<p>GitHub automatically runs checks:</p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Does</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CI/CD Pipeline</strong></td>
+<td>Runs tests, builds code</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Code Coverage</strong></td>
+<td>Checks test coverage</td>
+<td>⚠️ Warning</td>
+</tr>
+<tr>
+<td><strong>Security Scan</strong></td>
+<td>Checks for vulnerabilities</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Linting</strong></td>
+<td>Checks code style</td>
+<td>⚠️ Warning</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>All required checks must pass (green ✓) before merge.</strong></p>
+<hr />
+</section>
+<h1>8. Code Review Guidelines</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.1 As PR Author</h2>
+<h3>Before Requesting Review:</h3>
+<div class="docs-pre"><code>□ All code committed and pushed
+□ All tests passing locally
+□ Tested manually
+□ Documentation updated
+□ No console.log() or debug code
+□ No commented-out code
+□ PR description complete
+</code></div>
+<h3>During Review:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Respond to all comments (even just "👍")</li>
+<li>Fix issues promptly</li>
+<li>Ask for clarification if feedback is unclear</li>
+<li>Update PR with fixes and push</li>
+</ul>
+<h3>After Approval:</h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li>Merge (or ask reviewer to merge)</li>
+<li>Delete your branch</li>
+<li>Celebrate! 🎉</li>
+</ul>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.2 As Reviewer</h2>
+<h3>What to Check:</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Questions to Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Correctness</strong></td>
+<td>Does it work? Any bugs? Edge cases handled?</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Tests added? Coverage adequate? Edge cases tested?</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>SQL injection? XSS? Auth issues? Secrets exposed?</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Will this be slow with lots of data? N+1 queries?</td>
+</tr>
+<tr>
+<td><strong>Readability</strong></td>
+<td>Can I understand what it does? Clear variable names?</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Functions documented? README updated?</td>
+</tr>
+</tbody>
+</table></div>
+<h3>How to Give Feedback:</h3>
+<p><strong>✅ GOOD Feedback:</strong></p>
+<div class="docs-pre"><code>&quot;Consider using try-except here to handle connection errors gracefully&quot;
+&quot;Could we add a test for when user input is empty?&quot;
+&quot;Nice use of the factory pattern here!&quot;
+&quot;Should we add rate limiting to prevent abuse?&quot;
+</code></div>
+<p><strong>❌ BAD Feedback:</strong></p>
+<div class="docs-pre"><code>&quot;This is wrong&quot;
+&quot;Why did you do it this way?&quot;
+&quot;Fix this&quot;
+&quot;Looks weird&quot;
+</code></div>
+<h3>Review Responses:</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Response</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LGTM</code></td>
+<td>Looks Good To Me (can merge)</td>
+</tr>
+<tr>
+<td><code>LGTM with nits</code></td>
+<td>Can merge, minor suggestions optional</td>
+</tr>
+<tr>
+<td><code>Request changes</code></td>
+<td>Must fix before merge</td>
+</tr>
+<tr>
+<td><code>Comment</code></td>
+<td>Question or suggestion, discuss</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8.3 Review Turnaround Time</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Priority</th>
+<th>Response Time</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hotfix</strong></td>
+<td>&lt; 1 hour</td>
+<td>Production down, security issue</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>&lt; 4 hours</td>
+<td>Blocking other work</td>
+</tr>
+<tr>
+<td><strong>Normal</strong></td>
+<td>&lt; 24 hours</td>
+<td>Regular feature/fix</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>&lt; 48 hours</td>
+<td>Nice-to-have, refactoring</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<h1>9. Merge Conflict Resolution</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.1 What Causes Conflicts</h2>
+<p>Conflicts happen when:<br />
+- Two people edit same file in same place<br />
+- You edit a file that was changed in main<br />
+- Multiple branches modify same code</p>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.2 Preventing Conflicts</h2>
+<div class="docs-pre"><code># Pull main branch daily
+git checkout main
+git pull origin main
+
+# Rebase your branch frequently
+git checkout feature/your-feature
+git rebase main
+
+# Push after rebase (may need force push)
+git push --force-with-lease
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.3 Resolving Conflicts Step-by-Step</h2>
+<div class="docs-pre"><code># 1. Get latest main
+git checkout main
+git pull origin main
+
+# 2. Go back to your branch
+git checkout feature/your-feature
+
+# 3. Try to merge main
+git merge main
+
+# Git will show conflicts:
+# CONFLICT (content): Merge conflict in src/auth/login.py
+# Automatic merge failed; fix conflicts and then commit the result.
+
+# 4. Open conflicted file in VS Code
+code src/auth/login.py
+
+# 5. Look for conflict markers:
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+# Your code here
+def login_user(email, password):
+    # Your implementation
+    pass
+=======
+# Their code from main
+def login_user(email, password, remember_me=False):
+    # Their implementation with remember_me
+    pass
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+
+# 6. Choose which to keep (or combine):
+def login_user(email, password, remember_me=False):
+    # Combined: your logic + their remember_me parameter
+    if not validate_email(email):
+        raise ValueError(&quot;Invalid email&quot;)
+    # ... rest of implementation
+
+# 7. Remove conflict markers (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)
+
+# 8. Save file
+
+# 9. Mark as resolved
+git add src/auth/login.py
+
+# 10. Complete merge
+git commit -m &quot;merge: resolve conflicts with main&quot;
+
+# 11. Push
+git push
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9.4 Using VS Code for Conflicts</h2>
+<p>VS Code makes this easier:</p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>Open conflicted file</li>
+<li>Look for "Accept Current" / "Accept Incoming" buttons</li>
+<li>Choose which change to keep</li>
+<li>Save file</li>
+<li>Git add and commit</li>
+</ol>
+<hr />
+</section>
+<h1>10. Git Safety &amp; Best Practices</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.1 Golden Rules</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Never push to main directly</strong></td>
+<td>Protects production</td>
+<td>Always use PRs</td>
+</tr>
+<tr>
+<td><strong>Pull before starting work</strong></td>
+<td>Avoid conflicts</td>
+<td><code>git pull origin main</code></td>
+</tr>
+<tr>
+<td><strong>Commit often</strong></td>
+<td>Easy to undo</td>
+<td>Every 30-60 min</td>
+</tr>
+<tr>
+<td><strong>Don't commit secrets</strong></td>
+<td>Security</td>
+<td>Never commit <code>.env</code></td>
+</tr>
+<tr>
+<td><strong>Test before committing</strong></td>
+<td>Don't break things</td>
+<td>Run tests first</td>
+</tr>
+<tr>
+<td><strong>Delete merged branches</strong></td>
+<td>Keep clean</td>
+<td><code>git branch -d name</code></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.2 .gitignore Best Practices</h2>
+<p>Always ignore these files:</p>
+<div class="docs-pre"><code># Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Secrets (NEVER COMMIT THESE)
+*.pem
+*.key
+secrets/
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.3 Undoing Mistakes</h2>
+<h3>Undo Last Commit (Keep Changes)</h3>
+<div class="docs-pre"><code>git reset --soft HEAD~1
+</code></div>
+<h3>Undo Last Commit (Discard Changes)</h3>
+<div class="docs-pre"><code>git reset --hard HEAD~1
+</code></div>
+<h3>Undo File Changes (Before Commit)</h3>
+<div class="docs-pre"><code>git checkout -- filename.py
+</code></div>
+<h3>Undo Pushed Commit (Before PR)</h3>
+<div class="docs-pre"><code>git revert HEAD
+git push
+</code></div>
+<h3>Recover Deleted Branch</h3>
+<div class="docs-pre"><code>git reflog
+# Find the commit hash before deletion
+git checkout -b recovered-branch &lt;commit-hash&gt;
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10.4 Useful Git Commands</h2>
+<div class="docs-pre"><code># See commit history
+git log --oneline --graph
+
+# See who changed what
+git blame filename.py
+
+# Show changes in last commit
+git show HEAD
+
+# List all branches
+git branch -a
+
+# Delete local branch
+git branch -d branch-name
+
+# Delete remote branch
+git push origin --delete branch-name
+
+# Stash changes (save for later)
+git stash
+
+# Apply stashed changes
+git stash pop
+
+# See remote URLs
+git remote -v
+
+# Update remote URL
+git remote set-url origin new-url
+</code></div>
+<hr />
+</section>
+<h1>11. Common Scenarios &amp; Solutions</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.1 "I Committed to Main by Mistake"</h2>
+<div class="docs-pre"><code># 1. Create branch from current commit
+git branch feature/my-work
+
+# 2. Reset main to previous commit
+git checkout main
+git reset --hard origin/main
+
+# 3. Push branch
+git checkout feature/my-work
+git push -u origin feature/my-work
+
+# 4. Create PR as normal
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.2 "I Need to Update Last Commit"</h2>
+<div class="docs-pre"><code># Make your changes
+git add .
+
+# Amend last commit
+git commit --amend -m &quot;new commit message&quot;
+
+# Push (force with lease)
+git push --force-with-lease
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.3 "I Want to Combine Multiple Commits"</h2>
+<div class="docs-pre"><code># Interactive rebase (last 3 commits)
+git rebase -i HEAD~3
+
+# Editor opens - change 'pick' to 'squash' for commits to combine
+# Save and close
+# Edit commit message
+# Save
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.4 "I Need to Sync Fork with Upstream"</h2>
+<div class="docs-pre"><code># Add upstream remote (first time only)
+git remote add upstream git@github.com:ujamaa-defi/backend.git
+
+# Fetch upstream
+git fetch upstream
+
+# Merge upstream main into your main
+git checkout main
+git merge upstream/main
+
+# Push to your fork
+git push origin main
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11.5 "CI Tests Fail After Merge"</h2>
+<div class="docs-pre"><code># 1. Check CI logs on GitHub
+# 2. Fix the issue locally
+# 3. Commit and push fix
+# 4. If urgent, create hotfix branch
+git checkout -b hotfix/fix-ci-tests
+# Fix issue
+git add .
+git commit -m &quot;fix: resolve CI test failures&quot;
+git push -u origin hotfix/fix-ci-tests
+# Create urgent PR
+</code></div>
+<hr />
+</section>
+<h1>12. Troubleshooting</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.1 Common Errors</h2>
+<h3>"Permission denied (publickey)"</h3>
+<div class="docs-pre"><code># SSH key not configured
+ssh -T git@github.com
+
+# If fails, regenerate SSH key (see Section 2.3)
+</code></div>
+<h3>"Updates were rejected because the remote contains work"</h3>
+<div class="docs-pre"><code># Someone else pushed - pull first
+git pull origin main
+# Then push again
+git push
+</code></div>
+<h3>"error: failed to push some refs"</h3>
+<div class="docs-pre"><code># Main is protected - use PR
+# Create branch and PR instead of pushing to main
+git checkout -b feature/my-feature
+git push -u origin feature/my-feature
+</code></div>
+<h3>"fatal: refusing to merge unrelated histories"</h3>
+<div class="docs-pre"><code># Two different Git histories
+# Only use if you know what you're doing
+git merge --allow-unrelated-histories
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.2 Getting Help</h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Resource</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Git Documentation</strong></td>
+<td>Official reference</td>
+</tr>
+<tr>
+<td><strong>GitHub Docs</strong></td>
+<td>GitHub-specific help</td>
+</tr>
+<tr>
+<td><strong>Stack Overflow</strong></td>
+<td>Specific errors</td>
+</tr>
+<tr>
+<td><strong>Team Discord</strong></td>
+<td>Team-specific questions</td>
+</tr>
+<tr>
+<td><strong>Tech Lead</strong></td>
+<td>Complex issues</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>12.3 Git Health Check</h2>
+<div class="docs-pre"><code># Check repository status
+git status
+
+# Check for unpushed commits
+git log origin/main..HEAD
+
+# Check for unmerged changes
+git diff main
+
+# Verify remote
+git remote -v
+
+# Test connection
+ssh -T git@github.com
+</code></div>
+<hr />
+</section>
+<h1>Quick Reference Card</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Daily Commands</h2>
+<div class="docs-pre"><code>git checkout main          # Switch to main
+git pull origin main       # Get latest
+git checkout -b feature/x  # New branch
+git add .                  # Stage changes
+git commit -m &quot;feat: x&quot;    # Commit
+git push                   # Push
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Commit Types</h2>
+<div class="docs-pre"><code>feat: New feature
+fix: Bug fix
+docs: Documentation
+test: Tests
+refactor: Cleanup
+chore: Maintenance
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Branch Types</h2>
+<div class="docs-pre"><code>feature/  New features
+fix/      Bug fixes
+hotfix/   Emergency fixes
+docs/     Documentation
+test/     Tests
+</code></div>
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>PR Checklist</h2>
+<div class="docs-pre"><code>□ Tests pass
+□ Documented
+□ 2+ reviews
+□ CI green
+□ No secrets
+</code></div>
+<hr />
+<p><strong>Remember:</strong> When in doubt, ask in <code>#help-dev</code>! No question is too small.</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Team Playbooks</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

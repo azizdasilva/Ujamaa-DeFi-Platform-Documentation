@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Technology Stack Reference - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Technology Stack Reference</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">Technology Stack Reference</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.0 | <strong>Status:</strong> ✅ Active | <strong>Last Updated:</strong> March 18, 2026</p></div>
+
+        <h1>Technology Stack Reference</h1>
+<p><strong>Document ID:</strong> UJAMAA-TECH-002<br />
+<strong>Version:</strong> 2.0<br />
+<strong>Date:</strong> March 18, 2026<br />
+<strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Status:</strong> ✅ Active<br />
+<strong>Aligned With:</strong> SRS v2.0 Section 10.46</p>
+<hr />
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>1. Executive Summary</strong></h2>
+<p>This document defines the complete technology stack for the UJAMAA DeFi Platform, aligned with SRS v2.0 and MVP specifications.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>2. Technology Updates Summary (March 2026)</strong></h2>
+<h3><strong>Updated Technology Stack</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Previous Version</th>
+<th>Current Version</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>React</strong></td>
+<td>18.x</td>
+<td>19.x</td>
+<td>React 19 stable with React Compiler</td>
+</tr>
+<tr>
+<td><strong>TypeScript</strong></td>
+<td>5.x</td>
+<td>6.0+</td>
+<td>Strict mode by default</td>
+</tr>
+<tr>
+<td><strong>Vite</strong></td>
+<td>5.x</td>
+<td>7.x</td>
+<td>Performance improvements</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.11</td>
+<td>3.11-3.13</td>
+<td>ApeWorX supports 3.10-3.13</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td>15</td>
+<td>17.x/18.x</td>
+<td>14.x EOL November 2026</td>
+</tr>
+<tr>
+<td><strong>Redis</strong></td>
+<td>7</td>
+<td>8.x</td>
+<td>Performance improvements</td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td>1.28</td>
+<td>1.34-1.35</td>
+<td>EKS 1.35 latest</td>
+</tr>
+<tr>
+<td><strong>Solidity</strong></td>
+<td>0.8.20</td>
+<td>0.8.31+</td>
+<td>Latest stable (avoid 0.8.28-0.8.33 IR bug)</td>
+</tr>
+<tr>
+<td><strong>Kafka</strong></td>
+<td>3.x</td>
+<td>4.2.x</td>
+<td>Apache Kafka 4.2.0</td>
+</tr>
+<tr>
+<td><strong>Prometheus</strong></td>
+<td>2.x</td>
+<td>3.x</td>
+<td>Prometheus 3.x latest</td>
+</tr>
+<tr>
+<td><strong>Grafana</strong></td>
+<td>10.x</td>
+<td>12.x</td>
+<td>Grafana 12.x latest</td>
+</tr>
+<tr>
+<td><strong>OpenZeppelin</strong></td>
+<td>5.0</td>
+<td>5.4.0</td>
+<td>Latest stable</td>
+</tr>
+<tr>
+<td><strong>Chainlink</strong></td>
+<td>2.0</td>
+<td>Node v2.31.0+</td>
+<td>Latest stable</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>Critical Security Notice</strong></h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Solidity 0.8.28-0.8.33:</strong> Bug reported in IR pipeline. Use 0.8.34+ or disable IR.</li>
+</ul>
+<h3><strong>Deprecation Notices</strong></h3>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>PostgreSQL 14.x:</strong> EOL November 2026. Migrate to 17.x or 18.x.</li>
+<li><strong>Kubernetes 1.26:</strong> Ending maintenance. Upgrade to 1.34+ recommended.</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>3. Complete Technology Stack</strong></h2>
+<h3><strong>3.1 Blockchain Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Blockchain</strong></td>
+<td>Polygon PoS</td>
+<td>Latest</td>
+<td>Low-cost execution</td>
+</tr>
+<tr>
+<td><strong>Settlement Blockchain</strong></td>
+<td>Ethereum Mainnet</td>
+<td>Latest</td>
+<td>High-value settlement</td>
+</tr>
+<tr>
+<td><strong>Testnet</strong></td>
+<td>Polygon Amoy</td>
+<td>Chain ID: 80002</td>
+<td>MVP testing</td>
+</tr>
+<tr>
+<td><strong>Smart Contract Framework</strong></td>
+<td>ApeWorX</td>
+<td>0.7+</td>
+<td>Python-based development</td>
+</tr>
+<tr>
+<td><strong>Smart Contract Language</strong></td>
+<td>Solidity</td>
+<td>0.8.31+</td>
+<td>Contract implementation</td>
+</tr>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td>ERC-3643 (T-REX)</td>
+<td>Latest</td>
+<td>Permissioned tokens</td>
+</tr>
+<tr>
+<td><strong>NFT Standard</strong></td>
+<td>ERC-3643NFT</td>
+<td>Latest</td>
+<td>Permissioned NFTs</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.2 Smart Contract Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Development Framework</strong></td>
+<td>ApeWorX</td>
+<td>0.7+</td>
+<td>Smart contract development</td>
+</tr>
+<tr>
+<td><strong>Testing Framework</strong></td>
+<td>ApeWorX + Pytest</td>
+<td>-</td>
+<td>Contract testing</td>
+</tr>
+<tr>
+<td><strong>Coverage Tool</strong></td>
+<td>ApeWorX Coverage</td>
+<td>-</td>
+<td>&gt;95% coverage required</td>
+</tr>
+<tr>
+<td><strong>Static Analysis</strong></td>
+<td>Slither, Mythril</td>
+<td>Latest</td>
+<td>Security scanning</td>
+</tr>
+<tr>
+<td><strong>Formal Verification</strong></td>
+<td>Certora</td>
+<td>Critical paths</td>
+<td>Mathematical verification</td>
+</tr>
+<tr>
+<td><strong>Library</strong></td>
+<td>OpenZeppelin Contracts</td>
+<td>5.4.0</td>
+<td>Secure contract library</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.3 Gateway/Oracle Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price Feeds</strong></td>
+<td>Chainlink</td>
+<td>Node v2.31.0+</td>
+<td>Asset price data</td>
+</tr>
+<tr>
+<td><strong>KYC Verification</strong></td>
+<td>ONCHAINID Gateway</td>
+<td>Custom</td>
+<td>Identity verification</td>
+</tr>
+<tr>
+<td><strong>Reserve Proof</strong></td>
+<td>ReserveGateway.sol</td>
+<td>Custom</td>
+<td>Bank reserve attestation</td>
+</tr>
+<tr>
+<td><strong>NAV Calculation</strong></td>
+<td>NAVGateway.sol</td>
+<td>Custom</td>
+<td>Net Asset Value feeds</td>
+</tr>
+<tr>
+<td><strong>Yield Calculation</strong></td>
+<td>YieldGateway.sol</td>
+<td>Custom</td>
+<td>Yield data feeds</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.4 Backend Services Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>FastAPI</td>
+<td>0.109+</td>
+<td>Modern Python web framework</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Python</td>
+<td>3.11-3.13</td>
+<td>Backend development</td>
+</tr>
+<tr>
+<td><strong>Serialization</strong></td>
+<td>Pydantic v2</td>
+<td>2.5+</td>
+<td>Data validation</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>OpenAPI 3.1</td>
+<td>Auto-generated</td>
+<td>API documentation</td>
+</tr>
+<tr>
+<td><strong>gRPC</strong></td>
+<td>grpcio + grpc-tools</td>
+<td>1.60+</td>
+<td>High-performance RPC</td>
+</tr>
+<tr>
+<td><strong>Message Bus</strong></td>
+<td>Apache Kafka</td>
+<td>4.2.x</td>
+<td>Event streaming</td>
+</tr>
+<tr>
+<td><strong>Stream Processing</strong></td>
+<td>Apache Flink</td>
+<td>2.x</td>
+<td>Complex event processing</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.5 Data Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Database</strong></td>
+<td>PostgreSQL</td>
+<td>17.x/18.x</td>
+<td>Persistent data storage</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>Redis</td>
+<td>8.x</td>
+<td>Session, query caching</td>
+</tr>
+<tr>
+<td><strong>Event Streaming</strong></td>
+<td>Apache Kafka</td>
+<td>4.2.x</td>
+<td>Real-time event processing</td>
+</tr>
+<tr>
+<td><strong>GDPR Compliance</strong></td>
+<td>Cryptographic Erasure</td>
+<td>-</td>
+<td>PII protection</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.6 Frontend Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>React</td>
+<td>19.x</td>
+<td>User interface</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>6.0+</td>
+<td>Type-safe development</td>
+</tr>
+<tr>
+<td><strong>Build Tool</strong></td>
+<td>Vite</td>
+<td>7.x</td>
+<td>Fast builds, HMR</td>
+</tr>
+<tr>
+<td><strong>Component Library</strong></td>
+<td>MUI (Material-UI)</td>
+<td>v5</td>
+<td>UI components</td>
+</tr>
+<tr>
+<td><strong>State Management</strong></td>
+<td>Zustand</td>
+<td>Latest</td>
+<td>Client state</td>
+</tr>
+<tr>
+<td><strong>Server State</strong></td>
+<td>TanStack Query</td>
+<td>Latest</td>
+<td>Server state management</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>React Router v6</td>
+<td>Latest</td>
+<td>Client-side routing</td>
+</tr>
+<tr>
+<td><strong>Forms</strong></td>
+<td>React Hook Form + Zod</td>
+<td>Latest</td>
+<td>Form handling</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Plotly.js / Recharts</td>
+<td>Latest</td>
+<td>Financial visualizations</td>
+</tr>
+<tr>
+<td><strong>Tables</strong></td>
+<td>TanStack Table</td>
+<td>Latest</td>
+<td>Data tables</td>
+</tr>
+<tr>
+<td><strong>Web3 Integration</strong></td>
+<td>Wagmi + Viem</td>
+<td>Latest</td>
+<td>Blockchain interaction</td>
+</tr>
+<tr>
+<td><strong>Wallet UI</strong></td>
+<td>RainbowKit</td>
+<td>Latest</td>
+<td>Wallet connection</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>Tailwind CSS</td>
+<td>3.x</td>
+<td>Utility-first CSS</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.7 Security Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Secrets Management</strong></td>
+<td>HashiCorp Vault</td>
+<td>Latest</td>
+<td>Secret storage</td>
+</tr>
+<tr>
+<td><strong>Multi-Sig Wallet</strong></td>
+<td>Safe (Gnosis Safe)</td>
+<td>Latest</td>
+<td>Treasury management</td>
+</tr>
+<tr>
+<td><strong>HSM</strong></td>
+<td>AWS KMS / Cloud HSM</td>
+<td>-</td>
+<td>Key storage</td>
+</tr>
+<tr>
+<td><strong>Identity Verification</strong></td>
+<td>ONCHAINID</td>
+<td>Latest</td>
+<td>KYC/AML enforcement</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>ERC-3643 T-REX</td>
+<td>Latest</td>
+<td>Transfer restrictions</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>3.8 DevOps &amp; Infrastructure Layer</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Container Orchestration</strong></td>
+<td>Kubernetes</td>
+<td>1.34-1.35</td>
+<td>Container management</td>
+</tr>
+<tr>
+<td><strong>Infrastructure as Code</strong></td>
+<td>Terraform</td>
+<td>Latest</td>
+<td>Infrastructure provisioning</td>
+</tr>
+<tr>
+<td><strong>CI/CD</strong></td>
+<td>GitHub Actions / GitLab CI</td>
+<td>Latest</td>
+<td>Automated pipelines</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Prometheus</td>
+<td>3.x</td>
+<td>Metrics collection</td>
+</tr>
+<tr>
+<td><strong>Visualization</strong></td>
+<td>Grafana</td>
+<td>12.x</td>
+<td>Dashboards, alerting</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>ELK Stack / Loki</td>
+<td>Latest</td>
+<td>Log aggregation</td>
+</tr>
+<tr>
+<td><strong>CDN</strong></td>
+<td>CloudFront</td>
+<td>Latest</td>
+<td>Static asset delivery</td>
+</tr>
+<tr>
+<td><strong>Cloud Provider</strong></td>
+<td>AWS / GCP</td>
+<td>-</td>
+<td>Cloud infrastructure</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>4. Technology Decision Rationale</strong></h2>
+<h3><strong>4.1 Why PostgreSQL (not MySQL/MongoDB)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>PostgreSQL</th>
+<th>MySQL</th>
+<th>MongoDB</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACID Compliance</strong></td>
+<td>✅ Full</td>
+<td>✅ Full</td>
+<td>⚠️ Limited</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>JSON Support</strong></td>
+<td>✅ Excellent</td>
+<td>⚠️ Basic</td>
+<td>✅ Excellent</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Partitioning</strong></td>
+<td>✅ Native</td>
+<td>⚠️ Limited</td>
+<td>✅ Native</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Full-Text Search</strong></td>
+<td>✅ Native</td>
+<td>⚠️ Basic</td>
+<td>✅ Native</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Regulatory Compliance</strong></td>
+<td>✅ Excellent</td>
+<td>✅ Good</td>
+<td>⚠️ Limited</td>
+<td>PostgreSQL</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> PostgreSQL chosen for ACID compliance, advanced features, and regulatory compliance.</p>
+<hr />
+<h3><strong>4.2 Why FastAPI (not Django/Flask)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>FastAPI</th>
+<th>Django</th>
+<th>Flask</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>✅ Excellent (async)</td>
+<td>⚠️ Good</td>
+<td>⚠️ Good</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td><strong>Auto Documentation</strong></td>
+<td>✅ OpenAPI auto-gen</td>
+<td>⚠️ Manual</td>
+<td>⚠️ Manual</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td><strong>Type Safety</strong></td>
+<td>✅ Pydantic v2</td>
+<td>⚠️ Optional</td>
+<td>⚠️ Optional</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>✅ Low</td>
+<td>⚠️ Medium</td>
+<td>✅ Low</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td><strong>Async Support</strong></td>
+<td>✅ Native</td>
+<td>⚠️ Added later</td>
+<td>⚠️ Added later</td>
+<td>FastAPI</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> FastAPI chosen for performance, auto-documentation, and type safety.</p>
+<hr />
+<h3><strong>4.3 Why React (not Vue/Angular)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>React</th>
+<th>Vue</th>
+<th>Angular</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ecosystem</strong></td>
+<td>✅ Largest</td>
+<td>⚠️ Growing</td>
+<td>✅ Large</td>
+<td>React</td>
+</tr>
+<tr>
+<td><strong>Talent Pool</strong></td>
+<td>✅ Largest</td>
+<td>⚠️ Medium</td>
+<td>✅ Large</td>
+<td>React</td>
+</tr>
+<tr>
+<td><strong>Web3 Libraries</strong></td>
+<td>✅ Best (wagmi, ethers)</td>
+<td>⚠️ Limited</td>
+<td>⚠️ Limited</td>
+<td>React</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>✅ Excellent (v19)</td>
+<td>✅ Excellent</td>
+<td>⚠️ Good</td>
+<td>React</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>✅ High</td>
+<td>✅ High</td>
+<td>⚠️ Opinionated</td>
+<td>React</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> React chosen for Web3 ecosystem, talent availability, and performance.</p>
+<hr />
+<h3><strong>4.4 Why ERC-3643 (not ERC-20/ERC-721)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>ERC-3643</th>
+<th>ERC-20</th>
+<th>ERC-721</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identity Verification</strong></td>
+<td>✅ Built-in</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>ERC-3643</td>
+</tr>
+<tr>
+<td><strong>Transfer Restrictions</strong></td>
+<td>✅ Built-in</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>ERC-3643</td>
+</tr>
+<tr>
+<td><strong>Regulatory Compliance</strong></td>
+<td>✅ Full</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>ERC-3643</td>
+</tr>
+<tr>
+<td><strong>Audit Trail</strong></td>
+<td>✅ Identity-linked</td>
+<td>⚠️ Address only</td>
+<td>⚠️ Address only</td>
+<td>ERC-3643</td>
+</tr>
+<tr>
+<td><strong>Securities Compliance</strong></td>
+<td>✅ Full</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>ERC-3643</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> ERC-3643 chosen for regulatory compliance and identity verification.</p>
+<hr />
+<h3><strong>4.5 Why Chainlink (not other oracles)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Chainlink</th>
+<th>Pyth</th>
+<th>API3</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Decentralization</strong></td>
+<td>✅ High</td>
+<td>⚠️ Medium</td>
+<td>⚠️ Medium</td>
+<td>Chainlink</td>
+</tr>
+<tr>
+<td><strong>Data Sources</strong></td>
+<td>✅ Multiple</td>
+<td>⚠️ Limited</td>
+<td>⚠️ Limited</td>
+<td>Chainlink</td>
+</tr>
+<tr>
+<td><strong>Security Track Record</strong></td>
+<td>✅ Proven</td>
+<td>⚠️ Newer</td>
+<td>⚠️ Newer</td>
+<td>Chainlink</td>
+</tr>
+<tr>
+<td><strong>African Coverage</strong></td>
+<td>✅ Growing</td>
+<td>⚠️ Limited</td>
+<td>⚠️ Limited</td>
+<td>Chainlink</td>
+</tr>
+<tr>
+<td><strong>Custom Gateway Support</strong></td>
+<td>✅ Functions</td>
+<td>⚠️ Limited</td>
+<td>⚠️ Limited</td>
+<td>Chainlink</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> Chainlink chosen for security, decentralization, and custom gateway support.</p>
+<hr />
+<h3><strong>4.6 Why Kubernetes (not ECS/Lambda)?</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Kubernetes</th>
+<th>ECS</th>
+<th>Lambda</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portability</strong></td>
+<td>✅ Multi-cloud</td>
+<td>⚠️ AWS-only</td>
+<td>⚠️ AWS-only</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Fine-Grained Control</strong></td>
+<td>✅ Full</td>
+<td>⚠️ Limited</td>
+<td>❌ None</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Cost at Scale</strong></td>
+<td>✅ Lower</td>
+<td>⚠️ Medium</td>
+<td>❌ Higher</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Custom Scheduling</strong></td>
+<td>✅ Full</td>
+<td>⚠️ Limited</td>
+<td>❌ None</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>African Data Centers</strong></td>
+<td>✅ Deployable</td>
+<td>⚠️ Limited regions</td>
+<td>❌ Limited regions</td>
+<td>Kubernetes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> Kubernetes chosen for portability, control, and African deployment flexibility.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>5. Version Compatibility Matrix</strong></h2>
+<h3><strong>5.1 Compatible Version Combinations</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Minimum Version</th>
+<th>Recommended</th>
+<th>Maximum Tested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.10</td>
+<td>3.11</td>
+<td>3.13</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td>15</td>
+<td>17.x</td>
+<td>18.x</td>
+</tr>
+<tr>
+<td><strong>Redis</strong></td>
+<td>7</td>
+<td>8.x</td>
+<td>8.x</td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td>1.28</td>
+<td>1.34</td>
+<td>1.35</td>
+</tr>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>18</td>
+<td>20</td>
+<td>22</td>
+</tr>
+<tr>
+<td><strong>Solidity</strong></td>
+<td>0.8.20</td>
+<td>0.8.31+</td>
+<td>0.8.34+</td>
+</tr>
+</tbody>
+</table></div>
+<h3><strong>5.2 Known Incompatible Combinations</strong></h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Incompatible Version</th>
+<th>Issue</th>
+<th>Workaround</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solidity</strong></td>
+<td>0.8.28-0.8.33</td>
+<td>IR pipeline bug</td>
+<td>Use 0.8.34+ or disable IR</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td>14.x</td>
+<td>EOL November 2026</td>
+<td>Migrate to 17.x+</td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td>&lt;1.26</td>
+<td>Ending maintenance</td>
+<td>Upgrade to 1.34+</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>6. Technology Migration Guide</strong></h2>
+<h3><strong>6.1 PostgreSQL 15 → 17/18</strong></h3>
+<div class="docs-pre"><code># Backup existing database
+pg_dumpall -U postgres &gt; backup.sql
+
+# Install new version
+sudo apt-get install postgresql-17
+
+# Restore
+psql -U postgres -f backup.sql
+
+# Verify
+psql -U postgres -c &quot;SELECT version();&quot;
+</code></div>
+<h3><strong>6.2 React 18 → 19</strong></h3>
+<div class="docs-pre"><code># Update package.json
+npm install react@19 react-dom@19
+
+# Update TypeScript
+npm install typescript@6 --save-dev
+
+# Run migration checks
+npx react-codemod@latest
+</code></div>
+<h3><strong>6.3 Kubernetes 1.28 → 1.34</strong></h3>
+<div class="docs-pre"><code># Update EKS cluster
+aws eks update-cluster-version \
+  --name ujamaa-cluster \
+  --kubernetes-version 1.34
+
+# Update node groups
+aws eks update-nodegroup-version \
+  --cluster-name ujamaa-cluster \
+  --nodegroup-name main-nodes \
+  --kubernetes-version 1.34
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>7. Related Documents</strong></h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SRS v2.0</strong></td>
+<td><code>docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code></td>
+<td>Requirements specification</td>
+</tr>
+<tr>
+<td><strong>Architecture Spec</strong></td>
+<td><code>docs/01_SPECIFICATIONS/02_ARCHITECTURE_SPECIFICATION.md</code></td>
+<td>System architecture</td>
+</tr>
+<tr>
+<td><strong>Deployment Guide</strong></td>
+<td><code>docs/02_TECHNICAL_GUIDES/01_DEPLOYMENT_GUIDE.md</code></td>
+<td>Deployment procedures</td>
+</tr>
+<tr>
+<td><strong>Smart Contract Naming</strong></td>
+<td><code>docs/02_TECHNICAL_GUIDES/10_SMART_CONTRACT_NAMING_CONVENTION.md</code></td>
+<td>Contract naming conventions</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span><strong>8. Document Control</strong></h2>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>February 27, 2026</td>
+<td>Aziz Da Silva</td>
+<td>Initial version</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>March 1, 2026</td>
+<td>Aziz Da Silva</td>
+<td>Technology updates</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>March 18, 2026</td>
+<td>System Architect</td>
+<td>SRS v2.0 alignment</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Last Updated:</strong> March 18, 2026<br />
+<strong>Maintained By:</strong> System Architect<br />
+<strong>Next Review:</strong> April 18, 2026</p>
+<hr />
+<p><em>UJAMAA DEFI PLATFORM - Technology Stack Reference v2.0</em></p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>

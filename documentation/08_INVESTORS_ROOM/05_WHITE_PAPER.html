@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>UJAMAA DEFI PLATFORM - UJAMAA Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">UJAMAA DeFi</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Investors Room</a><span class="docs-breadcrumb-separator">/</span><span>UJAMAA DEFI PLATFORM</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">UJAMAA DEFI PLATFORM</h1>
+        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 17, 2026</p></div>
+
+        <h1>UJAMAA DEFI PLATFORM</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>White Paper</h2>
+<p><strong>Institutional-Grade African Real-World Asset Tokenization</strong></p>
+<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> March 17, 2026<br />
+<strong>Classification:</strong> Public</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>ABSTRACT</h2>
+<p>The UJAMAA DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, UJAMAA enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.</p>
+<p>This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the UJAMAA platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (industrial network in Benin), Fireblocks (institutional custody), and BIIC/MCB Mauritius (bank escrow), UJAMAA bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>TABLE OF CONTENTS</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-market-analysis">Market Analysis</a></li>
+<li><a href="#3-system-architecture">System Architecture</a></li>
+<li><a href="#4-token-economics">Token Economics</a></li>
+<li><a href="#5-smart-contract-design">Smart Contract Design</a></li>
+<li><a href="#6-compliance-framework">Compliance Framework</a></li>
+<li><a href="#7-security-model">Security Model</a></li>
+<li><a href="#8-governance">Governance</a></li>
+<li><a href="#9-roadmap">Roadmap</a></li>
+<li><a href="#10-conclusion">Conclusion</a></li>
+<li><a href="#11-references">References</a></li>
+</ol>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. INTRODUCTION</h2>
+<h3>1.1 Problem Statement</h3>
+<p>Africa faces a $331 billion SME financing gap (World Bank, 2025), constraining economic development, job creation, and poverty reduction. Traditional financing channels fail African SMEs due to:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Collateral Requirements:</strong> 100%+ collateral excludes 80% of SMEs</li>
+<li><strong>High Interest Rates:</strong> 18-24% APR prohibits productive borrowing</li>
+<li><strong>Slow Approval:</strong> 6-12 month processing times miss working capital needs</li>
+<li><strong>Large Ticket Sizes:</strong> Private equity $10M+ minimums exceed SME requirements ($500K-€5M)</li>
+</ul>
+<p>Simultaneously, institutional investors face a scarcity of attractive, compliant investment opportunities in African private credit. Pension funds, insurance companies, and DFIs seek 10%+ yields with institutional safeguards, but existing options are limited to:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Unregulated DeFi:</strong> Anonymous counterparties, no KYC/AML, high smart contract risk</li>
+<li><strong>Traditional Private Credit:</strong> High minimums ($10M+), long lock-ups (5-7 years), opaque operations</li>
+</ul>
+<h3>1.2 Solution Overview</h3>
+<p>UJAMAA DeFi Platform bridges this gap through blockchain-based tokenization of African industrial financing:</p>
+<p><strong>Core Innovation:</strong> Diversified liquidity pools of SME financings, represented by yield-bearing ERC-3643 tokens (uLP Tokens) accessible to institutional investors.</p>
+<p><strong>Key Features:</strong><br />
+- <strong>ERC-3643 Compliance:</strong> On-chain identity verification, transfer restrictions, regulatory enforcement<br />
+- <strong>Yield-Bearing Tokens:</strong> Value accrual model (NAV increases, balance constant) for tax efficiency<br />
+- <strong>Collateralized Lending:</strong> Guarantee Token (ERC-3643 NFT) represents certified merchandise<br />
+- <strong>Institutional Custody:</strong> Fireblocks MPC technology with $1B+ insurance<br />
+- <strong>Bank Integration:</strong> BIIC/MCB Mauritius escrow accounts for fiat on/off ramps<br />
+- <strong>Regulatory License:</strong> Mauritius FSC CIS Manager (Category 1)</p>
+<h3>1.3 Pilot Validation</h3>
+<p><strong>ZARA €2M Financing (Q4 2025):</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Industrial Partner</strong></td>
+<td>GDIZ-certified textile factory (Côte d'Ivoire)</td>
+</tr>
+<tr>
+<td><strong>Financing Amount</strong></td>
+<td>€2,000,000</td>
+</tr>
+<tr>
+<td><strong>Term</strong></td>
+<td>365 days</td>
+</tr>
+<tr>
+<td><strong>Interest Rate</strong></td>
+<td>12% APR</td>
+</tr>
+<tr>
+<td><strong>Collateral</strong></td>
+<td>Certified merchandise (Guarantee Token)</td>
+</tr>
+<tr>
+<td><strong>Outcome</strong></td>
+<td>100% repaid on time</td>
+</tr>
+<tr>
+<td><strong>Yield Distributed</strong></td>
+<td>12% in Ujamaa Euro (UJEUR)</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>150 jobs created</td>
+</tr>
+</tbody>
+</table></div>
+<p>This pilot validates the core financing model, collateral mechanism, and yield distribution process.</p>
+<h3>1.4 Document Structure</h3>
+<p>This white paper is organized as follows:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Section 2:</strong> Market analysis (TAM, SAM, SOM, competitive landscape)</li>
+<li><strong>Section 3:</strong> System architecture (layers, components, integrations)</li>
+<li><strong>Section 4:</strong> Token economics (uLP Token, Guarantee Token, fee structure)</li>
+<li><strong>Section 5:</strong> Smart contract design (specifications, upgrade mechanism)</li>
+<li><strong>Section 6:</strong> Compliance framework (ERC-3643, AML/KYC, regulatory)</li>
+<li><strong>Section 7:</strong> Security model (audits, custody, risk management)</li>
+<li><strong>Section 8:</strong> Governance (multisig, upgrades, community)</li>
+<li><strong>Section 9:</strong> Roadmap (milestones, future development)</li>
+<li><strong>Section 10:</strong> Conclusion</li>
+<li><strong>Section 11:</strong> References</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. MARKET ANALYSIS</h2>
+<h3>2.1 Total Addressable Market (TAM)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Market Segment</th>
+<th>Size (2025)</th>
+<th>Size (2030)</th>
+<th>CAGR</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global RWA Tokenization</strong></td>
+<td>$20B</td>
+<td>$10T</td>
+<td>45%</td>
+<td>BCG</td>
+</tr>
+<tr>
+<td><strong>African SME Financing Gap</strong></td>
+<td>$331B</td>
+<td>$500B</td>
+<td>8%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td><strong>AfCFTA Trade Volume</strong></td>
+<td>$200B</td>
+<td>$3.4T</td>
+<td>12%</td>
+<td>AfCFTA</td>
+</tr>
+<tr>
+<td><strong>African Diaspora Remittances</strong></td>
+<td>$100B/year</td>
+<td>$150B/year</td>
+<td>5%</td>
+<td>World Bank</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 Serviceable Addressable Market (SAM)</h3>
+<p><strong>OHADA Zone (17 Countries):</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Country</th>
+<th>GDP</th>
+<th>SME Count</th>
+<th>Financing Need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Côte d'Ivoire</td>
+<td>$95B</td>
+<td>50,000+</td>
+<td>$5B/year</td>
+</tr>
+<tr>
+<td>Senegal</td>
+<td>$45B</td>
+<td>30,000+</td>
+<td>$2B/year</td>
+</tr>
+<tr>
+<td>Cameroon</td>
+<td>$60B</td>
+<td>40,000+</td>
+<td>$3B/year</td>
+</tr>
+<tr>
+<td>Benin</td>
+<td>$25B</td>
+<td>15,000+</td>
+<td>$1B/year</td>
+</tr>
+<tr>
+<td>Other OHADA</td>
+<td>$200B</td>
+<td>100,000+</td>
+<td>$10B/year</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$425B</strong></td>
+<td><strong>235,000+</strong></td>
+<td><strong>$21B/year</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.3 Serviceable Obtainable Market (SOM)</h3>
+<p><strong>5-Year Target:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Year</th>
+<th>Target AUM</th>
+<th>Market Share</th>
+<th># Financings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year 1</td>
+<td>€50M</td>
+<td>0.02%</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Year 2</td>
+<td>€150M</td>
+<td>0.07%</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Year 3</td>
+<td>€400M</td>
+<td>0.19%</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Year 4</td>
+<td>€800M</td>
+<td>0.38%</td>
+<td>600</td>
+</tr>
+<tr>
+<td>Year 5</td>
+<td>€1.5B</td>
+<td>0.71%</td>
+<td>1,000</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.4 Competitive Landscape</h3>
+<h4>2.4.1 Traditional Private Credit</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Competitor</th>
+<th>AUM</th>
+<th>Min. Ticket</th>
+<th>Yield</th>
+<th>Lock-up</th>
+<th>UJAMAA Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>African PE Funds</strong></td>
+<td>$500M</td>
+<td>$10M</td>
+<td>15-20%</td>
+<td>5-7 years</td>
+<td>100x lower minimum, 5x shorter lock-up</td>
+</tr>
+<tr>
+<td><strong>Bank Private Credit</strong></td>
+<td>$1B+</td>
+<td>$5M</td>
+<td>8-12%</td>
+<td>3-5 years</td>
+<td>Higher yield, on-chain transparency</td>
+</tr>
+<tr>
+<td><strong>DFI Programs</strong></td>
+<td>$10B+</td>
+<td>$50M</td>
+<td>6-10%</td>
+<td>5-10 years</td>
+<td>Accessible to smaller institutions</td>
+</tr>
+</tbody>
+</table></div>
+<h4>2.4.2 RWA Tokenization Platforms</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Competitor</th>
+<th>Focus</th>
+<th>TVL</th>
+<th>Yield</th>
+<th>UJAMAA Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Centrifuge</strong></td>
+<td>US/EU Assets</td>
+<td>$500M</td>
+<td>5-8%</td>
+<td>African focus (higher yield, untapped)</td>
+</tr>
+<tr>
+<td><strong>Securitize</strong></td>
+<td>Equity/Debt</td>
+<td>$1B+</td>
+<td>6-10%</td>
+<td>Liquidity pool model (diversification)</td>
+</tr>
+<tr>
+<td><strong>BlackRock BUIDL</strong></td>
+<td>Treasuries</td>
+<td>$2.88B</td>
+<td>4-5%</td>
+<td>SME financing (higher yield, impact)</td>
+</tr>
+<tr>
+<td><strong>Tokeny</strong></td>
+<td>Infrastructure</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Full-stack (pool + origination)</td>
+</tr>
+</tbody>
+</table></div>
+<h4>2.4.3 Unregulated DeFi</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Competitor</th>
+<th>TVL</th>
+<th>Yield</th>
+<th>Risk</th>
+<th>UJAMAA Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aave/Compound</strong></td>
+<td>$10B+</td>
+<td>2-5%</td>
+<td>Smart contract</td>
+<td>Regulatory compliance, institutional</td>
+</tr>
+<tr>
+<td><strong>MakerDAO</strong></td>
+<td>$5B+</td>
+<td>3-8%</td>
+<td>Collateral volatility</td>
+<td>Real-world collateral, stable yield</td>
+</tr>
+<tr>
+<td><strong>Goldfinch</strong></td>
+<td>$500M</td>
+<td>10-15%</td>
+<td>Credit risk</td>
+<td>On-chain identity, OHADA enforcement</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.5 Market Trends</h3>
+<h4>2.5.1 RWA Tokenization Growth</h4>
+<p>Global RWA tokenization is projected to reach $10T by 2030 (BCG), driven by:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Institutional Adoption:</strong> BlackRock, Franklin Templeton, Siemens entering tokenization</li>
+<li><strong>Regulatory Clarity:</strong> MiCA (EU), SEC frameworks (US), Mauritius FSC (Africa)</li>
+<li><strong>Technology Maturation:</strong> ERC-3643, cross-chain bridges, institutional custody</li>
+<li><strong>Yield Demand:</strong> Search for 10%+ yields in low-rate environment</li>
+</ul>
+<h4>2.5.2 African Digital Economy</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>2025</th>
+<th>2030 (Projected)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internet Penetration</td>
+<td>40%</td>
+<td>65%</td>
+</tr>
+<tr>
+<td>Mobile Money Users</td>
+<td>500M</td>
+<td>800M</td>
+</tr>
+<tr>
+<td>Crypto Adoption</td>
+<td>50M</td>
+<td>150M</td>
+</tr>
+<tr>
+<td>Digital Payment Volume</td>
+<td>$500B</td>
+<td>$2T</td>
+</tr>
+</tbody>
+</table></div>
+<h4>2.5.3 Regulatory Tailwinds</h4>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>AfCFTA:</strong> Harmonized trade &amp; investment framework (54 countries)</li>
+<li><strong>OHADA:</strong> Unified commercial law (17 countries)</li>
+<li><strong>Mauritius FSC:</strong> CIS Manager License for digital assets</li>
+<li><strong>MiCA:</strong> EU regulatory clarity for tokenized securities</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. SYSTEM ARCHITECTURE</h2>
+<h3>3.1 High-Level Architecture</h3>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    UJAMAA SYSTEM ARCHITECTURE                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  PRESENTATION LAYER                                     │   │
+│  │  • React Investor Dashboard                             │   │
+│  │  • Portfolio Tracking, Yield Visualization              │   │
+│  │  • Compliance Portal (KYB, Accreditation)               │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  API LAYER (FastAPI Microservices)                      │   │
+│  │  • REST API + WebSocket                                 │   │
+│  │  • Fireblocks API Integration                           │   │
+│  │  • BIIC/MCB Bank API Integration                        │   │
+│  │  • Mobile Money API (M-Pesa, MTN, Airtel)               │   │
+│  │  • Chainlink Oracle Integration                         │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  SMART CONTRACT LAYER (Polygon/Ethereum)                │   │
+│  │  • uLP Token (ERC-3643, Yield-Bearing)                  │   │
+│  │  • Guarantee Token (ERC-3643 NFT, Collateral)           │   │
+│  │  • Liquidity Pool Manager                               │   │
+│  │  • Identity Registry (T-REX)                            │   │
+│  │  • Compliance Module (T-REX)                            │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  INFRASTRUCTURE                                         │   │
+│  │  • Fireblocks MPC Custody                               │   │
+│  │  • BIIC/MCB Escrow Accounts                             │   │
+│  │  • PostgreSQL + Redis                                   │   │
+│  │  • Kafka Event Streaming                                │   │
+│  │  • Kubernetes Orchestration                             │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<h3>3.2 Layer Descriptions</h3>
+<h4>3.2.1 Presentation Layer</h4>
+<p><strong>React Investor Dashboard:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Portfolio View:</strong> Allocation by pool, industrial, geography</li>
+<li><strong>Yield Tracking:</strong> Accrued yield, distribution history, NAV per uLP</li>
+<li><strong>Proof of Reserves:</strong> On-chain attestation of pool backing</li>
+<li><strong>Document Center:</strong> Downloadable statements (PDF), tax reports</li>
+<li><strong>Compliance Portal:</strong> KYB submission, accreditation verification</li>
+</ul>
+<p><strong>Technical Stack:</strong><br />
+- React 19 + TypeScript<br />
+- Material-UI (Bootstrap/Material Design)<br />
+- Web3.js/Ethers.js (blockchain interaction)<br />
+- Plotly/D3.js (data visualization)</p>
+<h4>3.2.2 API Layer</h4>
+<p><strong>FastAPI Microservices:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Function</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User Service</strong></td>
+<td>Authentication, profile management</td>
+<td>FastAPI + PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Pool Service</strong></td>
+<td>Pool creation, asset allocation</td>
+<td>FastAPI + Redis</td>
+</tr>
+<tr>
+<td><strong>Transaction Service</strong></td>
+<td>Financing origination, repayment</td>
+<td>FastAPI + Kafka</td>
+</tr>
+<tr>
+<td><strong>Compliance Service</strong></td>
+<td>KYB verification, sanctions screening</td>
+<td>FastAPI + ONCHAINID</td>
+</tr>
+<tr>
+<td><strong>Reporting Service</strong></td>
+<td>NAV calculation, yield statements</td>
+<td>FastAPI + Plotly</td>
+</tr>
+<tr>
+<td><strong>Integration Service</strong></td>
+<td>Fireblocks, Bank APIs, Mobile Money</td>
+<td>FastAPI + Webhooks</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>External Integrations:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Integration</th>
+<th>Purpose</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fireblocks API</strong></td>
+<td>Custody, MPC wallet management</td>
+<td>REST + Webhooks</td>
+</tr>
+<tr>
+<td><strong>BIIC/MCB API</strong></td>
+<td>Escrow accounts, wire transfers</td>
+<td>ISO 20022 + REST</td>
+</tr>
+<tr>
+<td><strong>M-Pesa/MTN/Airtel</strong></td>
+<td>Mobile Money on/off ramps</td>
+<td>REST API</td>
+</tr>
+<tr>
+<td><strong>Chainlink</strong></td>
+<td>Price feeds, proof of reserves</td>
+<td>Decentralized Oracle</td>
+</tr>
+<tr>
+<td><strong>ONCHAINID</strong></td>
+<td>Identity verification, claims</td>
+<td>Smart Contract</td>
+</tr>
+</tbody>
+</table></div>
+<h4>3.2.3 Smart Contract Layer</h4>
+<p><strong>Token Contracts:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Standard</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uLP Token</strong></td>
+<td>ERC-3643 (Fungible)</td>
+<td>Yield-bearing pool ownership</td>
+</tr>
+<tr>
+<td><strong>Guarantee Token</strong></td>
+<td>ERC-3643 (NFT)</td>
+<td>Collateral representation</td>
+</tr>
+<tr>
+<td><strong>Identity Registry</strong></td>
+<td>T-REX</td>
+<td>On-chain identity verification</td>
+</tr>
+<tr>
+<td><strong>Compliance Module</strong></td>
+<td>T-REX</td>
+<td>Transfer restriction enforcement</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Pool Management:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Liquidity Pool</strong></td>
+<td>Receives investor funds, deploys to industrials</td>
+</tr>
+<tr>
+<td><strong>Asset Proof (Industrial Gateway)</strong></td>
+<td>Certifies merchandise, mints Guarantee Tokens</td>
+</tr>
+<tr>
+<td><strong>Yield Distributor</strong></td>
+<td>Calculates and distributes yield to uLP holders</td>
+</tr>
+<tr>
+<td><strong>Oracle Aggregator</strong></td>
+<td>Aggregates Chainlink price feeds</td>
+</tr>
+</tbody>
+</table></div>
+<h4>3.2.4 Infrastructure Layer</h4>
+<p><strong>Custody &amp; Escrow:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Provider</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MPC Custody</strong></td>
+<td>Fireblocks</td>
+<td>Digital asset storage, transaction signing</td>
+</tr>
+<tr>
+<td><strong>Escrow Accounts</strong></td>
+<td>BIIC/MCB Mauritius</td>
+<td>Fiat deposits, wire transfers</td>
+</tr>
+<tr>
+<td><strong>Mobile Money</strong></td>
+<td>M-Pesa/MTN/Airtel</td>
+<td>African retail on/off ramps</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Data Infrastructure:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Database</strong></td>
+<td>PostgreSQL</td>
+<td>User data, transaction records</td>
+</tr>
+<tr>
+<td><strong>Caching</strong></td>
+<td>Redis</td>
+<td>Session management, hot data</td>
+</tr>
+<tr>
+<td><strong>Event Streaming</strong></td>
+<td>Kafka</td>
+<td>Real-time analytics, audit logging</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Polygon + Ethereum</td>
+<td>Smart contract execution, settlement</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>DevOps:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Kubernetes</td>
+<td>Container management</td>
+</tr>
+<tr>
+<td><strong>Infrastructure as Code</strong></td>
+<td>Terraform</td>
+<td>Cloud provisioning</td>
+</tr>
+<tr>
+<td><strong>CI/CD</strong></td>
+<td>GitHub Actions</td>
+<td>Automated testing, deployment</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Prometheus + Grafana</td>
+<td>Metrics, alerting</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>ELK Stack</td>
+<td>Log aggregation, analysis</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.3 Data Flow</h3>
+<h4>3.3.1 Investor Onboarding Flow</h4>
+<div class="docs-pre"><code>1. Investor submits KYB documents → Dashboard
+2. Documents uploaded to secure storage → AWS S3 (encrypted)
+3. Compliance Service verifies documents → Manual + automated review
+4. UBO identification → Sanctions screening (OFAC/UN/EU/FATF)
+5. ONCHAINID Claim Issuer signs verification → On-chain claim
+6. Identity Registry updated → Investor wallet verified
+7. Accreditation confirmed → Institutional status (≥€100K)
+8. Investor approved → uLP Token purchase enabled
+</code></div>
+<h4>3.3.2 Financing Flow</h4>
+<div class="docs-pre"><code>1. Industrial applies for financing → Dashboard
+2. GDIZ certifies merchandise → SIPI verification
+3. Guarantee Token minted → ERC-3643 NFT
+4. Liquidity Pool deploys Ujamaa Euro (UJEUR) → Industrial wallet
+5. Guarantee Token held by Pool → Collateral security
+6. Industrial produces goods → Sales to off-taker (e.g., ZARA)
+7. Off-taker pays → Repayment Escrow (BIIC)
+8. Smart contract distributes:
+   - Principal + Interest → Pool
+   - Surplus → Industrial
+   - Guarantee Token → Redeemed to Industrial
+9. Yield accrued → uLP NAV increases
+10. Quarterly distribution → Ujamaa Euro (UJEUR) to uLP holders
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. TOKEN ECONOMICS</h2>
+<h3>4.1 uLP Token (Yield-Bearing ERC-3643)</h3>
+<h4>4.1.1 Token Specification</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token Name</strong></td>
+<td>UJAMAA Liquidity Provider Token</td>
+</tr>
+<tr>
+<td><strong>Token Symbol</strong></td>
+<td>uLP-[POOL] (e.g., uLP-IND for Pool Industrie)</td>
+</tr>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td>ERC-3643 (Fungible, Permissioned)</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Polygon (Primary), Ethereum (Settlement)</td>
+</tr>
+<tr>
+<td><strong>Decimals</strong></td>
+<td>18</td>
+</tr>
+<tr>
+<td><strong>Yield Mechanism</strong></td>
+<td>Value accrual (NAV increases, balance constant)</td>
+</tr>
+<tr>
+<td><strong>Denomination</strong></td>
+<td>Ujamaa Euro (UJEUR) (Euro-pegged Stablecoin)</td>
+</tr>
+<tr>
+<td><strong>Minimum Investment</strong></td>
+<td>€100,000 (100,000 uLP at NAV=€1.00)</td>
+</tr>
+<tr>
+<td><strong>Lock-up Period</strong></td>
+<td>180-365 days (pool-dependent)</td>
+</tr>
+<tr>
+<td><strong>Redemption</strong></td>
+<td>30-day notice after lock-up</td>
+</tr>
+<tr>
+<td><strong>Transferability</strong></td>
+<td>ERC-3643 restricted (verified wallets only)</td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.1.2 Yield Mechanism</h4>
+<p><strong>Value Accrual Model:</strong></p>
+<p>Unlike traditional rebasing tokens (balance increases), uLP Tokens use a value accrual model:</p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Token Balance:</strong> Constant (e.g., 100,000 uLP)</li>
+<li><strong>NAV per Token:</strong> Increases over time (e.g., €1.00 → €1.10)</li>
+<li><strong>Total Value:</strong> Balance × NAV (e.g., 100,000 × €1.10 = €110,000)</li>
+</ul>
+<p><strong>Advantages:</strong><br />
+- <strong>Tax Efficiency:</strong> No taxable events from balance changes<br />
+- <strong>Accounting Simplicity:</strong> Constant balance, easier tracking<br />
+- <strong>DeFi Compatibility:</strong> Works with standard ERC-20 integrations</p>
+<p><strong>NAV Calculation:</strong></p>
+<div class="docs-pre"><code>NAV per uLP = Total Pool Value / Total uLP Supply
+
+Where:
+Total Pool Value = Σ (Financing Principal + Accrued Interest - Provision)
+Total uLP Supply = Constant (after initial minting)
+</code></div>
+<p><strong>Example:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Time</th>
+<th>Pool Value</th>
+<th>uLP Supply</th>
+<th>NAV per uLP</th>
+<th>Investor Value (100K uLP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T0</td>
+<td>€50M</td>
+<td>50M</td>
+<td>€1.00</td>
+<td>€100,000</td>
+</tr>
+<tr>
+<td>T1 (Quarter 1)</td>
+<td>€51.25M</td>
+<td>50M</td>
+<td>€1.025</td>
+<td>€102,500</td>
+</tr>
+<tr>
+<td>T2 (Quarter 2)</td>
+<td>€52.5M</td>
+<td>50M</td>
+<td>€1.05</td>
+<td>€105,000</td>
+</tr>
+<tr>
+<td>T3 (Quarter 3)</td>
+<td>€53.75M</td>
+<td>50M</td>
+<td>€1.075</td>
+<td>€107,500</td>
+</tr>
+<tr>
+<td>T4 (Quarter 4)</td>
+<td>€55M</td>
+<td>50M</td>
+<td>€1.10</td>
+<td>€110,000</td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.1.3 Minting &amp; Redemption</h4>
+<p><strong>Minting (Initial Investment):</strong></p>
+<div class="docs-pre"><code>1. Investor wires Ujamaa Euro (UJEUR) to BIIC Escrow
+2. Smart Contract receives Ujamaa Euro (UJEUR)
+3. uLP Tokens minted at current NAV
+4. uLP deposited to investor wallet
+
+uLP Minted = Ujamaa Euro (UJEUR) Amount / NAV per uLP
+
+Example: €100,000 / €1.00 = 100,000 uLP
+</code></div>
+<p><strong>Redemption (After Lock-up):</strong></p>
+<div class="docs-pre"><code>1. Investor submits redemption request (30-day notice)
+2. Smart Contract calculates redemption value
+3. Ujamaa Euro (UJEUR) transferred from Pool to investor
+4. uLP Tokens burned
+
+Ujamaa Euro (UJEUR) Received = uLP Amount × NAV per uLP
+
+Example: 100,000 uLP × €1.10 = €110,000
+</code></div>
+<p><strong>Early Redemption Penalty:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Before Lock-up Expiry:</strong> Not permitted (except emergencies)</li>
+<li><strong>Within 90 days after Lock-up:</strong> 0.5% redemption fee</li>
+<li><strong>After 90 days:</strong> No fee</li>
+</ul>
+<h3>4.2 Guarantee Token (Collateral ERC-3643 NFT)</h3>
+<h4>4.2.1 Token Specification</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token Name</strong></td>
+<td>UJAMAA Guarantee Token</td>
+</tr>
+<tr>
+<td><strong>Token Symbol</strong></td>
+<td>uGT-[ID] (e.g., uGT-001)</td>
+</tr>
+<tr>
+<td><strong>Token Standard</strong></td>
+<td>ERC-3643 (NFT, Non-Transferable)</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Polygon</td>
+</tr>
+<tr>
+<td><strong>Supply</strong></td>
+<td>1 per financing (unique)</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Represents certified merchandise/collateral</td>
+</tr>
+<tr>
+<td><strong>Holder</strong></td>
+<td>Liquidity Pool (until repayment)</td>
+</tr>
+<tr>
+<td><strong>Release</strong></td>
+<td>Automatic upon full repayment</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Only verified entities (Pool, Industrial Gateway)</td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.2.2 Metadata Structure</h4>
+<div class="docs-pre"><code>{
+  &quot;tokenId&quot;: &quot;001&quot;,
+  &quot;name&quot;: &quot;Guarantee Token #001&quot;,
+  &quot;description&quot;: &quot;Collateral for GDIZ Industrial Financing&quot;,
+  &quot;attributes&quot;: {
+    &quot;certificateId&quot;: &quot;GDIZ-2026-001&quot;,
+    &quot;merchandiseValue&quot;: &quot;2000000&quot;,
+    &quot;merchandiseCurrency&quot;: &quot;Ujamaa Euro (UJEUR)&quot;,
+    &quot;expiryDate&quot;: &quot;2027-03-17&quot;,
+    &quot;industrial&quot;: &quot;0x...&quot;,
+    &quot;pool&quot;: &quot;Pool Industrie&quot;,
+    &quot;isRedeemed&quot;: false,
+    &quot;stockHash&quot;: &quot;QmXyz...&quot;,
+    &quot;warehouseLocation&quot;: &quot;GDIZ Warehouse A, Abidjan&quot;,
+    &quot;certificationDate&quot;: &quot;2026-03-17&quot;,
+    &quot;certifier&quot;: &quot;SIPI/GDIZ&quot;
+  },
+  &quot;image&quot;: &quot;ipfs://QmXyz...&quot;
+}
+</code></div>
+<h4>4.2.3 Lifecycle</h4>
+<div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
+2. Industrial Gateway certifies stock (SIPI/GDIZ verification)
+3. Guarantee Token minted (ERC-3643 NFT with metadata)
+4. Pool deploys Ujamaa Euro (UJEUR) to Industrial
+5. Pool holds Guarantee Token (collateral/security)
+6. Industrial repays (principal + interest)
+7. Guarantee Token transferred back to Industrial (forcedTransfer)
+</code></div>
+<p><strong>Smart Contract Function:</strong></p>
+<div class="docs-pre"><code>function redeemGuarantee(uint256 tokenId) external onlyRole(POOL_MANAGER_ROLE) {
+    require(getGuarantee(tokenId).isRedeemed == false, &quot;Already redeemed&quot;);
+    _transfer(from, industrial, tokenId); // ERC-3643 forcedTransfer
+    s_guarantees[tokenId].isRedeemed = true;
+    emit GuaranteeRedeemed(tokenId, industrial);
+}
+</code></div>
+<h3>4.3 Fee Structure</h3>
+<h4>4.3.1 Investor Fees</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Fee</th>
+<th>Rate</th>
+<th>Calculation</th>
+<th>Collection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Management Fee</strong></td>
+<td>2.0% per annum</td>
+<td>Daily accrual on NAV</td>
+<td>Quarterly deduction from pool value</td>
+</tr>
+<tr>
+<td><strong>Performance Fee</strong></td>
+<td>20%</td>
+<td>Above 8% preferred return</td>
+<td>Quarterly, high-water mark</td>
+</tr>
+<tr>
+<td><strong>Redemption Fee</strong></td>
+<td>0.5%</td>
+<td>Early redemption (&lt;90 days after lock-up)</td>
+<td>Deducted from redemption amount</td>
+</tr>
+<tr>
+<td><strong>Transfer Fee</strong></td>
+<td>0.1%</td>
+<td>Secondary market transfers (Phase 2)</td>
+<td>Deducted from transfer amount</td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.3.2 Industrial Fees</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Fee</th>
+<th>Rate</th>
+<th>Calculation</th>
+<th>Collection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Origination Fee</strong></td>
+<td>1-2%</td>
+<td>Upfront, on financing amount</td>
+<td>Deducted from financing disbursement</td>
+</tr>
+<tr>
+<td><strong>Interest</strong></td>
+<td>10-15% APR</td>
+<td>On outstanding principal</td>
+<td>Included in repayment</td>
+</tr>
+<tr>
+<td><strong>Late Fee</strong></td>
+<td>2% per month</td>
+<td>On overdue amount</td>
+<td>Added to outstanding balance</td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.3.3 Fee Flow Example</h4>
+<p><strong>€5M Financing, 12% APR, 1-Year Term:</strong></p>
+<div class="docs-pre"><code>Interest Income: €5M × 12% = €600,000
+Credit Provision: €5M × 5% = €250,000 (expected loss reserve)
+Net Yield to Pool: €600K - €250K = €350,000 (7%)
+
+Platform Revenue:
+- Management Fee: €5M × 2% = €100,000
+- Performance Fee: (€350K - €400K [8% hurdle]) × 20% = €0 (below hurdle)
+Total Platform Revenue: €100,000
+
+Investor Net Yield: €350K - €100K = €250,000 (5% base + distributions)
+</code></div>
+<p><strong>At 11% Net Yield (after provision):</strong></p>
+<div class="docs-pre"><code>Net Yield to Pool: €5M × 11% = €550,000
+
+Platform Revenue:
+- Management Fee: €5M × 2% = €100,000
+- Performance Fee: (€550K - €400K [8% hurdle]) × 20% = €30,000
+Total Platform Revenue: €130,000
+
+Investor Net Yield: €550K - €130K = €420,000 (10% after fees)
+</code></div>
+<h3>4.4 Token Distribution</h3>
+<h4>4.4.1 Initial Distribution (€50M Raise)</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Recipient</th>
+<th>Tokens</th>
+<th>%</th>
+<th>Lock-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institutional Investors</strong></td>
+<td>€47M</td>
+<td>94%</td>
+<td>180-365 days</td>
+</tr>
+<tr>
+<td><strong>Team &amp; Advisors</strong></td>
+<td>€1.5M</td>
+<td>3%</td>
+<td>365 days (1-year cliff)</td>
+</tr>
+<tr>
+<td><strong>Ecosystem Reserve</strong></td>
+<td>€1.5M</td>
+<td>3%</td>
+<td>Reserved for future incentives</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>€50M</strong></td>
+<td><strong>100%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h4>4.4.2 Team Vesting Schedule</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Year</th>
+<th>Vesting %</th>
+<th>Cumulative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Year 1</strong></td>
+<td>0% (cliff)</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>Year 2</strong></td>
+<td>25%</td>
+<td>25%</td>
+</tr>
+<tr>
+<td><strong>Year 3</strong></td>
+<td>25%</td>
+<td>50%</td>
+</tr>
+<tr>
+<td><strong>Year 4</strong></td>
+<td>25%</td>
+<td>75%</td>
+</tr>
+<tr>
+<td><strong>Year 5</strong></td>
+<td>25%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. SMART CONTRACT DESIGN</h2>
+<h3>5.1 Contract Overview</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Contract</th>
+<th>Standard</th>
+<th>Lines of Code</th>
+<th>Audit Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ULPToken</strong></td>
+<td>ERC-3643 (Fungible)</td>
+<td>~500</td>
+<td>CertiK (Q2 2026)</td>
+</tr>
+<tr>
+<td><strong>GuaranteeToken</strong></td>
+<td>ERC-3643 (NFT)</td>
+<td>~400</td>
+<td>CertiK (Q2 2026)</td>
+</tr>
+<tr>
+<td><strong>LiquidityPool</strong></td>
+<td>Custom</td>
+<td>~800</td>
+<td>CertiK (Q2 2026)</td>
+</tr>
+<tr>
+<td><strong>IdentityRegistry</strong></td>
+<td>T-REX</td>
+<td>~600</td>
+<td>OpenZeppelin (Q2 2026)</td>
+</tr>
+<tr>
+<td><strong>ComplianceModule</strong></td>
+<td>T-REX</td>
+<td>~500</td>
+<td>OpenZeppelin (Q2 2026)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 ULPToken Contract</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643.sol&quot;;
+
+/**
+ * @title ULPToken
+ * @notice Yield-bearing ERC-3643 token representing ownership in liquidity pool
+ * @dev Value accrual model: balance constant, NAV increases
+ */
+contract ULPToken is ERC3643 {
+    // Pool-specific data
+    string public poolName;      // e.g., &quot;Pool Industrie&quot;
+    uint256 public poolValue;    // Total pool value in Ujamaa Euro (UJEUR) (18 decimals)
+    uint256 public totalShares;  // Total uLP supply
+
+    // NAV tracking
+    uint256 public navPerShare;  // NAV per uLP token
+    uint256 public lastNavUpdate;
+
+    // Roles
+    bytes32 public constant POOL_MANAGER_ROLE = keccak256(&quot;POOL_MANAGER&quot;);
+
+    /**
+     * @notice Mint uLP tokens to investor
+     * @param investor Investor wallet address
+     * @param amount Ujamaa Euro (UJEUR) amount invested
+     * @return uLP tokens minted
+     */
+    function mint(address investor, uint256 amount) 
+        external 
+        onlyRole(POOL_MANAGER_ROLE) 
+        returns (uint256) 
+    {
+        uint256 shares = amount * 1e18 / navPerShare;
+        _mint(investor, shares);
+        totalShares += shares;
+        emit SharesMinted(investor, shares, amount);
+        return shares;
+    }
+
+    /**
+     * @notice Burn uLP tokens on redemption
+     * @param investor Investor wallet address
+     * @param shares uLP tokens to burn
+     * @return Ujamaa Euro (UJEUR) amount to redeem
+     */
+    function burn(address investor, uint256 shares) 
+        external 
+        onlyRole(POOL_MANAGER_ROLE) 
+        returns (uint256) 
+    {
+        uint256 redemptionAmount = shares * navPerShare / 1e18;
+        _burn(investor, shares);
+        totalShares -= shares;
+        emit SharesBurned(investor, shares, redemptionAmount);
+        return redemptionAmount;
+    }
+
+    /**
+     * @notice Update NAV (called by Pool Manager)
+     * @param newPoolValue New total pool value
+     */
+    function updateNav(uint256 newPoolValue) 
+        external 
+        onlyRole(POOL_MANAGER_ROLE) 
+    {
+        poolValue = newPoolValue;
+        navPerShare = newPoolValue * 1e18 / totalShares;
+        lastNavUpdate = block.timestamp;
+        emit NavUpdated(navPerShare, newPoolValue);
+    }
+
+    /**
+     * @notice Get investor's current value
+     * @param investor Investor wallet address
+     * @return Current value in Ujamaa Euro (UJEUR)
+     */
+    function getInvestorValue(address investor) 
+        external 
+        view 
+        returns (uint256) 
+    {
+        return balanceOf(investor) * navPerShare / 1e18;
+    }
+}
+</code></div>
+<h3>5.3 GuaranteeToken Contract</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@tokeny/erc3643/contracts/ERC3643NFT.sol&quot;;
+
+/**
+ * @title GuaranteeToken
+ * @notice ERC-3643 NFT representing certified merchandise collateral
+ * @dev Non-transferable except to/from Pool or Industrial Gateway
+ */
+contract GuaranteeToken is ERC3643NFT {
+    struct Guarantee {
+        uint256 certificateId;
+        uint256 merchandiseValue;
+        uint256 expiryDate;
+        address industrial;
+        bool isRedeemed;
+        bytes32 stockHash;
+    }
+
+    mapping(uint256 =&gt; Guarantee) private s_guarantees;
+    uint256 private s_nextTokenId;
+
+    address public poolAddress;
+    address public gatewayAddress;
+
+    bytes32 public constant POOL_MANAGER_ROLE = keccak256(&quot;POOL_MANAGER&quot;);
+
+    /**
+     * @notice Mint Guarantee Token for certified merchandise
+     * @param industrial Industrial wallet
+     * @param certificateId GDIZ/SIPI certificate ID
+     * @param value Merchandise value in Ujamaa Euro (UJEUR)
+     * @param expiryDate When invoice is due
+     * @param stockHash IPFS hash of stock documents
+     * @return tokenId New Guarantee Token ID
+     */
+    function mintGuarantee(
+        address industrial,
+        uint256 certificateId,
+        uint256 value,
+        uint256 expiryDate,
+        bytes32 stockHash
+    ) external onlyRole(POOL_MANAGER_ROLE) returns (uint256) {
+        uint256 tokenId = s_nextTokenId++;
+        _mint(industrial, tokenId);
+
+        s_guarantees[tokenId] = Guarantee({
+            certificateId: certificateId,
+            merchandiseValue: value,
+            expiryDate: expiryDate,
+            industrial: industrial,
+            isRedeemed: false,
+            stockHash: stockHash
+        });
+
+        // Transfer to Pool immediately (collateral)
+        _transfer(industrial, poolAddress, tokenId);
+
+        emit GuaranteeMinted(tokenId, industrial, value);
+        return tokenId;
+    }
+
+    /**
+     * @notice Redeem Guarantee Token to industrial on repayment
+     * @param tokenId Guarantee Token ID
+     */
+    function redeemGuarantee(uint256 tokenId) external onlyRole(POOL_MANAGER_ROLE) {
+        Guarantee storage guarantee = s_guarantees[tokenId];
+        require(!guarantee.isRedeemed, &quot;Already redeemed&quot;);
+
+        guarantee.isRedeemed = true;
+        _transfer(poolAddress, guarantee.industrial, tokenId);
+
+        emit GuaranteeRedeemed(tokenId, guarantee.industrial);
+    }
+
+    /**
+     * @notice Override transfer restriction (ERC-3643)
+     * @dev Only Pool or Industrial Gateway can receive
+     */
+    function _canTransfer(address from, address to, uint256 tokenId)
+        internal
+        view
+        override
+        returns (bool)
+    {
+        require(super._canTransfer(from, to, tokenId), &quot;ERC-3643 transfer failed&quot;);
+        require(
+            to == poolAddress || to == gatewayAddress || to == s_guarantees[tokenId].industrial,
+            &quot;Invalid recipient&quot;
+        );
+        return true;
+    }
+}
+</code></div>
+<h3>5.4 LiquidityPool Contract</h3>
+<div class="docs-pre"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title LiquidityPool
+ * @notice Manages diversified industrial financing pool
+ * @dev Deploys funds to industrials, tracks repayments, distributes yield
+ */
+contract LiquidityPool {
+    struct Financing {
+        uint256 id;
+        address industrial;
+        uint256 principal;
+        uint256 interestRate; // APR in basis points (e.g., 1200 = 12%)
+        uint256 startTime;
+        uint256 maturityDate;
+        uint256 guaranteeTokenId;
+        bool isRepaid;
+    }
+
+    mapping(uint256 =&gt; Financing) public financings;
+    uint256 public nextFinancingId;
+
+    address public ulpToken;
+    address public eurcToken;
+    address public poolManager;
+
+    uint256 public totalDeployed;
+    uint256 public totalRepaid;
+    uint256 public accruedInterest;
+
+    event FinancingCreated(
+        uint256 indexed id,
+        address indexed industrial,
+        uint256 principal,
+        uint256 interestRate,
+        uint256 maturityDate
+    );
+
+    event RepaymentReceived(
+        uint256 indexed id,
+        uint256 principal,
+        uint256 interest
+    );
+
+    /**
+     * @notice Create new financing
+     * @param industrial Industrial wallet
+     * @param principal Financing amount
+     * @param interestRate APR in basis points
+     * @param termDays Financing term in days
+     * @param guaranteeTokenId Guarantee Token ID (collateral)
+     */
+    function createFinancing(
+        address industrial,
+        uint256 principal,
+        uint256 interestRate,
+        uint256 termDays,
+        uint256 guaranteeTokenId
+    ) external onlyPoolManager {
+        uint256 id = nextFinancingId++;
+
+        financings[id] = Financing({
+            id: id,
+            industrial: industrial,
+            principal: principal,
+            interestRate: interestRate,
+            startTime: block.timestamp,
+            maturityDate: block.timestamp + (termDays * 1 days),
+            guaranteeTokenId: guaranteeTokenId,
+            isRepaid: false
+        });
+
+        totalDeployed += principal;
+
+        // Transfer Ujamaa Euro (UJEUR) to industrial
+        IERC20(eurcToken).transfer(industrial, principal);
+
+        emit FinancingCreated(id, industrial, principal, interestRate, financings[id].maturityDate);
+    }
+
+    /**
+     * @notice Receive repayment from industrial
+     * @param id Financing ID
+     */
+    function receiveRepayment(uint256 id) external {
+        Financing storage financing = financings[id];
+        require(!financing.isRepaid, &quot;Already repaid&quot;);
+        require(msg.sender == financing.industrial, &quot;Not industrial&quot;);
+
+        uint256 interest = financing.principal * financing.interestRate * 
+            (block.timestamp - financing.startTime) / 1e4 / 365 days;
+        uint256 totalOwed = financing.principal + interest;
+
+        require(
+            IERC20(eurcToken).balanceOf(msg.sender) &gt;= totalOwed,
+            &quot;Insufficient balance&quot;
+        );
+
+        // Transfer repayment to pool
+        IERC20(eurcToken).transferFrom(msg.sender, address(this), totalOwed);
+
+        financing.isRepaid = true;
+        totalRepaid += financing.principal;
+        accruedInterest += interest;
+
+        emit RepaymentReceived(id, financing.principal, interest);
+
+        // Update NAV
+        IULPToken(ulpToken).updateNav(getPoolValue());
+    }
+
+    /**
+     * @notice Get total pool value
+     * @return Pool value in Ujamaa Euro (UJEUR)
+     */
+    function getPoolValue() public view returns (uint256) {
+        uint256 outstandingPrincipal = totalDeployed - totalRepaid;
+        return outstandingPrincipal + accruedInterest;
+    }
+
+    modifier onlyPoolManager() {
+        require(msg.sender == poolManager, &quot;Not pool manager&quot;);
+        _;
+    }
+}
+</code></div>
+<h3>5.5 Upgrade Mechanism</h3>
+<p><strong>UUPS Proxy Pattern:</strong></p>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    UPGRADE MECHANISM                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────┐      ┌─────────────┐      ┌─────────────┐     │
+│  │  User/DAO   │─────▶│   Timelock  │─────▶│   Proxy     │     │
+│  │  (Multisig) │  7d   │  (Delay)    │      │  (Storage)  │     │
+│  └─────────────┘      └─────────────┘      └──────┬──────┘     │
+│                                                   │             │
+│                                                   ▼             │
+│                                          ┌─────────────┐       │
+│                                          │ Implementation│      │
+│                                          │  (Logic)      │      │
+│                                          └─────────────┘       │
+│                                                                 │
+│  PROCESS:                                                       │
+│  1. Multisig proposes upgrade                                   │
+│  2. 7-day timelock delay (community review)                     │
+│  3. Multisig executes upgrade                                   │
+│  4. Proxy points to new implementation                          │
+│  5. Storage preserved, logic updated                            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<p><strong>Governance Parameters:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multisig Threshold</strong></td>
+<td>3-of-5 signers</td>
+</tr>
+<tr>
+<td><strong>Timelock Delay</strong></td>
+<td>7 days</td>
+</tr>
+<tr>
+<td><strong>Emergency Pause</strong></td>
+<td>Immediate (multisig-activated)</td>
+</tr>
+<tr>
+<td><strong>Upgrade Quorum</strong></td>
+<td>100% (multisig only, no token vote)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. COMPLIANCE FRAMEWORK</h2>
+<h3>6.1 ERC-3643 T-REX Protocol</h3>
+<h4>6.1.1 Overview</h4>
+<p>UJAMAA implements the ERC-3643 T-REX (Token for Regulated Exchanges) protocol for permissioned token transfers:</p>
+<p><strong>Key Features:</strong><br />
+- <strong>On-Chain Identity:</strong> ONCHAINID integration for KYC/AML verification<br />
+- <strong>Transfer Restrictions:</strong> Only verified wallets can hold/transfer tokens<br />
+- <strong>Compliance Modules:</strong> Configurable rules (jurisdiction, investor caps, lock-up)<br />
+- <strong>Regulatory Audit Trail:</strong> All transfers logged with identity resolution</p>
+<h4>6.1.2 Identity Verification Flow</h4>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    IDENTITY VERIFICATION                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. INVESTOR SUBMITS KYB DOCUMENTS                              │
+│     • Certificate of Incorporation                              │
+│     • UBO Identification (&gt;25%)                                 │
+│     • Source of Funds Declaration                               │
+│                                                                 │
+│  2. COMPLIANCE TEAM REVIEWS                                     │
+│     • Manual verification                                       │
+│     • Sanctions screening (OFAC/UN/EU/FATF)                     │
+│     • PEP screening                                             │
+│                                                                 │
+│  3. ONCHAINID CLAIM ISSUER SIGNS                                │
+│     • Claim: &quot;Wallet 0x... is KYB-verified&quot;                     │
+│     • Signature stored on-chain                                 │
+│     • No PII on-chain (hash only)                               │
+│                                                                 │
+│  4. IDENTITY REGISTRY UPDATED                                   │
+│     • Wallet address linked to ONCHAINID                        │
+│     • Transfer restrictions enabled                             │
+│                                                                 │
+│  5. INVESTOR CAN ACQUIRE/TRANSFER uLP TOKENS                    │
+│     • ERC-3643 compliance check on every transfer               │
+│     • Blocked if not verified                                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<h4>6.1.3 Transfer Restriction Rules</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Rule</th>
+<th>Configuration</th>
+<th>Enforcement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identity Verification</strong></td>
+<td>Both sender and receiver must be verified</td>
+<td>ERC-3643 Compliance Module</td>
+</tr>
+<tr>
+<td><strong>Jurisdiction Restrictions</strong></td>
+<td>OFAC/UN/EU/FATF sanctioned countries blocked</td>
+<td>Smart contract whitelist</td>
+</tr>
+<tr>
+<td><strong>Investor Caps</strong></td>
+<td>Max 10% of pool per investor</td>
+<td>Compliance Module</td>
+</tr>
+<tr>
+<td><strong>Lock-up Period</strong></td>
+<td>180-365 days from minting</td>
+<td>Timestamp check</td>
+</tr>
+<tr>
+<td><strong>Accreditation</strong></td>
+<td>Institutional (≥€100K) only</td>
+<td>Claim verification</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.2 AML/KYC Compliance</h3>
+<h4>6.2.1 KYB Requirements (Institutional Investors)</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+<th>Verification Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Certificate of Incorporation</strong></td>
+<td>Verify legal entity</td>
+<td>Government registry lookup</td>
+</tr>
+<tr>
+<td><strong>Memorandum &amp; Articles</strong></td>
+<td>Verify authority to invest</td>
+<td>Legal review</td>
+</tr>
+<tr>
+<td><strong>Register of Directors/Shareholders</strong></td>
+<td>Identify UBOs</td>
+<td>Cross-reference with IDs</td>
+</tr>
+<tr>
+<td><strong>UBO Passport/ID</strong></td>
+<td>Verify ultimate beneficial owners (&gt;25%)</td>
+<td>Manual + automated (Jumio, Onfido)</td>
+</tr>
+<tr>
+<td><strong>Source of Funds</strong></td>
+<td>AML compliance</td>
+<td>Bank statements, audited financials</td>
+</tr>
+<tr>
+<td><strong>FATCA/CRS Self-Certification</strong></td>
+<td>Tax compliance</td>
+<td>Signed declaration</td>
+</tr>
+<tr>
+<td><strong>Sanctions Declaration</strong></td>
+<td>OFAC/UN/EU/FATF compliance</td>
+<td>Signed declaration + automated screening</td>
+</tr>
+</tbody>
+</table></div>
+<h4>6.2.2 Sanctions Screening</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>List</th>
+<th>Source</th>
+<th>Screening Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OFAC SDN</strong></td>
+<td>U.S. Treasury</td>
+<td>Real-time + daily batch</td>
+</tr>
+<tr>
+<td><strong>UN Sanctions</strong></td>
+<td>United Nations</td>
+<td>Real-time + daily batch</td>
+</tr>
+<tr>
+<td><strong>EU Sanctions</strong></td>
+<td>European External Action Service</td>
+<td>Real-time + daily batch</td>
+</tr>
+<tr>
+<td><strong>FATF High-Risk</strong></td>
+<td>Financial Action Task Force</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td><strong>PEP Database</strong></td>
+<td>World-Check, Dow Jones</td>
+<td>Real-time + daily batch</td>
+</tr>
+</tbody>
+</table></div>
+<h4>6.2.3 Transaction Monitoring</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Alert Type</th>
+<th>Threshold</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Large Transaction</strong></td>
+<td>&gt;€100,000</td>
+<td>Enhanced review</td>
+</tr>
+<tr>
+<td><strong>Rapid Movement</strong></td>
+<td>Multiple transfers in 24h</td>
+<td>Investigation</td>
+</tr>
+<tr>
+<td><strong>Sanctioned Counterparty</strong></td>
+<td>Any match</td>
+<td>Block + report</td>
+</tr>
+<tr>
+<td><strong>Structuring</strong></td>
+<td>Multiple transactions just below threshold</td>
+<td>Investigation</td>
+</tr>
+<tr>
+<td><strong>Unusual Pattern</strong></td>
+<td>Deviation from expected behavior</td>
+<td>Investigation</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.3 GDPR Compliance</h3>
+<h4>6.3.1 Data Protection Principles</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Principle</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lawfulness, Fairness, Transparency</strong></td>
+<td>Privacy policy, consent forms</td>
+</tr>
+<tr>
+<td><strong>Purpose Limitation</strong></td>
+<td>Data collected only for compliance</td>
+</tr>
+<tr>
+<td><strong>Data Minimization</strong></td>
+<td>Only necessary PII collected</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>Regular data verification</td>
+</tr>
+<tr>
+<td><strong>Storage Limitation</strong></td>
+<td>10-year retention (regulatory requirement)</td>
+</tr>
+<tr>
+<td><strong>Integrity, Confidentiality</strong></td>
+<td>AES-256 encryption, access controls</td>
+</tr>
+</tbody>
+</table></div>
+<h4>6.3.2 Cryptographic Erasure</h4>
+<p><strong>Pattern:</strong> PII never stored on-chain. Instead:</p>
+<div class="docs-pre"><code>On-Chain: Hash(PII + Salt) → 0x... (irreversible)
+Off-Chain: Encrypted PII in secure database (AWS S3 + KMS)
+Erasure: Delete encryption key → PII unrecoverable
+</code></div>
+<p><strong>Implementation:</strong></p>
+<div class="docs-pre"><code># Pseudocode for cryptographic erasure
+import hashlib
+from cryptography.fernet import Fernet
+
+# Store PII
+def store_pii(investor_id, pii_data):
+    key = Fernet.generate_key()
+    cipher = Fernet(key)
+    encrypted_pii = cipher.encrypt(pii_data.encode())
+
+    # Store encrypted PII off-chain
+    db.save(investor_id, encrypted_pii)
+
+    # Store key hash on-chain (for verification)
+    key_hash = hashlib.sha256(key).hexdigest()
+    blockchain.store(investor_id, key_hash)
+
+    return key
+
+# Erase PII (GDPR Article 17)
+def erase_pii(investor_id):
+    # Delete encryption key
+    key = db.get_key(investor_id)
+    db.delete_key(investor_id)
+
+    # Delete encrypted PII
+    db.delete_encrypted_pii(investor_id)
+
+    # On-chain hash remains, but PII is unrecoverable
+    # Compliance: Cryptographic erasure complete
+</code></div>
+<h4>6.3.3 Data Subject Rights</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Right</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Access (Article 15)</strong></td>
+<td>API endpoint for data export</td>
+</tr>
+<tr>
+<td><strong>Rectification (Article 16)</strong></td>
+<td>Dashboard for data updates</td>
+</tr>
+<tr>
+<td><strong>Erasure (Article 17)</strong></td>
+<td>Cryptographic erasure (key deletion)</td>
+</tr>
+<tr>
+<td><strong>Portability (Article 20)</strong></td>
+<td>JSON/CSV export API</td>
+</tr>
+<tr>
+<td><strong>Objection (Article 21)</strong></td>
+<td>Opt-out of marketing communications</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.4 Regulatory Licenses</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>License</th>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CIS Manager License (Cat. 1)</strong></td>
+<td>Mauritius FSC</td>
+<td>Application Q2 2026</td>
+<td>$25K capital, compliance officer, auditor</td>
+</tr>
+<tr>
+<td><strong>ONCHAINID Claim Issuer</strong></td>
+<td>Ethereum/Polygon</td>
+<td>Pending</td>
+<td>Identity verification capability</td>
+</tr>
+<tr>
+<td><strong>Fireblocks Institutional</strong></td>
+<td>Global</td>
+<td>Approved</td>
+<td>KYB, AML program</td>
+</tr>
+<tr>
+<td><strong>BIIC/MCB Escrow</strong></td>
+<td>Mauritius</td>
+<td>Pending</td>
+<td>FSC license, escrow agreement</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. SECURITY MODEL</h2>
+<h3>7.1 Smart Contract Security</h3>
+<h4>7.1.1 Audit Process</h4>
+<div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    SMART CONTRACT AUDIT                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  PHASE 1: INTERNAL REVIEW                                       │
+│  • Code review by development team                              │
+│  • Unit test coverage (&gt;95%)                                    │
+│  • Static analysis (Slither, Mythril)                           │
+│                                                                 │
+│  PHASE 2: EXTERNAL AUDIT                                        │
+│  • CertiK audit (primary)                                       │
+│  • OpenZeppelin audit (secondary)                               │
+│  • Formal verification (critical functions)                     │
+│                                                                 │
+│  PHASE 3: BUG BOUNTY                                            │
+│  • Immunefi platform                                            │
+│  • $100K - $1M bounty range                                     │
+│  • 90-day disclosure window                                     │
+│                                                                 │
+│  PHASE 4: MONITORING                                            │
+│  • Real-time alerting (Forta)                                   │
+│  • Anomaly detection (custom)                                   │
+│  • Emergency pause mechanism                                    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></div>
+<h4>7.1.2 Security Measures</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Measure</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Access Control</strong></td>
+<td>OpenZeppelin AccessControl (role-based)</td>
+</tr>
+<tr>
+<td><strong>Reentrancy Guard</strong></td>
+<td>OpenZeppelin ReentrancyGuard</td>
+</tr>
+<tr>
+<td><strong>Overflow Protection</strong></td>
+<td>Solidity 0.8+ (built-in)</td>
+</tr>
+<tr>
+<td><strong>Oracle Manipulation</strong></td>
+<td>Chainlink price feeds (decentralized)</td>
+</tr>
+<tr>
+<td><strong>Flash Loan Attack</strong></td>
+<td>Time-weighted average price (TWAP)</td>
+</tr>
+<tr>
+<td><strong>Emergency Pause</strong></td>
+<td>Circuit breaker (multisig-activated)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 Custody Security</h3>
+<h4>7.2.1 Fireblocks MPC</h4>
+<p><strong>Technology:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MPC (Multi-Party Computation)</strong></td>
+<td>Private key split across multiple parties</td>
+</tr>
+<tr>
+<td><strong>TEE (Trusted Execution Environment)</strong></td>
+<td>Hardware-based isolation</td>
+</tr>
+<tr>
+<td><strong>Transaction Signing</strong></td>
+<td>Off-chain, never reconstructs full key</td>
+</tr>
+<tr>
+<td><strong>Insurance</strong></td>
+<td>$1B+ coverage (Lloyd's of London)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Configuration:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wallet Type</strong></td>
+<td>MPC Vault</td>
+</tr>
+<tr>
+<td><strong>Signing Threshold</strong></td>
+<td>3-of-5 (multisig policy)</td>
+</tr>
+<tr>
+<td><strong>Transaction Approval</strong></td>
+<td>2-of-3 (operations team)</td>
+</tr>
+<tr>
+<td><strong>Withdrawal Limits</strong></td>
+<td>€1M/day (auto), &gt;€1M (manual)</td>
+</tr>
+<tr>
+<td><strong>Whitelist</strong></td>
+<td>Pre-approved addresses only</td>
+</tr>
+</tbody>
+</table></div>
+<h4>7.2.2 Bank Escrow (BIIC/MCB)</h4>
+<p><strong>Security Measures:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Measure</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Segregated Accounts</strong></td>
+<td>Investor funds ring-fenced from operational funds</td>
+</tr>
+<tr>
+<td><strong>Multi-Sig Withdrawal</strong></td>
+<td>3-of-5 for amounts &gt;€1M</td>
+</tr>
+<tr>
+<td><strong>FATF Travel Rule</strong></td>
+<td>Originator/beneficiary info for transfers &gt;€1,000</td>
+</tr>
+<tr>
+<td><strong>Monthly Reconciliation</strong></td>
+<td>Escrow balance vs. uLP supply</td>
+</tr>
+<tr>
+<td><strong>Audit Rights</strong></td>
+<td>Quarterly third-party audits</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.3 Infrastructure Security</h3>
+<h4>7.3.1 Cloud Security (AWS/GCP)</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Control</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Encryption at Rest</strong></td>
+<td>AES-256 (S3, RDS, EBS)</td>
+</tr>
+<tr>
+<td><strong>Encryption in Transit</strong></td>
+<td>TLS 1.3 (all communications)</td>
+</tr>
+<tr>
+<td><strong>Network Security</strong></td>
+<td>VPC, security groups, NACLs</td>
+</tr>
+<tr>
+<td><strong>Access Control</strong></td>
+<td>IAM roles, MFA, least privilege</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>CloudTrail, VPC Flow Logs</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>GuardDuty, Security Hub</td>
+</tr>
+</tbody>
+</table></div>
+<h4>7.3.2 Application Security</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Control</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>OAuth 2.0 + JWT, MFA</td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>RBAC (role-based access control)</td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Whitelist validation, parameterized queries</td>
+</tr>
+<tr>
+<td><strong>Session Management</strong></td>
+<td>Secure cookies, short expiry</td>
+</tr>
+<tr>
+<td><strong>CSP</strong></td>
+<td>Content Security Policy headers</td>
+</tr>
+<tr>
+<td><strong>Rate Limiting</strong></td>
+<td>API throttling (prevent DoS)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.4 Incident Response</h3>
+<h4>7.4.1 Incident Classification</h4>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Description</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Fund loss, smart contract exploit</td>
+<td>Immediate (&lt;15 min)</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Data breach, custody compromise</td>
+<td>&lt;1 hour</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>Service disruLPion, performance degradation</td>
+<td>&lt;4 hours</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>Minor bugs, cosmetic issues</td>
+<td>&lt;24 hours</td>
+</tr>
+</tbody>
+</table></div>
+<h4>7.4.2 Response Process</h4>
+<div class="docs-pre"><code>1. DETECTION
+   • Automated monitoring (Forta, Prometheus)
+   • User reports
+   • External notification (auditors, partners)
+
+2. TRIAGE
+   • Classify severity
+   • Assemble response team
+   • Activate incident channel
+
+3. CONTAINMENT
+   • Emergency pause (if smart contract)
+   • Revoke access (if infrastructure)
+   • Notify custodians (if custody)
+
+4. REMEDIATION
+   • Fix vulnerability
+   • Restore from backup
+   • Verify fix
+
+5. POST-MORTEM
+   • Root cause analysis
+   • Document lessons learned
+   • Update runbooks
+   • Communicate to stakeholders
+</code></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. GOVERNANCE</h2>
+<h3>8.1 Multisig Governance</h3>
+<p><strong>Gnosis Safe Configuration:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Signers</strong></td>
+<td>5 (CEO, CFO, CTO, CCO, Independent)</td>
+</tr>
+<tr>
+<td><strong>Threshold</strong></td>
+<td>3-of-5 for standard transactions</td>
+</tr>
+<tr>
+<td><strong>Threshold</strong></td>
+<td>5-of-5 for critical transactions (upgrade, pause)</td>
+</tr>
+<tr>
+<td><strong>Timelock</strong></td>
+<td>7 days for contract upgrades</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Signer Roles:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Signer</th>
+<th>Role</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Signer 1</strong></td>
+<td>CEO (Aziz Da Silva)</td>
+<td>Strategy, investor relations</td>
+</tr>
+<tr>
+<td><strong>Signer 2</strong></td>
+<td>CFO</td>
+<td>Financial operations</td>
+</tr>
+<tr>
+<td><strong>Signer 3</strong></td>
+<td>CTO</td>
+<td>Technology, smart contracts</td>
+</tr>
+<tr>
+<td><strong>Signer 4</strong></td>
+<td>CCO</td>
+<td>Compliance, regulatory</td>
+</tr>
+<tr>
+<td><strong>Signer 5</strong></td>
+<td>Independent Director</td>
+<td>Governance oversight</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.2 Upgrade Governance</h3>
+<p><strong>Upgrade Process:</strong></p>
+<div class="docs-pre"><code>1. PROPOSAL
+   • CTO submits upgrade proposal
+   • Technical specification document
+   • Test results, audit report
+
+2. REVIEW (7 days)
+   • Multisig signers review
+   • External audit (if major change)
+   • Community notification (if applicable)
+
+3. APPROVAL
+   • 3-of-5 multisig approval
+   • Timelock starts (7 days)
+
+4. EXECUTION
+   • After timelock expires
+   • 5-of-5 multisig execution (critical)
+   • Proxy updated, storage preserved
+
+5. POST-UPGRADE
+   • Verification tests
+   • Monitoring enabled
+   • Stakeholder communication
+</code></div>
+<h3>8.3 Advisory Board</h3>
+<p><strong>Composition:</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Member</th>
+<th>Background</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Regulatory Advisor</strong></td>
+<td>Ex-Mauritius FSC Commissioner</td>
+<td>Regulatory strategy</td>
+</tr>
+<tr>
+<td><strong>African Markets Advisor</strong></td>
+<td>Ex-Afreximbank Director</td>
+<td>Market expansion</td>
+</tr>
+<tr>
+<td><strong>Technology Advisor</strong></td>
+<td>ERC-3643 contributor</td>
+<td>Smart contract architecture</td>
+</tr>
+<tr>
+<td><strong>Impact Advisor</strong></td>
+<td>Ex-IFC Operations</td>
+<td>SDG alignment</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Responsibilities:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Monthly Meetings:</strong> Review performance, strategy</li>
+<li><strong>Quarterly Reports:</strong> Receive detailed metrics</li>
+<li><strong>Annual Review:</strong> Approve strategic plan</li>
+<li><strong>Advisory (Non-Binding):</strong> No veto power, consultative only</li>
+</ul>
+<h3>8.4 Future Decentralization</h3>
+<p><strong>Phase 3 (2028+): Community Governance</strong></p>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Current</th>
+<th>Future</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Upgrades</strong></td>
+<td>Multisig</td>
+<td>Token-weighted vote (uLP holders)</td>
+</tr>
+<tr>
+<td><strong>Fee Changes</strong></td>
+<td>Multisig</td>
+<td>Governance proposal + vote</td>
+</tr>
+<tr>
+<td><strong>Pool Creation</strong></td>
+<td>Team</td>
+<td>Community proposals</td>
+</tr>
+<tr>
+<td><strong>Treasury</strong></td>
+<td>Team</td>
+<td>Community-controlled DAO</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Governance Token (Future):</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Separate from uLP:</strong> Governance token (voting) vs. uLP (yield)</li>
+<li><strong>Distribution:</strong> Team, investors, community rewards</li>
+<li><strong>Voting Mechanism:</strong> Quadratic voting (prevent whale dominance)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. ROADMAP</h2>
+<h3>9.1 Phase 1: Launch (2026)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Milestone</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q2 2026</strong></td>
+<td>Mauritius FSC CIS License</td>
+<td>License received</td>
+</tr>
+<tr>
+<td><strong>Q2 2026</strong></td>
+<td>Smart Contract Audits</td>
+<td>CertiK + OpenZeppelin complete</td>
+</tr>
+<tr>
+<td><strong>Q3 2026</strong></td>
+<td>Pool Industrie Launch</td>
+<td>€20M deployed</td>
+</tr>
+<tr>
+<td><strong>Q4 2026</strong></td>
+<td>Pool Agriculture + Trade Finance</td>
+<td>€22M deployed</td>
+</tr>
+<tr>
+<td><strong>Q4 2026</strong></td>
+<td>First Distribution</td>
+<td>Quarterly yield distributed</td>
+</tr>
+</tbody>
+</table></div>
+<h3>9.2 Phase 2: Scale (2027)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Milestone</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q2 2027</strong></td>
+<td>Mobile Money Integration</td>
+<td>M-Pesa, MTN, Airtel live</td>
+</tr>
+<tr>
+<td><strong>Q4 2027</strong></td>
+<td>€100M AUM</td>
+<td>100+ investors</td>
+</tr>
+<tr>
+<td><strong>Q4 2027</strong></td>
+<td>Secondary Market Pilot</td>
+<td>BRVM listing</td>
+</tr>
+</tbody>
+</table></div>
+<h3>9.3 Phase 3: Expand (2028-2030)</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Milestone</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q2 2028</strong></td>
+<td>Retail Tranche Launch</td>
+<td>€10K minimum</td>
+</tr>
+<tr>
+<td><strong>Q4 2028</strong></td>
+<td>€400M AUM</td>
+<td>Profitable operations</td>
+</tr>
+<tr>
+<td><strong>Q4 2028</strong></td>
+<td>Cross-Chain Expansion</td>
+<td>Avalanche, BSC</td>
+</tr>
+<tr>
+<td><strong>Q4 2030</strong></td>
+<td>€1.5B AUM</td>
+<td>Market leader</td>
+</tr>
+<tr>
+<td><strong>Q4 2030</strong></td>
+<td>IPO Mauritius Stock Exchange</td>
+<td>Public listing</td>
+</tr>
+</tbody>
+</table></div>
+<h3>9.4 Future Features</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Secondary Market</strong></td>
+<td>Peer-to-peer uLP trading (ERC-3643 compliant)</td>
+<td>Q4 2027</td>
+</tr>
+<tr>
+<td><strong>Retail Tranche</strong></td>
+<td>€10K minimum for accredited individuals</td>
+<td>Q2 2028</td>
+</tr>
+<tr>
+<td><strong>Cross-Chain</strong></td>
+<td>Deploy on Avalanche, BSC for lower fees</td>
+<td>Q4 2028</td>
+</tr>
+<tr>
+<td><strong>Governance Token</strong></td>
+<td>Community governance for protocol upgrades</td>
+<td>Q2 2029</td>
+</tr>
+<tr>
+<td><strong>Insurance Pool</strong></td>
+<td>Mutualized insurance for default protection</td>
+<td>Q4 2029</td>
+</tr>
+<tr>
+<td><strong>Derivatives</strong></td>
+<td>Options, futures on uLP Tokens</td>
+<td>Q2 2030</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. CONCLUSION</h2>
+<p>The UJAMAA DeFi Platform represents a paradigm shift in African SME financing. By combining blockchain tokenization (ERC-3643), institutional custody (Fireblocks), and regulatory compliance (Mauritius FSC), UJAMAA unlocks institutional capital for productive African businesses.</p>
+<p><strong>Key Innovations:</strong></p>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li><strong>Yield-Bearing uLP Token:</strong> Value accrual model for tax-efficient yield distribution</li>
+<li><strong>Guarantee Token Collateral:</strong> ERC-3643 NFT representing certified merchandise</li>
+<li><strong>Diversified Liquidity Pools:</strong> Risk mitigation through 40+ financings per pool</li>
+<li><strong>Institutional Infrastructure:</strong> Fireblocks, BIIC/MCB, ERC-3643 compliance</li>
+<li><strong>Regulatory License:</strong> Mauritius FSC CIS Manager (Category 1)</li>
+</ol>
+<p><strong>Market Opportunity:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>$331B African SME Financing Gap:</strong> Massive unmet demand</li>
+<li><strong>10-15% APR Yield:</strong> Attractive risk-adjusted returns</li>
+<li><strong>First-Mover Advantage:</strong> First ERC-3643 African RWA platform</li>
+</ul>
+<p><strong>Validation:</strong></p>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Transaction Structure:</strong> Validated through market research</li>
+<li><strong>€45M Target Pipeline:</strong> Various stages (LOI, due diligence, origination)</li>
+<li><strong>GDIZ Partnership:</strong> In discussion (industrial network in Benin)</li>
+</ul>
+<p><strong>Vision:</strong></p>
+<p>Become Africa's leading RWA tokenization platform, facilitating $10B+ in financing by 2030, creating 50,000+ jobs, and demonstrating the transformative potential of blockchain technology for economic development.</p>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. REFERENCES</h2>
+<ol class="docs-list" style="padding-left:1.5rem">
+<li>World Bank. "SME Finance Gap in Africa." 2025.</li>
+<li>BCG. "Tokenization of Real-World Assets." 2025.</li>
+<li>AfCFTA Secretariat. "Trade Volume Projections." 2025.</li>
+<li>Mauritius FSC. "CIS Manager License Framework." 2025.</li>
+<li>ERC-3643 Specification. "T-REX Protocol." https://eips.ethereum.org/EIPS/eip-3643</li>
+<li>Tokeny. "ERC-3643 Documentation." https://docs.tokeny.com/erc3643</li>
+<li>ONCHAINID. "Decentralized Identity Protocol." https://www.onchainid.com/</li>
+<li>Fireblocks. "Institutional Custody Platform." https://www.fireblocks.com/</li>
+<li>Chainlink. "Decentralized Oracle Network." https://chain.link/</li>
+<li>OpenZeppelin. "Secure Smart Contract Library." https://openzeppelin.com/contracts/</li>
+<li>GDIZ. "General Distribution &amp; Industrial Zone." 2025.</li>
+<li>OHADA. "Uniform Act on Commercial Companies." 2025.</li>
+</ol>
+<hr />
+<p><strong>© 2026 UJAMAA DeFi Platform. All Rights Reserved.</strong></p>
+<p><strong>Disclaimer:</strong> This white paper is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Any such offer will be made only by means of a Private Placement Memorandum (PPM) and related subscription documents.</p>
+</section>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>UJAMAA DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 UJAMAA DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Investors Room</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+      <script src="../assets/app.js"></script>
+</body>
+</html>
