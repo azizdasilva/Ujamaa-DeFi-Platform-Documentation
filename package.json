@@ -4,6 +4,8 @@
   "description": "Ujamaa DeFi Platform MVP - Test Configurations",
   "private": true,
   "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "build:frontend": "cd frontend && npm run build",
     "test:smart-contracts": "forge test -vvv",
     "test:smart-contracts:gas": "forge test --gas-report",
     "test:smart-contracts:coverage": "forge coverage",
