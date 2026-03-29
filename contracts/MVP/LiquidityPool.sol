@@ -828,6 +828,59 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     }
 
     /**
+     * @notice Get active financings count
+     * @return Number of active financings
+     */
+    function getActiveFinancingsCount() external view returns (uint256) {
+        uint256 count = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (!financings[i].isRepaid && !financings[i].isDefaulted) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * @notice Get pool balance (available funds)
+     * @return Available balance in UJEUR (18 decimals)
+     */
+    function getPoolBalance() external view returns (uint256) {
+        return totalPoolValue - getDeployedAmount();
+    }
+
+    /**
+     * @notice Get total value locked in pool
+     * @return TVL in UJEUR (18 decimals)
+     */
+    function getTotalValueLocked() external view returns (uint256) {
+        return totalPoolValue;
+    }
+
+    /**
+     * @notice Get yield accrued in last 24 hours
+     * @return Yield accrued in UJEUR (18 decimals)
+     */
+    function getYieldAccrued24h() external view returns (uint256) {
+        // Simplified: return total yield (in production, track 24h separately)
+        return totalYieldEarned;
+    }
+
+    /**
+     * @notice Get deployed amount
+     * @return Total deployed amount in UJEUR (18 decimals)
+     */
+    function getDeployedAmount() internal view returns (uint256) {
+        uint256 deployed = 0;
+        for (uint256 i = 1; i < nextFinancingId; i++) {
+            if (!financings[i].isRepaid && !financings[i].isDefaulted) {
+                deployed += financings[i].principal - financings[i].amountRepaid;
+            }
+        }
+        return deployed;
+    }
+
+    /**
      * @notice Get concentration risk for largest industrial
      * @param poolFamily Pool family to check
      * @return Concentration in basis points
