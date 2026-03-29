@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Smart Contract Deployment Guide - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header">
+        <a href="../index.html" class="docs-logo">
+          <div class="docs-logo-icon">U</div>
+          <div>
+            <div class="docs-logo-text">Ujamaa DeFi Platform</div>
+            <div class="docs-logo-subtitle">Documentation</div>
+          </div>
+        </a>
+      </div>
+      <div class="docs-search-box">
+        <input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)">
+      </div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">📖 Documentation</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Specifications</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📖</span>
+                <span>Technical Guides</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">⚙️</span>
+                <span>Operations</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">👥</span>
+                <span>Team Playbooks</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔍</span>
+                <span>Audits</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🚀</span>
+                <span>MVP Execution</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Presentation</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💼</span>
+                <span>Investors Room</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Algorithms</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🎨</span>
+                <span>Design</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">💡</span>
+                <span>Future Enhancements</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📝</span>
+                <span>Sprint Reports</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header">
+        <button class="docs-menu-toggle">☰</button>
+        <nav class="docs-breadcrumb">
+          <a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a>
+          <span class="docs-breadcrumb-separator">/</span>
+          <a href="index.html" class="docs-breadcrumb-link">Technical Guides</a>
+          <span class="docs-breadcrumb-separator">/</span>
+          <span>Smart Contract Deployment Guide</span>
+        </nav>
+      </header>
+      <div class="docs-content">
+        <h1 class="docs-title">Smart Contract Deployment Guide</h1>
+        <p class="docs-subtitle">Step-by-step guide for deploying Ujamaa smart contracts to Polygon Amoy testnet</p>
+        
+        <div class="docs-callout docs-callout-info">
+          <div class="docs-callout-title">📖 Document Info</div>
+          <p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 29, 2026 | <strong>Network:</strong> Polygon Amoy (Chain ID: 80002)</p>
+        </div>
+
+        <h1>Smart Contract Deployment Guide - Polygon Amoy Testnet</h1>
+        
+        <p><strong>Version:</strong> 1.0<br />
+        <strong>Last Updated:</strong> March 29, 2026<br />
+        <strong>Author:</strong> Ujamaa DeFi Platform Team<br />
+        <strong>Network:</strong> Polygon Amoy Testnet (Chain ID: 80002)</p>
+        
+        <hr />
+        
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#step-1-install-foundry">Step 1: Install Foundry</a></li>
+          <li><a href="#step-2-set-up-your-project">Step 2: Set Up Your Project</a></li>
+          <li><a href="#step-3-install-dependencies">Step 3: Install Dependencies</a></li>
+          <li><a href="#step-4-configure-your-private-key">Step 4: Configure Your Private Key</a></li>
+          <li><a href="#step-5-get-test-pol-tokens">Step 5: Get Test POL Tokens</a></li>
+          <li><a href="#step-6-deploy-smart-contracts">Step 6: Deploy Smart Contracts</a></li>
+          <li><a href="#step-7-verify-deployment">Step 7: Verify Deployment</a></li>
+          <li><a href="#step-8-update-frontend-configuration">Step 8: Update Frontend Configuration</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#deployed-contract-addresses">Deployed Contract Addresses</a></li>
+        </ol>
+        
+        <hr />
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Prerequisites</h2>
+          
+          <p>Before starting the deployment process, ensure you have the following:</p>
+          
+          <ul>
+            <li><strong>Windows 10/11</strong> (or macOS/Linux with equivalent commands)</li>
+            <li><strong>Node.js 18+</strong> installed</li>
+            <li><strong>Git</strong> installed and configured</li>
+            <li><strong>MetaMask</strong> browser extension installed</li>
+            <li><strong>Basic knowledge</strong> of command line operations</li>
+          </ul>
+          
+          <h3>Required Software</h3>
+          
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Software</th>
+                  <th>Version</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Node.js</td>
+                  <td>18+</td>
+                  <td>Frontend build tools</td>
+                </tr>
+                <tr>
+                  <td>Git</td>
+                  <td>Latest</td>
+                  <td>Version control</td>
+                </tr>
+                <tr>
+                  <td>Foundry</td>
+                  <td>Latest</td>
+                  <td>Smart contract deployment</td>
+                </tr>
+                <tr>
+                  <td>MetaMask</td>
+                  <td>Latest</td>
+                  <td>Wallet for testnet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2. Step 1: Install Foundry</h2>
+          
+          <p>Foundry is a blazing fast, portable and modular toolkit for Ethereum application development.</p>
+          
+          <h3>Windows Installation</h3>
+          
+          <h4>Option A: Using Winget (Recommended)</h4>
+          
+          <div class="docs-pre"><code># Open PowerShell as Administrator
+winget install foundry</code></div>
+          
+          <h4>Option B: Using FoundryUp Script</h4>
+          
+          <div class="docs-pre"><code># Download and run foundryup
+powershell -Command "iwr https://foundry.paradigm.xyz -useb | iex"
+
+# Then run foundryup
+foundryup</code></div>
+          
+          <h4>Option C: Using Cargo (if Rust is installed)</h4>
+          
+          <div class="docs-pre"><code>cargo install --git https://github.com/foundry-rs/foundry --locked forge</code></div>
+          
+          <h3>Verify Installation</h3>
+          
+          <p>After installation, verify Foundry is working:</p>
+          
+          <div class="docs-pre"><code>forge --version</code></div>
+          
+          <p><strong>Expected Output:</strong></p>
+          
+          <div class="docs-pre"><code>forge Version: 1.x.x-nightly
+Commit SHA: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></div>
+          
+          <h3>Add Foundry to PATH (if needed)</h3>
+          
+          <p>If <code>forge</code> command is not recognized, add it to your PATH:</p>
+          
+          <p><strong>Windows:</strong></p>
+          <ol>
+            <li>Open System Properties → Environment Variables</li>
+            <li>Add to User PATH: <code>C:\Users\YourUsername\.foundry\bin</code></li>
+            <li>Restart your terminal</li>
+          </ol>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. Step 2: Set Up Your Project</h2>
+          
+          <h3>Navigate to Project Root</h3>
+          
+          <div class="docs-pre"><code>cd "C:\Users\aziz_\PycharmProjects\2026\INTELLI_BRIDGE_ANALYTICS\UJAMAA DeFi PlatForm"</code></div>
+          
+          <h3>Verify Project Structure</h3>
+          
+          <p>Ensure your project has the following structure:</p>
+          
+          <div class="docs-pre"><code>UJAMAA DeFi PlatForm/
+├── contracts/
+│   └── MVP/
+│       ├── ULPToken.sol
+│       ├── LiquidityPool.sol
+│       ├── GuaranteeToken.sol
+│       ├── IndustrialGateway.sol
+│       ├── JurisdictionCompliance.sol
+│       ├── MockEscrow.sol
+│       ├── MockFiatRamp.sol
+│       ├── MockEUROD.sol
+│       └── NavGateway.sol
+├── script/
+│   └── DeployMVP.s.sol
+├── foundry.toml
+└── .env (create this in Step 4)</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Step 3: Install Dependencies</h2>
+          
+          <h3>Install OpenZeppelin Contracts</h3>
+          
+          <div class="docs-pre"><code>forge install OpenZeppelin/openzeppelin-contracts --no-git</code></div>
+          
+          <h3>Install Forge Standard Library</h3>
+          
+          <div class="docs-pre"><code>forge install foundry-rs/forge-std --no-git</code></div>
+          
+          <h3>Verify Dependencies</h3>
+          
+          <p>Check that dependencies are installed:</p>
+          
+          <div class="docs-pre"><code>ls lib/</code></div>
+          
+          <p><strong>Expected Output:</strong></p>
+          
+          <div class="docs-pre"><code>openzeppelin-contracts/
+forge-std/</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5. Step 4: Configure Your Private Key</h2>
+          
+          <h3>Create Environment File</h3>
+          
+          <p>Create a <code>.env</code> file in the project root:</p>
+          
+          <div class="docs-pre"><code># Create .env file
+copy .env.example .env  # If example exists
+# OR create manually</code></div>
+          
+          <h3>Add Private Key</h3>
+          
+          <p>Edit <code>.env</code> file and add your private key:</p>
+          
+          <div class="docs-pre"><code># DEPLOYMENT ENVIRONMENT VARIABLES
+# ⚠️ NEVER COMMIT THIS FILE TO GIT! ⚠️
+
+# Your deployer wallet private key (WITH 0x prefix)
+PRIVATE_KEY=0x1527497b8bef01f06d78b6c96bf3d47d4f1a7f03be94c13526727a897d9e23e7
+
+# PolygonScan API key (optional, for contract verification)
+POLYGONSCAN_API_KEY=YOUR_POLYGONSCAN_API_KEY</code></div>
+          
+          <div class="docs-callout docs-callout-warning">
+            <div class="docs-callout-title">⚠️ Security Warnings</div>
+            <ol>
+              <li><strong>NEVER commit <code>.env</code> to Git</strong> - It's already in <code>.gitignore</code></li>
+              <li><strong>Use a dedicated deployer wallet</strong> - Don't use your main wallet</li>
+              <li><strong>Keep private keys secure</strong> - Never share them</li>
+              <li><strong>Testnet only</strong> - This key is for testnet only, not mainnet</li>
+            </ol>
+          </div>
+          
+          <h3>Get Your Private Key from MetaMask</h3>
+          
+          <ol>
+            <li>Open MetaMask</li>
+            <li>Click the three dots (⋮) next to your account</li>
+            <li>Select "Account Details"</li>
+            <li>Click "Export Private Key"</li>
+            <li>Enter your password</li>
+            <li>Copy the private key (starts with <code>0x</code>)</li>
+          </ol>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Step 5: Get Test POL Tokens</h2>
+          
+          <p>You need POL tokens on Polygon Amoy testnet to pay for gas fees.</p>
+          
+          <h3>Get Test POL from Faucet</h3>
+          
+          <p><strong>Official Polygon Faucet:</strong></p>
+          <ol>
+            <li>Visit: <a href="https://faucet.polygon.technology/" target="_blank" rel="noopener noreferrer">https://faucet.polygon.technology/</a></li>
+            <li>Connect your MetaMask wallet</li>
+            <li>Select "Amoy" network</li>
+            <li>Request test tokens</li>
+          </ol>
+          
+          <p><strong>Alternative Faucets:</strong></p>
+          <ul>
+            <li><a href="https://www.alchemy.com/faucets/polygon-amoy" target="_blank" rel="noopener noreferrer">https://www.alchemy.com/faucets/polygon-amoy</a></li>
+            <li><a href="https://thirdweb.com/polygon-amoy-testnet/faucet" target="_blank" rel="noopener noreferrer">https://thirdweb.com/polygon-amoy-testnet/faucet</a></li>
+          </ul>
+          
+          <h3>Verify Your Balance</h3>
+          
+          <ol>
+            <li>Copy your wallet address from MetaMask</li>
+            <li>Visit: <a href="https://amoy.polygonscan.com/address/YOUR_ADDRESS" target="_blank" rel="noopener noreferrer">https://amoy.polygonscan.com/address/YOUR_ADDRESS</a></li>
+            <li>Check POL balance (should be &gt; 0.1 POL for deployment)</li>
+          </ol>
+          
+          <h3>Add Polygon Amoy to MetaMask</h3>
+          
+          <p>If not already added:</p>
+          
+          <ol>
+            <li>Visit: <a href="https://www.polygon.technology/solutions" target="_blank" rel="noopener noreferrer">https://www.polygon.technology/solutions</a></li>
+            <li>Click "Add Polygon Amoy to MetaMask"</li>
+            <li>Confirm network addition</li>
+          </ol>
+          
+          <p><strong>Network Details:</strong></p>
+          
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Network Name</td>
+                  <td>Polygon Amoy</td>
+                </tr>
+                <tr>
+                  <td>RPC URL</td>
+                  <td>https://rpc-amoy.polygon.technology/</td>
+                </tr>
+                <tr>
+                  <td>Chain ID</td>
+                  <td>80002</td>
+                </tr>
+                <tr>
+                  <td>Currency Symbol</td>
+                  <td>POL</td>
+                </tr>
+                <tr>
+                  <td>Block Explorer</td>
+                  <td>https://amoy.polygonscan.com/</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7. Step 6: Deploy Smart Contracts</h2>
+          
+          <h3>Run Deployment Script</h3>
+          
+          <p>Execute the deployment script:</p>
+          
+          <div class="docs-pre"><code># Windows PowerShell
+$env:Path += ';C:\Users\aziz_\.foundry\bin'
+forge script script/DeployMVP.s.sol:DeployMVP --rpc-url https://rpc-amoy.polygon.technology/ --broadcast -vvvv</code></div>
+          
+          <p><strong>Or using bash:</strong></p>
+          
+          <div class="docs-pre"><code>export PATH="$PATH:$HOME/.foundry/bin"
+forge script script/DeployMVP.s.sol:DeployMVP --rpc-url polygon_amoy --broadcast -vvvv</code></div>
+          
+          <h3>Deployment Output</h3>
+          
+          <p>Successful deployment will show:</p>
+          
+          <div class="docs-pre"><code>========================================
+       DEPLOYMENT COMPLETE
+========================================
+Network: Polygon Amoy (80002)
+Deployer: 0xYourDeployerAddress
+----------------------------------------
+ALL Contract Addresses:
+MockEUROD:            0x787C5c0365829ABF88a3D8404E9488d1e307eD43
+ULPToken:             0xb6062a6e63a07c3598629a65ed19021445fb3b26
+GuaranteeToken:       0x83e20A9516B82f0B1bd0ee57882ef35F9553B469
+LiquidityPool:        0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec
+IndustrialGateway:    0x882071de6689eC1716BD7e162Acf50707AC68930
+JurisdictionCompliance: 0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C
+MockEscrow:           0x8d446994fcD9906c573500959cDc8A8271a9485F
+MockFiatRamp:         0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a
+NavGateway:           0x99712f923e3519B4305CEDAd40290428299F29A0
+========================================</code></div>
+          
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">💡 IMPORTANT</div>
+            <p>Copy all contract addresses to a safe location. You'll need them for:</p>
+            <ul>
+              <li>Frontend configuration</li>
+              <li>Monitor dashboard</li>
+              <li>Contract verification</li>
+              <li>Testing</li>
+            </ul>
+          </div>
+          
+          <h3>Deployment Cost</h3>
+          
+          <p>Typical deployment costs:</p>
+          <ul>
+            <li><strong>Gas Used:</strong> ~24,000,000 gas</li>
+            <li><strong>Gas Price:</strong> ~30-100 gwei</li>
+            <li><strong>Total Cost:</strong> ~0.7-2.5 POL</li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Step 7: Verify Deployment</h2>
+          
+          <h3>Check on Block Explorer</h3>
+          
+          <p>Visit each contract on Polygon Amoy block explorer:</p>
+          
+          <div class="docs-pre"><code>https://amoy.polygonscan.com/address/CONTRACT_ADDRESS</code></div>
+          
+          <h3>Verify Contract Interactions</h3>
+          
+          <p>Check that contracts were initialized correctly:</p>
+          
+          <ol>
+            <li><strong>ULPToken:</strong> Check total supply, NAV per share</li>
+            <li><strong>LiquidityPool:</strong> Check pool families initialized</li>
+            <li><strong>GuaranteeToken:</strong> Check total supply (should be 0 initially)</li>
+            <li><strong>IndustrialGateway:</strong> Check registered industrials count</li>
+          </ol>
+          
+          <h3>Test Contract Reads</h3>
+          
+          <p>Using Foundry:</p>
+          
+          <div class="docs-pre"><code># Check ULPToken name
+cast call 0xb6062a6e63a07c3598629a65ed19021445fb3b26 "name()"
+
+# Check LiquidityPool total value
+cast call 0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec "totalPoolValue()"</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Step 8: Update Frontend Configuration</h2>
+          
+          <h3>Update Monitor Configuration</h3>
+          
+          <p>Edit <code>frontend/src/config/monitor.ts</code>:</p>
+          
+          <div class="docs-pre"><code>export const CONTRACT_ADDRESSES = {
+  ulpToken: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
+  liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec',
+  guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
+  industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930',
+  jurisdictionCompliance: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C',
+  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F',
+  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a',
+  navGateway: '0x99712f923e3519B4305CEDAd40290428299F29A0',
+  mockEUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43',
+} as const;
+
+// Set to false to use live data
+export const MONITOR_FEATURES = {
+  USE_MOCK_DATA: false,
+  DEBUG: true,
+  ENABLE_TOASTS: true,
+} as const;</code></div>
+          
+          <h3>Update Contract Test Dashboard</h3>
+          
+          <p>Edit <code>frontend/src/MVP/pages/ContractTestDashboard.tsx</code> with the deployed contract addresses.</p>
+          
+          <h3>Build and Test Frontend</h3>
+          
+          <div class="docs-pre"><code>cd frontend
+npm install
+npm run build
+npm run dev</code></div>
+          
+          <p>Visit:</p>
+          <ul>
+            <li>Monitor Dashboard: <a href="http://localhost:5173/monitor" target="_blank" rel="noopener noreferrer">http://localhost:5173/monitor</a></li>
+            <li>Contract Test: <a href="http://localhost:5173/contract-test" target="_blank" rel="noopener noreferrer">http://localhost:5173/contract-test</a></li>
+          </ul>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Troubleshooting</h2>
+          
+          <h3>Common Issues</h3>
+          
+          <h4>"forge: command not found"</h4>
+          
+          <p><strong>Solution:</strong> Add Foundry to PATH:</p>
+          
+          <div class="docs-pre"><code>$env:Path += ';C:\Users\aziz_\.foundry\bin'</code></div>
+          
+          <h4>"Private key invalid"</h4>
+          
+          <p><strong>Solution:</strong> Ensure private key has <code>0x</code> prefix:</p>
+          
+          <div class="docs-pre"><code>PRIVATE_KEY=0x1527497b8bef01f06d78b6c96bf3d47d4f1a7f03be94c13526727a897d9e23e7</code></div>
+          
+          <h4>"Insufficient funds for gas"</h4>
+          
+          <p><strong>Solution:</strong> Get more test POL from faucet:</p>
+          <ul>
+            <li><a href="https://faucet.polygon.technology/" target="_blank" rel="noopener noreferrer">https://faucet.polygon.technology/</a></li>
+          </ul>
+          
+          <h4>"Contract not deployed"</h4>
+          
+          <p><strong>Solution:</strong> Check deployment output for errors. Common causes:</p>
+          <ul>
+            <li>Missing dependencies (run <code>forge install</code>)</li>
+            <li>Invalid Solidity version (check <code>foundry.toml</code>)</li>
+            <li>Network issues (retry with <code>--resume</code> flag)</li>
+          </ul>
+          
+          <h4>"Address is invalid"</h4>
+          
+          <p><strong>Solution:</strong> Ensure addresses are 40 hex characters (20 bytes):</p>
+          
+          <div class="docs-pre"><code>✅ Correct: 0xb6062a6e63a07c3598629a65ed19021445fb3b26
+❌ Wrong: 0x8b0715695C21853838781d4a367B8067360F84A8 (39 chars)</code></div>
+          
+          <h3>Getting Help</h3>
+          
+          <ol>
+            <li>Check Foundry documentation: <a href="https://book.getfoundry.sh/" target="_blank" rel="noopener noreferrer">https://book.getfoundry.sh/</a></li>
+            <li>Check Polygon documentation: <a href="https://docs.polygon.technology/" target="_blank" rel="noopener noreferrer">https://docs.polygon.technology/</a></li>
+            <li>Review deployment logs for specific error messages</li>
+          </ol>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Deployed Contract Addresses</h2>
+          
+          <h3>Current Deployment (March 29, 2026)</h3>
+          
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Contract</th>
+                  <th>Address</th>
+                  <th>Standard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>MockEUROD</strong></td>
+                  <td><code>0x787C5c0365829ABF88a3D8404E9488d1e307eD43</code></td>
+                  <td>ERC-20</td>
+                </tr>
+                <tr>
+                  <td><strong>ULPToken</strong></td>
+                  <td><code>0xb6062a6e63a07c3598629a65ed19021445fb3b26</code></td>
+                  <td>ERC-3643</td>
+                </tr>
+                <tr>
+                  <td><strong>GuaranteeToken</strong></td>
+                  <td><code>0x83e20A9516B82f0B1bd0ee57882ef35F9553B469</code></td>
+                  <td>ERC-3643NFT</td>
+                </tr>
+                <tr>
+                  <td><strong>LiquidityPool</strong></td>
+                  <td><code>0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec</code></td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>IndustrialGateway</strong></td>
+                  <td><code>0x882071de6689eC1716BD7e162Acf50707AC68930</code></td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>JurisdictionCompliance</strong></td>
+                  <td><code>0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C</code></td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>MockEscrow</strong></td>
+                  <td><code>0x8d446994fcD9906c573500959cDc8A8271a9485F</code></td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>MockFiatRamp</strong></td>
+                  <td><code>0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a</code></td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>NavGateway</strong></td>
+                  <td><code>0x99712f923e3519B4305CEDAd40290428299F29A0</code></td>
+                  <td>Custom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3>Network Information</h3>
+          
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Network</td>
+                  <td>Polygon Amoy Testnet</td>
+                </tr>
+                <tr>
+                  <td>Chain ID</td>
+                  <td>80002</td>
+                </tr>
+                <tr>
+                  <td>RPC URL</td>
+                  <td>https://rpc-amoy.polygon.technology/</td>
+                </tr>
+                <tr>
+                  <td>Block Explorer</td>
+                  <td>https://amoy.polygonscan.com/</td>
+                </tr>
+                <tr>
+                  <td>Deployer</td>
+                  <td><code>0xb9a4401B8240f1E45FE45649962F297d56ADB0e3</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3>Verify Contracts</h3>
+          
+          <p>All contracts can be verified on Polygon Amoy block explorer:</p>
+          
+          <div class="docs-pre"><code>https://amoy.polygonscan.com/address/CONTRACT_ADDRESS</code></div>
+        </section>
+        
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Additional Resources</h2>
+          
+          <ul>
+            <li><strong>Foundry Book:</strong> <a href="https://book.getfoundry.sh/" target="_blank" rel="noopener noreferrer">https://book.getfoundry.sh/</a></li>
+            <li><strong>Solidity Docs:</strong> <a href="https://docs.soliditylang.org/" target="_blank" rel="noopener noreferrer">https://docs.soliditylang.org/</a></li>
+            <li><strong>OpenZeppelin Contracts:</strong> <a href="https://docs.openzeppelin.com/contracts/" target="_blank" rel="noopener noreferrer">https://docs.openzeppelin.com/contracts/</a></li>
+            <li><strong>Polygon Docs:</strong> <a href="https://docs.polygon.technology/" target="_blank" rel="noopener noreferrer">https://docs.polygon.technology/</a></li>
+            <li><strong>Ujamaa Documentation:</strong> <code>/docs</code> folder in project root</li>
+          </ul>
+        </section>
+        
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B">
+            <strong>Last Updated:</strong> March 29, 2026<br />
+            <strong>Document Version:</strong> 1.0<br />
+            <strong>Maintained By:</strong> Ujamaa DeFi Platform Team
+          </p>
+        </div>
+      </div>
+      <footer class="docs-footer">
+        <div class="docs-footer-content">
+          <div class="docs-footer-text">
+            <strong>Ujamaa DeFi Platform</strong> - Documentation<br />
+            <span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 29, 2026 | © 2026 Ujamaa DeFi Platform</span>
+          </div>
+          <div class="docs-footer-links">
+            <a href="#" class="docs-footer-link">Top</a>
+            <a href="index.html" class="docs-footer-link">Technical Guides</a>
+            <a href="../index.html" class="docs-footer-link">Home</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
