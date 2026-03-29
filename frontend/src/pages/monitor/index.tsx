@@ -49,7 +49,7 @@ export const MonitorDashboard: React.FC = () => {
               <div className="flex items-center gap-3">
                 <span className="text-3xl">🔍</span>
                 <div>
-                  <h1 className="text-xl font-bold text-white">Ujamaa DeFi Platform Blockchain Monitor</h1>
+                  <h2 className="text-lg font-bold text-white">Ujamaa DeFi Platform Blockchain Monitor</h2>
                   <p className="text-xs text-slate-400">
                     Polygon Testnet Dashboard {useMock && <span className="text-yellow-500">(Mock Data)</span>}
                   </p>
