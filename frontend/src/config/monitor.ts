@@ -26,7 +26,7 @@ export const POLLING_INTERVALS = {
 // Deployed: 2026-03-29 (Fixed: added getPendingApprovalsCount to IndustrialGateway)
 // Naming convention: Gateway = bi-directional data flow (per nomenclature)
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0x8b0715695C21853838781d4a367B8067360F84A8', // ULPToken.sol (from logs)
+  ulpToken: '0xb6062a6e63a07c3598629a65ed19021445fb3b26', // ULPToken.sol
   liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec', // LiquidityPool.sol
   guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', // GuaranteeToken.sol
   industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930', // IndustrialGateway.sol

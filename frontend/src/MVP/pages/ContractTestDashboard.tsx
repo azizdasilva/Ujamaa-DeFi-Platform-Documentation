@@ -30,7 +30,7 @@ const ContractTestDashboard: React.FC = () => {
   // Mock token data for MVP - NOW DEPLOYED!
   const deployedContracts = [
     { name: 'Mock EUROD Token', symbol: 'EUROD', balance: '0.00', address: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', deployed: true, role: 'Stablecoin (Euro-pegged, Ondo)' },
-    { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0x8b0715695C21853838781d4a367B8067360F84A8', deployed: true, role: 'Yield-bearing pool token' },
+    { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0xb6062a6e63a07c3598629a65ed19021445fb3b26', deployed: true, role: 'Yield-bearing pool token' },
     { name: 'Ujamaa Guarantee Token', symbol: 'UGT', balance: '0.00', address: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', deployed: true, role: 'Collateral NFT (ERC-3643NFT)' },
     { name: 'Liquidity Pool', symbol: 'POOL', balance: 'N/A', address: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec', deployed: true, role: 'Multi-asset pool manager' },
     { name: 'Industrial Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0x882071de6689eC1716BD7e162Acf50707AC68930', deployed: true, role: 'Asset certification & UGT minting' },
