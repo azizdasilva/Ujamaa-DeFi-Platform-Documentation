@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujamaa Monitor Strategy - Polygon Testnet Dashboard</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, #6366f1, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h2 { font-size: 1.75rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: var(--primary); }
+    p { margin: 1rem 0; color: var(--text-muted); }
+    ul, ol { margin: 1rem 0 1rem 2rem; color: var(--text-muted); }
+    li { margin: 0.5rem 0; }
+    .callout {
+      background: var(--bg-card);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .callout-title { font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+    .callout-info { border-left-color: #3b82f6; }
+    .callout-success { border-left-color: var(--success); }
+    .callout-warning { border-left-color: var(--warning); }
+    .grid { display: grid; gap: 1.5rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15); }
+    .card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+    .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-p0 { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+    .badge-p1 { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+    .badge-p2 { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    th, td { padding: 1rem; text-align: left; border: 1px solid var(--border); }
+    th { background: var(--bg-card); font-weight: 600; color: var(--text); }
+    td { color: var(--text-muted); }
+    tr:hover td { background: rgba(99, 102, 241, 0.1); }
+    code {
+      background: #0d1117;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+    }
+    pre {
+      background: #0d1117;
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+    pre code { background: none; padding: 0; }
+    .contract-address { font-family: monospace; font-size: 0.75rem; word-break: break-all; }
+    .metric { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px; margin: 0.5rem 0; }
+    .metric-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .metric-label { color: var(--text-muted); font-size: 0.875rem; }
+    .step { display: flex; gap: 1rem; margin: 1.5rem 0; }
+    .step-number {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .step-content { flex: 1; }
+    .architecture { background: var(--bg-card); padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+    .architecture-diagram { font-family: monospace; font-size: 0.75rem; white-space: pre; overflow-x: auto; color: var(--text-muted); line-height: 1.4; }
+    .toc { background: var(--bg-card); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+    .toc-title { font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+    .toc a { color: var(--primary); text-decoration: none; display: block; padding: 0.25rem 0; }
+    .toc a:hover { color: var(--primary-dark); }
+    .pedagogy-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .pedagogy-title { font-weight: 600; color: var(--text); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    .comparison-item { padding: 1rem; border-radius: 8px; }
+    .comparison-bad { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); }
+    .comparison-good { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success); }
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .comparison { grid-template-columns: 1fr; }
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Ujamaa Monitor Strategy</h1>
+    <p style="font-size: 1.25rem;">Pedagogical Polygon Testnet Dashboard for Smart Contract Monitoring</p>
+    
+    <div class="callout callout-info">
+      <div class="callout-title">📖 Document Purpose</div>
+      <p>This strategy document outlines how to build a simplified "Polygon Scan" dashboard specifically for monitoring Ujamaa's smart contracts on Polygon testnet (Amoy). The focus is on <strong>pedagogical clarity</strong> for users unfamiliar with Web3, blockchain, and smart contracts.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">📑 Table of Contents</div>
+      <ol>
+        <li><a href="#1-project-understanding">Project Understanding</a></li>
+        <li><a href="#2-strategy-overview">Strategy Overview</a></li>
+        <li><a href="#3-architecture">Technical Architecture</a></li>
+        <li><a href="#4-kpi-definition">KPI Definition & Real-Time Display</a></li>
+        <li><a href="#5-pedagogical-design">Pedagogical Design Principles</a></li>
+        <li><a href="#6-implementation-phases">Implementation Phases</a></li>
+        <li><a href="#7-folder-structure">Folder Structure</a></li>
+        <li><a href="#8-technology-stack">Technology Stack</a></li>
+        <li><a href="#9-smart-contract-events">Smart Contract Events to Monitor</a></li>
+        <li><a href="#10-mock-data-strategy">Mock Data Strategy for Testing</a></li>
+      </ol>
+    </div>
+
+    <h2 id="1-project-understanding">1. Project Understanding</h2>
+    
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-title">🏗️ What is Ujamaa DeFi Platform?</div>
+        <p>Ujamaa is an <strong>institutional-grade DeFi platform</strong> for tokenizing real-world assets (RWAs) in Africa. It enables:</p>
+        <ul>
+          <li><strong>Liquidity Pools</strong> (Pool Industrie, Pool Agriculture, etc.)</li>
+          <li><strong>Yield-bearing tokens</strong> (uLP - Ujamaa Pool Token)</li>
+          <li><strong>Collateral NFTs</strong> (UJG - Ujamaa Guarantee)</li>
+          <li><strong>Compliance enforcement</strong> via ERC-3643 (T-REX protocol)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Current Smart Contracts (MVP)</div>
+        <ul>
+          <li><code>ULPToken.sol</code> - Yield-bearing ERC-3643 token</li>
+          <li><code>LiquidityPool.sol</code> - Pool management & financing</li>
+          <li><code>GuaranteeToken.sol</code> - Collateral NFT (ERC-3643NFT)</li>
+          <li><code>IndustrialGateway.sol</code> - Industrial onboarding</li>
+          <li><code>MockEscrow.sol</code> - Bank escrow simulation</li>
+          <li><code>MockFiatRamp.sol</code> - Fiat on/off ramp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-success">
+      <div class="callout-title">✅ Target Users for Ujamaa Monitor</div>
+      <p><strong>Non-technical stakeholders</strong> who need to understand platform health without blockchain expertise:</p>
+      <ul>
+        <li>🏦 <strong>Investors</strong> - Want to see pool performance and yield accrual</li>
+        <li>🏭 <strong>Industrials</strong> - Want to track their financing status</li>
+        <li>👥 <strong>Platform Admins</strong> - Need operational oversight</li>
+        <li>📈 <strong>Regulators</strong> - Require compliance and audit trails</li>
+      </ul>
+    </div>
+
+    <h2 id="2-strategy-overview">2. Strategy Overview</h2>
+
+    <div class="pedagogy-box">
+      <div class="pedagogy-title">🎓 Core Philosophy: "Blockchain Transparency, Human-Friendly"</div>
+      <p>Instead of showing raw blockchain data (transactions, gas fees, block numbers), we translate everything into <strong>real-world business metrics</strong> that anyone can understand.</p>
+      
+      <div class="comparison">
+        <div class="comparison-item comparison-bad">
+          <strong>❌ Traditional Block Explorer</strong>
+          <ul style="font-size: 0.875rem; margin-top: 0.5rem;">
+            <li>Transaction hash: 0x7a3f...9b2c</li>
+            <li>Block: 4523891</li>
+            <li>Gas used: 142,583</li>
+            <li>From: 0x3a2f...8d1e</li>
+          </ul>
+        </div>
+        <div class="comparison-item comparison-good">
+          <strong>✅ Ujamaa Monitor</strong>
+          <ul style="font-size: 0.875rem; margin-top: 0.5rem;">
+            <li>📥 Investor deposited €100,000</li>
+            <li>🏦 Pool Industrie balance: €2.5M</li>
+            <li>📈 Today's yield: +€1,234</li>
+            <li>🏭 Financing to "SIPI Cotton" approved</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>Key Strategic Decisions</h3>
+    
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Scope: Read-Only Dashboard</div>
+        <p>No wallet connection required for viewing. Pure analytics and monitoring. Users can <strong>observe</strong> without needing crypto wallets.</p>
+        <span class="badge badge-p1">Phase 1</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Data: Real-Time + Historical</div>
+        <p>Live contract state via RPC calls + historical events indexed from chain. Show trends over time (charts, graphs).</p>
+        <span class="badge badge-p1">Phase 1</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Education: Built-In Explanations</div>
+        <p>Every metric has a "What is this?" tooltip. No jargon without explanation. Assume zero blockchain knowledge.</p>
+        <span class="badge badge-p2">Phase 2</span>
+      </div>
+    </div>
+
+    <h2 id="3-architecture">3. Technical Architecture</h2>
+
+    <div class="architecture">
+      <div class="architecture-diagram">┌─────────────────────────────────────────────────────────────────────────────┐
+│                        UJAMAA MONITOR ARCHITECTURE                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐
+│   Polygon Amoy   │      │   Ujamaa Monitor │      │   Frontend UI    │
+│   Testnet (RPC)  │─────▶│   Backend (API)  │─────▶│   (React + Vite) │
+│                  │      │                  │      │                  │
+│ • ULPToken       │      │ • Contract ABIs  │      │ • Dashboard      │
+│ • LiquidityPool  │      │ • Event Indexer  │      │ • Pool Cards     │
+│ • GuaranteeToken │      │ • Data Cache     │      │ • Transaction    │
+│ • IndustrialGW   │      │ • KPI Calculator │      │   Feed           │
+│                  │      │                  │      │ • Charts         │
+└──────────────────┘      └──────────────────┘      └──────────────────┘
+       │                         │                         │
+       │                         │                         │
+       ▼                         ▼                         ▼
+  Blockchain Layer          Data Processing            Presentation Layer
+  (Source of Truth)         (Business Logic)           (User-Friendly)</div>
+    </div>
+
+    <h3>Component Breakdown</h3>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-title">📡 Blockchain Layer (Polygon Amoy)</div>
+        <p><strong>Purpose:</strong> Source of truth for all contract state and events.</p>
+        <ul>
+          <li><strong>RPC Endpoint:</strong> <code>https://rpc-amoy.polygon.technology/</code></li>
+          <li><strong>Contracts:</strong> Deployed MVP contracts (ULPToken, LiquidityPool, etc.)</li>
+          <li><strong>Read Method:</strong> <code>eth_call</code> for state, <code>eth_getLogs</code> for events</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">🔧 Backend Layer (Optional but Recommended)</div>
+        <p><strong>Purpose:</strong> Cache, aggregate, and simplify blockchain data.</p>
+        <ul>
+          <li><strong>Framework:</strong> FastAPI (reuse existing backend)</li>
+          <li><strong>Location:</strong> <code>frontend/src/services/monitor/</code></li>
+          <li><strong>Functions:</strong>
+            <ul>
+              <li>Cache contract state (reduce RPC calls)</li>
+              <li>Calculate KPIs (NAV change, yield, etc.)</li>
+              <li>Index events into searchable format</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-title">⚠️ Architecture Decision: Backend vs Frontend-Only</div>
+      <p><strong>Recommendation:</strong> Start with <strong>frontend-only</strong> (direct RPC calls) for MVP, then add backend caching if performance becomes an issue.</p>
+      <ul>
+        <li>✅ <strong>Frontend-Only Pros:</strong> Faster to build, simpler deployment, no backend costs</li>
+        <li>❌ <strong>Frontend-Only Cons:</strong> Rate limits on RPC, slower page loads, no data aggregation</li>
+      </ul>
+      <p><strong>Decision:</strong> Build frontend-only first. Add backend if you hit RPC rate limits or need complex aggregations.</p>
+    </div>
+
+    <h2 id="4-kpi-definition">4. KPI Definition & Real-Time Display</h2>
+
+    <h3>Primary KPIs by Contract</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Contract</th>
+          <th>KPI</th>
+          <th>Display Format</th>
+          <th>Update Frequency</th>
+          <th>Thresholds (Green/Amber/Red)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4"><strong>ULPToken</strong></td>
+          <td>Total Supply (uLP tokens)</td>
+          <td>1,234,567 uLP</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>NAV per Share</td>
+          <td>€1.0234 (+0.34%)</td>
+          <td>Every 5 min</td>
+          <td>&lt;2% / 2-5% / &gt;5% daily change</td>
+        </tr>
+        <tr>
+          <td>Total Holders</td>
+          <td>47 investors</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Total Value Locked</td>
+          <td>€2,543,210</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td rowspan="5"><strong>LiquidityPool</strong></td>
+          <td>Pool Balance</td>
+          <td>€1,876,543</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Active Financings</td>
+          <td>12 industrials</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Default Rate</td>
+          <td>0.8%</td>
+          <td>Daily</td>
+          <td>&lt;1% / 1-2% / &gt;2%</td>
+        </tr>
+        <tr>
+          <td>Utilization Rate</td>
+          <td>87%</td>
+          <td>Daily</td>
+          <td>80-95% / 70-80% / &lt;70%</td>
+        </tr>
+        <tr>
+          <td>Yield Accrued (24h)</td>
+          <td>+€1,234</td>
+          <td>Every 5 min</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>GuaranteeToken</strong></td>
+          <td>Total UJG Minted</td>
+          <td>23 NFTs</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Collateral Value</td>
+          <td>€987,654</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Redeemed vs Active</td>
+          <td>18 active / 5 redeemed</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>IndustrialGW</strong></td>
+          <td>Registered Industrials</td>
+          <td>15 companies</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Pending Approvals</td>
+          <td>2 awaiting review</td>
+          <td>Real-time</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Real-Time Display Strategy</h3>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-title">⚡ Live Updates (WebSocket Alternative)</div>
+        <p>Polygon doesn't support WebSocket subscriptions on public RPC. Use <strong>polling</strong> instead:</p>
+        <ul>
+          <li><strong>Critical KPIs:</strong> Poll every 5 seconds (NAV, pool balance)</li>
+          <li><strong>Standard KPIs:</strong> Poll every 30 seconds (holder count, financing count)</li>
+          <li><strong>Historical KPIs:</strong> Poll every 5 minutes (default rate, utilization)</li>
+        </ul>
+        <div class="metric">
+          <div class="metric-value">~50</div>
+          <div class="metric-label">RPC calls per minute (estimated)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Event Feed (Transaction Stream)</div>
+        <p>Display recent contract events as a "live feed" like a stock ticker:</p>
+        <ul>
+          <li><code>DepositReceived</code> → "📥 Investor deposited €100,000"</li>
+          <li><code>FinancingApproved</code> → "✅ €250K to SIPI Cotton"</li>
+          <li><code>GuaranteeMinted</code> → "🏭 UJG #23 minted for cotton stock"</li>
+          <li><code>YieldAccrued</code> → "📈 +€1,234 yield (last 24h)"</li>
+        </ul>
+        <div class="metric">
+          <div class="metric-value">~10-20</div>
+          <div class="metric-label">Events per hour (estimated)</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="5-pedagogical-design">5. Pedagogical Design Principles</h2>
+
+    <div class="pedagogy-box">
+      <div class="pedagogy-title">🎓 Rule #1: Never Show Raw Blockchain Data</div>
+      <p>Transform every blockchain concept into a real-world analogy:</p>
+      <ul>
+        <li><strong>Smart Contract</strong> → "Automated Rule Book"</li>
+        <li><strong>Transaction</strong> → "Action Record"</li>
+        <li><strong>Gas Fee</strong> → "Processing Fee" (hide the wei/gwei complexity)</li>
+        <li><strong>Block Number</strong> → "Timestamp"</li>
+        <li><strong>Wallet Address</strong> → "Account ID" (show first/last 4 chars only)</li>
+      </ul>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-title">📖 Tooltip Strategy</div>
+        <p>Every technical term gets a hover tooltip with:</p>
+        <ol>
+          <li><strong>Simple definition</strong> (1 sentence)</li>
+          <li><strong>Real-world analogy</strong></li>
+          <li><strong>"Why it matters"</strong> (impact on user)</li>
+        </ol>
+        <p style="margin-top: 1rem; font-size: 0.875rem;"><strong>Example:</strong><br>
+        <code>NAV per Share</code> ℹ️<br>
+        <em>"Current value of each uLP token. Like a stock price, but updates daily based on pool earnings."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Visual Hierarchy</div>
+        <p>Use color and size to guide attention:</p>
+        <ul>
+          <li>🟢 <strong>Green</strong> = Good (yield earned, repayments made)</li>
+          <li>🟡 <strong>Amber</strong> = Warning (high concentration, low liquidity)</li>
+          <li>🔴 <strong>Red</strong> = Critical (defaults, compliance issues)</li>
+          <li>🔵 <strong>Blue</strong> = Neutral/Info (new investor, minted UJG)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 Progressive Disclosure</div>
+        <p>Don't overwhelm users. Show:</p>
+        <ol>
+          <li><strong>Level 1:</strong> Big numbers (TVL, yield, holders)</li>
+          <li><strong>Level 2:</strong> Click for details (top investors, financing breakdown)</li>
+          <li><strong>Level 3:</strong> Advanced view (transaction history, contract addresses)</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2 id="6-implementation-phases">6. Implementation Phases</h2>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Phase 1: Foundation (Week 1)</h3>
+        <ul>
+          <li>✅ Create <code>frontend/src/pages/monitor/</code> folder structure</li>
+          <li>✅ Build contract readers (viem hooks for each contract)</li>
+          <li>✅ Create basic dashboard layout (grid of KPI cards)</li>
+          <li>✅ Implement polling mechanism (5s/30s intervals)</li>
+          <li>✅ Display raw KPIs (no charts yet)</li>
+        </ul>
+        <p><strong>Deliverable:</strong> Working dashboard showing live contract data</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Phase 2: Event Feed & History (Week 2)</h3>
+        <ul>
+          <li>✅ Index contract events (eth_getLogs)</li>
+          <li>✅ Build "Recent Activity" feed component</li>
+          <li>✅ Add event filtering (by type, by pool, by date)</li>
+          <li>✅ Create transaction detail modals (simplified view)</li>
+        </ul>
+        <p><strong>Deliverable:</strong> Live activity feed with human-readable descriptions</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Phase 3: Charts & Trends (Week 3)</h3>
+        <ul>
+          <li>✅ Integrate charting library (Recharts or Chart.js)</li>
+          <li>✅ Build TVL history chart (30-day trend)</li>
+          <li>✅ Build yield accrual chart (daily/weekly/monthly)</li>
+          <li>✅ Build pool allocation pie chart</li>
+          <li>✅ Add time range selectors (7D / 30D / 90D / ALL)</li>
+        </ul>
+        <p><strong>Deliverable:</strong> Visual trends and historical analysis</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Phase 4: Pedagogical Enhancements (Week 4)</h3>
+        <ul>
+          <li>✅ Add tooltips to all technical terms</li>
+          <li>✅ Create "Learn More" modals (What is DeFi? What is yield?)</li>
+          <li>✅ Add color-coded status indicators (🟢🟡🔴)</li>
+          <li>✅ Build "Pool Health Score" (composite metric)</li>
+          <li>✅ Add export to PDF (investor reports)</li>
+        </ul>
+        <p><strong>Deliverable:</strong> Beginner-friendly educational dashboard</p>
+      </div>
+    </div>
+
+    <h2 id="7-folder-structure">7. Folder Structure</h2>
+
+    <pre><code>frontend/
+├── src/
+│   ├── pages/
+│   │   └── monitor/                    # NEW: Ujamaa Monitor section
+│   │       ├── index.tsx               # Main dashboard page
+│   │       ├── components/
+│   │       │   ├── DashboardHeader.tsx
+│   │       │   ├── KpiCard.tsx         # Reusable KPI display
+│   │       │   ├── ActivityFeed.tsx    # Live event stream
+│   │       │   ├── PoolHealthGauge.tsx # Composite health score
+│   │       │   ├── TransactionModal.tsx
+│   │       │   └── tooltips/
+│   │       │       ├── NavTooltip.tsx
+│   │       │       ├── YieldTooltip.tsx
+│   │       │       └── index.ts
+│   │       ├── charts/
+│   │       │   ├── TvlChart.tsx
+│   │       │   ├── YieldChart.tsx
+│   │       │   └── AllocationPieChart.tsx
+│   │       └── hooks/
+│   │           ├── useContractRead.ts  # Generic contract reader
+│   │           ├── useUlpData.ts       # ULPToken-specific hooks
+│   │           ├── usePoolData.ts      # LiquidityPool hooks
+│   │           └── useEventFeed.ts     # Event indexer hook
+│   │
+│   ├── services/
+│   │   └── monitor/                    # NEW: Monitor backend services
+│   │       ├── contracts.ts            # Contract ABIs and addresses
+│   │       ├── rpc.ts                  # RPC call utilities
+│   │       ├── kpiCalculator.ts        # KPI calculation logic
+│   │       └── eventIndexer.ts         # Event parsing utilities
+│   │
+│   └── config/
+│       └── monitor.ts                  # Monitor configuration (RPC URLs, poll intervals)</code></pre>
+
+    <h2 id="8-technology-stack">8. Technology Stack</h2>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-title">📦 Existing (Reuse)</div>
+        <ul>
+          <li><strong>React 19</strong> - UI framework</li>
+          <li><strong>Vite</strong> - Build tool</li>
+          <li><strong>viem</strong> - Ethereum RPC client (already installed!)</li>
+          <li><strong>wagmi</strong> - React hooks for Ethereum (already installed!)</li>
+          <li><strong>TypeScript</strong> - Type safety</li>
+          <li><strong>Tailwind CSS</strong> - Styling</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">🆕 New Dependencies</div>
+        <ul>
+          <li><strong>Recharts</strong> - Charting library (lightweight, React-friendly)</li>
+          <li><strong>date-fns</strong> - Date formatting</li>
+          <li><strong>react-hot-toast</strong> - Notifications (for live updates)</li>
+        </ul>
+        <pre><code>npm install recharts date-fns react-hot-toast</code></pre>
+      </div>
+      <div class="card">
+        <div class="card-title">🔧 Backend (Optional)</div>
+        <ul>
+          <li><strong>FastAPI</strong> - Reuse existing backend</li>
+          <li><strong>web3.py</strong> - Python Web3 library</li>
+          <li><strong>Redis</strong> - Caching layer (if needed)</li>
+        </ul>
+        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Only add if frontend-only hits performance issues.</p>
+      </div>
+    </div>
+
+    <h2 id="9-smart-contract-events">9. Smart Contract Events to Monitor</h2>
+
+    <h3>ULPToken.sol Events</h3>
+    <pre><code>event DepositReceived(address indexed investor, uint256 amount, uint256 ulpMinted);
+event RedemptionRequested(address indexed investor, uint256 ulpBurned, uint256 eurodAmount);
+event NAVUpdated(uint256 navPerShare, uint256 timestamp);
+event YieldAccrued(uint256 amount, uint256 timestamp);
+event Transfer(address indexed from, address indexed to, uint256 value);</code></pre>
+
+    <h3>LiquidityPool.sol Events</h3>
+    <pre><code>event FinancingApproved(address indexed industrial, uint256 amount, uint256 guaranteeId);
+event FinancingRepaid(address indexed industrial, uint256 amount);
+event FinancingDefaulted(address indexed industrial, uint256 amount, uint256 guaranteeId);
+event PoolDeposit(address indexed investor, uint256 amount);
+event PoolWithdrawal(address indexed investor, uint256 amount);
+event GuaranteeLiquidated(uint256 indexed guaranteeId, uint256 auctionPrice);</code></pre>
+
+    <h3>GuaranteeToken.sol Events</h3>
+    <pre><code>event GuaranteeMinted(uint256 indexed tokenId, address indexed industrial, uint256 value);
+event GuaranteeRedeemed(uint256 indexed tokenId, address indexed industrial);
+event GuaranteeLiquidated(uint256 indexed tokenId, address indexed buyer, uint256 price);</code></pre>
+
+    <h3>IndustrialGateway.sol Events</h3>
+    <pre><code>event IndustrialRegistered(address indexed industrial, string companyName);
+event IndustrialVerified(address indexed industrial, bytes32 certificateId);
+event StockCertified(address indexed industrial, uint256 guaranteeId, uint256 value);</code></pre>
+
+    <h2 id="10-mock-data-strategy">10. Mock Data Strategy for Testing</h2>
+
+    <div class="callout callout-info">
+      <div class="callout-title">💡 Testing Without Live Contracts</div>
+      <p>Since contracts may not be deployed yet, create a <strong>mock data service</strong> that simulates live blockchain data.</p>
+    </div>
+
+    <pre><code>// frontend/src/services/monitor/mockData.ts
+
+export const mockPoolData = {
+  poolBalance: 2_543_210, // €2.5M
+  activeFinancings: 12,
+  defaultRate: 0.8,
+  utilizationRate: 87,
+  yieldAccrued24h: 1_234,
+  navPerShare: 1.0234,
+  totalUlpSupply: 2_487_654,
+  totalHolders: 47,
+};
+
+export const mockEvents = [
+  {
+    type: 'DepositReceived',
+    investor: '0x3a2f...8d1e',
+    amount: 100_000,
+    timestamp: Date.now() - 300_000, // 5 min ago
+    txHash: '0x7a3f...9b2c',
+  },
+  {
+    type: 'FinancingApproved',
+    industrial: 'SIPI Cotton',
+    amount: 250_000,
+    timestamp: Date.now() - 3_600_000, // 1 hour ago
+    txHash: '0x4b2e...7c1a',
+  },
+  // ... more mock events
+];
+
+// Toggle between mock and live data
+export const USE_MOCK_DATA = true; // Set to false when contracts are deployed</code></pre>
+
+    <h2>Next Steps</h2>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-title">✅ Immediate Actions</div>
+        <ol>
+          <li>Review and approve this strategy document</li>
+          <li>Deploy MVP contracts to Polygon Amoy testnet</li>
+          <li>Get contract addresses and ABIs</li>
+          <li>Create <code>frontend/src/pages/monitor/</code> folder</li>
+          <li>Start with Phase 1 (basic KPI cards)</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="card-title">📋 Success Criteria</div>
+        <ul>
+          <li>✅ Non-technical users can understand pool health in &lt;30 seconds</li>
+          <li>✅ All KPIs update automatically (no manual refresh)</li>
+          <li>✅ Event feed shows human-readable descriptions</li>
+          <li>✅ Tooltips explain every technical term</li>
+          <li>✅ Works on mobile and desktop</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-success">
+      <div class="callout-title">🚀 Ready to Build?</div>
+      <p>This strategy provides a complete roadmap from zero to production-ready monitor. Start with Phase 1 and iterate. The key is to <strong>always prioritize clarity over technical completeness</strong>.</p>
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted);">
+      <p><strong>Ujamaa DeFi Platform</strong> - Monitor Strategy Document</p>
+      <p style="font-size: 0.875rem;">© 2026 Ujamaa DeFi Platform | Built for Transparency & Education</p>
+    </footer>
+  </div>
+</body>
+</html>

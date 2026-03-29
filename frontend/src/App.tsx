@@ -105,6 +105,9 @@ import TestnetGuide from './MVP/pages/TestnetGuide';
 // Contract Test Dashboard
 import ContractTestDashboard from './MVP/pages/ContractTestDashboard';
 
+// Ujamaa Monitor Dashboard
+import MonitorDashboard from './pages/monitor';
+
 // Query Client
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -240,6 +243,9 @@ const App: React.FC = () => {
 
             {/* Contract Test Dashboard */}
             <Route path="/contract-test" element={<ContractTestDashboard />} />
+
+            {/* Ujamaa Monitor Dashboard */}
+            <Route path="/monitor" element={<MonitorDashboard />} />
           </Routes>
 
           {/* Global Footer */}
