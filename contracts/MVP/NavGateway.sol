@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Ujamaa DeFi Platform - NAV Oracle for Testnet
+// Ujamaa DeFi Platform - NAV Gateway for Testnet
 // Network: Polygon Amoy (Chain ID: 80002)
 
 pragma solidity ^0.8.20;
@@ -7,9 +7,10 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
- * @title NavOracle
- * @notice NAV (Net Asset Value) price oracle for Ujamaa Pool Token
+ * @title NavGateway
+ * @notice NAV (Net Asset Value) price gateway for Ujamaa Pool Token
  * @dev Provides NAV per share data for the monitor dashboard
+ *      Following Ujamaa naming convention: Gateway = bi-directional data flow
  *
  * Features:
  * - NAV per share updates
@@ -19,7 +20,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  *
  * @notice MVP TESTNET: This is a testnet deployment.
  */
-contract NavOracle is AccessControl {
+contract NavGateway is AccessControl {
     // =========================================================================
     // ROLES
     // =========================================================================

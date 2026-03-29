@@ -29,7 +29,7 @@ const ContractTestDashboard: React.FC = () => {
 
   // Mock token data for MVP - NOW DEPLOYED!
   const deployedContracts = [
-    { name: 'Mock UJEUR Token', symbol: 'UJEUR', balance: '0.00', address: '0xd631ccebA96E166E18f6143d57A5f2622eC3c9c9', deployed: true, role: 'Stablecoin (Euro-pegged)' },
+    { name: 'Mock EUROD Token', symbol: 'EUROD', balance: '0.00', address: '0xd631ccebA96E166E18f6143d57A5f2622eC3c9c9', deployed: true, role: 'Stablecoin (Euro-pegged, Ondo)' },
     { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0x64a2FD95A9fed63e45aaF10243858aC7d53AdFbB', deployed: true, role: 'Yield-bearing pool token' },
     { name: 'Ujamaa Guarantee Token', symbol: 'UGT', balance: '0.00', address: '0x8E612531A801d2Aa7C87BBe2431B0f0A45e0cD99', deployed: true, role: 'Collateral NFT (ERC-3643NFT)' },
     { name: 'Liquidity Pool', symbol: 'POOL', balance: 'N/A', address: '0x23554F5dF29D86e50580205EEBa0D44f90139ff8', deployed: true, role: 'Multi-asset pool manager' },
@@ -37,7 +37,7 @@ const ContractTestDashboard: React.FC = () => {
     { name: 'Jurisdiction Compliance', symbol: 'COMPLIANCE', balance: 'N/A', address: '0x670F8F25b818dbd2404c54DEbd870b1bEFCfeB47', deployed: true, role: 'Investor jurisdiction verification' },
     { name: 'Mock Escrow', symbol: 'ESCROW', balance: 'N/A', address: '0xE72101D1F46aA245AcD4D3D1301323A67286CbC7', deployed: true, role: 'Bank escrow simulation' },
     { name: 'Mock Fiat Ramp', symbol: 'FIAT', balance: 'N/A', address: '0xe0B927De189Fb243A2357ecc400bB4Fe9aD511BB', deployed: true, role: 'Fiat on/off ramp' },
-    { name: 'NAV Oracle', symbol: 'ORACLE', balance: 'N/A', address: '0xfe4685FC18A3991D520E04292F45fACb507181DB', deployed: true, role: 'NAV price feed' },
+    { name: 'NAV Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0xfe4685FC18A3991D520E04292F45fACb507181DB', deployed: true, role: 'NAV price feed (Gateway pattern)' },
   ];
 
   return (
@@ -175,8 +175,8 @@ const PoolFamiliesTab: React.FC<{
     { name: 'IndustrialGateway', symbol: 'GATEWAY', file: 'IndustrialGateway.sol', status: 'Deployed', icon: '🏭' },
     { name: 'MockEscrow', symbol: 'ESCROW', file: 'MockEscrow.sol', status: 'Deployed', icon: '🔒' },
     { name: 'MockFiatRamp', symbol: 'FIAT', file: 'MockFiatRamp.sol', status: 'Deployed', icon: '💱' },
-    { name: 'NavOracle', symbol: 'ORACLE', file: 'NavOracle.sol', status: 'Deployed', icon: '📊' },
-    { name: 'MockUJEUR', symbol: 'UJEUR', file: 'MockUJEUR.sol', status: 'Deployed', icon: '💶' },
+    { name: 'NavGateway', symbol: 'GATEWAY', file: 'NavGateway.sol', status: 'Deployed', icon: '📊' },
+    { name: 'MockEUROD', symbol: 'EUROD', file: 'MockEUROD.sol', status: 'Deployed', icon: '💶' },
   ];
 
   return (
@@ -307,14 +307,13 @@ const TokensTab: React.FC<{ tokens: Array<{ name: string; symbol: string; balanc
   const getContractIcon = (symbol: string) => {
     const icons: Record<string, string> = {
       uLP: '🪙',
-      UJEUR: '💶',
+      EUROD: '💶',
       UGT: '🛡️',
       POOL: '🏊',
       COMPLIANCE: '✅',
-      GATEWAY: '🏭',
+      GATEWAY: '📊',
       ESCROW: '🔒',
       FIAT: '💱',
-      ORACLE: '📊',
     };
     return icons[symbol] || '📄';
   };

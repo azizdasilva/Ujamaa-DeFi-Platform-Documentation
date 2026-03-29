@@ -6,7 +6,7 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Script.sol";
-import "../contracts/MVP/MockUJEUR.sol";
+import "../contracts/MVP/MockEUROD.sol";
 import "../contracts/MVP/ULPToken.sol";
 import "../contracts/MVP/GuaranteeToken.sol";
 import "../contracts/MVP/LiquidityPool.sol";
@@ -14,7 +14,7 @@ import "../contracts/MVP/IndustrialGateway.sol";
 import "../contracts/MVP/JurisdictionCompliance.sol";
 import "../contracts/MVP/MockEscrow.sol";
 import "../contracts/MVP/MockFiatRamp.sol";
-import "../contracts/MVP/NavOracle.sol";
+import "../contracts/MVP/NavGateway.sol";
 
 /**
  * MVP Testnet Deployment Script - DEPLOYS ALL CONTRACTS
@@ -40,7 +40,7 @@ import "../contracts/MVP/NavOracle.sol";
 contract DeployMVP is Script {
     // Deployed contract addresses
     struct DeploymentOutput {
-        address mockUJEUR;
+        address mockEUROD;
         address ulpToken;
         address guaranteeToken;
         address liquidityPool;
@@ -48,7 +48,7 @@ contract DeployMVP is Script {
         address jurisdictionCompliance;
         address mockEscrow;
         address mockFiatRamp;
-        address navOracle;
+        address navGateway;
     }
 
     function run() external returns (DeploymentOutput memory) {
@@ -62,10 +62,10 @@ contract DeployMVP is Script {
         console.log("Deployer address:", deployer);
 
         // =====================================================================
-        // 1. Deploy MockUJEUR (no dependencies)
+        // 1. Deploy MockEUROD (no dependencies)
         // =====================================================================
-        MockUJEUR mockUJEUR = new MockUJEUR();
-        console.log("MockUJEUR deployed:", address(mockUJEUR));
+        MockEUROD mockEUROD = new MockEUROD();
+        console.log("MockEUROD deployed:", address(mockEUROD));
 
         // =====================================================================
         // 2. Deploy JurisdictionCompliance (no dependencies)
@@ -80,16 +80,16 @@ contract DeployMVP is Script {
         console.log("MockEscrow deployed:", address(mockEscrow));
 
         // =====================================================================
-        // 4. Deploy NavOracle (no dependencies)
+        // 4. Deploy NavGateway (no dependencies)
         // =====================================================================
-        NavOracle navOracle = new NavOracle(1e18); // Initial NAV = €1.00
-        console.log("NavOracle deployed:", address(navOracle));
+        NavGateway navGateway = new NavGateway(1e18); // Initial NAV = €1.00
+        console.log("NavGateway deployed:", address(navGateway));
 
         // =====================================================================
-        // 5. Deploy ULPToken (needs ujeurToken)
+        // 5. Deploy ULPToken (needs eurodToken)
         // =====================================================================
         ULPToken ulpToken = new ULPToken(
-            address(mockUJEUR),      // ujeurToken
+            address(mockEUROD),      // eurodToken
             200,                     // managementFeeRate (2%)
             2000,                    // performanceFeeRate (20%)
             500                      // hurdleRate (5%)
@@ -119,9 +119,9 @@ contract DeployMVP is Script {
         console.log("LiquidityPool deployed:", address(liquidityPool));
 
         // =====================================================================
-        // 9. Deploy MockFiatRamp (needs ujeurToken)
+        // 9. Deploy MockFiatRamp (needs eurodToken)
         // =====================================================================
-        MockFiatRamp mockFiatRamp = new MockFiatRamp(address(mockUJEUR));
+        MockFiatRamp mockFiatRamp = new MockFiatRamp(address(mockEUROD));
         console.log("MockFiatRamp deployed:", address(mockFiatRamp));
 
         // =====================================================================
@@ -152,8 +152,8 @@ contract DeployMVP is Script {
         // Grant roles for MockFiatRamp
         mockFiatRamp.grantRole(mockFiatRamp.RAMP_OPERATOR_ROLE(), deployer);
 
-        // Grant roles for NavOracle
-        navOracle.grantRole(navOracle.UPDATER_ROLE(), deployer);
+        // Grant roles for NavGateway
+        navGateway.grantRole(navGateway.UPDATER_ROLE(), deployer);
 
         // Pool families are initialized in LiquidityPool constructor
 
@@ -163,7 +163,7 @@ contract DeployMVP is Script {
         vm.stopBroadcast();
 
         DeploymentOutput memory output = DeploymentOutput({
-            mockUJEUR: address(mockUJEUR),
+            mockEUROD: address(mockEUROD),
             ulpToken: address(ulpToken),
             guaranteeToken: address(guaranteeToken),
             liquidityPool: address(liquidityPool),
@@ -171,7 +171,7 @@ contract DeployMVP is Script {
             jurisdictionCompliance: address(jurisdictionCompliance),
             mockEscrow: address(mockEscrow),
             mockFiatRamp: address(mockFiatRamp),
-            navOracle: address(navOracle)
+            navGateway: address(navGateway)
         });
 
         // Log deployment summary
@@ -182,7 +182,7 @@ contract DeployMVP is Script {
         console.log("Deployer:", deployer);
         console.log("----------------------------------------");
         console.log("ALL Contract Addresses:");
-        console.log("MockUJEUR:           ", address(mockUJEUR));
+        console.log("MockEUROD:           ", address(mockEUROD));
         console.log("ULPToken:            ", address(ulpToken));
         console.log("GuaranteeToken:      ", address(guaranteeToken));
         console.log("LiquidityPool:       ", address(liquidityPool));
@@ -190,7 +190,7 @@ contract DeployMVP is Script {
         console.log("JurisdictionCompliance:", address(jurisdictionCompliance));
         console.log("MockEscrow:          ", address(mockEscrow));
         console.log("MockFiatRamp:        ", address(mockFiatRamp));
-        console.log("NavOracle:           ", address(navOracle));
+        console.log("NavGateway:          ", address(navGateway));
         console.log("========================================\n");
 
         console.log("Copy these addresses to:");

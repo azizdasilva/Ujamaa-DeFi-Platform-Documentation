@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Mock UJEUR Token for MVP Testnet Deployment
+// Mock EUROD Token for MVP Testnet Deployment
+// EUROD = Ondo EUROD (Euro-pegged stablecoin)
 
 pragma solidity ^0.8.20;
 
@@ -7,14 +8,15 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
- * @title MockUJEUR
- * @notice Mock UJEUR token for testnet deployment
+ * @title MockEUROD
+ * @notice Mock EUROD token for testnet deployment
  * @dev Simple ERC20 with minting for testing
+ *      EUROD is the primary stablecoin for Ujamaa platform
  */
-contract MockUJEUR is ERC20, AccessControl {
+contract MockEUROD is ERC20, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    constructor() ERC20("Ujamaa Euro Token", "UJEUR") {
+    constructor() ERC20("Ondo EUROD Token", "EUROD") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
     }
