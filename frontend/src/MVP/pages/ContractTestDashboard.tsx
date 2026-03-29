@@ -29,15 +29,15 @@ const ContractTestDashboard: React.FC = () => {
 
   // Mock token data for MVP - NOW DEPLOYED!
   const deployedContracts = [
-    { name: 'Mock EUROD Token', symbol: 'EUROD', balance: '0.00', address: '0xd631ccebA96E166E18f6143d57A5f2622eC3c9c9', deployed: true, role: 'Stablecoin (Euro-pegged, Ondo)' },
-    { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0x64a2FD95A9fed63e45aaF10243858aC7d53AdFbB', deployed: true, role: 'Yield-bearing pool token' },
-    { name: 'Ujamaa Guarantee Token', symbol: 'UGT', balance: '0.00', address: '0x8E612531A801d2Aa7C87BBe2431B0f0A45e0cD99', deployed: true, role: 'Collateral NFT (ERC-3643NFT)' },
-    { name: 'Liquidity Pool', symbol: 'POOL', balance: 'N/A', address: '0x23554F5dF29D86e50580205EEBa0D44f90139ff8', deployed: true, role: 'Multi-asset pool manager' },
-    { name: 'Industrial Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0x70Bb787c93140fa3201eAdf0D49Cb973a2cE11B7', deployed: true, role: 'Asset certification & UGT minting' },
-    { name: 'Jurisdiction Compliance', symbol: 'COMPLIANCE', balance: 'N/A', address: '0x670F8F25b818dbd2404c54DEbd870b1bEFCfeB47', deployed: true, role: 'Investor jurisdiction verification' },
-    { name: 'Mock Escrow', symbol: 'ESCROW', balance: 'N/A', address: '0xE72101D1F46aA245AcD4D3D1301323A67286CbC7', deployed: true, role: 'Bank escrow simulation' },
-    { name: 'Mock Fiat Ramp', symbol: 'FIAT', balance: 'N/A', address: '0xe0B927De189Fb243A2357ecc400bB4Fe9aD511BB', deployed: true, role: 'Fiat on/off ramp' },
-    { name: 'NAV Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0xfe4685FC18A3991D520E04292F45fACb507181DB', deployed: true, role: 'NAV price feed (Gateway pattern)' },
+    { name: 'Mock EUROD Token', symbol: 'EUROD', balance: '0.00', address: '0x8128aA88F84253ca94F6ca8EF494D9d66e52c790', deployed: true, role: 'Stablecoin (Euro-pegged, Ondo)' },
+    { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0xD0b598bF1a0E4eFB2CD88b15026E571A33C6b663', deployed: true, role: 'Yield-bearing pool token' },
+    { name: 'Ujamaa Guarantee Token', symbol: 'UGT', balance: '0.00', address: '0xd6dfEf255b54CB8e57C0C6DF3eD3B8e42882DecF', deployed: true, role: 'Collateral NFT (ERC-3643NFT)' },
+    { name: 'Liquidity Pool', symbol: 'POOL', balance: 'N/A', address: '0x423D4205b0bdf91fA5378f6225c07498B1E316a3', deployed: true, role: 'Multi-asset pool manager' },
+    { name: 'Industrial Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0xc119aBeD58C90779889c0A5559E052Ec7dFF8aFB', deployed: true, role: 'Asset certification & UGT minting' },
+    { name: 'Jurisdiction Compliance', symbol: 'COMPLIANCE', balance: 'N/A', address: '0xE02cec7436cf10198785D3F0314b404B2f4520c1', deployed: true, role: 'Investor jurisdiction verification' },
+    { name: 'Mock Escrow', symbol: 'ESCROW', balance: 'N/A', address: '0xd28A63aD25D031F7F1744198326840ee19810A7f', deployed: true, role: 'Bank escrow simulation' },
+    { name: 'Mock Fiat Ramp', symbol: 'FIAT', balance: 'N/A', address: '0x009E5A7fd96CB34817Dd50aeD6d5ADd3D15F34F3', deployed: true, role: 'Fiat on/off ramp' },
+    { name: 'NAV Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0xe2f539aE563FbF05b12891eA0c45B84047D8C4A2', deployed: true, role: 'NAV price feed (Gateway pattern)' },
   ];
 
   return (

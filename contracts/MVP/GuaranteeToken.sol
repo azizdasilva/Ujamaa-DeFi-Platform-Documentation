@@ -348,6 +348,14 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
     }
 
     /**
+     * @notice Get total supply of NFTs (ERC721 compatibility)
+     * @return Total count of minted tokens
+     */
+    function totalSupply() external view returns (uint256) {
+        return s_nextTokenId;
+    }
+
+    /**
      * @notice Check if guarantee is active (not redeemed, not defaulted)
      * @param tokenId Token ID
      * @return isActive Whether guarantee is active

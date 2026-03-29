@@ -109,11 +109,11 @@ contract DeployMVP is Script {
         console.log("IndustrialGateway deployed:", address(industrialGateway));
 
         // =====================================================================
-        // 8. Deploy LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
+        // 8. Deploy LiquidityPool (needs ulpToken, eurodToken, guaranteeToken)
         // =====================================================================
         LiquidityPool liquidityPool = new LiquidityPool(
             address(ulpToken),       // ulpToken
-            address(mockUJEUR),      // ujeurToken
+            address(mockEUROD),      // eurodToken
             address(guaranteeToken)  // guaranteeToken
         );
         console.log("LiquidityPool deployed:", address(liquidityPool));
