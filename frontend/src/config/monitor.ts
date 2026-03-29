@@ -23,18 +23,18 @@ export const POLLING_INTERVALS = {
 } as const;
 
 // Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET - ALL CONTRACTS)
-// Deployed: 2026-03-29 (Fixed: added totalSupply() to GuaranteeToken)
+// Deployed: 2026-03-29 (Fixed: added getRegisteredIndustrialsCount to IndustrialGateway)
 // Naming convention: Gateway = bi-directional data flow (per nomenclature)
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0xD0b598bF1a0E4eFB2CD88b15026E571A33C6b663', // ULPToken.sol
-  liquidityPool: '0x423D4205b0bdf91fA5378f6225c07498B1E316a3', // LiquidityPool.sol
-  guaranteeToken: '0xd6dfEf255b54CB8e57C0C6DF3eD3B8e42882DecF', // GuaranteeToken.sol
-  industrialGateway: '0xc119aBeD58C90779889c0A5559E052Ec7dFF8aFB', // IndustrialGateway.sol
-  jurisdictionCompliance: '0xE02cec7436cf10198785D3F0314b404B2f4520c1', // JurisdictionCompliance.sol
-  mockEscrow: '0xd28A63aD25D031F7F1744198326840ee19810A7f', // MockEscrow.sol
-  mockFiatRamp: '0x009E5A7fd96CB34817Dd50aeD6d5ADd3D15F34F3', // MockFiatRamp.sol
-  navGateway: '0xe2f539aE563FbF05b12891eA0c45B84047D8C4A2', // NavGateway.sol
-  mockEUROD: '0x8128aA88F84253ca94F6ca8EF494D9d66e52c790', // MockEUROD.sol
+  ulpToken: '0xa92Dd4E15F4d535BAb3A586C3F3c17E679b92679', // ULPToken.sol
+  liquidityPool: '0xf540D4D0e3088841c08637Be3680fFF0c76bBC25', // LiquidityPool.sol
+  guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', // GuaranteeToken.sol
+  industrialGateway: '0xC8a86Ca26e855a0b2e3f4A79B52b2E39fCA730c6', // IndustrialGateway.sol
+  jurisdictionCompliance: '0x640755367C3bBD99B112324f4Bf0e603aa467257', // JurisdictionCompliance.sol
+  mockEscrow: '0x3736e65d3A238d35aD74690279DfAdc9046Af026', // MockEscrow.sol
+  mockFiatRamp: '0xcecc9d1869D9bdc03B1666F8a1BAEC10097dBDC5', // MockFiatRamp.sol
+  navGateway: '0x3b0DE2895c951a43eA2cbE98F4310a6407A1F07A', // NavGateway.sol
+  mockEUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', // MockEUROD.sol
 } as const;
 
 // KPI Thresholds (Green/Amber/Red)

@@ -105,6 +105,12 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
      */
     mapping(address => uint256[]) public industrialCertificates;
 
+    /**
+     * @notice Registered industrials tracking
+     */
+    mapping(address => bool) public registeredIndustrials;
+    uint256 private registeredIndustrialsCount;
+
     // =========================================================================
     // EVENTS
     // =========================================================================
@@ -229,6 +235,12 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
         // Add to industrial's certificates
         industrialCertificates[industrial].push(certificateId);
 
+        // Track registered industrial
+        if (!registeredIndustrials[industrial]) {
+            registeredIndustrials[industrial] = true;
+            registeredIndustrialsCount++;
+        }
+
         emit CertificateCreated(certificateId, industrial, assetType, value);
         emit CertificateVerified(certificateId, msg.sender);
 
@@ -318,6 +330,23 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
      */
     function getTotalCertificates() external view returns (uint256) {
         return nextCertificateId;
+    }
+
+    /**
+     * @notice Get total registered industrials
+     * @return Total count of registered industrials
+     */
+    function getRegisteredIndustrialsCount() external view returns (uint256) {
+        return registeredIndustrialsCount;
+    }
+
+    /**
+     * @notice Check if industrial is registered
+     * @param industrial Industrial address
+     * @return isRegistered Whether industrial is registered
+     */
+    function isIndustrialRegistered(address industrial) external view returns (bool) {
+        return registeredIndustrials[industrial];
     }
 
     /**
