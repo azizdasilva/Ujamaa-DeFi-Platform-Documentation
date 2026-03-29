@@ -22,15 +22,18 @@ export const POLLING_INTERVALS = {
   EVENTS: 10000, // 10 seconds
 } as const;
 
-// Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET)
-// Deployed: 2026-03-29 (Fixed with all getter functions)
+// Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET - ALL CONTRACTS)
+// Deployed: 2026-03-29 (Complete deployment with Oracle + IndustrialGateway)
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0x8E7E79df912D14582A66018F5ab71683387fc09C', // ULPToken.sol
-  liquidityPool: '0xac0dd6cD2E89C7BA2e2364C733b47844DE657978', // LiquidityPool.sol
-  guaranteeToken: '0x99f9E537F257151b800b719800D37A0154cD1d38', // GuaranteeToken.sol
-  industrialGateway: '0xb8CD53Bb6FD34Be745a0c91BF378Fd99880c9B75', // JurisdictionCompliance.sol
-  mockEscrow: '0x65b9029ecB582055E49eF8bDFD1BAa3934416125', // MockEscrow.sol
-  mockFiatRamp: '0xB7EAe86CC07fFC5e5f4726628E19c42Ab2db26Ac', // MockFiatRamp.sol
+  ulpToken: '0x64a2FD95A9fed63e45aaF10243858aC7d53AdFbB', // ULPToken.sol
+  liquidityPool: '0x23554F5dF29D86e50580205EEBa0D44f90139ff8', // LiquidityPool.sol
+  guaranteeToken: '0x8E612531A801d2Aa7C87BBe2431B0f0A45e0cD99', // GuaranteeToken.sol
+  industrialGateway: '0x70Bb787c93140fa3201eAdf0D49Cb973a2cE11B7', // IndustrialGateway.sol
+  jurisdictionCompliance: '0x670F8F25b818dbd2404c54DEbd870b1bEFCfeB47', // JurisdictionCompliance.sol
+  mockEscrow: '0xE72101D1F46aA245AcD4D3D1301323A67286CbC7', // MockEscrow.sol
+  mockFiatRamp: '0xe0B927De189Fb243A2357ecc400bB4Fe9aD511BB', // MockFiatRamp.sol
+  navOracle: '0xfe4685FC18A3991D520E04292F45fACb507181DB', // NavOracle.sol
+  mockUJEUR: '0xd631ccebA96E166E18f6143d57A5f2622eC3c9c9', // MockUJEUR.sol
 } as const;
 
 // KPI Thresholds (Green/Amber/Red)

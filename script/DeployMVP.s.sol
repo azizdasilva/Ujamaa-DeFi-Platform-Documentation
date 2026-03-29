@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Ujamaa DeFi Platform - MVP Testnet Deployment Script
 // Network: Polygon Amoy (Chain ID: 80002)
+// Deploys ALL contracts including Oracle
 
 pragma solidity ^0.8.20;
 
@@ -9,12 +10,14 @@ import "../contracts/MVP/MockUJEUR.sol";
 import "../contracts/MVP/ULPToken.sol";
 import "../contracts/MVP/GuaranteeToken.sol";
 import "../contracts/MVP/LiquidityPool.sol";
+import "../contracts/MVP/IndustrialGateway.sol";
 import "../contracts/MVP/JurisdictionCompliance.sol";
 import "../contracts/MVP/MockEscrow.sol";
 import "../contracts/MVP/MockFiatRamp.sol";
+import "../contracts/MVP/NavOracle.sol";
 
 /**
- * MVP Testnet Deployment Script
+ * MVP Testnet Deployment Script - DEPLOYS ALL CONTRACTS
  *
  * Usage:
  * 1. Set environment variables:
@@ -27,10 +30,12 @@ import "../contracts/MVP/MockFiatRamp.sol";
  * 1. MockUJEUR (no deps)
  * 2. JurisdictionCompliance (no deps)
  * 3. MockEscrow (no deps)
- * 4. ULPToken (needs ujeurToken)
- * 5. GuaranteeToken (no deps)
- * 6. LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
- * 7. MockFiatRamp (needs ujeurToken)
+ * 4. NavOracle (no deps)
+ * 5. ULPToken (needs ujeurToken)
+ * 6. GuaranteeToken (no deps)
+ * 7. IndustrialGateway (needs GuaranteeToken)
+ * 8. LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
+ * 9. MockFiatRamp (needs ujeurToken)
  */
 contract DeployMVP is Script {
     // Deployed contract addresses
@@ -39,9 +44,11 @@ contract DeployMVP is Script {
         address ulpToken;
         address guaranteeToken;
         address liquidityPool;
+        address industrialGateway;
         address jurisdictionCompliance;
         address mockEscrow;
         address mockFiatRamp;
+        address navOracle;
     }
 
     function run() external returns (DeploymentOutput memory) {
@@ -73,7 +80,13 @@ contract DeployMVP is Script {
         console.log("MockEscrow deployed:", address(mockEscrow));
 
         // =====================================================================
-        // 4. Deploy ULPToken (needs ujeurToken)
+        // 4. Deploy NavOracle (no dependencies)
+        // =====================================================================
+        NavOracle navOracle = new NavOracle(1e18); // Initial NAV = €1.00
+        console.log("NavOracle deployed:", address(navOracle));
+
+        // =====================================================================
+        // 5. Deploy ULPToken (needs ujeurToken)
         // =====================================================================
         ULPToken ulpToken = new ULPToken(
             address(mockUJEUR),      // ujeurToken
@@ -84,13 +97,19 @@ contract DeployMVP is Script {
         console.log("ULPToken deployed:", address(ulpToken));
 
         // =====================================================================
-        // 5. Deploy GuaranteeToken (no dependencies)
+        // 6. Deploy GuaranteeToken (no dependencies)
         // =====================================================================
         GuaranteeToken guaranteeToken = new GuaranteeToken();
         console.log("GuaranteeToken deployed:", address(guaranteeToken));
 
         // =====================================================================
-        // 6. Deploy LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
+        // 7. Deploy IndustrialGateway (needs GuaranteeToken reference)
+        // =====================================================================
+        IndustrialGateway industrialGateway = new IndustrialGateway();
+        console.log("IndustrialGateway deployed:", address(industrialGateway));
+
+        // =====================================================================
+        // 8. Deploy LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
         // =====================================================================
         LiquidityPool liquidityPool = new LiquidityPool(
             address(ulpToken),       // ulpToken
@@ -100,13 +119,13 @@ contract DeployMVP is Script {
         console.log("LiquidityPool deployed:", address(liquidityPool));
 
         // =====================================================================
-        // 7. Deploy MockFiatRamp (needs ujeurToken)
+        // 9. Deploy MockFiatRamp (needs ujeurToken)
         // =====================================================================
         MockFiatRamp mockFiatRamp = new MockFiatRamp(address(mockUJEUR));
         console.log("MockFiatRamp deployed:", address(mockFiatRamp));
 
         // =====================================================================
-        // Initialize Contracts
+        // Initialize Contracts & Grant Roles
         // =====================================================================
 
         // Grant roles for ULPToken
@@ -117,6 +136,10 @@ contract DeployMVP is Script {
         // Grant roles for GuaranteeToken
         guaranteeToken.grantRole(guaranteeToken.MINTER_ROLE(), deployer);
         guaranteeToken.grantRole(guaranteeToken.POOL_MANAGER_ROLE(), deployer);
+
+        // Grant roles for IndustrialGateway
+        industrialGateway.grantRole(industrialGateway.CERTIFIER_ROLE(), deployer);
+        industrialGateway.grantRole(industrialGateway.POOL_MANAGER_ROLE(), deployer);
 
         // Grant roles for LiquidityPool
         liquidityPool.grantRole(liquidityPool.POOL_MANAGER_ROLE(), deployer);
@@ -129,7 +152,10 @@ contract DeployMVP is Script {
         // Grant roles for MockFiatRamp
         mockFiatRamp.grantRole(mockFiatRamp.RAMP_OPERATOR_ROLE(), deployer);
 
-        // Pools are initialized in constructor
+        // Grant roles for NavOracle
+        navOracle.grantRole(navOracle.UPDATER_ROLE(), deployer);
+
+        // Pool families are initialized in LiquidityPool constructor
 
         // =====================================================================
         // Summary
@@ -141,9 +167,11 @@ contract DeployMVP is Script {
             ulpToken: address(ulpToken),
             guaranteeToken: address(guaranteeToken),
             liquidityPool: address(liquidityPool),
+            industrialGateway: address(industrialGateway),
             jurisdictionCompliance: address(jurisdictionCompliance),
             mockEscrow: address(mockEscrow),
-            mockFiatRamp: address(mockFiatRamp)
+            mockFiatRamp: address(mockFiatRamp),
+            navOracle: address(navOracle)
         });
 
         // Log deployment summary
@@ -153,17 +181,21 @@ contract DeployMVP is Script {
         console.log("Network: Polygon Amoy (80002)");
         console.log("Deployer:", deployer);
         console.log("----------------------------------------");
-        console.log("Contract Addresses:");
+        console.log("ALL Contract Addresses:");
         console.log("MockUJEUR:           ", address(mockUJEUR));
         console.log("ULPToken:            ", address(ulpToken));
         console.log("GuaranteeToken:      ", address(guaranteeToken));
         console.log("LiquidityPool:       ", address(liquidityPool));
+        console.log("IndustrialGateway:   ", address(industrialGateway));
         console.log("JurisdictionCompliance:", address(jurisdictionCompliance));
         console.log("MockEscrow:          ", address(mockEscrow));
         console.log("MockFiatRamp:        ", address(mockFiatRamp));
+        console.log("NavOracle:           ", address(navOracle));
         console.log("========================================\n");
 
-        console.log("Copy these addresses to frontend/src/config/monitor.ts");
+        console.log("Copy these addresses to:");
+        console.log("1. frontend/src/config/monitor.ts");
+        console.log("2. frontend/src/MVP/pages/ContractTestDashboard.tsx");
         console.log("Then set USE_MOCK_DATA: false");
 
         return output;
