@@ -23,14 +23,14 @@ export const POLLING_INTERVALS = {
 } as const;
 
 // Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET)
-// Deployed: 2026-03-29
+// Deployed: 2026-03-29 (Fixed navPerShare getter)
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0x28093B3B150fecfc752278B1795957e552b3c214', // ULPToken.sol
-  liquidityPool: '0x70c802De059a341e4e4462423707f3E233c7Dff3', // LiquidityPool.sol
-  guaranteeToken: '0x46692c2DD75D3c3046eD611186CDc9Ebe08E9d7C', // GuaranteeToken.sol
+  ulpToken: '0x0D5C3F328383b895b1e1ddfB7e6b822Fe4b01113', // ULPToken.sol
+  liquidityPool: '0xacF00c516454B3A900ff4dfA5931A50924E12De1', // LiquidityPool.sol
+  guaranteeToken: '0xca6cC96141a4064Cff2b70c29186B4359750CF76', // GuaranteeToken.sol
   industrialGateway: '0x5815eA90B015BDe292d18A0755e0DaE3F3b51756', // JurisdictionCompliance.sol
-  mockEscrow: '0x376CDe56052f316827e9Bae632719FafaF845a0B', // MockEscrow.sol
-  mockFiatRamp: '0x1E495F1857A9e96F49540ec4798e9F129F35C9CD', // MockFiatRamp.sol
+  mockEscrow: '0x60E36584d994ceF87A96bebA3D80B577f4CdD42C', // MockEscrow.sol
+  mockFiatRamp: '0x1cD0cC50876e23Ac6f873e17Bd304BCF5CbAEE47', // MockFiatRamp.sol
 } as const;
 
 // KPI Thresholds (Green/Amber/Red)

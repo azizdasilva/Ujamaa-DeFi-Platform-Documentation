@@ -74,6 +74,12 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
     uint256 private s_navPerShare;
 
     /**
+     * @notice Timestamp of last NAV update
+     * @dev Updated on deposits, redemptions, and yield accrual
+     */
+    uint256 private s_lastNavUpdate;
+
+    /**
      * @notice Accumulated yield (18 decimals)
      * @dev Total yield accrued since inception
      */
@@ -240,6 +246,7 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
 
         ujeurToken = _ujeurToken;
         s_navPerShare = INITIAL_NAV;
+        s_lastNavUpdate = block.timestamp;
         s_totalPoolValue = 0;
         s_accumulatedYield = 0;
         s_pendingYield = 0;
@@ -430,12 +437,28 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
     /**
      * @notice Get current NAV per share
      * @return NAV per share (18 decimals)
-     * 
+     *
      * Formula: NAV = totalPoolValue / totalShares
      * Returns INITIAL_NAV (1.00) if no shares exist
      */
     function getNAV() external view returns (uint256) {
         return s_navPerShare;
+    }
+
+    /**
+     * @notice Get NAV per share (alias for getNAV)
+     * @return NAV per share (18 decimals)
+     */
+    function navPerShare() external view returns (uint256) {
+        return s_navPerShare;
+    }
+
+    /**
+     * @notice Get last NAV update timestamp
+     * @return Timestamp of last NAV update
+     */
+    function lastNavUpdate() external view returns (uint256) {
+        return s_lastNavUpdate;
     }
 
     /**
