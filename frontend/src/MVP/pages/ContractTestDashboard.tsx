@@ -3,12 +3,125 @@
  * Ujamaa DeFi Platform - MVP Testnet
  *
  * Interactive UI for testing smart contract functions
+ * All 9 contracts deployed on Polygon Amoy testnet
  */
 
 import React, { useState, useEffect } from 'react';
 import { useWallet } from '../../hooks/useWallet';
 import { useLiquidityPool, formatPoolFamily, formatAPY, formatTokenAmount } from '../../hooks/useContractInteraction';
 import WalletModal from '../components/WalletModal';
+
+// All deployed contract addresses (Polygon Amoy - Chain ID: 80002)
+export const DEPLOYED_CONTRACTS = [
+  {
+    name: 'Mock EUROD',
+    symbol: 'EUROD',
+    address: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43',
+    role: 'Euro-pegged stablecoin (Ondo)',
+    standard: 'ERC-20',
+    icon: '💶',
+    category: 'Token',
+    status: 'Deployed',
+    description: 'Mock EUROD token for testnet. Represents Euro-pegged stablecoin for the platform.',
+    functions: ['mint', 'transfer', 'approve', 'balanceOf'],
+  },
+  {
+    name: 'ULP Token',
+    symbol: 'uLP',
+    address: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
+    role: 'Yield-bearing pool token',
+    standard: 'ERC-3643',
+    icon: '🪙',
+    category: 'Token',
+    status: 'Deployed',
+    description: 'Ujamaa Liquidity Provider Token. Yield-bearing ERC-3643 token representing pool shares.',
+    functions: ['mint', 'burn', 'transfer', 'getNAV', 'navPerShare'],
+  },
+  {
+    name: 'Guarantee Token',
+    symbol: 'UJG',
+    address: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
+    role: 'Collateral NFT (ERC-3643NFT)',
+    standard: 'ERC-3643NFT',
+    icon: '🛡️',
+    category: 'NFT',
+    status: 'Deployed',
+    description: 'Ujamaa Guarantee Token. NFT representing certified merchandise/collateral backing financing.',
+    functions: ['mintGuarantee', 'redeemGuarantee', 'transfer', 'totalSupply'],
+  },
+  {
+    name: 'Liquidity Pool',
+    symbol: 'POOL',
+    address: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec',
+    role: 'Multi-asset pool manager',
+    standard: 'Custom',
+    icon: '🏊',
+    category: 'Pool',
+    status: 'Deployed',
+    description: 'Manages 5 pool families with diversification limits and asset allocation.',
+    functions: ['createFinancing', 'deployFunds', 'repayFinancing', 'getUtilizationRate'],
+  },
+  {
+    name: 'Industrial Gateway',
+    symbol: 'GATEWAY',
+    address: '0x882071de6689eC1716BD7e162Acf50707AC68930',
+    role: 'Asset certification & UGT minting',
+    standard: 'Custom',
+    icon: '🏭',
+    category: 'Gateway',
+    status: 'Deployed',
+    description: 'Certifies industrial assets/stock and mints Guarantee Tokens (UGT).',
+    functions: ['createCertificate', 'mintGuarantee', 'getRegisteredIndustrialsCount', 'getPendingApprovalsCount'],
+  },
+  {
+    name: 'Jurisdiction Compliance',
+    symbol: 'COMPLIANCE',
+    address: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C',
+    role: 'Investor jurisdiction verification',
+    standard: 'Custom',
+    icon: '✅',
+    category: 'Compliance',
+    status: 'Deployed',
+    description: 'Manages jurisdiction compliance with strictest combined list (OFAC + UN + EU + FATF).',
+    functions: ['isJurisdictionAllowed', 'testCompliance'],
+  },
+  {
+    name: 'Mock Escrow',
+    symbol: 'ESCROW',
+    address: '0x8d446994fcD9906c573500959cDc8A8271a9485F',
+    role: 'Bank escrow simulation',
+    standard: 'Custom',
+    icon: '🔒',
+    category: 'Escrow',
+    status: 'Deployed',
+    description: 'Simulates bank escrow accounts for investor funds (MVP testnet only).',
+    functions: ['createEscrowAccount', 'deposit', 'withdraw', 'getBalance'],
+  },
+  {
+    name: 'Mock Fiat Ramp',
+    symbol: 'FIAT',
+    address: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a',
+    role: 'Fiat on/off ramp',
+    standard: 'Custom',
+    icon: '💱',
+    category: 'Ramp',
+    status: 'Deployed',
+    description: 'Simulates fiat ↔ stablecoin conversion (MVP testnet only).',
+    functions: ['onRamp', 'offRamp', 'mintTestUJEURSelf'],
+  },
+  {
+    name: 'NAV Gateway',
+    symbol: 'GATEWAY',
+    address: '0x99712f923e3519B4305CEDAd40290428299F29A0',
+    role: 'NAV price feed',
+    standard: 'Custom',
+    icon: '📊',
+    category: 'Gateway',
+    status: 'Deployed',
+    description: 'Provides NAV (Net Asset Value) per share data for the monitor dashboard.',
+    functions: ['updateNav', 'accrueYield', 'getNAV', 'getNavHistory'],
+  },
+] as const;
 
 /**
  * ContractTestDashboard Component
@@ -17,7 +130,7 @@ const ContractTestDashboard: React.FC = () => {
   const { isConnected, address, addressShort, connect, switchToPolygonAmoy, isWrongNetwork } = useWallet();
   const { poolData, loading, error, refetch } = useLiquidityPool();
 
-  const [activeTab, setActiveTab] = useState<'pools' | 'tokens' | 'deploy'>('pools');
+  const [activeTab, setActiveTab] = useState<'overview' | 'contracts' | 'pools' | 'deploy'>('overview');
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
   // Auto-load pool data on mount and when wallet connects
@@ -26,19 +139,6 @@ const ContractTestDashboard: React.FC = () => {
       refetch();
     }
   }, [isConnected, isWrongNetwork, refetch]);
-
-  // Mock token data for MVP - NOW DEPLOYED!
-  const deployedContracts = [
-    { name: 'Mock EUROD Token', symbol: 'EUROD', balance: '0.00', address: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', deployed: true, role: 'Stablecoin (Euro-pegged, Ondo)' },
-    { name: 'Ujamaa Liquidity Provider Token', symbol: 'uLP', balance: '0.00', address: '0xb6062a6e63a07c3598629a65ed19021445fb3b26', deployed: true, role: 'Yield-bearing pool token' },
-    { name: 'Ujamaa Guarantee Token', symbol: 'UGT', balance: '0.00', address: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', deployed: true, role: 'Collateral NFT (ERC-3643NFT)' },
-    { name: 'Liquidity Pool', symbol: 'POOL', balance: 'N/A', address: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec', deployed: true, role: 'Multi-asset pool manager' },
-    { name: 'Industrial Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0x882071de6689eC1716BD7e162Acf50707AC68930', deployed: true, role: 'Asset certification & UGT minting' },
-    { name: 'Jurisdiction Compliance', symbol: 'COMPLIANCE', balance: 'N/A', address: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C', deployed: true, role: 'Investor jurisdiction verification' },
-    { name: 'Mock Escrow', symbol: 'ESCROW', balance: 'N/A', address: '0x8d446994fcD9906c573500959cDc8A8271a9485F', deployed: true, role: 'Bank escrow simulation' },
-    { name: 'Mock Fiat Ramp', symbol: 'FIAT', balance: 'N/A', address: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', deployed: true, role: 'Fiat on/off ramp' },
-    { name: 'NAV Gateway', symbol: 'GATEWAY', balance: 'N/A', address: '0x99712f923e3519B4305CEDAd40290428299F29A0', deployed: true, role: 'NAV price feed (Gateway pattern)' },
-  ];
 
   return (
     <div className="min-h-screen bg-[#F3F8FA] py-6">
@@ -53,7 +153,7 @@ const ContractTestDashboard: React.FC = () => {
               🔧 Smart Contract Test Dashboard
             </h1>
             <p className="text-xs text-[#333333]">
-              MVP Testnet • Polygon Amoy (Chain ID: 80002)
+              MVP Testnet • Polygon Amoy (Chain ID: 80002) • 9 Contracts Deployed
             </p>
           </div>
 
@@ -94,6 +194,26 @@ const ContractTestDashboard: React.FC = () => {
         {/* Tabs */}
         <div className="flex gap-2 mb-4 border-b border-gray-200">
           <button
+            onClick={() => setActiveTab('overview')}
+            className={`px-3 py-1.5 font-bold rounded-t-lg transition-colors text-xs ${
+              activeTab === 'overview'
+                ? 'bg-white text-[#023D7A] border border-b-0 border-gray-200'
+                : 'text-gray-600 hover:text-[#023D7A]'
+            }`}
+          >
+            📊 Overview
+          </button>
+          <button
+            onClick={() => setActiveTab('contracts')}
+            className={`px-3 py-1.5 font-bold rounded-t-lg transition-colors text-xs ${
+              activeTab === 'contracts'
+                ? 'bg-white text-[#023D7A] border border-b-0 border-gray-200'
+                : 'text-gray-600 hover:text-[#023D7A]'
+            }`}
+          >
+            📦 All Contracts (9)
+          </button>
+          <button
             onClick={() => setActiveTab('pools')}
             className={`px-3 py-1.5 font-bold rounded-t-lg transition-colors text-xs ${
               activeTab === 'pools'
@@ -102,16 +222,6 @@ const ContractTestDashboard: React.FC = () => {
             }`}
           >
             🏊 Pool Families
-          </button>
-          <button
-            onClick={() => setActiveTab('tokens')}
-            className={`px-3 py-1.5 font-bold rounded-t-lg transition-colors text-xs ${
-              activeTab === 'tokens'
-                ? 'bg-white text-[#023D7A] border border-b-0 border-gray-200'
-                : 'text-gray-600 hover:text-[#023D7A]'
-            }`}
-          >
-            🪙 All Contracts (9)
           </button>
           <button
             onClick={() => setActiveTab('deploy')}
@@ -127,8 +237,8 @@ const ContractTestDashboard: React.FC = () => {
 
         {/* Content */}
         <div className="bg-white rounded-xl shadow-lg p-4">
-          {activeTab === 'pools' && (
-            <PoolFamiliesTab
+          {activeTab === 'overview' && (
+            <OverviewTab
               poolData={poolData}
               loading={loading}
               error={error}
@@ -136,8 +246,17 @@ const ContractTestDashboard: React.FC = () => {
             />
           )}
 
-          {activeTab === 'tokens' && (
-            <TokensTab tokens={deployedContracts} />
+          {activeTab === 'contracts' && (
+            <ContractsTab contracts={DEPLOYED_CONTRACTS} />
+          )}
+
+          {activeTab === 'pools' && (
+            <PoolFamiliesTab
+              poolData={poolData}
+              loading={loading}
+              error={error}
+              onRefresh={refetch}
+            />
           )}
 
           {activeTab === 'deploy' && (
@@ -148,10 +267,219 @@ const ContractTestDashboard: React.FC = () => {
         {/* Testnet Disclaimer */}
         <div className="mt-6 p-3 bg-[#023D7A]/5 border border-[#023D7A]/20 rounded-xl">
           <p className="text-xs text-[#023D7A]">
-            <strong>⚠️ MVP TESTNET DISCLAIMER:</strong> This is a testnet deployment. No real funds are involved.
-            All tokens and transactions are for testing purposes only on Polygon Amoy testnet.
+            <strong>⚠️ MVP TESTNET DISCLAIMER:</strong> This is a testnet deployment on Polygon Amoy. No real funds are involved.
+            All tokens and transactions are for testing purposes only. Contract addresses are provided for each contract above.
           </p>
         </div>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Overview Tab
+ */
+const OverviewTab: React.FC<{
+  poolData: any;
+  loading: boolean;
+  error: string | null;
+  onRefresh: () => void;
+}> = ({ poolData, loading, error, onRefresh }) => {
+  return (
+    <div>
+      <h2 className="text-base font-bold text-[#023D7A] mb-4">Deployed Contracts Overview</h2>
+      
+      {/* Summary Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-3 text-center">
+          <p className="text-2xl font-bold text-blue-700">9</p>
+          <p className="text-[10px] text-blue-600 mt-0.5">Total Contracts</p>
+        </div>
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-3 text-center">
+          <p className="text-2xl font-bold text-green-700">9</p>
+          <p className="text-[10px] text-green-600 mt-0.5">Deployed</p>
+        </div>
+        <div className="bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-200 rounded-xl p-3 text-center">
+          <p className="text-2xl font-bold text-purple-700">80002</p>
+          <p className="text-[10px] text-purple-600 mt-0.5">Chain ID</p>
+        </div>
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-3 text-center">
+          <p className="text-2xl font-bold text-amber-700">Amoy</p>
+          <p className="text-[10px] text-amber-600 mt-0.5">Network</p>
+        </div>
+      </div>
+
+      {/* Contract Categories */}
+      <h3 className="text-sm font-bold text-[#023D7A] mb-3">Contract Categories</h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">💶🪙</div>
+          <p className="text-xs font-bold text-[#023D7A]">Tokens (2)</p>
+          <p className="text-[10px] text-gray-600">EUROD, uLP</p>
+        </div>
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">🛡️</div>
+          <p className="text-xs font-bold text-[#023D7A]">NFTs (1)</p>
+          <p className="text-[10px] text-gray-600">UJG (Guarantee)</p>
+        </div>
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">🏊</div>
+          <p className="text-xs font-bold text-[#023D7A]">Pool (1)</p>
+          <p className="text-[10px] text-gray-600">LiquidityPool</p>
+        </div>
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">🏭📊</div>
+          <p className="text-xs font-bold text-[#023D7A]">Gateways (2)</p>
+          <p className="text-[10px] text-gray-600">Industrial, NAV</p>
+        </div>
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">✅</div>
+          <p className="text-xs font-bold text-[#023D7A]">Compliance (1)</p>
+          <p className="text-[10px] text-gray-600">Jurisdiction</p>
+        </div>
+        <div className="border border-gray-200 rounded-xl p-3">
+          <div className="text-2xl mb-1">🔒💱</div>
+          <p className="text-xs font-bold text-[#023D7A]">Mock (2)</p>
+          <p className="text-[10px] text-gray-600">Escrow, FiatRamp</p>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <h3 className="text-sm font-bold text-[#023D7A] mb-3">Pool Statistics</h3>
+      {loading && (
+        <div className="text-center py-4">
+          <svg className="animate-spin h-5 w-5 text-[#00A8A8] mx-auto" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          <p className="text-gray-600 text-xs mt-2">Loading pool data...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-3">
+          <p className="text-red-800 font-medium text-xs">Error: {error}</p>
+        </div>
+      )}
+
+      {!loading && !error && poolData && (
+        <div className="grid grid-cols-2 gap-3">
+          {poolData.poolFamilies.slice(0, 4).map((pool: any, index: number) => (
+            <div key={index} className="border border-gray-200 rounded-xl p-3">
+              <div className="flex items-center gap-1.5 mb-2">
+                <span className="text-lg">
+                  {index === 0 ? '🏭' : index === 1 ? '🌾' : index === 2 ? '💼' : '⚡'}
+                </span>
+                <h4 className="font-bold text-[#023D7A] text-xs">{formatPoolFamily(index)}</h4>
+              </div>
+              <div className="space-y-1 text-[10px]">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">APY:</span>
+                  <span className="font-bold text-green-600">{formatAPY(pool.targetAPY)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Term:</span>
+                  <span className="font-medium text-[#023D7A]">{pool.termDays}d</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <button
+        onClick={onRefresh}
+        disabled={loading}
+        className="mt-4 w-full px-3 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors disabled:opacity-50 text-xs"
+      >
+        🔄 Refresh Data
+      </button>
+    </div>
+  );
+};
+
+/**
+ * Contracts Tab - All 9 Deployed Contracts
+ */
+const ContractsTab: React.FC<{ contracts: typeof DEPLOYED_CONTRACTS }> = ({ contracts }) => {
+  const [selectedContract, setSelectedContract] = useState<number | null>(null);
+
+  return (
+    <div>
+      <h2 className="text-base font-bold text-[#023D7A] mb-1">✅ All Smart Contracts Deployed</h2>
+      <p className="text-xs text-gray-600 mb-4">
+        All 9 MVP smart contracts deployed on Polygon Amoy (Chain ID: 80002)
+      </p>
+
+      <div className="space-y-2">
+        {contracts.map((contract, index) => (
+          <div
+            key={index}
+            className="border border-green-200 bg-green-50 rounded-xl p-3 transition-all hover:shadow-md cursor-pointer"
+            onClick={() => setSelectedContract(selectedContract === index ? null : index)}
+          >
+            <div className="flex items-center gap-3">
+              {/* Icon */}
+              <div className="w-10 h-10 bg-gradient-to-br from-[#00A8A8] to-[#023D7A] rounded-xl flex items-center justify-center text-xl shadow-lg flex-shrink-0">
+                {contract.icon}
+              </div>
+
+              {/* Info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-[#023D7A] text-sm truncate">{contract.name}</h3>
+                  <span className="px-1.5 py-0.5 bg-green-200 text-green-800 text-[9px] font-bold rounded-full flex-shrink-0">
+                    {contract.status}
+                  </span>
+                  <span className="px-1.5 py-0.5 bg-blue-100 text-blue-800 text-[9px] font-bold rounded-full flex-shrink-0">
+                    {contract.symbol}
+                  </span>
+                </div>
+                <p className="text-[11px] text-gray-600">{contract.role}</p>
+                <p className="text-[10px] text-gray-500 font-mono mt-0.5 truncate">{contract.address}</p>
+              </div>
+
+              {/* View on Explorer */}
+              <div className="text-right flex-shrink-0">
+                <a
+                  href={`https://amoy.polygonscan.com/address/${contract.address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded text-[9px] transition-colors inline-flex items-center gap-1"
+                >
+                  View ↗
+                </a>
+              </div>
+            </div>
+
+            {/* Expanded Details */}
+            {selectedContract === index && (
+              <div className="mt-3 pt-3 border-t border-green-200">
+                <div className="grid grid-cols-2 gap-2 text-[10px]">
+                  <div>
+                    <span className="text-gray-600">Standard:</span>
+                    <span className="ml-1 font-medium text-[#023D7A]">{contract.standard}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Category:</span>
+                    <span className="ml-1 font-medium text-[#023D7A]">{contract.category}</span>
+                  </div>
+                </div>
+                <p className="mt-2 text-[11px] text-gray-700">{contract.description}</p>
+                <div className="mt-2">
+                  <p className="text-[10px] text-gray-600 mb-1">Key Functions:</p>
+                  <div className="flex flex-wrap gap-1">
+                    {contract.functions.map((fn, i) => (
+                      <span key={i} className="px-1.5 py-0.5 bg-white border border-gray-200 rounded text-[9px] font-mono text-[#023D7A]">
+                        {fn}()
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -166,46 +494,8 @@ const PoolFamiliesTab: React.FC<{
   error: string | null;
   onRefresh: () => void;
 }> = ({ poolData, loading, error, onRefresh }) => {
-  // Smart contracts to display - ALL DEPLOYED!
-  const smartContracts = [
-    { name: 'ULPToken', symbol: 'uLP', file: 'ULPToken.sol', status: 'Deployed', icon: '🪙' },
-    { name: 'GuaranteeToken', symbol: 'UGT', file: 'GuaranteeToken.sol', status: 'Deployed', icon: '🛡️' },
-    { name: 'LiquidityPool', symbol: 'POOL', file: 'LiquidityPool.sol', status: 'Deployed', icon: '🏊' },
-    { name: 'JurisdictionCompliance', symbol: 'COMPLIANCE', file: 'JurisdictionCompliance.sol', status: 'Deployed', icon: '✅' },
-    { name: 'IndustrialGateway', symbol: 'GATEWAY', file: 'IndustrialGateway.sol', status: 'Deployed', icon: '🏭' },
-    { name: 'MockEscrow', symbol: 'ESCROW', file: 'MockEscrow.sol', status: 'Deployed', icon: '🔒' },
-    { name: 'MockFiatRamp', symbol: 'FIAT', file: 'MockFiatRamp.sol', status: 'Deployed', icon: '💱' },
-    { name: 'NavGateway', symbol: 'GATEWAY', file: 'NavGateway.sol', status: 'Deployed', icon: '📊' },
-    { name: 'MockEUROD', symbol: 'EUROD', file: 'MockEUROD.sol', status: 'Deployed', icon: '💶' },
-  ];
-
   return (
     <div>
-      {/* Smart Contracts Overview */}
-      <div className="mb-6">
-        <h2 className="text-sm font-bold text-[#023D7A] mb-3 flex items-center gap-1">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-          </svg>
-          Smart Contracts (9) - ALL DEPLOYED!
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {smartContracts.map((contract, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-3 text-center hover:border-[#00A8A8] hover:shadow-md transition-all cursor-pointer group"
-            >
-              <div className="text-2xl mb-1">{contract.icon}</div>
-              <h3 className="font-bold text-[#023D7A] group-hover:text-[#00A8A8] text-[8px] leading-tight">{contract.symbol}</h3>
-              <p className="text-[13px] text-gray-500 mt-0.5 truncate">{contract.name}</p>
-              <span className="inline-block mt-1.5 px-1.5 py-0.5 bg-green-100 text-green-700 font-bold rounded-full text-[12px]">
-                {contract.status}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-base font-bold text-[#023D7A]">Pool Families Overview</h2>
         <button
@@ -299,222 +589,69 @@ const PoolFamiliesTab: React.FC<{
 };
 
 /**
- * Tokens Tab - ALL CONTRACTS DEPLOYED!
- */
-const TokensTab: React.FC<{ tokens: Array<{ name: string; symbol: string; balance: string; address: string; deployed: boolean; role: string }> }> = ({
-  tokens,
-}) => {
-  const getContractIcon = (symbol: string) => {
-    const icons: Record<string, string> = {
-      uLP: '🪙',
-      EUROD: '💶',
-      UGT: '🛡️',
-      POOL: '🏊',
-      COMPLIANCE: '✅',
-      GATEWAY: '📊',
-      ESCROW: '🔒',
-      FIAT: '💱',
-    };
-    return icons[symbol] || '📄';
-  };
-
-  return (
-    <div>
-      <h2 className="text-base font-bold text-[#023D7A] mb-1">✅ All Smart Contracts Deployed!</h2>
-      <p className="text-xs text-gray-600 mb-4">
-        All 9 MVP smart contracts deployed on Polygon Amoy (Chain ID: 80002)
-      </p>
-
-      <div className="space-y-2">
-        {tokens.map((token, index) => (
-          <div
-            key={index}
-            className={`border rounded-xl p-3 flex items-center gap-3 transition-all ${
-              token.deployed
-                ? 'border-green-200 bg-green-50'
-                : 'border-gray-200 bg-gray-50'
-            }`}
-          >
-            {/* Icon */}
-            <div className="w-10 h-10 bg-gradient-to-br from-[#00A8A8] to-[#023D7A] rounded-xl flex items-center justify-center text-xl shadow-lg flex-shrink-0">
-              {getContractIcon(token.symbol)}
-            </div>
-
-            {/* Info */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold text-[#023D7A] text-sm truncate">{token.name}</h3>
-                {token.deployed ? (
-                  <span className="px-1.5 py-0.5 bg-green-200 text-green-800 text-[9px] font-bold rounded-full flex-shrink-0">
-                    Deployed
-                  </span>
-                ) : (
-                  <span className="px-1.5 py-0.5 bg-yellow-200 text-yellow-800 text-[9px] font-bold rounded-full flex-shrink-0">
-                    Pending
-                  </span>
-                )}
-              </div>
-              <p className="text-[11px] text-gray-600">{token.role}</p>
-              <p className="text-[10px] text-gray-500 font-mono mt-0.5">{token.address}</p>
-            </div>
-
-            {/* View on Explorer */}
-            <div className="text-right">
-              <a
-                href={`https://amoy.polygonscan.com/address/${token.address}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-2 py-1 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded text-[9px] transition-colors inline-flex items-center gap-1"
-              >
-                View ↗
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Contract Summary */}
-      <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2">
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-3 text-center">
-          <p className="text-lg font-bold text-blue-700">9</p>
-          <p className="text-[9px] text-blue-600 mt-0.5">Total Contracts</p>
-        </div>
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-3 text-center">
-          <p className="text-lg font-bold text-green-700">9</p>
-          <p className="text-[9px] text-green-600 mt-0.5">Deployed</p>
-        </div>
-        <div className="bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-200 rounded-xl p-3 text-center">
-          <p className="text-lg font-bold text-purple-700">80002</p>
-          <p className="text-[9px] text-purple-600 mt-0.5">Chain ID</p>
-        </div>
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-3 text-center">
-          <p className="text-lg font-bold text-amber-700">Amoy</p>
-          <p className="text-[9px] text-amber-600 mt-0.5">Network</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/**
  * Deployment Tab
  */
 const DeploymentTab: React.FC = () => {
-  const [deploymentStep, setDeploymentStep] = useState<'idle' | 'deploying' | 'deployed'>('idle');
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const deploymentSteps = [
-    { name: 'Compile Contracts', status: 'pending' },
-    { name: 'Deploy ULP Token', status: 'pending' },
-    { name: 'Deploy EUROD Token', status: 'pending' },
-    { name: 'Deploy Guarantee Token', status: 'pending' },
-    { name: 'Deploy LiquidityPool', status: 'pending' },
-    { name: 'Initialize Contracts', status: 'pending' },
-  ];
-
-  const handleDeploy = async () => {
-    setDeploymentStep('deploying');
-    setCurrentStep(0);
-
-    // Simulate deployment steps
-    for (let i = 0; i < deploymentSteps.length; i++) {
-      setCurrentStep(i);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-    }
-
-    setDeploymentStep('deployed');
-  };
-
   return (
     <div>
-      <h2 className="text-base font-bold text-[#023D7A] mb-4">Contract Deployment</h2>
-
-      {deploymentStep === 'idle' && (
-        <div className="text-center py-6">
-          <div className="w-12 h-12 bg-[#00A8A8]/10 rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg className="w-6 h-6 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <h3 className="text-base font-bold text-[#023D7A] mb-1">Deploy Smart Contracts</h3>
-          <p className="text-gray-600 text-xs mb-4">Deploy all MVP contracts to Polygon Amoy testnet</p>
-          <button
-            onClick={handleDeploy}
-            className="px-4 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors text-xs"
-          >
-            Start Deployment
-          </button>
+      <h2 className="text-base font-bold text-[#023D7A] mb-4">Contract Deployment Information</h2>
+      
+      <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 className="font-bold text-green-800 text-sm">All Contracts Deployed Successfully</h3>
         </div>
-      )}
-
-      {deploymentStep === 'deploying' && (
-        <div className="space-y-2">
-          {deploymentSteps.map((step, index) => (
-            <div
-              key={index}
-              className={`flex items-center gap-3 p-3 rounded-lg border ${
-                index < currentStep
-                  ? 'bg-green-50 border-green-200'
-                  : index === currentStep
-                  ? 'bg-blue-50 border-blue-200'
-                  : 'bg-gray-50 border-gray-200'
-              }`}
-            >
-              {index < currentStep ? (
-                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              ) : index === currentStep ? (
-                <svg className="w-5 h-5 text-blue-600 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-              ) : (
-                <div className="w-5 h-5 rounded-full border-2 border-gray-300" />
-              )}
-              <span className={`text-xs ${index <= currentStep ? 'font-medium' : 'text-gray-500'}`}>
-                {step.name}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {deploymentStep === 'deployed' && (
-        <div className="text-center py-6">
-          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <h3 className="text-base font-bold text-[#023D7A] mb-1">Deployment Complete!</h3>
-          <p className="text-gray-600 text-xs mb-4">All contracts have been deployed to Polygon Amoy</p>
-          <div className="flex gap-2 justify-center">
-            <button
-              onClick={() => setDeploymentStep('idle')}
-              className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition-colors text-xs"
-            >
-              Deploy Again
-            </button>
-            <a
-              href="https://amoy.polygonscan.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors text-xs"
-            >
-              View on Block Explorer
-            </a>
-          </div>
-        </div>
-      )}
-
-      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-xl">
-        <p className="text-xs text-blue-800">
-          <strong>📝 Deployment Guide:</strong> For manual deployment, use Foundry:
-          <code className="block bg-white p-2 mt-1.5 rounded text-[9px] font-mono">
-            forge script script/DeployMVP.s.sol --rpc-url polygon_amoy --broadcast --verify
-          </code>
+        <p className="text-xs text-green-700">
+          All 9 smart contracts have been deployed to Polygon Amoy testnet. 
+          View contract addresses in the "All Contracts" tab.
         </p>
+      </div>
+
+      <div className="space-y-3">
+        <div className="border border-gray-200 rounded-xl p-3">
+          <h4 className="font-bold text-[#023D7A] text-xs mb-2">📋 Deployment Command</h4>
+          <code className="block bg-gray-100 p-2 rounded text-[10px] font-mono text-gray-800 overflow-x-auto">
+            forge script script/DeployMVP.s.sol:DeployMVP --rpc-url polygon_amoy --broadcast -vvvv
+          </code>
+        </div>
+
+        <div className="border border-gray-200 rounded-xl p-3">
+          <h4 className="font-bold text-[#023D7A] text-xs mb-2">🔗 Network Information</h4>
+          <div className="space-y-1 text-xs">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Network:</span>
+              <span className="font-medium text-[#023D7A]">Polygon Amoy</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Chain ID:</span>
+              <span className="font-medium text-[#023D7A]">80002</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">RPC URL:</span>
+              <span className="font-medium text-[#023D7A] text-[10px]">https://rpc-amoy.polygon.technology/</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Block Explorer:</span>
+              <a href="https://amoy.polygonscan.com/" target="_blank" rel="noopener noreferrer" className="font-medium text-[#00A8A8] hover:underline">
+                amoy.polygonscan.com ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-gray-200 rounded-xl p-3">
+          <h4 className="font-bold text-[#023D7A] text-xs mb-2">📚 Documentation</h4>
+          <ul className="space-y-1 text-xs">
+            <li>
+              <a href="/deep-dive" className="text-[#00A8A8] hover:underline">📖 Deep Dive Documentation</a>
+            </li>
+            <li>
+              <a href="/docs/glossary" className="text-[#00A8A8] hover:underline">📖 Smart Contract Glossary</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
