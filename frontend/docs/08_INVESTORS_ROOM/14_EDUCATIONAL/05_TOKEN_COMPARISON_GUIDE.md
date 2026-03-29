@@ -599,13 +599,12 @@ UGT is NOT liquid - it's collateral, not tradable.
 ## **17. Contact**
 
 **For questions about UAT/uLP (Investments):**
-- **Email:** investors@ujamaa.defi
-- **Investor Portal:** www.ujamaa.defi/investors
+- **Email:** investors@ujamaa.io
+- **Investor Portal:** investors-portal.ujamaa.io
 - **Phone:** +230 XXX XXXX
 
 **For questions about UGT (Originator Financing):**
-- **Email:** originators@ujamaa.defi
-- **Industrial Gateway:** www.ujamaa.defi/originators
+- **Email:** originators@ujamaa.io
 - **Phone:** +230 XXX XXX
 
 **Schedule a Call:**

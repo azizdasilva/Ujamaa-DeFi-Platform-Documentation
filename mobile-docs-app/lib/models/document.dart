@@ -1,34 +1,3 @@
-import 'dart:convert';
-
-class Folder {
-  final String id;
-  final String name;
-  final String icon;
-  final String description;
-  final int documentCount;
-  final int order;
-
-  Folder({
-    required this.id,
-    required this.name,
-    required this.icon,
-    required this.description,
-    required this.documentCount,
-    required this.order,
-  });
-
-  factory Folder.fromJson(Map<String, dynamic> json) {
-    return Folder(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      icon: json['icon'] as String,
-      description: json['description'] as String,
-      documentCount: json['document_count'] as int,
-      order: json['order'] as int,
-    );
-  }
-}
-
 class Document {
   final String id;
   final String folderId;

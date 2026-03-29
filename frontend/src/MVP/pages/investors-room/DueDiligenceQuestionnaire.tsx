@@ -39,7 +39,7 @@ const DueDiligenceQuestionnaire: React.FC = () => {
             { q: 'Date of Incorporation', a: 'January 2026' },
             { q: 'Registered Office', a: 'Port Louis, Mauritius' },
             { q: 'Business Activity', a: 'Tokenized real-world asset financing platform' },
-            { q: 'Website', a: 'www.ujamaa.defi' },
+            { q: 'Website', a: 'ujamaa.io' },
             { q: 'Licenses', a: 'Mauritius FSC CIS Manager License (pending)' },
           ]} />
         </section>
@@ -171,8 +171,8 @@ const DueDiligenceQuestionnaire: React.FC = () => {
         <section className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
           <h2 className="text-3xl font-bold mb-4">Contact for Due Diligence</h2>
           <div className="space-y-2">
-            <p><strong>Investor Relations:</strong> investors@ujamaa.defi</p>
-            <p><strong>Compliance:</strong> compliance@ujamaa.defi</p>
+            <p><strong>Investor Relations:</strong> investors@ujamaa.io</p>
+            <p><strong>Compliance:</strong> compliance@ujamaa.io</p>
             <p><strong>Data Room:</strong> Available under NDA</p>
           </div>
         </section>

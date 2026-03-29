@@ -19,9 +19,9 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * - Yield accrues to the pool, increasing NAV per share
  * - Token balance remains constant; value grows via NAV appreciation
  *
- * @reference SRS v2.0 Section 1.2, EPIC-10, User Stories 10.1-10.2
- * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5
- * @reference 09_ALGORITHMS/01_ALGORITHM_SPECIFICATIONS.md
+
+
+
  *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice Network: Polygon Amoy (Chain ID: 80002)

@@ -23,7 +23,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * 7. UGT transferred back to Industrial (via forcedTransfer)
  * 8. [DEFAULT] If industrial defaults: UGT liquidated via auction
  *
- * @reference SRS v2.0 Section 1.2 - Ujamaa Guarantee Token (UGT) Specification
+
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
@@ -395,6 +395,22 @@ contract GuaranteeToken is ERC721, AccessControl, ReentrancyGuard {
 
         // Revert for unauthorized transfers
         revert("UGT: Transfer not allowed - compliance restriction");
+    }
+
+    // =========================================================================
+    // ERC165 INTERFACE
+    // =========================================================================
+
+    /**
+     * @notice Check if interface is supported
+     */
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, AccessControl)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 
     // =========================================================================

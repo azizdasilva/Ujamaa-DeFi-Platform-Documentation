@@ -421,7 +421,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 🔗 Links
 
-- [Website](https://ujamaa.defi)
+- [Website](https://ujamaa.io)
 - [Documentation](/docs)
 - [Deep Dive](/deep-dive)
 - [Investors Room](/investors-room)

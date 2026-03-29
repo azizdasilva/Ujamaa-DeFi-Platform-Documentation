@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform — Competitor Classification Framework with 8-criteria weighted scoring grid">
+  <title>📐 Classification Framework — Competitive Intelligence</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <!-- Sidebar Navigation -->
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header">
+        <a href="index.html" class="docs-logo">
+          <div class="docs-logo-icon">U</div>
+          <div>
+            <div class="docs-logo-text">Ujamaa DeFi Platform</div>
+            <div class="docs-logo-subtitle">Competitive Intelligence</div>
+          </div>
+        </a>
+      </div>
+      <div class="docs-search-box">
+        <input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)">
+      </div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">📊 Competitive Intelligence</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="ujamaa_business_profile.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📋</span>
+                <span>Ujamaa DeFi Profile</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="classification_framework.html" class="docs-nav-link active">
+                <span class="docs-nav-icon">📐</span>
+                <span>Classification Framework</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="competitor_master_list.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📊</span>
+                <span>Master List</span>
+                <span class="docs-nav-badge">28</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">🎯 Competitor Classes</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="class1_direct_competitors.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔴</span>
+                <span>Class 1 - Direct</span>
+                <span class="docs-nav-badge competitor-class-1">3</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="class2_indirect_competitors.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🟡</span>
+                <span>Class 2 - Indirect</span>
+                <span class="docs-nav-badge competitor-class-2">11</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="class3_peripheral_competitors.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🔵</span>
+                <span>Class 3 - Peripheral</span>
+                <span class="docs-nav-badge competitor-class-3">14</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">📈 Monitoring & Strategy</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="monitoring_signals.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📡</span>
+                <span>Monitoring Signals</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="competitive_summary_report.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📑</span>
+                <span>Summary Report</span>
+                <span class="docs-nav-badge">M</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-main">
+      <header class="docs-header">
+        <button class="docs-menu-toggle">☰</button>
+        <nav class="docs-breadcrumb">
+          <a href="index.html">📊 Competitive Intelligence</a>
+          <span class="docs-breadcrumb-separator">/</span>
+          <span>Classification Framework</span>
+        </nav>
+      </header>
+
+      <div class="docs-content">
+        <h1 class="docs-title">📐 Competitor Classification Framework</h1>
+        <p class="docs-subtitle">Ujamaa DeFi Platform — Competitive Intelligence System</p>
+
+        <div class="docs-callout docs-callout-info">
+          <div class="docs-callout-title">📅 Document Info</div>
+          <p><strong>Version:</strong> 1.0 | <strong>Date:</strong> March 27, 2026 | <strong>Purpose:</strong> Standardized methodology for identifying, scoring, and classifying competitors</p>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">1️⃣</span>1. Overview</h2>
+          
+          <p>This framework provides a systematic approach to evaluate business similarity between Ujamaa DeFi Platform and any identified competitor. The framework uses an <strong>8-criteria weighted scoring grid</strong> to compute a <strong>Weighted Similarity Score (WSS)</strong> out of 100.</p>
+
+          <p>Competitors are classified into three classes based on their WSS:</p>
+          <ul class="docs-list">
+            <li><strong>Class 1 — Direct Competitors</strong> (WSS: 65–100)</li>
+            <li><strong>Class 2 — Indirect Competitors</strong> (WSS: 35–64)</li>
+            <li><strong>Class 3 — Peripheral Competitors</strong> (WSS: 0–34)</li>
+          </ul>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">2️⃣</span>2. Scoring Grid</h2>
+          
+          <h3>2.1 Criteria & Weights</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Criterion</th>
+                  <th>Weight</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Target Market Geography</strong></td>
+                  <td>20%</td>
+                  <td>Same continent / region / country focus</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Target User Segment</strong></td>
+                  <td>15%</td>
+                  <td>Unbanked, underbanked, retail, SME, diaspora, institution</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>Core Product Overlap</strong></td>
+                  <td>20%</td>
+                  <td>Number of overlapping DeFi features</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>Blockchain / Tech Stack Similarity</strong></td>
+                  <td>10%</td>
+                  <td>Same chain, same standards, similar architecture</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><strong>Business Model Similarity</strong></td>
+                  <td>10%</td>
+                  <td>Revenue model, fee structure, token utility</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td><strong>Social / Inclusion Mandate</strong></td>
+                  <td>10%</td>
+                  <td>Explicit financial inclusion or community-ownership mission</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td><strong>Token Economy Overlap</strong></td>
+                  <td>8%</td>
+                  <td>Similar tokenomics design, staking, governance</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td><strong>Partnership Ecosystem Overlap</strong></td>
+                  <td>7%</td>
+                  <td>Shared partners, protocols, or rails</td>
+                </tr>
+                <tr>
+                  <td colspan="2"><strong>Total</strong></td>
+                  <td><strong>100%</strong></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>2.2 Weight Rationale</h3>
+          <p>Weights reflect Ujamaa DeFi Platform's strategic positioning:</p>
+          <ul class="docs-list">
+            <li><strong>Geography (20%):</strong> African focus is core to Ujamaa DeFi Platform's identity and market strategy</li>
+            <li><strong>Product Overlap (20%):</strong> Direct feature competition is a primary threat indicator</li>
+            <li><strong>User Segment (15%):</strong> Serving the same customers creates direct competition for adoption</li>
+            <li><strong>Social Mandate (10%):</strong> Financial inclusion mission differentiates Ujamaa from pure-profit players</li>
+            <li><strong>Business Model (10%):</strong> Similar revenue models indicate comparable go-to-market approaches</li>
+            <li><strong>Tech Stack (10%):</strong> Technology choices affect integration partnerships and developer talent competition</li>
+            <li><strong>Token Economy (8%):</strong> Token design affects investor attraction and retention</li>
+            <li><strong>Partnerships (7%):</strong> Overlapping partners create resource competition</li>
+          </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">3️⃣</span>3. Scoring Rubric (0–5 Scale)</h2>
+          
+          <h3>Criterion 1: Target Market Geography (20%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>No presence in Africa; focused on other continents</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Incidental African presence (&lt;5% of users/volume)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Some African presence (5-15% of users/volume); not strategic focus</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Meaningful African presence (15-30%); expanding in region</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Significant African focus (30-60%); multiple country operations</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Primary focus on Africa (60%+); OHADA/West Africa concentration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Benchmark:</strong> 100% African focus (OHADA zone primary)</p>
+
+          <h3>Criterion 2: Target User Segment (15%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>Completely different segments (e.g., crypto traders vs. SME borrowers)</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Adjacent segments with little crossover (e.g., retail crypto users)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Some segment overlap (e.g., retail + institutional mix)</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Significant overlap (e.g., institutional investors + SMEs)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Strong overlap (e.g., institutional credit + emerging market SMEs)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Same segments: Institutional investors (€100K+) + African SME borrowers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Benchmark:</strong> Institutional investors (€100K+ minimum) + African SMEs (€500K-€5M financing)</p>
+
+          <h3>Criterion 3: Core Product Overlap (20%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>No shared product features</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>1 overlapping feature (e.g., stablecoin support only)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>2 overlapping features (e.g., lending + stablecoin)</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>3-4 overlapping features (e.g., lending + pools + compliance)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>5-6 overlapping features (e.g., lending + pools + compliance + tokenization)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>7+ overlapping features: Liquidity pools, yield-bearing tokens, RWA tokenization, compliance/KYC, institutional custody, bank integration, African focus</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📦 Ujamaa Core Features</div>
+            <ol class="docs-list">
+              <li>Liquidity pools</li>
+              <li>Yield-bearing tokens (uLP)</li>
+              <li>RWA tokenization (SME financing)</li>
+              <li>Collateral NFTs (Guarantee Token)</li>
+              <li>ERC-3643 compliance</li>
+              <li>Institutional custody (Fireblocks)</li>
+              <li>Bank escrow integration</li>
+              <li>African SME focus</li>
+            </ol>
+          </div>
+
+          <h3>Criterion 4: Blockchain / Tech Stack Similarity (10%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>Different blockchain paradigm (e.g., non-blockchain fintech)</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Different chains, no shared standards (e.g., Solana vs. Ethereum)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Some shared infrastructure (e.g., EVM-compatible but different L1)</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Same L1/L2 (e.g., Polygon) but different token standards</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Same chains + similar standards (e.g., Polygon + ERC-20/ERC-721)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Same stack: Polygon/Ethereum + ERC-3643 + similar infrastructure (Fireblocks, Chainlink, etc.)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Stack:</strong> Polygon (primary), Ethereum (settlement), ERC-3643, Fireblocks, Chainlink</p>
+
+          <h3>Criterion 5: Business Model Similarity (10%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>Completely different model (e.g., donation-based, grant-funded)</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Different revenue logic (e.g., trading fees vs. lending yield)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Some similarity (e.g., fee-based but different fee structure)</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Similar model (e.g., management + performance fees)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Very similar (e.g., 2% mgmt + 20% performance + origination fees)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Same model: 2% management fee + 20% performance fee (8% hurdle) + 1-2% origination</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Model:</strong> 2% management fee + 20% performance fee (above 8% hurdle) + 1-2% origination fee</p>
+
+          <h3>Criterion 6: Social / Inclusion Mandate (10%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>Pure profit motive; no social mission stated</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Generic CSR statements; no measurable commitments</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Some inclusion rhetoric; limited concrete programs</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Clear inclusion mission; measurable targets (e.g., financial access)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Strong mission + targets (e.g., UN SDG alignment, job creation goals)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Explicit Pan-African/Ubuntu philosophy + SDG alignment + measurable impact targets</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Mission:</strong> Pan-African economic development, 5,000+ jobs created, UN SDG alignment (1, 8, 9, 10, 13)</p>
+
+          <h3>Criterion 7: Token Economy Overlap (8%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>No token; or purely speculative token</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>Governance-only token; no utility</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>Payment/settlement token only (e.g., stablecoin)</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>Yield-bearing token with different mechanics</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>Yield-bearing security token with compliance (e.g., ERC-3643)</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Yield-bearing ERC-3643 token with value accrual model + lock-up + institutional minimum</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Tokenomics:</strong> uLP Token (yield-bearing ERC-3643), value accrual model, 180-365 day lock-up, €100K minimum</p>
+
+          <h3>Criterion 8: Partnership Ecosystem Overlap (7%)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Descriptor</th>
+                  <th>Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>No Overlap</td>
+                  <td>No shared partners; completely different ecosystems</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Minimal Overlap</td>
+                  <td>1 shared partner category (e.g., both use Chainlink)</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Low Overlap</td>
+                  <td>2 shared partner categories</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Moderate Overlap</td>
+                  <td>3-4 shared partner categories (e.g., custody + oracle + compliance)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>High Overlap</td>
+                  <td>5+ shared partner categories; similar strategic partnerships</td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Identical</td>
+                  <td>Same key partners: Fireblocks, Chainlink, African industrial networks, bank escrow</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ujamaa Partners:</strong> Fireblocks (custody), Chainlink (oracle), BIIC/MCB (bank escrow), GDIZ (industrial network), ONCHAINID (compliance)</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">4️⃣</span>4. WSS Calculation Formula</h2>
+          
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">🧮 Formula</div>
+            <pre class="docs-code"><code>Weighted Similarity Score (WSS) = Σ(Criterion Score × Weight)
+
+Where:
+- Criterion Score: 0-5 (from rubric above)
+- Weight: Percentage from Section 2.1
+
+Maximum WSS = 5 × 100% = 100 points</code></pre>
+          </div>
+
+          <h3>Calculation Example</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Criterion</th>
+                  <th>Score</th>
+                  <th>Weight</th>
+                  <th>Weighted Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Geography</td>
+                  <td>5</td>
+                  <td>20%</td>
+                  <td>1.00</td>
+                </tr>
+                <tr>
+                  <td>User Segment</td>
+                  <td>4</td>
+                  <td>15%</td>
+                  <td>0.60</td>
+                </tr>
+                <tr>
+                  <td>Product Overlap</td>
+                  <td>5</td>
+                  <td>20%</td>
+                  <td>1.00</td>
+                </tr>
+                <tr>
+                  <td>Tech Stack</td>
+                  <td>4</td>
+                  <td>10%</td>
+                  <td>0.40</td>
+                </tr>
+                <tr>
+                  <td>Business Model</td>
+                  <td>4</td>
+                  <td>10%</td>
+                  <td>0.40</td>
+                </tr>
+                <tr>
+                  <td>Social Mandate</td>
+                  <td>5</td>
+                  <td>10%</td>
+                  <td>0.50</td>
+                </tr>
+                <tr>
+                  <td>Token Economy</td>
+                  <td>5</td>
+                  <td>8%</td>
+                  <td>0.40</td>
+                </tr>
+                <tr>
+                  <td>Partnerships</td>
+                  <td>3</td>
+                  <td>7%</td>
+                  <td>0.21</td>
+                </tr>
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td></td>
+                  <td><strong>100%</strong></td>
+                  <td><strong>4.51 × 20 = 90.2</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>WSS = 90.2</strong> → <strong>Class 1 (Direct Competitor)</strong></p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">5️⃣</span>5. Classification Classes</h2>
+          
+          <h3>Class 1 — Direct Competitors (WSS: 65–100)</h3>
+          <div class="docs-callout docs-callout-class-1">
+            <div class="docs-callout-title">⚠️ Definition</div>
+            <p>Closest rivals serving the same users, in the same geographies, with overlapping products and similar mission.</p>
+          </div>
+          <p><strong>Characteristics:</strong></p>
+          <ul class="docs-list">
+            <li>Compete for the same institutional investors (€100K+)</li>
+            <li>Target African SMEs or emerging market borrowers</li>
+            <li>Offer liquidity pools or RWA tokenization</li>
+            <li>Have regulatory compliance framework</li>
+            <li>Explicit financial inclusion or development mission</li>
+          </ul>
+          <p><strong>Monitoring Cadence:</strong> Monthly reviews<br>
+          <strong>Strategic Response:</strong> Priority competitive countermeasures</p>
+
+          <h3>Class 2 — Indirect Competitors (WSS: 35–64)</h3>
+          <div class="docs-callout docs-callout-class-2">
+            <div class="docs-callout-title">⚠️ Definition</div>
+            <p>Significant overlap in some dimensions (e.g., same geography but different product, or same product but different geography).</p>
+          </div>
+          <p><strong>Characteristics:</strong></p>
+          <ul class="docs-list">
+            <li>May serve African market but with different products (e.g., payments vs. lending)</li>
+            <li>May offer similar products but in different geographies (e.g., RWA in US/EU)</li>
+            <li>Could become Class 1 through geographic expansion or product pivots</li>
+            <li>Potential partnership opportunities</li>
+          </ul>
+          <p><strong>Monitoring Cadence:</strong> Quarterly reviews<br>
+          <strong>Strategic Response:</strong> Monitor for convergence; evaluate partnership potential</p>
+
+          <h3>Class 3 — Peripheral Competitors (WSS: 0–34)</h3>
+          <div class="docs-callout docs-callout-class-3">
+            <div class="docs-callout-title">ℹ️ Definition</div>
+            <p>Distant players in broader DeFi or African fintech space with limited direct overlap.</p>
+          </div>
+          <p><strong>Characteristics:</strong></p>
+          <ul class="docs-list">
+            <li>Global DeFi protocols with minimal Africa presence</li>
+            <li>African fintechs without blockchain/DeFi features</li>
+            <li>Pure crypto exchanges without lending/tokenization</li>
+            <li>Different user segments (retail traders vs. institutional investors)</li>
+          </ul>
+          <p><strong>Monitoring Cadence:</strong> Quarterly reviews (alongside Class 2)<br>
+          <strong>Strategic Response:</strong> Monitor for disruptive moves; low priority</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">6️⃣</span>6. Scoring Methodology</h2>
+          
+          <h3>6.1 Evidence Requirements</h3>
+          <p>Every score must be justified with specific facts from research:</p>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Evidence Type</th>
+                  <th>Examples</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Public Statements</strong></td>
+                  <td>Website copy, whitepapers, investor presentations</td>
+                </tr>
+                <tr>
+                  <td><strong>Product Documentation</strong></td>
+                  <td>Feature lists, API docs, user guides</td>
+                </tr>
+                <tr>
+                  <td><strong>Financial Data</strong></td>
+                  <td>TVL, AUM, funding rounds, revenue disclosures</td>
+                </tr>
+                <tr>
+                  <td><strong>Partnership Announcements</strong></td>
+                  <td>Press releases, blog posts, integration docs</td>
+                </tr>
+                <tr>
+                  <td><strong>Regulatory Filings</strong></td>
+                  <td>License applications, compliance disclosures</td>
+                </tr>
+                <tr>
+                  <td><strong>Social Media</strong></td>
+                  <td>Twitter/X, LinkedIn, community channels</td>
+                </tr>
+                <tr>
+                  <td><strong>Third-Party Reports</strong></td>
+                  <td>CoinMarketCap, DeFiLlama, Crunchbase, news articles</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>6.2 Handling Data Gaps</h3>
+          <p>If data is unavailable for a criterion:</p>
+          <ol class="docs-list">
+            <li><strong>Note the gap explicitly</strong> in the competitor profile</li>
+            <li><strong>Use conservative scoring</strong> (assume lower similarity unless proven otherwise)</li>
+            <li><strong>Flag for follow-up research</strong> in monitoring plan</li>
+          </ol>
+
+          <h3>6.3 Score Validation</h3>
+          <p>Scores should be:</p>
+          <ul class="docs-list">
+            <li><strong>Replicable:</strong> Another analyst using the same evidence should arrive at similar scores</li>
+            <li><strong>Documented:</strong> All scores include citations to source evidence</li>
+            <li><strong>Reviewed:</strong> Class 1 scores require peer review before finalization</li>
+          </ul>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">7️⃣</span>7. Dynamic Reclassification</h2>
+          
+          <p>Competitors may move between classes over time. Triggers for reclassification:</p>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Trigger</th>
+                  <th>Example</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Geographic Expansion</strong></td>
+                  <td>Global RWA platform launches Africa desk</td>
+                  <td>Reclassify upward</td>
+                </tr>
+                <tr>
+                  <td><strong>Product Launch</strong></td>
+                  <td>African payments app adds lending pools</td>
+                  <td>Reclassify upward</td>
+                </tr>
+                <tr>
+                  <td><strong>Funding Round</strong></td>
+                  <td>Competitor raises €50M+ for expansion</td>
+                  <td>Increase monitoring</td>
+                </tr>
+                <tr>
+                  <td><strong>Partnership Announcement</strong></td>
+                  <td>Competitor partners with GDIZ-equivalent</td>
+                  <td>Recalculate partnership score</td>
+                </tr>
+                <tr>
+                  <td><strong>Regulatory Approval</strong></td>
+                  <td>Competitor obtains Mauritius FSC license</td>
+                  <td>Reclassify upward</td>
+                </tr>
+                <tr>
+                  <td><strong>Market Exit</strong></td>
+                  <td>Competitor shuts down Africa operations</td>
+                  <td>Reclassify downward</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Review Cycle:</strong></p>
+          <ul class="docs-list">
+            <li>Class 1: Monthly</li>
+            <li>Class 2: Quarterly</li>
+            <li>Class 3: Quarterly (lighter review)</li>
+          </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">8️⃣</span>8. Limitations & Assumptions</h2>
+          
+          <h3>8.1 Known Limitations</h3>
+          <ol class="docs-list">
+            <li><strong>Data Availability:</strong> Private companies may not disclose TVL, users, or revenue</li>
+            <li><strong>Self-Reporting Bias:</strong> Marketing materials may overstate Africa focus or impact</li>
+            <li><strong>Rapid Change:</strong> DeFi landscape evolves quickly; scores may become outdated</li>
+            <li><strong>Subjectivity:</strong> Some criteria (e.g., social mandate) involve judgment calls</li>
+          </ol>
+
+          <h3>8.2 Key Assumptions</h3>
+          <ol class="docs-list">
+            <li><strong>Africa Focus Premium:</strong> Geography weighted heavily (20%) due to Ujamaa DeFi Platform's core positioning</li>
+            <li><strong>Institutional Threshold:</strong> €100K minimum defines institutional segment</li>
+            <li><strong>Compliance Importance:</strong> ERC-3643 or equivalent compliance is a key differentiator</li>
+            <li><strong>Impact Authenticity:</strong> Stated mission must be backed by measurable targets</li>
+          </ol>
+        </section>
+
+        <!-- Section 9 -->
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title"><span class="docs-section-title-icon">9️⃣</span>9. Framework Maintenance</h2>
+          
+          <p><strong>Owner:</strong> Competitive Intelligence Lead<br>
+          <strong>Review Cycle:</strong> Quarterly</p>
+
+          <p><strong>Update Triggers:</strong></p>
+          <ul class="docs-list">
+            <li>Ujamaa strategic pivot</li>
+            <li>New competitor category emerges</li>
+            <li>Scoring rubric proves inadequate</li>
+            <li>Weight adjustments needed based on market dynamics</li>
+          </ul>
+
+          <h3>Version History</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Version</th>
+                  <th>Date</th>
+                  <th>Author</th>
+                  <th>Changes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.0</td>
+                  <td>March 27, 2026</td>
+                  <td>Competitive Intelligence Team</td>
+                  <td>Initial framework</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="docs-section" data-animate="fade-in">
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📄 Document Footer</div>
+            <p><strong>END OF CLASSIFICATION FRAMEWORK</strong></p>
+            <p><em>This framework is a living document. All competitive analyses should reference this version and note any deviations.</em></p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

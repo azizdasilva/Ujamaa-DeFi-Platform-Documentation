@@ -273,9 +273,9 @@ This mobile app and its source code are proprietary and confidential.
 
 ## 📞 Support
 
-- **Email:** tech@ujamaa.defi
-- **Documentation:** https://docs.ujamaa.defi
-- **Website:** https://ujamaa.defi
+- **Email:** tech@ujamaa.io
+- **Documentation:** https://defi-platform-documentation.ujamaa.io
+- **Website:** https://ujamaa.io
 
 ---
 

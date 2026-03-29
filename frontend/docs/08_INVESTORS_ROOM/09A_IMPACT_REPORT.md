@@ -374,11 +374,10 @@ All financed SMEs must comply with:
 **UJAMAA DeFi Platform**
 
 **Impact Team:**
-- Email: impact@ujamaa.defi
-- Website: www.ujamaa.defi/impact
+- Email: impact@ujamaa.io
 
 **For Impact Investment Inquiries:**
-- [TBD], Head of Impact: impact@ujamaa.defi
+- [TBD], Head of Impact: impact@ujamaa.io
 
 ---
 

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:go_router/go_router.dart';
 import '../services/documentation_service.dart';
 import '../widgets/document_card.dart';
+
+// Brand Colors
+const _primary = Color(0xFF2563EB);
+const _primary50 = Color(0xFFEFF6FF);
+const _slate100 = Color(0xFFF1F5F9);
+const _slate400 = Color(0xFF94A3B8);
+const _slate500 = Color(0xFF64748B);
+const _slate800 = Color(0xFF1E293B);
+const _white = Color(0xFFFFFFFF);
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -64,7 +72,7 @@ class _SearchScreenState extends State<SearchScreen> {
           decoration: InputDecoration(
             hintText: 'Search...',
             hintStyle: theme.textTheme.titleMedium?.copyWith(
-              color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+              color: isDark ? _slate500 : _slate400,
               fontWeight: FontWeight.w700,
             ),
             border: InputBorder.none,
@@ -72,7 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ? IconButton(
                     icon: Icon(
                       Icons.clear_rounded,
-                      color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                      color: isDark ? _slate400 : _slate500,
                     ),
                     onPressed: () {
                       _searchController.clear();
@@ -145,11 +153,15 @@ class _SearchPrompt extends StatelessWidget {
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                gradient: AppTheme.primaryGradient,
+                gradient: LinearGradient(
+                  colors: [_primary, const Color(0xFF1E40AF)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.primary.withOpacity(0.3),
+                    color: _primary.withOpacity(0.3),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
@@ -157,7 +169,7 @@ class _SearchPrompt extends StatelessWidget {
               ),
               child: const Icon(
                 Icons.search_rounded,
-                color: AppTheme.white,
+                color: _white,
                 size: 40,
               ),
             ),
@@ -173,7 +185,7 @@ class _SearchPrompt extends StatelessWidget {
               'Find articles, guides, and specifications\nacross 151 documents',
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                color: isDark ? _slate400 : _slate500,
                 height: 1.5,
               ),
             ),
@@ -214,24 +226,24 @@ class _SearchChip extends StatelessWidget {
       avatar: Icon(
         icon,
         size: 18,
-        color: isDark ? theme.colorScheme.primary : AppTheme.primary,
+        color: isDark ? theme.colorScheme.primary : _primary,
       ),
       label: Text(
         label,
         style: theme.textTheme.labelLarge?.copyWith(
-          color: isDark ? theme.colorScheme.primary : AppTheme.primary,
+          color: isDark ? theme.colorScheme.primary : _primary,
           fontWeight: FontWeight.w600,
         ),
       ),
       backgroundColor: isDark
           ? theme.colorScheme.primaryContainer.withOpacity(0.15)
-          : AppTheme.primary50,
+          : _primary50,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
         side: BorderSide(
           color: isDark
               ? theme.colorScheme.primaryContainer
-              : AppTheme.primary.withOpacity(0.2),
+              : _primary.withOpacity(0.2),
         ),
       ),
       onPressed: () {
@@ -263,13 +275,13 @@ class _SearchEmptyState extends StatelessWidget {
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                color: isDark ? AppTheme.slate800 : AppTheme.slate100,
+                color: isDark ? _slate800 : _slate100,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.search_off_rounded,
                 size: 40,
-                color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+                color: isDark ? _slate500 : _slate400,
               ),
             ),
             const SizedBox(height: 24),
@@ -284,7 +296,7 @@ class _SearchEmptyState extends StatelessWidget {
               'No documents match "$query"\nTry different keywords',
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                color: isDark ? _slate400 : _slate500,
               ),
             ),
           ],

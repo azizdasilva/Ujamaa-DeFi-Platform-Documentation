@@ -171,8 +171,8 @@ const InvestorFAQ: React.FC = () => {
         <section className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] rounded-xl shadow-lg p-8 text-white">
           <h3 className="text-2xl font-bold mb-4">Still Have Questions?</h3>
           <div className="space-y-2">
-            <p><strong>Investor Relations:</strong> investors@ujamaa.defi</p>
-            <p><strong>Support:</strong> support@ujamaa.defi</p>
+            <p><strong>Investor Relations:</strong> investors@ujamaa.io</p>
+            <p><strong>Support:</strong> support@ujamaa.io</p>
             <p><strong>Response Time:</strong> 24 hours</p>
             <a href="/investors-room/contact" className="inline-block mt-4 px-6 py-3 bg-white text-[#023D7A] rounded-lg font-bold hover:bg-[#F3F8FA] transition-colors">
               Schedule a Call

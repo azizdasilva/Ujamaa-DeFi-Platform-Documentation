@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+// Brand Colors
+const _primary = Color(0xFF2563EB);
+const _primary50 = Color(0xFFEFF6FF);
+const _slate200 = Color(0xFFE2E8F0);
+const _slate400 = Color(0xFF94A3B8);
+const _slate500 = Color(0xFF64748B);
+const _slate700 = Color(0xFF334155);
+const _slate800 = Color(0xFF1E293B);
+const _white = Color(0xFFFFFFFF);
+
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
 
@@ -8,24 +18,26 @@ class CustomSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Card(
         elevation: 0,
         shadowColor: isDark ? Colors.black26 : Colors.black12,
         child: InkWell(
-          onTap: () => context.push('/search'),
+          onTap: () {
+            GoRouter.of(context).push('/search');
+          },
           borderRadius: BorderRadius.circular(14),
           splashColor: theme.colorScheme.primaryContainer.withOpacity(0.2),
           highlightColor: theme.colorScheme.primaryContainer.withOpacity(0.1),
           child: Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: isDark ? AppTheme.slate800 : AppTheme.white,
+              color: isDark ? _slate800 : _white,
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
-                color: isDark ? AppTheme.slate700 : AppTheme.slate200,
+                color: isDark ? _slate700 : _slate200,
                 width: 1,
               ),
             ),
@@ -35,12 +47,16 @@ class CustomSearchBar extends StatelessWidget {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    gradient: AppTheme.primaryGradient,
+                    gradient: LinearGradient(
+                      colors: [_primary, const Color(0xFF1E40AF)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
                     Icons.search_rounded,
-                    color: AppTheme.white,
+                    color: _white,
                     size: 20,
                   ),
                 ),
@@ -52,14 +68,14 @@ class CustomSearchBar extends StatelessWidget {
                       Text(
                         'Search documentation...',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: isDark ? AppTheme.slate400 : AppTheme.slate500,
+                          color: isDark ? _slate400 : _slate500,
                         ),
                       ),
                       const SizedBox(height: 2),
                       Text(
                         'Search 151 documents',
                         style: theme.textTheme.labelSmall?.copyWith(
-                          color: isDark ? AppTheme.slate500 : AppTheme.slate400,
+                          color: isDark ? _slate500 : _slate400,
                         ),
                       ),
                     ],
@@ -70,12 +86,12 @@ class CustomSearchBar extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isDark
                         ? theme.colorScheme.primaryContainer.withOpacity(0.2)
-                        : AppTheme.primary50,
+                        : _primary50,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: isDark
                           ? theme.colorScheme.primaryContainer
-                          : AppTheme.primary.withOpacity(0.2),
+                          : _primary.withOpacity(0.2),
                       width: 1,
                     ),
                   ),
@@ -87,7 +103,7 @@ class CustomSearchBar extends StatelessWidget {
                         size: 14,
                         color: isDark
                             ? theme.colorScheme.primary
-                            : AppTheme.primary,
+                            : _primary,
                       ),
                       const SizedBox(width: 4),
                       Text(
@@ -95,7 +111,7 @@ class CustomSearchBar extends StatelessWidget {
                         style: theme.textTheme.labelSmall?.copyWith(
                           color: isDark
                               ? theme.colorScheme.primary
-                              : AppTheme.primary,
+                              : _primary,
                           fontWeight: FontWeight.w700,
                         ),
                       ),

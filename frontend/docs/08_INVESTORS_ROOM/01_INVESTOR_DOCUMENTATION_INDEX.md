@@ -341,15 +341,15 @@ This index provides a comprehensive navigation guide to all UJAMAA investor docu
 ## CONTACT INFORMATION
 
 **Document Requests:**
-- Email: investors@ujamaa.defi
-- Portal: www.ujamaa.defi/investors
+- Email: investors@ujamaa.io
+- Portal: investors-portal.ujamaa.io
 
 **NDA Execution:**
-- Contact: legal@ujamaa.defi
+- Contact: legal@ujamaa.io
 - Timeline: 2-3 business days
 
 **Technical Questions:**
-- Contact: cto@ujamaa.defi
+- Contact: cto@ujamaa.io
 - Response: 24-48 hours
 
 ---

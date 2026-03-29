@@ -1,116 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../models/folder.dart';
 
 class FolderCard extends StatelessWidget {
-  final Folder folder;
-
+  final Map<String, dynamic> folder;
   const FolderCard({super.key, required this.folder});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    
+    final docCount = (folder['document_count'] as int?) ?? 0;
+
     return Card(
       clipBehavior: Clip.antiAlias,
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        onTap: () => context.push('/folder/${folder.id}'),
-        splashColor: theme.colorScheme.primaryContainer,
-        highlightColor: theme.colorScheme.primaryContainer.withOpacity(0.3),
+        onTap: () => context.push('/folder/${folder['id']}'),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: isDark
-                  ? [
-                      theme.colorScheme.surface,
-                      theme.colorScheme.surfaceContainerHighest,
-                    ]
-                  : [
-                      theme.colorScheme.primaryContainer.withOpacity(0.3),
-                      theme.colorScheme.surface,
-                    ],
+              colors: [
+                theme.colorScheme.primaryContainer,
+                theme.colorScheme.surface,
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Icon with subtle shadow
+              // Icon
               Container(
-                width: 64,
-                height: 64,
+                width: 48,
+                height: 48,
                 decoration: BoxDecoration(
-                  gradient: AppTheme.primaryGradient,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppTheme.primary.withOpacity(0.3),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+                  color: theme.colorScheme.primary.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                  child: Text(
-                    folder.icon,
-                    style: const TextStyle(fontSize: 32),
-                  ),
+                  child: Text(folder['icon'] ?? '📁', style: const TextStyle(fontSize: 24)),
                 ),
               ),
-              
               const Spacer(),
-              
-              // Folder Info
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              // Name
+              Text(
+                folder['name'] ?? 'Folder',
+                style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 4),
+              // Count
+              Row(
                 children: [
-                  Text(
-                    folder.name,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.2,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 6),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? theme.colorScheme.primaryContainer.withOpacity(0.2)
-                          : AppTheme.primary50,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.description_rounded,
-                          size: 14,
-                          color: isDark
-                              ? theme.colorScheme.primary
-                              : AppTheme.primary,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${folder.documentCount}',
-                          style: theme.textTheme.labelSmall?.copyWith(
-                            color: isDark
-                                ? theme.colorScheme.primary
-                                : AppTheme.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  Icon(Icons.description, size: 12, color: theme.colorScheme.primary),
+                  const SizedBox(width: 4),
+                  Text('$docCount', style: theme.textTheme.labelSmall),
                 ],
               ),
             ],

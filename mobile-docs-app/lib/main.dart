@@ -11,17 +11,17 @@ import 'utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize documentation service
   final docService = DocumentationService();
   await docService.initialize();
-  
+
   runApp(UjamaaDocsApp(docService: docService));
 }
 
 class UjamaaDocsApp extends StatelessWidget {
   final DocumentationService docService;
-  
+
   const UjamaaDocsApp({super.key, required this.docService});
 
   @override
@@ -36,12 +36,13 @@ class UjamaaDocsApp extends StatelessWidget {
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
         themeMode: ThemeMode.system,
-        routerConfig: _router,
+        routerConfig: router,
       ),
     );
   }
 
-  final _router = GoRouter(
+  static GoRouter get router => _router;
+  static final _router = GoRouter(
     initialLocation: '/',
     routes: [
       GoRoute(
@@ -56,19 +57,8 @@ class UjamaaDocsApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/document/:docId',
-        pageBuilder: (context, state) => CustomTransitionPage(
-          child: DocumentScreen(
-            docId: state.pathParameters['docId']!,
-          ),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(1.0, 0.0),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            );
-          },
+        builder: (context, state) => DocumentScreen(
+          docId: Uri.decodeComponent(state.pathParameters['docId']!),
         ),
       ),
       GoRoute(

@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.ujamaa.ujamaa_docs"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

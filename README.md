@@ -229,10 +229,10 @@ Ujamaa DeFi Platform/
 
 | Department | Email | Purpose |
 |------------|-------|---------|
-| **General** | info@ujamaa.defi | General inquiries |
-| **Investors** | investors@ujamaa.defi | Investor relations |
-| **Technical** | tech@ujamaa.defi | Technical support |
-| **Compliance** | compliance@ujamaa.defi | Compliance inquiries |
+| **General** | info@ujamaa.io | General inquiries |
+| **Investors** | investors@ujamaa.io | Investor relations |
+| **Technical** | tech@ujamaa.io | Technical support |
+| **Compliance** | compliance@ujamaa.io | Compliance inquiries |
 
 ### Headquarters
 

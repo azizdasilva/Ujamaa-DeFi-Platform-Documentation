@@ -1110,7 +1110,7 @@ Investors must acknowledge the following risks before investing:
 │                                                                 │
 │  STEP 1: EXPRESSION OF INTEREST                                 │
 │  ─────────────────────────────                                  │
-│  • Contact: investors@ujamaa.defi                               │
+│  • Contact: investors@ujamaa.io                                 │
 │  • Sign NDA                                                     │
 │  • Receive PPM + Subscription Documents                         │
 │  • Timeline: Week 1                                             │
@@ -1231,13 +1231,13 @@ Ebène Cybercity, Mauritius
 GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State
 
 **Contact:**
-- Email: investors@ujamaa.defi
-- Website: www.ujamaa.defi
+- Email: investors@ujamaa.io
+- Website: ujamaa.io
 - Phone: +230 XXX XXXX
 
 **Investor Relations:**
-- Aziz Da Silva, CEO: aziz@ujamaa.defi
-- [TBD], Head of IR: ir@ujamaa.defi
+- Aziz Da Silva, CEO: aziz@ujamaa.io
+- [TBD], Head of IR: ir@ujamaa.io
 
 ---
 

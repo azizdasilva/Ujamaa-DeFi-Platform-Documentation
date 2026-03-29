@@ -31,8 +31,8 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  * Allowed International:
  * EU, UK, UAE, SG, US (accredited only)
  * 
- * @reference SRS v2.0 Sections 1.2, 1.3, 10
- * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.3
+
+
  * 
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
@@ -405,7 +405,7 @@ contract JurisdictionCompliance is AccessControl {
      * @param code Jurisdiction code
      * @return isAllowed Whether jurisdiction is allowed
      */
-    function isJurisdictionAllowed(string calldata code) external view returns (bool) {
+    function isJurisdictionAllowed(string calldata code) public view returns (bool) {
         Jurisdiction storage jurisdiction = jurisdictions[code];
         if (jurisdiction.isBlocked) {
             return false;
@@ -549,10 +549,10 @@ contract JurisdictionCompliance is AccessControl {
      * @return isBlocked Whether blocked
      * @return isAllowed Whether allowed
      */
-    function testCompliance(string calldata jurisdictionCode) 
-        external 
-        view 
-        returns (bool, bool) 
+    function testCompliance(string calldata jurisdictionCode)
+        external
+        view
+        returns (bool, bool)
     {
         require(IS_MVP_TESTNET, "Only on testnet");
         return (!isJurisdictionAllowed(jurisdictionCode), isJurisdictionAllowed(jurisdictionCode));

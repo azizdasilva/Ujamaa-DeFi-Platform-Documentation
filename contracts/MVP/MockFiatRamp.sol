@@ -27,8 +27,8 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * - Same interface: onRamp, offRamp
  * - Factory pattern handles swap
  * 
- * @reference SRS v2.0 Section 4.3
- * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.2
+
+
  * 
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice All tokens minted are TEST TOKENS only.
@@ -284,7 +284,7 @@ contract MockFiatRamp is AccessControl, ReentrancyGuard {
      * @param amount Amount to mint (18 decimals)
      */
     function mintTestUJEURSelf(uint256 amount) external {
-        mintTestUJEUR(msg.sender, amount);
+        this.mintTestUJEUR(msg.sender, amount);
     }
 
     // =========================================================================

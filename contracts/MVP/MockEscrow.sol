@@ -23,8 +23,8 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * - Same interface: createEscrowAccount, deposit, withdraw
  * - Factory pattern handles swap (no code changes)
  * 
- * @reference SRS v2.0 Section 4.3, 5.12
- * @reference 03_MVP_MOCKING_AND_TESTNET_STRATEGY.md Section 5.1
+
+
  * 
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice All balances and transfers are SIMULATED only.
@@ -292,8 +292,8 @@ contract MockEscrow is AccessControl, ReentrancyGuard {
     function createDemoAccount(address investor) external returns (string memory) {
         require(IS_MVP_TESTNET, "Only on testnet");
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Admin only");
-        
-        return createEscrowAccount(investor, INITIAL_DEMO_BALANCE);
+
+        return this.createEscrowAccount(investor, INITIAL_DEMO_BALANCE);
     }
 
     /**

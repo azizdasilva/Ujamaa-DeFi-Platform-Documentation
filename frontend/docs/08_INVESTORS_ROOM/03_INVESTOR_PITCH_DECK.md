@@ -765,11 +765,11 @@
 ║  │  Operating Office: GLO-DJIGBÉ INDUSTRIAL ZONE (GDIZ (Benin)), Block: C/SB, District: Tangbo-Djèvié, Plot: F-1, Benin State        │ ║
 ║  │                                                             │ ║
 ║  │  Aziz Da Silva, CEO                                         │ ║
-║  │  Email: aziz@ujamaa.defi                                    │ ║
+║  │  Email: aziz@ujamaa.io                                      │ ║
 ║  │  Phone: +230 XXX XXXX                                       │ ║
 ║  │                                                             │ ║
-║  │  Investor Relations: ir@ujamaa.defi                         │ ║
-║  │  Website: www.ujamaa.defi                                   │ ║
+║  │  Investor Relations: ir@ujamaa.io                           │ ║
+║  │  Website: ujamaa.io                                         │ ║
 ║  │                                                             │ ║
 ║  └─────────────────────────────────────────────────────────────┘ ║
 ║                                                                   ║

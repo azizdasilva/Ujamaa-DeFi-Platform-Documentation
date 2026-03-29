@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import '../services/documentation_service.dart';
 import '../widgets/document_card.dart';
 
@@ -21,6 +22,11 @@ class BookmarksScreen extends StatelessWidget {
               onPressed: () => _clearAllBookmarks(context, docService),
               tooltip: 'Clear all bookmarks',
             ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () => GoRouter.of(context).push('/search'),
+            tooltip: 'Search',
+          ),
         ],
       ),
       body: bookmarks.isEmpty
@@ -43,14 +49,18 @@ class BookmarksScreen extends StatelessWidget {
         children: [
           Icon(Icons.bookmark_border, size: 64, color: Colors.grey.shade400),
           const SizedBox(height: 16),
-          Text(
+          const Text(
             'No Bookmarks Yet',
-            style: Theme.of(context).textTheme.headlineSmall,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             'Save documents to read them later',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            style: TextStyle(
+              fontSize: 14,
               color: Colors.grey.shade600,
             ),
           ),
@@ -83,7 +93,8 @@ class BookmarksScreen extends StatelessWidget {
     );
 
     if (confirmed == true) {
-      for (final doc in bookmarks) {
+      final bookmarkedDocs = docService.bookmarkedDocuments;
+      for (final doc in bookmarkedDocs) {
         docService.toggleBookmark(doc.id);
       }
     }

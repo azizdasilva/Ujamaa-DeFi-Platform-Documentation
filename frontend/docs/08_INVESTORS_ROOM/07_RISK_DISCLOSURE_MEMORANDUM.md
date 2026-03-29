@@ -813,11 +813,11 @@ By investing in the uLP Token, the investor acknowledges that:
 **UJAMAA DeFi Platform**
 
 **Risk Committee:**
-- Email: risk@ujamaa.defi
+- Email: risk@ujamaa.io
 - Phone: +230 XXX XXXX
 
 **Chief Compliance Officer:**
-- Email: compliance@ujamaa.defi
+- Email: compliance@ujamaa.io
 
 ---
 

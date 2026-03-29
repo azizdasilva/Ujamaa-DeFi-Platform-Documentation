@@ -6,7 +6,6 @@ import '../widgets/document_card.dart';
 
 class FolderScreen extends StatelessWidget {
   final String folderId;
-
   const FolderScreen({super.key, required this.folderId});
 
   @override
@@ -14,6 +13,7 @@ class FolderScreen extends StatelessWidget {
     final docService = Provider.of<DocumentationService>(context);
     final folder = docService.getFolderById(folderId);
     final documents = docService.getDocumentsByFolder(folderId);
+    final theme = Theme.of(context);
 
     if (folder == null) {
       return Scaffold(
@@ -22,78 +22,73 @@ class FolderScreen extends StatelessWidget {
       );
     }
 
+    final docCount = (folder['document_count'] as int?) ?? 0;
+    final folderIcon = folder['icon'] ?? '📁';
+    final folderName = folder['name'] ?? 'Folder';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(folder.name),
+        title: Text(folderName, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () => context.push('/search'),
+            tooltip: 'Search',
           ),
         ],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Folder Header
+          // Header
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.primaryContainer,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.all(20),
+            color: theme.colorScheme.primaryContainer,
+            child: Row(
               children: [
-                Text(
-                  folder.icon,
-                  style: const TextStyle(fontSize: 48),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  folder.name,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(8),
                   ),
+                  child: Text(folderIcon, style: const TextStyle(fontSize: 28)),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  '${folder.documentCount} documents',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.white70,
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        folderName,
+                        style: theme.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: theme.colorScheme.onPrimaryContainer,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$docCount documents',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onPrimaryContainer.withOpacity(0.7),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          
-          // Documents List
+          // Documents
           Expanded(
             child: documents.isEmpty
-                ? const Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.folder_open, size: 64, color: Colors.grey),
-                        SizedBox(height: 16),
-                        Text('No documents in this folder'),
-                      ],
-                    ),
-                  )
-                : ListView.builder(
+                ? const Center(child: Text('No documents in this folder'))
+                : ListView.separated(
                     padding: const EdgeInsets.all(16),
                     itemCount: documents.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8),
                     itemBuilder: (context, index) {
-                      final document = documents[index];
-                      return DocumentCard(document: document);
+                      return DocumentCard(document: documents[index]);
                     },
                   ),
           ),

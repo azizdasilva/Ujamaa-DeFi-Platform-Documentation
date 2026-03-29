@@ -19,8 +19,8 @@ import "./GuaranteeToken.sol";
  * - Mint Guarantee Tokens (UGT) as collateral
  * - Track certificate lifecycle
  *
- * @reference SRS v2.0 Section 1.2 - Industrial Gateway
- * @reference SRS v2.0 Section 5.3 - Industrial Gateway Specification
+
+
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract IndustrialGateway is AccessControl, ReentrancyGuard {

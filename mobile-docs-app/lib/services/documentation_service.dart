@@ -2,21 +2,18 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fuse_flutter/fuse_flutter.dart';
-import '../models/folder.dart';
 import '../models/document.dart';
 
 class DocumentationService extends ChangeNotifier {
-  List<Folder> _folders = [];
+  List<Map<String, dynamic>> _folders = [];
   List<Document> _documents = [];
   bool _isLoading = false;
   String? _error;
-  Fuse? _fuse;
-  
+
   // Bookmarks
   Set<String> _bookmarkedDocIds = {};
 
-  List<Folder> get folders => _folders;
+  List<Map<String, dynamic>> get folders => _folders;
   List<Document> get documents => _documents;
   bool get isLoading => _isLoading;
   String? get error => _error;
@@ -29,35 +26,35 @@ class DocumentationService extends ChangeNotifier {
 
     try {
       // Load documentation data from assets
+      debugPrint('Loading documentation from assets...');
       final jsonString = await rootBundle.loadString('assets/docs/documentation.min.json');
       final data = json.decode(jsonString) as Map<String, dynamic>;
+
+      debugPrint('JSON loaded. Folders count: ${data['folders']?.length}');
       
       _folders = (data['folders'] as List)
-          .map((f) => Folder.fromJson(f))
+          .map((f) => Map<String, dynamic>.from(f))
           .toList();
-      
+
+      debugPrint('Folders parsed: ${_folders.length}');
+
       _documents = (data['documents'] as List)
           .map((d) => Document.fromJson(d))
           .toList();
-      
-      // Initialize Fuse for search
-      _fuse = Fuse(
-        _documents,
-        keys: ['title', 'subtitle', 'content'],
-        options: const FuseOptions(
-          threshold: 0.4,
-          minMatchCharLength: 2,
-        ),
-      );
-      
+
+      debugPrint('Documents parsed: ${_documents.length}');
+
       // Load bookmarks from storage
       await _loadBookmarks();
-      
+
       _isLoading = false;
+      debugPrint('Documentation service initialized successfully');
       notifyListeners();
-    } catch (e) {
+    } catch (e, stackTrace) {
       _error = e.toString();
       _isLoading = false;
+      debugPrint('Error loading documentation: $e');
+      debugPrint('Stack trace: $stackTrace');
       notifyListeners();
     }
   }
@@ -98,9 +95,9 @@ class DocumentationService extends ChangeNotifier {
     return _documents.where((d) => _bookmarkedDocIds.contains(d.id)).toList();
   }
 
-  Folder? getFolderById(String id) {
+  Map<String, dynamic>? getFolderById(String id) {
     try {
-      return _folders.firstWhere((f) => f.id == id);
+      return _folders.firstWhere((f) => f['id'] == id);
     } catch (e) {
       return null;
     }
@@ -118,22 +115,13 @@ class DocumentationService extends ChangeNotifier {
     return _documents.where((d) => d.folderId == folderId).toList();
   }
 
-  Future<List<Document>> search(String query) async {
-    if (_fuse == null || query.isEmpty) {
-      return [];
-    }
-    
-    final results = _fuse!.search(query);
-    return results.map((r) => r.item).toList();
-  }
-
   List<Document> searchLocally(String query) {
     if (query.isEmpty) {
       return [];
     }
-    
+
     final lowerQuery = query.toLowerCase();
-    return _documents.where((d) => 
+    return _documents.where((d) =>
       d.title.toLowerCase().contains(lowerQuery) ||
       d.subtitle.toLowerCase().contains(lowerQuery) ||
       d.content.toLowerCase().contains(lowerQuery)

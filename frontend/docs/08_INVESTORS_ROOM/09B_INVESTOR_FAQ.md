@@ -415,8 +415,8 @@ Investor Wallet (You own this)
 
 ### Q28: How do I contact investor relations?
 
-**A:** 
-- **Email:** investors@ujamaa.defi
+**A:**
+- **Email:** investors@ujamaa.io
 - **Investor Portal:** Secure messaging
 - **Quarterly Calls:** For €1M+ investors
 - **Advisory Board:** For €10M+ investors
@@ -503,9 +503,9 @@ Investor Wallet (You own this)
 ## STILL HAVE QUESTIONS?
 
 **Contact Investor Relations:**
-- Email: investors@ujamaa.defi
+- Email: investors@ujamaa.io
 - Phone: +230 XXX XXXX
-- Website: www.ujamaa.defi
+- Website: ujamaa.io
 
 **Schedule a Call:**
 - [Link to Calendly/Meeting Scheduler]

@@ -124,11 +124,11 @@ class AppTheme {
           size: 24,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: const CardThemeData(
         elevation: 0,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
           side: BorderSide(color: slate200, width: 1),
         ),
         color: white,
@@ -333,11 +333,11 @@ class AppTheme {
           size: 24,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: const CardThemeData(
         elevation: 0,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
           side: BorderSide(color: slate700, width: 1),
         ),
         color: slate800,
