@@ -111,6 +111,12 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     mapping(address => bool) public registeredIndustrials;
     uint256 private registeredIndustrialsCount;
 
+    /**
+     * @notice Pending approvals tracking (MVP simplified)
+     */
+    mapping(address => bool) public pendingApprovals;
+    uint256 private pendingApprovalsCount;
+
     // =========================================================================
     // EVENTS
     // =========================================================================
@@ -341,12 +347,29 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     }
 
     /**
+     * @notice Get pending approvals count
+     * @return Total count of pending approvals
+     */
+    function getPendingApprovalsCount() external view returns (uint256) {
+        return pendingApprovalsCount;
+    }
+
+    /**
      * @notice Check if industrial is registered
      * @param industrial Industrial address
      * @return isRegistered Whether industrial is registered
      */
     function isIndustrialRegistered(address industrial) external view returns (bool) {
         return registeredIndustrials[industrial];
+    }
+
+    /**
+     * @notice Check if industrial has pending approval
+     * @param industrial Industrial address
+     * @return isPending Whether industrial has pending approval
+     */
+    function isPendingApproval(address industrial) external view returns (bool) {
+        return pendingApprovals[industrial];
     }
 
     /**

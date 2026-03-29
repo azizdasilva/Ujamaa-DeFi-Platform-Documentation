@@ -23,17 +23,17 @@ export const POLLING_INTERVALS = {
 } as const;
 
 // Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET - ALL CONTRACTS)
-// Deployed: 2026-03-29 (Fixed: added getRegisteredIndustrialsCount to IndustrialGateway)
+// Deployed: 2026-03-29 (Fixed: added getPendingApprovalsCount to IndustrialGateway)
 // Naming convention: Gateway = bi-directional data flow (per nomenclature)
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0xa92Dd4E15F4d535BAb3A586C3F3c17E679b92679', // ULPToken.sol
-  liquidityPool: '0xf540D4D0e3088841c08637Be3680fFF0c76bBC25', // LiquidityPool.sol
+  ulpToken: '0x8b0715695C21853838781d4a367B8067360F84A8', // ULPToken.sol (from logs)
+  liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec', // LiquidityPool.sol
   guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', // GuaranteeToken.sol
-  industrialGateway: '0xC8a86Ca26e855a0b2e3f4A79B52b2E39fCA730c6', // IndustrialGateway.sol
-  jurisdictionCompliance: '0x640755367C3bBD99B112324f4Bf0e603aa467257', // JurisdictionCompliance.sol
-  mockEscrow: '0x3736e65d3A238d35aD74690279DfAdc9046Af026', // MockEscrow.sol
-  mockFiatRamp: '0xcecc9d1869D9bdc03B1666F8a1BAEC10097dBDC5', // MockFiatRamp.sol
-  navGateway: '0x3b0DE2895c951a43eA2cbE98F4310a6407A1F07A', // NavGateway.sol
+  industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930', // IndustrialGateway.sol
+  jurisdictionCompliance: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C', // JurisdictionCompliance.sol
+  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F', // MockEscrow.sol
+  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', // MockFiatRamp.sol
+  navGateway: '0x99712f923e3519B4305CEDAd40290428299F29A0', // NavGateway.sol
   mockEUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', // MockEUROD.sol
 } as const;
 
