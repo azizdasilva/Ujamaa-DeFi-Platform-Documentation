@@ -27,6 +27,7 @@ const BankAccountManagement: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Load investor data from backend API
   useEffect(() => {
@@ -36,13 +37,18 @@ const BankAccountManagement: React.FC = () => {
   const loadInvestors = async () => {
     try {
       setLoading(true);
+      setError(null);
+      console.log('Loading investors from API...');
       const data = await adminAPI.getAllInvestorsBankAccounts();
+      console.log('Investors loaded:', data);
       setInvestors(data);
       setNotification(null);
-    } catch (error: any) {
-      console.error('Failed to load investors:', error);
-      const errorMessage = error.response?.data?.detail || error.message || 'Failed to load investor data. Please try again.';
-      setNotification({ type: 'error', message: errorMessage });
+    } catch (err: any) {
+      console.error('Failed to load investors:', err);
+      const errorMsg = err.response?.data?.detail || err.message || 'Failed to load investor data.';
+      console.error('Error message:', errorMsg);
+      setError(errorMsg);
+      setNotification({ type: 'error', message: errorMsg });
     } finally {
       setLoading(false);
     }
@@ -261,14 +267,14 @@ const BankAccountManagement: React.FC = () => {
               </div>
             </div>
           </Card>
-        ) : notification?.type === 'error' && investors.length === 0 ? (
+        ) : error && investors.length === 0 ? (
           <Card>
             <div className="text-center py-12">
               <svg className="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="text-lg font-semibold text-gray-900 mb-2">Unable to load investor records</p>
-              <p className="text-gray-600 mb-4">{notification.message}</p>
+              <p className="text-gray-600 mb-4">{error}</p>
               <button
                 onClick={loadInvestors}
                 className="px-4 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors"
