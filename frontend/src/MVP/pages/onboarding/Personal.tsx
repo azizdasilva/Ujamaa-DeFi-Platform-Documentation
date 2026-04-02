@@ -276,8 +276,8 @@ const OnboardingPersonal: React.FC = () => {
       newErrors.investmentAmount = 'Investment amount is required';
     } else {
       const amount = parseFloat(formData.investmentAmount.replace(/,/g, ''));
-      if (type === 'retail' && (amount < 1000 || amount > 99999)) {
-        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €99,999';
+      if (type === 'retail' && (amount < 1000 || amount > 90000)) {
+        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €90,000';
       }
       if (type === 'institutional' && amount < 100000) {
         newErrors.investmentAmount = 'Institutional investment minimum is €100,000';
@@ -361,8 +361,8 @@ const OnboardingPersonal: React.FC = () => {
       newErrors.investmentAmount = 'Investment amount is required';
     } else {
       const amount = parseFloat(formData.investmentAmount.replace(/,/g, ''));
-      if (type === 'retail' && (amount < 1000 || amount > 99999)) {
-        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €99,999';
+      if (type === 'retail' && (amount < 1000 || amount > 90000)) {
+        newErrors.investmentAmount = 'Retail investment must be between €1,000 and €90,000';
       }
       if (type === 'institutional' && amount < 100000) {
         newErrors.investmentAmount = 'Institutional investment minimum is €100,000';
@@ -707,7 +707,11 @@ const OnboardingPersonal: React.FC = () => {
               </div>
               <div>
                 <h2 className="text-xl font-bold text-gray-900">Address Information</h2>
-                <p className="text-sm text-gray-500">Your registered address</p>
+                <p className="text-sm text-gray-500">
+                  {type === 'institutional' || type === 'originator'
+                    ? 'Registered business address (must match country of incorporation)'
+                    : 'Your residential address'}
+                </p>
               </div>
             </div>
 
