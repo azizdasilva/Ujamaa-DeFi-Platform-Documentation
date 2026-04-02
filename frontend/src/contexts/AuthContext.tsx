@@ -114,6 +114,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const userData = {
       ...mockUser,
       walletAddress: walletAddress || mockUser.walletAddress,
+      // Mock JWT token for API authentication (MVP testnet)
+      token: `mock-jwt-token-${role}-${Date.now()}`,
     };
     setUser(userData);
     sessionStorage.setItem('ujamaa_user', JSON.stringify(userData));
@@ -127,6 +129,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const updateUser = (updates: Partial<User>) => {
     if (user) {
       const updatedUser = { ...user, ...updates };
+      // Preserve the token when updating user
+      if (!updates.token) {
+        updatedUser.token = user.token;
+      }
       setUser(updatedUser);
       sessionStorage.setItem('ujamaa_user', JSON.stringify(updatedUser));
     }

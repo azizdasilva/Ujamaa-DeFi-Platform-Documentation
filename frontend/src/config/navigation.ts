@@ -142,14 +142,14 @@ export const navigationItems: NavItem[] = [
     label: 'View Certificates',
     href: '/originator/assets/certificates',
     icon: '📜',
-    roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR', 'ADMIN'],
+    roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR'],
     category: 'operator',
   },
   {
     label: 'Financings',
     href: '/industrial-operator/financings',
     icon: '💰',
-    roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'],
+    roles: ['INDUSTRIAL_OPERATOR'],
     category: 'operator',
   },
 
