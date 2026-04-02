@@ -13,6 +13,27 @@ export interface NavItem {
   category?: string;
 }
 
+/**
+ * Get the correct dashboard/pools path based on user role
+ */
+export function getRolePath(role: InvestorRole, pathType: 'dashboard' | 'pools'): string {
+  switch (role) {
+    case 'RETAIL_INVESTOR':
+      return pathType === 'dashboard' ? '/retail/dashboard' : '/retail/pools';
+    case 'INDUSTRIAL_OPERATOR':
+      return pathType === 'dashboard' ? '/originator/dashboard' : '/originator/assets/submit';
+    case 'COMPLIANCE_OFFICER':
+      return pathType === 'dashboard' ? '/compliance/dashboard' : '/compliance/kyc-review';
+    case 'REGULATOR':
+      return pathType === 'dashboard' ? '/regulator/dashboard' : '/regulator/compliance';
+    case 'ADMIN':
+      return pathType === 'dashboard' ? '/admin/dashboard' : '/admin/pools';
+    case 'INSTITUTIONAL_INVESTOR':
+    default:
+      return pathType === 'dashboard' ? '/institutional/dashboard' : '/institutional/pools';
+  }
+}
+
 export const navigationItems: NavItem[] = [
   // Dashboard Links
   {
@@ -63,7 +84,14 @@ export const navigationItems: NavItem[] = [
     label: 'Pool Marketplace',
     href: '/institutional/pools',
     icon: '🏛️',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
+    roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN'],
+    category: 'invest',
+  },
+  {
+    label: 'Pool Marketplace',
+    href: '/retail/pools',
+    icon: '🏛️',
+    roles: ['RETAIL_INVESTOR', 'ADMIN'],
     category: 'invest',
   },
   {
@@ -160,6 +188,13 @@ export const navigationItems: NavItem[] = [
     label: 'Asset Management',
     href: '/admin/assets',
     icon: '📦',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Threshold Management',
+    href: '/admin/thresholds',
+    icon: '🎯',
     roles: ['ADMIN'],
     category: 'admin',
   },

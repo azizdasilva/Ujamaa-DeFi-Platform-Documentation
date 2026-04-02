@@ -1,41 +1,90 @@
 /**
  * Compliance Officer Dashboard
- * 
+ *
  * Dashboard for compliance officers to manage KYC/KYB approvals, monitor transactions, and generate reports.
- * 
+ *
  * Route: /compliance/dashboard
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import Button from '../../components/Button';
+import complianceAPI, { Document, Transaction } from '../../../api/compliance';
+
+interface ComplianceStats {
+  pending_documents: number;
+  overdue_documents: number;
+  approved_today: number;
+}
 
 const ComplianceDashboard: React.FC = () => {
-  // Mock data for demo
-  const stats = {
-    pendingKYC: 12,
-    pendingKYB: 5,
-    flaggedTransactions: 3,
-    approvedToday: 28,
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState<ComplianceStats>({
+    pending_documents: 0,
+    overdue_documents: 0,
+    approved_today: 0,
+  });
+  const [pendingDocuments, setPendingDocuments] = useState<Document[]>([]);
+  const [flaggedTransactions, setFlaggedTransactions] = useState<Transaction[]>([]);
+
+  useEffect(() => {
+    const fetchComplianceData = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch compliance stats
+        const statsResponse = await complianceAPI.getComplianceStats();
+        setStats(statsResponse);
+        
+        // Fetch pending documents
+        const pendingResponse = await complianceAPI.getPendingDocuments();
+        setPendingDocuments(pendingResponse.slice(0, 5)); // Show top 5
+        
+        // Fetch flagged transactions
+        const flaggedResponse = await complianceAPI.getFlaggedTransactions('pending');
+        setFlaggedTransactions(flaggedResponse.slice(0, 5)); // Show top 5
+      } catch (error) {
+        console.error('Error fetching compliance data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchComplianceData();
+  }, []);
+
+  const getRiskBadgeColor = (riskLevel: string) => {
+    switch (riskLevel) {
+      case 'critical': return 'red';
+      case 'high': return 'red';
+      case 'medium': return 'amber';
+      case 'low': return 'green';
+      default: return 'gray';
+    }
   };
 
-  const pendingApprovals = [
-    { id: 'INV-001', name: 'Logic Capital Ltd', type: 'KYB', jurisdiction: 'MU', submitted: '2026-03-18' },
-    { id: 'INV-002', name: 'John Doe', type: 'KYC', jurisdiction: 'KE', submitted: '2026-03-18' },
-    { id: 'INV-003', name: 'Green Energy Fund', type: 'KYB', jurisdiction: 'ZA', submitted: '2026-03-17' },
-    { id: 'INV-004', name: 'Jane Smith', type: 'KYC', jurisdiction: 'NG', submitted: '2026-03-17' },
-  ];
-
-  const flaggedTransactions = [
-    { id: 'TXN-001', investor: 'High Risk Corp', amount: '€750,000', reason: 'Large amount', risk: 'high' },
-    { id: 'TXN-002', investor: 'Quick Invest Ltd', amount: '€200,000', reason: 'Unusual pattern', risk: 'medium' },
-    { id: 'TXN-003', investor: 'New Investor', amount: '€95,000', reason: 'Near threshold', risk: 'low' },
-  ];
+  const getDocumentTypeLabel = (type: string) => {
+    const labels: Record<string, string> = {
+      'kyc_id': 'KYC - ID',
+      'kyc_address': 'KYC - Address',
+      'kyc_selfie': 'KYC - Selfie',
+      'kyb_incorporation': 'KYB - Incorporation',
+      'kyb_tax': 'KYB - Tax',
+      'kyb_ubo': 'KYB - UBO',
+      'kyb_resolution': 'KYB - Resolution',
+      'kyb_aml': 'KYB - AML',
+      'kyb_license': 'KYB - License',
+    };
+    return labels[type] || type;
+  };
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
@@ -68,19 +117,19 @@ const ComplianceDashboard: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             }
-            label="Pending KYC"
-            value={stats.pendingKYC}
+            label="Pending Documents"
+            value={loading ? '-' : stats.pending_documents}
             color="amber"
           />
           <StatsCard
             icon={
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             }
-            label="Pending KYB"
-            value={stats.pendingKYB}
-            color="purple"
+            label="Overdue"
+            value={loading ? '-' : stats.overdue_documents}
+            color="red"
           />
           <StatsCard
             icon={
@@ -89,7 +138,7 @@ const ComplianceDashboard: React.FC = () => {
               </svg>
             }
             label="Flagged Transactions"
-            value={stats.flaggedTransactions}
+            value={loading ? '-' : flaggedTransactions.length}
             color="red"
           />
           <StatsCard
@@ -99,7 +148,7 @@ const ComplianceDashboard: React.FC = () => {
               </svg>
             }
             label="Approved Today"
-            value={stats.approvedToday}
+            value={loading ? '-' : stats.approved_today}
             color="green"
           />
         </div>
@@ -122,44 +171,61 @@ const ComplianceDashboard: React.FC = () => {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[#103b5b]/20">
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">ID</th>
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">Name</th>
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">Type</th>
+                      <th className="text-left py-3 font-semibold text-[#103b5b]">Investor</th>
+                      <th className="text-left py-3 font-semibold text-[#103b5b]">Document Type</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Jurisdiction</th>
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">Submitted</th>
+                      <th className="text-left py-3 font-semibold text-[#103b5b]">Time Remaining</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {pendingApprovals.map((approval) => (
-                      <tr key={approval.id} className="border-b border-[#103b5b]/10">
-                        <td className="py-3 font-mono text-xs">{approval.id}</td>
-                        <td className="py-3 font-medium text-[#103b5b]">{approval.name}</td>
-                        <td className="py-3">
-                          <Badge variant={approval.type === 'KYB' ? 'primary' : 'info'} size="sm">
-                            {approval.type}
-                          </Badge>
-                        </td>
-                        <td className="py-3 text-[#8b5b3d]">{approval.jurisdiction}</td>
-                        <td className="py-3 text-[#8b5b3d]">{approval.submitted}</td>
-                        <td className="py-3">
-                          <div className="flex gap-2">
-                            <a
-                              href={`/compliance/approvals/${approval.id}/review`}
-                              className="px-3 py-1 bg-[#103b5b] hover:bg-[#0d3352] text-white !text-white text-xs font-bold rounded transition-colors"
-                            >
-                              Review
-                            </a>
-                            <button
-                              onClick={() => alert(`🚀 MVP TESTNET: View details for ${approval.id}\n\nIn production, this will show a detailed view of the application.`)}
-                              className="px-3 py-1 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-xs font-bold rounded transition-colors"
-                            >
-                              Details
-                            </button>
-                          </div>
-                        </td>
+                    {loading ? (
+                      <tr>
+                        <td colSpan={5} className="py-8 text-center text-[#8b5b3d]">Loading pending documents...</td>
                       </tr>
-                    ))}
+                    ) : pendingDocuments.length === 0 ? (
+                      <tr>
+                        <td colSpan={5} className="py-8 text-center text-[#8b5b3d]">No pending documents 🎉</td>
+                      </tr>
+                    ) : (
+                      pendingDocuments.map((doc) => (
+                        <tr key={doc.id} className="border-b border-[#103b5b]/10">
+                          <td className="py-3 font-medium text-[#103b5b]">
+                            <div>{doc.investor_name || `Investor #${doc.investor_id}`}</div>
+                            <div className="text-xs text-gray-500">ID: {doc.investor_id}</div>
+                          </td>
+                          <td className="py-3">
+                            <Badge variant={doc.document_type.startsWith('kyb') ? 'primary' : 'info'} size="sm">
+                              {getDocumentTypeLabel(doc.document_type)}
+                            </Badge>
+                          </td>
+                          <td className="py-3 text-[#8b5b3d]">{doc.investor_jurisdiction || 'Unknown'}</td>
+                          <td className="py-3">
+                            {doc.time_remaining_hours !== undefined ? (
+                              doc.is_overdue ? (
+                                <Badge variant="danger" size="sm">⚠️ Overdue</Badge>
+                              ) : doc.time_remaining_hours < 4 ? (
+                                <Badge variant="danger" size="sm">{Math.round(doc.time_remaining_hours)}h left</Badge>
+                              ) : (
+                                <span className="text-[#8b5b3d]">{Math.round(doc.time_remaining_hours)}h</span>
+                              )
+                            ) : (
+                              <span className="text-[#8b5b3d]">-</span>
+                            )}
+                          </td>
+                          <td className="py-3">
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => navigate(`/compliance/approvals/${doc.id}/review`)}
+                                className="px-3 py-1 bg-[#103b5b] hover:bg-[#0d3352] text-white text-xs font-bold rounded transition-colors"
+                              >
+                                Review
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -177,44 +243,44 @@ const ComplianceDashboard: React.FC = () => {
               }
             >
               <div className="space-y-3">
-                {flaggedTransactions.map((txn) => (
-                  <div
-                    key={txn.id}
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-3 h-3 rounded-full ${
-                          txn.risk === 'high' ? 'bg-red-500' :
-                          txn.risk === 'medium' ? 'bg-amber-500' :
-                          'bg-blue-500'
-                        }`}
-                      />
-                      <div>
-                        <p className="font-mono text-xs text-gray-500">{txn.id}</p>
-                        <p className="font-semibold text-gray-900">{txn.investor}</p>
-                        <p className="text-xs text-gray-600">{txn.reason}</p>
+                {loading ? (
+                  <p className="text-center text-[#8b5b3d] py-8">Loading flagged transactions...</p>
+                ) : flaggedTransactions.length === 0 ? (
+                  <p className="text-center text-[#8b5b3d] py-8">No flagged transactions 🎉</p>
+                ) : (
+                  flaggedTransactions.map((txn) => (
+                    <div
+                      key={txn.id}
+                      className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-3 h-3 rounded-full ${
+                            txn.risk_level === 'high' || txn.risk_level === 'critical' ? 'bg-red-500' :
+                            txn.risk_level === 'medium' ? 'bg-amber-500' :
+                            'bg-blue-500'
+                          }`}
+                        />
+                        <div>
+                          <p className="font-mono text-xs text-gray-500">#{txn.id}</p>
+                          <p className="font-semibold text-gray-900">{txn.investor_name || `Investor #${txn.investor_id}`}</p>
+                          <p className="text-xs text-gray-600">{txn.flag_reason || txn.transaction_type}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-semibold text-gray-900">€{txn.amount.toLocaleString()}</p>
+                        <div className="flex gap-2 mt-2">
+                          <button
+                            onClick={() => navigate(`/compliance/transactions`)}
+                            className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded transition-colors"
+                          >
+                            Review
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-gray-900">{txn.amount}</p>
-                      <div className="flex gap-2 mt-2">
-                        <a
-                          href="/compliance/transactions"
-                          className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white !text-white text-xs font-bold rounded transition-colors"
-                        >
-                          Review
-                        </a>
-                        <button
-                          onClick={() => alert('🚀 MVP TESTNET: Quick clear action\n\nIn production, this will clear the flag after verification.')}
-                          className="px-3 py-1 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-xs font-bold rounded transition-colors"
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </Card>
           </div>

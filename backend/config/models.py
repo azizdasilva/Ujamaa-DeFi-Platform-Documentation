@@ -310,6 +310,19 @@ class Transaction(Base):
     status = Column(SQLEnum(TransactionStatusEnum), default=TransactionStatusEnum.PENDING)
     status_history = Column(JSON, nullable=True)  # Track status changes
 
+    # Compliance tracking (NEW)
+    is_flagged = Column(Boolean, default=False)
+    risk_level = Column(String(20), nullable=True)  # 'low', 'medium', 'high', 'critical'
+    flag_reason = Column(Text, nullable=True)
+    flagged_at = Column(DateTime, nullable=True)
+    flagged_by = Column(String(50), nullable=True)  # 'auto' or user ID
+    
+    # Review tracking
+    reviewed_by = Column(Integer, ForeignKey('users.id'), nullable=True)
+    reviewed_at = Column(DateTime, nullable=True)
+    review_notes = Column(Text, nullable=True)
+    review_action = Column(String(20), nullable=True)  # 'cleared', 'blocked', 'escalated'
+
     # Metadata
     description = Column(Text, nullable=True)
     tx_metadata = Column(JSON, nullable=True)  # Renamed from metadata (reserved word)
@@ -319,6 +332,7 @@ class Transaction(Base):
 
     # Relationships
     investor = relationship("InvestorProfile")
+    reviewer = relationship("User")
 
 
 # =============================================================================

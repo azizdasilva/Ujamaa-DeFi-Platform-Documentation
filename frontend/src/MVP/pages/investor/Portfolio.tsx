@@ -1,12 +1,12 @@
 /**
  * Investor Portfolio Page
- * 
+ *
  * Display investor's portfolio with holdings, returns, and performance.
- * 
+ *
  * Route: /investor/portfolio
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
@@ -14,77 +14,103 @@ import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import { databaseAPI } from '../../../api/database';
+import { useAuth } from '../../../contexts/AuthContext';
+
+// Helper function to format currency
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
 
 const InvestorPortfolio: React.FC = () => {
   const navigate = useNavigate();
-  // Mock portfolio data
+  const { user: authUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [investor, setInvestor] = useState<any>(null);
+  const [pools, setPools] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPortfolio = async () => {
+      try {
+        setLoading(true);
+        // Map auth user to investor profile ID
+        let investorId: number;
+        
+        if (authUser?.id?.includes('retail')) {
+          investorId = 2; // John Doe - Retail Investor
+        } else if (authUser?.id?.includes('inst')) {
+          investorId = 1; // Logic Capital - Institutional
+        } else if (authUser?.id?.includes('originator')) {
+          investorId = 3; // Green Cotton - Operator
+        } else {
+          investorId = authUser?.id ? parseInt(authUser.id) || 1 : 1;
+        }
+        
+        // Fetch investor profile
+        const investorData = await databaseAPI.getInvestorProfile(investorId);
+        setInvestor(investorData);
+        
+        // Fetch pool details for each position
+        const poolDetails = await Promise.all(
+          investorData.pool_positions.map(async (pos: any) => {
+            try {
+              const poolRes = await fetch(`/api/v2/db/pools/${pos.pool_id}`);
+              const poolData = await poolRes.json();
+              return { ...pos, poolData };
+            } catch {
+              // Format pool_id to readable name (e.g., "POOL_TRADE_FINANCE" → "Trade Finance")
+              const formattedName = pos.pool_id
+                .replace('POOL_', '')
+                .replace(/_/g, ' ');
+              return { 
+                ...pos, 
+                poolData: { 
+                  name: formattedName, 
+                  apy: 0,
+                  family: pos.pool_id.replace('POOL_', '').toLowerCase()
+                } 
+              };
+            }
+          })
+        );
+        
+        setPools(poolDetails);
+      } catch (error) {
+        console.error('Error fetching portfolio:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPortfolio();
+  }, [authUser?.id]);
+
+  // Calculate portfolio metrics from real data
   const portfolio = {
-    totalValue: 275500,
-    totalInvested: 250000,
-    totalReturns: 25500,
-    unrealizedGain: 18200,
-    realizedGain: 7300,
+    totalValue: investor?.total_portfolio_value || 0,
+    totalInvested: investor?.total_invested || 0,
+    totalReturns: investor?.pool_positions.reduce((sum: number, pos: any) => sum + pos.total_yield_earned, 0) || 0,
+    unrealizedGain: 0,
+    realizedGain: 0,
     averageAPY: 11.2,
   };
 
-  const holdings = [
-    {
-      id: 1,
-      poolName: 'Pool Industry - Manufacturing #12',
-      invested: 50000,
-      currentValue: 53200,
-      ulpTokens: 4521.50,
-      apy: 11.5,
-      status: 'active',
-      maturityDate: '2027-03-21',
-      progress: 45,
-    },
-    {
-      id: 2,
-      poolName: 'Pool Agriculture - Coffee Export #8',
-      invested: 75000,
-      currentValue: 79800,
-      ulpTokens: 6834.20,
-      apy: 13.2,
-      status: 'active',
-      maturityDate: '2026-09-21',
-      progress: 72,
-    },
-    {
-      id: 3,
-      poolName: 'Pool Trade Finance - Invoice Pool #5',
-      invested: 40000,
-      currentValue: 42100,
-      ulpTokens: 3892.75,
-      apy: 9.5,
-      status: 'active',
-      maturityDate: '2026-06-21',
-      progress: 88,
-    },
-    {
-      id: 4,
-      poolName: 'Pool Renewable Energy - Solar #3',
-      invested: 85000,
-      currentValue: 88400,
-      ulpTokens: 8156.30,
-      apy: 10.2,
-      status: 'active',
-      maturityDate: '2028-03-21',
-      progress: 25,
-    },
-    {
-      id: 5,
-      poolName: 'Pool Real Estate - Commercial #1',
-      invested: 0,
-      currentValue: 12000,
-      ulpTokens: 0,
-      apy: 0,
-      status: 'completed',
-      maturityDate: '2026-01-15',
-      progress: 100,
-      realizedGain: 7300,
-    },
-  ];
+  const holdings = pools.map((pos, idx) => ({
+    id: idx + 1,
+    poolName: pos.poolData?.name || pos.pool_id,
+    invested: pos.shares * pos.average_nav,
+    currentValue: pos.shares * pos.average_nav + pos.total_yield_earned,
+    ulpTokens: pos.shares,
+    apy: pos.poolData?.apy || 0,
+    status: 'active',
+    maturityDate: '2027-03-21',
+    progress: 45,
+  }));
 
   const totalUlPTokens = holdings.reduce((sum, h) => sum + h.ulpTokens, 0);
 

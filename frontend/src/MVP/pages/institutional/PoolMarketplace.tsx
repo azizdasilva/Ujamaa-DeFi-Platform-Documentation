@@ -8,12 +8,16 @@
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { useAccount } from 'wagmi';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import { useAuth } from '../../../contexts/AuthContext';
+import { databaseAPI } from '../../../api/database';
 
 interface Pool {
   id: string;
@@ -126,13 +130,67 @@ interface FilterState {
 }
 
 const PoolMarketplace: React.FC = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { address: walletAddress, isConnected } = useAccount();
+  const { user: authUser } = useAuth();
+  const [investor, setInvestor] = useState<any>(null);
+  const [complianceStatus, setComplianceStatus] = useState<any>(null);
   const [selectedPool, setSelectedPool] = useState<Pool | null>(null);
   const [showInvestModal, setShowInvestModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [investmentAmount, setInvestmentAmount] = useState('');
   const [investmentSuccess, setInvestmentSuccess] = useState(false);
   const [isInvesting, setIsInvesting] = useState(false);
+
+  // Check compliance status and fetch investor profile on mount
+  useEffect(() => {
+    const checkCompliance = async () => {
+      if (!authUser?.id) return;
+
+      try {
+        // Map auth user to investor profile ID
+        // Auth uses string IDs like 'retail-001', but database uses numeric IDs
+        let investorId: number;
+
+        if (authUser.id.includes('retail')) {
+          investorId = 2; // John Doe - Retail Investor
+        } else if (authUser.id.includes('inst')) {
+          investorId = 1; // Logic Capital - Institutional
+        } else if (authUser.id.includes('originator')) {
+          investorId = 3; // Green Cotton - Operator
+        } else if (authUser.id.includes('compliance')) {
+          investorId = 4; // Compliance Officer
+        } else if (authUser.id.includes('admin')) {
+          investorId = 5; // Admin
+        } else if (authUser.id.includes('regulator')) {
+          investorId = 6; // Regulator
+        } else {
+          investorId = parseInt(authUser.id) || 1; // Fallback to parsing or default
+        }
+
+        const data = await databaseAPI.getInvestorProfile(investorId);
+
+        // Set investor data with bank balance
+        setInvestor(data);
+
+        // Check if KYC or KYB is approved
+        const isCompliant = data.kyc_status === 'approved' || data.kyb_status === 'approved';
+
+        setComplianceStatus({
+          isCompliant,
+          kycStatus: data.kyc_status,
+          kybStatus: data.kyb_status,
+          investorId: data.id,
+          availableBalance: data.available_to_invest || 0
+        });
+      } catch (error) {
+        console.error('Error checking compliance:', error);
+      }
+    };
+
+    checkCompliance();
+  }, [authUser?.id]);
 
   // Get pool filter from URL
   const urlPool = searchParams.get('pool');
@@ -217,8 +275,44 @@ const PoolMarketplace: React.FC = () => {
   };
 
   const handleConfirmInvestment = () => {
-    if (!investmentAmount || Number(investmentAmount) < selectedPool!.minInvestment) return;
-    
+    // Check 1: Wallet must be connected
+    if (!isConnected || !walletAddress) {
+      alert('🔗 Wallet Required: Please connect your MetaMask wallet to invest.\n\nClick the "Connect Wallet" button in the navigation bar.');
+      return;
+    }
+
+    // Check 2: Investment amount must be valid
+    if (!investmentAmount || Number(investmentAmount) < selectedPool!.minInvestment) {
+      alert(`Minimum investment is €${selectedPool!.minInvestment.toLocaleString()}`);
+      return;
+    }
+
+    // Check 3: Compliance check - KYC/KYB must be approved
+    if (!complianceStatus) {
+      alert('⏳ Please wait: Checking compliance status...');
+      return;
+    }
+
+    if (!complianceStatus.isCompliant) {
+      if (complianceStatus.kycStatus === 'pending' || complianceStatus.kybStatus === 'pending') {
+        alert('⏳ Compliance Review Pending: Your KYC/KYB documents are under review.\n\nPlease wait for approval before investing.\n\nYou can check the status in your profile.');
+        navigate('/investor/portfolio');
+        return;
+      } else {
+        alert('📋 Compliance Required: Please complete KYC/KYB verification before investing.\n\nGo to your profile to upload required documents.');
+        navigate('/investor/portfolio');
+        return;
+      }
+    }
+
+    // Check 4: Sufficient balance
+    const investAmount = Number(investmentAmount);
+    if (investAmount > (investor?.available_to_invest || 0)) {
+      alert(`❌ Insufficient Funds\n\nAvailable: €${(investor?.available_to_invest || 0).toLocaleString()}\nRequested: €${investAmount.toLocaleString()}\n\nPlease fund your escrow account before investing.`);
+      return;
+    }
+
+    // All checks passed - proceed with investment
     setIsInvesting(true);
     // Simulate investment submission
     setTimeout(() => {

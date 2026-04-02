@@ -6,120 +6,105 @@
  * Route: /compliance/transactions
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import complianceAPI, { Transaction } from '../../../api/compliance';
 
 const TransactionMonitor: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'flagged' | 'reviewed'>('all');
-  const [selectedTxn, setSelectedTxn] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<'all' | 'flagged' | 'reviewed'>('flagged');
+  const [riskFilter, setRiskFilter] = useState<string>('');
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
+  const [reviewNotes, setReviewNotes] = useState('');
 
-  // Mock transaction data
-  const transactions = [
-    {
-      id: 'TXN-001',
-      investor: 'High Risk Corp',
-      investorId: 'INV-045',
-      amount: 750000,
-      type: 'investment',
-      status: 'flagged',
-      riskLevel: 'high',
-      reason: 'Large amount exceeds threshold',
-      date: '2026-03-20 14:32',
-      walletAddress: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
-      poolFamily: 'POOL_INDUSTRIE',
-      jurisdiction: 'MU',
-      reviewedBy: null,
-    },
-    {
-      id: 'TXN-002',
-      investor: 'Quick Invest Ltd',
-      investorId: 'INV-032',
-      amount: 200000,
-      type: 'investment',
-      status: 'flagged',
-      riskLevel: 'medium',
-      reason: 'Unusual transaction pattern detected',
-      date: '2026-03-20 11:15',
-      walletAddress: '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199',
-      poolFamily: 'POOL_TRADE_FINANCE',
-      jurisdiction: 'KE',
-      reviewedBy: null,
-    },
-    {
-      id: 'TXN-003',
-      investor: 'New Investor',
-      investorId: 'INV-078',
-      amount: 95000,
-      type: 'investment',
-      status: 'flagged',
-      riskLevel: 'low',
-      reason: 'Near reporting threshold',
-      date: '2026-03-19 16:45',
-      walletAddress: '0xdD2FD4581271e230360230F9337D5c0430Bf44C0',
-      poolFamily: 'POOL_AGRICULTURE',
-      jurisdiction: 'NG',
-      reviewedBy: null,
-    },
-    {
-      id: 'TXN-004',
-      investor: 'Logic Capital Ltd',
-      investorId: 'INV-001',
-      amount: 500000,
-      type: 'investment',
-      status: 'reviewed',
-      riskLevel: 'medium',
-      reason: 'Large amount - reviewed and cleared',
-      date: '2026-03-18 09:20',
-      walletAddress: '0xbDA5747bFD65F08deb54cb460eB87D402817AD3a',
-      poolFamily: 'POOL_INDUSTRIE',
-      jurisdiction: 'MU',
-      reviewedBy: 'compliance@ujamaa-defi.com',
-    },
-    {
-      id: 'TXN-005',
-      investor: 'Green Energy Fund',
-      investorId: 'INV-003',
-      amount: 1000000,
-      type: 'investment',
-      status: 'reviewed',
-      riskLevel: 'high',
-      reason: 'High value - enhanced due diligence completed',
-      date: '2026-03-17 13:50',
-      walletAddress: '0x2546BcD3c84621e976D8185a91A922aE77ECEc30',
-      poolFamily: 'POOL_RENEWABLE_ENERGY',
-      jurisdiction: 'ZA',
-      reviewedBy: 'compliance@ujamaa-defi.com',
-    },
-  ];
+  // Current user (compliance officer)
+  const complianceOfficerId = 4;
 
-  const filteredTransactions = transactions.filter(txn => {
-    if (filter === 'all') return true;
-    if (filter === 'flagged') return txn.status === 'flagged';
-    if (filter === 'reviewed') return txn.status === 'reviewed';
-    return true;
-  });
+  useEffect(() => {
+    fetchTransactions();
+  }, [filter, riskFilter]);
 
-  const handleClear = (id: string) => {
-    const reason = prompt('Add clearance notes (optional):') || 'No additional notes';
-    alert(`✓ Transaction ${id} cleared.\n\nNotes: ${reason}\n\nIn production:\n• Transaction status updated\n• Compliance event logged\n• Investor notified if required`);
+  const fetchTransactions = async () => {
+    try {
+      setLoading(true);
+      let txns;
+      
+      if (filter === 'flagged') {
+        txns = await complianceAPI.getFlaggedTransactions('pending', riskFilter || undefined);
+      } else if (filter === 'reviewed') {
+        txns = await complianceAPI.getFlaggedTransactions('cleared', riskFilter || undefined);
+      } else {
+        txns = await complianceAPI.getTransactions(undefined, undefined, 100);
+      }
+      
+      setTransactions(txns);
+    } catch (error) {
+      console.error('Error fetching transactions:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleBlock = (id: string) => {
-    const reason = prompt('Provide blocking reason (required):');
-    if (reason) {
-      alert(`⚠ Transaction ${id} blocked.\n\nReason: ${reason}\n\nIn production:\n• Transaction reversed/held\n• Investor account flagged\n• Regulatory report generated\n• Compliance event logged`);
+  const handleReview = async (action: 'clear' | 'block') => {
+    if (!selectedTxn) return;
+
+    try {
+      await complianceAPI.reviewTransaction(selectedTxn.id, {
+        action,
+        notes: reviewNotes || `Transaction ${action}ed via compliance review`,
+        reviewer_id: complianceOfficerId
+      });
+
+      alert(`✓ Transaction ${action}ed successfully!`);
+      setReviewNotes('');
+      setSelectedTxn(null);
+      
+      // Refresh the list
+      fetchTransactions();
+      
+      // Navigate to dashboard to show updated stats
+      navigate('/compliance/dashboard');
+    } catch (error: any) {
+      console.error('Error reviewing transaction:', error);
+      const errorMsg = error.response?.data?.detail || error.message || 'Failed to review transaction';
+      alert(`✗ Error: ${errorMsg}`);
     }
+  };
+
+  const getRiskBadgeColor = (riskLevel: string) => {
+    switch (riskLevel) {
+      case 'critical': return 'danger';
+      case 'high': return 'danger';
+      case 'medium': return 'warning';
+      case 'low': return 'success';
+      default: return 'info';
+    }
+  };
+
+  const getTransactionTypeIcon = (type: string) => {
+    const icons: Record<string, string> = {
+      'INVESTMENT': '💰',
+      'REDEMPTION': '💸',
+      'YIELD': '📈',
+      'DEPOSIT': '📥',
+      'WITHDRAWAL': '📤',
+      'TRANSFER': '🔄',
+    };
+    return icons[type] || '📋';
   };
 
   const stats = {
     total: transactions.length,
-    flagged: transactions.filter(t => t.status === 'flagged').length,
-    reviewed: transactions.filter(t => t.status === 'reviewed').length,
-    highRisk: transactions.filter(t => t.riskLevel === 'high').length,
+    flagged: filter === 'flagged' ? transactions.length : transactions.filter(t => !t.review_action).length,
+    reviewed: filter === 'reviewed' ? transactions.length : transactions.filter(t => t.review_action).length,
+    highRisk: transactions.filter(t => t.risk_level === 'high' || t.risk_level === 'critical').length,
   };
 
   return (
@@ -145,26 +130,26 @@ const TransactionMonitor: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Total Transactions</p>
-            <p className="text-2xl font-bold text-[#103b5b]">{stats.total}</p>
+            <p className="text-2xl font-bold text-[#103b5b]">{loading ? '-' : stats.total}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Flagged</p>
-            <p className="text-2xl font-bold text-red-600">{stats.flagged}</p>
+            <p className="text-2xl font-bold text-red-600">{loading ? '-' : stats.flagged}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Reviewed</p>
-            <p className="text-2xl font-bold text-green-600">{stats.reviewed}</p>
+            <p className="text-2xl font-bold text-green-600">{loading ? '-' : stats.reviewed}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">High Risk</p>
-            <p className="text-2xl font-bold text-red-600">{stats.highRisk}</p>
+            <p className="text-2xl font-bold text-red-600">{loading ? '-' : stats.highRisk}</p>
           </div>
         </div>
 
         {/* Filters */}
         <Card className="mb-6">
-          <div className="flex items-center justify-between">
-            <div className="flex gap-2">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex gap-2 flex-wrap">
               <button
                 onClick={() => setFilter('all')}
                 className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
@@ -197,16 +182,25 @@ const TransactionMonitor: React.FC = () => {
               </button>
             </div>
             <div className="flex items-center gap-3">
-              <input
-                type="text"
-                placeholder="Search transactions..."
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A8A8]"
-              />
-              <button className="p-2 bg-[#023D7A] hover:bg-[#0d3352] text-white rounded-lg transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
+              <select
+                value={riskFilter}
+                onChange={(e) => setRiskFilter(e.target.value)}
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#023D7A]"
+              >
+                <option value="">All Risk Levels</option>
+                <option value="critical">Critical</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchTransactions}
+                className="text-[#00A8A8] border-[#00A8A8] hover:bg-[#F3F8FA]"
+              >
+                🔄 Refresh
+              </Button>
             </div>
           </div>
         </Card>
@@ -228,84 +222,81 @@ const TransactionMonitor: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredTransactions.map((txn) => (
-                  <tr
-                    key={txn.id}
-                    onClick={() => setSelectedTxn(selectedTxn === txn.id ? null : txn.id)}
-                    className={`border-b border-[#103b5b]/10 cursor-pointer transition-colors ${
-                      selectedTxn === txn.id ? 'bg-[#023D7A]/5' : 'hover:bg-gray-50'
-                    }`}
-                  >
-                    <td className="py-3 px-4 font-mono text-xs">{txn.id}</td>
-                    <td className="py-3 px-4">
-                      <div>
-                        <p className="font-semibold text-[#103b5b]">{txn.investor}</p>
-                        <p className="text-xs text-gray-500">{txn.investorId}</p>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <p className="font-semibold text-[#103b5b]">€{txn.amount.toLocaleString()}</p>
-                    </td>
-                    <td className="py-3 px-4">
-                      <Badge variant={txn.type === 'investment' ? 'info' : 'warning'} size="sm">
-                        {txn.type.toUpperCase()}
-                      </Badge>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            txn.riskLevel === 'high' ? 'bg-red-500' :
-                            txn.riskLevel === 'medium' ? 'bg-amber-500' :
-                            'bg-blue-500'
-                          }`}
-                        />
-                        <span className="text-xs font-semibold text-gray-700">{txn.riskLevel.toUpperCase()}</span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <Badge
-                        variant={txn.status === 'flagged' ? 'warning' : 'success'}
-                        size="sm"
-                      >
-                        {txn.status.toUpperCase()}
-                      </Badge>
-                    </td>
-                    <td className="py-3 px-4 max-w-xs truncate text-xs text-gray-600">
-                      {txn.reason}
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex gap-2">
-                        {txn.status === 'flagged' ? (
-                          <>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleClear(txn.id);
-                              }}
-                              className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded transition-colors"
-                            >
-                              Clear
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleBlock(txn.id);
-                              }}
-                              className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded transition-colors"
-                            >
-                              Block
-                            </button>
-                          </>
-                        ) : (
-                          <span className="text-xs text-gray-500">
-                            Reviewed by {txn.reviewedBy}
-                          </span>
-                        )}
-                      </div>
-                    </td>
+                {loading ? (
+                  <tr>
+                    <td colSpan={8} className="py-8 text-center text-gray-500">Loading transactions...</td>
                   </tr>
-                ))}
+                ) : transactions.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="py-8 text-center text-gray-500">No transactions found 🎉</td>
+                  </tr>
+                ) : (
+                  transactions.map((txn) => (
+                    <tr
+                      key={txn.id}
+                      onClick={() => setSelectedTxn(selectedTxn?.id === txn.id ? null : txn)}
+                      className={`border-b border-[#103b5b]/10 cursor-pointer transition-colors ${
+                        selectedTxn?.id === txn.id ? 'bg-[#023D7A]/5' : 'hover:bg-gray-50'
+                      }`}
+                    >
+                      <td className="py-3 px-4 font-mono text-xs">#{txn.id}</td>
+                      <td className="py-3 px-4">
+                        <div>
+                          <p className="font-semibold text-[#103b5b]">{txn.investor_name || `Investor #${txn.investor_id}`}</p>
+                          <p className="text-xs text-gray-500">{txn.investor_jurisdiction || 'Unknown'}</p>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4">
+                        <p className="font-semibold text-[#103b5b]">€{txn.amount.toLocaleString()}</p>
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex items-center gap-2">
+                          <span>{getTransactionTypeIcon(txn.transaction_type)}</span>
+                          <Badge variant="info" size="sm">
+                            {txn.transaction_type}
+                          </Badge>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4">
+                        <Badge variant={getRiskBadgeColor(txn.risk_level)} size="sm">
+                          {txn.risk_level.toUpperCase()}
+                        </Badge>
+                      </td>
+                      <td className="py-3 px-4">
+                        <Badge
+                          variant={txn.review_action ? 'success' : 'warning'}
+                          size="sm"
+                        >
+                          {txn.review_action || 'PENDING'}
+                        </Badge>
+                      </td>
+                      <td className="py-3 px-4 max-w-xs truncate text-xs text-gray-600">
+                        {txn.flag_reason || '-'}
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex gap-2">
+                          {txn.review_action ? (
+                            <span className="text-xs text-gray-500">
+                              Reviewed
+                            </span>
+                          ) : (
+                            <>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedTxn(txn);
+                                }}
+                                className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded transition-colors"
+                              >
+                                Review
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -314,129 +305,116 @@ const TransactionMonitor: React.FC = () => {
         {/* Transaction Details Panel */}
         {selectedTxn && (
           <Card className="mt-6">
-            {(() => {
-              const txn = transactions.find(t => t.id === selectedTxn);
-              if (!txn) return null;
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-[#103b5b]">Transaction Details: #{selectedTxn.id}</h3>
+              <button
+                onClick={() => setSelectedTxn(null)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-              return (
-                <div>
-                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
-                    <h3 className="text-xl font-bold text-[#103b5b]">Transaction Details: {txn.id}</h3>
-                    <button
-                      onClick={() => setSelectedTxn(null)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Transaction Information</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Transaction ID</span>
+                    <span className="font-mono text-[#103b5b]">#{selectedTxn.id}</span>
                   </div>
-
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-semibold text-[#103b5b] mb-3">Transaction Information</h4>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Transaction ID</span>
-                          <span className="font-mono text-[#103b5b]">{txn.id}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Amount</span>
-                          <span className="font-semibold text-[#103b5b]">€{txn.amount.toLocaleString()}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Type</span>
-                          <span className="text-[#103b5b]">{txn.type.toUpperCase()}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Date/Time</span>
-                          <span className="text-[#103b5b]">{txn.date}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Pool Family</span>
-                          <span className="text-[#103b5b]">{txn.poolFamily.replace('POOL_', '')}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold text-[#103b5b] mb-3">Investor Information</h4>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Name</span>
-                          <span className="font-semibold text-[#103b5b]">{txn.investor}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Investor ID</span>
-                          <span className="font-mono text-[#103b5b]">{txn.investorId}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Jurisdiction</span>
-                          <span className="text-[#103b5b]">{txn.jurisdiction}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Wallet Address</span>
-                          <span className="font-mono text-xs text-[#103b5b]">{txn.walletAddress}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="col-span-2">
-                      <h4 className="font-semibold text-[#103b5b] mb-3">Risk Assessment</h4>
-                      <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-medium text-gray-700">Risk Level</span>
-                          <Badge
-                            variant={txn.riskLevel === 'high' ? 'danger' : txn.riskLevel === 'medium' ? 'warning' : 'info'}
-                            size="md"
-                          >
-                            {txn.riskLevel.toUpperCase()}
-                          </Badge>
-                        </div>
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-medium text-gray-700">Flag Reason</span>
-                          <span className="text-sm text-[#103b5b]">{txn.reason}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-gray-700">Status</span>
-                          <Badge variant={txn.status === 'flagged' ? 'warning' : 'success'} size="md">
-                            {txn.status.toUpperCase()}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Amount</span>
+                    <span className="font-semibold text-[#103b5b]">€{selectedTxn.amount.toLocaleString()}</span>
                   </div>
-
-                  {/* Actions */}
-                  {txn.status === 'flagged' && (
-                    <div className="flex gap-3 mt-6 pt-6 border-t border-gray-200">
-                      <Button
-                        variant="primary"
-                        size="lg"
-                        onClick={() => handleClear(txn.id)}
-                        className="flex-1"
-                      >
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        Clear Transaction
-                      </Button>
-                      <Button
-                        variant="danger"
-                        size="lg"
-                        onClick={() => handleBlock(txn.id)}
-                        className="flex-1"
-                      >
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728-12.728A9 9 0 015.636 18.364" />
-                        </svg>
-                        Block Transaction
-                      </Button>
-                    </div>
-                  )}
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Type</span>
+                    <span className="text-[#103b5b]">{selectedTxn.transaction_type}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Currency</span>
+                    <span className="text-[#103b5b]">{selectedTxn.currency}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Date</span>
+                    <span className="text-[#103b5b]">{new Date(selectedTxn.created_at).toLocaleString()}</span>
+                  </div>
                 </div>
-              );
-            })()}
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Investor Information</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Investor</span>
+                    <span className="text-[#103b5b]">{selectedTxn.investor_name || `Investor #${selectedTxn.investor_id}`}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Jurisdiction</span>
+                    <span className="text-[#103b5b]">{selectedTxn.investor_jurisdiction || 'Unknown'}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Risk Level</span>
+                    <Badge variant={getRiskBadgeColor(selectedTxn.risk_level)} size="sm">
+                      {selectedTxn.risk_level}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-2">
+                <h4 className="font-semibold text-[#103b5b] mb-3">Compliance Review</h4>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                  <p className="text-sm font-semibold text-amber-900 mb-2">Flag Reason:</p>
+                  <p className="text-sm text-amber-700">{selectedTxn.flag_reason || 'No reason provided'}</p>
+                </div>
+
+                {!selectedTxn.review_action ? (
+                  <>
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#103b5b] mb-2">
+                        Review Notes <span className="text-gray-400 font-normal">(optional)</span>
+                      </label>
+                      <textarea
+                        value={reviewNotes}
+                        onChange={(e) => setReviewNotes(e.target.value)}
+                        placeholder="Enter your review notes, findings, and justification..."
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#023D7A] focus:border-transparent"
+                        rows={4}
+                      />
+                    </div>
+
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => handleReview('clear')}
+                        className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors"
+                      >
+                        ✓ Clear Transaction
+                      </button>
+                      <button
+                        onClick={() => handleReview('block')}
+                        className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors"
+                      >
+                        ✗ Block Transaction
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-sm font-semibold text-green-900 mb-2">
+                      ✓ Transaction {selectedTxn.review_action === 'cleared' ? 'Cleared' : 'Blocked'}
+                    </p>
+                    <p className="text-sm text-green-700">
+                      <strong>Reviewed by:</strong> Compliance Officer #{selectedTxn.reviewed_by}<br/>
+                      <strong>Date:</strong> {selectedTxn.reviewed_at ? new Date(selectedTxn.reviewed_at).toLocaleString() : 'N/A'}<br/>
+                      <strong>Notes:</strong> {selectedTxn.review_notes || 'No notes provided'}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </Card>
         )}
       </main>

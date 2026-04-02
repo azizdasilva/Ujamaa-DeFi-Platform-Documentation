@@ -9,7 +9,7 @@
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAccount, useBalance } from 'wagmi';
 import MVPBanner from '../../components/MVPBanner';
@@ -17,62 +17,87 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
-import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
 import { web3Config } from '../../../config/web3';
+import { databaseAPI, InvestorProfile } from '../../../api/database';
+import { useAuth } from '../../../contexts/AuthContext';
 
-// Mock recent activity data
-const recentActivity = [
-  {
-    id: 1,
-    type: 'investment',
-    pool: 'Pool Industry',
-    amount: 500000,
-    date: '2 hours ago',
-    status: 'completed',
-  },
-  {
-    id: 2,
-    type: 'yield',
-    pool: 'Pool Agriculture',
-    amount: 12500,
-    date: '1 day ago',
-    status: 'completed',
-  },
-  {
-    id: 3,
-    type: 'investment',
-    pool: 'Pool Trade Finance',
-    amount: 250000,
-    date: '3 days ago',
-    status: 'completed',
-  },
-];
+// Helper function to format currency
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
 
 const InstitutionalDashboard: React.FC = () => {
   const navigate = useNavigate();
-  
+  const { user: authUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [investor, setInvestor] = useState<InvestorProfile | null>(null);
+
   // Get connected wallet address
   const { address: walletAddress, isConnected } = useAccount();
-  
-  // Get data from centralized mock data store (fallback)
-  const user = USER_PROFILES.INSTITUTIONAL_INVESTOR;
-  
+
   // Get REAL ULP token balance from blockchain (if wallet connected)
   const { data: ulpBalance, isLoading: balanceLoading } = useBalance({
     address: walletAddress,
     token: web3Config.CONTRACTS.ULP_TOKEN,
     query: {
-      enabled: isConnected && !!walletAddress, // Only query if wallet connected
+      enabled: isConnected && !!walletAddress,
     },
   });
+
+  useEffect(() => {
+    const fetchInvestorProfile = async () => {
+      try {
+        setLoading(true);
+        // Map auth user to investor profile ID
+        let investorId: number;
+        
+        if (authUser?.id?.includes('retail')) {
+          investorId = 2; // John Doe - Retail Investor
+        } else if (authUser?.id?.includes('inst')) {
+          investorId = 1; // Logic Capital - Institutional
+        } else if (authUser?.id?.includes('originator')) {
+          investorId = 3; // Green Cotton - Operator
+        } else {
+          investorId = authUser?.id ? parseInt(authUser.id) || 1 : 1;
+        }
+        
+        const data = await databaseAPI.getInvestorProfile(investorId);
+        setInvestor(data);
+      } catch (error) {
+        console.error('Error fetching investor profile:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInvestorProfile();
+  }, [authUser?.id]);
+
+  // Use real data from API, fallback to blockchain or 0
+  const portfolioValue = ulpBalance 
+    ? Number(ulpBalance.formatted) 
+    : investor?.total_portfolio_value || 0;
   
-  // Use real balance if available, otherwise use mock data
-  const portfolioValue = ulpBalance ? Number(ulpBalance.formatted) : user.portfolioValue;
-  const totalYield = user.totalYield; // Would need separate query for real yield
-  const positions = user.positions; // Would need separate query for real positions
-  
-  // Calculate average APY from positions
-  const averageApy = positions.reduce((sum, p) => sum + p.apy, 0) / positions.length;
+  const totalYield = investor?.pool_positions.reduce((sum, pos) => sum + pos.total_yield_earned, 0) || 0;
+  const positions = investor?.pool_positions || [];
+
+  // Calculate average APY from positions (would need pool data for real APY)
+  const averageApy = positions.length > 0 ? 11.0 : 0; // Placeholder
+
+  // Recent activity from API
+  const recentActivity = investor?.recent_transactions.map(tx => ({
+    id: tx.id,
+    type: tx.type.toLowerCase(),
+    pool: 'Pool', // Would need to enrich with pool name
+    amount: tx.amount,
+    date: new Date(tx.created_at).toLocaleDateString(),
+    status: tx.status,
+  })) || [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -196,11 +221,9 @@ const InstitutionalDashboard: React.FC = () => {
             }
             label="Total Portfolio Value"
             value={
-              balanceLoading 
-                ? 'Loading...' 
-                : isConnected 
-                  ? formatCurrency(portfolioValue) 
-                  : formatCurrency(user.portfolioValue)
+              loading || balanceLoading
+                ? 'Loading...'
+                : formatCurrency(portfolioValue)
             }
             trend={{ value: 2.5, direction: 'up' }}
             color="navy"
@@ -213,11 +236,11 @@ const InstitutionalDashboard: React.FC = () => {
             }
             label="ULP Token Balance"
             value={
-              balanceLoading
+              loading || balanceLoading
                 ? 'Loading...'
                 : isConnected
                   ? `${ulpBalance?.formatted || '0'} UPT`
-                  : 'Connect Wallet'
+                  : investor ? `${investor.ult_tokens.toLocaleString()} uLT` : '0 uLT'
             }
             trend={{ value: 12.3, direction: 'up' }}
             color="orange"
@@ -229,7 +252,7 @@ const InstitutionalDashboard: React.FC = () => {
               </svg>
             }
             label="Active Positions"
-            value={positions.length}
+            value={loading ? '-' : positions.length}
             color="sand"
           />
           <StatsCard
@@ -238,8 +261,8 @@ const InstitutionalDashboard: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             }
-            label="Avg. APY"
-            value={`${averageApy.toFixed(1)}%`}
+            label="Total Yield Earned"
+            value={loading ? '-' : formatCurrency(totalYield)}
             trend={{ value: 0.8, direction: 'up' }}
             color="purple"
           />
@@ -262,39 +285,45 @@ const InstitutionalDashboard: React.FC = () => {
               }
             >
               <div className="space-y-4">
-                {positions.map((position) => (
-                  <div
-                    key={position.poolId}
-                    className="p-4 bg-gray-50 rounded-lg border border-gray-200"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{position.poolName}</h3>
-                        <p className="text-sm text-gray-500">{position.shares.toLocaleString()} UPT</p>
+                {loading ? (
+                  <p className="text-center text-gray-500 py-8">Loading positions...</p>
+                ) : positions.length === 0 ? (
+                  <p className="text-center text-gray-500 py-8">No active positions</p>
+                ) : (
+                  positions.map((position, idx) => (
+                    <div
+                      key={`${position.pool_id}-${idx}`}
+                      className="p-4 bg-gray-50 rounded-lg border border-gray-200"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <div>
+                          <h3 className="font-semibold text-gray-900">{position.pool_id.replace('POOL_', '')}</h3>
+                          <p className="text-sm text-gray-500">{position.shares.toLocaleString()} shares</p>
+                        </div>
+                        <Badge variant="success" size="sm">{position.total_yield_earned > 0 ? 'Active' : 'New'}</Badge>
                       </div>
-                      <Badge variant="success" size="sm">{position.apy}% APY</Badge>
+                      <div className="flex items-center justify-between">
+                        <div className="text-2xl font-bold text-gray-900">
+                          {formatCurrency(position.shares * position.average_nav)}
+                        </div>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => navigate(`/institutional/pools?pool=${position.pool_id}`)}
+                            className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
+                          >
+                            Add
+                          </button>
+                          <button
+                            onClick={() => alert(`🚀 MVP TESTNET: Redeem functionality for ${position.pool_id} will be available in production.`)}
+                            className="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg transition-colors"
+                          >
+                            Redeem
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {formatCurrency(position.value)}
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => navigate(`/institutional/pools?pool=${position.poolId}`)}
-                          className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
-                        >
-                          Add
-                        </button>
-                        <button
-                          onClick={() => alert(`🚀 MVP TESTNET: Redeem functionality for ${position.poolName} will be available in production.`)}
-                          className="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg transition-colors"
-                        >
-                          Redeem
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </Card>
           </div>
@@ -303,53 +332,59 @@ const InstitutionalDashboard: React.FC = () => {
           <div>
             <Card header={<h2 className="text-xl font-bold text-gray-900">Recent Activity</h2>}>
               <div className="space-y-4">
-                {recentActivity.map((activity) => (
-                  <div
-                    key={activity.id}
-                    className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0 last:pb-0"
-                  >
+                {loading ? (
+                  <p className="text-center text-gray-500 py-8">Loading...</p>
+                ) : recentActivity.length === 0 ? (
+                  <p className="text-center text-gray-500 py-8">No recent activity</p>
+                ) : (
+                  recentActivity.map((activity) => (
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        activity.type === 'investment'
-                          ? 'bg-[#103b5b]/10 text-[#103b5b]'
-                          : 'bg-blue-100 text-blue-600'
-                      }`}
+                      key={activity.id}
+                      className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0 last:pb-0"
                     >
-                      {activity.type === 'investment' ? (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                      ) : (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">
-                        {activity.type === 'investment' ? 'Investment' : 'Yield Accrued'}
-                      </p>
-                      <p className="text-sm text-gray-500">{activity.pool}</p>
-                      <p className="text-xs text-gray-400 mt-1">{activity.date}</p>
-                    </div>
-                    <div className="text-right">
-                      <p
-                        className={`text-sm font-semibold ${
-                          activity.type === 'investment' ? 'text-gray-900' : 'text-[#103b5b]'
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          activity.type === 'investment'
+                            ? 'bg-[#103b5b]/10 text-[#103b5b]'
+                            : 'bg-blue-100 text-blue-600'
                         }`}
                       >
-                        {activity.type === 'investment' ? '-' : '+'}
-                        {formatCurrency(activity.amount)}
-                      </p>
-                      <Badge
-                        variant={activity.status === 'completed' ? 'success' : 'info'}
-                        size="sm"
-                      >
-                        {activity.status}
-                      </Badge>
+                        {activity.type === 'investment' ? (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                        ) : (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-gray-900">
+                          {activity.type === 'investment' ? 'Investment' : activity.type === 'redemption' ? 'Redemption' : 'Transaction'}
+                        </p>
+                        <p className="text-sm text-gray-500">{activity.pool}</p>
+                        <p className="text-xs text-gray-400 mt-1">{activity.date}</p>
+                      </div>
+                      <div className="text-right">
+                        <p
+                          className={`text-sm font-semibold ${
+                            activity.type === 'investment' ? 'text-gray-900' : 'text-[#103b5b]'
+                          }`}
+                        >
+                          {activity.type === 'investment' ? '-' : '+'}
+                          {formatCurrency(activity.amount)}
+                        </p>
+                        <Badge
+                          variant={activity.status === 'completed' ? 'success' : 'info'}
+                          size="sm"
+                        >
+                          {activity.status.toUpperCase()}
+                        </Badge>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </Card>
           </div>

@@ -8,22 +8,69 @@
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
-import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
+import { databaseAPI, Financing } from '../../../api/database';
+import { useAuth } from '../../../contexts/AuthContext';
+
+// Helper function to format currency
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
 
 const OriginatorDashboard: React.FC = () => {
-  // Get data from centralized mock data store
-  const company = USER_PROFILES.INDUSTRIAL_OPERATOR;
-  const financings = company.financings;
-  const certifiedAssets = company.certifiedAssets;
-  
-  // Calculate utilization rate
-  const utilizationRate = (company.outstanding / company.creditLimit) * 100;
+  const navigate = useNavigate();
+  const { user: authUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [financings, setFinancings] = useState<Financing[]>([]);
+
+  useEffect(() => {
+    const fetchFinancings = async () => {
+      try {
+        setLoading(true);
+        // Map auth user to operator profile ID
+        let industrialId: number;
+        
+        if (authUser?.id?.includes('originator')) {
+          industrialId = 3; // Green Cotton - Operator
+        } else if (authUser?.id?.includes('retail')) {
+          industrialId = 2; // John Doe - Retail (no financings)
+        } else if (authUser?.id?.includes('inst')) {
+          industrialId = 1; // Logic Capital - Institutional (no financings)
+        } else {
+          industrialId = authUser?.id ? parseInt(authUser.id) || 3 : 3;
+        }
+        
+        const data = await databaseAPI.getFinancings({ industrial_id: industrialId });
+        setFinancings(data);
+      } catch (error) {
+        console.error('Error fetching financings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFinancings();
+  }, [authUser?.id]);
+
+  // Calculate stats from real data
+  const activeFinancings = financings.filter(f => f.status === 'REPAYING' || f.status === 'ACTIVE');
+  const fundraisingFinancings = financings.filter(f => f.status === 'PENDING');
+  const totalPrincipal = financings.reduce((sum, f) => sum + f.principal, 0);
+  const totalRepaid = financings.reduce((sum, f) => sum + f.amount_repaid, 0);
+  const outstanding = totalPrincipal - totalRepaid;
+  const creditLimit = 10000000; // Would come from operator profile
+  const utilizationRate = (outstanding / creditLimit) * 100;
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
@@ -36,7 +83,7 @@ const OriginatorDashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-[#103b5b]">Industrial Operator Dashboard</h1>
-              <p className="text-[#8b5b3d] mt-1">{company.name}</p>
+              <p className="text-[#8b5b3d] mt-1">Green Cotton SA</p>
             </div>
             <div className="flex items-center gap-3">
               <Badge variant="success" size="md">✓ Verified</Badge>
@@ -57,7 +104,7 @@ const OriginatorDashboard: React.FC = () => {
               </svg>
             }
             label="Credit Limit"
-            value={formatCurrency(company.creditLimit)}
+            value={loading ? 'Loading...' : formatCurrency(creditLimit)}
             color="green"
           />
           <StatsCard
@@ -67,7 +114,7 @@ const OriginatorDashboard: React.FC = () => {
               </svg>
             }
             label="Outstanding"
-            value={formatCurrency(company.outstanding)}
+            value={loading ? 'Loading...' : formatCurrency(outstanding)}
             color="amber"
           />
           <StatsCard
@@ -77,7 +124,7 @@ const OriginatorDashboard: React.FC = () => {
               </svg>
             }
             label="Active Financings"
-            value={financings.filter(f => f.status === 'active').length}
+            value={loading ? '-' : activeFinancings.length}
             color="blue"
           />
           <StatsCard
@@ -87,7 +134,7 @@ const OriginatorDashboard: React.FC = () => {
               </svg>
             }
             label="Fundraising"
-            value={financings.filter(f => f.status === 'fundraising').length}
+            value={loading ? '-' : fundraisingFinancings.length}
             color="purple"
           />
         </div>

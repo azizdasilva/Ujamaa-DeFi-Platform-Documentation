@@ -15,17 +15,21 @@ from typing import Dict, List, Optional
 from datetime import datetime
 from pydantic import BaseModel, Field, validator
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, create_engine
 import uuid
 
 from config.database import get_database_url
 from config.models import (
-    Pool, Investment, PoolPosition, Financing, 
-    FinancingStatusEnum, AssetClassEnum
+    Pool, Investment, PoolPosition, Financing,
+    FinancingStatusEnum, AssetClassEnum,
+    InvestorProfile, Document, ComplianceStatusEnum,
+    BankAccount, BankTransaction,
+    TransactionTypeEnum, TransactionStatusEnum
 )
 from services.MVP.mock_gdiz import get_gdiz_service, MockGDIZService
 from services.MVP.yield_calculator import YieldCalculator, PoolYield
 from config.MVP_config import mvp_config
+from api.admin import get_threshold, check_threshold
 
 # Router
 router = APIRouter(prefix="/api/v2/pools", tags=["Pools"])
@@ -269,6 +273,80 @@ async def get_pool_stats(pool_id: str, db: Session = Depends(get_db)) -> PoolSta
 # INVESTMENT ENDPOINTS
 # =============================================================================
 
+class ComplianceStatus(BaseModel):
+    """Investor compliance status"""
+    investor_id: int
+    kyc_status: str
+    kyb_status: str
+    is_compliant: bool
+    can_invest: bool
+    pending_documents: int
+    message: str
+
+
+@router.get("/{pool_id}/compliance-check")
+async def check_investor_compliance(
+    pool_id: str,
+    investor_id: int,
+    db: Session = Depends(get_db)
+) -> ComplianceStatus:
+    """
+    Check if investor is compliant and can invest.
+    
+    - **pool_id**: Pool identifier (to verify pool exists)
+    - **investor_id**: Investor identifier
+    
+    Returns compliance status and whether investor can proceed.
+    """
+    # Verify pool exists
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
+        raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
+    
+    # Get investor profile
+    investor = db.query(InvestorProfile).filter(
+        InvestorProfile.id == investor_id
+    ).first()
+    
+    if not investor:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Investor profile not found: {investor_id}"
+        )
+    
+    # Check compliance status
+    kyc_approved = investor.kyc_status == ComplianceStatusEnum.APPROVED
+    kyb_approved = investor.kyb_status == ComplianceStatusEnum.APPROVED
+    is_compliant = kyc_approved or kyb_approved
+    
+    # Count pending documents
+    pending_docs = db.query(Document).filter(
+        Document.investor_id == investor_id,
+        Document.verification_status == ComplianceStatusEnum.PENDING
+    ).count()
+    
+    # Determine if can invest
+    can_invest = is_compliant
+    
+    # Generate message
+    if can_invest:
+        message = "Investor is compliant and can proceed with investment."
+    elif pending_docs > 0:
+        message = f"Compliance review pending. {pending_docs} document(s) awaiting approval from compliance officer."
+    else:
+        message = "KYC/KYB verification required. Please upload required documents."
+    
+    return ComplianceStatus(
+        investor_id=investor_id,
+        kyc_status=investor.kyc_status.value if investor.kyc_status else "pending",
+        kyb_status=investor.kyb_status.value if investor.kyb_status else "pending",
+        is_compliant=is_compliant,
+        can_invest=can_invest,
+        pending_documents=pending_docs,
+        message=message
+    )
+
+
 @router.post("/{pool_id}/invest")
 async def invest_in_pool(
     pool_id: str,
@@ -284,37 +362,124 @@ async def invest_in_pool(
     - **investor_id**: Investor identifier
 
     Returns shares minted.
+    
+    @notice COMPLIANCE CHECK: Investor must have approved KYC/KYB before investing.
     """
     pool = db.query(Pool).filter(Pool.id == pool_id).first()
     if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
-    
+
     if not pool.is_active:
         raise HTTPException(status_code=400, detail="Pool is not active")
+
+    # =============================================================================
+    # COMPLIANCE CHECK - Block investment if KYC/KYB not approved
+    # =============================================================================
+    investor_id_int = int(request.investor_id) if request.investor_id.isdigit() else 1
+    investor = db.query(InvestorProfile).filter(
+        InvestorProfile.id == investor_id_int
+    ).first()
     
-    # Check minimum investment
-    min_deposit = float(mvp_config.MIN_DEPOSIT) / (10 ** 18)
+    if not investor:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Investor profile not found: {investor_id_int}"
+        )
+    
+    # Check if investor KYC or KYB is approved
+    # (Either KYC for retail OR KYB for institutional is sufficient)
+    kyc_approved = investor.kyc_status == ComplianceStatusEnum.APPROVED
+    kyb_approved = investor.kyb_status == ComplianceStatusEnum.APPROVED
+
+    if not kyc_approved and not kyb_approved:
+        # Get pending document count for helpful error message
+        pending_docs = db.query(Document).filter(
+            Document.investor_id == investor_id_int,
+            Document.verification_status == ComplianceStatusEnum.PENDING
+        ).count()
+
+        if pending_docs > 0:
+            raise HTTPException(
+                status_code=403,
+                detail=f"Compliance review pending. You have {pending_docs} document(s) awaiting compliance officer approval. " +
+                       "Please wait for KYC/KYB verification before investing."
+            )
+        else:
+            raise HTTPException(
+                status_code=403,
+                detail="KYC/KYB verification required. Please upload required documents and wait for compliance approval before investing."
+            )
+    
+    # =============================================================================
+    # BALANCE CHECK - Verify investor has sufficient funds
+    # =============================================================================
+    from config.models import BankAccount
+    
+    bank_account = db.query(BankAccount).filter(
+        BankAccount.investor_id == investor_id_int,
+        BankAccount.status == 'ACTIVE'
+    ).first()
+    
+    if not bank_account:
+        # Create a default bank account with €0 balance if none exists
+        # In production, investor would need to fund their account first
+        raise HTTPException(
+            status_code=400,
+            detail="No active bank account found. Please fund your escrow account before investing."
+        )
+    
+    # Check if investor has sufficient balance
+    if bank_account.balance < request.amount:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Insufficient funds. Available balance: €{bank_account.balance:,.2f}, Investment amount: €{request.amount:,.2f}. " +
+                   f"Shortfall: €{request.amount - bank_account.balance:,.2f}"
+        )
+    
+    # Deduct from bank account (MVP - simulated)
+    bank_account.balance -= request.amount
+    
+    # Create bank transaction record for audit trail
+    bank_transaction = BankTransaction(
+        tx_id=f"TXN-{uuid.uuid4().hex[:8].upper()}",
+        account_id=bank_account.account_id,
+        transaction_type=TransactionTypeEnum.INVESTMENT,
+        amount=request.amount,
+        currency="EUR",
+        status=TransactionStatusEnum.CONFIRMED,
+        description=f"Investment in {pool_id}",
+        counterparty_account=f"POOL-{pool_id}",
+        timestamp=datetime.utcnow()
+    )
+    db.add(bank_transaction)
+    
+    # Update bank account last transaction timestamp
+    bank_account.last_transaction_at = datetime.utcnow()
+    # =============================================================================
+
+    # Check minimum investment (using dynamic threshold)
+    min_deposit = get_threshold("MIN_DEPOSIT")
     if request.amount < min_deposit:
         raise HTTPException(
             status_code=400,
-            detail=f"Minimum deposit is {format_token_amount(min_deposit)}"
+            detail=f"Minimum deposit is €{min_deposit:,}"
         )
-    
-    # Check maximum investment
-    max_deposit = float(mvp_config.MAX_DEPOSIT) / (10 ** 18)
+
+    # Check maximum investment (using dynamic threshold)
+    max_deposit = get_threshold("MAX_DEPOSIT")
     if request.amount > max_deposit:
         raise HTTPException(
             status_code=400,
-            detail=f"Maximum deposit is {format_token_amount(max_deposit)}"
+            detail=f"Maximum deposit is €{max_deposit:,}"
         )
-    
+
     # Calculate shares to mint (1:1 at NAV)
     shares_to_mint = request.amount  # Simplified: 1:1 at NAV 1.00
-    
+
     # Create or update investment record
     investment = Investment(
         pool_id=pool_id,
-        investor_id=int(request.investor_id) if request.investor_id.isdigit() else 1,
+        investor_id=investor_id_int,
         amount=request.amount,
         shares=shares_to_mint,
         nav=1.0,

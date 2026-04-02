@@ -8,20 +8,64 @@
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
-import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
+import { databaseAPI, InvestorProfile } from '../../../api/database';
+import { useAuth } from '../../../contexts/AuthContext';
+
+// Helper function to format currency
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
 
 const RetailDashboard: React.FC = () => {
-  // Get data from centralized mock data store
-  const user = USER_PROFILES.RETAIL_INVESTOR;
-  const portfolioValue = user.portfolioValue;
-  const totalYield = user.totalYield;
-  const positions = user.positions;
+  const navigate = useNavigate();
+  const { user: authUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [investor, setInvestor] = useState<InvestorProfile | null>(null);
+
+  useEffect(() => {
+    const fetchInvestorProfile = async () => {
+      try {
+        setLoading(true);
+        // Map auth user to investor profile ID
+        let investorId: number;
+        
+        if (authUser?.id?.includes('retail')) {
+          investorId = 2; // John Doe - Retail Investor
+        } else if (authUser?.id?.includes('inst')) {
+          investorId = 1; // Logic Capital - Institutional
+        } else if (authUser?.id?.includes('originator')) {
+          investorId = 3; // Green Cotton - Operator
+        } else {
+          investorId = authUser?.id ? parseInt(authUser.id) || 2 : 2;
+        }
+        
+        const data = await databaseAPI.getInvestorProfile(investorId);
+        setInvestor(data);
+      } catch (error) {
+        console.error('Error fetching investor profile:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInvestorProfile();
+  }, [authUser?.id]);
+
+  const portfolioValue = investor?.total_portfolio_value || 0;
+  const totalYield = investor?.pool_positions.reduce((sum, pos) => sum + pos.total_yield_earned, 0) || 0;
+  const positions = investor?.pool_positions || [];
 
   return (
     <div className="min-h-screen bg-[#F3F8FA]">
@@ -74,7 +118,7 @@ const RetailDashboard: React.FC = () => {
               </svg>
             }
             label="Your Portfolio"
-            value={formatCurrency(portfolioValue)}
+            value={loading ? 'Loading...' : formatCurrency(portfolioValue)}
             trend={{ value: 5.2, direction: 'up' }}
             color="green"
           />
@@ -85,7 +129,7 @@ const RetailDashboard: React.FC = () => {
               </svg>
             }
             label="Total Yield Earned"
-            value={formatCurrency(totalYield)}
+            value={loading ? '-' : formatCurrency(totalYield)}
             trend={{ value: 8.5, direction: 'up' }}
             color="blue"
           />
@@ -177,15 +221,15 @@ const RetailDashboard: React.FC = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Minimum</span>
-                  <span className="font-semibold">{formatCurrency(user.investmentLimits.minimum)}</span>
+                  <span className="font-semibold">€1,000</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Maximum</span>
-                  <span className="font-semibold">{formatCurrency(user.investmentLimits.maximum)}</span>
+                  <span className="font-semibold">€99,999</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-600">Daily Withdrawal</span>
-                  <span className="font-semibold">{formatCurrency(user.investmentLimits.dailyWithdrawal)}</span>
+                  <span className="font-semibold">€500,000</span>
                 </div>
               </div>
             </Card>

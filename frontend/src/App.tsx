@@ -74,6 +74,7 @@ import AssetManagement from './MVP/pages/admin/AssetManagement';
 import Settings from './MVP/pages/admin/Settings';
 import ContractManagement from './MVP/pages/admin/ContractManagement';
 import Monitoring from './MVP/pages/admin/Monitoring';
+import ThresholdManagement from './MVP/pages/admin/ThresholdManagement';
 
 // Regulator Pages
 import ComplianceReports from './MVP/pages/regulator/ComplianceReports';
@@ -334,6 +335,14 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute requiredRoles={['ADMIN']}>
                   <Monitoring />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/thresholds"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <ThresholdManagement />
                 </ProtectedRoute>
               }
             />

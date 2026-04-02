@@ -14,7 +14,7 @@ import { ConnectWallet } from './wallet';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 import LogoutButton from './LogoutButton';
-import { getNavItemsForRole, getDashboardForRole, canAccessPath } from '../../config/navigation';
+import { getNavItemsForRole, getDashboardForRole, canAccessPath, getRolePath } from '../../config/navigation';
 import { InvestorRole } from '../../types';
 
 const Navigation: React.FC = () => {
@@ -28,9 +28,12 @@ const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
 
+  // Get the correct pool path for the current user's role
+  const poolPath = user && isAuthenticated ? getRolePath(user.role, 'pools') : '/institutional/pools';
+
   // Search results - filtered by user role
   const allSearchResults = [
-    { title: 'Pool Marketplace', href: '/institutional/pools', category: 'Invest', tags: ['pools', 'invest', 'marketplace'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Pool Marketplace', href: poolPath, category: 'Invest', tags: ['pools', 'invest', 'marketplace'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
     { title: 'Pool Dashboard', href: '/pool/dashboard', category: 'Invest', tags: ['pool', 'kpi', 'dashboard', 'metrics'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
     { title: 'Blockchain Monitoring', href: '/monitor', category: 'Analytics', tags: ['blockchain', 'monitor', 'analytics', 'kpi', 'polygon', 'contracts'], roles: ['ADMIN', 'REGULATOR', 'COMPLIANCE_OFFICER'] as InvestorRole[] },
     { title: 'Contract Test Dashboard', href: '/contract-test', category: 'Developer', tags: ['contracts', 'test', 'blockchain', 'developer', 'addresses'], roles: ['ADMIN'] as InvestorRole[] },
