@@ -1,32 +1,98 @@
 /**
  * Admin - Asset Management Page
  *
- * Manage tokenized assets and certificates.
+ * Manage tokenized assets and financings.
  *
  * Route: /admin/assets
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import apiClient from '../../../api/client';
+
+interface Financing {
+  id: number;
+  pool_family: string;
+  asset_class: string;
+  industrial: string;
+  industrial_id: number | null;
+  principal: number;
+  interest_rate: number;
+  duration_days: number;
+  start_date: string;
+  maturity_date: string;
+  amount_repaid: number;
+  is_repaid: boolean;
+  status: string;
+  description: string | null;
+}
 
 const AssetManagement: React.FC = () => {
-  // Mock asset data
-  const assets = [
-    { id: 'AST-001', name: 'Cotton Bales #001', type: 'Agriculture', value: 500000, status: 'tokenized', originator: 'Green Fields Ltd', tokenAddress: '0x742d...bEb' },
-    { id: 'AST-002', name: 'Solar Equipment #001', type: 'Renewable Energy', value: 1200000, status: 'tokenized', originator: 'SolarTech Inc', tokenAddress: '0x8626...199' },
-    { id: 'AST-003', name: 'Trade Finance Pool #003', type: 'Trade Finance', value: 750000, status: 'pending', originator: 'Trade Corp', tokenAddress: 'N/A' },
-    { id: 'AST-004', name: 'Warehouse Receipt #012', type: 'Agriculture', value: 300000, status: 'tokenized', originator: 'Storage Co', tokenAddress: '0xdD2F...4C0' },
-  ];
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [financings, setFinancings] = useState<Financing[]>([]);
+  const [filter, setFilter] = useState<string>('all');
+
+  useEffect(() => {
+    fetchFinancings();
+  }, []);
+
+  const fetchFinancings = async () => {
+    try {
+      setLoading(true);
+      const response = await apiClient.get('/db/financings');
+      setFinancings(response.data);
+    } catch (error) {
+      console.error('Error fetching financings:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredFinancings = financings.filter(f => {
+    if (filter === 'all') return true;
+    if (filter === 'active') return f.status === 'ACTIVE' || f.status === 'REPAYING';
+    if (filter === 'pending') return f.status === 'PENDING';
+    if (filter === 'repaid') return f.status === 'REPAID';
+    return true;
+  });
 
   const stats = {
-    total: assets.length,
-    tokenized: assets.filter(a => a.status === 'tokenized').length,
-    pending: assets.filter(a => a.status === 'pending').length,
-    totalValue: assets.reduce((sum, a) => sum + a.value, 0),
+    total: financings.length,
+    active: financings.filter(f => f.status === 'ACTIVE' || f.status === 'REPAYING').length,
+    pending: financings.filter(f => f.status === 'PENDING').length,
+    repaid: financings.filter(f => f.status === 'REPAID').length,
+    totalValue: financings.reduce((sum, f) => sum + f.principal, 0),
+  };
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'ACTIVE':
+      case 'REPAYING':
+        return 'success';
+      case 'PENDING':
+        return 'warning';
+      case 'REPAID':
+        return 'info';
+      case 'DEFAULTED':
+        return 'danger';
+      default:
+        return 'info';
+    }
   };
 
   return (
@@ -39,7 +105,7 @@ const AssetManagement: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-[#103b5b]">Asset Management</h1>
-              <p className="text-[#8b5b3d] mt-1">Manage tokenized assets and certificates</p>
+              <p className="text-[#8b5b3d] mt-1">Manage tokenized assets and financings</p>
             </div>
             <TestnetNotice variant="badge" />
           </div>
@@ -49,24 +115,84 @@ const AssetManagement: React.FC = () => {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Total Assets</p>
-            <p className="text-2xl font-bold text-[#103b5b]">{stats.total}</p>
+            <p className="text-2xl font-bold text-[#103b5b]">{loading ? '-' : stats.total}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
-            <p className="text-sm text-[#8b5b3d]">Tokenized</p>
-            <p className="text-2xl font-bold text-green-600">{stats.tokenized}</p>
+            <p className="text-sm text-[#8b5b3d]">Active</p>
+            <p className="text-2xl font-bold text-green-600">{loading ? '-' : stats.active}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
-            <p className="text-sm text-[#8b5b3d]">Pending</p>
-            <p className="text-2xl font-bold text-amber-600">{stats.pending}</p>
+            <p className="text-sm text-[#8b5b3d]">Pending Approval</p>
+            <p className="text-2xl font-bold text-amber-600">{loading ? '-' : stats.pending}</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
+            <p className="text-sm text-[#8b5b3d]">Repaid</p>
+            <p className="text-2xl font-bold text-blue-600">{loading ? '-' : stats repaid}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Total Value</p>
-            <p className="text-2xl font-bold text-[#00A8A8]">€{(stats.totalValue / 1000).toFixed(0)}K</p>
+            <p className="text-2xl font-bold text-[#00A8A8]">{loading ? '-' : formatCurrency(stats.totalValue)}</p>
           </div>
         </div>
+
+        {/* Filters */}
+        <Card className="mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <button
+                onClick={() => setFilter('all')}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  filter === 'all'
+                    ? 'bg-[#023D7A] text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                All Assets
+              </button>
+              <button
+                onClick={() => setFilter('active')}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  filter === 'active'
+                    ? 'bg-green-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Active
+              </button>
+              <button
+                onClick={() => setFilter('pending')}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  filter === 'pending'
+                    ? 'bg-amber-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Pending
+              </button>
+              <button
+                onClick={() => setFilter('repaid')}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  filter === 'repaid'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Repaid
+              </button>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={fetchFinancings}
+              className="text-[#00A8A8] border-[#00A8A8] hover:bg-[#F3F8FA]"
+            >
+              🔄 Refresh
+            </Button>
+          </div>
+        </Card>
 
         {/* Assets Table */}
         <Card>
@@ -74,44 +200,52 @@ const AssetManagement: React.FC = () => {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-[#103b5b]/20">
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Asset ID</th>
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Name</th>
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Type</th>
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Value</th>
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Originator</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">ID</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Asset Class</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Pool</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Industrial</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Principal</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Interest Rate</th>
                   <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Token Address</th>
                   <th className="text-left py-3 px-4 font-semibold text-[#103b5b]">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {assets.map((asset) => (
-                  <tr key={asset.id} className="border-b border-[#103b5b]/10 hover:bg-gray-50">
-                    <td className="py-3 px-4 font-mono text-xs">{asset.id}</td>
-                    <td className="py-3 px-4 font-semibold text-[#103b5b]">{asset.name}</td>
-                    <td className="py-3 px-4">
-                      <Badge variant="info" size="sm">{asset.type}</Badge>
-                    </td>
-                    <td className="py-3 px-4 font-semibold text-[#103b5b]">€{asset.value.toLocaleString()}</td>
-                    <td className="py-3 px-4 text-gray-600">{asset.originator}</td>
-                    <td className="py-3 px-4">
-                      <Badge variant={asset.status === 'tokenized' ? 'success' : 'warning'} size="sm">
-                        {asset.status.toUpperCase()}
-                      </Badge>
-                    </td>
-                    <td className="py-3 px-4 font-mono text-xs text-gray-500">{asset.tokenAddress}</td>
-                    <td className="py-3 px-4">
-                      <div className="flex gap-2">
-                        <button className="px-3 py-1 bg-[#023D7A] hover:bg-[#0d3352] text-white text-xs font-bold rounded transition-colors">
-                          View
-                        </button>
-                        <button className="px-3 py-1 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-xs font-bold rounded transition-colors">
-                          Edit
-                        </button>
-                      </div>
-                    </td>
+                {loading ? (
+                  <tr>
+                    <td colSpan={8} className="py-8 text-center text-gray-500">Loading assets...</td>
                   </tr>
-                ))}
+                ) : filteredFinancings.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="py-8 text-center text-gray-500">No assets found</td>
+                  </tr>
+                ) : (
+                  filteredFinancings.map((financing) => (
+                    <tr key={financing.id} className="border-b border-[#103b5b]/10 hover:bg-gray-50">
+                      <td className="py-3 px-4 font-mono text-xs">#{financing.id}</td>
+                      <td className="py-3 px-4">
+                        <Badge variant="info" size="sm">{financing.asset_class}</Badge>
+                      </td>
+                      <td className="py-3 px-4 font-semibold text-[#103b5b]">{financing.pool_family}</td>
+                      <td className="py-3 px-4 text-gray-600">{financing.industrial}</td>
+                      <td className="py-3 px-4 font-semibold text-[#103b5b]">{formatCurrency(financing.principal)}</td>
+                      <td className="py-3 px-4 font-medium text-[#103b5b]">{financing.interest_rate}%</td>
+                      <td className="py-3 px-4">
+                        <Badge variant={getStatusBadge(financing.status)} size="sm">
+                          {financing.status}
+                        </Badge>
+                      </td>
+                      <td className="py-3 px-4">
+                        <button
+                          onClick={() => navigate(`/admin/assets/${financing.id}`)}
+                          className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium"
+                        >
+                          View →
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

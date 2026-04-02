@@ -398,8 +398,8 @@ const Navigation: React.FC = () => {
                       {isAuthenticated && user && (
                         <div className="px-4 py-3 border-b border-gray-200">
                           <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Quick Access</p>
-                          <a 
-                            href={getDashboardForRole(user.role)} 
+                          <a
+                            href={getDashboardForRole(user.role)}
                             className="block px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mb-2"
                           >
                             📊 My Dashboard
@@ -407,7 +407,7 @@ const Navigation: React.FC = () => {
                           {/* Show role-specific menu items */}
                           {getNavItemsForRole(user.role)
                             .filter(item => item.category && !['dashboard', 'test'].includes(item.category))
-                            .slice(0, user.role === 'ADMIN' ? 8 : 4) // Show more items for admin
+                            .slice(0, user.role === 'ADMIN' ? 20 : 4) // Show all admin items (up to 20)
                             .map((item, idx) => (
                               <a
                                 key={idx}
