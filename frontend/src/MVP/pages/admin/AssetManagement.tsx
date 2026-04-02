@@ -130,7 +130,7 @@ const AssetManagement: React.FC = () => {
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Repaid</p>
-            <p className="text-2xl font-bold text-blue-600">{loading ? '-' : stats repaid}</p>
+            <p className="text-2xl font-bold text-blue-600">{loading ? '-' : stats.repaid}</p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-[#103b5b]/20">
             <p className="text-sm text-[#8b5b3d]">Total Value</p>

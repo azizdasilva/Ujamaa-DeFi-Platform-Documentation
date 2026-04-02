@@ -404,20 +404,31 @@ const Navigation: React.FC = () => {
                           >
                             📊 My Dashboard
                           </a>
-                          {/* Show role-specific menu items */}
-                          {getNavItemsForRole(user.role)
-                            .filter(item => item.category && !['dashboard', 'test'].includes(item.category))
-                            .slice(0, user.role === 'ADMIN' ? 20 : 4) // Show all admin items (up to 20)
-                            .map((item, idx) => (
-                              <a
-                                key={idx}
-                                href={item.href}
-                                className="block px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg transition-colors"
-                              >
-                                {item.icon} {item.label}
-                              </a>
-                            ))
-                          }
+                          {/* Show role-specific menu items (deduplicated by href) */}
+                          {(() => {
+                            const items = getNavItemsForRole(user.role)
+                              .filter(item => item.category && !['dashboard', 'test'].includes(item.category));
+                            
+                            // Deduplicate by href (keep first occurrence)
+                            const seen = new Set<string>();
+                            const uniqueItems = items.filter(item => {
+                              if (seen.has(item.href)) return false;
+                              seen.add(item.href);
+                              return true;
+                            });
+                            
+                            return uniqueItems
+                              .slice(0, user.role === 'ADMIN' ? 20 : 4)
+                              .map((item, idx) => (
+                                <a
+                                  key={idx}
+                                  href={item.href}
+                                  className="block px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg transition-colors"
+                                >
+                                  {item.icon} {item.label}
+                                </a>
+                              ));
+                          })()}
                         </div>
                       )}
 

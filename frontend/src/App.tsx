@@ -63,6 +63,7 @@ import AssetCertificates from './MVP/pages/originator/AssetCertificates';
 
 // Compliance Pages
 import ComplianceKYCReview from './MVP/pages/compliance/KYCReview';
+import AssetReview from './MVP/pages/compliance/AssetReview';
 import ApprovalReview from './MVP/pages/compliance/ApprovalReview';
 import TransactionMonitor from './MVP/pages/compliance/TransactionMonitor';
 import Jurisdictions from './MVP/pages/compliance/Jurisdictions';
@@ -254,6 +255,14 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
                   <ComplianceKYCReview />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/compliance/assets"
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <AssetReview />
                 </ProtectedRoute>
               }
             />
