@@ -15,20 +15,7 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
-import { USER_PROFILES } from '../../../data/mockData';
-
-interface InvestorBankData {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-  bankAccount: string;
-  bankName: string;
-  escrowBalance: number;
-  availableBalance: number;
-  lockedAmount: number;
-  status: 'active' | 'suspended' | 'pending';
-}
+import { adminAPI, InvestorBankData } from '../../../api/admin';
 
 const BankAccountManagement: React.FC = () => {
   const [investors, setInvestors] = useState<InvestorBankData[]>([]);
@@ -39,81 +26,25 @@ const BankAccountManagement: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Load investor data from mock data
+  // Load investor data from backend API
   useEffect(() => {
-    const mockInvestors: InvestorBankData[] = [
-      {
-        id: 1,
-        name: 'Alice Retail Investor',
-        email: 'alice.retail@example.com',
-        role: 'RETAIL_INVESTOR',
-        bankAccount: 'DE89370400440532013000',
-        bankName: 'Deutsche Bank',
-        escrowBalance: 25000,
-        availableBalance: 5000,
-        lockedAmount: 20000,
-        status: 'active'
-      },
-      {
-        id: 2,
-        name: 'Bob Institutional Investor',
-        email: 'bob.institutional@example.com',
-        role: 'INSTITUTIONAL_INVESTOR',
-        bankAccount: 'FR7630006000011234567890189',
-        bankName: 'BNP Paribas',
-        escrowBalance: 500000,
-        availableBalance: 100000,
-        lockedAmount: 400000,
-        status: 'active'
-      },
-      {
-        id: 3,
-        name: 'Charlie Industrial Operator',
-        email: 'charlie.operator@example.com',
-        role: 'INDUSTRIAL_OPERATOR',
-        bankAccount: 'GB29NWBK60161331926819',
-        bankName: 'NatWest Bank',
-        escrowBalance: 1200000,
-        availableBalance: 200000,
-        lockedAmount: 1000000,
-        status: 'active'
-      },
-      {
-        id: 4,
-        name: 'Diana Retail Investor',
-        email: 'diana.retail@example.com',
-        role: 'RETAIL_INVESTOR',
-        bankAccount: 'ES9121000418450200051332',
-        bankName: 'CaixaBank',
-        escrowBalance: 15000,
-        availableBalance: 3000,
-        lockedAmount: 12000,
-        status: 'active'
-      },
-      {
-        id: 5,
-        name: 'Eve Institutional Investor',
-        email: 'eve.institutional@example.com',
-        role: 'INSTITUTIONAL_INVESTOR',
-        bankAccount: 'IT60X0542811101000000123456',
-        bankName: 'Banca Popolare',
-        escrowBalance: 750000,
-        availableBalance: 150000,
-        lockedAmount: 600000,
-        status: 'suspended'
-      },
-    ];
-
-    // Load from sessionStorage if exists, otherwise use mock data
-    const stored = sessionStorage.getItem('investor_bank_data');
-    if (stored) {
-      setInvestors(JSON.parse(stored));
-    } else {
-      setInvestors(mockInvestors);
-      sessionStorage.setItem('investor_bank_data', JSON.stringify(mockInvestors));
-    }
+    loadInvestors();
   }, []);
+
+  const loadInvestors = async () => {
+    try {
+      setLoading(true);
+      const data = await adminAPI.getAllInvestorsBankAccounts();
+      setInvestors(data);
+    } catch (error) {
+      console.error('Failed to load investors:', error);
+      showNotification('error', 'Failed to load investor data. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Show notification
   const showNotification = (type: 'success' | 'error', message: string) => {
@@ -122,7 +53,7 @@ const BankAccountManagement: React.FC = () => {
   };
 
   // Handle adjustment
-  const handleAdjustment = () => {
+  const handleAdjustment = async () => {
     if (!selectedInvestor || !adjustmentAmount) {
       showNotification('error', 'Please select an investor and enter an amount');
       return;
@@ -134,73 +65,43 @@ const BankAccountManagement: React.FC = () => {
       return;
     }
 
-    const updatedInvestors = investors.map(inv => {
-      if (inv.id === selectedInvestor.id) {
-        let newValue: number;
-        
-        if (adjustmentType === 'escrow') {
-          newValue = operation === 'increase' 
-            ? inv.escrowBalance + amount 
-            : inv.escrowBalance - amount;
-          if (newValue < 0) {
-            showNotification('error', 'Cannot reduce escrow balance below zero');
-            return inv;
-          }
-          return { ...inv, escrowBalance: newValue };
-        } else if (adjustmentType === 'available') {
-          newValue = operation === 'increase' 
-            ? inv.availableBalance + amount 
-            : inv.availableBalance - amount;
-          if (newValue < 0) {
-            showNotification('error', 'Cannot reduce available balance below zero');
-            return inv;
-          }
-          return { ...inv, availableBalance: newValue };
-        } else { // locked
-          newValue = operation === 'increase' 
-            ? inv.lockedAmount + amount 
-            : inv.lockedAmount - amount;
-          if (newValue < 0) {
-            showNotification('error', 'Cannot reduce locked amount below zero');
-            return inv;
-          }
-          return { ...inv, lockedAmount: newValue };
-        }
-      }
-      return inv;
-    });
+    try {
+      const response = await adminAPI.updateInvestorBankAccount(selectedInvestor.id, {
+        balance_type: adjustmentType,
+        operation: operation,
+        amount: amount,
+        reason: 'Admin adjustment via Bank Management page'
+      });
 
-    setInvestors(updatedInvestors);
-    sessionStorage.setItem('investor_bank_data', JSON.stringify(updatedInvestors));
-    
-    showNotification('success', 
-      `Successfully ${operation === 'increase' ? 'increased' : 'decreased'} ${adjustmentType} balance by €${amount.toLocaleString()}`
-    );
-    
-    setShowModal(false);
-    setAdjustmentAmount('');
-    setSelectedInvestor(null);
+      showNotification('success', response.message);
+      
+      // Reload investors to get updated data
+      await loadInvestors();
+      
+      setShowModal(false);
+      setAdjustmentAmount('');
+      setSelectedInvestor(null);
+    } catch (error: any) {
+      console.error('Failed to update balance:', error);
+      showNotification('error', error.response?.data?.detail || 'Failed to update balance');
+    }
   };
 
   // Toggle investor status
-  const toggleStatus = (investorId: number) => {
-    const updatedInvestors = investors.map(inv => {
-      if (inv.id === investorId) {
-        return { 
-          ...inv, 
-          status: inv.status === 'active' ? 'suspended' : 'active' 
-        };
-      }
-      return inv;
-    });
-
-    setInvestors(updatedInvestors);
-    sessionStorage.setItem('investor_bank_data', JSON.stringify(updatedInvestors));
-    
+  const toggleStatus = async (investorId: number) => {
     const investor = investors.find(inv => inv.id === investorId);
-    showNotification('success', 
-      `Successfully ${investor?.status === 'active' ? 'suspended' : 'activated'} account for ${investor?.name}`
-    );
+    const newStatus = investor?.status === 'active' ? 'suspended' : 'active';
+    
+    try {
+      const response = await adminAPI.updateInvestorStatus(investorId, newStatus);
+      showNotification('success', response.message);
+      
+      // Reload investors to get updated data
+      await loadInvestors();
+    } catch (error: any) {
+      console.error('Failed to update status:', error);
+      showNotification('error', error.response?.data?.detail || 'Failed to update status');
+    }
   };
 
   // Filter investors by search query
@@ -285,7 +186,7 @@ const BankAccountManagement: React.FC = () => {
             <div className="text-center">
               <p className="text-sm text-gray-600 mb-1">Total Escrow Balance</p>
               <p className="text-3xl font-bold text-[#00A8A8]">
-                {formatCurrency(investors.reduce((sum, inv) => sum + inv.escrowBalance, 0))}
+                {formatCurrency(investors.reduce((sum, inv) => sum + (inv.escrow_balance || 0), 0))}
               </p>
             </div>
           </Card>
@@ -293,7 +194,7 @@ const BankAccountManagement: React.FC = () => {
             <div className="text-center">
               <p className="text-sm text-gray-600 mb-1">Total Available</p>
               <p className="text-3xl font-bold text-green-600">
-                {formatCurrency(investors.reduce((sum, inv) => sum + inv.availableBalance, 0))}
+                {formatCurrency(investors.reduce((sum, inv) => sum + (inv.available_balance || 0), 0))}
               </p>
             </div>
           </Card>
@@ -301,7 +202,7 @@ const BankAccountManagement: React.FC = () => {
             <div className="text-center">
               <p className="text-sm text-gray-600 mb-1">Total Locked</p>
               <p className="text-3xl font-bold text-amber-600">
-                {formatCurrency(investors.reduce((sum, inv) => sum + inv.lockedAmount, 0))}
+                {formatCurrency(investors.reduce((sum, inv) => sum + (inv.locked_amount || 0), 0))}
               </p>
             </div>
           </Card>
@@ -345,7 +246,20 @@ const BankAccountManagement: React.FC = () => {
           </div>
         </Card>
 
-        {/* Investors Table */}
+        {/* Loading State */}
+        {loading ? (
+          <Card>
+            <div className="flex items-center justify-center py-12">
+              <div className="text-center">
+                <svg className="animate-spin h-8 w-8 text-[#00A8A8] mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                </svg>
+                <p className="text-gray-600">Loading investor data...</p>
+              </div>
+            </div>
+          </Card>
+        ) : (
         <Card>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -365,25 +279,25 @@ const BankAccountManagement: React.FC = () => {
                   <tr key={investor.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <p className="text-sm font-semibold text-gray-900">{investor.name}</p>
+                        <p className="text-sm font-semibold text-gray-900">{investor.full_name}</p>
                         <p className="text-xs text-gray-500">{investor.email}</p>
                         <p className="text-xs text-gray-400 mt-1">{investor.role.replace(/_/g, ' ')}</p>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <p className="text-sm font-mono text-gray-700">{investor.bankAccount}</p>
-                        <p className="text-xs text-gray-500">{investor.bankName}</p>
+                        <p className="text-sm font-mono text-gray-700">{investor.bank_account_number || 'N/A'}</p>
+                        <p className="text-xs text-gray-500">{investor.bank_name || 'No bank account'}</p>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
-                      <p className="text-sm font-bold text-[#023D7A]">{formatCurrency(investor.escrowBalance)}</p>
+                      <p className="text-sm font-bold text-[#023D7A]">{formatCurrency(investor.escrow_balance)}</p>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
-                      <p className="text-sm font-bold text-green-600">{formatCurrency(investor.availableBalance)}</p>
+                      <p className="text-sm font-bold text-green-600">{formatCurrency(investor.available_balance)}</p>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
-                      <p className="text-sm font-bold text-amber-600">{formatCurrency(investor.lockedAmount)}</p>
+                      <p className="text-sm font-bold text-amber-600">{formatCurrency(investor.locked_amount)}</p>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <Badge variant={getStatusColor(investor.status)} size="md">
@@ -419,6 +333,7 @@ const BankAccountManagement: React.FC = () => {
             </table>
           </div>
         </Card>
+        )}
 
         {/* Adjustment Modal */}
         {showModal && selectedInvestor && (
@@ -440,20 +355,20 @@ const BankAccountManagement: React.FC = () => {
                 </div>
 
                 <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900">{selectedInvestor.name}</p>
+                  <p className="text-sm font-semibold text-gray-900">{selectedInvestor.full_name}</p>
                   <p className="text-xs text-gray-500">{selectedInvestor.email}</p>
                   <div className="mt-2 grid grid-cols-3 gap-2 text-xs">
                     <div>
                       <p className="text-gray-500">Escrow</p>
-                      <p className="font-bold text-[#023D7A]">{formatCurrency(selectedInvestor.escrowBalance)}</p>
+                      <p className="font-bold text-[#023D7A]">{formatCurrency(selectedInvestor.escrow_balance)}</p>
                     </div>
                     <div>
                       <p className="text-gray-500">Available</p>
-                      <p className="font-bold text-green-600">{formatCurrency(selectedInvestor.availableBalance)}</p>
+                      <p className="font-bold text-green-600">{formatCurrency(selectedInvestor.available_balance)}</p>
                     </div>
                     <div>
                       <p className="text-gray-500">Locked</p>
-                      <p className="font-bold text-amber-600">{formatCurrency(selectedInvestor.lockedAmount)}</p>
+                      <p className="font-bold text-amber-600">{formatCurrency(selectedInvestor.locked_amount)}</p>
                     </div>
                   </div>
                 </div>

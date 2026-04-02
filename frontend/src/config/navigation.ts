@@ -84,14 +84,21 @@ export const navigationItems: NavItem[] = [
     label: 'Pool Marketplace',
     href: '/institutional/pools',
     icon: '🏛️',
-    roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN'],
+    roles: ['INSTITUTIONAL_INVESTOR'],
     category: 'invest',
   },
   {
     label: 'Pool Marketplace',
     href: '/retail/pools',
     icon: '🏛️',
-    roles: ['RETAIL_INVESTOR', 'ADMIN'],
+    roles: ['RETAIL_INVESTOR'],
+    category: 'invest',
+  },
+  {
+    label: 'Pool Management',
+    href: '/admin/pools',
+    icon: '🏛️',
+    roles: ['ADMIN'],
     category: 'invest',
   },
   {

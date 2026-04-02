@@ -16,10 +16,24 @@ from datetime import datetime
 import json
 
 from config.database import get_database_url
-from config.models import User, ComplianceStatusEnum
+from config.models import User, ComplianceStatusEnum, BankAccount
 
 router = APIRouter(prefix="/api/v2/admin", tags=["Admin"])
 security = HTTPBearer(auto_error=False)
+
+# Database connection
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+engine = create_engine(get_database_url())
+
+def get_db():
+    """Get database session."""
+    SessionLocal = sessionmaker(bind=engine)
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 # =============================================================================
 # THRESHOLD CONFIGURATION MODEL
@@ -397,8 +411,206 @@ def check_threshold(threshold_name: str, value: float) -> bool:
 def get_threshold(threshold_name: str) -> Any:
     """
     Get a specific threshold value.
-    
+
     Used by other modules to read thresholds.
     """
     thresholds = CURRENT_THRESHOLDS.dict()
     return thresholds.get(threshold_name)
+
+
+# =============================================================================
+# INVESTOR BANK ACCOUNT MANAGEMENT
+# =============================================================================
+
+class InvestorBankResponse(BaseModel):
+    """Investor bank account response"""
+    id: int
+    user_id: int
+    email: str
+    full_name: str
+    role: str
+    bank_account_number: Optional[str]
+    bank_name: Optional[str]
+    escrow_balance: float
+    available_balance: float
+    locked_amount: float
+    status: str
+    created_at: Optional[datetime]
+
+
+class InvestorBankUpdateRequest(BaseModel):
+    """Request to update investor bank balance"""
+    balance_type: str = Field(..., description="Type of balance to update: escrow, available, or locked")
+    operation: str = Field(..., description="Operation: increase or decrease")
+    amount: float = Field(..., description="Amount to adjust")
+    reason: str = Field(..., description="Reason for the adjustment (audit trail)")
+
+
+@router.get("/investors/bank-accounts", response_model=List[InvestorBankResponse])
+async def get_all_investors_bank_accounts(
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+):
+    """
+    Get all investors with their bank account information.
+    
+    Requires ADMIN role.
+    """
+    # Check authentication
+    if not credentials:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    # Get all users with investor roles
+    investors = db.query(User).filter(
+        User.role.in_(['RETAIL_INVESTOR', 'INSTITUTIONAL_INVESTOR', 'INDUSTRIAL_OPERATOR'])
+    ).all()
+    
+    result = []
+    for investor in investors:
+        # Get bank account if exists
+        bank_account = db.query(BankAccount).filter(
+            BankAccount.user_id == investor.id
+        ).first()
+        
+        result.append(InvestorBankResponse(
+            id=investor.id,
+            user_id=investor.id,
+            email=investor.email,
+            full_name=investor.full_name or investor.email,
+            role=investor.role,
+            bank_account_number=bank_account.account_number if bank_account else None,
+            bank_name=bank_account.bank_name if bank_account else None,
+            escrow_balance=bank_account.escrow_balance if bank_account else 0.0,
+            available_balance=bank_account.available_balance if bank_account else 0.0,
+            locked_amount=bank_account.locked_amount if bank_account else 0.0,
+            status=investor.status,
+            created_at=investor.created_at
+        ))
+    
+    return result
+
+
+@router.post("/investors/{investor_id}/bank-account/update")
+async def update_investor_bank_account(
+    investor_id: int,
+    request: InvestorBankUpdateRequest,
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+):
+    """
+    Update investor bank account balance (escrow, available, or locked).
+    
+    Requires ADMIN role.
+    """
+    # Check authentication
+    if not credentials:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    # Get investor
+    investor = db.query(User).filter(User.id == investor_id).first()
+    if not investor:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    
+    # Get or create bank account
+    bank_account = db.query(BankAccount).filter(
+        BankAccount.user_id == investor_id
+    ).first()
+    
+    if not bank_account:
+        # Create new bank account
+        bank_account = BankAccount(
+            user_id=investor_id,
+            account_number=f"DE{investor_id:08d}",
+            bank_name="Mock Bank",
+            escrow_balance=0.0,
+            available_balance=0.0,
+            locked_amount=0.0
+        )
+        db.add(bank_account)
+    
+    # Validate balance type
+    valid_types = ['escrow', 'available', 'locked']
+    if request.balance_type not in valid_types:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid balance type. Must be one of: {valid_types}"
+        )
+    
+    # Validate operation
+    if request.operation not in ['increase', 'decrease']:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid operation. Must be 'increase' or 'decrease'"
+        )
+    
+    # Validate amount
+    if request.amount <= 0:
+        raise HTTPException(status_code=400, detail="Amount must be positive")
+    
+    # Update balance
+    balance_field = f"{request.balance_type}_balance"
+    current_balance = getattr(bank_account, balance_field)
+    
+    if request.operation == 'increase':
+        new_balance = current_balance + request.amount
+    else:  # decrease
+        new_balance = current_balance - request.amount
+        if new_balance < 0:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Cannot reduce {request.balance_type} balance below zero"
+            )
+    
+    setattr(bank_account, balance_field, new_balance)
+    db.commit()
+    
+    return {
+        "success": True,
+        "message": f"Successfully {request.operation}d {request.balance_type} balance by €{request.amount}",
+        "investor_id": investor_id,
+        "investor_email": investor.email,
+        "balance_type": request.balance_type,
+        "operation": request.operation,
+        "amount": request.amount,
+        "previous_balance": current_balance,
+        "new_balance": new_balance,
+        "updated_at": datetime.utcnow().isoformat()
+    }
+
+
+@router.post("/investors/{investor_id}/status")
+async def update_investor_status(
+    investor_id: int,
+    status_update: dict,
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+):
+    """
+    Update investor status (active/suspended).
+    
+    Requires ADMIN role.
+    """
+    # Check authentication
+    if not credentials:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    # Get investor
+    investor = db.query(User).filter(User.id == investor_id).first()
+    if not investor:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    
+    # Update status
+    new_status = status_update.get('status')
+    if new_status not in ['active', 'suspended']:
+        raise HTTPException(status_code=400, detail="Invalid status")
+    
+    investor.status = new_status
+    db.commit()
+    
+    return {
+        "success": True,
+        "message": f"Successfully updated {investor.email} status to {new_status}",
+        "investor_id": investor_id,
+        "new_status": new_status,
+        "updated_at": datetime.utcnow().isoformat()
+    }
