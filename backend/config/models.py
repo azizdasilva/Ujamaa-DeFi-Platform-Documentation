@@ -507,8 +507,7 @@ class BankAccount(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     last_transaction_at = Column(DateTime, nullable=True)
 
-    # Relationships
-    investor = relationship("InvestorProfile", back_populates="bank_accounts")
+    # Relationships - removed investor relationship since we use user_id now
     transactions = relationship("BankTransaction", back_populates="account")
 
 
