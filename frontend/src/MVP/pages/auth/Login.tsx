@@ -73,7 +73,7 @@ const Login: React.FC = () => {
               className="h-32 mx-auto"
             />
             <h1 className="text-3xl font-bold text-[#023D7A] mt-4">Welcome Back</h1>
-            <p className="text-[#333333] mt-2">Sign in to access your dashboard</p>
+            <p className="text-[#333333] mt-2">Sign in to get access</p>
           </div>
 
           {/* Login Card */}

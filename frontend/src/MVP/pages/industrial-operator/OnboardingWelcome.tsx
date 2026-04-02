@@ -443,35 +443,19 @@ const IndustrialOperatorWelcome: React.FC = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Role Selection
+            Back to Demo Accounts
           </a>
           <div className="flex items-center gap-4">
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => navigate('/')}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={handleContinue}
-              disabled={!selectedType}
-              className={!selectedType ? 'opacity-50 cursor-not-allowed' : ''}
-            >
-              Continue to Company Information
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Button>
+            <p className="text-sm text-gray-500">
+              💡 Click a card above to continue instantly
+            </p>
           </div>
         </div>
 
         {/* Quick Start Buttons */}
         {!selectedType && (
           <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600 mb-3">Not sure? Try these quick starts:</p>
+            <p className="text-sm text-gray-600 mb-3">Prefer buttons? Select manually:</p>
             <div className="flex items-center justify-center gap-3">
               <button
                 onClick={() => handleQuickStart('manufacturer')}
