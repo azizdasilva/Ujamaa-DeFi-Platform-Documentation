@@ -64,17 +64,30 @@ http://localhost:8000/api/v2
 # MIDDLEWARE
 # =============================================================================
 
-# CORS Middleware
+# CORS Middleware - Configure for production deployment
+CORS_ORIGINS = [
+    # Local Development
+    "http://localhost:5173",      # Vite (React)
+    "http://localhost:3000",      # Next.js/React
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
+
+    # Vercel Production
+    "https://ujamaa-de-fi-platform.vercel.app",  # Your Vercel frontend
+    "https://ujamaa-mvp.vercel.app",             # Alternative URL
+
+    # Add more production URLs as needed
+    # "https://your-custom-domain.com",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=mvp_config.CORS_ORIGINS if hasattr(mvp_config, 'CORS_ORIGINS') else [
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "https://ujamaa-mvp.vercel.app"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=CORS_ORIGINS,
+    allow_credentials=True,      # IMPORTANT: Allow cookies/auth headers
+    allow_methods=["*"],         # All HTTP methods
+    allow_headers=["*"],         # All headers
+    expose_headers=["*"],        # Expose all headers to frontend
+    max_age=600,                 # Cache preflight for 10 minutes
 )
 
 
