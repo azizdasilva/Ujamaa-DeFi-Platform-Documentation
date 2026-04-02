@@ -33,6 +33,7 @@ const InvestorPortfolio: React.FC = () => {
       poolName: 'Pool Industry - Manufacturing #12',
       invested: 50000,
       currentValue: 53200,
+      ulpTokens: 4521.50,
       apy: 11.5,
       status: 'active',
       maturityDate: '2027-03-21',
@@ -43,6 +44,7 @@ const InvestorPortfolio: React.FC = () => {
       poolName: 'Pool Agriculture - Coffee Export #8',
       invested: 75000,
       currentValue: 79800,
+      ulpTokens: 6834.20,
       apy: 13.2,
       status: 'active',
       maturityDate: '2026-09-21',
@@ -53,6 +55,7 @@ const InvestorPortfolio: React.FC = () => {
       poolName: 'Pool Trade Finance - Invoice Pool #5',
       invested: 40000,
       currentValue: 42100,
+      ulpTokens: 3892.75,
       apy: 9.5,
       status: 'active',
       maturityDate: '2026-06-21',
@@ -63,6 +66,7 @@ const InvestorPortfolio: React.FC = () => {
       poolName: 'Pool Renewable Energy - Solar #3',
       invested: 85000,
       currentValue: 88400,
+      ulpTokens: 8156.30,
       apy: 10.2,
       status: 'active',
       maturityDate: '2028-03-21',
@@ -73,6 +77,7 @@ const InvestorPortfolio: React.FC = () => {
       poolName: 'Pool Real Estate - Commercial #1',
       invested: 0,
       currentValue: 12000,
+      ulpTokens: 0,
       apy: 0,
       status: 'completed',
       maturityDate: '2026-01-15',
@@ -80,6 +85,8 @@ const InvestorPortfolio: React.FC = () => {
       realizedGain: 7300,
     },
   ];
+
+  const totalUlPTokens = holdings.reduce((sum, h) => sum + h.ulpTokens, 0);
 
   const recentTransactions = [
     { id: 1, type: 'investment', pool: 'Pool Renewable Energy - Solar #3', amount: 85000, date: '2026-03-15', status: 'completed' },
@@ -169,7 +176,7 @@ const InvestorPortfolio: React.FC = () => {
         </div>
 
         {/* Portfolio Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
           <StatsCard
             icon={
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,6 +218,17 @@ const InvestorPortfolio: React.FC = () => {
             value={formatCurrency(portfolio.realizedGain)}
             color="green"
           />
+          <StatsCard
+            icon={
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            }
+            label="uLP Tokens"
+            value={totalUlPTokens.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            color="purple"
+            subValue="Total Holdings"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -223,7 +241,7 @@ const InvestorPortfolio: React.FC = () => {
                     <div className="flex items-center justify-between mb-3">
                       <div>
                         <h3 className="font-semibold text-[#103b5b]">{holding.poolName}</h3>
-                        <p className="text-sm text-[#8b5b3d]">Invested: {formatCurrency(holding.invested)}</p>
+                        <p className="text-sm text-[#8b5b3d]">Invested: {formatCurrency(holding.invested)} • <span className="font-medium">{holding.ulpTokens.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} uLP</span></p>
                       </div>
                       <Badge variant="success" size="sm">ACTIVE</Badge>
                     </div>

@@ -128,7 +128,7 @@ const DocPage: React.FC<DocPageProps> = ({ title, category, lastUpdated, childre
             Back to Documentation
           </a>
           <a
-            href="/select-role"
+            href="/demo-accounts"
             className="flex items-center gap-2 px-6 py-3 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-all duration-300"
           >
             Get Started

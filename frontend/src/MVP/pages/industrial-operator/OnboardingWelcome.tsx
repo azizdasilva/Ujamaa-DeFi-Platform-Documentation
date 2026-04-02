@@ -183,7 +183,7 @@ const IndustrialOperatorWelcome: React.FC = () => {
           {operatorTypes.map((type) => (
             <button
               key={type.id}
-              onClick={() => setSelectedType(type.id as any)}
+              onClick={() => handleQuickStart(type.id)}
               className={`
                 flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition-all shadow-sm
                 ${selectedType === type.id
@@ -203,7 +203,7 @@ const IndustrialOperatorWelcome: React.FC = () => {
           {operatorTypes.map((type) => (
             <div
               key={type.id}
-              onClick={() => setSelectedType(type.id as any)}
+              onClick={() => handleQuickStart(type.id)}
               className={`
                 cursor-pointer transition-all duration-300 transform hover:scale-[1.02]
                 ${selectedType === type.id
@@ -437,7 +437,7 @@ const IndustrialOperatorWelcome: React.FC = () => {
         {/* Action Buttons */}
         <div className="flex items-center justify-between">
           <a
-            href="/select-role"
+            href="/demo-accounts"
             className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

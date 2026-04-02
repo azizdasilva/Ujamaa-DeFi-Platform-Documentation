@@ -1329,7 +1329,7 @@ const Glossary: React.FC = () => {
                 Can't find what you're looking for? Our support team is here to help.
               </p>
               <a
-                href="/select-role"
+                href="/demo-accounts"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#023D7A] font-bold rounded-lg hover:bg-[#F3F8FA] transition-colors"
               >
                 Contact Support

@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import { InvestorRole } from '../../../types';
 import MVPBanner from '../../components/MVPBanner';
-import LogoutButton from '../../components/LogoutButton';
 
 interface DemoAccount {
   id: string;
@@ -29,7 +28,7 @@ interface DemoAccount {
 
 const DemoAccounts: React.FC = () => {
   const navigate = useNavigate();
-  const { login, isAuthenticated, user } = useAuth();
+  const { login } = useAuth();
 
   const demoAccounts: DemoAccount[] = [
     {
@@ -168,17 +167,9 @@ const DemoAccounts: React.FC = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <h1 className="text-4xl md:text-5xl font-bold">
-              🎯 Try Demo Accounts
-            </h1>
-            {isAuthenticated && user && (
-              <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg">
-                <span className="text-sm">Logged in as: <strong>{user.name}</strong></span>
-                <LogoutButton variant="button" />
-              </div>
-            )}
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            🎯 Try Demo Accounts
+          </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
             Experience the full platform with pre-configured demo accounts.
             No registration required - instant access to all features!
@@ -295,11 +286,8 @@ interface DemoCardProps {
 }
 
 const DemoCard: React.FC<DemoCardProps> = ({ account, onSelect }) => {
-  const { user, isAuthenticated } = useAuth();
-  const isCurrentAccount = isAuthenticated && user?.email === account.email;
-
   return (
-    <div className={`bg-white rounded-2xl shadow-xl border border-[#48A9F0]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 group ${isCurrentAccount ? 'ring-2 ring-green-500' : ''}`}>
+    <div className="bg-white rounded-2xl shadow-xl border border-[#48A9F0]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       {/* Header */}
       <div className={`bg-gradient-to-r ${account.color} p-6 text-white`}>
         <div className="flex items-center justify-between mb-4">
@@ -344,27 +332,15 @@ const DemoCard: React.FC<DemoCardProps> = ({ account, onSelect }) => {
         </ul>
 
         {/* Select Button */}
-        {isCurrentAccount ? (
-          <div className="space-y-2">
-            <div className="flex items-center justify-center gap-2 py-2 px-4 bg-green-50 border border-green-200 rounded-lg">
-              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-sm font-bold text-green-800">Currently Active</span>
-            </div>
-            <LogoutButton variant="button" />
-          </div>
-        ) : (
-          <button
-            onClick={() => onSelect(account)}
-            className="w-full py-3 bg-gradient-to-r from-[#00A8A8] to-[#023D7A] hover:from-[#0D7A7A] hover:to-[#034F9A] text-white font-bold rounded-xl transition-all shadow-lg group-hover:shadow-xl flex items-center justify-center gap-2"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-            </svg>
-            Use This Account
-          </button>
-        )}
+        <button
+          onClick={() => onSelect(account)}
+          className="w-full py-3 bg-gradient-to-r from-[#00A8A8] to-[#023D7A] hover:from-[#0D7A7A] hover:to-[#034F9A] text-white font-bold rounded-xl transition-all shadow-lg group-hover:shadow-xl flex items-center justify-center gap-2"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+          </svg>
+          Use This Account
+        </button>
       </div>
     </div>
   );

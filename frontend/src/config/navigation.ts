@@ -73,6 +73,27 @@ export const navigationItems: NavItem[] = [
     roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'invest',
   },
+  {
+    label: 'My Portfolio',
+    href: '/investor/portfolio',
+    icon: '💼',
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
+    category: 'invest',
+  },
+  {
+    label: 'Returns',
+    href: '/investor/returns',
+    icon: '💰',
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
+    category: 'invest',
+  },
+  {
+    label: 'Investor Onboarding',
+    href: '/onboarding',
+    icon: '🚀',
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    category: 'onboarding',
+  },
 
   // Operator Links
   {
@@ -102,21 +123,21 @@ export const navigationItems: NavItem[] = [
     label: 'KYC Review',
     href: '/compliance/kyc-review',
     icon: '✓',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
     category: 'compliance',
   },
   {
     label: 'Transaction Monitor',
     href: '/compliance/transactions',
     icon: '🔍',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
     category: 'compliance',
   },
   {
     label: 'Jurisdictions',
     href: '/compliance/jurisdictions',
     icon: '🌍',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
     category: 'compliance',
   },
 

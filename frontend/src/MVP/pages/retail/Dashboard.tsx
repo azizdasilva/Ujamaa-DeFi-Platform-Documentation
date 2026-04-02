@@ -156,6 +156,9 @@ const RetailDashboard: React.FC = () => {
           <div className="space-y-6">
             <Card header={<h2 className="text-xl font-bold text-[#103b5b]">Quick Actions</h2>}>
               <div className="space-y-3">
+                <a href="/investor/portfolio" className="block w-full px-4 py-3 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors text-center">
+                  💼 My Portfolio
+                </a>
                 <a href="/retail/pools" className="block w-full px-4 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white font-bold rounded-lg transition-colors text-center">
                   📈 Browse Pools
                 </a>

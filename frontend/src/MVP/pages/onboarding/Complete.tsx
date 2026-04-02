@@ -223,7 +223,7 @@ const OnboardingComplete: React.FC = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => navigate('/select-role')}
+            onClick={() => navigate('/demo-accounts')}
           >
             Select Different Role
           </Button>

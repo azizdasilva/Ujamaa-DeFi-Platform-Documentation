@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-bold mb-4" style={{ color: '#FFFFFF' }}>Platform</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/select-role" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
+                <a href="/demo-accounts" className="block py-1" style={{ color: '#FFFFFF', fontWeight: '400' }}>
                   Select Role
                 </a>
               </li>

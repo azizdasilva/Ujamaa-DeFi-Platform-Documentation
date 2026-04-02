@@ -177,7 +177,7 @@ const DocsHome: React.FC = () => {
             Explore our platform and start investing in African real-world assets
           </p>
           <a
-            href="/select-role"
+            href="/demo-accounts"
             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#023D7A] font-bold rounded-lg hover:bg-[#F3F8FA] transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Select Your Role

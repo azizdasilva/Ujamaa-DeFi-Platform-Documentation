@@ -28,7 +28,7 @@ const Unauthorized: React.FC = () => {
       REGULATOR: '/regulator/dashboard',
     };
     
-    return dashboardPaths[user.role] || '/select-role';
+    return dashboardPaths[user.role] || '/demo-accounts';
   };
 
   return (

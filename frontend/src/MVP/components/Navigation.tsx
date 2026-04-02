@@ -43,11 +43,11 @@ const Navigation: React.FC = () => {
     { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
     { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'], roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR', 'ADMIN'] as InvestorRole[] },
     { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Investor Onboarding', href: '/investor/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Investor Onboarding', href: '/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
     { title: 'Industrial Operator Onboarding', href: '/industrial-operator/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'operator', 'industrial'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'KYC Review', href: '/compliance/kyc-review', category: 'Compliance', tags: ['kyc', 'review', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
-    { title: 'Transaction Monitor', href: '/compliance/transactions', category: 'Compliance', tags: ['transactions', 'monitor', 'aml', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
-    { title: 'Jurisdictions', href: '/compliance/jurisdictions', category: 'Compliance', tags: ['jurisdictions', 'countries', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
+    { title: 'KYC Review', href: '/compliance/kyc-review', category: 'Compliance', tags: ['kyc', 'review', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Transaction Monitor', href: '/compliance/transactions', category: 'Compliance', tags: ['transactions', 'monitor', 'aml', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Jurisdictions', href: '/compliance/jurisdictions', category: 'Compliance', tags: ['jurisdictions', 'countries', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
     { title: 'User Management', href: '/admin/users', category: 'Admin', tags: ['users', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Pool Management', href: '/admin/pools', category: 'Admin', tags: ['pools', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Asset Management', href: '/admin/assets', category: 'Admin', tags: ['assets', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
@@ -86,16 +86,17 @@ const Navigation: React.FC = () => {
   const getQuickActionsForRole = () => {
     if (!isAuthenticated || !user) {
       // Show all actions for non-authenticated users (with highlights)
-      return allSearchResults.filter(r => 
-        ['Dashboard', 'Invest', 'Originator', 'Compliance'].includes(r.category)
-      ).slice(0, 8);
+      // Exclude Dashboard and Compliance - shown only to authorized users when logged in
+      return allSearchResults.filter(r =>
+        ['Invest', 'Originator', 'Account'].includes(r.category)
+      ).slice(0, 10);
     }
-    
-    // Filter by user role
+
+    // Filter by user role - logged in users see Dashboard in role selector, not here
     return allSearchResults.filter(result => {
       const hasAccess = result.roles.includes(user.role) || user.role === 'ADMIN';
-      // Prioritize certain categories for quick actions
-      const isQuickAction = ['Dashboard', 'Invest', 'Originator', 'Compliance', 'Account'].includes(result.category);
+      // Prioritize certain categories for quick actions (exclude Dashboard)
+      const isQuickAction = ['Invest', 'Originator', 'Compliance', 'Account', 'Admin', 'Regulator'].includes(result.category);
       return hasAccess && isQuickAction;
     }).slice(0, 10);
   };
@@ -439,20 +440,27 @@ const Navigation: React.FC = () => {
                       {/* Switch Role */}
                       <div className="px-4 py-3 border-b border-gray-200">
                         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Switch Role</p>
-                        <a href="/select-role" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors">
-                          🔄 Choose Different Role
-                        </a>
-                        <a href="/demo-accounts" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
+                        <a href="/demo-accounts" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors">
                           🎯 Try Demo Accounts
                         </a>
                       </div>
 
                       {/* Sign Out */}
                       {isAuthenticated && (
-                        <div className="px-4 py-3">
+                        <div className="px-4 py-3 border-b border-gray-200">
                           <LogoutButton variant="menu-item" />
                         </div>
                       )}
+
+                      {/* Help & Support */}
+                      <div className="px-4 py-3">
+                        <a
+                          href="/docs/glossary"
+                          className="block px-3 py-2 text-sm text-gray-600 hover:bg-[#F3F8FA] rounded-lg transition-colors text-center"
+                        >
+                          📚 Help Center
+                        </a>
+                      </div>
                     </div>
                   </>
                 )}
