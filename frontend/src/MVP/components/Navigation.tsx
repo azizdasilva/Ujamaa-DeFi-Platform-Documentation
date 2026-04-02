@@ -103,7 +103,7 @@ const Navigation: React.FC = () => {
       // Prioritize certain categories for quick actions (exclude Dashboard)
       const isQuickAction = ['Invest', 'Originator', 'Compliance', 'Account', 'Admin', 'Regulator'].includes(result.category);
       return hasAccess && isQuickAction;
-    }).slice(0, 10);
+    }).slice(0, user.role === 'ADMIN' ? 30 : 10); // Show more for admin
   };
 
   const quickActions = getQuickActionsForRole();
