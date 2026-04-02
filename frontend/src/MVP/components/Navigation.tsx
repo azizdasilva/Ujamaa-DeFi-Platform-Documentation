@@ -407,7 +407,7 @@ const Navigation: React.FC = () => {
                           {/* Show role-specific menu items */}
                           {getNavItemsForRole(user.role)
                             .filter(item => item.category && !['dashboard', 'test'].includes(item.category))
-                            .slice(0, 4)
+                            .slice(0, user.role === 'ADMIN' ? 8 : 4) // Show more items for admin
                             .map((item, idx) => (
                               <a
                                 key={idx}
