@@ -478,25 +478,30 @@ class YieldStatement(Base):
 class BankAccount(Base):
     """
     Bank escrow account model - tracks investor bank accounts.
-    
+
     Replaces EscrowAccount from mock_bank.py service.
     """
     __tablename__ = 'bank_accounts'
 
     account_id = Column(String(50), primary_key=True)  # e.g., "ESC-001-2026"
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False, unique=True)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False, unique=True)
+
+    # Account balances
+    escrow_balance = Column(Numeric(18, 2), default=0, nullable=False)
+    available_balance = Column(Numeric(18, 2), default=0, nullable=False)
+    locked_amount = Column(Numeric(18, 2), default=0, nullable=False)
     
     # Account details
     balance = Column(Numeric(18, 2), default=0, nullable=False)
     currency = Column(String(3), default='EUR', nullable=False)
     status = Column(SQLEnum(AccountStatusEnum), default=AccountStatusEnum.PENDING)
-    
+
     # Bank details
-    bank_name = Column(String(255), nullable=False)
+    bank_name = Column(String(255), nullable=False, default="Mock Bank")
     account_number = Column(String(50), nullable=True)  # Encrypted in production
     iban = Column(String(34), nullable=True)  # Encrypted in production
     swift_code = Column(String(11), nullable=True)
-    
+
     # Metadata
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
