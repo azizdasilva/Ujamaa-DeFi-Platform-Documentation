@@ -114,13 +114,8 @@ const InvestorPortfolio: React.FC = () => {
 
   const totalUlPTokens = holdings.reduce((sum, h) => sum + h.ulpTokens, 0);
 
-  const recentTransactions = [
-    { id: 1, type: 'investment', pool: 'Pool Renewable Energy - Solar #3', amount: 85000, date: '2026-03-15', status: 'completed' },
-    { id: 2, type: 'distribution', pool: 'Pool Agriculture - Coffee #8', amount: 2450, date: '2026-03-01', status: 'completed' },
-    { id: 3, type: 'investment', pool: 'Pool Trade Finance - Invoice #5', amount: 40000, date: '2026-02-28', status: 'completed' },
-    { id: 4, type: 'distribution', pool: 'Pool Industry - Manufacturing #12', amount: 1580, date: '2026-02-15', status: 'completed' },
-    { id: 5, type: 'redemption', pool: 'Pool Real Estate - Commercial #1', amount: 57300, date: '2026-01-15', status: 'completed' },
-  ];
+  // Get recent transactions from investor data (real API data)
+  const recentTransactions = investor?.recent_transactions || [];
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -310,31 +305,33 @@ const InvestorPortfolio: React.FC = () => {
           <div>
             <Card header={<h2 className="text-xl font-bold text-[#103b5b]">Recent Activity</h2>}>
               <div className="space-y-3">
-                {recentTransactions.map((txn) => (
-                  <div key={txn.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className={`w-2 h-2 rounded-full ${
-                          txn.type === 'investment' ? 'bg-blue-500' :
-                          txn.type === 'distribution' ? 'bg-green-500' :
-                          'bg-amber-500'
-                        }`} />
-                        <p className="font-medium text-gray-900 capitalize">{txn.type}</p>
+                {loading ? (
+                  <p className="text-center text-gray-500 py-8">Loading transactions...</p>
+                ) : recentTransactions.length === 0 ? (
+                  <p className="text-center text-gray-500 py-8">No recent transactions</p>
+                ) : (
+                  recentTransactions.map((txn) => (
+                    <div key={txn.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className={`w-2 h-2 rounded-full ${
+                            txn.type === 'INVESTMENT' ? 'bg-blue-500' :
+                            txn.type === 'YIELD_DISTRIBUTION' ? 'bg-green-500' :
+                            txn.type === 'REDEMPTION' ? 'bg-amber-500' :
+                            'bg-gray-500'
+                          }`} />
+                          <p className="font-medium text-gray-900 capitalize">{txn.type.replace('_', ' ').toLowerCase()}</p>
+                        </div>
+                        <p className="text-xs text-gray-600 mt-1">€{txn.amount.toLocaleString()}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{new Date(txn.created_at).toLocaleDateString()}</p>
                       </div>
-                      <p className="text-xs text-gray-600 mt-1">{txn.pool}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{txn.date}</p>
+                      <Badge variant={txn.status === 'confirmed' ? 'success' : 'info'} size="sm">
+                        {txn.status}
+                      </Badge>
                     </div>
-                    <div className={`font-semibold ${
-                      txn.type === 'investment' ? 'text-red-600' : 'text-green-600'
-                    }`}>
-                      {txn.type === 'investment' ? '-' : '+'}{formatCurrency(txn.amount)}
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
-              <a href="/investor/transactions" className="block text-center mt-4 text-[#00A8A8] hover:text-[#0D7A7A] text-sm font-medium">
-                View All Transactions →
-              </a>
             </Card>
           </div>
         </div>

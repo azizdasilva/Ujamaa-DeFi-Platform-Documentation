@@ -192,6 +192,13 @@ export const navigationItems: NavItem[] = [
     category: 'admin',
   },
   {
+    label: 'Bank Accounts',
+    href: '/admin/bank-accounts',
+    icon: '🏛️',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
     label: 'Threshold Management',
     href: '/admin/thresholds',
     icon: '🎯',
