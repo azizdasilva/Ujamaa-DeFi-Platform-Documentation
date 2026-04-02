@@ -161,7 +161,7 @@ class InvestorProfile(Base):
     investments = relationship("Investment", back_populates="investor", cascade="all, delete-orphan")
     ult_transactions = relationship("ULTTransaction", back_populates="investor", cascade="all, delete-orphan")
     pool_positions = relationship("PoolPosition", back_populates="investor", cascade="all, delete-orphan")
-    bank_accounts = relationship("BankAccount", back_populates="investor", cascade="all, delete-orphan")
+    # bank_accounts relationship removed - BankAccount now uses user_id instead of investor_id
     whitelisted_wallets = relationship("WhitelistedWallet", back_populates="investor", cascade="all, delete-orphan")
 
 
