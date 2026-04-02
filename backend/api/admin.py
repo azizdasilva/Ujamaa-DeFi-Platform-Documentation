@@ -474,22 +474,22 @@ async def get_all_investors_bank_accounts(
         bank_account = db.query(BankAccount).filter(
             BankAccount.user_id == investor.id
         ).first()
-        
+
         result.append(InvestorBankResponse(
             id=investor.id,
             user_id=investor.id,
             email=investor.email,
-            full_name=investor.full_name or investor.email,
+            full_name=investor.email,  # Use email as full_name for MVP
             role=investor.role,
             bank_account_number=bank_account.account_number if bank_account else None,
-            bank_name=bank_account.bank_name if bank_account else None,
-            escrow_balance=bank_account.escrow_balance if bank_account else 0.0,
-            available_balance=bank_account.available_balance if bank_account else 0.0,
-            locked_amount=bank_account.locked_amount if bank_account else 0.0,
-            status=investor.status,
-            created_at=investor.created_at
+            bank_name=bank_account.bank_name if bank_account else "Mock Bank",
+            escrow_balance=float(bank_account.escrow_balance) if bank_account and bank_account.escrow_balance else 0.0,
+            available_balance=float(bank_account.available_balance) if bank_account and bank_account.available_balance else 0.0,
+            locked_amount=float(bank_account.locked_amount) if bank_account and bank_account.locked_amount else 0.0,
+            status='active' if investor.is_active else 'suspended',
+            created_at=investor.created_at.isoformat() if investor.created_at else None
         ))
-    
+
     return result
 
 
