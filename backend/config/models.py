@@ -10,7 +10,7 @@ Supports both SQLite (development) and PostgreSQL (production).
 from datetime import datetime
 from sqlalchemy import (
     Column, Integer, String, Float, DateTime, Boolean, Text,
-    ForeignKey, Enum as SQLEnum, JSON, Numeric
+    ForeignKey, Enum as SQLEnum, JSON, Numeric, UniqueConstraint
 )
 from sqlalchemy.orm import relationship, declarative_base
 import enum
@@ -139,7 +139,7 @@ class InvestorProfile(Base):
     __tablename__ = 'investor_profiles'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False, unique=True)
+    user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'), nullable=False, unique=True)
     full_name = Column(String(255), nullable=True)
     company_name = Column(String(255), nullable=True)
     jurisdiction = Column(String(2), nullable=False)
@@ -148,21 +148,21 @@ class InvestorProfile(Base):
     accreditation_status = Column(SQLEnum(ComplianceStatusEnum), default=ComplianceStatusEnum.PENDING)
     wallet_address = Column(String(42), nullable=True)
 
-    # Investment tracking
-    total_invested = Column(Numeric(18, 2), default=0)
-    ult_tokens = Column(Numeric(18, 6), default=0)  # uLT tokens held
+    # Investment tracking (18 decimals precision for token amounts)
+    total_invested = Column(Numeric(26, 18), default=0)
+    ult_tokens = Column(Numeric(26, 18), default=0)  # uLT tokens held (18 decimals)
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
     user = relationship("User", back_populates="investor_profile")
-    documents = relationship("Document", back_populates="investor")
-    investments = relationship("Investment", back_populates="investor")
-    ult_transactions = relationship("ULTTransaction", back_populates="investor")
-    pool_positions = relationship("PoolPosition", back_populates="investor")
-    bank_accounts = relationship("BankAccount", back_populates="investor")
-    whitelisted_wallets = relationship("WhitelistedWallet", back_populates="investor")
+    documents = relationship("Document", back_populates="investor", cascade="all, delete-orphan")
+    investments = relationship("Investment", back_populates="investor", cascade="all, delete-orphan")
+    ult_transactions = relationship("ULTTransaction", back_populates="investor", cascade="all, delete-orphan")
+    pool_positions = relationship("PoolPosition", back_populates="investor", cascade="all, delete-orphan")
+    bank_accounts = relationship("BankAccount", back_populates="investor", cascade="all, delete-orphan")
+    whitelisted_wallets = relationship("WhitelistedWallet", back_populates="investor", cascade="all, delete-orphan")
 
 
 # =============================================================================
@@ -174,23 +174,23 @@ class Document(Base):
     __tablename__ = 'documents'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
     document_type = Column(SQLEnum(DocumentTypeEnum), nullable=False)
     document_name = Column(String(255), nullable=False)
     file_path = Column(String(500), nullable=False)  # Path to stored file
     file_hash = Column(String(64), nullable=True)  # SHA256 hash for integrity
     upload_status = Column(String(50), default='uploaded')
     verification_status = Column(SQLEnum(ComplianceStatusEnum), default=ComplianceStatusEnum.PENDING)
-    
+
     # Compliance review
-    reviewed_by = Column(Integer, ForeignKey('users.id'), nullable=True)
+    reviewed_by = Column(Integer, ForeignKey('users.id', ondelete='SET NULL'), nullable=True)
     reviewed_at = Column(DateTime, nullable=True)
     review_notes = Column(Text, nullable=True)
-    
+
     # 24h window tracking
     submitted_at = Column(DateTime, default=datetime.utcnow)
     deadline_at = Column(DateTime, nullable=True)  # submitted_at + 24h
-    
+
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationships
@@ -229,7 +229,7 @@ class Pool(Base):
     target_yield_min = Column(Float, nullable=False)
     target_yield_max = Column(Float, nullable=False)
     lockup_days = Column(Integer, nullable=False)
-    total_value = Column(Numeric(18, 2), default=0)
+    total_value = Column(Numeric(26, 18), default=0)  # 18 decimals precision for token amounts
     apy = Column(Float, nullable=False)
     is_active = Column(Boolean, default=True)
 
@@ -237,8 +237,8 @@ class Pool(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
-    investments = relationship("Investment", back_populates="pool")
-    positions = relationship("PoolPosition", back_populates="pool")
+    investments = relationship("Investment", back_populates="pool", cascade="all, delete-orphan")
+    positions = relationship("PoolPosition", back_populates="pool", cascade="all, delete-orphan")
     financings = relationship("Financing", back_populates="pool")
 
 
@@ -247,16 +247,16 @@ class Investment(Base):
     __tablename__ = 'investments'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=False)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
-    amount = Column(Numeric(18, 2), nullable=False)
-    shares = Column(Numeric(18, 6), nullable=False)
-    nav = Column(Numeric(18, 6), nullable=False)
-    ult_tokens = Column(Numeric(18, 6), default=0)  # uLT tokens for this investment
-    
+    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
+    amount = Column(Numeric(26, 18), nullable=False)  # 18 decimals precision for token amounts
+    shares = Column(Numeric(26, 18), nullable=False)
+    nav = Column(Numeric(26, 18), nullable=False)
+    ult_tokens = Column(Numeric(26, 18), default=0)  # uLT tokens for this investment (18 decimals)
+
     status = Column(String(50), default='completed')
     transaction_hash = Column(String(66), nullable=True)  # On-chain tx hash
-    
+
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationships
@@ -269,16 +269,16 @@ class ULTTransaction(Base):
     __tablename__ = 'ult_transactions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
     transaction_type = Column(String(50), nullable=False)  # 'MINT', 'BURN', 'TRANSFER'
-    amount = Column(Numeric(18, 6), nullable=False)
-    balance_before = Column(Numeric(18, 6), nullable=False)
-    balance_after = Column(Numeric(18, 6), nullable=False)
-    
+    amount = Column(Numeric(26, 18), nullable=False)  # 18 decimals precision
+    balance_before = Column(Numeric(26, 18), nullable=False)
+    balance_after = Column(Numeric(26, 18), nullable=False)
+
     # Blockchain reference
     transaction_hash = Column(String(66), nullable=True)
     block_number = Column(Integer, nullable=True)
-    
+
     status = Column(SQLEnum(TransactionStatusEnum), default=TransactionStatusEnum.PENDING)
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
 
@@ -295,16 +295,16 @@ class Transaction(Base):
     __tablename__ = 'transactions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=True)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='SET NULL'), nullable=True, index=True)
     transaction_type = Column(String(50), nullable=False)  # 'INVESTMENT', 'REDEMPTION', 'YIELD', etc.
-    amount = Column(Numeric(18, 2), nullable=False)
+    amount = Column(Numeric(26, 18), nullable=False)  # 18 decimals precision
     currency = Column(String(10), default='EUR')
 
     # Blockchain tracking
     is_on_chain = Column(Boolean, default=False)
     transaction_hash = Column(String(66), nullable=True)
     block_number = Column(Integer, nullable=True)
-    gas_fee = Column(Numeric(18, 6), nullable=True)
+    gas_fee = Column(Numeric(26, 18), nullable=True)
 
     # Status tracking
     status = Column(SQLEnum(TransactionStatusEnum), default=TransactionStatusEnum.PENDING)
@@ -328,26 +328,26 @@ class Transaction(Base):
 class PoolPosition(Base):
     """
     Pool position model - tracks investor shares in each pool.
-    
+
     Replaces mock_positions dictionary from pools.py API.
     """
     __tablename__ = 'pool_positions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
-    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=False)
-    
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
+    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False)
+
     # Position details
-    shares = Column(Numeric(18, 6), default=0, nullable=False)  # UPT shares owned
-    average_nav = Column(Numeric(18, 6), nullable=True)  # Average NAV at purchase
-    
+    shares = Column(Numeric(26, 18), default=0, nullable=False)  # UPT shares owned (18 decimals precision)
+    average_nav = Column(Numeric(26, 18), nullable=True)  # Average NAV at purchase
+
     # Yield tracking
-    total_yield_earned = Column(Numeric(18, 2), default=0)
+    total_yield_earned = Column(Numeric(26, 18), default=0)
     last_yield_distribution = Column(DateTime, nullable=True)
-    
+
     # Status
     is_active = Column(Boolean, default=True)
-    
+
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -357,7 +357,7 @@ class PoolPosition(Base):
 
     # Unique constraint: one position per investor per pool
     __table_args__ = (
-        # Prevent duplicate positions for same investor/pool
+        UniqueConstraint('investor_id', 'pool_id', name='uq_investor_pool'),
         {'sqlite_autoincrement': True},
     )
 
@@ -417,44 +417,44 @@ class Financing(Base):
 class YieldStatement(Base):
     """
     Yield statement model - historical yield earned by investors.
-    
+
     Generated periodically (monthly/quarterly) for each investor position.
     """
     __tablename__ = 'yield_statements'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     statement_id = Column(String(50), unique=True, nullable=False)  # e.g., "YS-2026-Q1-001"
-    
+
     # Links
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
-    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=False)
-    pool_position_id = Column(Integer, ForeignKey('pool_positions.id'), nullable=True)
-    
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
+    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False)
+    pool_position_id = Column(Integer, ForeignKey('pool_positions.id', ondelete='CASCADE'), nullable=True)
+
     # Period
     period_start = Column(DateTime, nullable=False)
     period_end = Column(DateTime, nullable=False)
-    
-    # Financials
-    principal = Column(Numeric(18, 2), nullable=False)
-    shares_held = Column(Numeric(18, 6), nullable=False)
-    yield_earned = Column(Numeric(18, 2), nullable=False)
-    management_fee = Column(Numeric(18, 2), default=0)
-    performance_fee = Column(Numeric(18, 2), default=0)
-    net_yield = Column(Numeric(18, 2), nullable=False)
-    
+
+    # Financials (18 decimals precision for token amounts)
+    principal = Column(Numeric(26, 18), nullable=False)
+    shares_held = Column(Numeric(26, 18), nullable=False)
+    yield_earned = Column(Numeric(26, 18), nullable=False)
+    management_fee = Column(Numeric(26, 18), default=0)
+    performance_fee = Column(Numeric(26, 18), default=0)
+    net_yield = Column(Numeric(26, 18), nullable=False)
+
     # NAV tracking
-    nav_start = Column(Numeric(18, 6), nullable=False)
-    nav_end = Column(Numeric(18, 6), nullable=False)
-    
+    nav_start = Column(Numeric(26, 18), nullable=False)
+    nav_end = Column(Numeric(26, 18), nullable=False)
+
     # Status
     status = Column(String(50), default='generated')  # generated, distributed, claimed
-    
+
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationships
     investor = relationship("InvestorProfile")
     pool = relationship("Pool")
-    position = relationship("PoolPosition")
+    position = relationship("PoolPosition", foreign_keys=[pool_position_id])
 
 
 # =============================================================================
@@ -714,41 +714,41 @@ class ImpactMetrics(Base):
 class WhitelistedWallet(Base):
     """
     Whitelisted wallet model - approved wallet addresses per investor.
-    
+
     Required for compliance tracking.
     """
     __tablename__ = 'whitelisted_wallets'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=False)
-    
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
+
     # Wallet details
-    wallet_address = Column(String(42), nullable=False, index=True)
+    wallet_address = Column(String(42), nullable=False, index=True, unique=True)
     label = Column(String(100), nullable=True)  # e.g., "Main Wallet", "Cold Storage"
-    
+
     # Jurisdiction
     jurisdiction = Column(String(2), nullable=False)
     jurisdiction_verified = Column(Boolean, default=False)
-    
+
     # Compliance
     is_approved = Column(Boolean, default=False)
     approved_by = Column(Integer, ForeignKey('users.id'), nullable=True)
     approved_at = Column(DateTime, nullable=True)
-    
+
     # Risk scoring
     risk_score = Column(Integer, nullable=True)  # 0-100
     risk_level = Column(String(20), default='unknown')  # low, medium, high, critical
-    
+
     # Screening
     sanctions_checked = Column(Boolean, default=False)
     sanctions_checked_at = Column(DateTime, nullable=True)
     pep_checked = Column(Boolean, default=False)
     pep_checked_at = Column(DateTime, nullable=True)
-    
+
     # Metadata
     first_transaction_at = Column(DateTime, nullable=True)
     last_transaction_at = Column(DateTime, nullable=True)
-    
+
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -756,9 +756,9 @@ class WhitelistedWallet(Base):
     investor = relationship("InvestorProfile", back_populates="whitelisted_wallets")
     approver = relationship("User")
 
-    # Unique constraint
+    # Unique constraint: Prevent duplicate wallet addresses
     __table_args__ = (
-        # Prevent duplicate wallet addresses
+        UniqueConstraint('wallet_address', name='uq_wallet_address'),
         {'sqlite_autoincrement': True},
     )
 

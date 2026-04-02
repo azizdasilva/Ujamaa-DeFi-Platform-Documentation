@@ -35,9 +35,9 @@ interface Pool {
 
 const pools: Pool[] = [
   {
-    id: 'POOL_INDUSTRY',
-    name: 'Pool Industry',
-    family: 'Industry',
+    id: 'POOL_INDUSTRIE',
+    name: 'Pool Industrie',
+    family: 'Industrie',
     icon: '🏭',
     targetYieldMin: 10,
     targetYieldMax: 12,

@@ -5,98 +5,12 @@
  * @notice MVP TESTNET: Polygon Amoy Testnet (Chain ID: 80002)
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useWallet } from './useWallet';
 import { parseEther, formatEther, Address } from 'viem';
 import { web3Config } from '../config/web3';
-
-// Contract ABIs (minimal for MVP testing)
-const ERC20_ABI = [
-  {
-    inputs: [{ name: 'account', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { name: 'to', type: 'address' },
-      { name: 'amount', type: 'uint256' },
-    ],
-    name: 'transfer',
-    outputs: [{ type: 'bool' }],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'decimals',
-    outputs: [{ type: 'uint8' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'symbol',
-    outputs: [{ type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'name',
-    outputs: [{ type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const;
-
-const LIQUIDITY_POOL_ABI = [
-  {
-    inputs: [],
-    name: 'getPoolFamilies',
-    outputs: [
-      {
-        components: [
-          { name: 'name', type: 'string' },
-          { name: 'targetAPY', type: 'uint256' },
-          { name: 'termDays', type: 'uint256' },
-          { name: 'totalValue', type: 'uint256' },
-          { name: 'utilizationRate', type: 'uint256' },
-        ],
-        type: 'tuple[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [{ name: 'poolFamily', type: 'uint8' }],
-    name: 'getPoolInfo',
-    outputs: [
-      {
-        components: [
-          { name: 'totalValue', type: 'uint256' },
-          { name: 'utilizationRate', type: 'uint256' },
-          { name: 'currentAPY', type: 'uint256' },
-          { name: 'totalDeposits', type: 'uint256' },
-          { name: 'totalRedemptions', type: 'uint256' },
-        ],
-        type: 'tuple',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const;
+import ULPTokenABI from '../abis/ULPToken.json';
+import LiquidityPoolABI from '../abis/LiquidityPool.json';
 
 // Contract addresses from configuration (DEPLOYED & VERIFIED)
 const CONTRACT_ADDRESSES = {
@@ -111,31 +25,36 @@ const CONTRACT_ADDRESSES = {
  * Hook for interacting with ERC20 tokens
  */
 export function useERC20(contractAddress: Address) {
-  const { writeContract, hash, error, isPending, isConfirming, isSuccess } =
-    import('wagmi').then((wagmi) => wagmi.useWriteContract());
-  const { data: balance, isLoading: balanceLoading } = import('wagmi').then((wagmi) =>
-    wagmi.useBalance({
-      address: contractAddress,
-      token: contractAddress,
-    })
-  );
-
+  const [balance, setBalance] = useState<bigint | null>(null);
+  const [balanceLoading, setBalanceLoading] = useState(false);
   const [readError, setReadError] = useState<string | null>(null);
 
-  // Read functions would use wagmi's useReadContract
-  // For now, return basic info
+  // Read balance using viem
+  const readBalance = useCallback(async (account: Address) => {
+    setBalanceLoading(true);
+    setReadError(null);
+    try {
+      // TODO: Implement with viem public client
+      // const balance = await publicClient.readContract({
+      //   address: contractAddress,
+      //   abi: ERC20_ABI,
+      //   functionName: 'balanceOf',
+      //   args: [account],
+      // });
+      // setBalance(balance);
+      setBalanceLoading(false);
+    } catch (err) {
+      setReadError(err instanceof Error ? err.message : 'Failed to read balance');
+      setBalanceLoading(false);
+    }
+  }, [contractAddress]);
 
   return {
     address: contractAddress,
     balance,
     balanceLoading,
     readError,
-    writeContract,
-    hash,
-    error,
-    isPending,
-    isConfirming,
-    isSuccess,
+    readBalance,
   };
 }
 
@@ -148,61 +67,59 @@ export function useLiquidityPool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Mock pool data for MVP testnet (until contracts are deployed)
-  const mockPoolData = {
-    poolFamilies: [
-      {
-        name: 'POOL_INDUSTRIE',
-        targetAPY: '11000000000000000000', // 11%
-        termDays: '365',
-        totalValue: '5000000000000000000000000', // 5M EUROD
-        utilizationRate: '65000000000000000000', // 65%
-      },
-      {
-        name: 'POOL_AGRICULTURE',
-        targetAPY: '13500000000000000000', // 13.5%
-        termDays: '180',
-        totalValue: '3000000000000000000000000', // 3M EUROD
-        utilizationRate: '72000000000000000000', // 72%
-      },
-      {
-        name: 'POOL_TRADE_FINANCE',
-        targetAPY: '9000000000000000000', // 9%
-        termDays: '90',
-        totalValue: '2000000000000000000000000', // 2M EUROD
-        utilizationRate: '58000000000000000000', // 58%
-      },
-      {
-        name: 'POOL_RENEWABLE_ENERGY',
-        targetAPY: '10000000000000000000', // 10%
-        termDays: '730',
-        totalValue: '4000000000000000000000000', // 4M EUROD
-        utilizationRate: '45000000000000000000', // 45%
-      },
-      {
-        name: 'POOL_REAL_ESTATE',
-        targetAPY: '10000000000000000000', // 10%
-        termDays: '1095',
-        totalValue: '6000000000000000000000000', // 6M EUROD
-        utilizationRate: '80000000000000000000', // 80%
-      },
-    ],
-  };
-
   const fetchPoolData = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      // TODO: Replace with actual contract call after deployment
-      // const { data } = await readContract({
+      // TODO: Implement actual contract call with viem
+      // const { data } = await publicClient.readContract({
       //   address: CONTRACT_ADDRESSES.LIQUIDITY_POOL,
-      //   abi: LIQUIDITY_POOL_ABI,
+      //   abi: LiquidityPoolABI,
       //   functionName: 'getPoolFamilies',
       // });
 
-      // Using mock data for MVP testnet
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // For now, return mock data structure matching contract output
+      const mockPoolData = {
+        poolFamilies: [
+          {
+            name: 'POOL_INDUSTRIE',
+            targetAPY: BigInt('11000000000000000000'), // 11% in 18 decimals
+            termDays: BigInt('365'),
+            totalValue: BigInt('5000000000000000000000000'), // 5M in 18 decimals
+            utilizationRate: BigInt('65000000000000000000'), // 65% in 18 decimals
+          },
+          {
+            name: 'POOL_AGRICULTURE',
+            targetAPY: BigInt('13500000000000000000'), // 13.5%
+            termDays: BigInt('180'),
+            totalValue: BigInt('3000000000000000000000000'), // 3M
+            utilizationRate: BigInt('72000000000000000000'), // 72%
+          },
+          {
+            name: 'POOL_TRADE_FINANCE',
+            targetAPY: BigInt('9000000000000000000'), // 9%
+            termDays: BigInt('90'),
+            totalValue: BigInt('2000000000000000000000000'), // 2M
+            utilizationRate: BigInt('58000000000000000000'), // 58%
+          },
+          {
+            name: 'POOL_RENEWABLE_ENERGY',
+            targetAPY: BigInt('10000000000000000000'), // 10%
+            termDays: BigInt('730'),
+            totalValue: BigInt('4000000000000000000000000'), // 4M
+            utilizationRate: BigInt('45000000000000000000'), // 45%
+          },
+          {
+            name: 'POOL_REAL_ESTATE',
+            targetAPY: BigInt('10000000000000000000'), // 10%
+            termDays: BigInt('1095'),
+            totalValue: BigInt('6000000000000000000000000'), // 6M
+            utilizationRate: BigInt('80000000000000000000'), // 80%
+          },
+        ],
+      };
+      
       setPoolData(mockPoolData);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch pool data');
@@ -221,82 +138,109 @@ export function useLiquidityPool() {
 }
 
 /**
- * useContractDeployment
- * Hook to check deployment status and get contract addresses
+ * useULPToken
+ * Hook for interacting with ULPToken contract
  */
-export function useContractDeployment() {
-  const [deploymentStatus, setDeploymentStatus] = useState<{
-    deployed: boolean;
-    addresses: typeof CONTRACT_ADDRESSES;
-    txHashes?: Record<string, string>;
+export function useULPToken() {
+  const [tokenData, setTokenData] = useState<{
+    totalSupply: bigint | null;
+    navPerShare: bigint | null;
+    totalPoolValue: bigint | null;
   }>({
-    deployed: false,
-    addresses: CONTRACT_ADDRESSES,
+    totalSupply: null,
+    navPerShare: null,
+    totalPoolValue: null,
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const checkDeployment = useCallback(async () => {
-    // Check if contracts are deployed (non-zero addresses)
-    const isDeployed = Object.values(CONTRACT_ADDRESSES).every(
-      (addr) => addr !== '0x0000000000000000000000000000000000000000'
-    );
+  const fetchTokenData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
 
-    setDeploymentStatus({
-      deployed: isDeployed,
-      addresses: CONTRACT_ADDRESSES,
-    });
+    try {
+      // TODO: Implement actual contract calls
+      // const [totalSupply, navPerShare, totalPoolValue] = await Promise.all([
+      //   publicClient.readContract({
+      //     address: CONTRACT_ADDRESSES.ULP_TOKEN,
+      //     abi: ULPTokenABI,
+      //     functionName: 'totalSupply',
+      //   }),
+      //   publicClient.readContract({
+      //     address: CONTRACT_ADDRESSES.ULP_TOKEN,
+      //     abi: ULPTokenABI,
+      //     functionName: 'navPerShare',
+      //   }),
+      //   publicClient.readContract({
+      //     address: CONTRACT_ADDRESSES.ULP_TOKEN,
+      //     abi: ULPTokenABI,
+      //     functionName: 'totalPoolValue',
+      //   }),
+      // ]);
 
-    return isDeployed;
+      setTokenData({
+        totalSupply: null,
+        navPerShare: null,
+        totalPoolValue: null,
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch token data');
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return {
-    ...deploymentStatus,
-    checkDeployment,
-    needsDeployment: !deploymentStatus.deployed,
+    tokenData,
+    loading,
+    error,
+    refetch: fetchTokenData,
+    contractAddress: CONTRACT_ADDRESSES.ULP_TOKEN,
   };
 }
 
 /**
- * Helper to format pool family name
+ * Helper to format pool family name from enum index
  */
 export function formatPoolFamily(index: number): string {
   const families = [
-    'Industrie',
-    'Agriculture',
-    'Trade Finance',
-    'Renewable Energy',
-    'Real Estate',
+    'POOL_INDUSTRIE',
+    'POOL_AGRICULTURE',
+    'POOL_TRADE_FINANCE',
+    'POOL_RENEWABLE_ENERGY',
+    'POOL_REAL_ESTATE',
   ];
   return families[index] || `Unknown (${index})`;
 }
 
 /**
- * Helper to format APY from basis points
+ * Helper to format APY from 18 decimals to percentage string
  */
-export function formatAPY(apyWei: string): string {
-  const apy = Number(formatEther(apyWei)) * 100;
+export function formatAPY(apyBigInt: bigint): string {
+  const apy = Number(apyBigInt) / 1e18 * 100;
   return `${apy.toFixed(2)}%`;
 }
 
 /**
- * Helper to format token amount
+ * Helper to format token amount from 18 decimals to human-readable string
  */
-export function formatTokenAmount(amountWei: string, decimals: number = 18): string {
-  const amount = Number(amountWei) / Math.pow(10, decimals);
+export function formatTokenAmount(amountBigInt: bigint, decimals: number = 18): string {
+  const amount = Number(amountBigInt) / Math.pow(10, decimals);
   return amount.toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 }
 
+/**
+ * Helper to convert human-readable amount to wei (18 decimals)
+ */
+export function parseTokenAmount(amount: number, decimals: number = 18): bigint {
+  return BigInt(Math.floor(amount * Math.pow(10, decimals)));
+}
+
 // ============================================================================
 // EXPORTS - Use these hooks in your components
 // ============================================================================
-
-/**
- * @example
- * import { useERC20, useLiquidityPool, useContractDeployment } from '../hooks/useContractInteraction';
- * const { balance } = useERC20(web3Config.CONTRACTS.ULP_TOKEN);
- * const { poolData, loading } = useLiquidityPool();
- */
 
 export default useLiquidityPool;

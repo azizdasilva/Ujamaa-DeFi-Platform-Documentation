@@ -1,26 +1,212 @@
 [
   {
     "inputs": [
-      { "name": "poolId", "type": "bytes32" },
-      { "name": "amount", "type": "uint256" }
-    ],
-    "name": "invest",
-    "outputs": [
-      { "name": "ultTokens", "type": "uint256" }
+      { "internalType": "address", "name": "_ulpToken", "type": "address" },
+      { "internalType": "address", "name": "_guaranteeToken", "type": "address" }
     ],
     "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPoolFamily",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidAssetClass",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidIndustrial",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExceedsPerIndustrialLimit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExceedsPerAssetClassLimit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientPoolFunds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "FinancingNotFound",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotPoolManager",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ZeroAddress",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "indexed": true, "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "indexed": true, "internalType": "address", "name": "industrial", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "principal", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "interestRate", "type": "uint256" }
+    ],
+    "name": "FinancingCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "bool", "name": "isFullyRepaid", "type": "bool" }
+    ],
+    "name": "RepaymentRecorded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "outstandingAmount", "type": "uint256" }
+    ],
+    "name": "FinancingDefaulted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "FundsDeployed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "indexed": false, "internalType": "uint256", "name": "yieldAmount", "type": "uint256" }
+    ],
+    "name": "YieldDistributed",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "IS_MVP_TESTNET",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      { "name": "poolId", "type": "bytes32" },
-      { "name": "shares", "type": "uint256" }
-    ],
-    "name": "redeem",
+    "inputs": [],
+    "name": "POOL_MANAGER_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "COMPLIANCE_OFFICER_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_PER_INDUSTRIAL_BP",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_PER_ASSET_CLASS_BP",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BASIS_POINTS",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nextFinancingId",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalPoolValue",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalYieldEarned",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "guaranteeToken",
+    "outputs": [{ "internalType": "contract GuaranteeToken", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "financings",
     "outputs": [
-      { "name": "amount", "type": "uint256" }
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "internalType": "string", "name": "assetClass", "type": "string" },
+      { "internalType": "address", "name": "industrial", "type": "address" },
+      { "internalType": "uint256", "name": "principal", "type": "uint256" },
+      { "internalType": "uint256", "name": "interestRate", "type": "uint256" },
+      { "internalType": "uint256", "name": "startDate", "type": "uint256" },
+      { "internalType": "uint256", "name": "maturityDate", "type": "uint256" },
+      { "internalType": "uint256", "name": "amountRepaid", "type": "uint256" },
+      { "internalType": "bool", "name": "isRepaid", "type": "bool" },
+      { "internalType": "bool", "name": "isDefaulted", "type": "bool" }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "financingToGuaranteeToken",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -29,12 +215,14 @@
     "outputs": [
       {
         "components": [
-          { "name": "name", "type": "string" },
-          { "name": "targetAPY", "type": "uint256" },
-          { "name": "termDays", "type": "uint256" },
-          { "name": "totalValue", "type": "uint256" },
-          { "name": "utilizationRate", "type": "uint256" }
+          { "internalType": "string", "name": "name", "type": "string" },
+          { "internalType": "uint256", "name": "targetAPY", "type": "uint256" },
+          { "internalType": "uint256", "name": "termDays", "type": "uint256" },
+          { "internalType": "uint256", "name": "totalValue", "type": "uint256" },
+          { "internalType": "uint256", "name": "utilizationRate", "type": "uint256" }
         ],
+        "internalType": "struct PoolFamilyInfo[]",
+        "name": "",
         "type": "tuple[]"
       }
     ],
@@ -42,19 +230,19 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "name": "poolFamily", "type": "uint8" }
-    ],
+    "inputs": [{ "internalType": "uint8", "name": "poolFamily", "type": "uint8" }],
     "name": "getPoolInfo",
     "outputs": [
       {
         "components": [
-          { "name": "totalValue", "type": "uint256" },
-          { "name": "utilizationRate", "type": "uint256" },
-          { "name": "currentAPY", "type": "uint256" },
-          { "name": "totalDeposits", "type": "uint256" },
-          { "name": "totalRedemptions", "type": "uint256" }
+          { "internalType": "uint256", "name": "totalValue", "type": "uint256" },
+          { "internalType": "uint256", "name": "utilizationRate", "type": "uint256" },
+          { "internalType": "uint256", "name": "currentAPY", "type": "uint256" },
+          { "internalType": "uint256", "name": "totalDeposits", "type": "uint256" },
+          { "internalType": "uint256", "name": "totalRedemptions", "type": "uint256" }
         ],
+        "internalType": "struct PoolInfo",
+        "name": "",
         "type": "tuple"
       }
     ],
@@ -62,34 +250,93 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "totalValue",
-    "outputs": [
-      { "name": "", "type": "uint256" }
+    "inputs": [
+      { "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "internalType": "string", "name": "assetClass", "type": "string" },
+      { "internalType": "address", "name": "industrial", "type": "address" },
+      { "internalType": "uint256", "name": "principal", "type": "uint256" },
+      { "internalType": "uint256", "name": "interestRate", "type": "uint256" },
+      { "internalType": "uint256", "name": "durationDays", "type": "uint256" }
     ],
+    "name": "createFinancing",
+    "outputs": [{ "internalType": "uint256", "name": "financingId", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "recordRepayment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "financingId", "type": "uint256" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "deployFunds",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "internalType": "uint256", "name": "yieldAmount", "type": "uint256" }
+    ],
+    "name": "distributeYield",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "enum PoolFamily", "name": "poolFamily", "type": "uint8" },
+      { "internalType": "string", "name": "assetClass", "type": "string" },
+      { "internalType": "uint256", "name": "maxAllocation", "type": "uint256" }
+    ],
+    "name": "setAssetClassLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }],
+    "name": "supportsInterface",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "name": "investor", "type": "address" },
-      { "indexed": false, "name": "poolId", "type": "bytes32" },
-      { "indexed": false, "name": "amount", "type": "uint256" },
-      { "indexed": false, "name": "ultTokens", "type": "uint256" }
-    ],
-    "name": "Investment",
-    "type": "event"
+    "inputs": [{ "internalType": "bytes32", "name": "role", "type": "bytes32" }],
+    "name": "hasRole",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "name": "investor", "type": "address" },
-      { "indexed": false, "name": "poolId", "type": "bytes32" },
-      { "indexed": false, "name": "shares", "type": "uint256" },
-      { "indexed": false, "name": "amount", "type": "uint256" }
-    ],
-    "name": "Redemption",
-    "type": "event"
+    "inputs": [{ "internalType": "bytes32", "name": "role", "type": "bytes32" }, { "internalType": "address", "name": "account", "type": "address" }],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes32", "name": "role", "type": "bytes32" }, { "internalType": "address", "name": "account", "type": "address" }],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes32", "name": "role", "type": "bytes32" }, { "internalType": "address", "name": "account", "type": "address" }],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 ]

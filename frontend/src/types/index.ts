@@ -10,8 +10,8 @@
 // POOL TYPES
 // =============================================================================
 
-export type PoolFamily = 
-  | 'POOL_INDUSTRY'
+export type PoolFamily =
+  | 'POOL_INDUSTRIE'
   | 'POOL_AGRICULTURE'
   | 'POOL_TRADE_FINANCE'
   | 'POOL_RENEWABLE_ENERGY'
@@ -26,7 +26,7 @@ export interface Pool {
   targetYieldMin: number;
   targetYieldMax: number;
   lockupDays: number;
-  totalValue: number;
+  totalValue: string;  // String to preserve uint256 precision
   apy: number;
   assetClasses: string[];
   riskLevel: RiskLevel;
@@ -35,22 +35,23 @@ export interface Pool {
 
 export interface PoolStats {
   poolId: string;
-  totalValue: number;
-  deployedAmount: number;
-  availableAmount: number;
-  totalYield: number;
+  totalValue: string;  // String for uint256
+  deployedAmount: string;  // String for uint256
+  availableAmount: string;  // String for uint256
+  totalYield: string;  // String for uint256
   financingCount: number;
-  navPerShare: number;
+  navPerShare: string;  // String for uint256
   apy: number;
 }
 
 export interface PoolPosition {
   poolId: string;
   poolName: string;
-  shares: number;
-  value: number;
+  shares: string;  // String for uint256
+  value: string;  // String for uint256
   apy: number;
-  yieldEarned: number;
+  yieldEarned: string;  // String for uint256
+  ulpTokens?: string;  // String for uint256 - uLP token count for tracking
 }
 
 // =============================================================================
@@ -61,9 +62,9 @@ export interface Investment {
   id: string;
   poolId: string;
   investorId: string;
-  amount: number;
-  shares: number;
-  nav: number;
+  amount: string;  // String for uint256
+  shares: string;  // String for uint256
+  nav: string;  // String for uint256
   timestamp: string;
   status: 'pending' | 'completed' | 'failed';
 }
@@ -72,9 +73,9 @@ export interface Redemption {
   id: string;
   poolId: string;
   investorId: string;
-  shares: number;
-  amount: number;
-  nav: number;
+  shares: string;  // String for uint256
+  amount: string;  // String for uint256
+  nav: string;  // String for uint256
   timestamp: string;
   status: 'pending' | 'completed' | 'failed';
 }
@@ -84,11 +85,11 @@ export interface Financing {
   poolFamily: PoolFamily;
   assetClass: string;
   industrial: string;
-  principal: number;
-  interestRate: number;
+  principal: string;  // String for uint256
+  interestRate: number;  // basis points
   startDate: string;
   maturityDate: string;
-  amountRepaid: number;
+  amountRepaid: string;  // String for uint256
   isRepaid: boolean;
   isDefaulted: boolean;
 }

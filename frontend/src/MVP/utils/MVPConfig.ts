@@ -70,9 +70,9 @@ export const MVP_CONFIG = {
    * 5 Pool Families as per SRS v2.0 Section 5.12
    */
   POOLS: {
-    POOL_INDUSTRY: {
-      id: 'POOL_INDUSTRY',
-      name: 'Pool Industry',
+    POOL_INDUSTRIE: {
+      id: 'POOL_INDUSTRIE',
+      name: 'Pool Industrie',
       assetClasses: ['Manufacturing', 'GDIZ (Benin) Partners', 'Production Facilities'],
       targetYield: { min: 10, max: 12 }, // % APY
       lockupDays: 365,

@@ -9,14 +9,20 @@ FastAPI endpoints for liquidity pool management.
 @notice MVP TESTNET: This is a testnet deployment. No real funds.
 """
 
-from fastapi import APIRouter, HTTPException, Depends, Query, Header
+from fastapi import APIRouter, HTTPException, Depends, Query
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict, List, Optional
 from datetime import datetime
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, validator
+from sqlalchemy.orm import Session
+from sqlalchemy import func
 import uuid
 
-from services.MVP.mock_bank import get_bank_service, MockBankService
+from config.database import get_database_url
+from config.models import (
+    Pool, Investment, PoolPosition, Financing, 
+    FinancingStatusEnum, AssetClassEnum
+)
 from services.MVP.mock_gdiz import get_gdiz_service, MockGDIZService
 from services.MVP.yield_calculator import YieldCalculator, PoolYield
 from config.MVP_config import mvp_config
@@ -24,6 +30,18 @@ from config.MVP_config import mvp_config
 # Router
 router = APIRouter(prefix="/api/v2/pools", tags=["Pools"])
 security = HTTPBearer(auto_error=False)
+
+# Database session dependency
+def get_db():
+    """Get database session."""
+    from sqlalchemy.orm import sessionmaker
+    engine = create_engine(get_database_url())
+    SessionLocal = sessionmaker(bind=engine)
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 # =============================================================================
@@ -39,21 +57,24 @@ class PoolInfo(BaseModel):
     target_yield_max: float
     lockup_days: int
     is_active: bool
-    total_value: int
+    total_value: float
     total_value_formatted: str
-    nav_per_share: int
+    nav_per_share: float
     apy: float
+
+    class Config:
+        from_attributes = True
 
 
 class PoolStats(BaseModel):
     """Pool statistics"""
     pool_id: str
-    total_value: int
-    deployed_amount: int
-    available_amount: int
-    total_yield: int
+    total_value: float
+    deployed_amount: float
+    available_amount: float
+    total_yield: float
     financing_count: int
-    nav_per_share: int
+    nav_per_share: float
     apy: float
 
 
@@ -63,11 +84,11 @@ class FinancingInfo(BaseModel):
     pool_family: str
     asset_class: str
     industrial: str
-    principal: int
-    interest_rate: int
+    principal: float
+    interest_rate: float
     start_date: str
     maturity_date: str
-    amount_repaid: int
+    amount_repaid: float
     is_repaid: bool
     is_defaulted: bool
 
@@ -75,14 +96,14 @@ class FinancingInfo(BaseModel):
 class InvestmentRequest(BaseModel):
     """Investment request"""
     pool_id: str
-    amount: int = Field(..., gt=0, description="Investment amount (18 decimals)")
+    amount: float = Field(..., gt=0, description="Investment amount")
     investor_id: str
 
 
 class RedemptionRequest(BaseModel):
     """Redemption request"""
     pool_id: str
-    shares: int = Field(..., gt=0, description="Shares to redeem (18 decimals)")
+    shares: float = Field(..., gt=0, description="Shares to redeem")
     investor_id: str
 
 
@@ -91,8 +112,8 @@ class FinancingRequest(BaseModel):
     pool_family: str
     asset_class: str
     industrial: str
-    principal: int
-    interest_rate: int
+    principal: float
+    interest_rate: float
     duration_days: int
 
 
@@ -103,13 +124,13 @@ class YieldStatement(BaseModel):
     pool_id: str
     period_start: str
     period_end: str
-    principal: int
-    yield_earned: int
-    management_fee: int
-    performance_fee: int
-    net_yield: int
-    nav_start: int
-    nav_end: int
+    principal: float
+    yield_earned: float
+    management_fee: float
+    performance_fee: float
+    net_yield: float
+    nav_start: float
+    nav_end: float
     generated_at: str
 
 
@@ -117,135 +138,48 @@ class PortfolioPosition(BaseModel):
     """Investor portfolio position"""
     pool_id: str
     pool_name: str
-    shares: int
+    shares: float
     shares_formatted: str
-    value: int
+    value: float
     value_formatted: str
-    nav_per_share: int
-    yield_earned: int
+    nav_per_share: float
+    yield_earned: float
     apy: float
 
 
 class PortfolioResponse(BaseModel):
     """Investor portfolio response"""
     investor_id: str
-    total_value: int
+    total_value: float
     total_value_formatted: str
     positions: List[PortfolioPosition]
-    total_yield_earned: int
-
-
-# =============================================================================
-# MOCK DATA
-# =============================================================================
-
-# Mock pools database
-mock_pools: Dict[str, Dict] = {
-    "POOL_INDUSTRIE": {
-        "id": "POOL_INDUSTRIE",
-        "name": "Pool Industrie",
-        "family": "INDUSTRIE",
-        "target_yield_min": 10.0,
-        "target_yield_max": 12.0,
-        "lockup_days": 365,
-        "is_active": True,
-        "total_value": 50_000_000 * 10**18,  # 50M UJEUR
-        "total_shares": 50_000_000 * 10**18,
-        "nav_per_share": 10**18,
-        "apy": 0.11,
-        "financings": []
-    },
-    "POOL_AGRICULTURE": {
-        "id": "POOL_AGRICULTURE",
-        "name": "Pool Agriculture",
-        "family": "AGRICULTURE",
-        "target_yield_min": 12.0,
-        "target_yield_max": 15.0,
-        "lockup_days": 180,
-        "is_active": True,
-        "total_value": 30_000_000 * 10**18,
-        "total_shares": 30_000_000 * 10**18,
-        "nav_per_share": 10**18,
-        "apy": 0.135,
-        "financings": []
-    },
-    "POOL_TRADE_FINANCE": {
-        "id": "POOL_TRADE_FINANCE",
-        "name": "Pool Trade Finance",
-        "family": "TRADE_FINANCE",
-        "target_yield_min": 8.0,
-        "target_yield_max": 10.0,
-        "lockup_days": 90,
-        "is_active": True,
-        "total_value": 25_000_000 * 10**18,
-        "total_shares": 25_000_000 * 10**18,
-        "nav_per_share": 10**18,
-        "apy": 0.09,
-        "financings": []
-    },
-    "POOL_RENEWABLE_ENERGY": {
-        "id": "POOL_RENEWABLE_ENERGY",
-        "name": "Pool Renewable Energy",
-        "family": "RENEWABLE_ENERGY",
-        "target_yield_min": 9.0,
-        "target_yield_max": 11.0,
-        "lockup_days": 730,
-        "is_active": True,
-        "total_value": 40_000_000 * 10**18,
-        "total_shares": 40_000_000 * 10**18,
-        "nav_per_share": 10**18,
-        "apy": 0.10,
-        "financings": []
-    },
-    "POOL_REAL_ESTATE": {
-        "id": "POOL_REAL_ESTATE",
-        "name": "Pool Real Estate",
-        "family": "REAL_ESTATE",
-        "target_yield_min": 8.0,
-        "target_yield_max": 12.0,
-        "lockup_days": 1095,
-        "is_active": True,
-        "total_value": 60_000_000 * 10**18,
-        "total_shares": 60_000_000 * 10**18,
-        "nav_per_share": 10**18,
-        "apy": 0.10,
-        "financings": []
-    }
-}
-
-# Mock investor positions
-mock_positions: Dict[str, Dict[str, int]] = {}
-
-# Mock financings
-mock_financings: List[Dict] = []
-
-# Yield calculator instance
-yield_calculator = YieldCalculator()
+    total_yield_earned: float
 
 
 # =============================================================================
 # HELPER FUNCTIONS
 # =============================================================================
 
-async def verify_auth(
-    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)
-) -> Optional[str]:
-    """
-    Verify authentication token.
-    
-    MVP: Simplified auth for testnet
-    Production: Full JWT validation
-    """
-    if credentials is None:
-        return None
-    
-    # MVP: Accept any token for testing
-    return credentials.credentials
+def format_token_amount(amount: float, decimals: int = 2) -> str:
+    """Format token amount for display"""
+    return f"{amount:,.2f}"
 
 
-def format_token_amount(amount: int, decimals: int = 18) -> str:
-    """Format token amount"""
-    return f"{amount / 10**decimals:,.2f} UJEUR"
+def db_pool_to_pool_info(db_pool: Pool) -> PoolInfo:
+    """Convert database Pool model to PoolInfo response"""
+    return PoolInfo(
+        id=db_pool.id,
+        name=db_pool.name,
+        family=db_pool.family,
+        target_yield_min=db_pool.target_yield_min,
+        target_yield_max=db_pool.target_yield_max,
+        lockup_days=db_pool.lockup_days,
+        is_active=db_pool.is_active,
+        total_value=float(db_pool.total_value) if db_pool.total_value else 0,
+        total_value_formatted=format_token_amount(float(db_pool.total_value) if db_pool.total_value else 0),
+        nav_per_share=float(db_pool.nav_per_share) if hasattr(db_pool, 'nav_per_share') and db_pool.nav_per_share else 1.0,
+        apy=db_pool.apy
+    )
 
 
 # =============================================================================
@@ -255,100 +189,79 @@ def format_token_amount(amount: int, decimals: int = 18) -> str:
 @router.get("")
 async def list_pools(
     family: Optional[str] = Query(None, description="Filter by pool family"),
-    active_only: bool = Query(True, description="Only show active pools")
+    active_only: bool = Query(True, description="Only show active pools"),
+    db: Session = Depends(get_db)
 ) -> List[PoolInfo]:
     """
     List all liquidity pools.
-    
+
     - **family**: Filter by pool family (INDUSTRIE, AGRICULTURE, etc.)
     - **active_only**: Only show active pools
-    
+
     Returns list of pools with current stats.
     """
-    pools = []
+    query = db.query(Pool)
     
-    for pool_id, pool_data in mock_pools.items():
-        if active_only and not pool_data["is_active"]:
-            continue
-        
-        if family and pool_data["family"] != family:
-            continue
-        
-        pools.append(PoolInfo(
-            id=pool_data["id"],
-            name=pool_data["name"],
-            family=pool_data["family"],
-            target_yield_min=pool_data["target_yield_min"],
-            target_yield_max=pool_data["target_yield_max"],
-            lockup_days=pool_data["lockup_days"],
-            is_active=pool_data["is_active"],
-            total_value=pool_data["total_value"],
-            total_value_formatted=format_token_amount(pool_data["total_value"]),
-            nav_per_share=pool_data["nav_per_share"],
-            apy=pool_data["apy"]
-        ))
+    if active_only:
+        query = query.filter(Pool.is_active == True)
     
-    return pools
+    if family:
+        query = query.filter(Pool.family == family)
+    
+    pools = query.all()
+    return [db_pool_to_pool_info(pool) for pool in pools]
 
 
 @router.get("/{pool_id}")
-async def get_pool(pool_id: str) -> PoolInfo:
+async def get_pool(pool_id: str, db: Session = Depends(get_db)) -> PoolInfo:
     """
     Get pool details by ID.
-    
+
     - **pool_id**: Pool identifier (e.g., POOL_INDUSTRIE)
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    pool_data = mock_pools[pool_id]
-    
-    return PoolInfo(
-        id=pool_data["id"],
-        name=pool_data["name"],
-        family=pool_data["family"],
-        target_yield_min=pool_data["target_yield_min"],
-        target_yield_max=pool_data["target_yield_max"],
-        lockup_days=pool_data["lockup_days"],
-        is_active=pool_data["is_active"],
-        total_value=pool_data["total_value"],
-        total_value_formatted=format_token_amount(pool_data["total_value"]),
-        nav_per_share=pool_data["nav_per_share"],
-        apy=pool_data["apy"]
-    )
+    return db_pool_to_pool_info(pool)
 
 
 @router.get("/{pool_id}/stats")
-async def get_pool_stats(pool_id: str) -> PoolStats:
+async def get_pool_stats(pool_id: str, db: Session = Depends(get_db)) -> PoolStats:
     """
     Get pool statistics.
-    
+
     - **pool_id**: Pool identifier
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    pool_data = mock_pools[pool_id]
-    
     # Calculate deployed amount from financings
-    deployed = sum(
-        f["principal"] - f["amount_repaid"]
-        for f in mock_financings
-        if f["pool_family"] == pool_data["family"] and not f["is_repaid"]
-    )
+    deployed = db.query(
+        func.sum(Financing.principal - Financing.amount_repaid)
+    ).filter(
+        Financing.pool_family == pool.family,
+        Financing.is_repaid == False
+    ).scalar() or 0
+    
+    # Count active financings
+    financing_count = db.query(func.count(Financing.id)).filter(
+        Financing.pool_family == pool.family,
+        Financing.is_repaid == False
+    ).scalar() or 0
+    
+    total_value = float(pool.total_value) if pool.total_value else 0
     
     return PoolStats(
         pool_id=pool_id,
-        total_value=pool_data["total_value"],
-        deployed_amount=deployed,
-        available_amount=pool_data["total_value"] - deployed,
-        total_yield=0,  # Would be calculated from actual yield
-        financing_count=len([
-            f for f in mock_financings
-            if f["pool_family"] == pool_data["family"] and not f["is_repaid"]
-        ]),
-        nav_per_share=pool_data["nav_per_share"],
-        apy=pool_data["apy"]
+        total_value=total_value,
+        deployed_amount=float(deployed),
+        available_amount=total_value - float(deployed),
+        total_yield=0,  # Would be calculated from actual yield history
+        financing_count=financing_count,
+        nav_per_share=1.0,  # Default NAV
+        apy=pool.apy
     )
 
 
@@ -360,62 +273,80 @@ async def get_pool_stats(pool_id: str) -> PoolStats:
 async def invest_in_pool(
     pool_id: str,
     request: InvestmentRequest,
-    auth: Optional[str] = Depends(verify_auth)
+    db: Session = Depends(get_db),
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security)
 ) -> Dict:
     """
     Invest in a liquidity pool.
-    
+
     - **pool_id**: Pool identifier
-    - **amount**: Investment amount in UJEUR (18 decimals)
+    - **amount**: Investment amount
     - **investor_id**: Investor identifier
-    
-    Returns UPT shares minted.
+
+    Returns shares minted.
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    pool_data = mock_pools[pool_id]
-    
-    if not pool_data["is_active"]:
+    if not pool.is_active:
         raise HTTPException(status_code=400, detail="Pool is not active")
     
     # Check minimum investment
-    if request.amount < mvp_config.MIN_DEPOSIT:
+    min_deposit = float(mvp_config.MIN_DEPOSIT) / (10 ** 18)
+    if request.amount < min_deposit:
         raise HTTPException(
             status_code=400,
-            detail=f"Minimum deposit is {format_token_amount(mvp_config.MIN_DEPOSIT)}"
+            detail=f"Minimum deposit is {format_token_amount(min_deposit)}"
         )
     
     # Check maximum investment
-    if request.amount > mvp_config.MAX_DEPOSIT:
+    max_deposit = float(mvp_config.MAX_DEPOSIT) / (10 ** 18)
+    if request.amount > max_deposit:
         raise HTTPException(
             status_code=400,
-            detail=f"Maximum deposit is {format_token_amount(mvp_config.MAX_DEPOSIT)}"
+            detail=f"Maximum deposit is {format_token_amount(max_deposit)}"
         )
     
     # Calculate shares to mint (1:1 at NAV)
     shares_to_mint = request.amount  # Simplified: 1:1 at NAV 1.00
     
-    # Update pool
-    pool_data["total_value"] += request.amount
-    pool_data["total_shares"] += shares_to_mint
+    # Create or update investment record
+    investment = Investment(
+        pool_id=pool_id,
+        investor_id=int(request.investor_id) if request.investor_id.isdigit() else 1,
+        amount=request.amount,
+        shares=shares_to_mint,
+        nav=1.0,
+        status='completed'
+    )
+    db.add(investment)
     
-    # Update investor position
-    if request.investor_id not in mock_positions:
-        mock_positions[request.investor_id] = {}
+    # Update pool total value
+    if pool.total_value:
+        pool.total_value += request.amount
+    else:
+        pool.total_value = request.amount
     
-    if pool_id not in mock_positions[request.investor_id]:
-        mock_positions[request.investor_id][pool_id] = 0
+    # Get or create pool position
+    investor_id_int = int(request.investor_id) if request.investor_id.isdigit() else 1
+    position = db.query(PoolPosition).filter(
+        PoolPosition.investor_id == investor_id_int,
+        PoolPosition.pool_id == pool_id
+    ).first()
     
-    mock_positions[request.investor_id][pool_id] += shares_to_mint
+    if not position:
+        position = PoolPosition(
+            investor_id=investor_id_int,
+            pool_id=pool_id,
+            shares=shares_to_mint,
+            average_nav=1.0
+        )
+        db.add(position)
+    else:
+        position.shares += shares_to_mint
     
-    # Create mock bank transaction
-    if mvp_config.MVP_TESTNET and mvp_config.MOCK_BANK:
-        bank_service = get_bank_service()
-        try:
-            account_id = bank_service.create_escrow_account(request.investor_id)
-        except Exception:
-            pass  # Account might already exist
+    db.commit()
     
     return {
         "success": True,
@@ -425,7 +356,7 @@ async def invest_in_pool(
         "amount_formatted": format_token_amount(request.amount),
         "shares_minted": shares_to_mint,
         "shares_formatted": format_token_amount(shares_to_mint),
-        "nav_per_share": pool_data["nav_per_share"],
+        "nav_per_share": 1.0,
         "transaction_id": f"MOCK-INVEST-{uuid.uuid4().hex[:12]}",
         "timestamp": datetime.utcnow().isoformat(),
         "is_testnet": mvp_config.IS_MVP
@@ -436,45 +367,49 @@ async def invest_in_pool(
 async def redeem_from_pool(
     pool_id: str,
     request: RedemptionRequest,
-    auth: Optional[str] = Depends(verify_auth)
+    db: Session = Depends(get_db),
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security)
 ) -> Dict:
     """
-    Redeem UPT shares for UJEUR.
-    
+    Redeem shares for UJEUR.
+
     - **pool_id**: Pool identifier
-    - **shares**: Shares to redeem (18 decimals)
+    - **shares**: Shares to redeem
     - **investor_id**: Investor identifier
-    
+
     Returns UJEUR amount received.
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    pool_data = mock_pools[pool_id]
-    
     # Check investor has sufficient shares
-    if request.investor_id not in mock_positions:
-        raise HTTPException(status_code=400, detail="No positions found")
+    investor_id_int = int(request.investor_id) if request.investor_id.isdigit() else 1
+    position = db.query(PoolPosition).filter(
+        PoolPosition.investor_id == investor_id_int,
+        PoolPosition.pool_id == pool_id
+    ).first()
     
-    if pool_id not in mock_positions[request.investor_id]:
+    if not position:
         raise HTTPException(status_code=400, detail="No position in this pool")
     
-    current_shares = mock_positions[request.investor_id][pool_id]
-    if current_shares < request.shares:
+    if position.shares < request.shares:
         raise HTTPException(
             status_code=400,
-            detail=f"Insufficient shares: {current_shares} < {request.shares}"
+            detail=f"Insufficient shares: {position.shares} < {request.shares}"
         )
     
     # Calculate UJEUR to return (at NAV)
     ujeur_amount = request.shares  # Simplified: 1:1 at NAV 1.00
     
     # Update pool
-    pool_data["total_value"] -= ujeur_amount
-    pool_data["total_shares"] -= request.shares
+    if pool.total_value:
+        pool.total_value -= ujeur_amount
     
     # Update investor position
-    mock_positions[request.investor_id][pool_id] -= request.shares
+    position.shares -= request.shares
+    
+    db.commit()
     
     return {
         "success": True,
@@ -484,7 +419,7 @@ async def redeem_from_pool(
         "shares_formatted": format_token_amount(request.shares),
         "ujeur_received": ujeur_amount,
         "ujeur_formatted": format_token_amount(ujeur_amount),
-        "nav_per_share": pool_data["nav_per_share"],
+        "nav_per_share": 1.0,
         "transaction_id": f"MOCK-REDEEM-{uuid.uuid4().hex[:12]}",
         "timestamp": datetime.utcnow().isoformat(),
         "is_testnet": mvp_config.IS_MVP
@@ -498,88 +433,103 @@ async def redeem_from_pool(
 @router.get("/{pool_id}/financings")
 async def list_pool_financings(
     pool_id: str,
-    status: Optional[str] = Query(None, description="Filter by status")
+    status: Optional[str] = Query(None, description="Filter by status"),
+    db: Session = Depends(get_db)
 ) -> List[FinancingInfo]:
     """
     List financings for a pool.
-    
+
     - **pool_id**: Pool identifier
     - **status**: Filter by status (active, repaid, defaulted)
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    pool_data = mock_pools[pool_id]
+    query = db.query(Financing).filter(Financing.pool_family == pool.family)
     
-    financings = []
-    for f in mock_financings:
-        if f["pool_family"] != pool_data["family"]:
-            continue
-        
-        if status == "active" and f["is_repaid"]:
-            continue
-        if status == "repaid" and not f["is_repaid"]:
-            continue
-        
-        financings.append(FinancingInfo(
-            id=f["id"],
-            pool_family=f["pool_family"],
-            asset_class=f["asset_class"],
-            industrial=f["industrial"],
-            principal=f["principal"],
-            interest_rate=f["interest_rate"],
-            start_date=f["start_date"],
-            maturity_date=f["maturity_date"],
-            amount_repaid=f["amount_repaid"],
-            is_repaid=f["is_repaid"],
-            is_defaulted=f["is_defaulted"]
-        ))
+    if status == "active":
+        query = query.filter(Financing.is_repaid == False)
+    elif status == "repaid":
+        query = query.filter(Financing.is_repaid == True)
     
-    return financings
+    financings = query.all()
+    
+    return [
+        FinancingInfo(
+            id=f.id,
+            pool_family=f.pool_family,
+            asset_class=f.asset_class,
+            industrial=f.industrial,
+            principal=float(f.principal) if f.principal else 0,
+            interest_rate=float(f.interest_rate) if f.interest_rate else 0,
+            start_date=f.start_date.isoformat() if f.start_date else "",
+            maturity_date=f.maturity_date.isoformat() if f.maturity_date else "",
+            amount_repaid=float(f.amount_repaid) if f.amount_repaid else 0,
+            is_repaid=f.is_repaid,
+            is_defaulted=f.is_defaulted
+        )
+        for f in financings
+    ]
 
 
 @router.post("/{pool_id}/financings")
 async def create_financing(
     pool_id: str,
     request: FinancingRequest,
-    auth: Optional[str] = Depends(verify_auth)
+    db: Session = Depends(get_db),
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security)
 ) -> Dict:
     """
     Create a new financing.
-    
+
     - **pool_family**: Pool family
     - **asset_class**: Asset class
     - **industrial**: Industrial address/ID
-    - **principal**: Principal amount (18 decimals)
-    - **interest_rate**: Interest rate (basis points)
+    - **principal**: Principal amount
+    - **interest_rate**: Interest rate
     - **duration_days**: Duration in days
     """
-    if pool_id not in mock_pools:
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+    if not pool:
         raise HTTPException(status_code=404, detail=f"Pool not found: {pool_id}")
     
-    financing_id = len(mock_financings) + 1
     now = datetime.utcnow()
+    from datetime import timedelta
+    maturity_date = now + timedelta(days=request.duration_days)
     
-    financing = {
-        "id": financing_id,
-        "pool_family": request.pool_family,
-        "asset_class": request.asset_class,
-        "industrial": request.industrial,
-        "principal": request.principal,
-        "interest_rate": request.interest_rate,
-        "start_date": now.isoformat(),
-        "maturity_date": (now.replace(day=now.day + request.duration_days)).isoformat(),
-        "amount_repaid": 0,
-        "is_repaid": False,
-        "is_defaulted": False
-    }
-    
-    mock_financings.append(financing)
+    financing = Financing(
+        pool_family=request.pool_family,
+        pool_id=pool_id,
+        asset_class=request.asset_class,
+        industrial=request.industrial,
+        principal=request.principal,
+        interest_rate=request.interest_rate,
+        duration_days=request.duration_days,
+        start_date=now,
+        maturity_date=maturity_date,
+        amount_repaid=0,
+        is_repaid=False,
+        is_defaulted=False,
+        status=FinancingStatusEnum.PENDING
+    )
+    db.add(financing)
+    db.commit()
+    db.refresh(financing)
     
     return {
         "success": True,
-        "financing_id": financing_id,
-        "financing": financing,
+        "financing_id": financing.id,
+        "financing": {
+            "id": financing.id,
+            "pool_family": financing.pool_family,
+            "asset_class": financing.asset_class,
+            "industrial": financing.industrial,
+            "principal": float(financing.principal) if financing.principal else 0,
+            "interest_rate": float(financing.interest_rate) if financing.interest_rate else 0,
+            "start_date": financing.start_date.isoformat() if financing.start_date else "",
+            "maturity_date": financing.maturity_date.isoformat() if financing.maturity_date else ""
+        },
         "timestamp": now.isoformat()
     }
 
@@ -588,45 +538,42 @@ async def create_financing(
 async def record_repayment(
     pool_id: str,
     financing_id: int,
-    amount: int,
-    auth: Optional[str] = Depends(verify_auth)
+    amount: float,
+    db: Session = Depends(get_db),
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security)
 ) -> Dict:
     """
     Record a repayment from industrial.
-    
+
     - **financing_id**: Financing ID
-    - **amount**: Repayment amount (18 decimals)
+    - **amount**: Repayment amount
     """
-    # Find financing
-    financing = None
-    for f in mock_financings:
-        if f["id"] == financing_id:
-            financing = f
-            break
-    
+    financing = db.query(Financing).filter(Financing.id == financing_id).first()
     if not financing:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Financing not found: {financing_id}"
-        )
+        raise HTTPException(status_code=404, detail=f"Financing not found: {financing_id}")
     
     # Update repayment
-    financing["amount_repaid"] += amount
+    if financing.amount_repaid:
+        financing.amount_repaid += amount
+    else:
+        financing.amount_repaid = amount
     
     # Check if fully repaid
-    total_owed = financing["principal"] + (
-        financing["principal"] * financing["interest_rate"] / 10000
+    total_owed = float(financing.principal) + (
+        float(financing.principal) * float(financing.interest_rate) / 10000
     )
     
-    if financing["amount_repaid"] >= total_owed:
-        financing["is_repaid"] = True
+    if financing.amount_repaid >= total_owed:
+        financing.is_repaid = True
+    
+    db.commit()
     
     return {
         "success": True,
         "financing_id": financing_id,
         "amount_repaid": amount,
-        "total_repaid": financing["amount_repaid"],
-        "is_fully_repaid": financing["is_repaid"],
+        "total_repaid": float(financing.amount_repaid) if financing.amount_repaid else 0,
+        "is_fully_repaid": financing.is_repaid,
         "timestamp": datetime.utcnow().isoformat()
     }
 
@@ -637,45 +584,52 @@ async def record_repayment(
 
 @router.get("/portfolio/{investor_id}")
 async def get_investor_portfolio(
-    investor_id: str
+    investor_id: str,
+    db: Session = Depends(get_db)
 ) -> PortfolioResponse:
     """
     Get investor portfolio.
-    
+
     - **investor_id**: Investor identifier
     """
-    positions = []
+    investor_id_int = int(investor_id) if investor_id.isdigit() else 1
+    
+    # Query positions with joined pool data (avoids N+1)
+    positions = db.query(PoolPosition).options(
+        joinedload(PoolPosition.pool)
+    ).filter(
+        PoolPosition.investor_id == investor_id_int
+    ).all()
+    
+    portfolio_positions = []
     total_value = 0
     total_yield = 0
     
-    if investor_id in mock_positions:
-        for pool_id, shares in mock_positions[investor_id].items():
-            if pool_id not in mock_pools:
-                continue
-            
-            pool_data = mock_pools[pool_id]
-            
-            # Calculate value
-            value = shares  # Simplified: 1:1 at NAV 1.00
-            total_value += value
-            
-            positions.append(PortfolioPosition(
-                pool_id=pool_id,
-                pool_name=pool_data["name"],
-                shares=shares,
-                shares_formatted=format_token_amount(shares),
-                value=value,
-                value_formatted=format_token_amount(value),
-                nav_per_share=pool_data["nav_per_share"],
-                yield_earned=0,  # Would be calculated from yield history
-                apy=pool_data["apy"]
-            ))
+    for position in positions:
+        if not position.pool:
+            continue
+        
+        # Calculate value (simplified: shares * NAV)
+        value = float(position.shares) if position.shares else 0
+        total_value += value
+        
+        portfolio_positions.append(PortfolioPosition(
+            pool_id=position.pool_id,
+            pool_name=position.pool.name if position.pool else "Unknown",
+            shares=float(position.shares) if position.shares else 0,
+            shares_formatted=format_token_amount(float(position.shares) if position.shares else 0),
+            value=value,
+            value_formatted=format_token_amount(value),
+            nav_per_share=float(position.average_nav) if position.average_nav else 1.0,
+            yield_earned=float(position.total_yield_earned) if position.total_yield_earned else 0,
+            apy=position.pool.apy if position.pool else 0
+        ))
     
     return PortfolioResponse(
         investor_id=investor_id,
         total_value=total_value,
         total_value_formatted=format_token_amount(total_value),
-        positions=positions,
+        positions=portfolio_positions,
         total_yield_earned=total_yield
     )
 
@@ -683,74 +637,39 @@ async def get_investor_portfolio(
 @router.get("/yield/statements/{investor_id}")
 async def get_yield_statements(
     investor_id: str,
-    pool_id: Optional[str] = Query(None)
+    pool_id: Optional[str] = Query(None),
+    db: Session = Depends(get_db)
 ) -> List[YieldStatement]:
     """
     Get yield statements for investor.
-    
+
     - **investor_id**: Investor identifier
     - **pool_id**: Optional pool filter
     """
-    statements = []
-    
-    if investor_id not in mock_positions:
-        return statements
-    
-    for pid, shares in mock_positions[investor_id].items():
-        if pool_id and pid != pool_id:
-            continue
-        
-        if pid not in mock_pools:
-            continue
-        
-        pool_data = mock_pools[pid]
-        
-        # Generate yield statement
-        statement = yield_calculator.generate_yield_statement(
-            investor_id=investor_id,
-            pool_id=pid,
-            shares=shares,
-            nav_start=pool_data["nav_per_share"],
-            nav_end=int(pool_data["nav_per_share"] * 1.01),  # 1% growth
-            days=30
-        )
-        
-        statements.append(YieldStatement(
-            statement_id=statement.statement_id,
-            investor_id=statement.investor_id,
-            pool_id=statement.pool_id,
-            period_start=statement.period_start,
-            period_end=statement.period_end,
-            principal=statement.principal,
-            yield_earned=statement.yield_earned,
-            management_fee=statement.management_fee,
-            performance_fee=statement.performance_fee,
-            net_yield=statement.net_yield,
-            nav_start=statement.nav_start,
-            nav_end=statement.nav_end,
-            generated_at=statement.generated_at
-        ))
-    
-    return statements
+    # Note: This would query from YieldStatement table in production
+    # For now, return empty list as yield statements are generated periodically
+    return []
 
 
 # =============================================================================
 # STATS ENDPOINTS
 # =============================================================================
 
-@router.get("")
-async def get_pools_overview() -> Dict:
+@router.get("/overview")
+async def get_pools_overview(db: Session = Depends(get_db)) -> Dict:
     """
     Get overview of all pools.
     """
-    total_value = sum(p["total_value"] for p in mock_pools.values())
-    total_financings = len(mock_financings)
-    active_financings = len([f for f in mock_financings if not f["is_repaid"]])
+    total_value = db.query(func.sum(Pool.total_value)).scalar() or 0
+    total_financings = db.query(func.count(Financing.id)).scalar() or 0
+    active_financings = db.query(func.count(Financing.id)).filter(
+        Financing.is_repaid == False
+    ).scalar() or 0
     
     return {
-        "total_pools": len(mock_pools),
-        "total_value": total_value,
-        "total_value_formatted": format_token_amount(total_value),
+        "total_pools": db.query(func.count(Pool.id)).scalar() or 0,
+        "total_value": float(total_value),
+        "total_value_formatted": format_token_amount(float(total_value)),
         "total_financings": total_financings,
         "active_financings": active_financings,
         "is_testnet": mvp_config.IS_MVP,

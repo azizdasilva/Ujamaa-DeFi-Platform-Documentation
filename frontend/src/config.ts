@@ -44,9 +44,9 @@ export const config = {
   
   // Pool Families
   POOLS: {
-    POOL_INDUSTRY: {
-      id: 'POOL_INDUSTRY',
-      name: 'Pool Industry',
+    POOL_INDUSTRIE: {
+      id: 'POOL_INDUSTRIE',
+      name: 'Pool Industrie',
       targetYieldMin: 10,
       targetYieldMax: 12,
       lockupDays: 365,

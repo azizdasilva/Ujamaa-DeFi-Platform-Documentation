@@ -102,41 +102,54 @@ class MVPConfig:
     
     # =========================================================================
     # SMART CONTRACT ADDRESSES
+    # Updated: 2026-04-02 (Polygon Amoy Testnet - Chain ID: 80002)
     # =========================================================================
-    
-    CONTRACT_UPT_TOKEN: Optional[str] = None
-    """UPTToken contract address (set post-deployment)"""
-    
-    CONTRACT_LIQUIDITY_POOL: Optional[str] = None
+
+    CONTRACT_UPT_TOKEN: str = "0xb6062A6e63a07C3598629A65ed19021445fB3b26"
+    """UPTToken contract address (deployed on Polygon Amoy)"""
+
+    CONTRACT_LIQUIDITY_POOL: str = "0x36e27C0b63103863a8a31a6EadEadEa0a0cDc2cfec"
     """LiquidityPool contract address"""
-    
-    CONTRACT_MOCK_ESCROW: Optional[str] = None
+
+    CONTRACT_MOCK_ESCROW: str = "0x8d446994fcD9906c573500959cDc8A8271a9485F"
     """MockEscrow contract address"""
-    
-    CONTRACT_MOCK_FIAT_RAMP: Optional[str] = None
+
+    CONTRACT_MOCK_FIAT_RAMP: str = "0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a"
     """MockFiatRamp contract address"""
-    
-    CONTRACT_JURISDICTION_COMPLIANCE: Optional[str] = None
+
+    CONTRACT_JURISDICTION_COMPLIANCE: str = "0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c"
     """JurisdictionCompliance contract address"""
+
+    CONTRACT_GUARANTEE_TOKEN: str = "0x081fb064eac4597befbb2e1d36d9a78d63a33958"
+    """GuaranteeToken (UGT) contract address"""
+
+    CONTRACT_INDUSTRIAL_GATEWAY: str = "0x882071de6689ec1716bd7e162acf50707ac68930"
+    """IndustrialGateway contract address"""
+
+    CONTRACT_NAV_GATEWAY: str = "0x99712f923e3519B4305CEDAd402904299F29A0"
+    """NavGateway contract address"""
+
+    CONTRACT_MOCK_EUROD: str = "0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc"
+    """MockEUROD (UJEUR) contract address"""
     
     # =========================================================================
     # INVESTMENT LIMITS (Testnet)
     # =========================================================================
-    
+
     MAX_DEPOSIT: int = 1_000_000 * 10 ** 18  # 1M UJEUR (18 decimals)
     """Maximum deposit per transaction"""
-    
+
     MIN_DEPOSIT: int = 1_000 * 10 ** 18  # 1K UJEUR
     """Minimum deposit per transaction"""
-    
+
     DAILY_WITHDRAWAL_LIMIT: int = 500_000 * 10 ** 18  # 500K UJEUR
     """Maximum daily withdrawal"""
-    
+
     INSTITUTIONAL_MIN: int = 100_000 * 10 ** 18  # 100K UJEUR
     """Minimum for institutional investors (KYB threshold)"""
 
-    RETAIL_MAX: int = 99_999 * 10 ** 18  # 99,999 UJEUR
-    """Maximum for retail investors"""
+    RETAIL_MAX: int = 90_000 * 10 ** 18  # 90,000 UJEUR
+    """Maximum for retail investors (€90,000 limit)"""
     
     # =========================================================================
     # POOL CONFIGURATIONS

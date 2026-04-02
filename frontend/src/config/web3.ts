@@ -27,17 +27,18 @@ export const web3Config = {
 
   // Contract Addresses (Polygon Amoy Testnet - DEPLOYED & VERIFIED)
   // Deployed via Foundry - All contracts verified on Polygon Amoy Scan
+  // Updated: 2026-04-02
   CONTRACTS: {
     ULP_TOKEN: '0xb6062A6e63a07C3598629A65ed19021445fB3b26', // ✅ Deployed
     UAT_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Deploy
-    UGT_TOKEN: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', // ✅ Deployed (Guarantee Token)
+    UGT_TOKEN: '0x081fb064eac4597befbb2e1d36d9a78d63a33958', // ✅ Deployed (Guarantee Token) - UPDATED
     LIQUIDITY_POOL: '0x36e27C0b63103863a8a31a6EadEadEa0a0cDc2cfec', // ✅ Deployed
-    INDUSTRIAL_GATEWAY: '0x882071de6689eC1716BD7e162Acf50707AC68930', // ✅ Deployed
-    JURISDICTION_COMPLIANCE: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C', // ✅ Deployed
+    INDUSTRIAL_GATEWAY: '0x882071de6689ec1716bd7e162acf50707ac68930', // ✅ Deployed - UPDATED
+    JURISDICTION_COMPLIANCE: '0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c', // ✅ Deployed
     MOCK_FIAT_RAMP: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', // ✅ Deployed
     MOCK_ESCROW: '0x8d446994fcD9906c573500959cDc8A8271a9485F', // ✅ Deployed
-    NAV_GATEWAY: '0x99712f923e3519B4305CEDAd40290428299F29A0', // ✅ Deployed
-    MOCK_EUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', // ✅ Deployed
+    NAV_GATEWAY: '0x99712f923e3519B4305CEDAd402904299F29A0', // ✅ Deployed
+    MOCK_EUROD: '0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc', // ✅ Deployed - UPDATED
   },
 
   // Testnet Faucets

@@ -900,8 +900,8 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                         <code>{`{
   "success": true,
   "data": {
-    "poolId": "POOL_INDUSTRY",
-    "name": "Pool Industry",
+    "poolId": "POOL_INDUSTRIE",
+    "name": "Pool Industrie",
     "totalValue": 10000000,
     "navPerShare": 1.05,
     "apy": 11.5,

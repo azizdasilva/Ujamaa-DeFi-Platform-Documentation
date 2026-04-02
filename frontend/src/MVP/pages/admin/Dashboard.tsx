@@ -193,7 +193,7 @@ const AdminDashboard: React.FC = () => {
             >
               <div className="space-y-3">
                 {[
-                  { id: 'POOL_INDUSTRY', name: 'Pool Industry', value: 50_000_000, apy: 11, status: 'active' },
+                  { id: 'POOL_INDUSTRIE', name: 'Pool Industrie', value: 50_000_000, apy: 11, status: 'active' },
                   { id: 'POOL_AGRICULTURE', name: 'Pool Agriculture', value: 30_000_000, apy: 13.5, status: 'active' },
                   { id: 'POOL_TRADE_FINANCE', name: 'Pool Trade Finance', value: 25_000_000, apy: 9, status: 'active' },
                   { id: 'POOL_RENEWABLE_ENERGY', name: 'Pool Renewable Energy', value: 40_000_000, apy: 10, status: 'active' },
