@@ -89,6 +89,13 @@ export const navigationItems: NavItem[] = [
     roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR', 'ADMIN'],
     category: 'operator',
   },
+  {
+    label: 'Financings',
+    href: '/industrial-operator/financings',
+    icon: '💰',
+    roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'],
+    category: 'operator',
+  },
 
   // Compliance Links
   {
@@ -97,6 +104,101 @@ export const navigationItems: NavItem[] = [
     icon: '✓',
     roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
     category: 'compliance',
+  },
+  {
+    label: 'Transaction Monitor',
+    href: '/compliance/transactions',
+    icon: '🔍',
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
+    category: 'compliance',
+  },
+  {
+    label: 'Jurisdictions',
+    href: '/compliance/jurisdictions',
+    icon: '🌍',
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN'],
+    category: 'compliance',
+  },
+
+  // Admin Links
+  {
+    label: 'User Management',
+    href: '/admin/users',
+    icon: '👥',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Pool Management',
+    href: '/admin/pools',
+    icon: '🏦',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Asset Management',
+    href: '/admin/assets',
+    icon: '📦',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Settings',
+    href: '/admin/settings',
+    icon: '⚙️',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Contracts',
+    href: '/admin/contracts',
+    icon: '📝',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
+    label: 'Monitoring',
+    href: '/admin/monitoring',
+    icon: '📊',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+
+  // Regulator Links
+  {
+    label: 'Compliance Reports',
+    href: '/regulator/compliance',
+    icon: '📋',
+    roles: ['REGULATOR', 'ADMIN'],
+    category: 'regulator',
+  },
+  {
+    label: 'Activity Log',
+    href: '/regulator/activity',
+    icon: '📜',
+    roles: ['REGULATOR', 'ADMIN'],
+    category: 'regulator',
+  },
+  {
+    label: 'Jurisdictions',
+    href: '/regulator/jurisdictions',
+    icon: '🗺️',
+    roles: ['REGULATOR', 'ADMIN'],
+    category: 'regulator',
+  },
+  {
+    label: 'Export Data',
+    href: '/regulator/export/transactions',
+    icon: '📥',
+    roles: ['REGULATOR', 'ADMIN'],
+    category: 'regulator',
+  },
+  {
+    label: 'Contact',
+    href: '/regulator/contact',
+    icon: '📧',
+    roles: ['REGULATOR', 'ADMIN'],
+    category: 'regulator',
   },
 
   // Documentation Links (All roles)

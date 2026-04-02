@@ -63,6 +63,24 @@ import AssetCertificates from './MVP/pages/originator/AssetCertificates';
 
 // Compliance Pages
 import ComplianceKYCReview from './MVP/pages/compliance/KYCReview';
+import ApprovalReview from './MVP/pages/compliance/ApprovalReview';
+import TransactionMonitor from './MVP/pages/compliance/TransactionMonitor';
+import Jurisdictions from './MVP/pages/compliance/Jurisdictions';
+
+// Admin Pages
+import UserManagement from './MVP/pages/admin/UserManagement';
+import PoolManagement from './MVP/pages/admin/PoolManagement';
+import AssetManagement from './MVP/pages/admin/AssetManagement';
+import Settings from './MVP/pages/admin/Settings';
+import ContractManagement from './MVP/pages/admin/ContractManagement';
+import Monitoring from './MVP/pages/admin/Monitoring';
+
+// Regulator Pages
+import ComplianceReports from './MVP/pages/regulator/ComplianceReports';
+import ActivityLog from './MVP/pages/regulator/ActivityLog';
+import JurisdictionsOverview from './MVP/pages/regulator/JurisdictionsOverview';
+import ExportData from './MVP/pages/regulator/ExportData';
+import Contact from './MVP/pages/regulator/Contact';
 
 // Pool Dashboard
 import PoolDashboard from './MVP/pages/pool/Dashboard';
@@ -224,41 +242,153 @@ const App: React.FC = () => {
             />
 
             {/* Compliance Officer Routes - PROTECTED */}
-            <Route 
-              path="/compliance/dashboard" 
+            <Route
+              path="/compliance/dashboard"
               element={
                 <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
                   <ComplianceDashboard />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/compliance/kyc-review" 
+            <Route
+              path="/compliance/kyc-review"
               element={
                 <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
                   <ComplianceKYCReview />
                 </ProtectedRoute>
-              } 
+              }
+            />
+            <Route
+              path="/compliance/approvals/:id/review"
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <ApprovalReview />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/compliance/transactions"
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <TransactionMonitor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/compliance/jurisdictions"
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <Jurisdictions />
+                </ProtectedRoute>
+              }
             />
 
             {/* Admin Routes - PROTECTED */}
-            <Route 
-              path="/admin/dashboard" 
+            <Route
+              path="/admin/dashboard"
               element={
                 <ProtectedRoute requiredRoles={['ADMIN']}>
                   <AdminDashboard />
                 </ProtectedRoute>
-              } 
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <UserManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/pools"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <PoolManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/assets"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <AssetManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/settings"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <Settings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/contracts"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <ContractManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/monitoring"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <Monitoring />
+                </ProtectedRoute>
+              }
             />
 
             {/* Regulator Routes - PROTECTED */}
-            <Route 
-              path="/regulator/dashboard" 
+            <Route
+              path="/regulator/dashboard"
               element={
                 <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
                   <RegulatorDashboard />
                 </ProtectedRoute>
-              } 
+              }
+            />
+            <Route
+              path="/regulator/compliance"
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <ComplianceReports />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/regulator/activity"
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <ActivityLog />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/regulator/jurisdictions"
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <JurisdictionsOverview />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/regulator/export/:type"
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <ExportData />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/regulator/contact"
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <Contact />
+                </ProtectedRoute>
+              }
             />
 
             {/* Investor Routes - PROTECTED */}

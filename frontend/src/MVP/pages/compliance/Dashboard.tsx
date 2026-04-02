@@ -150,12 +150,12 @@ const ComplianceDashboard: React.FC = () => {
                             >
                               Review
                             </a>
-                            <a
-                              href={`/compliance/approvals/${approval.id}/details`}
+                            <button
+                              onClick={() => alert(`🚀 MVP TESTNET: View details for ${approval.id}\n\nIn production, this will show a detailed view of the application.`)}
                               className="px-3 py-1 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-xs font-bold rounded transition-colors"
                             >
                               Details
-                            </a>
+                            </button>
                           </div>
                         </td>
                       </tr>
@@ -200,17 +200,17 @@ const ComplianceDashboard: React.FC = () => {
                       <p className="font-semibold text-gray-900">{txn.amount}</p>
                       <div className="flex gap-2 mt-2">
                         <a
-                          href={`/compliance/transactions/${txn.id}/review`}
+                          href="/compliance/transactions"
                           className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white !text-white text-xs font-bold rounded transition-colors"
                         >
                           Review
                         </a>
-                        <a
-                          href={`/compliance/transactions/${txn.id}/clear`}
+                        <button
+                          onClick={() => alert('🚀 MVP TESTNET: Quick clear action\n\nIn production, this will clear the flag after verification.')}
                           className="px-3 py-1 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-xs font-bold rounded transition-colors"
                         >
                           Clear
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -230,23 +230,23 @@ const ComplianceDashboard: React.FC = () => {
                 >
                   ✓ Review Pending Approvals
                 </a>
-                <button
-                  onClick={() => alert('🚀 MVP TESTNET: Transaction Monitor coming in production. This feature will provide real-time transaction monitoring and anomaly detection.')}
+                <a
+                  href="/compliance/transactions"
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   🔍 Transaction Monitor
-                </button>
+                </a>
+                <a
+                  href="/compliance/jurisdictions"
+                  className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
+                >
+                  🌍 Jurisdiction List
+                </a>
                 <button
                   onClick={() => alert('🚀 MVP TESTNET: Generate Reports coming in production. This feature will generate compliance reports for regulatory submissions.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   📊 Generate Reports
-                </button>
-                <button
-                  onClick={() => alert('🚀 MVP TESTNET: Jurisdiction List coming in production. This feature will display and manage allowed/blocked jurisdictions.')}
-                  className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
-                >
-                  🌍 Jurisdiction List
                 </button>
               </div>
             </Card>
