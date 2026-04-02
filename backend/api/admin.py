@@ -9,7 +9,7 @@ All changes are saved to database and applied immediately.
 
 from fastapi import APIRouter, HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from datetime import datetime

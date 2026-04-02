@@ -15,7 +15,7 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
-import { adminAPI, InvestorBankData } from '../../../api/admin';
+import adminAPI, { type InvestorBankData } from '../../../api/admin';
 
 const BankAccountManagement: React.FC = () => {
   const [investors, setInvestors] = useState<InvestorBankData[]>([]);

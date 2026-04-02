@@ -97,13 +97,27 @@ const Navigation: React.FC = () => {
       ).slice(0, 10);
     }
 
+    // For admin users, show ONLY admin-specific actions (not all actions they have access to)
+    if (user.role === 'ADMIN') {
+      return allSearchResults.filter(result => {
+        // Only show items where ADMIN is the ONLY role (admin-specific features)
+        const isAdminOnly = result.roles.length === 1 && result.roles[0] === 'ADMIN';
+        // Also include some shared admin features
+        const isSharedAdminFeature = 
+          (result.category === 'Admin') ||
+          (result.category === 'Compliance' && result.roles.includes('ADMIN')) ||
+          (result.category === 'Account' && result.roles.includes('ADMIN'));
+        return isAdminOnly || isSharedAdminFeature;
+      }).slice(0, 15); // Limit to 15 for admin
+    }
+
     // Filter by user role - logged in users see Dashboard in role selector, not here
     return allSearchResults.filter(result => {
       const hasAccess = result.roles.includes(user.role) || user.role === 'ADMIN';
       // Prioritize certain categories for quick actions (exclude Dashboard)
       const isQuickAction = ['Invest', 'Originator', 'Compliance', 'Account', 'Admin', 'Regulator'].includes(result.category);
       return hasAccess && isQuickAction;
-    }).slice(0, user.role === 'ADMIN' ? 30 : 10); // Show more for admin
+    }).slice(0, 10);
   };
 
   const quickActions = getQuickActionsForRole();
