@@ -240,27 +240,6 @@ const Navigation: React.FC = () => {
                         </p>
                       </div>
                       <div className="p-4">
-                        {/* Clear Demo Data - Show to all */}
-                        <button
-                          onClick={() => {
-                            if (confirm('Clear ALL demo data? This will remove:\n\n• All submitted assets & certificates\n• All onboarding data (investor & operator)\n• All uploaded documents\n• All form submissions\n\nThis cannot be undone.')) {
-                              sessionStorage.removeItem('submittedAsset');
-                              sessionStorage.removeItem('onboardingData');
-                              sessionStorage.removeItem('onboardingDocs');
-                              sessionStorage.removeItem('onboardingSubmitted');
-                              sessionStorage.removeItem('onboardingSubmitTime');
-                              alert('✓ All demo data cleared!\n\n• Submitted assets: CLEARED\n• Onboarding data: CLEARED\n• Uploaded documents: CLEARED\n• Form submissions: CLEARED\n\nRefreshing page...');
-                              window.location.reload();
-                            }
-                          }}
-                          className="flex items-center gap-3 w-full px-3 py-2 text-sm text-red-700 font-bold hover:bg-red-50 rounded-lg transition-colors border border-red-200 bg-red-50 mb-3"
-                        >
-                          <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                          Clear Demo Data
-                        </button>
-
                         {/* Role-Specific Quick Actions */}
                         {quickActions.map((action, idx) => {
                           // Special styling for admin-only features
