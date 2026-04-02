@@ -38,9 +38,11 @@ const BankAccountManagement: React.FC = () => {
       setLoading(true);
       const data = await adminAPI.getAllInvestorsBankAccounts();
       setInvestors(data);
-    } catch (error) {
+      setNotification(null);
+    } catch (error: any) {
       console.error('Failed to load investors:', error);
-      showNotification('error', 'Failed to load investor data. Please try again.');
+      const errorMessage = error.response?.data?.detail || error.message || 'Failed to load investor data. Please try again.';
+      setNotification({ type: 'error', message: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -257,6 +259,32 @@ const BankAccountManagement: React.FC = () => {
                 </svg>
                 <p className="text-gray-600">Loading investor data...</p>
               </div>
+            </div>
+          </Card>
+        ) : notification?.type === 'error' && investors.length === 0 ? (
+          <Card>
+            <div className="text-center py-12">
+              <svg className="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-lg font-semibold text-gray-900 mb-2">Unable to load investor records</p>
+              <p className="text-gray-600 mb-4">{notification.message}</p>
+              <button
+                onClick={loadInvestors}
+                className="px-4 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors"
+              >
+                Retry
+              </button>
+            </div>
+          </Card>
+        ) : investors.length === 0 ? (
+          <Card>
+            <div className="text-center py-12">
+              <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <p className="text-lg font-semibold text-gray-900 mb-2">No investors found</p>
+              <p className="text-gray-600">No investor records exist in the database yet.</p>
             </div>
           </Card>
         ) : (
