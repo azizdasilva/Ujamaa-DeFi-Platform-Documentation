@@ -113,11 +113,14 @@ const BankAccountManagement: React.FC = () => {
   };
 
   // Filter investors by search query
-  const filteredInvestors = investors.filter(inv => 
-    inv.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    inv.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    inv.role.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredInvestors = investors.filter(inv => {
+    const searchLower = searchQuery.toLowerCase();
+    const name = (inv.full_name || inv.email).toLowerCase();
+    const email = (inv.email || '').toLowerCase();
+    const role = (inv.role || '').toLowerCase();
+    
+    return name.includes(searchLower) || email.includes(searchLower) || role.includes(searchLower);
+  });
 
   // Format currency
   const formatCurrency = (amount: number) => {
