@@ -181,16 +181,22 @@ const Monitoring: React.FC = () => {
           <Card>
             <h3 className="text-lg font-bold text-[#103b5b] mb-4">Recent Events</h3>
             <div className="space-y-3">
-              {recentEvents.map((event, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                  <div className="w-2 h-2 bg-[#00A8A8] rounded-full mt-2" />
-                  <div className="flex-1">
-                    <p className="font-semibold text-gray-900">{event.event}</p>
-                    <p className="text-xs text-gray-500 mt-1">{event.time}</p>
+              {loading ? (
+                <p className="text-center text-gray-500 py-8">Loading events...</p>
+              ) : recentEvents.length === 0 ? (
+                <p className="text-center text-gray-500 py-8">No recent events</p>
+              ) : (
+                recentEvents.map((event, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-[#00A8A8] rounded-full mt-2" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-900">{event.event}</p>
+                      <p className="text-xs text-gray-500 mt-1">{event.time}</p>
+                    </div>
+                    <Badge variant="info" size="sm">{event.type}</Badge>
                   </div>
-                  <Badge variant="info" size="sm">{event.type}</Badge>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </Card>
         </div>

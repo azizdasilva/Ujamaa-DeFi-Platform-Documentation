@@ -4,6 +4,9 @@
  * View and manage smart contract addresses and configurations.
  *
  * Route: /admin/contracts
+ *
+ * @notice All contracts deployed on Polygon Amoy Testnet (Chain ID: 80002)
+ * @notice Updated: 2026-04-02
  */
 
 import React from 'react';
@@ -12,15 +15,83 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import { web3Config } from '../../../config/web3';
 
 const ContractManagement: React.FC = () => {
+  // All deployed contracts with latest addresses from web3Config
   const contracts = [
-    { name: 'UPT Token', address: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb', type: 'ERC-3643', status: 'deployed', network: 'Polygon Amoy' },
-    { name: 'Liquidity Pool', address: '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199', type: 'Pool', status: 'deployed', network: 'Polygon Amoy' },
-    { name: 'Jurisdiction Compliance', address: '0xdD2FD4581271e230360230F9337D5c0430Bf44C0', type: 'Compliance', status: 'deployed', network: 'Polygon Amoy' },
-    { name: 'Identity Registry', address: '0x2546BcD3c84621e976D8185a91A922aE77ECEc30', type: 'Identity', status: 'deployed', network: 'Polygon Amoy' },
-    { name: 'Mock Escrow', address: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1', type: 'Escrow', status: 'deployed', network: 'Polygon Amoy' },
-    { name: 'Mock Fiat Ramp', address: '0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0', type: 'Fiat', status: 'deployed', network: 'Polygon Amoy' },
+    { 
+      name: 'ULP Token', 
+      address: web3Config.CONTRACTS.ULP_TOKEN, 
+      type: 'ERC-20 Utility', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Utility Liquidity Pool token for investor participation'
+    },
+    { 
+      name: 'Guarantee Token (UGT)', 
+      address: web3Config.CONTRACTS.UGT_TOKEN, 
+      type: 'ERC-20 Guarantee', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Guarantee token for industrial operator commitments'
+    },
+    { 
+      name: 'Mock EUROD (UJEUR)', 
+      address: web3Config.CONTRACTS.MOCK_EUROD, 
+      type: 'ERC-20 Stablecoin', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Mock Euro stablecoin for testing'
+    },
+    { 
+      name: 'Liquidity Pool', 
+      address: web3Config.CONTRACTS.LIQUIDITY_POOL, 
+      type: 'Pool Management', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Main liquidity pool contract for managing investor funds'
+    },
+    { 
+      name: 'Industrial Gateway', 
+      address: web3Config.CONTRACTS.INDUSTRIAL_GATEWAY, 
+      type: 'Gateway', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Gateway for industrial operator interactions'
+    },
+    { 
+      name: 'Jurisdiction Compliance', 
+      address: web3Config.CONTRACTS.JURISDICTION_COMPLIANCE, 
+      type: 'Compliance', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Jurisdiction-based compliance and restrictions'
+    },
+    { 
+      name: 'NAV Gateway', 
+      address: web3Config.CONTRACTS.NAV_GATEWAY, 
+      type: 'NAV Oracle', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Net Asset Value oracle gateway'
+    },
+    { 
+      name: 'Mock Escrow', 
+      address: web3Config.CONTRACTS.MOCK_ESCROW, 
+      type: 'Escrow', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Mock escrow for fund holding during transactions'
+    },
+    { 
+      name: 'Mock Fiat Ramp', 
+      address: web3Config.CONTRACTS.MOCK_FIAT_RAMP, 
+      type: 'Fiat Gateway', 
+      status: 'deployed', 
+      network: 'Polygon Amoy',
+      description: 'Mock fiat on/off ramp for testing'
+    },
   ];
 
   return (
@@ -36,9 +107,14 @@ const ContractManagement: React.FC = () => {
               <p className="text-[#8b5b3d] mt-1">View and manage deployed contracts</p>
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="secondary" size="md">
-                🔍 Verify on Explorer
-              </Button>
+              <a
+                href="https://amoy.polygonscan.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-lg transition-colors text-sm flex items-center gap-2"
+              >
+                🔍 View on Explorer
+              </a>
               <TestnetNotice variant="badge" />
             </div>
           </div>
@@ -68,7 +144,8 @@ const ContractManagement: React.FC = () => {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-bold text-[#103b5b]">{contract.name}</h3>
-                  <p className="text-sm text-gray-600">{contract.type} Contract</p>
+                  <p className="text-sm text-gray-600">{contract.type}</p>
+                  <p className="text-xs text-gray-500 mt-1">{contract.description}</p>
                 </div>
                 <Badge variant="success" size="md">{contract.status.toUpperCase()}</Badge>
               </div>
@@ -77,10 +154,10 @@ const ContractManagement: React.FC = () => {
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Contract Address</p>
                   <div className="flex items-center gap-2">
-                    <code className="text-sm font-mono bg-gray-100 px-2 py-1 rounded">{contract.address}</code>
+                    <code className="text-xs font-mono bg-gray-100 px-2 py-1 rounded break-all">{contract.address}</code>
                     <button
                       onClick={() => navigator.clipboard.writeText(contract.address)}
-                      className="p-1 text-[#00A8A8] hover:text-[#0D7A7A]"
+                      className="p-1 text-[#00A8A8] hover:text-[#0D7A7A] flex-shrink-0"
                       title="Copy address"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +181,10 @@ const ContractManagement: React.FC = () => {
                   >
                     View on Explorer
                   </a>
-                  <button className="flex-1 px-3 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded transition-colors">
+                  <button 
+                    onClick={() => alert(`🚀 MVP TESTNET: Read Contract\n\nIn production, this will open the contract read interface for ${contract.name}.`)}
+                    className="flex-1 px-3 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded transition-colors"
+                  >
                     Read Contract
                   </button>
                 </div>
@@ -113,19 +193,68 @@ const ContractManagement: React.FC = () => {
           ))}
         </div>
 
+        {/* Contract Summary */}
+        <Card className="mt-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-bold">Total Contracts Deployed</h3>
+              <p className="text-sm text-white/80">All contracts verified on Polygon Amoy</p>
+            </div>
+            <div className="text-right">
+              <p className="text-4xl font-bold">{contracts.length}</p>
+              <p className="text-xs text-white/80">Smart Contracts</p>
+            </div>
+          </div>
+        </Card>
+
         {/* Contract Actions */}
         <Card className="mt-6">
           <h3 className="text-lg font-bold text-[#103b5b] mb-4">Contract Actions</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button variant="primary" size="lg" onClick={() => alert('🚀 MVP TESTNET: Upgrade Contract\n\nIn production, this will open the contract upgrade interface.')}>
+            <Button 
+              variant="primary" 
+              size="lg" 
+              onClick={() => alert('🚀 MVP TESTNET: Upgrade Contract\n\nIn production, this will open the contract upgrade interface with proxy pattern support.')}
+            >
               ⬆️ Upgrade Contract
             </Button>
-            <Button variant="secondary" size="lg" onClick={() => alert('🚀 MVP TESTNET: Pause Contract\n\nIn production, this will pause contract operations.')}>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              onClick={() => alert('🚀 MVP TESTNET: Pause Contract\n\nIn production, this will pause contract operations using Ownable/Pausable pattern.')}
+            >
               ⏸️ Pause Contract
             </Button>
-            <Button variant="secondary" size="lg" onClick={() => alert('🚀 MVP TESTNET: Emergency Stop\n\nIn production, this will trigger emergency stop procedures.')}>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              onClick={() => alert('🚀 MVP TESTNET: Emergency Stop\n\nIn production, this will trigger emergency stop procedures and circuit breaker.')}
+            >
               🛑 Emergency Stop
             </Button>
+          </div>
+        </Card>
+
+        {/* Deployment Info */}
+        <Card className="mt-6">
+          <h3 className="text-lg font-bold text-[#103b5b] mb-4">Deployment Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-gray-600 mb-2 font-semibold">Deployment Tool</p>
+              <p className="text-gray-700">Foundry (forge)</p>
+            </div>
+            <div>
+              <p className="text-gray-600 mb-2 font-semibold">Verification</p>
+              <p className="text-gray-700">Polygon Amoy Scan (verified)</p>
+            </div>
+            <div>
+              <p className="text-gray-600 mb-2 font-semibold">Last Updated</p>
+              <p className="text-gray-700">2026-04-02</p>
+            </div>
+            <div>
+              <p className="text-gray-600 mb-2 font-semibold">Network</p>
+              <p className="text-gray-700">Polygon Amoy Testnet (80002)</p>
+            </div>
           </div>
         </Card>
       </main>
