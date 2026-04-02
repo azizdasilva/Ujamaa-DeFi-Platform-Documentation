@@ -54,6 +54,7 @@ const Navigation: React.FC = () => {
     { title: 'User Management', href: '/admin/users', category: 'Admin', tags: ['users', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Pool Management', href: '/admin/pools', category: 'Admin', tags: ['pools', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Asset Management', href: '/admin/assets', category: 'Admin', tags: ['assets', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
+    { title: 'Threshold Management', href: '/admin/thresholds', category: 'Admin', tags: ['thresholds', 'admin', 'management', 'limits'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Settings', href: '/admin/settings', category: 'Admin', tags: ['settings', 'admin', 'config'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Contracts', href: '/admin/contracts', category: 'Admin', tags: ['contracts', 'admin', 'blockchain'], roles: ['ADMIN'] as InvestorRole[] },
     { title: 'Monitoring', href: '/admin/monitoring', category: 'Admin', tags: ['monitoring', 'admin', 'metrics'], roles: ['ADMIN'] as InvestorRole[] },

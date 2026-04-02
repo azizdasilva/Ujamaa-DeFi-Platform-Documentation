@@ -1,42 +1,66 @@
 /**
  * Admin Dashboard
- * 
+ *
  * Dashboard for platform administrators to manage users, assets, and platform settings.
- * 
+ *
  * Route: /admin/dashboard
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import Button from '../../components/Button';
+import apiClient from '../../../api/client';
 
 const AdminDashboard: React.FC = () => {
-  // Mock data for demo
-  const stats = {
-    totalUsers: 156,
-    totalPools: 5,
-    totalValue: 205_000_000,
-    activeFinancings: 12,
-  };
-
-  const recentUsers = [
-    { id: 'USR-001', name: 'Logic Capital', role: 'INSTITUTIONAL', status: 'active', joined: '2026-03-18' },
-    { id: 'USR-002', name: 'John Doe', role: 'RETAIL', status: 'active', joined: '2026-03-18' },
-    { id: 'USR-003', name: 'GDIZ (Benin) Industries', role: 'ORIGINATOR', status: 'active', joined: '2026-03-17' },
-    { id: 'USR-004', name: 'Jane Smith', role: 'RETAIL', status: 'pending', joined: '2026-03-17' },
-  ];
-
-  const systemHealth = [
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({
+    totalUsers: 0,
+    totalPools: 0,
+    totalValue: 0,
+    pendingDocuments: 0,
+  });
+  const [recentUsers, setRecentUsers] = useState<any[]>([]);
+  const [systemHealth, setSystemHealth] = useState([
     { name: 'Smart Contracts', status: 'operational', uptime: '100%' },
     { name: 'Backend API', status: 'operational', uptime: '99.9%' },
     { name: 'Database', status: 'operational', uptime: '99.95%' },
     { name: 'Frontend', status: 'operational', uptime: '100%' },
-  ];
+  ]);
+
+  useEffect(() => {
+    fetchAdminStats();
+  }, []);
+
+  const fetchAdminStats = async () => {
+    try {
+      setLoading(true);
+      
+      // Fetch overview stats
+      const statsResponse = await apiClient.get('/db/stats/overview');
+      setStats({
+        totalUsers: statsResponse.data.total_users || 0,
+        totalPools: statsResponse.data.total_pools || 0,
+        totalValue: statsResponse.data.total_value_locked || 0,
+        pendingDocuments: statsResponse.data.pending_kyc_kyb || 0,
+      });
+
+      // Fetch recent users (from database API)
+      const usersResponse = await apiClient.get('/db/users');
+      setRecentUsers(usersResponse.data.slice(0, 4) || []);
+    } catch (error) {
+      console.error('Error fetching admin stats:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -79,7 +103,7 @@ const AdminDashboard: React.FC = () => {
               </svg>
             }
             label="Total Users"
-            value={stats.totalUsers}
+            value={loading ? '...' : stats.totalUsers}
             trend={{ value: 12, direction: 'up' }}
             color="blue"
           />
@@ -90,7 +114,7 @@ const AdminDashboard: React.FC = () => {
               </svg>
             }
             label="Total Pools"
-            value={stats.totalPools}
+            value={loading ? '...' : stats.totalPools}
             color="green"
           />
           <StatsCard
@@ -100,18 +124,18 @@ const AdminDashboard: React.FC = () => {
               </svg>
             }
             label="Total Value Locked"
-            value={formatCurrency(stats.totalValue)}
+            value={loading ? '...' : formatCurrency(stats.totalValue)}
             trend={{ value: 8.5, direction: 'up' }}
             color="purple"
           />
           <StatsCard
             icon={
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             }
-            label="Active Financings"
-            value={stats.activeFinancings}
+            label="Pending KYC/KYB"
+            value={loading ? '...' : stats.pendingDocuments}
             color="amber"
           />
         </div>
@@ -136,45 +160,58 @@ const AdminDashboard: React.FC = () => {
                     <tr className="border-b border-[#103b5b]/20">
                       <th className="text-left py-3 font-semibold text-[#103b5b]">ID</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Name</th>
+                      <th className="text-left py-3 font-semibold text-[#103b5b]">Email</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Role</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Status</th>
-                      <th className="text-left py-3 font-semibold text-[#103b5b]">Joined</th>
                       <th className="text-left py-3 font-semibold text-[#103b5b]">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {recentUsers.map((user) => (
-                      <tr key={user.id} className="border-b border-[#103b5b]/10">
-                        <td className="py-3 font-mono text-xs">{user.id}</td>
-                        <td className="py-3 font-medium text-[#103b5b]">{user.name}</td>
-                        <td className="py-3">
-                          <Badge
-                            variant={
-                              user.role === 'INSTITUTIONAL' ? 'primary' :
-                              user.role === 'ORIGINATOR' ? 'secondary' :
-                              'info'
-                            }
-                            size="sm"
-                          >
-                            {user.role}
-                          </Badge>
-                        </td>
-                        <td className="py-3">
-                          <Badge variant={user.status === 'active' ? 'success' : 'warning'} size="sm">
-                            {user.status}
-                          </Badge>
-                        </td>
-                        <td className="py-3 text-[#8b5b3d]">{user.joined}</td>
-                        <td className="py-3">
-                          <a
-                            href={`/admin/users/${user.id}`}
-                            className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium"
-                          >
-                            View →
-                          </a>
-                        </td>
+                    {loading ? (
+                      <tr>
+                        <td colSpan={6} className="py-8 text-center text-gray-500">Loading users...</td>
                       </tr>
-                    ))}
+                    ) : recentUsers.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} className="py-8 text-center text-gray-500">No users found</td>
+                      </tr>
+                    ) : (
+                      recentUsers.map((user) => (
+                        <tr key={user.id} className="border-b border-[#103b5b]/10">
+                          <td className="py-3 font-mono text-xs">#{user.id}</td>
+                          <td className="py-3 font-medium text-[#103b5b]">
+                            {user.full_name || user.company_name || 'N/A'}
+                          </td>
+                          <td className="py-3 text-[#8b5b3d]">{user.email}</td>
+                          <td className="py-3">
+                            <Badge
+                              variant={
+                                user.role === 'INSTITUTIONAL_INVESTOR' ? 'primary' :
+                                user.role === 'INDUSTRIAL_OPERATOR' ? 'secondary' :
+                                user.role === 'COMPLIANCE_OFFICER' ? 'warning' :
+                                'info'
+                              }
+                              size="sm"
+                            >
+                              {user.role.replace('_', ' ')}
+                            </Badge>
+                          </td>
+                          <td className="py-3">
+                            <Badge variant={user.is_active ? 'success' : 'gray'} size="sm">
+                              {user.is_active ? 'Active' : 'Inactive'}
+                            </Badge>
+                          </td>
+                          <td className="py-3">
+                            <button
+                              onClick={() => navigate(`/admin/users`)}
+                              className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium"
+                            >
+                              View →
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
