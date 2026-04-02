@@ -11,43 +11,82 @@
 
 import React, { useState, useEffect } from 'react';
 import { ConnectWallet } from './wallet';
+import { useAuth } from '../../contexts/AuthContext';
+import { useLanguage } from '../../contexts/LanguageContext';
+import LogoutButton from './LogoutButton';
+import { getNavItemsForRole, getDashboardForRole, canAccessPath } from '../../config/navigation';
+import { InvestorRole } from '../../types';
 
 const Navigation: React.FC = () => {
+  const { user, isAuthenticated, login, logout } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [quickActionsOpen, setQuickActionsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [walletModalOpen, setWalletModalOpen] = useState(false);
 
-  // Search results - all searchable pages
-  const searchResults = [
-    { title: 'Pool Marketplace', href: '/institutional/pools', category: 'Invest', tags: ['pools', 'invest', 'marketplace'] },
-    { title: 'Pool Dashboard', href: '/pool/dashboard', category: 'Invest', tags: ['pool', 'kpi', 'dashboard', 'metrics'] },
-    { title: 'Blockchain Monitoring', href: '/monitor', category: 'Analytics', tags: ['blockchain', 'monitor', 'analytics', 'kpi', 'polygon', 'contracts'] },
-    { title: 'Contract Test Dashboard', href: '/contract-test', category: 'Developer', tags: ['contracts', 'test', 'blockchain', 'developer', 'addresses'] },
-    { title: 'Deep Dive Documentation', href: '/deep-dive', category: 'Learn', tags: ['technical', 'docs', 'documentation'] },
-    { title: 'Investors Room', href: '/investors-room', category: 'Documents', tags: ['documents', 'investor', 'reports'] },
-    { title: 'Token Comparison Guide', href: '/investors-room/token-comparison-guide', category: 'Documents', tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison'] },
-    { title: 'Investor FAQ', href: '/investors-room/investor-faq', category: 'Documents', tags: ['faq', 'questions', 'help'] },
-    { title: 'White Paper', href: '/investors-room/white-paper', category: 'Documents', tags: ['whitepaper', 'technical'] },
-    { title: 'Documentation Index', href: '/investors-room/documentation-index', category: 'Documents', tags: ['index', 'catalog'] },
-    { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'] },
-    { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'] },
-    { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'] },
-    { title: 'Investor Onboarding', href: '/investor/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'] },
-    { title: 'Industrial Operator Onboarding', href: '/industrial-operator/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'operator', 'industrial'] },
+  // Search results - filtered by user role
+  const allSearchResults = [
+    { title: 'Pool Marketplace', href: '/institutional/pools', category: 'Invest', tags: ['pools', 'invest', 'marketplace'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Pool Dashboard', href: '/pool/dashboard', category: 'Invest', tags: ['pool', 'kpi', 'dashboard', 'metrics'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Blockchain Monitoring', href: '/monitor', category: 'Analytics', tags: ['blockchain', 'monitor', 'analytics', 'kpi', 'polygon', 'contracts'], roles: ['ADMIN', 'REGULATOR', 'COMPLIANCE_OFFICER'] as InvestorRole[] },
+    { title: 'Contract Test Dashboard', href: '/contract-test', category: 'Developer', tags: ['contracts', 'test', 'blockchain', 'developer', 'addresses'], roles: ['ADMIN'] as InvestorRole[] },
+    { title: 'Deep Dive Documentation', href: '/deep-dive', category: 'Learn', tags: ['technical', 'docs', 'documentation'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Investors Room', href: '/investors-room', category: 'Documents', tags: ['documents', 'investor', 'reports'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Token Comparison Guide', href: '/investors-room/token-comparison-guide', category: 'Documents', tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Investor FAQ', href: '/investors-room/investor-faq', category: 'Documents', tags: ['faq', 'questions', 'help'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'White Paper', href: '/investors-room/white-paper', category: 'Documents', tags: ['whitepaper', 'technical'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Documentation Index', href: '/investors-room/documentation-index', category: 'Documents', tags: ['index', 'catalog'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'], roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
+    { title: 'Investor Onboarding', href: '/investor/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'Industrial Operator Onboarding', href: '/industrial-operator/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'operator', 'industrial'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'KYC Review', href: '/compliance/kyc-review', category: 'Compliance', tags: ['kyc', 'review', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/institutional/dashboard', category: 'Dashboard', tags: ['dashboard', 'institutional'], roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/retail/dashboard', category: 'Dashboard', tags: ['dashboard', 'retail'], roles: ['RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/originator/dashboard', category: 'Dashboard', tags: ['dashboard', 'operator'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/compliance/dashboard', category: 'Dashboard', tags: ['dashboard', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/admin/dashboard', category: 'Dashboard', tags: ['dashboard', 'admin'], roles: ['ADMIN'] as InvestorRole[] },
+    { title: 'My Dashboard', href: '/regulator/dashboard', category: 'Dashboard', tags: ['dashboard', 'regulator'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
   ];
 
-  // Filter search results based on query
-  const filteredResults = searchResults.filter(result => {
+  // Filter search results based on query AND user role
+  const filteredResults = allSearchResults.filter(result => {
     const query = searchQuery.toLowerCase();
-    return (
+    // Check role access
+    const hasAccess = !isAuthenticated || !user || result.roles.includes(user.role) || user.role === 'ADMIN';
+    // Check search query match
+    const matchesQuery = (
       result.title.toLowerCase().includes(query) ||
       result.tags.some(tag => tag.toLowerCase().includes(query)) ||
       result.category.toLowerCase().includes(query)
     );
+    return hasAccess && matchesQuery;
   });
+
+  // Get role-specific quick actions
+  const getQuickActionsForRole = () => {
+    if (!isAuthenticated || !user) {
+      // Show all actions for non-authenticated users (with highlights)
+      return allSearchResults.filter(r => 
+        ['Dashboard', 'Invest', 'Originator', 'Compliance'].includes(r.category)
+      ).slice(0, 8);
+    }
+    
+    // Filter by user role
+    return allSearchResults.filter(result => {
+      const hasAccess = result.roles.includes(user.role) || user.role === 'ADMIN';
+      // Prioritize certain categories for quick actions
+      const isQuickAction = ['Dashboard', 'Invest', 'Originator', 'Compliance', 'Account'].includes(result.category);
+      return hasAccess && isQuickAction;
+    }).slice(0, 10);
+  };
+
+  const quickActions = getQuickActionsForRole();
 
   // Handle scroll effect
   useEffect(() => {
@@ -174,13 +213,15 @@ const Navigation: React.FC = () => {
                 {quickActionsOpen && (
                   <>
                     <div className="fixed inset-0 z-[9999]" onClick={() => setQuickActionsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn">
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn max-h-[80vh] overflow-y-auto">
                       <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
                         <p className="text-sm font-bold text-[#023D7A]">Quick Actions</p>
-                        <p className="text-xs text-[#333333] mt-1">Access key platform features</p>
+                        <p className="text-xs text-[#333333] mt-1">
+                          {isAuthenticated && user ? 'Access key features for your role' : 'Access key platform features'}
+                        </p>
                       </div>
                       <div className="p-4">
-                        {/* Clear Demo Data - TOP of menu */}
+                        {/* Clear Demo Data - Show to all */}
                         <button
                           onClick={() => {
                             if (confirm('Clear ALL demo data? This will remove:\n\n• All submitted assets & certificates\n• All onboarding data (investor & operator)\n• All uploaded documents\n• All form submissions\n\nThis cannot be undone.')) {
@@ -193,7 +234,7 @@ const Navigation: React.FC = () => {
                               window.location.reload();
                             }
                           }}
-                          className="flex items-center gap-3 w-full px-3 py-2 text-sm text-red-700 font-bold hover:bg-red-50 rounded-lg transition-colors border border-red-200 bg-red-50 mb-2"
+                          className="flex items-center gap-3 w-full px-3 py-2 text-sm text-red-700 font-bold hover:bg-red-50 rounded-lg transition-colors border border-red-200 bg-red-50 mb-3"
                         >
                           <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -201,71 +242,34 @@ const Navigation: React.FC = () => {
                           Clear Demo Data
                         </button>
 
-                        {/* Smart Contract Test - Highlighted */}
-                        <a href="/contract-test" className="flex items-center gap-3 w-full px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#00A8A8]/10 rounded-lg transition-colors border border-[#00A8A8]/30 bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 mb-2">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                          </svg>
-                          <span className="flex-1 text-left">
-                            <span className="block text-xs font-normal text-[#00A8A8]/80">Test</span>
-                            <span className="block">🔧 Smart Contracts</span>
-                          </span>
-                        </a>
-
-                        <a href="/pool/dashboard" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                          Pool Dashboard (KPIs)
-                        </a>
-                        <a href="/investor/onboarding" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                          </svg>
-                          Investor Onboarding
-                        </a>
-                        <a href="/industrial-operator/onboarding" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                          </svg>
-                          Industrial Operator Onboarding
-                        </a>
-                        <a href="/originator/assets/submit" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-2">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                          </svg>
-                          Submit Asset
-                        </a>
-                        <a href="/originator/assets/certificates" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          View Certificates
-                        </a>
-                        <a href="/institutional/pools" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                          </svg>
-                          Pool Marketplace
-                        </a>
-                        <a href="/deep-dive" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
-                          </svg>
-                          Deep Dive
-                        </a>
-                        <a href="/monitor" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                          Blockchain Monitoring
-                        </a>
-                        <a href="/docs/glossary" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          <svg className="w-4 h-4 text-[#00A8A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
-                          </svg>
-                          Glossary
-                        </a>
+                        {/* Role-Specific Quick Actions */}
+                        {quickActions.map((action, idx) => {
+                          // Special styling for admin-only features
+                          const isAdminOnly = action.roles.length === 1 && action.roles[0] === 'ADMIN';
+                          const isHighlighted = isAdminOnly || action.category === 'Dashboard';
+                          
+                          return (
+                            <a
+                              key={idx}
+                              href={action.href}
+                              className={`flex items-center gap-3 w-full px-3 py-2 text-sm font-bold rounded-lg transition-colors mb-2 ${
+                                isHighlighted
+                                  ? 'text-[#00A8A8] bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30'
+                                  : 'text-[#023D7A] hover:bg-[#F3F8FA]'
+                              }`}
+                            >
+                              {action.category === 'Dashboard' && '📊'}
+                              {action.category === 'Invest' && '🏛️'}
+                              {action.category === 'Originator' && '📝'}
+                              {action.category === 'Compliance' && '✓'}
+                              {action.category === 'Analytics' && '📈'}
+                              {action.category === 'Developer' && '🔧'}
+                              {action.category === 'Account' && '👤'}
+                              {action.title}
+                              {isAdminOnly && <span className="ml-auto text-xs px-2 py-0.5 bg-[#00A8A8]/20 text-[#00A8A8] rounded">Admin</span>}
+                            </a>
+                          );
+                        })}
                       </div>
                     </div>
                   </>
@@ -330,8 +334,19 @@ const Navigation: React.FC = () => {
                 )}
               </div>
 
-              {/* Connect Wallet */}
-              <ConnectWallet size="sm" variant="ghost" />
+              {/* Language Switch */}
+              <div className="relative">
+                <button
+                  onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
+                  className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 border border-white/20 hover:border-white/40"
+                  title="Switch Language"
+                >
+                  <span className="text-white font-bold text-sm">🌐 {language.toUpperCase()}</span>
+                </button>
+              </div>
+
+              {/* Connect Wallet - Only visible for authenticated users */}
+              {isAuthenticated && <ConnectWallet size="sm" variant="ghost" />}
 
               {/* Role Selector / Dashboard Menu */}
               <div className="relative">
@@ -341,10 +356,18 @@ const Navigation: React.FC = () => {
                   title="Select Role / Dashboard"
                 >
                   <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    <span className="text-white font-bold text-sm hidden sm:block">Choose Role</span>
+                    {isAuthenticated ? (
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        {user?.name?.charAt(0) || 'U'}
+                      </div>
+                    ) : (
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    )}
+                    <span className="text-white font-bold text-sm hidden sm:block">
+                      {isAuthenticated ? user?.name?.split(' ')[0] || 'User' : 'Choose Role'}
+                    </span>
                   </div>
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -354,43 +377,68 @@ const Navigation: React.FC = () => {
                 {profileOpen && (
                   <>
                     <div className="fixed inset-0 z-[9999]" onClick={() => setProfileOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn">
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn max-h-[70vh] overflow-y-auto">
                       <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
-                        <p className="text-sm font-bold text-[#023D7A]">Select Your Role</p>
-                        <p className="text-xs text-[#333333] mt-1">Choose a dashboard or switch roles</p>
+                        <p className="text-sm font-bold text-[#023D7A]">Menu</p>
+                        <p className="text-xs text-[#333333] mt-1">
+                          {isAuthenticated ? `Logged in as ${user?.name}` : 'Choose a dashboard'}
+                        </p>
                       </div>
-                      
-                      {/* Quick Access */}
-                      <div className="px-4 py-3 border-b border-[#48A9F0]/30">
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Quick Access</p>
-                        <a href="/originator/dashboard" className="block px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors">
-                          📊 My Dashboard
-                        </a>
-                        <a href="/investors-room" className="block px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
-                          📚 Investors Room
-                        </a>
-                      </div>
-                      
+
+                      {/* User Info (when logged in) */}
+                      {isAuthenticated && user && (
+                        <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
+                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Logged In As</p>
+                          <p className="text-sm font-bold text-[#023D7A] truncate">{user.name}</p>
+                          <p className="text-xs text-gray-600 truncate">{user.email}</p>
+                          <p className="text-xs text-gray-500 mt-1">Role: {user.role.replace(/_/g, ' ')}</p>
+                        </div>
+                      )}
+
+                      {/* Role-Specific Quick Access */}
+                      {isAuthenticated && user && (
+                        <div className="px-4 py-3 border-b border-gray-200">
+                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Quick Access</p>
+                          <a 
+                            href={getDashboardForRole(user.role)} 
+                            className="block px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mb-2"
+                          >
+                            📊 My Dashboard
+                          </a>
+                          {/* Show role-specific menu items */}
+                          {getNavItemsForRole(user.role)
+                            .filter(item => item.category && !['dashboard', 'test'].includes(item.category))
+                            .slice(0, 4)
+                            .map((item, idx) => (
+                              <a
+                                key={idx}
+                                href={item.href}
+                                className="block px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg transition-colors"
+                              >
+                                {item.icon} {item.label}
+                              </a>
+                            ))
+                          }
+                        </div>
+                      )}
+
                       {/* Switch Role */}
-                      <div className="px-4 py-3">
+                      <div className="px-4 py-3 border-b border-gray-200">
                         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Switch Role</p>
                         <a href="/select-role" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors">
                           🔄 Choose Different Role
                         </a>
+                        <a href="/demo-accounts" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mt-1">
+                          🎯 Try Demo Accounts
+                        </a>
                       </div>
-                      
+
                       {/* Sign Out */}
-                      <div className="border-t border-[#48A9F0]/30 mt-2 pt-2">
-                        <button 
-                          onClick={() => {
-                            setProfileOpen(false);
-                            alert('🚀 MVP TESTNET: Sign out functionality will be connected to wallet disconnection in production.');
-                          }} 
-                          className="block w-full text-left px-4 py-2 text-sm text-red-600 font-bold hover:bg-red-50"
-                        >
-                          🚪 Sign Out
-                        </button>
-                      </div>
+                      {isAuthenticated && (
+                        <div className="px-4 py-3">
+                          <LogoutButton variant="menu-item" />
+                        </div>
+                      )}
                     </div>
                   </>
                 )}
@@ -425,30 +473,27 @@ const Navigation: React.FC = () => {
                   <>
                     <p className="text-xs text-[#333333] mb-2">Quick Links</p>
                     <div className="space-y-1">
-                      <a href="/institutional/pools" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                        Pool Marketplace
-                      </a>
-                      <a href="/investors-room" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Investors Room (35 docs)
-                      </a>
-                      <a href="/originator/assets/submit" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
-                        Submit Asset for Tokenization
-                      </a>
-                      <a href="/docs/glossary" className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                        <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" />
-                        </svg>
-                        📖 Glossary
-                      </a>
+                      {/* Show role-filtered quick links */}
+                      {allSearchResults
+                        .filter(r => {
+                          if (!isAuthenticated || !user) return true; // Show all for non-authenticated
+                          return r.roles.includes(user.role) || user.role === 'ADMIN';
+                        })
+                        .filter(r => ['Dashboard', 'Invest', 'Documents'].includes(r.category))
+                        .slice(0, 6)
+                        .map((result, idx) => (
+                          <a
+                            key={idx}
+                            href={result.href}
+                            className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg"
+                          >
+                            <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {result.title}
+                          </a>
+                        ))
+                      }
                     </div>
                   </>
                 ) : filteredResults.length > 0 ? (

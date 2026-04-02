@@ -15,6 +15,10 @@ export default defineConfig({
       '@MVP': path.resolve(__dirname, './src/MVP'),
     },
   },
+  define: {
+    'process.env': {},
+    global: 'globalThis',
+  },
   server: {
     port: 5173,
     open: true,

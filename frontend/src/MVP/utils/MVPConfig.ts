@@ -35,7 +35,7 @@ export const MVP_CONFIG = {
   MOCK: {
     BANK: true,      // MockBankService vs BIICBankService
     ESCROW: true,    // MockEscrow.sol vs Real Bank Escrow
-    GDIZ (Benin): true,      // MockGDIZService vs GDIZGateway
+    GDIZ_BENIN: true,      // MockGDIZService vs GDIZGateway
     FIAT_RAMP: true, // MockFiatRamp.sol vs Real Fiat Rails
     KYB: true,       // Mock KYB vs Real KYB Provider
   },

@@ -28,7 +28,7 @@ export const config = {
   MOCK: {
     BANK: true,
     ESCROW: true,
-    GDIZ (Benin): true,
+    GDIZ_BENIN: true,
     FIAT_RAMP: true,
     KYB: true,
   },

@@ -158,6 +158,16 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     platformContext: 'Ujamaa maintains strict compliance with international sanctions and African regulatory requirements.',
   },
   {
+    term: 'Compliance Module',
+    pronunciation: 'Com-Plahy-Uhns Mod-yool',
+    partOfSpeech: 'noun',
+    definition: 'A smart contract that validates ERC-3643 token transfers against compliance rules. Checks identity verification, jurisdiction restrictions, investment limits, and blocked addresses.',
+    category: 'Blockchain',
+    relatedTerms: ['ERC-3643', 'Identity Registry', 'Transfer Compliance', 'Sanctions'],
+    example: 'The Compliance Module blocks transfers to sanctioned addresses or unverified identities.',
+    platformContext: 'Ujamaa uses a Compliance Module to enforce transfer restrictions and ensure all transactions meet regulatory requirements.',
+  },
+  {
     term: 'Consensus Mechanism',
     partOfSpeech: 'noun',
     definition: 'A protocol that ensures all nodes (computers) in a blockchain network agree on the validity of transactions and the state of the ledger. Common mechanisms include Proof of Work (PoW) and Proof of Stake (PoS).',
@@ -241,6 +251,16 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
   // ============================================================================
   // E
   // ============================================================================
+  {
+    term: 'ERC-3643 (T-REX)',
+    pronunciation: 'E-R-C Three Six Four Three',
+    partOfSpeech: 'noun',
+    definition: 'A permissioned token standard for regulated assets that adds identity verification and transfer compliance to ERC-20 tokens. Also known as T-REX (Token for Regulated EXchanges).',
+    category: 'Blockchain',
+    relatedTerms: ['ERC-20', 'Compliance', 'Identity Registry', 'Permissioned Token'],
+    example: 'ERC-3643 tokens can only be held by verified identities and transfers are validated against compliance rules.',
+    platformContext: 'Ujamaa ULP tokens are ERC-3643 compliant, ensuring only verified investors can hold tokens and all transfers meet regulatory requirements.',
+  },
   {
     term: 'Escrow',
     partOfSpeech: 'noun',
@@ -361,6 +381,16 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
   // ============================================================================
   // I
   // ============================================================================
+  {
+    term: 'Identity Registry',
+    pronunciation: 'Eye-Dent-Ih-Tee Rej-Ih-Stree',
+    partOfSpeech: 'noun',
+    definition: 'A smart contract that manages investor identities for ERC-3643 tokens. Stores verification status, jurisdiction information, and investor type for each address.',
+    category: 'Blockchain',
+    relatedTerms: ['ERC-3643', 'Compliance', 'KYC', 'Verification'],
+    example: 'Before holding ULP tokens, investors must register their identity in the Identity Registry and pass verification.',
+    platformContext: 'Ujamaa uses an on-chain Identity Registry to ensure all token holders are verified and compliant with regulations.',
+  },
   {
     term: 'Institutional Investor',
     partOfSpeech: 'noun',

@@ -14,30 +14,16 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
 
 const OriginatorDashboard: React.FC = () => {
-  // Mock data for demo
-  const company = {
-    name: 'GDIZ (Benin) Industries (Demo)',
-    jurisdiction: 'MU',
-    status: 'VERIFIED',
-    creditLimit: 5_000_000,
-    outstanding: 2_000_000,
-  };
-
-  const financings = [
-    { id: 1, pool: 'Pool Industry', amount: 2_000_000, raised: 2_000_000, status: 'active', progress: 100 },
-    { id: 2, pool: 'Pool Agriculture', amount: 1_500_000, raised: 750_000, status: 'fundraising', progress: 50 },
-  ];
-
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
-  };
+  // Get data from centralized mock data store
+  const company = USER_PROFILES.INDUSTRIAL_OPERATOR;
+  const financings = company.financings;
+  const certifiedAssets = company.certifiedAssets;
+  
+  // Calculate utilization rate
+  const utilizationRate = (company.outstanding / company.creditLimit) * 100;
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
@@ -50,7 +36,7 @@ const OriginatorDashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-[#103b5b]">Industrial Operator Dashboard</h1>
-              <p className="text-[#8b5b3d] mt-1">GDIZ (Benin) Industries (Demo)</p>
+              <p className="text-[#8b5b3d] mt-1">{company.name}</p>
             </div>
             <div className="flex items-center gap-3">
               <Badge variant="success" size="md">✓ Verified</Badge>
@@ -130,6 +116,9 @@ const OriginatorDashboard: React.FC = () => {
                       <div>
                         <h3 className="font-semibold text-[#103b5b]">Financing #{financing.id}</h3>
                         <p className="text-sm text-[#8b5b3d]">{financing.pool}</p>
+                        {financing.interestRate && (
+                          <p className="text-xs text-[#8b5b3d]">Interest: {financing.interestRate}%</p>
+                        )}
                       </div>
                       <Badge
                         variant={financing.status === 'active' ? 'success' : 'warning'}
@@ -157,6 +146,16 @@ const OriginatorDashboard: React.FC = () => {
                       </div>
                     </div>
 
+                    {/* Next Repayment Info for Active Financings */}
+                    {financing.status === 'active' && financing.nextRepayment && (
+                      <div className="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                        <p className="text-xs text-amber-800 font-semibold">Next Repayment Due</p>
+                        <p className="text-sm text-amber-700">
+                          <span className="font-semibold">{formatCurrency(financing.nextRepayment.amount)}</span> due on <span className="font-semibold">{financing.nextRepayment.dueDate}</span>
+                        </p>
+                      </div>
+                    )}
+
                     <div className="flex gap-2">
                       <a
                         href={`/industrial-operator/financings/${financing.id}`}
@@ -183,18 +182,14 @@ const OriginatorDashboard: React.FC = () => {
               header={
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-gray-900">Certified Assets</h2>
-                  <a href="/originator/assets" className="text-[#00A8A8] hover:text-[#0D7A7A] text-sm font-medium">
+                  <a href="/originator/assets/certificates" className="text-[#00A8A8] hover:text-[#0D7A7A] text-sm font-medium">
                     Manage →
                   </a>
                 </div>
               }
             >
               <div className="space-y-3">
-                {[
-                  { id: 'CERT-001', description: '1000 cotton bales, Grade A', value: 500_000, status: 'certified' },
-                  { id: 'CERT-002', description: '500 tons cocoa beans', value: 350_000, status: 'certified' },
-                  { id: 'CERT-003', description: '2000 units manufactured goods', value: 800_000, status: 'pending' },
-                ].map((asset) => (
+                {certifiedAssets.map((asset) => (
                   <div
                     key={asset.id}
                     className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
@@ -242,7 +237,7 @@ const OriginatorDashboard: React.FC = () => {
                   💰 My Financings
                 </a>
                 <button
-                  onClick={() => alert('🚀 MVP TESTNET: Make Repayment coming in production. This feature will allow you to make loan repayments directly from your dashboard.')}
+                  onClick={() => alert('🚀 MVP TESTNET: Make Repayment coming in production.')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   💳 Make Repayment
@@ -260,7 +255,7 @@ const OriginatorDashboard: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-gray-500">Jurisdiction</span>
-                  <p className="font-medium text-gray-900">{company.jurisdiction} (Mauritius)</p>
+                  <p className="font-medium text-gray-900">{company.jurisdiction} (Benin)</p>
                 </div>
                 <div>
                   <span className="text-gray-500">Verification Status</span>
@@ -279,12 +274,12 @@ const OriginatorDashboard: React.FC = () => {
               <div className="mb-2">
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-gray-600">Used</span>
-                  <span className="font-medium">{(company.outstanding / company.creditLimit * 100).toFixed(0)}%</span>
+                  <span className="font-medium">{utilizationRate.toFixed(0)}%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
                   <div
                     className="bg-amber-500 h-3 rounded-full transition-all"
-                    style={{ width: `${(company.outstanding / company.creditLimit * 100)}%` }}
+                    style={{ width: `${utilizationRate}%` }}
                   />
                 </div>
               </div>
@@ -292,32 +287,28 @@ const OriginatorDashboard: React.FC = () => {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Available</span>
                   <span className="font-semibold text-[#00A8A8]">
-                    {formatCurrency(company.creditLimit - company.outstanding)}
+                    {formatCurrency(company.availableCapacity)}
                   </span>
                 </div>
               </div>
             </Card>
 
             {/* Next Repayment */}
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <div className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <div>
-                  <p className="text-sm font-semibold text-blue-900">Next Repayment Due</p>
-                  <p className="text-xs text-blue-700 mt-1">
-                    <span className="font-semibold">€50,000</span> due on <span className="font-semibold">April 15, 2026</span>
-                  </p>
-                  <a
-                    href="/originator/repayments"
-                    className="inline-block mt-2 text-xs font-medium text-blue-600 hover:text-blue-700 underline"
-                  >
-                    Make payment →
-                  </a>
+            {financings.find(f => f.status === 'active' && f.nextRepayment) && (
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <p className="text-sm font-semibold text-blue-900">Next Repayment Due</p>
+                    <p className="text-xs text-blue-700 mt-1">
+                      <span className="font-semibold">{formatCurrency(financings.find(f => f.status === 'active')!.nextRepayment!.amount)}</span> due on <span className="font-semibold">{financings.find(f => f.status === 'active')!.nextRepayment!.dueDate}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </main>
@@ -326,7 +317,7 @@ const OriginatorDashboard: React.FC = () => {
       <footer className="mt-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <p className="text-center text-sm text-gray-500">
-            🚀 MVP: Industrial Operator Portal - Testnet Release • Polygon Amoy (Chain ID: 80002)
+            🚀 MVP: Industrial Operator Portal - Testnet Release
           </p>
         </div>
       </footer>

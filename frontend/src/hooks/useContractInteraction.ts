@@ -8,6 +8,7 @@
 import { useState, useCallback } from 'react';
 import { useWallet } from './useWallet';
 import { parseEther, formatEther, Address } from 'viem';
+import { web3Config } from '../config/web3';
 
 // Contract ABIs (minimal for MVP testing)
 const ERC20_ABI = [
@@ -97,12 +98,12 @@ const LIQUIDITY_POOL_ABI = [
   },
 ] as const;
 
-// Contract addresses (update after deployment)
+// Contract addresses from configuration (DEPLOYED & VERIFIED)
 const CONTRACT_ADDRESSES = {
-  ULP_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Update after deployment
-  UJEUR_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Update after deployment
-  LIQUIDITY_POOL: '0x0000000000000000000000000000000000000000', // TODO: Update after deployment
-  GUARANTEE_TOKEN: '0x0000000000000000000000000000000000000000', // TODO: Update after deployment
+  ULP_TOKEN: web3Config.CONTRACTS.ULP_TOKEN as Address,
+  UJEUR_TOKEN: web3Config.CONTRACTS.MOCK_EUROD as Address,
+  LIQUIDITY_POOL: web3Config.CONTRACTS.LIQUIDITY_POOL as Address,
+  GUARANTEE_TOKEN: web3Config.CONTRACTS.UGT_TOKEN as Address,
 } as const;
 
 /**
@@ -286,5 +287,16 @@ export function formatTokenAmount(amountWei: string, decimals: number = 18): str
     maximumFractionDigits: 2,
   });
 }
+
+// ============================================================================
+// EXPORTS - Use these hooks in your components
+// ============================================================================
+
+/**
+ * @example
+ * import { useERC20, useLiquidityPool, useContractDeployment } from '../hooks/useContractInteraction';
+ * const { balance } = useERC20(web3Config.CONTRACTS.ULP_TOKEN);
+ * const { poolData, loading } = useLiquidityPool();
+ */
 
 export default useLiquidityPool;

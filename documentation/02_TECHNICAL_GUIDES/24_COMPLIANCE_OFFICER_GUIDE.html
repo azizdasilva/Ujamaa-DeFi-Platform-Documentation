@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform - Compliance Officer Guide">
+  <title>📘 Compliance Officer Guide - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li>
+            <li class="docs-nav-item"><a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📋</span><span>Specifications</span></a></li>
+            <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+            <li class="docs-nav-item"><a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a></li>
+            <li class="docs-nav-item"><a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a></li>
+            <li class="docs-nav-item"><a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a></li>
+            <li class="docs-nav-item"><a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a></li>
+            <li class="docs-nav-item"><a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a></li>
+            <li class="docs-nav-item"><a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a></li>
+            <li class="docs-nav-item"><a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a></li>
+            <li class="docs-nav-item"><a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a></li>
+            <li class="docs-nav-item"><a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a></li>
+            <li class="docs-nav-item"><a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a></li>
+          </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>Compliance Officer Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">👮 Compliance Officer Guide</h1>
+        <p class="docs-subtitle">Complete guide for compliance officers managing ERC-3643 compliance</p>
+
+        <div class="docs-callout docs-callout-warning">
+          <div class="docs-callout-title">⚠️ Restricted Access</div>
+          <p>This guide is for authorized Compliance Officers only. Your account must have <code>COMPLIANCE_OFFICER</code> role.</p>
+        </div>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🎯 Role Overview</h2>
+          <p>As a <strong>Compliance Officer</strong>, you are responsible for:</p>
+          <ul>
+            <li>✅ Verifying investor identities</li>
+            <li>✅ Monitoring transfers for compliance</li>
+            <li>✅ Managing blocked addresses</li>
+            <li>✅ Enforcing jurisdiction restrictions</li>
+            <li>✅ Setting investment limits</li>
+            <li>✅ Generating compliance reports</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🔐 Accessing Compliance Dashboard</h2>
+          
+          <h3>Prerequisites</h3>
+          <ul>
+            <li><strong>Compliance Officer Role:</strong> Your account must have <code>COMPLIANCE_OFFICER</code> role</li>
+            <li><strong>Wallet Connected:</strong> Connect your MetaMask wallet</li>
+            <li><strong>Identity Verified:</strong> Your own identity must be VERIFIED</li>
+          </ul>
+
+          <h3>Login Steps</h3>
+          <ol>
+            <li>Visit <a href="https://ujamaa-defi.com" class="docs-link">Ujamaa DeFi Platform</a></li>
+            <li>Click <strong>"Login"</strong></li>
+            <li>Enter your credentials:
+              <ul>
+                <li>Email: compliance@ujamaa-defi.com</li>
+                <li>Password: [Your password]</li>
+              </ul>
+            </li>
+            <li>Connect your wallet</li>
+            <li>Navigate to <strong>"Compliance Dashboard"</strong></li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📋 Identity Verification Workflow</h2>
+          
+          <h3>Review Pending Identities</h3>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Identity Review"</strong></li>
+            <li>View pending applications:
+              <ul>
+                <li>Investor name</li>
+                <li>Jurisdiction</li>
+                <li>Investor type</li>
+                <li>Submission date</li>
+                <li>Time remaining (24h window)</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h3>Verify an Identity</h3>
+          <p><strong>For APPROVED applications:</strong></p>
+          <ol>
+            <li>Click <strong>"Review"</strong> on the application</li>
+            <li>Review submitted documents:
+              <ul>
+                <li>✅ ID document (passport, national ID)</li>
+                <li>✅ Proof of address</li>
+                <li>✅ Additional documents (if applicable)</li>
+              </ul>
+            </li>
+            <li>Verify jurisdiction is allowed (not on blocked list)</li>
+            <li>Click <strong>"Approve"</strong></li>
+            <li>Transaction will be submitted to blockchain</li>
+            <li>Confirm transaction in MetaMask</li>
+            <li>Identity status changes to VERIFIED</li>
+          </ol>
+
+          <p><strong>For REJECTED applications:</strong></p>
+          <ol>
+            <li>Click <strong>"Review"</strong> on the application</li>
+            <li>Click <strong>"Reject"</strong></li>
+            <li>Provide rejection reason:
+              <ul>
+                <li>Invalid documents</li>
+                <li>Blocked jurisdiction</li>
+                <li>Incomplete information</li>
+                <li>Other (specify)</li>
+              </ul>
+            </li>
+            <li>Click <strong>"Submit Rejection"</strong></li>
+            <li>Identity status changes to REJECTED</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🚫 Managing Blocked Addresses</h2>
+          
+          <h3>Block an Address</h3>
+          <p><strong>For sanctioned or fraudulent addresses:</strong></p>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Blocked Addresses"</strong></li>
+            <li>Click <strong>"Block Address"</strong></li>
+            <li>Enter address to block</li>
+            <li>Select blocking reason:
+              <ul>
+                <li>OFAC sanctions</li>
+                <li>UN sanctions</li>
+                <li>EU sanctions</li>
+                <li>Fraud investigation</li>
+                <li>Other compliance reason</li>
+              </ul>
+            </li>
+            <li>Add notes (optional but recommended)</li>
+            <li>Click <strong>"Block"</strong></li>
+            <li>Confirm transaction in MetaMask</li>
+            <li>Address is now blocked from all transfers</li>
+          </ol>
+
+          <h3>Unblock an Address</h3>
+          <p><strong>If address was blocked in error:</strong></p>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Blocked Addresses"</strong></li>
+            <li>Find the blocked address</li>
+            <li>Click <strong>"Unblock"</strong></li>
+            <li>Provide unblocking reason</li>
+            <li>Submit transaction</li>
+            <li>Address can now transfer tokens</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">💰 Setting Investment Limits</h2>
+          
+          <h3>Set Individual Limit</h3>
+          <p><strong>For specific investors:</strong></p>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Investment Limits"</strong></li>
+            <li>Search for investor by address or name</li>
+            <li>Click <strong>"Set Limit"</strong></li>
+            <li>Enter new limit (in wei, 18 decimals):
+              <ul>
+                <li>Example: €50,000 = 50000000000000000000000</li>
+              </ul>
+            </li>
+            <li>Click <strong>"Update"</strong></li>
+            <li>Confirm transaction</li>
+            <li>Limit is now enforced for that investor</li>
+          </ol>
+
+          <h3>Set Global Limits</h3>
+          <p><strong>For all investors:</strong></p>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Investment Limits"</strong></li>
+            <li>Click <strong>"Global Settings"</strong></li>
+            <li>Update global limits:
+              <ul>
+                <li>Minimum investment (default: €1,000)</li>
+                <li>Maximum retail investment (default: €50,000)</li>
+                <li>Maximum institutional investment (default: €10,000,000)</li>
+              </ul>
+            </li>
+            <li>Click <strong>"Update Global Limits"</strong></li>
+            <li>Confirm transaction</li>
+            <li>New limits apply to all future investments</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📊 Compliance Reports</h2>
+          
+          <h3>Generate Daily Report</h3>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Reports"</strong></li>
+            <li>Select <strong>"Daily Activity Report"</strong></li>
+            <li>Choose date</li>
+            <li>Click <strong>"Generate"</strong></li>
+            <li>Report includes:
+              <ul>
+                <li>Identities verified</li>
+                <li>Identities rejected</li>
+                <li>Addresses blocked</li>
+                <li>Transfers blocked</li>
+                <li>Jurisdiction changes</li>
+              </ul>
+            </li>
+            <li>Download as PDF or CSV</li>
+          </ol>
+
+          <h3>Generate Transfer Report</h3>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"Reports"</strong></li>
+            <li>Select <strong>"Transfer Compliance Report"</strong></li>
+            <li>Choose date range</li>
+            <li>Click <strong>"Generate"</strong></li>
+            <li>Report includes:
+              <ul>
+                <li>All transfers attempted</li>
+                <li>Successful transfers</li>
+                <li>Failed transfers</li>
+                <li>Failure reasons</li>
+                <li>Compliance checks performed</li>
+              </ul>
+            </li>
+            <li>Download as PDF or CSV</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">⚠️ Compliance Best Practices</h2>
+          
+          <h3>Identity Verification</h3>
+          <ul>
+            <li>✅ <strong>Verify documents carefully</strong> - Check for authenticity</li>
+            <li>✅ <strong>Check jurisdiction</strong> - Ensure not on blocked list</li>
+            <li>✅ <strong>Document decisions</strong> - Add notes for all actions</li>
+            <li>✅ <strong>24-hour window</strong> - Review within 24 hours of submission</li>
+            <li>✅ <strong>Escalate suspicious</strong> - Report suspicious applications</li>
+          </ul>
+
+          <h3>Transfer Monitoring</h3>
+          <ul>
+            <li>✅ <strong>Review blocked transfers</strong> - Check why transfers failed</li>
+            <li>✅ <strong>Monitor large transfers</strong> - Review transfers >€100,000</li>
+            <li>✅ <strong>Check patterns</strong> - Look for suspicious patterns</li>
+            <li>✅ <strong>Update blocked list</strong> - Add new sanctioned addresses promptly</li>
+          </ul>
+
+          <h3>Record Keeping</h3>
+          <ul>
+            <li>✅ <strong>Document all actions</strong> - Add notes for all decisions</li>
+            <li>✅ <strong>Generate reports</strong> - Keep daily/weekly reports</li>
+            <li>✅ <strong>Maintain audit trail</strong> - All actions are on-chain</li>
+            <li>✅ <strong>Backup data</strong> - Download reports regularly</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🔐 Security Guidelines</h2>
+          
+          <h3>Protect Your Account</h3>
+          <ul>
+            <li>🔒 <strong>Use strong password</strong> - Minimum 12 characters</li>
+            <li>🔒 <strong>Enable 2FA</strong> - If available</li>
+            <li>🔒 <strong>Protect private key</strong> - Never share your keys</li>
+            <li>🔒 <strong>Use dedicated wallet</strong> - Separate from personal wallet</li>
+            <li>🔒 <strong>Log out when done</strong> - Don't leave session open</li>
+          </ul>
+
+          <h3>Authorized Actions Only</h3>
+          <ul>
+            <li>⚠️ <strong>Don't abuse power</strong> - Only block for valid reasons</li>
+            <li>⚠️ <strong>Don't share credentials</strong> - Keep your account secure</li>
+            <li>⚠️ <strong>Follow procedures</strong> - Use established workflows</li>
+            <li>⚠️ <strong>Report issues</strong> - Escalate suspicious activity</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📞 Support & Resources</h2>
+          
+          <h3>Internal Resources</h3>
+          <ul>
+            <li><strong>Compliance Manual:</strong> [Internal link]</li>
+            <li><strong>Sanctions List:</strong> <a href="https://sanctionssearch.ofac.treas.gov/" class="docs-link" target="_blank">OFAC</a></li>
+            <li><strong>UN Sanctions:</strong> <a href="https://www.un.org/securitycouncil/sanctions/information" class="docs-link" target="_blank">UN Security Council</a></li>
+            <li><strong>EU Sanctions:</strong> <a href="https://www.sanctionsmap.eu/" class="docs-link" target="_blank">European Union</a></li>
+          </ul>
+
+          <h3>Contact</h3>
+          <ul>
+            <li><strong>Chief Compliance Officer:</strong> cco@ujamaa-defi.com</li>
+            <li><strong>Compliance Team:</strong> compliance@ujamaa-defi.com</li>
+            <li><strong>Legal Team:</strong> legal@ujamaa-defi.com</li>
+            <li><strong>Emergency:</strong> +XX-XXX-XXX-XXXX (24/7 hotline)</li>
+          </ul>
+        </section>
+
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 2, 2026 | <strong>Version:</strong> 2.0.0 | <strong>Role:</strong> COMPLIANCE_OFFICER | <strong>Access Level:</strong> RESTRICTED</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 2, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

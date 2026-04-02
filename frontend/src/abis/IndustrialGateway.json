@@ -1,0 +1,51 @@
+[
+  {
+    "inputs": [
+      { "name": "industrial", "type": "address" },
+      { "name": "assetData", "type": "bytes" }
+    ],
+    "name": "registerAsset",
+    "outputs": [
+      { "name": "assetId", "type": "bytes32" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "assetId", "type": "bytes32" }
+    ],
+    "name": "getAssetInfo",
+    "outputs": [
+      {
+        "components": [
+          { "name": "owner", "type": "address" },
+          { "name": "value", "type": "uint256" },
+          { "name": "isCertified", "type": "bool" }
+        ],
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "assetId", "type": "bytes32" }
+    ],
+    "name": "certifyAsset",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "assetId", "type": "bytes32" },
+      { "indexed": false, "name": "owner", "type": "address" },
+      { "indexed": false, "name": "value", "type": "uint256" }
+    ],
+    "name": "AssetRegistered",
+    "type": "event"
+  }
+]

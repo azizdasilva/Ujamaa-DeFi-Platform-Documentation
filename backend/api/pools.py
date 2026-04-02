@@ -19,7 +19,7 @@ import uuid
 from services.MVP.mock_bank import get_bank_service, MockBankService
 from services.MVP.mock_gdiz import get_gdiz_service, MockGDIZService
 from services.MVP.yield_calculator import YieldCalculator, PoolYield
-from config.MVP_config import mvp_config, get_pool_config
+from config.MVP_config import mvp_config
 
 # Router
 router = APIRouter(prefix="/api/v2/pools", tags=["Pools"])

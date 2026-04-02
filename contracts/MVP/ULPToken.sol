@@ -7,6 +7,8 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "../ERC3643/IdentityRegistry.sol";
+import "../ERC3643/Compliance.sol";
 
 /**
  * @title ULPToken (Ujamaa Liquidity Provider Token)
@@ -19,9 +21,11 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * - Yield accrues to the pool, increasing NAV per share
  * - Token balance remains constant; value grows via NAV appreciation
  *
-
-
-
+ * ERC-3643 Compliance:
+ * - Only verified identities can hold tokens
+ * - Transfers require compliance validation
+ * - Jurisdiction restrictions enforced
+ * - Investment limits enforced
  *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  * @notice Network: Polygon Amoy (Chain ID: 80002)
@@ -78,6 +82,16 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
      * @dev Updated on deposits, redemptions, and yield accrual
      */
     uint256 private s_lastNavUpdate;
+
+    /**
+     * @notice Identity registry for ERC-3643 compliance
+     */
+    IdentityRegistry public immutable IDENTITY_REGISTRY;
+
+    /**
+     * @notice Compliance module for transfer validation
+     */
+    Compliance public immutable COMPLIANCE_MODULE;
 
     /**
      * @notice Accumulated yield (18 decimals)
@@ -233,18 +247,32 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
      * @param _managementFeeRate Management fee rate in basis points (e.g., 200 = 2%)
      * @param _performanceFeeRate Performance fee rate in basis points (e.g., 2000 = 20%)
      * @param _hurdleRate Hurdle rate in basis points (e.g., 500 = 5%)
+     * @param _identityRegistry Identity registry address for ERC-3643
+     * @param _compliance Compliance module address for ERC-3643
      */
     constructor(
         address _ujeurToken,
         uint256 _managementFeeRate,
         uint256 _performanceFeeRate,
-        uint256 _hurdleRate
+        uint256 _hurdleRate,
+        address _identityRegistry,
+        address _compliance
     ) ERC20("Ujamaa Liquidity Provider Token", "uLP") {
-        if (_ujeurToken == address(0)) {
-            revert UJEURTokenNotSet();
+        // Allow address(0) for testnet deployment
+        if (_ujeurToken != address(0)) {
+            ujeurToken = _ujeurToken;
+        }
+        // else: UJEUR token will be set later for testnet
+        if (_identityRegistry == address(0)) {
+            revert("ULPToken: Zero identity registry");
+        }
+        if (_compliance == address(0)) {
+            revert("ULPToken: Zero compliance");
         }
 
         ujeurToken = _ujeurToken;
+        IDENTITY_REGISTRY = IdentityRegistry(_identityRegistry);
+        COMPLIANCE_MODULE = Compliance(_compliance);
         s_navPerShare = INITIAL_NAV;
         s_lastNavUpdate = block.timestamp;
         s_totalPoolValue = 0;
@@ -634,6 +662,8 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
     function mintTestULP(address to, uint256 amount) external {
         require(IS_MVP_TESTNET, "Only on testnet");
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Admin only");
+        // ERC-3643: Check recipient identity
+        require(IDENTITY_REGISTRY.isVerified(to), "ULPToken: Recipient not verified");
         _mint(to, amount);
     }
 
@@ -646,5 +676,46 @@ contract ULPToken is ERC20, AccessControl, ReentrancyGuard {
         require(IS_MVP_TESTNET, "Only on testnet");
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "Admin only");
         s_totalPoolValue = value;
+    }
+
+    // =========================================================================
+    // ERC-3643 COMPLIANCE OVERRIDES
+    // =========================================================================
+
+    /**
+     * @notice Override transfer to add ERC-3643 compliance check
+     * @param to Recipient address
+     * @param amount Transfer amount
+     * @return Success status
+     */
+    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+        // ERC-3643: Check compliance
+        require(
+            COMPLIANCE_MODULE.canTransfer(msg.sender, to, amount),
+            string(abi.encodePacked(
+                "ULPToken: Transfer blocked - ",
+                COMPLIANCE_MODULE.getComplianceReason(msg.sender, to, amount)
+            ))
+        );
+        return super.transfer(to, amount);
+    }
+
+    /**
+     * @notice Override transferFrom to add ERC-3643 compliance check
+     * @param from Sender address
+     * @param to Recipient address
+     * @param amount Transfer amount
+     * @return Success status
+     */
+    function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
+        // ERC-3643: Check compliance
+        require(
+            COMPLIANCE_MODULE.canTransfer(from, to, amount),
+            string(abi.encodePacked(
+                "ULPToken: Transfer blocked - ",
+                COMPLIANCE_MODULE.getComplianceReason(from, to, amount)
+            ))
+        );
+        return super.transferFrom(from, to, amount);
     }
 }

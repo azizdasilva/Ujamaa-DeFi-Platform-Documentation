@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ERC-3643 Deployment Guide - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header">
+        <a href="../index.html" class="docs-logo">
+          <div class="docs-logo-icon">U</div>
+          <div>
+            <div class="docs-logo-text">Ujamaa DeFi Platform</div>
+            <div class="docs-logo-subtitle">Documentation</div>
+          </div>
+        </a>
+      </div>
+      <div class="docs-search-box">
+        <input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)">
+      </div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">📖 Documentation</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li>
+            <li class="docs-nav-item"><a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📋</span><span>Specifications</span></a></li>
+            <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+            <li class="docs-nav-item"><a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a></li>
+            <li class="docs-nav-item"><a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a></li>
+            <li class="docs-nav-item"><a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a></li>
+            <li class="docs-nav-item"><a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a></li>
+            <li class="docs-nav-item"><a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a></li>
+            <li class="docs-nav-item"><a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a></li>
+            <li class="docs-nav-item"><a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a></li>
+            <li class="docs-nav-item"><a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a></li>
+            <li class="docs-nav-item"><a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a></li>
+            <li class="docs-nav-item"><a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header">
+        <button class="docs-menu-toggle">☰</button>
+        <nav class="docs-breadcrumb">
+          <a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a>
+          <span class="docs-breadcrumb-separator">/</span>
+          <a href="index.html" class="docs-breadcrumb-link">Technical Guides</a>
+          <span class="docs-breadcrumb-separator">/</span>
+          <span>ERC-3643 Deployment Guide</span>
+        </nav>
+      </header>
+      <div class="docs-content">
+        <h1 class="docs-title">🚀 ERC-3643 Deployment Guide</h1>
+        <p class="docs-subtitle">Complete guide to deploying ERC-3643 infrastructure and MVP contracts</p>
+
+        <div class="docs-callout docs-callout-info">
+          <div class="docs-callout-title">📊 Document Info</div>
+          <p><strong>Version:</strong> 2.0.0 | <strong>Last Updated:</strong> April 2, 2026 | <strong>Network:</strong> Polygon Amoy (Chain ID: 80002)</p>
+        </div>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🎯 Overview</h2>
+          <p>This guide covers the deployment of ERC-3643 infrastructure and MVP contracts to Polygon Amoy testnet. The deployment includes:</p>
+          <ul>
+            <li><strong>ERC-3643 Infrastructure:</strong> IdentityRegistry + Compliance Module</li>
+            <li><strong>MVP Contracts:</strong> ULPToken (ERC-3643 compliant), LiquidityPool, and supporting contracts</li>
+            <li><strong>Mock Services:</strong> MockEscrow, MockFiatRamp, MockEUROD for testing</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📋 Deployed Contract Addresses</h2>
+          
+          <div class="docs-callout docs-callout-success">
+            <div class="docs-callout-title">✅ Production Deployment (April 2, 2026)</div>
+            <div class="docs-pre"><code>========================================
+Network: Polygon Amoy (80002)
+Deployment: ERC-3643 Production Ready
+Deployer: 0xb9a4401B8240f1E45FE45649962F297d56ADB0e3
+Deployment TX: 0xb42f6af7046ef352783a0a8139c2848088c883e709a3432df32361f188ef4bde
+----------------------------------------
+ERC-3643 Infrastructure:
+IdentityRegistry:       0xB3fb5AB654FC270d10338A64fDBC1E151c223283
+Compliance Module:      0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2
+
+MVP Contracts (Updated):
+ULPToken (ERC-3643):    0xe69569DCc219c518673318a7a34D56202CF92DE2
+GuaranteeToken:         0x83e20A9516B82f0B1bd0ee57882ef35F9553B469
+LiquidityPool:          0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec
+IndustrialGateway:      0x882071de6689eC1716BD7e162Acf50707AC68930
+JurisdictionCompliance: 0x4eB4c7f57E62A342aC7F322B87a31a7cd54D453C
+MockEscrow (NEW):       0x74985F48F7Bf018915af1AC706994677B2AF28BE
+MockFiatRamp:           0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a
+NavGateway:             0x99712f923e3519b4305cedad40290428299f29a0
+MockEUROD:              0x787c5c0365829abf88a3d8404e9488d1e307ed43
+========================================</code></div>
+          </div>
+
+          <h3>Contract Verification Links</h3>
+          <ul>
+            <li><a href="https://amoy.polygonscan.com/address/0xB3fb5AB654FC270d10338A64fDBC1E151c223283" target="_blank" class="docs-link">IdentityRegistry</a> - Identity management</li>
+            <li><a href="https://amoy.polygonscan.com/address/0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2" target="_blank" class="docs-link">Compliance Module</a> - Transfer compliance</li>
+            <li><a href="https://amoy.polygonscan.com/address/0xe69569DCc219c518673318a7a34D56202CF92DE2" target="_blank" class="docs-link">ULPToken (ERC-3643)</a> - Main token contract</li>
+            <li><a href="https://amoy.polygonscan.com/address/0x74985F48F7Bf018915af1AC706994677B2AF28BE" target="_blank" class="docs-link">MockEscrow</a> - Bank escrow simulation</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🔧 Prerequisites</h2>
+          <ol>
+            <li><strong>Foundry Installed:</strong> <code>curl -L https://foundry.paradigm.xyz | bash</code></li>
+            <li><strong>Node.js 18+:</strong> For frontend integration</li>
+            <li><strong>MetaMask Wallet:</strong> With test POL tokens</li>
+            <li><strong>Git:</strong> For cloning repository</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🚀 Deployment Steps</h2>
+          
+          <h3>Step 1: Clone Repository</h3>
+          <div class="docs-pre"><code>git clone &lt;repository-url&gt;
+cd "Ujamaa DeFi Platform"</code></div>
+
+          <h3>Step 2: Configure Environment</h3>
+          <div class="docs-pre"><code>cd backend
+cp .env.example .env
+# Edit .env with your private key</code></div>
+
+          <h3>Step 3: Deploy ERC-3643 Infrastructure</h3>
+          <div class="docs-pre"><code>forge script script/DeployERC3643.s.sol:DeployERC3643AndMVP \
+  --rpc-url https://rpc-amoy.polygon.technology/ \
+  --broadcast \
+  --verify</code></div>
+
+          <h3>Step 4: Verify Deployment</h3>
+          <div class="docs-pre"><code>python backend/verify_all_contracts.py</code></div>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📊 Deployment Summary</h2>
+          
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Contract</th>
+                <th>Address</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IdentityRegistry</td>
+                <td><code>0xB3fb5AB654FC270d10338A64fDBC1E151c223283</code></td>
+                <td>✅ Deployed</td>
+              </tr>
+              <tr>
+                <td>Compliance</td>
+                <td><code>0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2</code></td>
+                <td>✅ Deployed</td>
+              </tr>
+              <tr>
+                <td>ULPToken (ERC-3643)</td>
+                <td><code>0xe69569DCc219c518673318a7a34D56202CF92DE2</code></td>
+                <td>✅ Deployed</td>
+              </tr>
+              <tr>
+                <td>MockEscrow</td>
+                <td><code>0x74985F48F7Bf018915af1AC706994677B2AF28BE</code></td>
+                <td>✅ Deployed</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 2, 2026 | <strong>Version:</strong> 2.0.0 | <strong>Network:</strong> Polygon Amoy Testnet (Chain ID: 80002)</p>
+        </div>
+      </div>
+      <footer class="docs-footer">
+        <div class="docs-footer-content">
+          <div class="docs-footer-text">
+            <strong>Ujamaa DeFi Platform</strong> - Documentation<br>
+            <span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 2, 2026 | © 2026 Ujamaa DeFi Platform</span>
+          </div>
+          <div class="docs-footer-links">
+            <a href="#" class="docs-footer-link">Top</a>
+            <a href="index.html" class="docs-footer-link">Technical Guides</a>
+            <a href="../index.html" class="docs-footer-link">Home</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+{
+  "deployment": {
+    "ULP_TOKEN": {
+      "success": true,
+      "code_size": 5681,
+      "message": "\u2705 Deployed (5681 bytes)",
+      "address": "0xb6062a6e63a07c3598629a65ed19021445fb3b26"
+    },
+    "GUARANTEE_TOKEN": {
+      "success": true,
+      "code_size": 9238,
+      "message": "\u2705 Deployed (9238 bytes)",
+      "address": "0x83e20a9516b82f0b1bd0ee57882ef35f9553b469"
+    },
+    "LIQUIDITY_POOL": {
+      "success": true,
+      "code_size": 10104,
+      "message": "\u2705 Deployed (10104 bytes)",
+      "address": "0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec"
+    },
+    "INDUSTRIAL_GATEWAY": {
+      "success": true,
+      "code_size": 7346,
+      "message": "\u2705 Deployed (7346 bytes)",
+      "address": "0x882071de6689ec1716bd7e162acf50707ac68930"
+    },
+    "JURISDICTION_COMPLIANCE": {
+      "success": true,
+      "code_size": 7624,
+      "message": "\u2705 Deployed (7624 bytes)",
+      "address": "0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c"
+    },
+    "MOCK_ESCROW": {
+      "success": false,
+      "code_size": 0,
+      "message": "\u274c No code at address (not deployed)",
+      "address": "0x8d446994fcd9906c573500959cdcdc8a8271a948"
+    },
+    "MOCK_FIAT_RAMP": {
+      "success": true,
+      "code_size": 8556,
+      "message": "\u2705 Deployed (8556 bytes)",
+      "address": "0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a"
+    },
+    "NAV_GATEWAY": {
+      "success": true,
+      "code_size": 2699,
+      "message": "\u2705 Deployed (2699 bytes)",
+      "address": "0x99712f923e3519b4305cedad40290428299f29a0"
+    },
+    "MOCK_EUROD": {
+      "success": true,
+      "code_size": 2814,
+      "message": "\u2705 Deployed (2814 bytes)",
+      "address": "0x787c5c0365829abf88a3d8404e9488d1e307ed43"
+    }
+  },
+  "name": {
+    "ULP_TOKEN": {
+      "success": true,
+      "value": "N/A"
+    },
+    "GUARANTEE_TOKEN": {
+      "success": true,
+      "value": "N/A"
+    },
+    "LIQUIDITY_POOL": {
+      "success": true,
+      "value": "N/A"
+    },
+    "INDUSTRIAL_GATEWAY": {
+      "success": true,
+      "value": "N/A"
+    },
+    "JURISDICTION_COMPLIANCE": {
+      "success": true,
+      "value": "N/A"
+    },
+    "MOCK_FIAT_RAMP": {
+      "success": true,
+      "value": "N/A"
+    },
+    "NAV_GATEWAY": {
+      "success": true,
+      "value": "N/A"
+    },
+    "MOCK_EUROD": {
+      "success": true,
+      "value": "N/A"
+    }
+  },
+  "total_supply": {
+    "ULP_TOKEN": {
+      "success": true,
+      "value": 0.0
+    },
+    "GUARANTEE_TOKEN": {
+      "success": true,
+      "value": 0.0
+    },
+    "LIQUIDITY_POOL": {
+      "success": true,
+      "value": 0
+    },
+    "INDUSTRIAL_GATEWAY": {
+      "success": true,
+      "value": 0
+    },
+    "JURISDICTION_COMPLIANCE": {
+      "success": true,
+      "value": 0
+    },
+    "MOCK_FIAT_RAMP": {
+      "success": true,
+      "value": 0
+    },
+    "NAV_GATEWAY": {
+      "success": true,
+      "value": 0
+    },
+    "MOCK_EUROD": {
+      "success": true,
+      "value": 0.0
+    }
+  },
+  "decimals": {
+    "ULP_TOKEN": {
+      "success": true,
+      "value": 18
+    },
+    "GUARANTEE_TOKEN": {
+      "success": true,
+      "value": 18
+    },
+    "LIQUIDITY_POOL": {
+      "success": true,
+      "value": 18
+    },
+    "INDUSTRIAL_GATEWAY": {
+      "success": true,
+      "value": 18
+    },
+    "JURISDICTION_COMPLIANCE": {
+      "success": true,
+      "value": 18
+    },
+    "MOCK_FIAT_RAMP": {
+      "success": true,
+      "value": 18
+    },
+    "NAV_GATEWAY": {
+      "success": true,
+      "value": 18
+    },
+    "MOCK_EUROD": {
+      "success": true,
+      "value": 18
+    }
+  },
+  "balance": {
+    "ULP_TOKEN": {
+      "success": true,
+      "value": 0.0
+    },
+    "GUARANTEE_TOKEN": {
+      "success": true,
+      "value": 0.0
+    },
+    "LIQUIDITY_POOL": {
+      "success": false,
+      "value": 0
+    },
+    "INDUSTRIAL_GATEWAY": {
+      "success": false,
+      "value": 0
+    },
+    "JURISDICTION_COMPLIANCE": {
+      "success": false,
+      "value": 0
+    },
+    "MOCK_FIAT_RAMP": {
+      "success": false,
+      "value": 0
+    },
+    "NAV_GATEWAY": {
+      "success": false,
+      "value": 0
+    },
+    "MOCK_EUROD": {
+      "success": true,
+      "value": 0.0
+    }
+  },
+  "mint": {
+    "ULP_TOKEN": {
+      "success": false,
+      "tx_hash": ""
+    }
+  },
+  "events": {}
+}

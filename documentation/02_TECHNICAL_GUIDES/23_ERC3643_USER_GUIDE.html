@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform - ERC-3643 User Guide">
+  <title>📘 ERC-3643 User Guide - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><div class="docs-logo-icon">U</div><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a></li>
+            <li class="docs-nav-item"><a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📋</span><span>Specifications</span></a></li>
+            <li class="docs-nav-item"><a href="index.html" class="docs-nav-link active"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a></li>
+            <li class="docs-nav-item"><a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a></li>
+            <li class="docs-nav-item"><a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a></li>
+            <li class="docs-nav-item"><a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a></li>
+            <li class="docs-nav-item"><a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a></li>
+            <li class="docs-nav-item"><a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a></li>
+            <li class="docs-nav-item"><a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a></li>
+            <li class="docs-nav-item"><a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a></li>
+            <li class="docs-nav-item"><a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a></li>
+            <li class="docs-nav-item"><a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a></li>
+            <li class="docs-nav-item"><a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a></li>
+          </ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>ERC-3643 User Guide</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">📘 ERC-3643 User Guide</h1>
+        <p class="docs-subtitle">Complete guide to using ERC-3643 tokens on Ujamaa DeFi Platform</p>
+
+        <div class="docs-callout docs-callout-info">
+          <div class="docs-callout-title">ℹ️ About This Guide</div>
+          <p>This guide explains how to use ERC-3643 (T-REX) permissioned tokens on the Ujamaa DeFi Platform.</p>
+        </div>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🎯 What is ERC-3643?</h2>
+          <p>ERC-3643 (also known as T-REX - Token for Regulated Exchanges) is a <strong>permissioned token standard</strong> that adds identity verification and transfer compliance to standard ERC-20 tokens.</p>
+          
+          <h3>Why ERC-3643?</h3>
+          <p>Unlike regular cryptocurrencies that anyone can hold, ERC-3643 tokens ensure:</p>
+          <ul>
+            <li>✅ Only verified investors can hold tokens</li>
+            <li>✅ All transfers comply with regulations</li>
+            <li>✅ Sanctions and restrictions are enforced</li>
+            <li>✅ Full audit trail for regulators</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🚀 Getting Started</h2>
+          
+          <h3>Step 1: Create Your Account</h3>
+          <ol>
+            <li>Visit <a href="https://ujamaa-defi.com" class="docs-link">Ujamaa DeFi Platform</a></li>
+            <li>Click <strong>"Register"</strong></li>
+            <li>Fill in your details:
+              <ul>
+                <li>Email address</li>
+                <li>Password</li>
+                <li>Full name or company name</li>
+                <li>Jurisdiction (country)</li>
+                <li>Investor type (Retail/Institutional)</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h3>Step 2: Connect Your Wallet</h3>
+          <ol>
+            <li>Install <strong>MetaMask</strong> browser extension</li>
+            <li>Create or import your wallet</li>
+            <li>Add <strong>Polygon Amoy Testnet</strong> network:
+              <ul>
+                <li>Network Name: Polygon Amoy</li>
+                <li>Chain ID: 80002</li>
+                <li>RPC URL: https://rpc-amoy.polygon.technology/</li>
+              </ul>
+            </li>
+            <li>Click <strong>"Connect Wallet"</strong> on Ujamaa platform</li>
+            <li>Approve the connection in MetaMask</li>
+          </ol>
+
+          <h3>Step 3: Register Your Identity</h3>
+          <p><strong>This step is REQUIRED before you can hold ULP tokens.</strong></p>
+          <ol>
+            <li>Navigate to <strong>"Compliance"</strong> → <strong>"Identity Registration"</strong></li>
+            <li>Fill in the registration form:
+              <ul>
+                <li><strong>Jurisdiction:</strong> Your country of residence (2-letter code, e.g., "KE" for Kenya)</li>
+                <li><strong>Investor Type:</strong>
+                  <ul>
+                    <li><code>RETAIL</code> for individual investors (€1K-€50K)</li>
+                    <li><code>INSTITUTIONAL</code> for organizations (€100K+)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Upload required documents:
+              <ul>
+                <li><strong>Retail Investors:</strong>
+                  <ul>
+                    <li>Government-issued ID (passport, national ID)</li>
+                    <li>Proof of address (utility bill, bank statement)</li>
+                  </ul>
+                </li>
+                <li><strong>Institutional Investors:</strong>
+                  <ul>
+                    <li>Certificate of incorporation</li>
+                    <li>Business registration documents</li>
+                    <li>Beneficial owner information</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Submit for verification</li>
+          </ol>
+
+          <h3>Step 4: Wait for Verification</h3>
+          <ul>
+            <li>A <strong>Compliance Officer</strong> will review your submission</li>
+            <li>Verification typically takes <strong>24-48 hours</strong></li>
+            <li>You'll receive an email notification when verified</li>
+            <li>Check status in <strong>"Compliance"</strong> → <strong>"My Identity"</strong></li>
+          </ul>
+
+          <h3>Step 5: Start Investing</h3>
+          <p>Once verified:</p>
+          <ol>
+            <li>Navigate to <strong>"Pool Marketplace"</strong></li>
+            <li>Choose a pool to invest in</li>
+            <li>Enter investment amount</li>
+            <li>Confirm transaction in MetaMask</li>
+            <li>Receive ULP tokens in your wallet</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🔐 Identity Verification Status</h2>
+          <p>Your identity can have these statuses:</p>
+          
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Meaning</th>
+                <th>Can Hold Tokens?</th>
+                <th>Can Transfer?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>NONE</strong></td>
+                <td>Not registered</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td><strong>PENDING</strong></td>
+                <td>Submitted, awaiting review</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td><strong>VERIFIED</strong></td>
+                <td>Approved by compliance officer</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes</td>
+              </tr>
+              <tr>
+                <td><strong>REJECTED</strong></td>
+                <td>Application rejected</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td><strong>REVOKED</strong></td>
+                <td>Previously verified, now revoked</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">💸 Transferring ULP Tokens</h2>
+          <p>All ULP token transfers are validated against compliance rules:</p>
+          
+          <h3>Transfer Requirements</h3>
+          <p>For a transfer to succeed, <strong>ALL</strong> conditions must be met:</p>
+          <ol>
+            <li>✅ <strong>Sender is verified</strong> - Your identity must be VERIFIED</li>
+            <li>✅ <strong>Recipient is verified</strong> - Recipient's identity must be VERIFIED</li>
+            <li>✅ <strong>Jurisdictions allowed</strong> - Both parties must be from allowed jurisdictions</li>
+            <li>✅ <strong>Not blocked</strong> - Neither party is on blocked address list</li>
+            <li>✅ <strong>Within limits</strong> - Transfer amount is within investment limits</li>
+          </ol>
+
+          <h3>If Transfer Fails</h3>
+          <p>You'll see an error message explaining why:</p>
+          
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Error Message</th>
+                <th>Meaning</th>
+                <th>Solution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Sender identity not verified"</td>
+                <td>Your identity is not verified</td>
+                <td>Complete identity registration</td>
+              </tr>
+              <tr>
+                <td>"Recipient identity not verified"</td>
+                <td>Recipient is not verified</td>
+                <td>Ask recipient to verify identity</td>
+              </tr>
+              <tr>
+                <td>"Blocked jurisdiction: XX"</td>
+                <td>One party is from blocked country</td>
+                <td>Cannot transfer to/from that jurisdiction</td>
+              </tr>
+              <tr>
+                <td>"Address is blocked"</td>
+                <td>One party is sanctioned</td>
+                <td>Cannot transfer (sanctions compliance)</td>
+              </tr>
+              <tr>
+                <td>"Amount exceeds investment limit"</td>
+                <td>Transfer too large</td>
+                <td>Reduce amount or request limit increase</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🌍 Jurisdiction Restrictions</h2>
+          
+          <h3>Blocked Jurisdictions (Cannot Participate)</h3>
+          <p>The following countries are <strong>blocked</strong> due to international sanctions:</p>
+          <ul>
+            <li>🇰🇵 North Korea (KP)</li>
+            <li>🇮🇷 Iran (IR)</li>
+            <li>🇸🇾 Syria (SY)</li>
+            <li>🇨🇺 Cuba (CU)</li>
+            <li>🇲🇲 Myanmar (MM)</li>
+            <li>🇧🇾 Belarus (BY)</li>
+            <li>🇷🇺 Russia (RU)</li>
+            <li>🇻🇪 Venezuela (VE)</li>
+            <li>🇸🇩 Sudan (SD)</li>
+            <li>🇾🇪 Yemen (YE)</li>
+            <li>🇲🇱 Mali (ML)</li>
+            <li>🇧🇫 Burkina Faso (BF)</li>
+          </ul>
+
+          <h3>Allowed African Markets</h3>
+          <ul>
+            <li>🇲🇺 Mauritius (MU)</li>
+            <li>🇰🇪 Kenya (KE)</li>
+            <li>🇳🇬 Nigeria (NG)</li>
+            <li>🇿🇦 South Africa (ZA)</li>
+            <li>🇬🇭 Ghana (GH)</li>
+            <li>🇧🇯 Benin (BJ)</li>
+            <li>🇨🇮 Côte d'Ivoire (CI)</li>
+            <li>🇸🇳 Senegal (SN)</li>
+            <li>🇹🇬 Togo (TG)</li>
+          </ul>
+
+          <h3>Allowed International Markets</h3>
+          <ul>
+            <li>🇪🇺 European Union (EU)</li>
+            <li>🇬🇧 United Kingdom (UK)</li>
+            <li>🇦🇪 United Arab Emirates (UAE)</li>
+            <li>🇸🇬 Singapore (SG)</li>
+          </ul>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">💰 Investment Limits</h2>
+          
+          <h3>Retail Investors</h3>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Limit</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Minimum Investment</strong></td>
+                <td>€1,000</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum Investment</strong></td>
+                <td>€50,000</td>
+              </tr>
+              <tr>
+                <td><strong>Daily Withdrawal</strong></td>
+                <td>€500,000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Institutional Investors</h3>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Limit</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Minimum Investment</strong></td>
+                <td>€100,000</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum Investment</strong></td>
+                <td>€10,000,000+</td>
+              </tr>
+              <tr>
+                <td><strong>Daily Withdrawal</strong></td>
+                <td>€5,000,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">🆘 Troubleshooting</h2>
+          
+          <h3>"I can't hold ULP tokens"</h3>
+          <p><strong>Problem:</strong> Your tokens were transferred back or you can't receive them</p>
+          <p><strong>Solution:</strong></p>
+          <ol>
+            <li>Check your identity status in <strong>"Compliance"</strong> → <strong>"My Identity"</strong></li>
+            <li>If status is not VERIFIED, complete the verification process</li>
+            <li>If pending, wait for compliance officer review (24-48 hours)</li>
+          </ol>
+
+          <h3>"My transfer failed"</h3>
+          <p><strong>Problem:</strong> Transfer transaction reverted</p>
+          <p><strong>Solution:</strong></p>
+          <ol>
+            <li>Check the error message for specific reason</li>
+            <li>Common issues:
+              <ul>
+                <li>Recipient not verified → Ask them to verify</li>
+                <li>Jurisdiction blocked → Cannot transfer to that country</li>
+                <li>Amount too large → Reduce transfer amount</li>
+              </ul>
+            </li>
+            <li>Contact support if issue persists</li>
+          </ol>
+
+          <h3>"I need to update my information"</h3>
+          <p><strong>Problem:</strong> Your details have changed</p>
+          <p><strong>Solution:</strong></p>
+          <ol>
+            <li>Go to <strong>"Compliance"</strong> → <strong>"My Identity"</strong></li>
+            <li>Click <strong>"Update Information"</strong></li>
+            <li>Submit updated documents</li>
+            <li>Wait for re-verification</li>
+          </ol>
+        </section>
+
+        <section class="docs-section" data-animate="fade-in">
+          <h2 class="docs-section-title">📞 Support & Contact</h2>
+          
+          <h3>Need Help?</h3>
+          <ul>
+            <li><strong>Email:</strong> <a href="mailto:support@ujamaa-defi.com" class="docs-link">support@ujamaa-defi.com</a></li>
+            <li><strong>Compliance:</strong> <a href="mailto:compliance@ujamaa-defi.com" class="docs-link">compliance@ujamaa-defi.com</a></li>
+            <li><strong>Documentation:</strong> <a href="https://docs.ujamaa-defi.com" class="docs-link">docs.ujamaa-defi.com</a></li>
+          </ul>
+
+          <h3>Response Times</h3>
+          <ul>
+            <li><strong>General Support:</strong> 24-48 hours</li>
+            <li><strong>Compliance Issues:</strong> 24 hours</li>
+            <li><strong>Urgent Issues:</strong> 4-6 hours</li>
+          </ul>
+        </section>
+
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 2, 2026 | <strong>Version:</strong> 2.0.0 | <strong>Network:</strong> Polygon Amoy Testnet (Chain ID: 80002)</p>
+        </div>
+      </div>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 2, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+    </main>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

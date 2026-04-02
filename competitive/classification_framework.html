@@ -101,6 +101,24 @@
             </li>
           </ul>
         </div>
+        <div class="docs-nav-section">
+          <div class="docs-nav-title">📖 Reference</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="glossary.html" class="docs-nav-link">
+                <span class="docs-nav-icon">📖</span>
+                <span>Glossary</span>
+                <span class="docs-nav-badge">NEW</span>
+              </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="worked_example_centrifuge.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🧮</span>
+                <span>Worked Example</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </aside>
 
@@ -614,7 +632,7 @@
         <!-- Section 4 -->
         <section class="docs-section" data-animate="fade-in">
           <h2 class="docs-section-title"><span class="docs-section-title-icon">4️⃣</span>4. WSS Calculation Formula</h2>
-          
+
           <div class="docs-callout docs-callout-info">
             <div class="docs-callout-title">🧮 Formula</div>
             <pre class="docs-code"><code>Weighted Similarity Score (WSS) = Σ(Criterion Score × Weight)
@@ -626,7 +644,182 @@ Where:
 Maximum WSS = 5 × 100% = 100 points</code></pre>
           </div>
 
-          <h3>Calculation Example</h3>
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📚 See Practical Example</div>
+            <p>For a complete worked example showing how to score a real competitor, see <a href="worked_example_centrifuge.html"><strong>Worked Example: Centrifuge</strong></a>.</p>
+          </div>
+
+          <h3>4.1 What is the Weighted Similarity Score (WSS)?</h3>
+          <p>The <strong>Weighted Similarity Score (WSS)</strong> is a quantitative methodology for measuring business similarity between Ujamaa DeFi Platform and any identified competitor. The WSS produces a normalized score from 0 to 100, where higher scores indicate greater competitive overlap.</p>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📖 Methodological Foundation</div>
+            <p>The WSS methodology is based on <strong>Multi-Criteria Decision Analysis (MCDA)</strong>, a well-established framework used in business strategy, economics, and operations research for evaluating alternatives across multiple dimensions.</p>
+            <p><strong>Academic References:</strong></p>
+            <ul class="docs-list">
+              <li><a href="https://en.wikipedia.org/wiki/Multiple-criteria_decision_analysis" target="_blank" rel="noopener noreferrer">Multiple-Criteria Decision Analysis (Wikipedia)</a> — Comprehensive overview of MCDA methods and applications</li>
+              <li><a href="https://en.wikipedia.org/wiki/Weighted_sum_model" target="_blank" rel="noopener noreferrer">Weighted Sum Model (Wikipedia)</a> — Mathematical foundation for weighted scoring methods</li>
+              <li><a href="https://en.wikipedia.org/wiki/Analytic_hierarchy_process" target="_blank" rel="noopener noreferrer">Analytic Hierarchy Process (Wikipedia)</a> — Structured technique for weight determination and pairwise comparison</li>
+              <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6993013/" target="_blank" rel="noopener noreferrer">Simplified AHP Method (PubMed Central/NIH)</a> — Peer-reviewed application of AHP in decision-making</li>
+            </ul>
+          </div>
+
+          <h3>4.2 Mathematical Foundation</h3>
+          <p>The WSS uses a <strong>linear weighted sum model</strong>, one of the most widely used MCDA methods due to its simplicity, transparency, and ease of interpretation.</p>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">🧮 Formal Mathematical Notation</div>
+            <pre class="docs-code"><code>Let:
+  n = number of criteria (n = 8)
+  sᵢ = score for criterion i (where sᵢ ∈ {0, 1, 2, 3, 4, 5})
+  wᵢ = weight for criterion i (where Σwᵢ = 1.0)
+
+Then:
+  WSS = (Σᵢ₌₁ⁿ sᵢ × wᵢ) × 20
+
+Scaling Factor:
+  The × 20 multiplier converts the 0-5 scale to 0-100
+  Maximum WSS = 5 × (Σwᵢ) × 20 = 5 × 1.0 × 20 = 100</code></pre>
+          </div>
+
+          <h3>4.3 Why Weighted Scoring?</h3>
+          <p>Weighted scoring is preferred over simple averaging for competitive analysis because:</p>
+
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Advantage</th>
+                  <th>Explanation</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Strategic Prioritization</strong></td>
+                  <td>Critical differentiators receive proportionally higher influence on final score</td>
+                  <td>Geography (20%) matters more than Partnerships (7%) for Ujamaa's Africa-first strategy</td>
+                </tr>
+                <tr>
+                  <td><strong>Nuanced Differentiation</strong></td>
+                  <td>Two competitors with same raw score can have different WSS based on which criteria they match</td>
+                  <td>A competitor matching on Geography scores higher than one matching only on Partnerships</td>
+                </tr>
+                <tr>
+                  <td><strong>Transparent Trade-offs</strong></td>
+                  <td>Weights make explicit which dimensions are strategically important</td>
+                  <td>20% weight on Geography signals African focus is core to Ujamaa's identity</td>
+                </tr>
+                <tr>
+                  <td><strong>Defensible Classification</strong></td>
+                  <td>Quantitative scores reduce subjective bias in competitor classification</td>
+                  <td>WSS 65.2 vs. 64.8 provides clear boundary for Class 1 vs. Class 2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>4.4 Weight Determination Methodology</h3>
+          <p>Weights were determined using a combination of <strong>strategic importance ranking</strong> and <strong>pairwise comparison</strong> techniques from MCDA literature:</p>
+
+          <ol class="docs-list">
+            <li><strong>Step 1 — Strategic Alignment:</strong> Each criterion was ranked based on alignment with Ujamaa's core value proposition (Africa focus, institutional compliance, SME lending)</li>
+            <li><strong>Step 2 — Pairwise Comparison:</strong> Criteria were compared head-to-head to determine relative importance (e.g., "Is Geography more important than Tech Stack?")</li>
+            <li><strong>Step 3 — Normalization:</strong> Raw weights were normalized to sum to 100%</li>
+            <li><strong>Step 4 — Validation:</strong> Weights were tested against known competitors to ensure intuitive classification</li>
+          </ol>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📊 Weight Distribution Analysis</div>
+            <pre class="docs-code"><code>Primary Differentiators (60% combined):
+  ┌─────────────────────────────┬────────┐
+  │ Target Market Geography     │  20%   │
+  │ Core Product Overlap        │  20%   │
+  │ Target User Segment         │  15%   │
+  │ Social/Inclusion Mandate    │  10%   │
+  └─────────────────────────────┴────────┘
+  → These define Ujamaa's unique market position
+
+Secondary Factors (25% combined):
+  ┌─────────────────────────────┬────────┐
+  │ Blockchain/Tech Stack       │  10%   │
+  │ Business Model Similarity   │  10%   │
+  │ Partnership Ecosystem       │   7%   │
+  └─────────────────────────────┴────────┘
+  → These affect operational competition
+
+Tertiary Factor (15%):
+  ┌─────────────────────────────┬────────┐
+  │ Token Economy Overlap       │   8%   │
+  └─────────────────────────────┴────────┘
+  → Important but not defining characteristic</code></pre>
+          </div>
+
+          <h3>4.5 Score Normalization Explained</h3>
+          <p>The raw weighted sum produces a value between 0 and 5. To make scores more intuitive and comparable to common percentage-based metrics, we apply a <strong>linear transformation</strong>:</p>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">📐 Normalization Formula</div>
+            <pre class="docs-code"><code>Raw Score Range:    0 to 5
+Target Range:       0 to 100
+Transformation:     WSS = Raw Score × 20
+
+Examples:
+  Raw Score 5.0 → WSS 100 (maximum similarity)
+  Raw Score 4.0 → WSS  80 (high similarity)
+  Raw Score 3.0 → WSS  60 (moderate similarity)
+  Raw Score 2.0 → WSS  40 (low similarity)
+  Raw Score 1.0 → WSS  20 (minimal similarity)
+  Raw Score 0.0 → WSS   0 (no similarity)</code></pre>
+          </div>
+
+          <h3>4.6 Classification Thresholds</h3>
+          <p>Based on the normalized 0-100 scale, competitors are classified into three tiers:</p>
+
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>WSS Range</th>
+                  <th>Interpretation</th>
+                  <th>Monitoring Cadence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Class 1 — Direct</strong></td>
+                  <td>65 – 100</td>
+                  <td>Closest rivals serving same users, geographies, and products</td>
+                  <td>Monthly reviews</td>
+                </tr>
+                <tr>
+                  <td><strong>Class 2 — Indirect</strong></td>
+                  <td>35 – 64</td>
+                  <td>Significant overlap in some dimensions (geography OR product)</td>
+                  <td>Quarterly reviews</td>
+                </tr>
+                <tr>
+                  <td><strong>Class 3 — Peripheral</strong></td>
+                  <td>0 – 34</td>
+                  <td>Distant players with limited direct overlap</td>
+                  <td>Quarterly reviews (lighter)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-title">🎯 Threshold Rationale</div>
+            <p>Thresholds were calibrated using <strong>percentile-based classification</strong>:</p>
+            <ul class="docs-list">
+              <li><strong>65+ (Class 1):</strong> Top ~10% of scored competitors — requires immediate strategic attention</li>
+              <li><strong>35-64 (Class 2):</strong> Middle ~40% — moderate threat, potential partners</li>
+              <li><strong>&lt;35 (Class 3):</strong> Bottom ~50% — low priority monitoring</li>
+            </ul>
+          </div>
+
+          <h3>4.7 Calculation Example</h3>
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -701,7 +894,9 @@ Maximum WSS = 5 × 100% = 100 points</code></pre>
         <!-- Section 5 -->
         <section class="docs-section" data-animate="fade-in">
           <h2 class="docs-section-title"><span class="docs-section-title-icon">5️⃣</span>5. Classification Classes</h2>
-          
+
+          <p><em>Note: Classification thresholds are defined in Section 4.6. This section provides detailed characteristics of each class.</em></p>
+
           <h3>Class 1 — Direct Competitors (WSS: 65–100)</h3>
           <div class="docs-callout docs-callout-class-1">
             <div class="docs-callout-title">⚠️ Definition</div>

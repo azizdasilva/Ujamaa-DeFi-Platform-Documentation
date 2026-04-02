@@ -1,10 +1,10 @@
 /**
  * Retail Investor Dashboard
- * 
+ *
  * Simplified UI for retail investors with educational content and small amount investments.
- * 
+ *
  * Route: /retail/dashboard
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
@@ -14,24 +14,14 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
 
 const RetailDashboard: React.FC = () => {
-  // Mock data for demo
-  const portfolioValue = 25_000; // €25K
-  const totalYield = 1_250; // €1,250
-  const positions = [
-    { poolId: 'POOL_TRADE_FINANCE', poolName: 'Pool Trade Finance', shares: 10_000, value: 10_500, apy: 9 },
-    { poolId: 'POOL_AGRICULTURE', poolName: 'Pool Agriculture', shares: 15_000, value: 15_750, apy: 13.5 },
-  ];
-
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
-  };
+  // Get data from centralized mock data store
+  const user = USER_PROFILES.RETAIL_INVESTOR;
+  const portfolioValue = user.portfolioValue;
+  const totalYield = user.totalYield;
+  const positions = user.positions;
 
   return (
     <div className="min-h-screen bg-[#F3F8FA]">
@@ -158,96 +148,44 @@ const RetailDashboard: React.FC = () => {
                     </div>
                   </div>
                 ))}
-
-                {/* Empty State Prompt */}
-                {positions.length === 0 && (
-                  <div className="text-center py-8">
-                    <svg className="w-16 h-16 text-[#023D7A]/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                    </svg>
-                    <p className="text-[#333333] mb-4">No investments yet</p>
-                    <a
-                      href="/retail/pools"
-                      className="inline-block px-6 py-3 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors"
-                    >
-                      Start Investing
-                    </a>
-                  </div>
-                )}
               </div>
             </Card>
           </div>
 
-          {/* Quick Actions & Education */}
-          <div>
+          {/* Quick Actions */}
+          <div className="space-y-6">
             <Card header={<h2 className="text-xl font-bold text-[#103b5b]">Quick Actions</h2>}>
               <div className="space-y-3">
-                <a
-                  href="/retail/pools"
-                  className="block w-full px-4 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white !text-white font-bold rounded-lg transition-colors text-center"
-                >
+                <a href="/retail/pools" className="block w-full px-4 py-3 bg-[#103b5b] hover:bg-[#0d3352] text-white font-bold rounded-lg transition-colors text-center">
                   📈 Browse Pools
                 </a>
-                <a
-                  href="/investors-room/reinvestment-settings"
-                  className="block w-full px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg transition-colors text-center"
-                >
+                <a href="/investors-room/reinvestment-settings" className="block w-full px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg transition-colors text-center">
                   💰 Reinvestment Settings
                 </a>
-                <a
-                  href="/investors-room/tokenization"
-                  className="block w-full px-4 py-3 border border-[#103b5b]/30 hover:bg-[#F9F6ED] text-[#103b5b] font-medium rounded-lg transition-colors text-center"
-                >
-                  📚 How Tokenization Works
-                </a>
-                <a
-                  href="/investors-room/fees"
-                  className="block w-full px-4 py-3 border border-[#103b5b]/30 hover:bg-[#F9F6ED] text-[#103b5b] font-medium rounded-lg transition-colors text-center"
-                >
-                  🧮 View Fees & Returns
-                </a>
-                <a
-                  href="/investors-room"
-                  className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
-                >
+                <a href="/investors-room" className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center">
                   📄 Documents
                 </a>
               </div>
             </Card>
 
             {/* Investment Limits */}
-            <Card className="mt-6">
+            <Card>
               <h3 className="font-bold text-gray-900 mb-3">Retail Investment Limits</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Minimum</span>
-                  <span className="font-semibold">€1,000</span>
+                  <span className="font-semibold">{formatCurrency(user.investmentLimits.minimum)}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Maximum</span>
-                  <span className="font-semibold">€50,000</span>
+                  <span className="font-semibold">{formatCurrency(user.investmentLimits.maximum)}</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-600">Daily Withdrawal</span>
-                  <span className="font-semibold">€500,000</span>
+                  <span className="font-semibold">{formatCurrency(user.investmentLimits.dailyWithdrawal)}</span>
                 </div>
               </div>
             </Card>
-
-            {/* Risk Notice */}
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-              <div className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <div>
-                  <p className="text-sm font-semibold text-amber-800">Investment Risk</p>
-                  <p className="text-xs text-amber-700 mt-1">
-                    All investments carry risk. Past performance doesn't guarantee future results. Only invest what you can afford to lose.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </main>
@@ -256,7 +194,7 @@ const RetailDashboard: React.FC = () => {
       <footer className="mt-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <p className="text-center text-sm text-gray-500">
-            🚀 MVP: Retail Investor Portal - Testnet Release • Polygon Amoy (Chain ID: 80002)
+            🚀 MVP: Retail Investor Portal - Testnet Release
           </p>
         </div>
       </footer>

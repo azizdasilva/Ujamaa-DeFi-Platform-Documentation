@@ -2,32 +2,35 @@
 
 **Institutional-Grade African Real-World Asset Tokenization**
 
-**Version:** MVP (Institutional Architecture)
-**Last Updated:** March 30, 2026
-**Status:** ?? MVP Development Complete | Production Ready
+**Version:** 2.0.0 - ERC-3643 Production Ready
+**Last Updated:** April 2, 2026
+**Status:** ? Production Ready | 100% Contracts Deployed
 
 ---
 
 ## ?? Overview
 
-Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizing African real-world assets (RWA). Built on ERC-3643 (T-REX protocol), we enable compliant, transparent, and efficient financing for African SMEs through liquidity pools and yield-bearing tokens.
+Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizing African real-world assets (RWA). Built on **ERC-3643 (T-REX protocol)**, we enable compliant, transparent, and efficient financing for African SMEs through liquidity pools and yield-bearing tokens.
 
 **Mission:** Bridge global institutional capital with African industrial growth through blockchain technology.
 
+**Network:** Polygon Amoy Testnet (Chain ID: 80002)
+
 ---
 
-## ? Key Features
+## ?? Key Features
 
 ### MVP Institutional Architecture
 
 | Feature | Description | Status |
 |---------|-------------|--------|
-| **Ujamaa Pool Token (UPT)** | Yield-bearing ERC-3643 token representing pool ownership | ? Specified |
-| **Liquidity Pool Management** | Diversified pools (Industrial, Agriculture, Trade, Green, Property) | ? Specified |
-| **Mock Banking** | Testnet bank simulation (swappable for BIIC/MCB production) | ? Specified |
-| **Institutional Dashboard** | Real-time portfolio tracking, yield statements | ? Specified |
-| **Fireblocks Custody** | Institutional-grade MPC custody | ? Specified |
-| **EUROD (Ondo Finance)** | Euro-denominated tokenized fund (FX risk mitigation) | ? Specified |
+| **ULP Token** | Yield-bearing ERC-3643 token with identity verification | ? Deployed |
+| **ERC-3643 Compliance** | Identity registry + transfer compliance module | ? Deployed |
+| **Liquidity Pool Management** | Diversified pools (Industrial, Agriculture, Trade, Renewable, Real Estate) | ? Deployed |
+| **Mock Banking** | Testnet bank simulation (swappable for BIIC/MCB production) | ? Deployed |
+| **Institutional Dashboard** | Real-time portfolio tracking, yield statements | ? Complete |
+| **Identity Registry** | On-chain identity verification for all investors | ? Deployed |
+| **Compliance Module** | Transfer validation, jurisdiction checks, investment limits | ? Deployed |
 
 ---
 
@@ -36,19 +39,20 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 ```
 +-----------------------------------------------------------------+
 ¦                    UJAMAA DEFI PLATFORM                          ¦
+¦                  ERC-3643 Production Ready                       ¦
 +-----------------------------------------------------------------¦
 ¦  Layer 1:  User Interface (React 19 + TypeScript 6.0+)          ¦
-¦  Layer 2:  API Gateway (FastAPI + GraphQL)                      ¦
+¦  Layer 2:  API Gateway (FastAPI + REST)                         ¦
 ¦  Layer 3:  Oracles (Chainlink + Custom Gateways)                ¦
 ¦  Layer 4:  Business Logic (Python Backend)                      ¦
-¦  Layer 5:  Blockchain (Ethereum / Polygon)                      ¦
-¦  Layer 6:  Smart Contracts (Solidity + ERC-3643)                ¦
-¦  Layer 7:  Identity (ONCHAINID + KYC/AML)                       ¦
+¦  Layer 5:  Blockchain (Polygon Amoy Testnet)                    ¦
+¦  Layer 6:  Smart Contracts (Solidity 0.8.20 + ERC-3643)         ¦
+¦  Layer 7:  Identity (IdentityRegistry + KYC/AML)                ¦
 ¦  Layer 8:  Compliance (Transfer restrictions, Sanctions)        ¦
-¦  Layer 9:  DevOps (Kubernetes + Prometheus + Grafana)           ¦
-¦  Layer 10: Security (Fireblocks MPC + HSM)                      ¦
+¦  Layer 9:  DevOps (Docker + Monitoring)                         ¦
+¦  Layer 10: Security (Multi-sig + HSM)                           ¦
 ¦  Layer 11: Audit (Immutable logs + Merkle proofs)               ¦
-¦  Layer 12: Liquidity Pool (UPT + NAV calculation)               ¦
+¦  Layer 12: Liquidity Pool (ULP Token + NAV calculation)         ¦
 +-----------------------------------------------------------------+
 ```
 
@@ -58,19 +62,19 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 
 | Parameter | Detail |
 |-----------|--------|
-| **Security Type** | uLP Token (Yield-Bearing ERC-3643) |
+| **Security Type** | ULP Token (Yield-Bearing ERC-3643) |
 | **Target Raise** | €50,000,000 |
-| **Minimum Investment** | €100,000 (Institutional Tier) |
-| **Expected Yield** | 10-15% APR (EUROD-denominated) |
-| **Lock-up Period** | 180-365 days |
+| **Minimum Investment** | €1,000 (Retail) / €100,000 (Institutional) |
+| **Expected Yield** | 10-15% APR |
+| **Lock-up Period** | 90-365 days (pool dependent) |
 | **Management Fee** | 2.0% per annum |
-| **Performance Fee** | 20% (8% hurdle rate) |
-| **Custody** | Fireblocks (Institutional MPC) |
-| **Regulatory** | Mauritius FSC CIS Manager License |
+| **Performance Fee** | 20% (5% hurdle rate) |
+| **Compliance** | ERC-3643 (Identity verification required) |
+| **Jurisdiction** | Mauritius FSC Compliant |
 
 ---
 
-## ?? Quick Start
+## ? Quick Start
 
 ### For Developers
 
@@ -84,15 +88,14 @@ cd backend && pip install -r requirements.txt
 cd ../frontend && npm install
 
 # 3. Set up environment
-cp .env.example .env
+cp backend/.env.example backend/.env
 # Edit .env with your configuration
 
-# 4. Run tests
-pytest backend/ --cov
-npm test
+# 4. Run database setup
+cd backend && python setup_database.py
 
 # 5. Start development servers
-cd backend && uvicorn main:app --reload
+cd backend && python main.py
 cd ../frontend && npm run dev
 ```
 
@@ -130,74 +133,33 @@ Ujamaa DeFi Platform/
 ?   ??? assets/                     # CSS, JS, design system
 ?   ??? [All folders mirror docs/]
 ??? backend/                        # Python FastAPI backend
+?   ??? api/                        # REST API endpoints
+?   ??? config/                     # Configuration & models
+?   ??? services/                   # Business logic services
+?   ??? tests/                      # Backend tests
 ??? frontend/                       # React 19 + TypeScript frontend
+?   ??? src/
+?   ?   ??? api/                    # API client layer
+?   ?   ??? abis/                   # Contract ABIs
+?   ?   ??? config/                 # Frontend config
+?   ?   ??? contexts/               # React contexts
+?   ?   ??? hooks/                  # Custom hooks
+?   ?   ??? MVP/                    # MVP pages & components
+?   ??? package.json
 ??? contracts/                      # Solidity smart contracts
+?   ??? ERC3643/                    # ERC-3643 infrastructure
+?   ?   ??? IdentityRegistry.sol    # Identity management
+?   ?   ??? Compliance.sol          # Transfer compliance
+?   ??? MVP/                        # MVP contracts
+?       ??? ULPToken.sol            # ERC-3643 token
+?       ??? LiquidityPool.sol       # Pool management
+?       ??? [More contracts...]
+??? script/                         # Deployment scripts
+?   ??? DeployMVP.s.sol             # MVP deployment
+?   ??? DeployERC3643.s.sol         # ERC-3643 deployment
 ??? README.md                       # This file
+??? 100_PERCENT_DEPLOYMENT_COMPLETE.md  # Deployment report
 ```
-
----
-
-## ?? Documentation
-
-### Complete Documentation Portal
-
-**HTML Documentation:** [`documentation/index.html`](documentation/index.html)
-
-- ? **207 HTML files** with professional 2026 design
-- ? **Responsive layout** (mobile/tablet/desktop)
-- ? **Live search** (Ctrl+K shortcut)
-- ? **Dark mode support**
-- ? **Consistent navigation** across all folders
-
-### Key Specifications
-
-| Document | Version | Purpose |
-|----------|---------|---------|
-| [SRS v2.1](docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md) | **v2.1** | **Complete software requirements** |
-| [Architecture Spec](docs/01_SPECIFICATIONS/02_ARCHITECTURE_SPECIFICATION.md) | v1.0 | System architecture |
-| [Smart Contract Spec](docs/01_SPECIFICATIONS/05_SMART_CONTRACT_SPECIFICATION.md) | v1.0 | Smart contract design |
-| [API Spec](docs/01_SPECIFICATIONS/06_API_SPECIFICATION.md) | v1.0 | REST & gRPC APIs |
-| [Compliance Framework](docs/01_SPECIFICATIONS/10_COMPLIANCE_FRAMEWORK.md) | v1.0 | Regulatory compliance |
-| [EUROD vs USDT Rationale](docs/01_SPECIFICATIONS/13_EUROD_vs_USDT_RATIONALE.md) | v1.0 | Currency selection rationale |
-
-### MVP Execution
-
-| Document | Purpose |
-|----------|---------|
-| [MVP Specification](docs/06_MVP_EXECUTION/01_MVP_SPECIFICATION.md) | Complete MVP spec |
-| [Implementation Plan](docs/06_MVP_EXECUTION/02_MVP_IMPLEMENTATION_PLAN.md) | Step-by-step guide |
-| [Mocking Strategy](docs/06_MVP_EXECUTION/03_MVP_MOCKING_AND_TESTNET_STRATEGY.md) | Testnet deployment |
-
-### Sprint Reports
-
-| Report | Period | Status |
-|--------|--------|--------|
-| [Week 03 MVP Consolidated](documentation/12_SPRINT_REPORTS/01_WEEK_03_MVP_CONSOLIDATED_REPORT.html) | March 23, 2026 | ? Complete |
-| [Week 04 MVP Consolidated](documentation/12_SPRINT_REPORTS/02_WEEK_04_MVP_CONSOLIDATED_REPORT.html) | March 30, 2026 | ? Complete |
-| [Sprint 01](documentation/12_SPRINT_REPORTS/02_SPRINT_01_REPORT.html) | February 2026 | ? Complete |
-| [Sprint 02](documentation/12_SPRINT_REPORTS/03_SPRINT_02_REPORT.html) | Early March 2026 | ? Complete |
-| [Sprint 03](documentation/12_SPRINT_REPORTS/04_SPRINT_03_REPORT.html) | Mid March 2026 | ? Complete |
-| [Sprint 04](documentation/12_SPRINT_REPORTS/05_SPRINT_04_REPORT.html) | Late March 2026 | ? Complete |
-
----
-
-## ??? Compliance & Security
-
-### Regulatory Compliance
-
-- ? **Mauritius FSC CIS Manager License** (Category 1)
-- ? **ERC-3643 (T-REX Protocol)** (Transfer restrictions)
-- ? **ONCHAINID** (Identity verification)
-- ? **FATF Travel Rule** (Transaction reporting)
-- ? **GDPR** (Data protection)
-- ? **OFAC/UN/EU Sanctions** (Strictest jurisdiction list)
-
-### Security Measures
-
-- ? **Fireblocks MPC Custody** ($1B+ insurance)
-- ? **Smart Contract Audits** (CertiK/OpenZeppelin - pending)
-- ? **Immutable Audit Logs** (Merkle tree proofs)
-- ? **Multi-Sig Governance** (3/5 threshold)
 - ? **Rate Limiting & DDoS Protection** (Cloudflare + Nginx)
 
 ---

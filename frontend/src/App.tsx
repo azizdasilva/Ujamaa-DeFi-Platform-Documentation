@@ -14,10 +14,16 @@ import { WagmiProvider } from 'wagmi';
 // Wagmi Configuration
 import { config as wagmiConfig } from './lib/wagmi';
 
+// Context Providers
+import { AuthProvider } from './contexts/AuthContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+
 // MVP Components
 import { MVPBanner } from './MVP/components';
 import Navigation from './MVP/components/Navigation';
 import Footer from './MVP/components/Footer';
+import ProtectedRoute from './MVP/components/ProtectedRoute';
+import Unauthorized from './MVP/pages/auth/Unauthorized';
 
 // Institutional Pages
 import DeepDive from './MVP/pages/institutional/DeepDive';
@@ -34,6 +40,11 @@ import OriginatorDashboard from './MVP/pages/originator/Dashboard';
 import ComplianceDashboard from './MVP/pages/compliance/Dashboard';
 import AdminDashboard from './MVP/pages/admin/Dashboard';
 import RegulatorDashboard from './MVP/pages/regulator/Dashboard';
+
+// Authentication Pages
+import Login from './MVP/pages/auth/Login';
+import Register from './MVP/pages/auth/Register';
+import DemoAccounts from './MVP/pages/auth/DemoAccounts';
 
 // Onboarding Flow
 import OnboardingWelcome from './MVP/pages/onboarding/Welcome';
@@ -126,54 +137,181 @@ const App: React.FC = () => {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <div className="min-h-screen bg-[#F3F8FA] flex flex-col">
-            {/* Global MVP Banner - Shows once for 10 seconds */}
-            <MVPBanner />
+        <LanguageProvider>
+          <AuthProvider>
+            <Router>
+              <div className="min-h-screen bg-[#F3F8FA] flex flex-col">
+                {/* Global MVP Banner - Shows once for 10 seconds */}
+                <MVPBanner />
 
-            {/* Modern Navigation */}
-            <Navigation />
+                {/* Modern Navigation */}
+                <Navigation />
 
-            {/* Routes */}
-            <Routes>
+                {/* Routes */}
+                <Routes>
             {/* Default - Landing Page */}
             <Route path="/" element={<LandingPage />} />
-            
+
+            {/* Authentication Routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/demo-accounts" element={<DemoAccounts />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
+
             {/* Role Selection Page */}
             <Route path="/select-role" element={<RoleSelection />} />
 
-            {/* Institutional Investor Routes */}
-            <Route path="/institutional/dashboard" element={<InstitutionalDashboard />} />
-            <Route path="/institutional/pools" element={<PoolMarketplace />} />
-            
-            {/* Retail Investor Routes */}
-            <Route path="/retail/dashboard" element={<RetailDashboard />} />
-            <Route path="/retail/pools" element={<PoolMarketplace />} />
-            
-            {/* Industrial Operator Routes */}
-            <Route path="/originator/dashboard" element={<OriginatorDashboard />} />
-            <Route path="/originator/assets/submit" element={<AssetSubmission />} />
-            <Route path="/originator/assets/certificates" element={<AssetCertificates />} />
-            
-            {/* Compliance Officer Routes */}
-            <Route path="/compliance/dashboard" element={<ComplianceDashboard />} />
-            <Route path="/compliance/kyc-review" element={<ComplianceKYCReview />} />
+            {/* Institutional Investor Routes - PROTECTED */}
+            <Route 
+              path="/institutional/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'ADMIN']}>
+                  <InstitutionalDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/institutional/pools" 
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'ADMIN']}>
+                  <PoolMarketplace />
+                </ProtectedRoute>
+              } 
+            />
 
-            {/* Admin Routes */}
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            {/* Retail Investor Routes - PROTECTED */}
+            <Route 
+              path="/retail/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['RETAIL_INVESTOR', 'ADMIN']}>
+                  <RetailDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/retail/pools" 
+              element={
+                <ProtectedRoute requiredRoles={['RETAIL_INVESTOR', 'ADMIN']}>
+                  <PoolMarketplace />
+                </ProtectedRoute>
+              } 
+            />
 
-            {/* Regulator Routes (Read-Only) */}
-            <Route path="/regulator/dashboard" element={<RegulatorDashboard />} />
+            {/* Industrial Operator Routes - PROTECTED */}
+            <Route 
+              path="/originator/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN']}>
+                  <OriginatorDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/originator/assets/submit" 
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN']}>
+                  <AssetSubmission />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/originator/assets/certificates" 
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN', 'COMPLIANCE_OFFICER', 'REGULATOR']}>
+                  <AssetCertificates />
+                </ProtectedRoute>
+              } 
+            />
 
-            {/* Investor Routes */}
-            <Route path="/investor/portfolio" element={<InvestorPortfolio />} />
-            <Route path="/investor/returns" element={<InvestorReturns />} />
-            <Route path="/investor/recurring-investment" element={<InvestorRecurringInvestment />} />
-            <Route path="/pool/dashboard" element={<PoolDashboard />} />
+            {/* Compliance Officer Routes - PROTECTED */}
+            <Route 
+              path="/compliance/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <ComplianceDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/compliance/kyc-review" 
+              element={
+                <ProtectedRoute requiredRoles={['COMPLIANCE_OFFICER', 'ADMIN']}>
+                  <ComplianceKYCReview />
+                </ProtectedRoute>
+              } 
+            />
 
-            {/* Industrial Operator Routes */}
-            <Route path="/industrial-operator/onboarding" element={<IndustrialOperatorWelcome />} />
-            <Route path="/industrial-operator/financings" element={<IndustrialOperatorFinancings />} />
+            {/* Admin Routes - PROTECTED */}
+            <Route 
+              path="/admin/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Regulator Routes - PROTECTED */}
+            <Route 
+              path="/regulator/dashboard" 
+              element={
+                <ProtectedRoute requiredRoles={['REGULATOR', 'ADMIN']}>
+                  <RegulatorDashboard />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Investor Routes - PROTECTED */}
+            <Route
+              path="/investor/portfolio"
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN']}>
+                  <InvestorPortfolio />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/investor/returns"
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN']}>
+                  <InvestorReturns />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/investor/recurring-investment"
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN']}>
+                  <InvestorRecurringInvestment />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/pool/dashboard"
+              element={
+                <ProtectedRoute requiredRoles={['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR']}>
+                  <PoolDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Industrial Operator Routes - PROTECTED */}
+            <Route
+              path="/industrial-operator/onboarding"
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN']}>
+                  <IndustrialOperatorWelcome />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/industrial-operator/financings"
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN']}>
+                  <IndustrialOperatorFinancings />
+                </ProtectedRoute>
+              }
+            />
 
             {/* P1 Features - Deep Dive & Investors Room */}
             <Route path="/deep-dive" element={<DeepDive />} />
@@ -241,17 +379,33 @@ const App: React.FC = () => {
             {/* Testnet Guide */}
             <Route path="/testnet-guide" element={<TestnetGuide />} />
 
-            {/* Contract Test Dashboard */}
-            <Route path="/contract-test" element={<ContractTestDashboard />} />
+            {/* Contract Test Dashboard - PROTECTED (Admin only) */}
+            <Route
+              path="/contract-test"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <ContractTestDashboard />
+                </ProtectedRoute>
+              }
+            />
 
-            {/* Ujamaa Monitor Dashboard */}
-            <Route path="/monitor" element={<MonitorDashboard />} />
+            {/* Ujamaa Monitor Dashboard - PROTECTED */}
+            <Route
+              path="/monitor"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN', 'REGULATOR', 'COMPLIANCE_OFFICER']}>
+                  <MonitorDashboard />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
 
           {/* Global Footer */}
           <Footer />
         </div>
       </Router>
+          </AuthProvider>
+        </LanguageProvider>
     </QueryClientProvider>
   </WagmiProvider>
   );

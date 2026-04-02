@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 const LandingPage: React.FC = () => {
@@ -41,22 +42,28 @@ const LandingPage: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
-                href="/select-role"
+              <Link
+                to="/demo-accounts"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-[#00A8A8] to-[#023D7A] rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 style={{ color: '#FFFFFF' }}
               >
-                Get Started
+                🎯 Try Demo Accounts
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </a>
-              <a
-                href="/deep-dive"
+              </Link>
+              <Link
+                to="/register"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#00A8A8] bg-white border-2 border-[#00A8A8] rounded-xl hover:bg-[#00A8A8]/10 transition-all duration-300"
+              >
+                ✨ Create Account
+              </Link>
+              <Link
+                to="/login"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#F3F8FA] bg-[#023D7A]/10 backdrop-blur-sm border-2 border-[#00A8A8] rounded-xl hover:bg-[#00A8A8]/20 transition-all duration-300"
               >
-                Learn More
-              </a>
+                🔐 Sign In
+              </Link>
             </div>
           </div>
         </div>

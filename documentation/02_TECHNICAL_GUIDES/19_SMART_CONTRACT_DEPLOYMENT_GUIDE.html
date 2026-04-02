@@ -520,19 +520,28 @@ cast call 0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec "totalPoolValue()"</code></
           <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>9. Step 8: Update Frontend Configuration</h2>
           
           <h3>Update Monitor Configuration</h3>
-          
+
           <p>Edit <code>frontend/src/config/monitor.ts</code>:</p>
-          
+
+          <div class="docs-callout docs-callout-success">
+            <div class="docs-callout-title">✅ Updated for 11 Contracts (April 2, 2026)</div>
+          </div>
+
           <div class="docs-pre"><code>export const CONTRACT_ADDRESSES = {
-  ulpToken: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
+  // ERC-3643 Infrastructure (NEW)
+  identityRegistry: '0xB3fb5AB654FC270d10338A64fDBC1E151c223283',
+  compliance: '0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2',
+  
+  // MVP Contracts (Updated)
+  ulpToken: '0xe69569DCc219c518673318a7a34D56202CF92DE2',
   liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec',
   guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
   industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930',
   jurisdictionCompliance: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C',
-  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F',
-  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a',
-  navGateway: '0x99712f923e3519B4305CEDAd40290428299F29A0',
-  mockEUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43',
+  mockEscrow: '0x74985F48F7Bf018915af1AC706994677B2AF28BE',
+  mockFiatRamp: '0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a',
+  navGateway: '0x99712f923e3519b4305cedad40290428299f29a0',
+  mockEUROD: '0x787c5c0365829abf88a3d8404e9488d1e307ed43',
 } as const;
 
 // Set to false to use live data
@@ -611,9 +620,14 @@ npm run dev</code></div>
         
         <section class="docs-section" data-animate="fade-in">
           <h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>11. Deployed Contract Addresses</h2>
-          
-          <h3>Current Deployment (March 29, 2026)</h3>
-          
+
+          <h3>Current Deployment (April 2, 2026) - ERC-3643 Production Ready</h3>
+
+          <div class="docs-callout docs-callout-success">
+            <div class="docs-callout-title">✅ All 11 Contracts Deployed</div>
+            <p><strong>ERC-3643 Infrastructure:</strong> 2 contracts | <strong>MVP Contracts:</strong> 9 contracts</p>
+          </div>
+
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -625,13 +639,24 @@ npm run dev</code></div>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>MockEUROD</strong></td>
-                  <td><code>0x787C5c0365829ABF88a3D8404E9488d1e307eD43</code></td>
-                  <td>ERC-20</td>
+                  <td colspan="3" style="background:#F0F9FF; font-weight:bold;">ERC-3643 Infrastructure (NEW)</td>
                 </tr>
                 <tr>
-                  <td><strong>ULPToken</strong></td>
-                  <td><code>0xb6062a6e63a07c3598629a65ed19021445fb3b26</code></td>
+                  <td><strong>IdentityRegistry</strong></td>
+                  <td><code>0xB3fb5AB654FC270d10338A64fDBC1E151c223283</code></td>
+                  <td>ERC-3643</td>
+                </tr>
+                <tr>
+                  <td><strong>Compliance</strong></td>
+                  <td><code>0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2</code></td>
+                  <td>ERC-3643</td>
+                </tr>
+                <tr>
+                  <td colspan="3" style="background:#FFF7ED; font-weight:bold;">MVP Contracts (Updated)</td>
+                </tr>
+                <tr>
+                  <td><strong>ULPToken</strong> (ERC-3643)</td>
+                  <td><code>0xe69569DCc219c518673318a7a34D56202CF92DE2</code></td>
                   <td>ERC-3643</td>
                 </tr>
                 <tr>
@@ -655,19 +680,27 @@ npm run dev</code></div>
                   <td>Custom</td>
                 </tr>
                 <tr>
-                  <td><strong>MockEscrow</strong></td>
-                  <td><code>0x8d446994fcD9906c573500959cDc8A8271a9485F</code></td>
+                  <td><strong>MockEscrow</strong> (NEW)</td>
+                  <td><code>0x74985F48F7Bf018915af1AC706994677B2AF28BE</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>MockFiatRamp</strong></td>
-                  <td><code>0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a</code></td>
+                  <td><code>0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>NavGateway</strong></td>
-                  <td><code>0x99712f923e3519B4305CEDAd40290428299F29A0</code></td>
+                  <td><code>0x99712f923e3519b4305cedad40290428299f29a0</code></td>
                   <td>Custom</td>
+                </tr>
+                <tr>
+                  <td><strong>MockEUROD</strong></td>
+                  <td><code>0x787c5c0365829abf88a3d8404e9488d1e307ed43</code></td>
+                  <td>ERC-20</td>
+                </tr>
+                <tr style="background:#F0F9FF; font-weight:bold;">
+                  <td colspan="3">TOTAL: 11 Contracts Deployed</td>
                 </tr>
               </tbody>
             </table>

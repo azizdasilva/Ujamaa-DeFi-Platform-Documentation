@@ -13,16 +13,22 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import { poolsAPI } from '../../../api';
+import { POOLS as MOCK_POOLS, getPoolKPIs as getMockPoolKPIs } from '../../../data/mockData';
 
 const PoolDashboard: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'detail' | 'compare'>('detail');
   const [timePeriod, setTimePeriod] = useState<'24h' | '7d' | '30d' | '90d' | '1y'>('30d');
+  const [poolsData, setPoolsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [useMockData] = useState(process.env.REACT_APP_USE_MOCK_DATA === 'true');
 
   // Get pool from URL params, default to 'all'
   const urlPool = searchParams.get('pool') || 'all';
@@ -35,6 +41,31 @@ const PoolDashboard: React.FC = () => {
     setSearchParams({ pool: selectedPool });
   }, [selectedPool, setSearchParams]);
 
+  // Fetch pools data from API or use mock
+  useEffect(() => {
+    const fetchPools = async () => {
+      setLoading(true);
+      try {
+        if (useMockData) {
+          // Use mock data for demo
+          setPoolsData(Object.values(MOCK_POOLS));
+        } else {
+          // Fetch from backend API
+          const pools = await poolsAPI.getAllPools();
+          setPoolsData(pools);
+        }
+      } catch (error) {
+        console.error('Failed to fetch pools:', error);
+        // Fallback to mock data
+        setPoolsData(Object.values(MOCK_POOLS));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPools();
+  }, [useMockData]);
+
   // Pool configurations
   const pools = [
     { id: 'all', name: 'All Pools', icon: '🏛️', color: 'from-gray-600 to-gray-800' },
@@ -45,54 +76,8 @@ const PoolDashboard: React.FC = () => {
     { id: 'realestate', name: 'Pool Real Estate', icon: '🏢', color: 'from-amber-600 to-amber-800', targetApy: '8-12%', lockup: '1095 days' },
   ];
 
-  // Mock KPI data per pool
-  const getPoolKpis = (poolId: string) => {
-    const kpis: Record<string, any> = {
-      all: {
-        financial: { netApy: 10.5, navPerShare: 1.0234, yieldVariance: 0.23, expenseRatio: 2.1 },
-        liquidity: { tvl: 50_000_000, utilizationRate: 87.5, cashDrag: 0.45, redemptionLiquidity: 6_250_000 },
-        risk: { defaultRate: 1.2, concentrationRisk: 12.5, creditRating: 'BBB+', collateralizationRatio: 135.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 28, jurisdictionCount: 7 },
-        impact: { industrialGrowth: 25.3, valueAddRatio: 2.8, jobsPerMillion: 85 },
-      },
-      industrie: {
-        financial: { netApy: 11.0, navPerShare: 1.0289, yieldVariance: 0.18, expenseRatio: 2.0 },
-        liquidity: { tvl: 15_000_000, utilizationRate: 92.0, cashDrag: 0.32, redemptionLiquidity: 1_200_000 },
-        risk: { defaultRate: 0.8, concentrationRisk: 14.5, creditRating: 'A-', collateralizationRatio: 142.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 12, jurisdictionCount: 5 },
-        impact: { industrialGrowth: 28.5, valueAddRatio: 3.2, jobsPerMillion: 95 },
-      },
-      agriculture: {
-        financial: { netApy: 13.2, navPerShare: 1.0412, yieldVariance: 0.31, expenseRatio: 2.3 },
-        liquidity: { tvl: 12_000_000, utilizationRate: 88.5, cashDrag: 0.51, redemptionLiquidity: 1_380_000 },
-        risk: { defaultRate: 1.5, concentrationRisk: 11.2, creditRating: 'BBB', collateralizationRatio: 138.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 10, jurisdictionCount: 6 },
-        impact: { industrialGrowth: 32.1, valueAddRatio: 2.9, jobsPerMillion: 120 },
-      },
-      trade: {
-        financial: { netApy: 9.2, navPerShare: 1.0156, yieldVariance: 0.15, expenseRatio: 1.9 },
-        liquidity: { tvl: 10_000_000, utilizationRate: 95.0, cashDrag: 0.22, redemptionLiquidity: 500_000 },
-        risk: { defaultRate: 0.5, concentrationRisk: 18.3, creditRating: 'A', collateralizationRatio: 128.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 8, jurisdictionCount: 4 },
-        impact: { industrialGrowth: 18.2, valueAddRatio: 2.1, jobsPerMillion: 65 },
-      },
-      renewable: {
-        financial: { netApy: 10.1, navPerShare: 1.0198, yieldVariance: 0.21, expenseRatio: 2.1 },
-        liquidity: { tvl: 8_000_000, utilizationRate: 82.0, cashDrag: 0.68, redemptionLiquidity: 1_440_000 },
-        risk: { defaultRate: 1.0, concentrationRisk: 9.8, creditRating: 'A+', collateralizationRatio: 145.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 6, jurisdictionCount: 5 },
-        impact: { industrialGrowth: 22.8, valueAddRatio: 2.5, jobsPerMillion: 78 },
-      },
-      realestate: {
-        financial: { netApy: 9.8, navPerShare: 1.0167, yieldVariance: 0.19, expenseRatio: 2.2 },
-        liquidity: { tvl: 5_000_000, utilizationRate: 78.0, cashDrag: 0.89, redemptionLiquidity: 1_100_000 },
-        risk: { defaultRate: 1.8, concentrationRisk: 15.6, creditRating: 'BBB+', collateralizationRatio: 132.0 },
-        compliance: { kycCoverage: 100.0, whitelistedWallets: 5, jurisdictionCount: 4 },
-        impact: { industrialGrowth: 15.6, valueAddRatio: 2.3, jobsPerMillion: 72 },
-      },
-    };
-    return kpis[poolId] || kpis.all;
-  };
+  // Get KPI data - use mock for now (backend KPI endpoint not yet available)
+  const getPoolKpis = (poolId: string) => getMockPoolKPIs(poolId);
 
   // Trend data (mock - would come from API)
   const trends = {
@@ -470,7 +455,7 @@ const PoolDashboard: React.FC = () => {
       {viewMode === 'detail' && (
         <>
           <main className="max-w-7xl mx-auto px-4 py-8">
-          {/* Pool Allocation Chart */}
+          {/* Pool Allocation Pie Chart */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             <Card className="lg:col-span-2" header={
               <div className="flex items-center justify-between">
@@ -478,31 +463,66 @@ const PoolDashboard: React.FC = () => {
                 <Badge variant="info" size="sm">Total: €50M</Badge>
               </div>
             }>
-              <div className="space-y-4">
+              <div className="h-[400px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={pools.filter(p => p.id !== 'all').map((pool) => {
+                        const kpi = getPoolKpis(pool.id);
+                        return {
+                          name: pool.name,
+                          value: kpi.liquidity.tvl,
+                          icon: pool.icon,
+                        };
+                      })}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
+                      outerRadius={120}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {pools.filter(p => p.id !== 'all').map((pool, index) => {
+                        const colors = ['#023D7A', '#00A8A8', '#10b981', '#8b5cf6', '#f59e0b'];
+                        return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />;
+                      })}
+                    </Pie>
+                    <Tooltip 
+                      formatter={(value: number) => `€${(value / 1_000_000).toFixed(2)}M`}
+                      contentStyle={{ 
+                        backgroundColor: '#fff',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                      }}
+                    />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      formatter={(value) => <span className="text-sm font-medium text-gray-700">{value}</span>}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              
+              {/* Allocation Details */}
+              <div className="mt-6 grid grid-cols-5 gap-4">
                 {pools.filter(p => p.id !== 'all').map((pool) => {
                   const kpi = getPoolKpis(pool.id);
                   const tvl = kpi.liquidity.tvl;
                   const totalTvl = 50_000_000;
                   const percentage = (tvl / totalTvl) * 100;
-                  
+                  const colors = ['from-[#023D7A] to-[#023D7A]', 'from-[#00A8A8] to-[#00A8A8]', 'from-green-500 to-green-600', 'from-purple-500 to-purple-600', 'from-amber-500 to-amber-600'];
+                  const colorIndex = pools.filter(p => p.id !== 'all').findIndex(p => p.id === pool.id);
+
                   return (
-                    <div key={pool.id} className="flex items-center gap-4">
-                      <div className="w-40 flex items-center gap-2">
-                        <span className="text-xl">{pool.icon}</span>
-                        <span className="text-sm font-medium text-gray-700">{pool.name}</span>
-                      </div>
-                      <div className="flex-1">
-                        <div className="relative h-6 bg-gray-100 rounded-full overflow-hidden">
-                          <div
-                            className={`absolute left-0 top-0 h-full bg-gradient-to-r ${pool.color} transition-all duration-700`}
-                            style={{ width: `${percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                      <div className="w-24 text-right">
-                        <span className="text-sm font-bold text-gray-900">{percentage.toFixed(1)}%</span>
-                        <span className="text-xs text-gray-500 block">€{(tvl/1_000_000).toFixed(1)}M</span>
-                      </div>
+                    <div key={pool.id} className="text-center">
+                      <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${colors[colorIndex]} mx-auto mb-2`} />
+                      <p className="text-xs font-medium text-gray-600 truncate">{pool.icon} {pool.name.split(' ')[1]}</p>
+                      <p className="text-sm font-bold text-gray-900">{percentage.toFixed(1)}%</p>
+                      <p className="text-xs text-gray-500">€{(tvl/1_000_000).toFixed(1)}M</p>
                     </div>
                   );
                 })}

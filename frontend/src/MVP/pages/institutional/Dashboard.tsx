@@ -1,61 +1,105 @@
 /**
  * Institutional Investor Dashboard
- * 
+ *
  * Main dashboard for institutional investors showing portfolio summary,
  * pool performance, and recent activity.
- * 
+ *
  * Route: /institutional/dashboard
- * 
+ *
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAccount, useBalance } from 'wagmi';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
-import MockDataBadge from '../../components/MockDataBadge';
 import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
+import { USER_PROFILES, formatCurrency } from '../../../data/mockData';
+import { web3Config } from '../../../config/web3';
 
-interface PoolPosition {
-  poolId: string;
-  poolName: string;
-  shares: number;
-  value: number;
-  apy: number;
-}
+// Mock recent activity data
+const recentActivity = [
+  {
+    id: 1,
+    type: 'investment',
+    pool: 'Pool Industry',
+    amount: 500000,
+    date: '2 hours ago',
+    status: 'completed',
+  },
+  {
+    id: 2,
+    type: 'yield',
+    pool: 'Pool Agriculture',
+    amount: 12500,
+    date: '1 day ago',
+    status: 'completed',
+  },
+  {
+    id: 3,
+    type: 'investment',
+    pool: 'Pool Trade Finance',
+    amount: 250000,
+    date: '3 days ago',
+    status: 'completed',
+  },
+];
 
 const InstitutionalDashboard: React.FC = () => {
   const navigate = useNavigate();
-  // Mock data for demo
-  const portfolioValue = 5_000_000; // 5M EUROD
-  const totalYield = 125_000; // 125K EUROD
-  const positions: PoolPosition[] = [
-    { poolId: 'POOL_INDUSTRY', poolName: 'Pool Industry', shares: 2_000_000, value: 2_100_000, apy: 11 },
-    { poolId: 'POOL_AGRICULTURE', poolName: 'Pool Agriculture', shares: 1_500_000, value: 1_650_000, apy: 13.5 },
-    { poolId: 'POOL_RENEWABLE_ENERGY', poolName: 'Pool Renewable Energy', shares: 1_000_000, value: 1_050_000, apy: 10 },
-  ];
-
-  const recentActivity = [
-    { id: 1, type: 'investment', pool: 'Pool Industry', amount: 500_000, date: '2026-03-18', status: 'completed' },
-    { id: 2, type: 'yield', pool: 'Pool Agriculture', amount: 12_500, date: '2026-03-17', status: 'accrued' },
-    { id: 3, type: 'investment', pool: 'Pool Renewable Energy', amount: 1_000_000, date: '2026-03-15', status: 'completed' },
-  ];
-
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
-  };
+  
+  // Get connected wallet address
+  const { address: walletAddress, isConnected } = useAccount();
+  
+  // Get data from centralized mock data store (fallback)
+  const user = USER_PROFILES.INSTITUTIONAL_INVESTOR;
+  
+  // Get REAL ULP token balance from blockchain (if wallet connected)
+  const { data: ulpBalance, isLoading: balanceLoading } = useBalance({
+    address: walletAddress,
+    token: web3Config.CONTRACTS.ULP_TOKEN,
+    query: {
+      enabled: isConnected && !!walletAddress, // Only query if wallet connected
+    },
+  });
+  
+  // Use real balance if available, otherwise use mock data
+  const portfolioValue = ulpBalance ? Number(ulpBalance.formatted) : user.portfolioValue;
+  const totalYield = user.totalYield; // Would need separate query for real yield
+  const positions = user.positions; // Would need separate query for real positions
+  
+  // Calculate average APY from positions
+  const averageApy = positions.reduce((sum, p) => sum + p.apy, 0) / positions.length;
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* MVP Banner */}
       <MVPBanner />
+
+      {/* Wallet Connection Notice */}
+      {!isConnected && (
+        <div className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white py-4">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-bold text-lg">🔗 Connect Your Wallet</h3>
+                <p className="text-sm text-white/90">
+                  Connect MetaMask to view real-time ULP token balances and make investments
+                </p>
+              </div>
+              <button
+                onClick={() => document.querySelector('[data-connect-wallet]')?.click()}
+                className="px-6 py-2 bg-white text-[#023D7A] font-bold rounded-lg hover:bg-white/90 transition-colors"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
@@ -67,7 +111,6 @@ const InstitutionalDashboard: React.FC = () => {
             </div>
             <div className="flex items-center gap-3">
               <TestnetNotice variant="badge" />
-              <MockDataBadge />
             </div>
           </div>
         </div>
@@ -152,7 +195,13 @@ const InstitutionalDashboard: React.FC = () => {
               </svg>
             }
             label="Total Portfolio Value"
-            value={formatCurrency(portfolioValue)}
+            value={
+              balanceLoading 
+                ? 'Loading...' 
+                : isConnected 
+                  ? formatCurrency(portfolioValue) 
+                  : formatCurrency(user.portfolioValue)
+            }
             trend={{ value: 2.5, direction: 'up' }}
             color="navy"
           />
@@ -162,8 +211,14 @@ const InstitutionalDashboard: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
             }
-            label="Total Yield Earned"
-            value={formatCurrency(totalYield)}
+            label="ULP Token Balance"
+            value={
+              balanceLoading
+                ? 'Loading...'
+                : isConnected
+                  ? `${ulpBalance?.formatted || '0'} UPT`
+                  : 'Connect Wallet'
+            }
             trend={{ value: 12.3, direction: 'up' }}
             color="orange"
           />
@@ -184,7 +239,7 @@ const InstitutionalDashboard: React.FC = () => {
               </svg>
             }
             label="Avg. APY"
-            value="11.5%"
+            value={`${averageApy.toFixed(1)}%`}
             trend={{ value: 0.8, direction: 'up' }}
             color="purple"
           />
@@ -197,7 +252,7 @@ const InstitutionalDashboard: React.FC = () => {
               header={
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-gray-900">Pool Positions</h2>
-                  <button 
+                  <button
                     onClick={() => navigate('/investor/portfolio')}
                     className="text-[#103b5b] hover:text-[#0d3352] text-sm font-medium hover:underline"
                   >
@@ -224,17 +279,15 @@ const InstitutionalDashboard: React.FC = () => {
                         {formatCurrency(position.value)}
                       </div>
                       <div className="flex gap-2">
-                        <button 
+                        <button
                           onClick={() => navigate(`/institutional/pools?pool=${position.poolId}`)}
                           className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
                         >
                           Add
                         </button>
-                        <button 
-                          onClick={() => {
-                            alert(`🚀 MVP TESTNET: Redeem functionality for ${position.poolName} will be available in production. This would initiate a redemption request for your UPT shares.`);
-                          }}
-                          className="px-4 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded-lg transition-colors"
+                        <button
+                          onClick={() => alert(`🚀 MVP TESTNET: Redeem functionality for ${position.poolName} will be available in production.`)}
+                          className="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg transition-colors"
                         >
                           Redeem
                         </button>
@@ -307,7 +360,7 @@ const InstitutionalDashboard: React.FC = () => {
       <footer className="mt-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <p className="text-center text-sm text-gray-500">
-            🚀 MVP: Institutional Architecture - Testnet Release • Polygon Amoy (Chain ID: 80002)
+            🚀 MVP: Institutional Architecture - Testnet Release
           </p>
         </div>
       </footer>

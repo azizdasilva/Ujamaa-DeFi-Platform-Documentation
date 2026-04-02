@@ -308,7 +308,7 @@ export interface MVPConfig {
   MOCK: {
     BANK: boolean;
     ESCROW: boolean;
-    GDIZ (Benin): boolean;
+    GDIZ_BENIN: boolean;
     FIAT_RAMP: boolean;
     KYB: boolean;
   };

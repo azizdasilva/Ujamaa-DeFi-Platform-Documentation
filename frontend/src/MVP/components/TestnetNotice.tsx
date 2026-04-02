@@ -100,10 +100,11 @@ const TestnetNotice: React.FC<TestnetNoticeProps> = ({
             onClick={() => setShowModal(false)}
           >
             <div
-              className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl"
+              className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-start gap-3">
+              {/* Header - Fixed */}
+              <div className="flex items-start gap-3 p-6 border-b border-gray-100 flex-shrink-0">
                 <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-amber-600"
@@ -119,54 +120,76 @@ const TestnetNotice: React.FC<TestnetNoticeProps> = ({
                     />
                   </svg>
                 </div>
-                
+
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     🚀 Testnet Deployment
                   </h3>
-                  
-                  <div className="space-y-3 text-sm text-gray-600">
-                    <p>
-                      This is the <strong>Ujamaa DeFi Platform MVP</strong> running on{' '}
-                      <strong>Polygon Amoy testnet</strong>.
-                    </p>
-                    
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold">•</span>
-                        <span><strong>NO REAL MONEY</strong> is involved</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold">•</span>
-                        <span>All tokens are <strong>TEST TOKENS</strong> only</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold">•</span>
-                        <span>All bank integrations are <strong>SIMULATED</strong></span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold">•</span>
-                        <span>All yields are <strong>SIMULATED</strong> using real math</span>
-                      </li>
-                    </ul>
-                    
-                    <div className="bg-gray-50 rounded-lg p-3 mt-4">
-                      <p className="font-semibold text-gray-900 mb-1">Network Details:</p>
-                      <ul className="text-xs space-y-1">
-                        <li>Network: Polygon Amoy</li>
-                        <li>Chain ID: 80002</li>
-                        <li>Block Explorer: https://amoy.polygonscan.com/</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <button
-                    onClick={() => setShowModal(false)}
-                    className="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-lg transition-colors"
-                  >
-                    I Understand
-                  </button>
                 </div>
+              </div>
+
+              {/* Content - Scrollable */}
+              <div className="overflow-y-auto px-6 py-4">
+                <div className="space-y-3 text-sm text-gray-600">
+                  <p>
+                    This is the <strong>Ujamaa DeFi Platform MVP</strong> running on{' '}
+                    <strong>Polygon Amoy testnet</strong>.
+                  </p>
+
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <p className="text-sm font-semibold text-green-800">
+                      ✅ 9 Smart Contracts and Oracles have been deployed to the blockchain.
+                    </p>
+                  </div>
+
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 font-bold">•</span>
+                      <span><strong>NO REAL MONEY</strong> is involved</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 font-bold">•</span>
+                      <span>All tokens are <strong>TEST TOKENS</strong> only</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 font-bold">•</span>
+                      <span>All bank integrations are <strong>SIMULATED</strong></span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 font-bold">•</span>
+                      <span>All yields are <strong>SIMULATED</strong> using real math</span>
+                    </li>
+                  </ul>
+
+                  <div className="bg-gray-50 rounded-lg p-3 mt-4">
+                    <p className="font-semibold text-gray-900 mb-1">Network Details:</p>
+                    <ul className="text-xs space-y-1">
+                      <li>Network: Polygon Amoy</li>
+                      <li>Chain ID: 80002</li>
+                      <li>RPC URL: https://rpc-amoy.polygon.technology/</li>
+                      <li>Block Explorer: https://amoy.polygonscan.com/</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                    <p className="font-semibold text-blue-900 mb-2 text-xs">Deployed Contracts:</p>
+                    <ul className="text-xs text-blue-800 space-y-1">
+                      <li>• ULPToken, LiquidityPool, JurisdictionCompliance</li>
+                      <li>• GuaranteeToken, IndustrialGateway (Oracle), NavGateway</li>
+                      <li>• MockEscrow, MockEUROD, MockFiatRamp</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer - Fixed */}
+              <div className="p-6 border-t border-gray-100 flex-shrink-0">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                >
+                  I Understand
+                </button>
               </div>
             </div>
           </div>

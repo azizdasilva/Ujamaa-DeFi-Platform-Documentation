@@ -19,6 +19,8 @@ import time
 from config.MVP_config import mvp_config
 from api.pools import router as pools_router
 from api.compliance import router as compliance_router
+from api.compliance_documents import router as compliance_documents_router
+from api.database_api import router as database_router
 
 # =============================================================================
 # APPLICATION INITIALIZATION
@@ -142,6 +144,8 @@ async def general_exception_handler(request: Request, exc: Exception):
 # Include API routers
 app.include_router(pools_router)
 app.include_router(compliance_router)
+app.include_router(compliance_documents_router)
+app.include_router(database_router)
 
 
 @app.get("/")
@@ -278,20 +282,20 @@ async def startup_event():
     Application startup event.
     """
     print("=" * 60)
-    print("🚀 Ujamaa DeFi Platform - MVP API")
+    print("Ujamaa DeFi Platform - MVP API")
     print("=" * 60)
-    print(f"📡 Network: {mvp_config.NETWORK_NAME} (Chain ID: {mvp_config.CHAIN_ID})")
-    print(f"🔗 Block Explorer: {mvp_config.BLOCK_EXPLORER}")
-    print(f"🎯 Mode: MVP Testnet")
-    print(f"💰 Mock Services:")
+    print(f"Network: {mvp_config.NETWORK_NAME} (Chain ID: {mvp_config.CHAIN_ID})")
+    print(f"Block Explorer: {mvp_config.BLOCK_EXPLORER}")
+    print(f"Mode: MVP Testnet")
+    print(f"Mock Services:")
     print(f"   - Bank: {mvp_config.MOCK_BANK}")
     print(f"   - Escrow: {mvp_config.MOCK_ESCROW}")
     print(f"   - GDIZ: {mvp_config.MOCK_GDIZ}")
     print(f"   - Fiat Ramp: {mvp_config.MOCK_FIAT_RAMP}")
     print(f"   - KYB: {mvp_config.MOCK_KYB}")
-    print(f"📚 API Docs: http://localhost:{mvp_config.API_PORT if hasattr(mvp_config, 'API_PORT') else 8000}/docs")
+    print(f"API Docs: http://localhost:{mvp_config.API_PORT if hasattr(mvp_config, 'API_PORT') else 8000}/docs")
     print("=" * 60)
-    print("⚠️  DISCLAIMER: This is a testnet deployment. No real funds.")
+    print("DISCLAIMER: This is a testnet deployment. No real funds.")
     print("=" * 60)
 
 
