@@ -8,8 +8,8 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 
 // Auto-detect API URL: localhost for local dev, production URL for Vercel
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 
-  (import.meta.env.DEV ? 'http://localhost:8000' : 'https://ujamaa-de-fi-platform-backend.vercel.app');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? 'http://localhost:8000' : 'https://ujamaa-de-fi-platform-ouqp.vercel.app');
 
 const API_FULL_URL = `${API_BASE_URL}/api/v2`;
 
