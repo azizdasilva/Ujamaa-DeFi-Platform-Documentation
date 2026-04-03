@@ -103,6 +103,7 @@ temp/
 *.tmp
 *.bak
 
-# Markdown files (except in documentation/)
+# Markdown files (except README.md and documentation/)
 *.md
+!README.md
 !documentation/**/*.md  
