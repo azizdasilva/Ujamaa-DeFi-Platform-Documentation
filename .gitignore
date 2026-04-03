@@ -102,3 +102,7 @@ tmp/
 temp/
 *.tmp
 *.bak
+
+# Markdown files (except in documentation/)
+*.md
+!documentation/**/*.md  
