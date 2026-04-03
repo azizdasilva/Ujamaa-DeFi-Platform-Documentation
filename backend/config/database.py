@@ -29,12 +29,12 @@ IS_VERCEL = (
 # SQLite configuration
 # On Vercel/serverless, use /tmp directory (only writable path)
 if IS_VERCEL:
-    SQLITE_DB_PATH = '/tmp/ujamaa.db'
+    _SQLITE_DB_PATH = '/tmp/ujamaa.db'
 else:
-    SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'backend/data/ujamaa.db')
+    _SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'backend/data/ujamaa.db')
 
 # PostgreSQL configuration
-DATABASE_URL = os.getenv(
+_DATABASE_URL_ENV = os.getenv(
     'DATABASE_URL',
     'postgresql://user:password@localhost:5432/ujamaa_defi'
 )
@@ -54,7 +54,7 @@ def get_database_url() -> str:
         str: Database connection URL
     """
     if DATABASE_TYPE == 'sqlite':
-        db_path = Path(SQLITE_DB_PATH)
+        db_path = Path(_SQLITE_DB_PATH)
         
         # Try to create directory, fallback to /tmp or memory if read-only
         try:
@@ -62,20 +62,21 @@ def get_database_url() -> str:
         except (OSError, PermissionError):
             # Filesystem is read-only (Vercel/serverless)
             # Use /tmp as fallback
-            SQLITE_DB_PATH = '/tmp/ujamaa.db'
-            db_path = Path(SQLITE_DB_PATH)
+            fallback_path = '/tmp/ujamaa.db'
+            db_path = Path(fallback_path)
             try:
                 db_path.parent.mkdir(parents=True, exist_ok=True)
             except (OSError, PermissionError):
                 # Ultimate fallback: in-memory database
                 return "sqlite:///:memory:"
+            return f"sqlite:////{fallback_path}"
         
         # Use absolute path for SQLite
         if IS_VERCEL or str(db_path).startswith('/tmp'):
-            return f"sqlite:////{SQLITE_DB_PATH}"
+            return f"sqlite:////{_SQLITE_DB_PATH}"
         return f"sqlite:///{db_path.absolute()}"
     else:
-        return DATABASE_URL
+        return _DATABASE_URL_ENV
 
 
 def get_database_config() -> dict:
