@@ -31,7 +31,16 @@ IS_VERCEL = (
 if IS_VERCEL:
     _SQLITE_DB_PATH = '/tmp/ujamaa.db'
 else:
-    _SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'backend/data/ujamaa.db')
+    # Get path from env, resolve relative to project root
+    _raw_path = os.getenv('SQLITE_DB_PATH', 'data/ujamaa.db')
+    # Strip 'backend/' prefix if present (since we're already in backend/)
+    if _raw_path.startswith('backend/'):
+        _raw_path = _raw_path[len('backend/'):]
+    _path = Path(_raw_path)
+    if not _path.is_absolute():
+        # Resolve relative to backend/ directory (grandparent of this file)
+        _path = Path(__file__).resolve().parent.parent / _raw_path
+    _SQLITE_DB_PATH = str(_path)
 
 # PostgreSQL configuration
 _DATABASE_URL_ENV = os.getenv(
