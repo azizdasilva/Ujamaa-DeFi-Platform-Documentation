@@ -83,35 +83,35 @@ export function useLiquidityPool() {
       const mockPoolData = {
         poolFamilies: [
           {
-            name: 'POOL_INDUSTRIE',
+            name: 'Pool Industrie',
             targetAPY: BigInt('11000000000000000000'), // 11% in 18 decimals
             termDays: BigInt('365'),
             totalValue: BigInt('5000000000000000000000000'), // 5M in 18 decimals
             utilizationRate: BigInt('65000000000000000000'), // 65% in 18 decimals
           },
           {
-            name: 'POOL_AGRICULTURE',
+            name: 'Pool Agriculture',
             targetAPY: BigInt('13500000000000000000'), // 13.5%
             termDays: BigInt('180'),
             totalValue: BigInt('3000000000000000000000000'), // 3M
             utilizationRate: BigInt('72000000000000000000'), // 72%
           },
           {
-            name: 'POOL_TRADE_FINANCE',
+            name: 'Pool Trade Finance',
             targetAPY: BigInt('9000000000000000000'), // 9%
             termDays: BigInt('90'),
             totalValue: BigInt('2000000000000000000000000'), // 2M
             utilizationRate: BigInt('58000000000000000000'), // 58%
           },
           {
-            name: 'POOL_RENEWABLE_ENERGY',
+            name: 'Pool Renewable Energy',
             targetAPY: BigInt('10000000000000000000'), // 10%
             termDays: BigInt('730'),
             totalValue: BigInt('4000000000000000000000000'), // 4M
             utilizationRate: BigInt('45000000000000000000'), // 45%
           },
           {
-            name: 'POOL_REAL_ESTATE',
+            name: 'Pool Real Estate',
             targetAPY: BigInt('10000000000000000000'), // 10%
             termDays: BigInt('1095'),
             totalValue: BigInt('6000000000000000000000000'), // 6M
@@ -204,11 +204,11 @@ export function useULPToken() {
  */
 export function formatPoolFamily(index: number): string {
   const families = [
-    'POOL_INDUSTRIE',
-    'POOL_AGRICULTURE',
-    'POOL_TRADE_FINANCE',
-    'POOL_RENEWABLE_ENERGY',
-    'POOL_REAL_ESTATE',
+    'Pool Industrie',
+    'Pool Agriculture',
+    'Pool Trade Finance',
+    'Pool Renewable Energy',
+    'Pool Real Estate',
   ];
   return families[index] || `Unknown (${index})`;
 }

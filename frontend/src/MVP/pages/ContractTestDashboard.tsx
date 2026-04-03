@@ -26,7 +26,7 @@ export const DEPLOYED_CONTRACTS = [
     functions: ['mint', 'transfer', 'approve', 'balanceOf'],
   },
   {
-    name: 'ULP Token',
+    name: 'ULPTokenizer',
     symbol: 'uLP',
     address: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
     role: 'Yield-bearing pool token',
@@ -38,7 +38,7 @@ export const DEPLOYED_CONTRACTS = [
     functions: ['mint', 'burn', 'transfer', 'getNAV', 'navPerShare'],
   },
   {
-    name: 'Guarantee Token',
+    name: 'GuaranteeTokenizer',
     symbol: 'UJG',
     address: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
     role: 'Collateral NFT (ERC-3643NFT)',
