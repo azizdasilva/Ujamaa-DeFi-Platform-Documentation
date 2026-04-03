@@ -295,6 +295,7 @@ async def get_disclaimer():
 async def startup_event():
     """
     Application startup event.
+    On Vercel/serverless, seed the database on every cold start.
     """
     print("=" * 60)
     print("Ujamaa DeFi Platform - MVP API")
@@ -312,6 +313,48 @@ async def startup_event():
     print("=" * 60)
     print("DISCLAIMER: This is a testnet deployment. No real funds.")
     print("=" * 60)
+
+    # Auto-initialize database on startup
+    import os
+    from config.database import DATABASE_TYPE, SessionLocal, engine
+    from config.models import Base
+    
+    is_vercel = os.getenv('VERCEL', '') == '1' or os.getenv('VERCEL_ENV') is not None
+    
+    # For PostgreSQL (Supabase), only create tables if they don't exist
+    # For SQLite on Vercel (/tmp), seed with demo data (ephemeral storage)
+    if DATABASE_TYPE == 'postgresql':
+        print(f"\n📊 Using PostgreSQL (Supabase) - persistent database")
+        try:
+            # Create tables if they don't exist (safe for PostgreSQL)
+            Base.metadata.create_all(bind=engine)
+            print("✅ Database schema verified")
+            
+            # Check if database is empty (fresh Supabase instance)
+            from sqlalchemy import text
+            with engine.connect() as conn:
+                result = conn.execute(text("SELECT COUNT(*) FROM users"))
+                user_count = result.scalar()
+            
+            if user_count == 0:
+                print("🌱 Fresh PostgreSQL instance - seeding demo data...")
+                from setup_database import seed_all
+                seed_all()
+                print("✅ Database seeded successfully")
+            else:
+                print(f"✅ Database already contains data ({user_count} users) - skipping seed")
+        except Exception as e:
+            print(f"⚠️  Database initialization note: {e}")
+    elif is_vercel:
+        # SQLite on Vercel uses /tmp (ephemeral) - always seed
+        print(f"\n🌱 Vercel + SQLite detected - ephemeral /tmp storage")
+        try:
+            Base.metadata.create_all(bind=engine)
+            from setup_database import seed_all
+            seed_all()
+            print("✅ Database seeded successfully")
+        except Exception as e:
+            print(f"⚠️  Seed failed (may already be seeded): {e}")
 
 
 # =============================================================================

@@ -11,5 +11,9 @@
       "src": "/(.*)",
       "dest": "main.py"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_TYPE": "postgresql",
+    "DATABASE_URL": "@database_url"
+  }
 }
