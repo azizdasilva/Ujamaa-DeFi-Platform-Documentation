@@ -7,11 +7,15 @@
 
 import axios, { AxiosInstance, AxiosError } from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v2';
+// Auto-detect API URL: localhost for local dev, production URL for Vercel
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 
+  (import.meta.env.DEV ? 'http://localhost:8000' : 'https://ujamaa-de-fi-platform-backend.vercel.app');
+
+const API_FULL_URL = `${API_BASE_URL}/api/v2`;
 
 // Create axios instance
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: API_FULL_URL,
   timeout: 30000, // 30 seconds
   headers: {
     'Content-Type': 'application/json',

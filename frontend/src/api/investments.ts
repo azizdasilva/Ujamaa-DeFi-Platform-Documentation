@@ -11,7 +11,7 @@ export interface Investment {
   pool_id: string;
   investor_id: number;
   amount: number;
-  ult_tokens: number;
+  ulp_tokens: number;
   status: string;
   created_at: string;
 }
@@ -37,8 +37,28 @@ export interface CreateInvestmentResponse {
   investment_id: number;
   pool_id: string;
   amount: number;
-  ult_tokens: number;
+  ulp_tokens: number;
   transaction_hash?: string;
+}
+
+export interface RedemptionRequest {
+  pool_id: string;
+  shares: number;
+  investor_id: number;
+}
+
+export interface RedemptionResponse {
+  success: boolean;
+  pool_id: string;
+  investor_id: string;
+  shares_redeemed: number;
+  shares_formatted: string;
+  ujeur_received: number; // EUROD amount received (backend field name)
+  ujeur_formatted: string;
+  nav_per_share: number;
+  transaction_id: string;
+  timestamp: string;
+  is_testnet: boolean;
 }
 
 // API functions
@@ -76,18 +96,33 @@ export const investmentsAPI = {
   },
 
   /**
-   * Get uLT token balance
+   * Get uLP token balance
    */
-  getULTBalance: async (investorId: number) => {
-    const response = await apiClient.get(`/db/ult/${investorId}/balance`);
+  getULPBalance: async (investorId: number) => {
+    const response = await apiClient.get(`/db/ulp/${investorId}/balance`);
     return response.data;
   },
 
   /**
-   * Get uLT transaction history
+   * Get uLP transaction history
    */
-  getULTTransactions: async (investorId: number) => {
-    const response = await apiClient.get(`/db/ult/${investorId}/transactions`);
+  getULPTransactions: async (investorId: number) => {
+    const response = await apiClient.get(`/db/ulp/${investorId}/transactions`);
+    return response.data;
+  },
+
+  /**
+   * Redeem shares from a pool
+   */
+  redeemShares: async (data: RedemptionRequest): Promise<RedemptionResponse> => {
+    const response = await apiClient.post<RedemptionResponse>(
+      `/pools/${data.pool_id}/redeem`,
+      {
+        pool_id: data.pool_id,
+        shares: data.shares,
+        investor_id: data.investor_id.toString(),
+      }
+    );
     return response.data;
   },
 };

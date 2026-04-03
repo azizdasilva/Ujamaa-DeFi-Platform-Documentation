@@ -151,7 +151,7 @@ const DeepDive: React.FC = () => {
               <div className="mt-8 p-5 bg-gradient-to-br from-[#023D7A]/5 to-[#00A8A8]/5 rounded-2xl border border-[#48A9F0]/30">
                 <p className="text-xs font-bold text-[#023D7A] mb-3">📊 Quick Stats</p>
                 <ul className="text-xs text-[#023D7A] space-y-2">
-                  <li>• 7 Smart Contracts</li>
+                  <li>• 9 Smart Contracts</li>
                   <li>• 5 Pool Families</li>
                   <li>• 15+ API Endpoints</li>
                   <li>• 12 Blocked Jurisdictions</li>
@@ -165,23 +165,23 @@ const DeepDive: React.FC = () => {
                 <p className="text-xs font-bold text-[#023D7A] mb-3">🔗 Contract Status</p>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">UPT Token:</span>
+                    <span className="text-[#333333]">ULPTokenizer:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">Liquidity Pool:</span>
+                    <span className="text-[#333333]">LiquidityPool:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">Jurisdiction:</span>
+                    <span className="text-[#333333]">JurisdictionCompliance:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">Guarantee Token:</span>
+                    <span className="text-[#333333]">GuaranteeTokenizer:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">Industrial Gateway:</span>
+                    <span className="text-[#333333]">IndustrialGateway:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ const DeepDive: React.FC = () => {
                           </p>
                           <p className="flex items-center gap-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                            7 Smart Contracts
+                            9 Smart Contracts
                           </p>
                           <p className="flex items-center gap-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
@@ -318,7 +318,7 @@ const DeepDive: React.FC = () => {
                         <tbody className="text-[#333333]">
                           <tr className="border-b border-[#48A9F0]/20">
                             <td className="py-4 px-4 font-semibold">Smart Contracts</td>
-                            <td className="py-4 px-4">UPTToken, LiquidityPool, JurisdictionCompliance, GuaranteeToken, IndustrialGateway, MockEscrow, MockFiatRamp</td>
+                            <td className="py-4 px-4">ULPTokenizer, LiquidityPool, JurisdictionCompliance, GuaranteeTokenizer, IndustrialGateway, MockEscrow, MockFiatRamp, NavGateway, MockEUROD</td>
                             <td className="py-4 px-4">Solidity 0.8.20, ERC-3643, ERC-721</td>
                           </tr>
                           <tr className="border-b border-[#48A9F0]/20">
@@ -375,7 +375,7 @@ const DeepDive: React.FC = () => {
                           {
                             step: '3',
                             title: 'Smart Contract Execution',
-                            desc: 'LiquidityPool mints UPT tokens at current NAV',
+                            desc: 'LiquidityPool mints uLP tokens at current NAV',
                             icon: (
                               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
@@ -444,7 +444,7 @@ const DeepDive: React.FC = () => {
               }>
                 <div className="space-y-8">
                   <p className="text-[#333333] text-lg leading-relaxed">
-                    MVP deploys 7 smart contracts on Polygon Amoy testnet (Chain ID: 80002).
+                    MVP deploys 9 smart contracts on Polygon Amoy testnet (Chain ID: 80002).
                     All contracts implement ERC-3643 compliance primitives for identity verification
                     and transfer restrictions. Built with Solidity 0.8.20 and tested with Foundry.
                   </p>
@@ -455,7 +455,7 @@ const DeepDive: React.FC = () => {
                     <div className="space-y-3">
                       {[
                         { 
-                          name: 'UPTToken.sol', 
+                          name: 'ULPTokenizer.sol', 
                           desc: 'Yield-bearing LP token (ERC-3643)', 
                           lines: '~628',
                           color: 'from-[#023D7A] to-[#00A8A8]',
@@ -476,8 +476,8 @@ const DeepDive: React.FC = () => {
                           features: ['OFAC + UN + EU lists', 'Real-time checks', 'Investor registration']
                         },
                         { 
-                          name: 'GuaranteeToken.sol', 
-                          desc: 'ERC-721 NFT collateral (UGT)', 
+                          name: 'GuaranteeTokenizer.sol',
+                          desc: 'ERC-721 NFT collateral (uGT)',
                           lines: '~426',
                           color: 'from-[#D57028] to-[#F59E0B]',
                           features: ['Collateral NFTs', 'Forced transfer', 'Liquidation support']
@@ -530,30 +530,30 @@ const DeepDive: React.FC = () => {
 
                   {/* Code Example */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#023D7A] mb-4">UPTToken: Deposit Function</h3>
+                    <h3 className="text-lg font-bold text-[#023D7A] mb-4">ULPTokenizer: Deposit Function</h3>
                     <div className="bg-[#023D7A] rounded-2xl p-6 overflow-x-auto">
                       <pre className="text-gray-100 text-sm font-mono leading-relaxed">
-                        <code>{`// UPTToken.sol - Deposit EUROD and mint UPT
+                        <code>{`// ULPTokenizer.sol - Deposit EUROD and mint ulp
 function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
     if (ujeurAmount == 0) revert ZeroDeposit();
 
-    // Calculate UPT to mint based on current NAV
-    uint256 uptMinted = ujeurAmount / s_navPerShare;
-    if (totalSupply() == 0) uptMinted = ujeurAmount; // 1:1 at inception
+    // Calculate uLP to mint based on current NAV
+    uint256 ulpMinted = ujeurAmount / s_navPerShare;
+    if (totalSupply() == 0) ulpMinted = ujeurAmount; // 1:1 at inception
 
     // Update pool state
     s_totalPoolValue += ujeurAmount;
-    _mint(msg.sender, uptMinted);
+    _mint(msg.sender, ulpMinted);
     _transferUJEURFrom(msg.sender, address(this), ujeurAmount);
 
-    emit Deposit(msg.sender, ujeurAmount, uptMinted, s_navPerShare);
-    return uptMinted;
+    emit Deposit(msg.sender, ujeurAmount, ulpMinted, s_navPerShare);
+    return ulpMinted;
 }`}</code>
                       </pre>
                     </div>
                     <p className="text-xs text-[#333333] mt-3">
                       <span className="font-bold">Note:</span> This function demonstrates the value-accrual model where
-                      users deposit EUROD and receive UPT tokens at the current NAV per share.
+                      users deposit EUROD and receive uLP tokens at the current NAV per share.
                     </p>
                   </div>
 
@@ -753,7 +753,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                         { 
                           name: 'NAV per Share', 
                           formula: 'NAV = total_pool_value / total_shares',
-                          example: '€10,000,000 / 10,000,000 UPT = €1.00/UPT'
+                          example: '€10,000,000 / 10,000,000 uLP = €1.00/ulp'
                         },
                         { 
                           name: 'Management Fee', 
@@ -831,7 +831,7 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                   <div className="bg-gradient-to-br from-[#023D7A] to-[#00A8A8] rounded-2xl p-6 text-white">
                     <p className="text-sm text-white/80 mb-2">Base URL</p>
                     <code className="text-lg font-mono bg-white/10 px-4 py-3 rounded-xl block">
-                      http://localhost:8000/api/v2
+                      {import.meta.env.DEV ? 'http://localhost:8000/api/v2' : 'https://ujamaa-de-fi-platform-backend.vercel.app/api/v2'}
                     </code>
                     <div className="mt-4 flex flex-wrap gap-3 text-xs">
                       <span className="px-3 py-1 bg-white/20 rounded-full">Swagger: /docs</span>

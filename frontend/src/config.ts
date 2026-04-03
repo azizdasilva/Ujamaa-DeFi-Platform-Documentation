@@ -128,8 +128,10 @@ Production deployment will use:
   },
   
   // API Configuration
+  // Auto-detect: localhost for local dev, production URL for Vercel deployment
   API: {
-    BASE_URL: 'http://localhost:8000',
+    BASE_URL: import.meta.env.VITE_API_BASE_URL || 
+      (import.meta.env.DEV ? 'http://localhost:8000' : 'https://ujamaa-de-fi-platform-backend.vercel.app'),
     VERSION: 'v2',
     RATE_LIMIT_PUBLIC: 100, // per minute
     RATE_LIMIT_AUTHENTICATED: 1000, // per hour

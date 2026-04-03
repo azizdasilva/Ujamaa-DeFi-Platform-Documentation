@@ -6,7 +6,7 @@
  * Route: /admin/contracts
  *
  * @notice All contracts deployed on Polygon Amoy Testnet (Chain ID: 80002)
- * @notice Updated: 2026-04-02
+ * @notice Updated: 2026-04-03
  */
 
 import React from 'react';
@@ -20,77 +20,77 @@ import { web3Config } from '../../../config/web3';
 const ContractManagement: React.FC = () => {
   // All deployed contracts with latest addresses from web3Config
   const contracts = [
-    { 
-      name: 'ULP Token', 
-      address: web3Config.CONTRACTS.ULP_TOKEN, 
-      type: 'ERC-20 Utility', 
-      status: 'deployed', 
+    {
+      name: 'ULPTokenizer (uLP)',
+      address: web3Config.CONTRACTS.ULP_TOKEN,
+      type: 'ERC-3643-style Token (ERC-20 + compliance)',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Utility Liquidity Pool token for investor participation'
+      description: 'Yield-bearing liquidity pool token with identity verification. Implements ERC-3643-style compliance via custom checks.'
     },
-    { 
-      name: 'Guarantee Token (UGT)', 
-      address: web3Config.CONTRACTS.UGT_TOKEN, 
-      type: 'ERC-20 Guarantee', 
-      status: 'deployed', 
+    {
+      name: 'GuaranteeTokenizer (uGT)',
+      address: web3Config.CONTRACTS.UGT_TOKEN,
+      type: 'ERC-721 NFT + Compliance',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Guarantee token for industrial operator commitments'
+      description: 'NFT collateral token for industrial operator commitments. Represents certified merchandise/collateral.'
     },
-    { 
-      name: 'Mock EUROD (UJEUR)', 
-      address: web3Config.CONTRACTS.MOCK_EUROD, 
-      type: 'ERC-20 Stablecoin', 
-      status: 'deployed', 
+    {
+      name: 'MockEUROD',
+      address: web3Config.CONTRACTS.MOCK_EUROD,
+      type: 'ERC-20 Stablecoin',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Mock Euro stablecoin for testing'
+      description: 'Mock Euro stablecoin for testnet. Represents EUROD in production.'
     },
-    { 
-      name: 'Liquidity Pool', 
-      address: web3Config.CONTRACTS.LIQUIDITY_POOL, 
-      type: 'Pool Management', 
-      status: 'deployed', 
+    {
+      name: 'LiquidityPool',
+      address: web3Config.CONTRACTS.LIQUIDITY_POOL,
+      type: 'Pool Management',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Main liquidity pool contract for managing investor funds'
+      description: 'Multi-asset liquidity pool manager for industrial financing with NAV-based yield distribution.'
     },
-    { 
-      name: 'Industrial Gateway', 
-      address: web3Config.CONTRACTS.INDUSTRIAL_GATEWAY, 
-      type: 'Gateway', 
-      status: 'deployed', 
+    {
+      name: 'IndustrialGateway',
+      address: web3Config.CONTRACTS.INDUSTRIAL_GATEWAY,
+      type: 'Gateway',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Gateway for industrial operator interactions'
+      description: 'Certifies industrial assets/stock and mints GuaranteeTokens (uGT) as collateral.'
     },
-    { 
-      name: 'Jurisdiction Compliance', 
-      address: web3Config.CONTRACTS.JURISDICTION_COMPLIANCE, 
-      type: 'Compliance', 
-      status: 'deployed', 
+    {
+      name: 'JurisdictionCompliance',
+      address: web3Config.CONTRACTS.JURISDICTION_COMPLIANCE,
+      type: 'Compliance',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Jurisdiction-based compliance and restrictions'
+      description: 'Jurisdiction-based compliance with OFAC/UN/EU/FATF sanctions list enforcement.'
     },
-    { 
-      name: 'NAV Gateway', 
-      address: web3Config.CONTRACTS.NAV_GATEWAY, 
-      type: 'NAV Oracle', 
-      status: 'deployed', 
+    {
+      name: 'NavGateway',
+      address: web3Config.CONTRACTS.NAV_GATEWAY,
+      type: 'NAV Oracle',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Net Asset Value oracle gateway'
+      description: 'Net Asset Value oracle for uLP token pricing and yield calculation.'
     },
-    { 
-      name: 'Mock Escrow', 
-      address: web3Config.CONTRACTS.MOCK_ESCROW, 
-      type: 'Escrow', 
-      status: 'deployed', 
+    {
+      name: 'MockEscrow',
+      address: web3Config.CONTRACTS.MOCK_ESCROW,
+      type: 'Escrow',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Mock escrow for fund holding during transactions'
+      description: 'Mock escrow for fund holding during investor transactions (testnet simulation).'
     },
-    { 
-      name: 'Mock Fiat Ramp', 
-      address: web3Config.CONTRACTS.MOCK_FIAT_RAMP, 
-      type: 'Fiat Gateway', 
-      status: 'deployed', 
+    {
+      name: 'MockFiatRamp',
+      address: web3Config.CONTRACTS.MOCK_FIAT_RAMP,
+      type: 'Fiat Gateway',
+      status: 'deployed',
       network: 'Polygon Amoy',
-      description: 'Mock fiat on/off ramp for testing'
+      description: 'Mock fiat on/off ramp for testnet. Simulates bank transfers in production.'
     },
   ];
 
@@ -111,7 +111,8 @@ const ContractManagement: React.FC = () => {
                 href="https://amoy.polygonscan.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-lg transition-colors text-sm flex items-center gap-2"
+                className="px-4 py-2 bg-[#023D7A] hover:bg-[#0d3352] font-bold rounded-lg transition-colors text-sm flex items-center gap-2"
+                style={{ color: '#ffffff' }}
               >
                 🔍 View on Explorer
               </a>
@@ -177,7 +178,8 @@ const ContractManagement: React.FC = () => {
                     href={`https://amoy.polygonscan.com/address/${contract.address}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 px-3 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-white text-sm font-bold rounded transition-colors text-center"
+                    className="flex-1 px-3 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-sm font-bold rounded transition-colors text-center"
+                    style={{ color: '#ffffff' }}
                   >
                     View on Explorer
                   </a>

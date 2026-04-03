@@ -240,7 +240,7 @@ const InstitutionalDashboard: React.FC = () => {
                 ? 'Loading...'
                 : isConnected
                   ? `${ulpBalance?.formatted || '0'} UPT`
-                  : investor ? `${investor.ult_tokens.toLocaleString()} uLT` : '0 uLT'
+                  : investor ? `${investor.ulp_tokens.toLocaleString()} uLP` : '0 uLP'
             }
             trend={{ value: 12.3, direction: 'up' }}
             color="orange"
@@ -314,8 +314,8 @@ const InstitutionalDashboard: React.FC = () => {
                             Add
                           </button>
                           <button
-                            onClick={() => alert(`🚀 MVP TESTNET: Redeem functionality for ${position.pool_id} will be available in production.`)}
-                            className="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg transition-colors"
+                            onClick={() => navigate(`/institutional/pools?pool=${position.pool_id}&action=redeem`)}
+                            className="px-4 py-2 border border-[#00A8A8] hover:bg-[#00A8A8]/10 text-[#00A8A8] text-sm font-medium rounded-lg transition-colors"
                           >
                             Redeem
                           </button>
