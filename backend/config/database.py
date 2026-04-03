@@ -11,8 +11,10 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from .env file (only for local development)
+# On Vercel, environment variables are already set by the platform
+if os.getenv('VERCEL') != '1' and os.getenv('VERCEL_ENV') is None:
+    load_dotenv()
 
 # Database type from environment (default: sqlite)
 DATABASE_TYPE = os.getenv('DATABASE_TYPE', 'sqlite')
