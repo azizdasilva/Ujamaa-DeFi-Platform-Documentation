@@ -17,8 +17,15 @@ load_dotenv()
 # Database type from environment (default: sqlite)
 DATABASE_TYPE = os.getenv('DATABASE_TYPE', 'sqlite')
 
+# Detect Vercel serverless environment
+IS_VERCEL = os.getenv('VERCEL', '0') == '1'
+
 # SQLite configuration
-SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'backend/data/ujamaa.db')
+# On Vercel, use /tmp directory (only writable path in serverless)
+if IS_VERCEL:
+    SQLITE_DB_PATH = '/tmp/ujamaa.db'
+else:
+    SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'backend/data/ujamaa.db')
 
 # PostgreSQL configuration
 DATABASE_URL = os.getenv(
@@ -36,7 +43,7 @@ DB_POOL_RECYCLE = int(os.getenv('DB_POOL_RECYCLE', '1800'))
 def get_database_url() -> str:
     """
     Get the appropriate database URL based on configuration.
-    
+
     Returns:
         str: Database connection URL
     """
@@ -44,6 +51,9 @@ def get_database_url() -> str:
         # Ensure the data directory exists
         db_path = Path(SQLITE_DB_PATH)
         db_path.parent.mkdir(parents=True, exist_ok=True)
+        # Use absolute path for SQLite
+        if IS_VERCEL:
+            return f"sqlite:////{SQLITE_DB_PATH}"
         return f"sqlite:///{db_path.absolute()}"
     else:
         return DATABASE_URL
