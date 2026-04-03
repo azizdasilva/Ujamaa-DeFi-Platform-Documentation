@@ -123,27 +123,57 @@ async def verify_admin(
             status_code=401,
             detail="Authentication required"
         )
-    
-    # For MVP: Check if token matches admin user
-    # In production: Implement proper JWT validation
+
     token = auth.credentials
-    
-    # Simple token validation (MVP only)
-    if token != "admin-token-mvp":
+
+    # MVP: Accept hardcoded admin token
+    if token == "admin-token-mvp":
+        admin = db.query(User).filter(User.role == "ADMIN").first()
+        if not admin:
+            raise HTTPException(
+                status_code=404,
+                detail="No admin user found in database"
+            )
+        return admin
+
+    # Check if token is a mock JWT token from frontend (format: mock-jwt-token-ROLE-timestamp)
+    if token.startswith("mock-jwt-token-"):
+        parts = token.split("-")
+        if len(parts) >= 4:
+            role = parts[3]  # Extract role from token
+            if role == "ADMIN":
+                admin = db.query(User).filter(User.role == "ADMIN").first()
+                if not admin:
+                    raise HTTPException(
+                        status_code=404,
+                        detail="No admin user found in database"
+                    )
+                return admin
+            else:
+                raise HTTPException(
+                    status_code=403,
+                    detail=f"Admin access required. Your role: {role}"
+                )
+
+    # Fallback: Check if token matches wallet_address or email
+    user = db.query(User).filter(
+        (User.wallet_address == token) |
+        (User.email == token)
+    ).first()
+
+    if not user:
         raise HTTPException(
             status_code=403,
-            detail="Admin access required"
+            detail="Invalid authentication token"
         )
-    
-    # Get admin user from database
-    admin = db.query(User).filter(User.role == "ADMIN").first()
-    if not admin:
+
+    if user.role != "ADMIN":
         raise HTTPException(
-            status_code=404,
-            detail="Admin user not found"
+            status_code=403,
+            detail="Admin access required. Your role: " + user.role
         )
-    
-    return admin
+
+    return user
 
 
 # =============================================================================
