@@ -69,6 +69,26 @@ def get_database_config() -> dict:
 # Database URL for SQLAlchemy
 DATABASE_URL = get_database_url()
 
+# Shared session dependency for FastAPI
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy import create_engine
+
+engine = create_engine(DATABASE_URL, echo=False)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def get_db() -> Session:
+    """
+    FastAPI dependency that provides a database session.
+    Yields a session and ensures it's closed after use.
+    """
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 # Print configuration on import (for debugging)
 if os.getenv('DEBUG', 'False').lower() == 'true':
     print(f"📊 Database Type: {DATABASE_TYPE}")

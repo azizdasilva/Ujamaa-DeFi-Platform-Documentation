@@ -44,7 +44,7 @@ export interface CreateInvestmentResponse {
 export interface RedemptionRequest {
   pool_id: string;
   shares: number;
-  investor_id: number;
+  investor_id: number;  // Will be converted to string in API call
 }
 
 export interface RedemptionResponse {

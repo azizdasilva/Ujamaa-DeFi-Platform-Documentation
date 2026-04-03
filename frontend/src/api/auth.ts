@@ -15,7 +15,7 @@ export interface RegisterRequest {
   email: string;
   password: string;
   full_name: string;
-  role: 'INSTITUTIONAL_INVESTOR' | 'RETAIL_INVESTOR' | 'INDUSTRIAL_OPERATOR' | 'COMPLIANCE_OFFICER' | 'REGULATOR';
+  role: 'INSTITUTIONAL_INVESTOR' | 'RETAIL_INVESTOR' | 'INDUSTRIAL_OPERATOR' | 'COMPLIANCE_OFFICER' | 'REGULATOR' | 'ADMIN';
   jurisdiction: string;
   company_name?: string;
 }

@@ -19,6 +19,8 @@ export type PoolFamily =
 
 export type RiskLevel = 'low' | 'medium' | 'high';
 
+export type FinancingStatus = 'PENDING' | 'ACTIVE' | 'REPAYING' | 'REPAID' | 'DEFAULTED' | 'CANCELLED';
+
 export interface Pool {
   id: string;
   name: string;
@@ -139,7 +141,24 @@ export interface InvestorStats {
 // COMPLIANCE TYPES
 // =============================================================================
 
-export type ComplianceStatus = 'ALLOWED' | 'BLOCKED' | 'REVIEW_REQUIRED';
+// Jurisdiction permission states (different from document compliance states)
+export type JurisdictionStatus = 'ALLOWED' | 'BLOCKED' | 'REVIEW_REQUIRED';
+
+// Document/KYC/KYB lifecycle states (matches backend ComplianceStatusEnum)
+export type DocumentStatus = 'pending' | 'approved' | 'rejected' | 'review_required';
+
+// Document types (matches backend DocumentTypeEnum)
+export type DocumentType =
+  | 'kyc_id'
+  | 'kyc_address'
+  | 'kyc_selfie'
+  | 'kyb_incorporation'
+  | 'kyb_tax'
+  | 'kyb_ubo'
+  | 'kyb_resolution'
+  | 'kyb_license'
+  | 'kyb_aml'
+  | 'other';
 
 export interface Jurisdiction {
   code: string;
@@ -152,7 +171,7 @@ export interface Jurisdiction {
 export interface ComplianceCheck {
   jurisdiction: string;
   jurisdictionName: string;
-  status: ComplianceStatus;
+  status: JurisdictionStatus;
   isAllowed: boolean;
   isBlocked: boolean;
   requiresReview: boolean;
@@ -165,7 +184,7 @@ export interface InvestorCompliance {
   investorId: string;
   jurisdiction: string;
   jurisdictionName: string;
-  status: ComplianceStatus;
+  status: JurisdictionStatus;
   isApproved: boolean;
   kycStatus: string;
   accreditationStatus: string;
@@ -205,13 +224,15 @@ export interface YieldStats {
 // TRANSACTION TYPES
 // =============================================================================
 
-export type TransactionType = 
-  | 'investment'
-  | 'redemption'
-  | 'yield'
-  | 'deposit'
-  | 'withdrawal'
-  | 'wire_transfer';
+export type TransactionType =
+  | 'DEPOSIT'
+  | 'WITHDRAWAL'
+  | 'WIRE_TRANSFER'
+  | 'INCOMING_WIRE'
+  | 'OUTGOING_WIRE'
+  | 'INVESTMENT'
+  | 'REDEMPTION'
+  | 'YIELD_DISTRIBUTION';
 
 export type TransactionStatus = 'pending' | 'completed' | 'failed';
 
@@ -351,7 +372,7 @@ export interface WalletConnection {
 }
 
 export interface ContractAddresses {
-  UPTToken: string;
+  ULPTokenizer: string;
   LiquidityPool: string;
   JurisdictionCompliance: string;
   MockEscrow: string;

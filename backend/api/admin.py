@@ -15,25 +15,11 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 import json
 
-from config.database import get_database_url
+from config.database import get_database_url, get_db
 from config.models import User, ComplianceStatusEnum, BankAccount
 
 router = APIRouter(prefix="/api/v2/admin", tags=["Admin"])
 security = HTTPBearer(auto_error=False)
-
-# Database connection
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
-engine = create_engine(get_database_url())
-
-def get_db():
-    """Get database session."""
-    SessionLocal = sessionmaker(bind=engine)
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 # =============================================================================
 # THRESHOLD CONFIGURATION MODEL
@@ -126,19 +112,6 @@ def update_thresholds(updates: Dict[str, Any]) -> None:
 # =============================================================================
 # DEPENDENCIES
 # =============================================================================
-
-def get_db():
-    """Get database session"""
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    engine = create_engine(get_database_url())
-    SessionLocal = sessionmaker(bind=engine)
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 
 async def verify_admin(
     auth: Optional[HTTPAuthorizationCredentials] = Depends(security),

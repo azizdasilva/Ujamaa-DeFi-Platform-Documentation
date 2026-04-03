@@ -81,7 +81,7 @@ export const poolsAPI = {
    * Get all 18 KPIs for pool
    */
   getPoolKPIs: async (poolId: string, poolFamily: string = 'all'): Promise<PoolKPIs> => {
-    const response = await apiClient.get<PoolKPIs>(`/api/v1/pool/kpis?pool_id=${poolId}&pool_family=${poolFamily}`);
+    const response = await apiClient.get<PoolKPIs>(`/api/v2/kpis?pool_id=${poolId}&pool_family=${poolFamily}`);
     return response.data;
   },
 
@@ -89,7 +89,7 @@ export const poolsAPI = {
    * Get pool health status
    */
   getPoolHealth: async (poolId: string) => {
-    const response = await apiClient.get(`/api/v1/pool/health?pool_id=${poolId}`);
+    const response = await apiClient.get(`/api/v2/pool/health?pool_id=${poolId}`);
     return response.data;
   },
 };

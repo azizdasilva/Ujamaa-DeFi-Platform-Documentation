@@ -39,7 +39,7 @@ export const config = {
     MAX_DEPOSIT: 1_000_000,
     DAILY_WITHDRAWAL: 500_000,
     INSTITUTIONAL_MIN: 100_000,
-    RETAIL_MAX: 99_999,
+    RETAIL_MAX: 90_000,  // Aligned with backend MVP_config.py
   },
   
   // Pool Families

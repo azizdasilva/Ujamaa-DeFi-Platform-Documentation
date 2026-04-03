@@ -241,14 +241,26 @@ class Pool(Base):
     positions = relationship("PoolPosition", back_populates="pool", cascade="all, delete-orphan")
     financings = relationship("Financing", back_populates="pool")
 
+    @property
+    def nav_per_share(self) -> float:
+        """
+        Compute NAV per share from pool positions.
+        NAV = total_value / total_shares
+        Falls back to 1.0 if no positions exist.
+        """
+        total_shares = sum(pos.shares for pos in self.positions if pos.shares)
+        if total_shares == 0 or self.total_value is None:
+            return 1.0
+        return float(self.total_value) / float(total_shares)
+
 
 class Investment(Base):
     """Investment model"""
     __tablename__ = 'investments'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
+    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False, index=True)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False, index=True)
     amount = Column(Numeric(26, 18), nullable=False)  # 18 decimals precision for token amounts
     shares = Column(Numeric(26, 18), nullable=False)
     nav = Column(Numeric(26, 18), nullable=False)
@@ -348,8 +360,8 @@ class PoolPosition(Base):
     __tablename__ = 'pool_positions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False)
-    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False, index=True)
+    pool_id = Column(String(50), ForeignKey('pools.id', ondelete='CASCADE'), nullable=False, index=True)
 
     # Position details
     shares = Column(Numeric(26, 18), default=0, nullable=False)  # UPT shares owned (18 decimals precision)
@@ -388,12 +400,12 @@ class Financing(Base):
     
     # Pool linkage
     pool_family = Column(String(100), nullable=False, index=True)  # INDUSTRIE, AGRICULTURE, etc.
-    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=True)
-    
+    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=True, index=True)
+
     # Asset details
     asset_class = Column(SQLEnum(AssetClassEnum), nullable=False)
     industrial = Column(String(255), nullable=False)  # Industrial company name/ID
-    industrial_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=True)  # If linked to operator
+    industrial_id = Column(Integer, ForeignKey('investor_profiles.id'), nullable=True, index=True)  # If linked to operator
     
     # Financial terms
     principal = Column(Numeric(18, 2), nullable=False)

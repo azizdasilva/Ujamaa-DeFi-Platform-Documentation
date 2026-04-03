@@ -15,10 +15,10 @@ from typing import Dict, List, Optional
 from datetime import datetime
 from pydantic import BaseModel, Field, validator
 from sqlalchemy.orm import Session
-from sqlalchemy import func, create_engine
+from sqlalchemy import func
 import uuid
 
-from config.database import get_database_url
+from config.database import get_db
 from config.models import (
     Pool, Investment, PoolPosition, Financing,
     FinancingStatusEnum, AssetClassEnum,
@@ -34,18 +34,6 @@ from api.admin import get_threshold, check_threshold
 # Router
 router = APIRouter(prefix="/api/v2/pools", tags=["Pools"])
 security = HTTPBearer(auto_error=False)
-
-# Database session dependency
-def get_db():
-    """Get database session."""
-    from sqlalchemy.orm import sessionmaker
-    engine = create_engine(get_database_url())
-    SessionLocal = sessionmaker(bind=engine)
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 # =============================================================================
@@ -181,7 +169,7 @@ def db_pool_to_pool_info(db_pool: Pool) -> PoolInfo:
         is_active=db_pool.is_active,
         total_value=float(db_pool.total_value) if db_pool.total_value else 0,
         total_value_formatted=format_token_amount(float(db_pool.total_value) if db_pool.total_value else 0),
-        nav_per_share=float(db_pool.nav_per_share) if hasattr(db_pool, 'nav_per_share') and db_pool.nav_per_share else 1.0,
+        nav_per_share=float(db_pool.nav_per_share),
         apy=db_pool.apy
     )
 
@@ -414,9 +402,9 @@ async def invest_in_pool(
     # BALANCE CHECK - Verify investor has sufficient funds
     # =============================================================================
     from config.models import BankAccount
-    
+
     bank_account = db.query(BankAccount).filter(
-        BankAccount.investor_id == investor_id_int,
+        BankAccount.user_id == investor_id_int,
         BankAccount.status == 'ACTIVE'
     ).first()
     

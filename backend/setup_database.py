@@ -402,7 +402,7 @@ def seed_data(engine):
         bank_accounts_data = [
             {
                 'account_id': f'ESC-{str(uuid.uuid4())[:8].upper()}',
-                'investor_id': profiles[0].id,
+                'user_id': profiles[0].id,
                 'balance': 500000,
                 'currency': 'EUR',
                 'status': AccountStatusEnum.ACTIVE,
@@ -412,7 +412,7 @@ def seed_data(engine):
             },
             {
                 'account_id': f'ESC-{str(uuid.uuid4())[:8].upper()}',
-                'investor_id': profiles[1].id,
+                'user_id': profiles[1].id,
                 'balance': 25000,
                 'currency': 'EUR',
                 'status': AccountStatusEnum.ACTIVE,

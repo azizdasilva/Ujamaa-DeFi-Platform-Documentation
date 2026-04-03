@@ -12,8 +12,8 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from config.database import get_database_url
+from sqlalchemy import func
+from config.database import get_db
 from config.models import (
     User, InvestorProfile, Pool, Investment, Document,
     ULTTransaction, Transaction, ComplianceStatusEnum,
@@ -56,20 +56,6 @@ JURISDICTIONS_DB = {
 }
 
 router = APIRouter(prefix="/api/v2/db", tags=["Database"])
-
-# Database connection
-engine = create_engine(get_database_url())
-
-
-def get_db():
-    """Get database session."""
-    from sqlalchemy.orm import sessionmaker
-    SessionLocal = sessionmaker(bind=engine)
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 # =============================================================================
