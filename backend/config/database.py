@@ -17,11 +17,17 @@ load_dotenv()
 # Database type from environment (default: sqlite)
 DATABASE_TYPE = os.getenv('DATABASE_TYPE', 'sqlite')
 
-# Detect Vercel serverless environment
-IS_VERCEL = os.getenv('VERCEL', '0') == '1'
+# Detect Vercel/serverless environment (multiple detection methods)
+IS_VERCEL = (
+    os.getenv('VERCEL', '') == '1' or
+    os.getenv('VERCEL_ENV') is not None or
+    os.getenv('AWS_LAMBDA_FUNCTION_NAME') is not None or
+    os.getenv('LAMBDA_TASK_ROOT') is not None or
+    os.getenv('FUNCTION_TARGET') is not None
+)
 
 # SQLite configuration
-# On Vercel, use /tmp directory (only writable path in serverless)
+# On Vercel/serverless, use /tmp directory (only writable path)
 if IS_VERCEL:
     SQLITE_DB_PATH = '/tmp/ujamaa.db'
 else:
@@ -48,11 +54,24 @@ def get_database_url() -> str:
         str: Database connection URL
     """
     if DATABASE_TYPE == 'sqlite':
-        # Ensure the data directory exists
         db_path = Path(SQLITE_DB_PATH)
-        db_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Try to create directory, fallback to /tmp or memory if read-only
+        try:
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+        except (OSError, PermissionError):
+            # Filesystem is read-only (Vercel/serverless)
+            # Use /tmp as fallback
+            SQLITE_DB_PATH = '/tmp/ujamaa.db'
+            db_path = Path(SQLITE_DB_PATH)
+            try:
+                db_path.parent.mkdir(parents=True, exist_ok=True)
+            except (OSError, PermissionError):
+                # Ultimate fallback: in-memory database
+                return "sqlite:///:memory:"
+        
         # Use absolute path for SQLite
-        if IS_VERCEL:
+        if IS_VERCEL or str(db_path).startswith('/tmp'):
             return f"sqlite:////{SQLITE_DB_PATH}"
         return f"sqlite:///{db_path.absolute()}"
     else:
@@ -62,7 +81,7 @@ def get_database_url() -> str:
 def get_database_config() -> dict:
     """
     Get complete database configuration.
-    
+
     Returns:
         dict: Database configuration dictionary
     """
@@ -103,3 +122,4 @@ def get_db() -> Session:
 if os.getenv('DEBUG', 'False').lower() == 'true':
     print(f"📊 Database Type: {DATABASE_TYPE}")
     print(f"📊 Database URL: {get_database_url()}")
+    print(f"📊 Is Vercel: {IS_VERCEL}")
