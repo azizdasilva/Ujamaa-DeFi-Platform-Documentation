@@ -1,110 +1,136 @@
-# Vercel Deployment Instructions - Supabase PostgreSQL
+# Vercel Deployment Instructions - Neon PostgreSQL
 
-## Current Status
+## Overview
 
-✅ **Everything is configured and ready to deploy!**
-- Supabase connection string configured
-- Database migration script prepared
-- Vercel configuration updated
-- PostgreSQL drivers installed (psycopg2-binary, asyncpg)
+This guide covers deploying the Ujamaa DeFi Platform backend to Vercel with Neon PostgreSQL for persistent, reliable data storage.
 
-## ⚠️ Local Migration Issue
+**Problem Solved**: SQLite on Vercel stores data in `/tmp`, which is wiped on every cold start, causing:
+- ❌ Data loss between server restarts
+- ❌ Inconsistent bank account information
+- ❌ Missing user-created data
 
-Your current network cannot resolve the Supabase database host (`db.ydpoamufwyyfxejmahxu.supabase.co`). This is a DNS/firewall issue blocking port 5432.
+**Solution**: Neon PostgreSQL provides persistent storage that survives cold starts.
 
-**The REST API is reachable** (HTTP works), so your Supabase project is active.
+---
 
-## Solution: Deploy to Vercel First
+## Database Configuration
 
-Vercel's servers can reach Supabase without issues. Here's the deployment process:
+### Local Development
+- Uses **Neon PostgreSQL** (same as production)
+- Both local and Vercel share the same Neon database
+- Ensures 100% data consistency
 
-### Step 1: Set Vercel Environment Variables
+### Vercel Production
+- Uses **Neon PostgreSQL** (persistent)
+- Environment variables set in Vercel dashboard
+- Survives cold starts
 
-1. Go to: https://vercel.com/dashboard
-2. Select your backend project
-3. Go to **Settings** → **Environment Variables**
-4. Add these variables:
+---
 
-| Variable | Value |
-|----------|-------|
-| `DATABASE_TYPE` | `postgresql` |
-| `DATABASE_URL` | `postgresql://postgres:4%3C%3D%5EJ%3EDms%3D9@db.ydpoamufwyyfxejmahxu.supabase.co:5432/postgres` |
+## Step-by-Step Deployment
 
-5. Save both variables
+### 1. Set Vercel Environment Variables
 
-### Step 2: Commit and Push
+1. Go to **Vercel Dashboard** → Your backend project
+2. Click **Settings** → **Environment Variables**
+3. Add these variables:
 
-```bash
-git add backend/
-git commit -m "feat: configure Supabase PostgreSQL for persistent storage"
-git push
+| Variable | Value | Environment |
+|----------|-------|-------------|
+| `DATABASE_TYPE` | `postgresql` | Production, Preview, Development |
+| `DATABASE_URL` | `postgresql://neondb_owner:npg_rcdLBmN3eD2I@ep-flat-violet-adszjxii.c-2.us-east-1.aws.neon.tech/ujamaa?sslmode=require` | Production, Preview, Development |
+
+4. Click **Save** for each variable
+
+### 2. Deploy to Vercel
+
+Vercel will automatically deploy with the new database configuration.
+
+### 3. Verify Deployment
+
+1. Open your deployed backend URL
+2. Navigate to `/docs` (Swagger UI)
+3. Test the health endpoint:
+   ```bash
+   curl https://your-backend.vercel.app/health
+   ```
+
+4. Test the bank accounts endpoint:
+   ```bash
+   curl https://your-backend.vercel.app/api/v2/db/pools
+   ```
+
+### 4. Test Cold Start Persistence
+
+1. Make a change via API (e.g., create a new bank account)
+2. Wait for Vercel cold start (or trigger a new deployment)
+3. Query the data again - it should still be there!
+
+---
+
+## Architecture After Migration
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Local Development                     │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │  DATABASE_TYPE=postgresql                          │   │
+│  │  Neon PostgreSQL (persistent)                     │   │
+│  │  Same database as Vercel                          │   │
+│  └──────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│                    Vercel Production                     │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │  DATABASE_TYPE=postgresql                          │   │
+│  │  Neon PostgreSQL (persistent)                     │   │
+│  │  Same database as local                           │   │
+│  │  Survives cold starts                              │   │
+│  └──────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
 ```
 
-Vercel will automatically deploy with the new configuration.
+**Key Point**: Both environments use the **same Neon database** for 100% consistency.
 
-### Step 3: Verify Deployment
-
-Once deployed, test your backend:
-
-1. Open: `https://your-backend-url.vercel.app/docs`
-2. Check the health endpoint
-3. Test the bank accounts endpoint - data should persist!
-
-### Step 4: Migrate Data (Optional)
-
-If you want to migrate your local SQLite data to Supabase:
-
-**Option A**: Try migration from a different network (home internet, mobile hotspot)
-```bash
-cd backend
-python migrate_to_supabase.py
-```
-
-**Option B**: Use Supabase SQL Editor to run seed data directly
-- Open Supabase Dashboard → SQL Editor
-- Run the seed data manually
-
-**Option C**: Deploy and accept that Vercel will seed fresh data on first startup
-- The backend auto-seeds if the database is empty
-- You'll have all demo users and sample data
-
-## Expected Behavior After Deployment
-
-✅ **Data persists between cold starts**
-✅ **Bank accounts show correct data**
-✅ **All user information is retained**
-✅ **No more empty /tmp database issues**
-
-## Local Development
-
-Your local environment can still use SQLite for development:
-
-```env
-# In backend/.env (for local dev only)
-DATABASE_TYPE=sqlite
-```
-
-Or if you want local to also use Supabase (when network allows):
-```env
-DATABASE_TYPE=postgresql
-DATABASE_URL=postgresql://postgres:4%3C%3D%5EJ%3EDms%3D9@db.ydpoamufwyyfxejmahxu.supabase.co:5432/postgres
-```
+---
 
 ## Troubleshooting
 
-### If Vercel Can't Connect to Supabase
+### Issue: "Cannot connect to PostgreSQL" on Vercel
 
-1. Check Vercel deployment logs
-2. Verify environment variables are set correctly
-3. Ensure Supabase project is active
+**Solutions**:
+1. Verify `DATABASE_URL` is set correctly in Vercel environment variables
+2. Check for typos in the connection string
+3. Ensure Neon project is active
 
-### If Database is Empty After Deployment
+### Issue: Data still disappears after cold start
 
-The backend will auto-seed on first startup with demo data. This is expected behavior.
+**Solutions**:
+1. Verify `DATABASE_TYPE=postgresql` is set in Vercel (not sqlite)
+2. Check Vercel deployment logs for database type being used
 
-## Next Steps After Deployment
+---
 
-1. Test all admin endpoints
-2. Verify bank accounts display correctly
-3. Create a test user and ensure data persists
-4. Set up Supabase backups (Dashboard → Database → Backups)
+## Cost Analysis
+
+### Neon Free Tier
+- **Database size**: 5 GB (plenty for MVP)
+- **Bandwidth**: Unlimited
+- **API requests**: Unlimited
+- **Compute**: Auto-scales to zero when idle
+
+### Vercel Free Tier
+- **Serverless functions**: 100 GB-hours/month
+- **Executions**: 1M/month
+- **Cold starts**: ~3-5 seconds (acceptable for MVP)
+
+---
+
+## Next Steps
+
+After successful deployment:
+
+1. **Monitor Usage**: Check Neon dashboard for database size
+2. **Set Up Backups**: Neon Dashboard → Settings → Backups
+3. **Add Monitoring**: Set up Vercel alerts for deployment failures

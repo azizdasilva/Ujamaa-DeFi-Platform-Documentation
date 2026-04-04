@@ -318,24 +318,24 @@ async def startup_event():
     import os
     from config.database import DATABASE_TYPE, SessionLocal, engine
     from config.models import Base
-    
+
     is_vercel = os.getenv('VERCEL', '') == '1' or os.getenv('VERCEL_ENV') is not None
-    
-    # For PostgreSQL (Supabase), only create tables if they don't exist
+
+    # For PostgreSQL (Neon), only create tables if they don't exist
     # For SQLite on Vercel (/tmp), seed with demo data (ephemeral storage)
     if DATABASE_TYPE == 'postgresql':
-        print(f"\n📊 Using PostgreSQL (Supabase) - persistent database")
+        print(f"\n📊 Using PostgreSQL (Neon) - persistent database")
         try:
             # Create tables if they don't exist (safe for PostgreSQL)
             Base.metadata.create_all(bind=engine)
             print("✅ Database schema verified")
-            
-            # Check if database is empty (fresh Supabase instance)
+
+            # Check if database is empty (fresh Neon instance)
             from sqlalchemy import text
             with engine.connect() as conn:
                 result = conn.execute(text("SELECT COUNT(*) FROM users"))
                 user_count = result.scalar()
-            
+
             if user_count == 0:
                 print("🌱 Fresh PostgreSQL instance - seeding demo data...")
                 from setup_database import seed_all

@@ -15,7 +15,7 @@ export interface Pool {
   target_yield_min: number;
   target_yield_max: number;
   lockup_days: number;
-  is_active: boolean;
+  is_active?: boolean; // Optional since it's not in PoolResponse schema
 }
 
 export interface PoolKPIs {
