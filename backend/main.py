@@ -90,6 +90,27 @@ app.add_middleware(
     max_age=600,                 # Cache preflight for 10 minutes
 )
 
+# Add CORS headers to ALL responses including errors
+@app.middleware("http")
+async def add_cors_to_errors(request: Request, call_next):
+    """Ensure CORS headers are present even on errors"""
+    try:
+        response = await call_next(request)
+        return response
+    except Exception as exc:
+        # On exception, return 500 with CORS headers
+        from fastapi.responses import JSONResponse
+        return JSONResponse(
+            status_code=500,
+            content={"detail": "Internal server error", "error": str(exc)},
+            headers={
+                "Access-Control-Allow-Origin": request.headers.get("origin", "http://localhost:5173"),
+                "Access-Control-Allow-Methods": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Credentials": "true",
+            }
+        )
+
 
 @app.middleware("http")
 async def add_disclaimer_header(request: Request, call_next):
@@ -367,7 +388,7 @@ if __name__ == "__main__":
     uvicorn.run(
         "main:app",
         host=mvp_config.API_HOST if hasattr(mvp_config, 'API_HOST') else "0.0.0.0",
-        port=mvp_config.API_PORT if hasattr(mvp_config, 'API_PORT') else 8000,
+        port=mvp_config.API_PORT if hasattr(mvp_config, 'API_PORT') else 8001,
         reload=mvp_config.DEBUG if hasattr(mvp_config, 'DEBUG') else True,
         log_level="info"
     )

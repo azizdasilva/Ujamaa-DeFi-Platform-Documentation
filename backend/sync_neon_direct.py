@@ -3,6 +3,7 @@ Direct Neon Database Sync Script
 Connects to Neon and mirrors local SQLite data 100%
 """
 
+import json
 import sqlite3
 import sys
 from pathlib import Path
@@ -83,7 +84,7 @@ with neon_engine.begin() as conn:
             created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW()
         )
     """))
-    
+
     # Investor Profiles
     conn.execute(text("""
         CREATE TABLE investor_profiles (
@@ -95,7 +96,7 @@ with neon_engine.begin() as conn:
             created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW()
         )
     """))
-    
+
     # Pools
     conn.execute(text("""
         CREATE TABLE pools (
@@ -105,7 +106,7 @@ with neon_engine.begin() as conn:
             created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW()
         )
     """))
-    
+
     # Bank Accounts
     conn.execute(text("""
         CREATE TABLE bank_accounts (
@@ -117,24 +118,24 @@ with neon_engine.begin() as conn:
             created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW(), last_transaction_at TIMESTAMP
         )
     """))
-    
+
     # Bank Transactions
     conn.execute(text("""
         CREATE TABLE bank_transactions (
             tx_id VARCHAR(50) PRIMARY KEY, account_id VARCHAR(50) REFERENCES bank_accounts(account_id),
             transaction_type VARCHAR, amount NUMERIC(18,2), currency VARCHAR(3) DEFAULT 'EUR',
             status VARCHAR DEFAULT 'PENDING', counterparty_account VARCHAR(50), counterparty_name VARCHAR(255),
-            counterparty_bank VARCHAR(255), description TEXT, reference VARCHAR(100), wire_details JSON,
+            counterparty_bank VARCHAR(255), description TEXT, reference VARCHAR(100), wire_details TEXT,
             timestamp TIMESTAMP DEFAULT NOW(), settled_at TIMESTAMP, on_chain_tx_hash VARCHAR(66)
         )
     """))
-    
+
     # Documents
     conn.execute(text("""
         CREATE TABLE documents (
             id SERIAL PRIMARY KEY, investor_id INTEGER REFERENCES investor_profiles(id) ON DELETE CASCADE,
             document_type VARCHAR NOT NULL, document_name VARCHAR(255) NOT NULL, file_path VARCHAR(500) NOT NULL,
-            file_hash VARCHAR(64), upload_status VARCHAR DEFAULT 'uploaded', verification_status VARCHAR,
+            file_hash VARCHAR(128), upload_status VARCHAR DEFAULT 'uploaded', verification_status VARCHAR,
             reviewed_by INTEGER REFERENCES users(id) ON DELETE SET NULL, reviewed_at TIMESTAMP,
             review_notes TEXT, submitted_at TIMESTAMP DEFAULT NOW(), deadline_at TIMESTAMP,
             created_at TIMESTAMP DEFAULT NOW()
@@ -335,6 +336,31 @@ for table_name, data in all_data.items():
                 clean_row[col] = None
             elif isinstance(val, bytes):
                 clean_row[col] = val.decode('utf-8', errors='ignore')
+            elif isinstance(val, int) and val in (0, 1):
+                # Guess boolean columns by name
+                bool_names = ['is_active', 'is_approved', 'is_repaid', 'is_defaulted', 'is_healthy',
+                              'is_compliant', 'is_on_chain', 'is_flagged', 'jurisdiction_verified',
+                              'sanctions_checked', 'pep_checked']
+                if col in bool_names:
+                    clean_row[col] = bool(val)
+                else:
+                    clean_row[col] = val
+            elif isinstance(val, (dict, list)):
+                # Already-parsed JSON from SQLite — serialize to string for raw SQL
+                clean_row[col] = json.dumps(val)
+            elif isinstance(val, str):
+                # Check if it looks like a JSON object/array (sqlite3 stores JSON as text)
+                stripped = val.strip()
+                if (stripped.startswith('{') and stripped.endswith('}')) or \
+                   (stripped.startswith('[') and stripped.endswith(']')):
+                    try:
+                        parsed = json.loads(val)
+                        # Re-serialize to ensure proper JSON format for PostgreSQL
+                        clean_row[col] = json.dumps(parsed)
+                    except (json.JSONDecodeError, TypeError):
+                        clean_row[col] = val
+                else:
+                    clean_row[col] = val
             else:
                 clean_row[col] = val
         
