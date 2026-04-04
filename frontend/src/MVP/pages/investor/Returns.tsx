@@ -130,7 +130,7 @@ const InvestorReturns: React.FC = () => {
             }
             label="Total Distributions"
             value={formatCurrency(returns.totalDistributions)}
-            color="green"
+            color="success"
           />
           <StatsCard
             icon={
@@ -140,7 +140,7 @@ const InvestorReturns: React.FC = () => {
             }
             label="YTD Returns"
             value={formatCurrency(returns.ytdReturn)}
-            color="blue"
+            color="info"
           />
           <StatsCard
             icon={
@@ -150,7 +150,7 @@ const InvestorReturns: React.FC = () => {
             }
             label="Projected Annual"
             value={formatCurrency(returns.projectedAnnual)}
-            color="purple"
+            color="secondary"
           />
           <StatsCard
             icon={
@@ -160,7 +160,7 @@ const InvestorReturns: React.FC = () => {
             }
             label="Average Yield"
             value={`${returns.averageYield}%`}
-            color="amber"
+            color="warning"
             subValue="APY"
           />
         </div>

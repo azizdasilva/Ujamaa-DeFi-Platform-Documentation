@@ -992,11 +992,19 @@ async def get_flagged_transactions(
     
     result = []
     for tx in transactions:
-        # Get investor info
-        investor = db.query(InvestorProfile).filter(
-            InvestorProfile.id == tx.investor_id
-        ).first() if tx.investor_id else None
-        
+        # Find investor profile - prefer one with jurisdiction set
+        investor = None
+        if tx.investor_id:
+            profiles = db.query(InvestorProfile).filter(
+                InvestorProfile.user_id == tx.investor_id
+            ).all()
+            if not profiles:
+                profiles = db.query(InvestorProfile).filter(
+                    InvestorProfile.id == tx.investor_id
+                ).all()
+            # Prefer profile with jurisdiction set
+            investor = next((p for p in profiles if p.jurisdiction), profiles[0] if profiles else None)
+
         result.append({
             "id": tx.id,
             "investor_id": tx.investor_id,
@@ -1009,7 +1017,7 @@ async def get_flagged_transactions(
             "is_flagged": tx.is_flagged,
             "flag_reason": tx.flag_reason,
             "flagged_at": tx.flagged_at.isoformat() if tx.flagged_at else None,
-            "status": tx.status.value if tx.status else "pending",
+            "status": tx.status.value if hasattr(tx.status, 'value') else str(tx.status) if tx.status else "pending",
             "review_action": tx.review_action,
             "reviewed_by": tx.reviewed_by,
             "reviewed_at": tx.reviewed_at.isoformat() if tx.reviewed_at else None,

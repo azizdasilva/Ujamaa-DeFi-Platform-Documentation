@@ -56,11 +56,11 @@ const DocumentationIndex: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-6 border-2 border-[#48A9F0]/30">
           <h3 className="text-2xl font-bold text-[#023D7A] mb-4">📊 Asset Offerings (11)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <DocumentLink href="/investors-room/offering-memorandum-template" title="Offering Memorandum Template" desc="Standard offering document" />
-            <DocumentLink href="/investors-room/term-sheet-template" title="Term Sheet Template" desc="Investment terms template" />
-            <DocumentLink href="/investors-room/risk-disclosure-statement" title="Risk Disclosure Statement" desc="Asset-specific risks" />
+            <DocumentLink href="/investors-room/investment-memorandum" title="Offering Memorandum Template" desc="Standard offering document" />
+            <DocumentLink href="/investors-room/term-sheet" title="Term Sheet Template" desc="Investment terms template" />
+            <DocumentLink href="/investors-room/risk-disclosure" title="Risk Disclosure Statement" desc="Asset-specific risks" />
             <DocumentLink href="/investors-room/subscription-form" title="Subscription Agreement" desc="Investment subscription" />
-            <DocumentLink href="/investors-room/investor-questionnaire" title="Investor Questionnaire" desc="Suitability assessment" />
+            <DocumentLink href="/investors-room/investor-faq" title="Investor Questionnaire" desc="Suitability assessment" />
           </div>
         </section>
 
@@ -68,9 +68,9 @@ const DocumentationIndex: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-6 border-2 border-[#48A9F0]/30">
           <h3 className="text-2xl font-bold text-[#023D7A] mb-4">📈 Ongoing Reporting (12)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <DocumentLink href="/investors-room/quarterly-report" title="Quarterly Report Template" desc="Quarterly performance" />
+            <DocumentLink href="/investors-room/q1-2026-report" title="Quarterly Report" desc="Quarterly performance" />
             <DocumentLink href="/investors-room/annual-report-2025" title="Annual Report 2025" desc="Annual performance review" />
-            <DocumentLink href="/investors-room/distribution-notice" title="Distribution Notice" desc="Yield distribution info" />
+            <DocumentLink href="/investors-room/nav-statements" title="Distribution Notice" desc="Yield distribution info" />
             <DocumentLink href="/investors-room/nav-statements" title="NAV Statements" desc="Net asset value reports" />
           </div>
         </section>
@@ -100,9 +100,9 @@ const DocumentationIndex: React.FC = () => {
         <section className="bg-white rounded-xl shadow-lg p-6 border-2 border-[#48A9F0]/30">
           <h3 className="text-2xl font-bold text-[#023D7A] mb-4">📄 Templates (15)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <DocumentLink href="/investors-room/ppm-template" title="PPM Template" desc="Private Placement Memo" />
-            <DocumentLink href="/investors-room/subscription-agreement-template" title="Subscription Agreement" desc="Investment agreement" />
-            <DocumentLink href="/investors-room/term-sheet-template" title="Term Sheet Template" desc="Terms template" />
+            <DocumentLink href="/investors-room/investment-memorandum" title="PPM Template" desc="Private Placement Memo" />
+            <DocumentLink href="/investors-room/investment-agreement" title="Subscription Agreement" desc="Investment agreement" />
+            <DocumentLink href="/investors-room/term-sheet" title="Term Sheet Template" desc="Terms template" />
           </div>
         </section>
       </div>

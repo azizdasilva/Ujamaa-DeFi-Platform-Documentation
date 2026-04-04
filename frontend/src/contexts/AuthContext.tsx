@@ -16,6 +16,7 @@ interface User {
   walletAddress?: string;
   kycStatus: 'pending' | 'approved' | 'rejected';
   jurisdiction: string;
+  token?: string;
 }
 
 interface AuthContextType {
@@ -80,9 +81,9 @@ const MOCK_USERS: Record<InvestorRole, User> = {
   REGULATOR: {
     id: 'regulator-001',
     name: 'Regulatory Authority',
-    email: 'regulator@gov.example',
+    email: 'regulator@ujamaa-defi.com',
     role: 'REGULATOR',
-    walletAddress: '0x976EA74026E726554dB657fA54763abd0C3a0aa9',
+    walletAddress: '0x976EA74026E726554dB657fA54763abd0C3a0ab0',
     kycStatus: 'approved',
     jurisdiction: 'EU',
   },
@@ -142,6 +143,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!user) return false;
     // Admin can access everything
     if (user.role === 'ADMIN') return true;
+    // REGULATOR and COMPLIANCE_OFFICER have global read access
+    if (user.role === 'REGULATOR' || user.role === 'COMPLIANCE_OFFICER') return true;
     return requiredRole.includes(user.role);
   };
 

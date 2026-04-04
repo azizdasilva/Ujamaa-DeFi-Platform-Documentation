@@ -6,7 +6,7 @@
  * Route: /industrial-operator/financings
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
@@ -14,6 +14,8 @@ import Badge from '../../components/Badge';
 import Button from '../../components/Button';
 
 const Financings: React.FC = () => {
+  const [selectedFinancing, setSelectedFinancing] = useState<any>(null);
+
   const financings = [
     { id: 'FIN-001', asset: 'Cotton Bales #001', amount: 500000, rate: 8.5, startDate: '2026-01-15', maturityDate: '2026-07-15', repaid: 250000, status: 'active' },
     { id: 'FIN-002', asset: 'Solar Equipment #001', amount: 1200000, rate: 7.2, startDate: '2026-02-01', maturityDate: '2027-02-01', repaid: 180000, status: 'active' },
@@ -138,12 +140,13 @@ const Financings: React.FC = () => {
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex gap-2">
-                        <button className="px-3 py-1 bg-[#023D7A] hover:bg-[#0d3352] text-white text-xs font-bold rounded transition-colors">
+                        <button onClick={() => setSelectedFinancing(selectedFinancing?.id === financing.id ? null : financing)}
+                          className="px-3 py-1 bg-[#023D7A] hover:bg-[#0d3352] text-white text-xs font-bold rounded transition-colors">
                           View
                         </button>
                         {financing.status === 'active' && (
                           <button
-                            onClick={() => alert('🚀 MVP TESTNET: Make Repayment\n\nIn production, this will open the repayment interface.')}
+                            onClick={() => alert(`Repayment interface for ${financing.id} — €${(financing.amount - financing.repaid).toLocaleString()} remaining`)}
                             className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded transition-colors"
                           >
                             Repay
@@ -157,6 +160,42 @@ const Financings: React.FC = () => {
             </table>
           </div>
         </Card>
+
+        {/* Detail Panel */}
+        {selectedFinancing && (
+          <Card className="mt-6">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-[#103b5b]">Financing Details: {selectedFinancing.id}</h3>
+              <button onClick={() => setSelectedFinancing(null)} className="text-gray-500 hover:text-gray-700 text-lg font-bold">✕</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Loan Info</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between"><span className="text-gray-500">Asset</span><span className="text-[#103b5b] font-semibold">{selectedFinancing.asset}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Amount</span><span className="font-semibold">€{selectedFinancing.amount.toLocaleString()}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Rate</span><span>{selectedFinancing.rate}%</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Status</span><Badge variant={selectedFinancing.status === 'active' ? 'success' : selectedFinancing.status === 'completed' ? 'info' : 'warning'} size="sm">{selectedFinancing.status.toUpperCase()}</Badge></div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Timeline</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between"><span className="text-gray-500">Start Date</span><span>{selectedFinancing.startDate}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Maturity</span><span>{selectedFinancing.maturityDate}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Repaid</span><span className="font-semibold">€{selectedFinancing.repaid.toLocaleString()}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Remaining</span><span className="font-semibold">€{(selectedFinancing.amount - selectedFinancing.repaid).toLocaleString()}</span></div>
+                  <div className="mt-2">
+                    <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-500 rounded-full transition-all" style={{ width: `${(selectedFinancing.repaid / selectedFinancing.amount) * 100}%` }} />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">{((selectedFinancing.repaid / selectedFinancing.amount) * 100).toFixed(1)}% repaid</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
       </main>
     </div>
   );

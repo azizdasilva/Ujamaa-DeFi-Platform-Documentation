@@ -76,7 +76,7 @@ with engine.connect() as conn:
     check("Wallet addresses valid format (0x + 40 chars)", len(bad_wallets) == 0, f"Invalid: {bad_wallets}")
     
     # Check roles are valid
-    valid_roles = ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN']
+    valid_roles = ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR']
     bad_roles = [u for u in users if u['role'] not in valid_roles]
     check("All roles valid", len(bad_roles) == 0, f"Invalid roles: {[u['role'] for u in bad_roles]}")
     
@@ -210,11 +210,20 @@ with engine.connect() as conn:
     
     # Investors should have bank accounts
     investor_users = [u for u in users if 'INVESTOR' in u['role']]
+    staff_roles = ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR']
     investors_without_banks = [iu for iu in user_bank_counts if iu['role'] == 'RETAIL_INVESTOR' and iu['account_count'] == 0]
     if investors_without_banks:
         issues.append(f"  ❌ Investor users without bank accounts: {[iu['email'] for iu in investors_without_banks]}")
     else:
         passes.append("  ✅ All investor users have bank accounts")
+    
+    # Staff users should NOT have bank accounts (expected)
+    staff_no_bank = [ub for ub in user_bank_counts if ub['role'] in staff_roles and ub['account_count'] == 0]
+    staff_with_bank = [ub for ub in user_bank_counts if ub['role'] in staff_roles and ub['account_count'] > 0]
+    if staff_with_bank:
+        warnings.append(f"  ⚠️  Staff users with bank accounts: {[s['email'] for s in staff_with_bank]}")
+    elif staff_no_bank:
+        passes.append(f"  ✅ All staff users have no bank accounts (expected)")
 
 # ============================================================
 # 6. POOLS AUDIT

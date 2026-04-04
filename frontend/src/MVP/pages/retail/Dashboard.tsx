@@ -161,29 +161,29 @@ const RetailDashboard: React.FC = () => {
               <div className="space-y-4">
                 {positions.map((position) => (
                   <div
-                    key={position.poolId}
+                    key={position.pool_id}
                     className="p-4 bg-[#F3F8FA] rounded-lg border border-[#48A9F0]/30"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div>
-                        <h3 className="font-semibold text-[#023D7A]">{position.poolName}</h3>
+                        <h3 className="font-semibold text-[#023D7A]">{position.pool_id}</h3>
                         <p className="text-sm text-[#333333]">{position.shares.toLocaleString()} UPT</p>
                       </div>
-                      <Badge variant="success" size="sm">{position.apy}% APY</Badge>
+                      <Badge variant="success" size="sm">{position.average_nav}% APY</Badge>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-2xl font-bold text-[#023D7A]">
-                        {formatCurrency(position.value)}
+                        {formatCurrency(position.total_yield_earned)}
                       </div>
                       <div className="flex gap-2">
                         <a
-                          href={`/retail/pools?pool=${position.poolId}&action=add`}
+                          href={`/retail/pools?pool=${position.pool_id}&action=add`}
                           className="px-4 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white text-sm font-bold rounded-lg transition-colors"
                         >
                           Add
                         </a>
                         <a
-                          href={`/retail/pools?pool=${position.poolId}&action=redeem`}
+                          href={`/retail/pools?pool=${position.pool_id}&action=redeem`}
                           className="px-4 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded-lg transition-colors"
                         >
                           Redeem

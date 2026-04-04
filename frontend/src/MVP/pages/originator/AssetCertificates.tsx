@@ -36,6 +36,17 @@ const AssetCertificates: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'pending' | 'verified' | 'revoked'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [mintingId, setMintingId] = useState<string | null>(null);
+  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+
+  const toggleCert = (cert: Certificate) => {
+    const next = selectedCert?.certificateId === cert.certificateId ? null : cert;
+    setSelectedCert(next);
+    if (next) {
+      setTimeout(() => {
+        document.getElementById('cert-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  };
 
   // Mock certificates (MVP testnet)
   const certificates: Certificate[] = useMemo(() => {
@@ -309,7 +320,7 @@ const AssetCertificates: React.FC = () => {
                       <Button
                         variant="outline"
                         size="md"
-                        onClick={() => navigate(`/originator/financings/${cert.financingId}`)}
+                        onClick={() => navigate('/industrial-operator/financings')}
                       >
                         View Financing
                       </Button>
@@ -322,7 +333,7 @@ const AssetCertificates: React.FC = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => {/* View details */}}
+                      onClick={() => toggleCert(cert)}
                     >
                       View Details
                     </Button>
@@ -332,6 +343,37 @@ const AssetCertificates: React.FC = () => {
             ))
           )}
         </div>
+
+        {/* Detail Panel */}
+        {selectedCert && (
+          <Card className="mt-6">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-[#103b5b]">Certificate Details: {selectedCert.certificateId}</h3>
+              <button onClick={() => setSelectedCert(null)} className="text-gray-500 hover:text-gray-700 text-lg font-bold">✕</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Asset Info</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between"><span className="text-gray-500">Type</span><span className="text-[#103b5b]">{selectedCert.assetType}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Value</span><span className="font-semibold text-[#103b5b]">€{selectedCert.value.toLocaleString()}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Quantity</span><span className="text-[#103b5b]">{selectedCert.quantity} {selectedCert.unit}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Warehouse</span><span className="text-[#103b5b]">{selectedCert.warehouseLocation}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Submitted</span><span className="text-[#103b5b]">{selectedCert.submittedAt}</span></div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[#103b5b] mb-3">Description</h4>
+                <p className="text-sm text-gray-700">{selectedCert.description}</p>
+                <div className="mt-4 space-y-2 text-sm">
+                  <div className="flex justify-between"><span className="text-gray-500">Status</span><Badge variant={selectedCert.status === 'verified' ? 'success' : selectedCert.status === 'revoked' ? 'error' : 'warning'} size="sm">{selectedCert.status.toUpperCase()}</Badge></div>
+                  {selectedCert.ugtTokenId && <div className="flex justify-between"><span className="text-gray-500">UGT Token</span><span className="font-mono text-[#103b5b]">{selectedCert.ugtTokenId}</span></div>}
+                  {selectedCert.financingId && <div className="flex justify-between"><span className="text-gray-500">Financing</span><span className="font-mono text-[#103b5b]">{selectedCert.financingId}</span></div>}
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
 
         {/* Help Section */}
         <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">

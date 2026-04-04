@@ -377,6 +377,16 @@ async def startup_event():
         except Exception as e:
             print(f"⚠️  Seed failed (may already be seeded): {e}")
 
+    # Load thresholds from database into memory
+    try:
+        from api.admin import load_thresholds_from_db
+        db = SessionLocal()
+        load_thresholds_from_db(db)
+        db.close()
+        print("✅ Thresholds loaded from database")
+    except Exception as e:
+        print(f"⚠️  Threshold load from DB (using defaults): {e}")
+
 
 # =============================================================================
 # MAIN

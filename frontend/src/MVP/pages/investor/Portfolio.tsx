@@ -206,7 +206,7 @@ const InvestorPortfolio: React.FC = () => {
             }
             label="Total Portfolio Value"
             value={formatCurrency(portfolio.totalValue)}
-            color="green"
+            color="success"
           />
           <StatsCard
             icon={
@@ -216,7 +216,7 @@ const InvestorPortfolio: React.FC = () => {
             }
             label="Total Returns"
             value={formatCurrency(portfolio.totalReturns)}
-            color="blue"
+            color="info"
             subValue={`+${portfolio.averageAPY}% APY`}
           />
           <StatsCard
@@ -227,7 +227,7 @@ const InvestorPortfolio: React.FC = () => {
             }
             label="Unrealized Gain"
             value={formatCurrency(portfolio.unrealizedGain)}
-            color="amber"
+            color="warning"
           />
           <StatsCard
             icon={
@@ -237,7 +237,7 @@ const InvestorPortfolio: React.FC = () => {
             }
             label="Realized Gain"
             value={formatCurrency(portfolio.realizedGain)}
-            color="green"
+            color="success"
           />
           <StatsCard
             icon={
@@ -247,7 +247,7 @@ const InvestorPortfolio: React.FC = () => {
             }
             label="uLP Tokens"
             value={totalUlPTokens.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-            color="purple"
+            color="secondary"
             subValue="Total Holdings"
           />
         </div>

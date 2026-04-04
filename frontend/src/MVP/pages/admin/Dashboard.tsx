@@ -197,7 +197,7 @@ const AdminDashboard: React.FC = () => {
                             </Badge>
                           </td>
                           <td className="py-3">
-                            <Badge variant={user.is_active ? 'success' : 'gray'} size="sm">
+                            <Badge variant={user.is_active ? 'success' : 'secondary'} size="sm">
                               {user.is_active ? 'Active' : 'Inactive'}
                             </Badge>
                           </td>
@@ -248,12 +248,12 @@ const AdminDashboard: React.FC = () => {
                       <p className="font-semibold text-[#023D7A]">{formatCurrency(pool.value)}</p>
                       <div className="flex items-center gap-2 justify-end mt-1">
                         <Badge variant="success" size="sm">{pool.apy}% APY</Badge>
-                        <a
-                          href={`/admin/pools/${pool.id}`}
+                        <button
+                          onClick={() => navigate('/admin/pools')}
                           className="text-xs text-[#00A8A8] hover:text-[#0D7A7A]"
                         >
                           Manage →
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

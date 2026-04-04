@@ -278,7 +278,7 @@ const Jurisdictions: React.FC = () => {
                       <td className="py-3 px-4 font-semibold text-[#103b5b]">{j.name}</td>
                       <td className="py-3 px-4">
                         <Badge
-                          variant={j.status === 'allowed' ? 'success' : 'danger'}
+                          variant={j.status === 'allowed' ? 'success' : 'error'}
                           size="sm"
                         >
                           {j.status.toUpperCase()}

@@ -89,7 +89,7 @@ const AssetManagement: React.FC = () => {
       case 'REPAID':
         return 'info';
       case 'DEFAULTED':
-        return 'danger';
+        return 'error';
       default:
         return 'info';
     }

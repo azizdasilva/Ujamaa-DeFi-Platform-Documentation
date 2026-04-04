@@ -204,19 +204,19 @@ const OriginatorDashboard: React.FC = () => {
                     )}
 
                     <div className="flex gap-2">
-                      <a
-                        href={`/industrial-operator/financings/${financing.id}`}
+                      <button
+                        onClick={() => navigate('/industrial-operator/financings')}
                         className="px-4 py-2 bg-[#F3F8FA] border border-[#48A9F0]/30 hover:bg-[#E2E8F0] text-[#023D7A] text-sm font-bold rounded-lg transition-colors"
                       >
                         View Details
-                      </a>
+                      </button>
                       {financing.status === 'active' && (
-                        <a
-                          href={`/industrial-operator/financings/${financing.id}/repay`}
+                        <button
+                          onClick={() => navigate('/industrial-operator/financings')}
                           className="px-4 py-2 bg-[#103b5b] hover:bg-[#0d3352] text-white text-sm font-medium rounded-lg transition-colors"
                         >
                           Make Repayment
-                        </a>
+                        </button>
                       )}
                     </div>
                   </div>
@@ -284,7 +284,7 @@ const OriginatorDashboard: React.FC = () => {
                   💰 My Financings
                 </a>
                 <button
-                  onClick={() => alert('🚀 MVP TESTNET: Make Repayment coming in production.')}
+                  onClick={() => navigate('/industrial-operator/financings')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   💳 Make Repayment

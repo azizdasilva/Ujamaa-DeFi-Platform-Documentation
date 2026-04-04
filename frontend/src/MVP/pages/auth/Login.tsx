@@ -145,9 +145,9 @@ const Login: React.FC = () => {
                     <input type="checkbox" className="rounded border-gray-300" />
                     <span className="text-gray-600">Remember me</span>
                   </label>
-                  <a href="#" className="text-[#00A8A8] hover:text-[#0D7A7A] font-bold">
+                  <button type="button" onClick={() => alert('Password reset — contact your admin or compliance officer to reset your password.')} className="text-[#00A8A8] hover:text-[#0D7A7A] font-bold">
                     Forgot password?
-                  </a>
+                  </button>
                 </div>
 
                 <button

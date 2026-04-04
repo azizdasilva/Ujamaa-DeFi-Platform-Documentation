@@ -65,9 +65,9 @@ const ComplianceDashboard: React.FC = () => {
     switch (riskLevel) {
       case 'critical': return 'red';
       case 'high': return 'red';
-      case 'medium': return 'amber';
+      case 'medium': return 'warning';
       case 'low': return 'green';
-      default: return 'gray';
+      default: return 'secondary';
     }
   };
 
@@ -309,7 +309,7 @@ const ComplianceDashboard: React.FC = () => {
                   🌍 Jurisdiction List
                 </a>
                 <button
-                  onClick={() => alert('🚀 MVP TESTNET: Generate Reports coming in production. This feature will generate compliance reports for regulatory submissions.')}
+                  onClick={() => navigate('/compliance/kyc-review')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
                   📊 Generate Reports

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 
@@ -128,6 +128,8 @@ import IRTokenComparison from './MVP/pages/investors-room/TokenComparisonGuide';
 import IREthereumERC3643 from './MVP/pages/investors-room/UnderstandingERC3643';
 import IRReinvestmentSettings from './MVP/pages/investors-room/ReinvestmentSettings';
 
+// Menu Showcase removed
+
 // Investor Pages
 import InvestorPortfolio from './MVP/pages/investor/Portfolio';
 import InvestorReturns from './MVP/pages/investor/Returns';
@@ -152,6 +154,30 @@ const queryClient = new QueryClient({
 });
 
 /**
+ * Layout wrapper: shows Navigation + offset for authenticated pages,
+ * full-width for public pages (landing, login, register, demo, unauthorized).
+ */
+const PUBLIC_PATHS = ['/', '/login', '/register', '/demo-accounts', '/unauthorized'];
+
+const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const location = useLocation();
+  const isPublic = PUBLIC_PATHS.includes(location.pathname);
+  
+  if (isPublic) {
+    return <>{children}</>;
+  }
+  
+  return (
+    <>
+      <Navigation />
+      <div className="ml-16 pt-[120px]">
+        {children}
+      </div>
+    </>
+  );
+};
+
+/**
  * Main App Component
  */
 const App: React.FC = () => {
@@ -161,14 +187,12 @@ const App: React.FC = () => {
         <LanguageProvider>
           <AuthProvider>
             <Router>
-              <div className="min-h-screen bg-[#F3F8FA] flex flex-col">
+              <div className="min-h-screen bg-[#F3F8FA]">
                 {/* Global MVP Banner - Shows once for 10 seconds */}
                 <MVPBanner />
 
-                {/* Modern Navigation */}
-                <Navigation />
-
-                {/* Routes */}
+                {/* Routes with automatic layout */}
+                <PageLayout>
                 <Routes>
             {/* Default - Landing Page */}
             <Route path="/" element={<LandingPage />} />
@@ -464,6 +488,14 @@ const App: React.FC = () => {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/originator/financings/:id"
+              element={
+                <ProtectedRoute requiredRoles={['INDUSTRIAL_OPERATOR', 'ADMIN']}>
+                  <IndustrialOperatorFinancings />
+                </ProtectedRoute>
+              }
+            />
 
             {/* P1 Features - Deep Dive & Investors Room */}
             <Route path="/deep-dive" element={<DeepDive />} />
@@ -484,6 +516,8 @@ const App: React.FC = () => {
             <Route path="/onboarding/:type/documents" element={<OnboardingDocuments />} />
             <Route path="/onboarding/:type/review" element={<OnboardingReview />} />
             <Route path="/onboarding/:type/complete" element={<OnboardingComplete />} />
+
+            {/* Menu Showcase removed */}
 
             {/* Catch all - redirect to demo accounts */}
             <Route path="*" element={<Navigate to="/demo-accounts" replace />} />
@@ -554,8 +588,9 @@ const App: React.FC = () => {
 
           {/* Global Footer */}
           <Footer />
-        </div>
-      </Router>
+        </PageLayout>
+      </div>
+    </Router>
           </AuthProvider>
         </LanguageProvider>
     </QueryClientProvider>

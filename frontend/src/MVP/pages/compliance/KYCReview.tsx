@@ -87,7 +87,7 @@ const KYCReview: React.FC = () => {
   const getRiskBadgeColor = (jurisdiction: string) => {
     // Simple risk assessment based on jurisdiction
     const highRisk = ['NG', 'KE', 'ZA']; // Example high-risk jurisdictions
-    return highRisk.includes(jurisdiction) ? 'amber' : 'info';
+    return highRisk.includes(jurisdiction) ? 'warning' : 'info';
   };
 
   return (
@@ -157,7 +157,7 @@ const KYCReview: React.FC = () => {
                         </p>
                         <Badge
                           variant={
-                            doc.is_overdue ? 'danger' :
+                            doc.is_overdue ? 'error' :
                             (doc.time_remaining_hours || 24) < 4 ? 'warning' : 'success'
                           }
                           size="sm"
@@ -194,7 +194,7 @@ const KYCReview: React.FC = () => {
                       <p className="text-sm text-[#8b5b3d]">Jurisdiction: {selectedDoc.investor_jurisdiction || 'Unknown'}</p>
                     </div>
                     <div className="text-right">
-                      <Badge variant={selectedDoc.is_overdue ? 'danger' : 'info'} size="lg">
+                      <Badge variant={selectedDoc.is_overdue ? 'error' : 'info'} size="lg">
                         {selectedDoc.is_overdue ? '⚠️ OVERDUE' : `${Math.round(selectedDoc.time_remaining_hours || 24)}h remaining`}
                       </Badge>
                       <p className="text-xs text-gray-500 mt-1">Submitted: {new Date(selectedDoc.submitted_at).toLocaleDateString()}</p>

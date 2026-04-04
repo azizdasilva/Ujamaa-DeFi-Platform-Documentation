@@ -1,154 +1,111 @@
 /**
- * Modern Navigation Bar
+ * Hybrid Compact Rail Navigation - Ujamaa DeFi Platform
+ * 
  * Features:
- * - Global search with keyboard shortcut (Cmd/Ctrl+K)
- * - Quick actions dropdown
- * - Notifications with badge
- * - User profile menu
- * - Responsive design
- * - Smooth animations
+ * - Slim icon rail on left (always visible)
+ * - Expanded panel on hover/click with real routes
+ * - Clean top bar for search, notifications, profile
+ * - Role-aware: shows only routes the user can access
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ConnectWallet } from './wallet';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLanguage } from '../../contexts/LanguageContext';
-import LogoutButton from './LogoutButton';
-import { getNavItemsForRole, getDashboardForRole, canAccessPath, getRolePath } from '../../config/navigation';
-import { InvestorRole } from '../../types';
+import { getNavItemsForRole, getDashboardForRole } from '../../config/navigation';
+
+interface NavGroup {
+  id: string;
+  icon: string;
+  label: string;
+  items: { label: string; href: string; active?: boolean }[];
+}
 
 const Navigation: React.FC = () => {
-  const { user, isAuthenticated, login, logout } = useAuth();
-  const { language, setLanguage, t } = useLanguage();
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [quickActionsOpen, setQuickActionsOpen] = useState(false);
+  const { user, isAuthenticated, logout } = useAuth();
+  const { language, setLanguage } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
+  const [pinnedGroup, setPinnedGroup] = useState<string | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [walletModalOpen, setWalletModalOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const profileRef = useRef<HTMLDivElement>(null);
 
-  // Get the correct pool path for the current user's role
-  const poolPath = user && isAuthenticated ? getRolePath(user.role, 'pools') : '/institutional/pools';
+  const role = user?.role || 'ADMIN';
+  const myDashboard = isAuthenticated ? getDashboardForRole(role) : '/';
+  const navItems = getNavItemsForRole(role);
 
-  // Search results - filtered by user role
-  const allSearchResults = [
-    { title: 'Pool Marketplace', href: poolPath, category: 'Invest', tags: ['pools', 'invest', 'marketplace'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Pool Dashboard', href: '/pool/dashboard', category: 'Invest', tags: ['pool', 'kpi', 'dashboard', 'metrics'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Blockchain Monitoring', href: '/monitor', category: 'Analytics', tags: ['blockchain', 'monitor', 'analytics', 'kpi', 'polygon', 'contracts'], roles: ['ADMIN', 'REGULATOR', 'COMPLIANCE_OFFICER'] as InvestorRole[] },
-    { title: 'Contract Test Dashboard', href: '/contract-test', category: 'Developer', tags: ['contracts', 'test', 'blockchain', 'developer', 'addresses'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Deep Dive Documentation', href: '/deep-dive', category: 'Learn', tags: ['technical', 'docs', 'documentation'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Investors Room', href: '/investors-room', category: 'Documents', tags: ['documents', 'investor', 'reports'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Token Comparison Guide', href: '/investors-room/token-comparison-guide', category: 'Documents', tags: ['tokens', 'uat', 'upt', 'ugt', 'comparison'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Investor FAQ', href: '/investors-room/investor-faq', category: 'Documents', tags: ['faq', 'questions', 'help'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'White Paper', href: '/investors-room/white-paper', category: 'Documents', tags: ['whitepaper', 'technical'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Documentation Index', href: '/investors-room/documentation-index', category: 'Documents', tags: ['index', 'catalog'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Submit Asset', href: '/originator/assets/submit', category: 'Originator', tags: ['asset', 'tokenize', 'submit'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'View Certificates', href: '/originator/assets/certificates', category: 'Originator', tags: ['certificates', 'view'], roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Glossary', href: '/docs/glossary', category: 'Learn', tags: ['glossary', 'terms', 'definitions'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Investor Onboarding', href: '/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'register', 'investor'], roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Industrial Operator Onboarding', href: '/industrial-operator/onboarding', category: 'Account', tags: ['onboarding', 'signup', 'operator', 'industrial'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'KYC Review', href: '/compliance/kyc-review', category: 'Compliance', tags: ['kyc', 'review', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Transaction Monitor', href: '/compliance/transactions', category: 'Compliance', tags: ['transactions', 'monitor', 'aml', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'Jurisdictions', href: '/compliance/jurisdictions', category: 'Compliance', tags: ['jurisdictions', 'countries', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'] as InvestorRole[] },
-    { title: 'User Management', href: '/admin/users', category: 'Admin', tags: ['users', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Pool Management', href: '/admin/pools', category: 'Admin', tags: ['pools', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Asset Management', href: '/admin/assets', category: 'Admin', tags: ['assets', 'admin', 'management'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Bank Accounts', href: '/admin/bank-accounts', category: 'Admin', tags: ['bank', 'accounts', 'admin', 'escrow', 'balance'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Threshold Management', href: '/admin/thresholds', category: 'Admin', tags: ['thresholds', 'admin', 'management', 'limits'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Settings', href: '/admin/settings', category: 'Admin', tags: ['settings', 'admin', 'config'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Contracts', href: '/admin/contracts', category: 'Admin', tags: ['contracts', 'admin', 'blockchain'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Monitoring', href: '/admin/monitoring', category: 'Admin', tags: ['monitoring', 'admin', 'metrics'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'Compliance Reports', href: '/regulator/compliance', category: 'Regulator', tags: ['compliance', 'reports', 'regulator'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Activity Log', href: '/regulator/activity', category: 'Regulator', tags: ['activity', 'log', 'regulator'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Jurisdictions Overview', href: '/regulator/jurisdictions', category: 'Regulator', tags: ['jurisdictions', 'regulator', 'overview'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Export Data', href: '/regulator/export/transactions', category: 'Regulator', tags: ['export', 'data', 'regulator'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Contact', href: '/regulator/contact', category: 'Regulator', tags: ['contact', 'regulator', 'support'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'Financings', href: '/industrial-operator/financings', category: 'Operator', tags: ['financings', 'operator', 'loans'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/institutional/dashboard', category: 'Dashboard', tags: ['dashboard', 'institutional'], roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/retail/dashboard', category: 'Dashboard', tags: ['dashboard', 'retail'], roles: ['RETAIL_INVESTOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/originator/dashboard', category: 'Dashboard', tags: ['dashboard', 'operator'], roles: ['INDUSTRIAL_OPERATOR', 'ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/compliance/dashboard', category: 'Dashboard', tags: ['dashboard', 'compliance'], roles: ['COMPLIANCE_OFFICER', 'ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/admin/dashboard', category: 'Dashboard', tags: ['dashboard', 'admin'], roles: ['ADMIN'] as InvestorRole[] },
-    { title: 'My Dashboard', href: '/regulator/dashboard', category: 'Dashboard', tags: ['dashboard', 'regulator'], roles: ['REGULATOR', 'ADMIN'] as InvestorRole[] },
-  ];
-
-  // Filter search results based on query AND user role
-  const filteredResults = allSearchResults.filter(result => {
-    const query = searchQuery.toLowerCase();
-    // Check role access
-    const hasAccess = !isAuthenticated || !user || result.roles.includes(user.role) || user.role === 'ADMIN';
-    // Check search query match
-    const matchesQuery = (
-      result.title.toLowerCase().includes(query) ||
-      result.tags.some(tag => tag.toLowerCase().includes(query)) ||
-      result.category.toLowerCase().includes(query)
-    );
-    return hasAccess && matchesQuery;
+  // Filter: show only ONE dashboard link (user's own)
+  const filteredNavItems = navItems.filter(item => {
+    if (item.category === 'dashboard') {
+      // Only show the user's own dashboard
+      return item.href === myDashboard;
+    }
+    return true;
   });
 
-  // Get role-specific quick actions
-  const getQuickActionsForRole = () => {
-    if (!isAuthenticated || !user) {
-      // Show all actions for non-authenticated users (with highlights)
-      // Exclude Dashboard and Compliance - shown only to authorized users when logged in
-      return allSearchResults.filter(r =>
-        ['Invest', 'Originator', 'Account'].includes(r.category)
-      ).slice(0, 10);
-    }
+  // Safety: if no dashboard matched, add the first one from navItems
+  if (!filteredNavItems.some(item => item.category === 'dashboard')) {
+    const firstDash = navItems.find(item => item.category === 'dashboard');
+    if (firstDash) filteredNavItems.push(firstDash);
+  }
 
-    // For admin users, show ONLY admin-specific actions (not all actions they have access to)
-    if (user.role === 'ADMIN') {
-      return allSearchResults.filter(result => {
-        // Only show items where ADMIN is the ONLY role (admin-specific features)
-        const isAdminOnly = result.roles.length === 1 && result.roles[0] === 'ADMIN';
-        // Also include some shared admin features
-        const isSharedAdminFeature = 
-          (result.category === 'Admin') ||
-          (result.category === 'Compliance' && result.roles.includes('ADMIN')) ||
-          (result.category === 'Account' && result.roles.includes('ADMIN'));
-        return isAdminOnly || isSharedAdminFeature;
-      }).slice(0, 15); // Limit to 15 for admin
-    }
-
-    // Filter by user role - logged in users see Dashboard in role selector, not here
-    return allSearchResults.filter(result => {
-      const hasAccess = result.roles.includes(user.role) || user.role === 'ADMIN';
-      // Prioritize certain categories for quick actions (exclude Dashboard)
-      const isQuickAction = ['Invest', 'Originator', 'Compliance', 'Account', 'Admin', 'Regulator'].includes(result.category);
-      return hasAccess && isQuickAction;
-    }).slice(0, 10);
+  // Group nav items by category
+  const categoryConfig: Record<string, { icon: string; label: string; order: number }> = {
+    dashboard: { icon: '🏠', label: 'Dashboard', order: 0 },
+    invest: { icon: '💰', label: 'Invest', order: 1 },
+    operator: { icon: '🏭', label: 'Operations', order: 2 },
+    compliance: { icon: '🛡️', label: 'Compliance', order: 3 },
+    admin: { icon: '⚙️', label: 'Admin', order: 4 },
+    regulator: { icon: '📋', label: 'Regulator', order: 5 },
+    docs: { icon: '📚', label: 'Resources', order: 6 },
+    test: { icon: '🔗', label: 'Tools', order: 7 },
+    onboarding: { icon: '🚀', label: 'Onboarding', order: 8 },
   };
 
-  const quickActions = getQuickActionsForRole();
+  const grouped: Record<string, NavGroup> = {};
+  for (const item of filteredNavItems) {
+    const cat = item.category || 'other';
+    if (!grouped[cat]) {
+      const cfg = categoryConfig[cat] || { icon: '📌', label: cat, order: 99 };
+      grouped[cat] = { id: cat, icon: cfg.icon, label: cfg.label, items: [] };
+    }
+    grouped[cat].items.push({
+      label: item.label,
+      href: item.href,
+      active: location.pathname === item.href || location.pathname.startsWith(item.href + '/'),
+    });
+  }
 
-  // Handle scroll effect
+  const groups = Object.values(grouped).sort((a, b) => {
+    const ao = categoryConfig[a.id]?.order ?? 99;
+    const bo = categoryConfig[b.id]?.order ?? 99;
+    return ao - bo;
+  });
+
+  const activeGroup = pinnedGroup || hoveredGroup;
+
+  // Close dropdowns on outside click
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+    const handler = (e: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
   }, []);
 
   // Keyboard shortcuts
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Cmd/Ctrl+K for search
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setSearchOpen(true);
-      }
-      // Escape to close modals
-      if (e.key === 'Escape') {
-        setSearchOpen(false);
-        setQuickActionsOpen(false);
-        setProfileOpen(false);
-        setNotificationsOpen(false);
-      }
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); setSearchOpen(s => !s); }
+      if (e.key === 'Escape') { setSearchOpen(false); setProfileOpen(false); setNotificationsOpen(false); setPinnedGroup(null); }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
   }, []);
 
   // Mock notifications
@@ -158,401 +115,195 @@ const Navigation: React.FC = () => {
     { id: 3, title: 'Yield Distributed', message: '€12,500 yield distributed to your account', time: '3h ago', unread: false },
   ];
 
+  // Search results
+  const allSearchResults = filteredNavItems.map(item => ({ title: item.label, href: item.href, icon: item.icon }));
+  const filteredResults = searchQuery
+    ? allSearchResults.filter(r => r.title.toLowerCase().includes(searchQuery.toLowerCase()))
+    : [];
+
+  const currentPageLabel = navItems.find(n =>
+    location.pathname === n.href || location.pathname.startsWith(n.href + '/')
+  )?.label || 'Ujamaa DeFi';
+
   return (
     <>
-      <nav
-        className={`
-          fixed top-0 left-0 right-0 z-50
-          bg-[#023D7A] border-b border-[#48A9F0]/30
-          transition-all duration-300
-          ${scrolled ? 'shadow-xl' : 'shadow-lg'}
-        `}
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group">
-              <img
-                src="/assets/images/logo-transparent.png"
-                alt="Ujamaa DeFi Logo"
-                className="h-48 w-auto group-hover:scale-105 transition-transform duration-300"
-              />
-            </a>
+      {/* ─── Slim Icon Rail ─── */}
+      <aside className="fixed left-0 top-0 bottom-0 w-16 bg-[#1e293b] z-50 flex flex-col items-center py-3">
+        {/* Logo */}
+        <Link to={isAuthenticated ? getDashboardForRole(role) : '/'} className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00A8A8] to-[#0D7A7A] flex items-center justify-center text-white font-bold text-lg mb-4 hover:scale-110 transition-transform cursor-pointer shadow-lg shadow-[#00A8A8]/20">
+          U
+        </Link>
 
-            {/* Center - Search Bar */}
-            <div className="flex-1 max-w-xl mx-8 hidden md:block">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search pools, assets, documents... (⌘K)"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setSearchOpen(true)}
-                  className="
-                    w-full px-4 py-2.5 pl-11
-                    bg-[#F3F8FA]/90 hover:bg-[#F3F8FA] focus:bg-white
-                    border border-transparent focus:border-[#00A8A8]
-                    rounded-xl
-                    text-sm
-                    text-[#023D7A]
-                    placeholder-[#333333]/60
-                    transition-all duration-200
-                    focus:outline-none focus:ring-2 focus:ring-[#00A8A8]/30
-                  "
-                />
-                <svg
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#333333]/60"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden lg:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-[#F3F8FA]/70 bg-[#023D7A]/50 rounded border border-[#023D7A]/30">
-                  <span className="text-xs">⌘</span>K
-                </kbd>
-              </div>
-            </div>
-
-            {/* Right - Actions */}
-            <div className="flex items-center gap-2">
-              {/* Mobile Search */}
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="md:hidden p-2 text-white hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-
-              {/* Quick Actions */}
-              <div className="relative">
+        {/* Nav Groups */}
+        <nav className="flex-1 flex flex-col items-center gap-1 w-full px-2">
+          {groups.map(group => {
+            const isActive = activeGroup === group.id;
+            const hasActive = group.items.some(i => i.active);
+            return (
+              <div key={group.id} className="relative w-full">
                 <button
-                  onClick={() => setQuickActionsOpen(!quickActionsOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 border border-white/20 hover:border-white/40"
-                  title="Quick Actions - Access key features"
+                  onClick={() => setPinnedGroup(pinnedGroup === group.id ? null : group.id)}
+                  onMouseEnter={() => setHoveredGroup(group.id)}
+                  className={`w-full h-10 rounded-lg flex items-center justify-center text-lg transition-all ${
+                    isActive ? 'bg-[#00A8A8]/30 text-white shadow-lg' : hasActive ? 'text-white/90 bg-white/15' : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  }`}
+                  title={group.label}
                 >
-                  <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    <span className="text-white font-bold text-sm hidden sm:block">Quick Actions</span>
+                  {group.icon}
+                </button>
+              </div>
+            );
+          })}
+        </nav>
+
+        {/* Bottom Actions */}
+        <div className="flex flex-col items-center gap-1 w-full px-2 pb-2">
+          {/* Search */}
+          <button onClick={() => setSearchOpen(s => !s)} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Search (⌘K)">🔍</button>
+
+          {/* Notifications */}
+          <div className="relative">
+            <button onClick={() => setNotificationsOpen(!notificationsOpen)} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Notifications">
+              🔔
+              {notifications.filter(n => n.unread).length > 0 && <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#1e293b]" />}
+            </button>
+            {notificationsOpen && (
+              <>
+                <div className="fixed inset-0 z-[99]" onClick={() => setNotificationsOpen(false)} />
+                <div className="absolute bottom-12 left-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
+                  <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                    <h3 className="font-semibold text-gray-900">Notifications</h3>
+                    <button className="text-xs text-[#00A8A8] hover:underline">Mark all read</button>
                   </div>
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {quickActionsOpen && (
-                  <>
-                    <div className="fixed inset-0 z-[9999]" onClick={() => setQuickActionsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn max-h-[80vh] overflow-y-auto">
-                      <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
-                        <p className="text-sm font-bold text-[#023D7A]">Quick Actions</p>
-                        <p className="text-xs text-[#333333] mt-1">
-                          {isAuthenticated && user ? 'Access key features for your role' : 'Access key platform features'}
-                        </p>
-                      </div>
-                      <div className="p-4">
-                        {/* Role-Specific Quick Actions */}
-                        {quickActions.map((action, idx) => {
-                          // Special styling for admin-only features
-                          const isAdminOnly = action.roles.length === 1 && action.roles[0] === 'ADMIN';
-                          const isHighlighted = isAdminOnly || action.category === 'Dashboard';
-                          
-                          return (
-                            <a
-                              key={idx}
-                              href={action.href}
-                              className={`flex items-center gap-3 w-full px-3 py-2 text-sm font-bold rounded-lg transition-colors mb-2 ${
-                                isHighlighted
-                                  ? 'text-[#00A8A8] bg-gradient-to-r from-[#00A8A8]/10 to-[#023D7A]/10 border border-[#00A8A8]/30'
-                                  : 'text-[#023D7A] hover:bg-[#F3F8FA]'
-                              }`}
-                            >
-                              {action.category === 'Dashboard' && '📊'}
-                              {action.category === 'Invest' && '🏛️'}
-                              {action.category === 'Originator' && '📝'}
-                              {action.category === 'Compliance' && '✓'}
-                              {action.category === 'Analytics' && '📈'}
-                              {action.category === 'Developer' && '🔧'}
-                              {action.category === 'Account' && '👤'}
-                              {action.title}
-                              {isAdminOnly && <span className="ml-auto text-xs px-2 py-0.5 bg-[#00A8A8]/20 text-[#00A8A8] rounded">Admin</span>}
-                            </a>
-                          );
-                        })}
-                      </div>
+                  {notifications.map(n => (
+                    <div key={n.id} className={`px-4 py-3 border-b border-gray-50 ${n.unread ? 'bg-blue-50/50' : ''}`}>
+                      <p className="text-sm font-medium text-gray-900">{n.title}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
+                      <p className="text-xs text-gray-400 mt-1">{n.time}</p>
                     </div>
-                  </>
-                )}
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Language */}
+          <button onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Language">
+            🌐
+          </button>
+
+          {/* Connect Wallet */}
+          {isAuthenticated && <ConnectWallet size="sm" variant="ghost" />}
+
+          {/* Profile */}
+          <div ref={profileRef} className="relative w-full">
+            <button onClick={() => setProfileOpen(!profileOpen)} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Profile">👤</button>
+            {profileOpen && (
+              <div className="absolute bottom-12 left-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
+                <div className="p-4 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white">
+                  <p className="font-semibold">{user?.name || 'User'}</p>
+                  <p className="text-xs text-white/60">{user?.email || ''}</p>
+                  <span className="inline-block mt-2 px-2 py-0.5 bg-white/20 rounded-full text-[10px] font-semibold">{role.replace(/_/g, ' ')}</span>
+                </div>
+                <div className="p-2">
+                  <Link to={getDashboardForRole(role)} onClick={() => setProfileOpen(false)} className="w-full px-3 py-2 text-sm text-left text-gray-700 hover:bg-gray-100 rounded-lg flex items-center gap-2">
+                    📊 My Dashboard
+                  </Link>
+                  <button onClick={() => { logout(); navigate('/login'); setProfileOpen(false); }} className="w-full px-3 py-2 text-sm text-left text-red-600 hover:bg-red-50 rounded-lg flex items-center gap-2">
+                    🚪 Logout
+                  </button>
+                </div>
               </div>
-
-              {/* Notifications */}
-              <div className="relative">
-                <button
-                  onClick={() => setNotificationsOpen(!notificationsOpen)}
-                  className="relative p-2 text-white hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                  title="Notifications"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                  </svg>
-                  {notifications.filter(n => n.unread).length > 0 && (
-                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />
-                  )}
-                </button>
-
-                {notificationsOpen && (
-                  <>
-                    <div className="fixed inset-0 z-[9999]" onClick={() => setNotificationsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 z-[10000] animate-scaleIn">
-                      <div className="px-4 py-3 border-b border-[#48A9F0]/30">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-[#023D7A]">Notifications</h3>
-                          <button className="text-xs text-[#00A8A8] hover:text-[#008f8f]">Mark all read</button>
-                        </div>
-                      </div>
-                      <div className="max-h-96 overflow-y-auto">
-                        {notifications.map((notification) => (
-                          <div
-                            key={notification.id}
-                            className={`px-4 py-3 border-b border-[#48A9F0]/20 hover:bg-[#F3F8FA] cursor-pointer ${notification.unread ? 'bg-[#023D7A]/5' : ''}`}
-                          >
-                            <div className="flex items-start gap-3">
-                              <div className={`w-2 h-2 mt-2 rounded-full ${notification.unread ? 'bg-[#00A8A8]' : 'bg-gray-300'}`} />
-                              <div className="flex-1">
-                                <p className="text-sm font-medium text-[#023D7A]">{notification.title}</p>
-                                <p className="text-sm text-[#333333] mt-0.5">{notification.message}</p>
-                                <p className="text-xs text-[#333333]/60 mt-1">{notification.time}</p>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="px-4 py-3 border-t border-[#48A9F0]/30 text-center">
-                        <button
-                          onClick={() => {
-                            setNotificationsOpen(false);
-                            alert('🚀 MVP TESTNET: Full notifications center coming in production. All notifications are shown above.');
-                          }}
-                          className="text-sm text-[#023D7A] hover:text-[#012d5c] font-medium"
-                        >
-                          View all notifications
-                        </button>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Language Switch */}
-              <div className="relative">
-                <button
-                  onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
-                  className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 border border-white/20 hover:border-white/40"
-                  title="Switch Language"
-                >
-                  <span className="text-white font-bold text-sm">🌐 {language.toUpperCase()}</span>
-                </button>
-              </div>
-
-              {/* Connect Wallet - Only visible for authenticated users */}
-              {isAuthenticated && <ConnectWallet size="sm" variant="ghost" />}
-
-              {/* Role Selector / Dashboard Menu */}
-              <div className="relative">
-                <button
-                  onClick={() => setProfileOpen(!profileOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 border border-white/20 hover:border-white/40"
-                  title="Select Role / Dashboard"
-                >
-                  <div className="flex items-center gap-2">
-                    {isAuthenticated ? (
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        {user?.name?.charAt(0) || 'U'}
-                      </div>
-                    ) : (
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    )}
-                    <span className="text-white font-bold text-sm hidden sm:block">
-                      {isAuthenticated ? user?.name?.split(' ')[0] || 'User' : 'Choose Role'}
-                    </span>
-                  </div>
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {profileOpen && (
-                  <>
-                    <div className="fixed inset-0 z-[9999]" onClick={() => setProfileOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[#48A9F0]/30 py-2 z-[10000] animate-scaleIn max-h-[70vh] overflow-y-auto">
-                      <div className="px-4 py-3 border-b border-[#48A9F0]/30 bg-[#F3F8FA]">
-                        <p className="text-sm font-bold text-[#023D7A]">Menu</p>
-                        <p className="text-xs text-[#333333] mt-1">
-                          {isAuthenticated ? `Logged in as ${user?.name}` : 'Choose a dashboard'}
-                        </p>
-                      </div>
-
-                      {/* User Info (when logged in) */}
-                      {isAuthenticated && user && (
-                        <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Logged In As</p>
-                          <p className="text-sm font-bold text-[#023D7A] truncate">{user.name}</p>
-                          <p className="text-xs text-gray-600 truncate">{user.email}</p>
-                          <p className="text-xs text-gray-500 mt-1">Role: {user.role.replace(/_/g, ' ')}</p>
-                        </div>
-                      )}
-
-                      {/* Role-Specific Quick Access */}
-                      {isAuthenticated && user && (
-                        <div className="px-4 py-3 border-b border-gray-200">
-                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Quick Access</p>
-                          <a
-                            href={getDashboardForRole(user.role)}
-                            className="block px-3 py-2 text-sm text-[#023D7A] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors mb-2"
-                          >
-                            📊 My Dashboard
-                          </a>
-                          {/* Show role-specific menu items (deduplicated by href) */}
-                          {(() => {
-                            const items = getNavItemsForRole(user.role)
-                              .filter(item => item.category && !['dashboard', 'test'].includes(item.category));
-                            
-                            // Deduplicate by href (keep first occurrence)
-                            const seen = new Set<string>();
-                            const uniqueItems = items.filter(item => {
-                              if (seen.has(item.href)) return false;
-                              seen.add(item.href);
-                              return true;
-                            });
-                            
-                            return uniqueItems
-                              .slice(0, user.role === 'ADMIN' ? 20 : 4)
-                              .map((item, idx) => (
-                                <a
-                                  key={idx}
-                                  href={item.href}
-                                  className="block px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg transition-colors"
-                                >
-                                  {item.icon} {item.label}
-                                </a>
-                              ));
-                          })()}
-                        </div>
-                      )}
-
-                      {/* Switch Role */}
-                      <div className="px-4 py-3 border-b border-gray-200">
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Switch Role</p>
-                        <a href="/demo-accounts" className="block px-3 py-2 text-sm text-[#00A8A8] font-bold hover:bg-[#F3F8FA] rounded-lg transition-colors">
-                          🎯 Try Demo Accounts
-                        </a>
-                      </div>
-
-                      {/* Sign Out */}
-                      {isAuthenticated && (
-                        <div className="px-4 py-3 border-b border-gray-200">
-                          <LogoutButton variant="menu-item" />
-                        </div>
-                      )}
-
-                      {/* Help & Support */}
-                      <div className="px-4 py-3">
-                        <a
-                          href="/docs/glossary"
-                          className="block px-3 py-2 text-sm text-gray-600 hover:bg-[#F3F8FA] rounded-lg transition-colors text-center"
-                        >
-                          📚 Help Center
-                        </a>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         </div>
-      </nav>
+      </aside>
 
-      {/* Search Modal */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-[10001]">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSearchOpen(false)} />
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl mx-4">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden animate-scaleIn max-h-[70vh] flex flex-col">
-              <div className="flex items-center gap-3 px-4 py-3 border-b border-[#48A9F0]/30 flex-shrink-0">
-                <svg className="w-5 h-5 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Search pages, documents, features... (⌘K)"
-                  autoFocus
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 text-base focus:outline-none text-[#023D7A]"
-                />
-                <kbd className="px-2 py-1 text-xs text-[#333333]/60 bg-[#F3F8FA] rounded">ESC</kbd>
+      {/* ─── Expanded Panel ─── */}
+      {activeGroup && (
+        <>
+          {/* Invisible bridge to prevent hover gap */}
+          <div className="fixed left-14 top-0 bottom-0 w-4 z-30" 
+            onMouseEnter={() => setHoveredGroup(activeGroup)}
+            onMouseLeave={() => { if (!pinnedGroup) setHoveredGroup(null); }} />
+          <div className="fixed left-16 top-0 bottom-0 w-60 bg-white border-r border-gray-200 z-40 shadow-lg overflow-hidden"
+          onMouseEnter={() => setHoveredGroup(activeGroup)}
+          onMouseLeave={() => { if (!pinnedGroup) setHoveredGroup(null); }}>
+          <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{groups.find(g => g.id === activeGroup)?.label}</h3>
+            {pinnedGroup === activeGroup && (
+              <button onClick={() => setPinnedGroup(null)} className="text-gray-400 hover:text-gray-600 text-xs">✕</button>
+            )}
+          </div>
+          <nav className="p-2 space-y-0.5 overflow-y-auto h-[calc(100%-3rem)]">
+            {groups.find(g => g.id === activeGroup)?.items.map(item => (
+              <Link key={item.href} to={item.href} onClick={() => setPinnedGroup(null)}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${item.active ? 'bg-[#00A8A8]/10 text-[#00A8A8] font-semibold' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'}`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${item.active ? 'bg-[#00A8A8]' : 'bg-gray-300'}`} />
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        </>
+      )}
+
+      {/* ─── Top Bar ─── */}
+      <header className="fixed top-0 left-16 right-0 h-[120px] bg-white border-b border-gray-200 z-30 flex items-center px-6 justify-between">
+        <div className="flex items-center gap-3">
+          <img src="/assets/images/logo-transparent.png" alt="Ujamaa DeFi" className="h-[100px] w-auto" />
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            Polygon Amoy Testnet
+          </div>
+          {isAuthenticated && (
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#00A8A8] to-[#023D7A] flex items-center justify-center text-white text-xs font-bold">
+                {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
               </div>
-              <div className="p-4 overflow-y-auto flex-1">
-                {searchQuery === '' ? (
-                  <>
-                    <p className="text-xs text-[#333333] mb-2">Quick Links</p>
-                    <div className="space-y-1">
-                      {/* Show role-filtered quick links */}
-                      {allSearchResults
-                        .filter(r => {
-                          if (!isAuthenticated || !user) return true; // Show all for non-authenticated
-                          return r.roles.includes(user.role) || user.role === 'ADMIN';
-                        })
-                        .filter(r => ['Dashboard', 'Invest', 'Documents'].includes(r.category))
-                        .slice(0, 6)
-                        .map((result, idx) => (
-                          <a
-                            key={idx}
-                            href={result.href}
-                            className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg"
-                          >
-                            <svg className="w-4 h-4 text-[#333333]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                            {result.title}
-                          </a>
-                        ))
-                      }
-                    </div>
-                  </>
-                ) : filteredResults.length > 0 ? (
-                  <>
-                    <p className="text-xs text-[#333333] mb-2">Search Results ({filteredResults.length})</p>
-                    <div className="space-y-1">
-                      {filteredResults.map((result, idx) => (
-                        <a key={idx} href={result.href} className="flex items-center gap-3 px-3 py-2 text-sm text-[#023D7A] hover:bg-[#F3F8FA] rounded-lg">
-                          <span className="text-xs px-2 py-0.5 bg-[#00A8A8]/10 text-[#00A8A8] rounded font-medium">{result.category}</span>
-                          <span className="flex-1">{result.title}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-[#333333]">No results found for "<span className="font-bold">{searchQuery}</span>"</p>
-                    <p className="text-xs text-[#333333]/60 mt-2">Try different keywords or browse quick links</p>
-                  </div>
-                )}
+              <div className="hidden sm:block">
+                <p className="text-xs font-medium text-gray-700 leading-none">{user?.name?.split(' ')[0] || 'User'}</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">{role.replace(/_/g, ' ')}</p>
               </div>
             </div>
+          )}
+        </div>
+      </header>
+
+      {/* ─── Search Overlay ─── */}
+      {searchOpen && (
+        <div className="fixed inset-0 bg-black/50 z-[100] flex items-start justify-center pt-20" onClick={() => setSearchOpen(false)}>
+          <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200">
+              <span className="text-lg">🔍</span>
+              <input type="text" autoFocus placeholder="Search pages..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+                className="flex-1 text-sm outline-none text-gray-900 placeholder-gray-400" />
+              <kbd className="px-2 py-0.5 text-xs bg-gray-100 rounded text-gray-500">ESC</kbd>
+            </div>
+            {filteredResults.length > 0 ? (
+              <div className="max-h-80 overflow-y-auto">
+                {filteredResults.map(r => (
+                  <Link key={r.href} to={r.href} onClick={() => setSearchOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
+                    <span className="text-lg">{r.icon}</span>
+                    <span className="text-sm text-gray-900">{r.title}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : searchQuery ? (
+              <div className="p-8 text-center text-gray-500 text-sm">No results for "{searchQuery}"</div>
+            ) : (
+              <div className="p-8 text-center text-gray-400 text-sm">Start typing to search...</div>
+            )}
           </div>
         </div>
       )}
 
-      {/* Spacer for fixed nav with gap */}
-      <div className="h-24" />
+      {/* ─── Spacer for content ─── */}
+      <div className="w-16" />
+      <div className="fixed top-14 left-16 right-0 h-px bg-transparent pointer-events-none" />
     </>
   );
 };

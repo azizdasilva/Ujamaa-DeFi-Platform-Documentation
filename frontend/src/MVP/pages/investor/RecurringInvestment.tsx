@@ -143,7 +143,7 @@ const RecurringInvestment: React.FC = () => {
                     Cancel Plan
                   </button>
                   <button
-                    onClick={() => {}}
+                    onClick={() => alert('Edit mode coming in production — modify your recurring plan settings here.')}
                     className="text-sm text-green-600 hover:text-green-700 font-medium"
                   >
                     Edit Settings

@@ -11,13 +11,23 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 
 const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Navigation */}
-      <Navigation />
+      {/* Hero Header with Logo */}
+      <header className="bg-[#023D7A] sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="/assets/images/logo-transparent.png" alt="Ujamaa DeFi" className="h-[120px] w-auto" />
+          </div>
+          <div className="flex items-center gap-3">
+            <Link to="/login" className="px-5 py-2 text-sm font-bold text-white bg-[#00A8A8] rounded-lg hover:bg-[#0D7A7A] transition-all shadow-lg">🔐 Sign In</Link>
+            <Link to="/register" className="px-5 py-2 text-sm font-bold text-[#023D7A] bg-white border-2 border-white rounded-lg hover:bg-gray-100 transition-all shadow-lg">✨ Sign Up</Link>
+            <Link to="/demo-accounts" className="px-5 py-2 text-sm font-bold text-[#023D7A] bg-[#F3F8FA] border-2 border-[#00A8A8] rounded-lg hover:bg-gray-100 transition-all shadow-lg">🎯 Try Demo Accounts</Link>
+          </div>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
@@ -35,36 +45,10 @@ const LandingPage: React.FC = () => {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Tokenize assets, access liquidity, and earn yield from African industrial growth.
               Powered by blockchain technology and compliant with international regulations.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link
-                to="/demo-accounts"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-[#00A8A8] to-[#023D7A] rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                style={{ color: '#FFFFFF' }}
-              >
-                🎯 Try Demo Accounts
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-              <Link
-                to="/register"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#00A8A8] bg-white border-2 border-[#00A8A8] rounded-xl hover:bg-[#00A8A8]/10 transition-all duration-300"
-              >
-                ✨ Create Account
-              </Link>
-              <Link
-                to="/login"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#F3F8FA] bg-[#023D7A]/10 backdrop-blur-sm border-2 border-[#00A8A8] rounded-xl hover:bg-[#00A8A8]/20 transition-all duration-300"
-              >
-                🔐 Sign In
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -158,22 +142,22 @@ const LandingPage: React.FC = () => {
             Choose your role and start your journey with Ujamaa DeFi Platform
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/demo-accounts"
+            <Link
+              to="/onboarding"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-[#00A8A8] to-[#023D7A] rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
               style={{ color: '#FFFFFF' }}
             >
-              Select Your Role
+              💼 Investors Onboarding
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
-            <a
-              href="/onboarding"
+            </Link>
+            <Link
+              to="/industrial-operator/onboarding"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#023D7A] bg-[#F3F8FA] border-2 border-[#023D7A] rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
             >
-              🚀 Investor Onboarding
-            </a>
+              🏭 Industrial Operator Onboarding
+            </Link>
           </div>
         </div>
       </section>

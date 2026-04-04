@@ -1,6 +1,12 @@
 /**
  * Role-based Navigation Configuration
  * Defines which menu items are visible for each role
+ *
+ * Role Hierarchy:
+ *   ADMIN            → Full access (read + write everywhere)
+ *   COMPLIANCE_OFFICER → View everything + compliance write operations
+ *   REGULATOR        → View everything (read-only global access)
+ *   INVESTOR/OPERATOR → Access their own areas only
  */
 
 import { InvestorRole } from '../../types';
@@ -12,6 +18,11 @@ export interface NavItem {
   roles: InvestorRole[]; // Which roles can see this item
   category?: string;
 }
+
+// Helper: all roles
+const ALL: InvestorRole[] = ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'];
+// Global viewers (can see everything but not write-admin pages)
+const GLOBAL_VIEW: InvestorRole[] = ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'];
 
 /**
  * Get the correct dashboard/pools path based on user role
@@ -35,33 +46,33 @@ export function getRolePath(role: InvestorRole, pathType: 'dashboard' | 'pools')
 }
 
 export const navigationItems: NavItem[] = [
-  // Dashboard Links
+  // ── Dashboard Links (each role's own dashboard) ──
   {
     label: 'My Dashboard',
     href: '/institutional/dashboard',
     icon: '📊',
-    roles: ['INSTITUTIONAL_INVESTOR'],
+    roles: ['INSTITUTIONAL_INVESTOR', ...GLOBAL_VIEW],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/retail/dashboard',
     icon: '📊',
-    roles: ['RETAIL_INVESTOR'],
+    roles: ['RETAIL_INVESTOR', ...GLOBAL_VIEW],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/originator/dashboard',
     icon: '📊',
-    roles: ['INDUSTRIAL_OPERATOR'],
+    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/compliance/dashboard',
     icon: '📊',
-    roles: ['COMPLIANCE_OFFICER'],
+    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
     category: 'dashboard',
   },
   {
@@ -75,16 +86,16 @@ export const navigationItems: NavItem[] = [
     label: 'My Dashboard',
     href: '/regulator/dashboard',
     icon: '📊',
-    roles: ['REGULATOR'],
+    roles: ['REGULATOR', 'ADMIN'],
     category: 'dashboard',
   },
 
-  // Pool & Investment Links
+  // ── Pool & Investment Links ──
   {
     label: 'Pool Marketplace',
     href: '/institutional/pools',
     icon: '🏛️',
-    roles: ['INSTITUTIONAL_INVESTOR'],
+    roles: ['INSTITUTIONAL_INVESTOR', ...GLOBAL_VIEW],
     category: 'invest',
   },
   {
@@ -105,55 +116,55 @@ export const navigationItems: NavItem[] = [
     label: 'Pool Dashboard',
     href: '/pool/dashboard',
     icon: '📈',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'REGULATOR'],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
     category: 'invest',
   },
   {
     label: 'My Portfolio',
     href: '/investor/portfolio',
     icon: '💼',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR'],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
     category: 'invest',
   },
   {
     label: 'Returns',
     href: '/investor/returns',
     icon: '💰',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR'],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
     category: 'invest',
   },
   {
     label: 'Investor Onboarding',
     href: '/onboarding',
     icon: '🚀',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR'],
+    roles: ALL,
     category: 'onboarding',
   },
 
-  // Operator Links
+  // ── Operator Links ──
   {
     label: 'Submit Asset',
     href: '/originator/assets/submit',
     icon: '➕',
-    roles: ['INDUSTRIAL_OPERATOR'],
+    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
     category: 'operator',
   },
   {
     label: 'View Certificates',
     href: '/originator/assets/certificates',
     icon: '📜',
-    roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'REGULATOR'],
+    roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
     category: 'operator',
   },
   {
     label: 'Financings',
     href: '/industrial-operator/financings',
     icon: '💰',
-    roles: ['INDUSTRIAL_OPERATOR'],
+    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
     category: 'operator',
   },
 
-  // Compliance Links
+  // ── Compliance Links ──
   {
     label: 'KYC Review',
     href: '/compliance/kyc-review',
@@ -176,7 +187,7 @@ export const navigationItems: NavItem[] = [
     category: 'compliance',
   },
 
-  // Admin Links
+  // ── Admin Links (write-only, ADMIN only) ──
   {
     label: 'User Management',
     href: '/admin/users',
@@ -234,7 +245,7 @@ export const navigationItems: NavItem[] = [
     category: 'admin',
   },
 
-  // Regulator Links
+  // ── Regulator Links ──
   {
     label: 'Compliance Reports',
     href: '/regulator/compliance',
@@ -271,30 +282,30 @@ export const navigationItems: NavItem[] = [
     category: 'regulator',
   },
 
-  // Documentation Links (All roles)
+  // ── Documentation Links ──
   {
     label: 'Deep Dive',
     href: '/deep-dive',
     icon: '📚',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: ALL,
     category: 'docs',
   },
   {
     label: 'Investors Room',
     href: '/investors-room',
     icon: '📄',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
     category: 'docs',
   },
   {
     label: 'Glossary',
     href: '/docs/glossary',
     icon: '📖',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: ALL,
     category: 'docs',
   },
 
-  // Blockchain & Test Links
+  // ── Blockchain & Test Links ──
   {
     label: 'Blockchain Monitoring',
     href: '/monitor',
@@ -326,9 +337,14 @@ export const canAccessPath = (role: InvestorRole, path: string): boolean => {
   if (['/', '/login', '/register', '/demo-accounts', '/select-role'].includes(path)) {
     return true;
   }
-  
+
+  // Global viewers can access everything
+  if (['ADMIN', 'COMPLIANCE_OFFICER', 'REGULATOR'].includes(role)) {
+    return true;
+  }
+
   // Check if any nav item matches this path for this role
-  return navigationItems.some(item => 
+  return navigationItems.some(item =>
     item.roles.includes(role) && (item.href === path || path.startsWith(item.href.split('/')[1]))
   );
 };

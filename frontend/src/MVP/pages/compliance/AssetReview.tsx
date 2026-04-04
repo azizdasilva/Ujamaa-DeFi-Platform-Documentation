@@ -166,7 +166,7 @@ const AssetReview: React.FC = () => {
                         </p>
                         <Badge
                           variant={
-                            financing.principal > 1000000 ? 'danger' :
+                            financing.principal > 1000000 ? 'error' :
                             financing.principal >= 100000 ? 'warning' : 'success'
                           }
                           size="sm"

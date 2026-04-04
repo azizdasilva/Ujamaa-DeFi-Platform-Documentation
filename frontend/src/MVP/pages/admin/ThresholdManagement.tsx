@@ -161,13 +161,13 @@ const ThresholdManagement: React.FC = () => {
   };
 
   const ThresholdInput = ({ 
-    label, 
-    key: thresholdKey, 
+    label,
+    thresholdKey,
     description,
-    icon 
-  }: { 
-    label: string; 
-    key: keyof Thresholds; 
+    icon
+  }: {
+    label: string;
+    thresholdKey: keyof Thresholds;
     description: string;
     icon: string;
   }) => (
@@ -295,31 +295,31 @@ const ThresholdManagement: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ThresholdInput
               label="Minimum Deposit"
-              key="MIN_DEPOSIT"
+              thresholdKey="MIN_DEPOSIT"
               description="Minimum amount per investment"
               icon="📉"
             />
             <ThresholdInput
               label="Maximum Deposit"
-              key="MAX_DEPOSIT"
+              thresholdKey="MAX_DEPOSIT"
               description="Maximum amount per transaction"
               icon="📈"
             />
             <ThresholdInput
               label="Daily Withdrawal Limit"
-              key="DAILY_WITHDRAWAL_LIMIT"
+              thresholdKey="DAILY_WITHDRAWAL_LIMIT"
               description="Maximum withdrawal per day"
               icon="💸"
             />
             <ThresholdInput
               label="Institutional Minimum"
-              key="INSTITUTIONAL_MIN"
+              thresholdKey="INSTITUTIONAL_MIN"
               description="Minimum for institutional investors"
               icon="🏢"
             />
             <ThresholdInput
               label="Retail Maximum"
-              key="RETAIL_MAX"
+              thresholdKey="RETAIL_MAX"
               description="Maximum for retail investors"
               icon="👤"
             />
@@ -334,19 +334,19 @@ const ThresholdManagement: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ThresholdInput
               label="KYB Threshold"
-              key="KYB_THRESHOLD_EUR"
+              thresholdKey="KYB_THRESHOLD_EUR"
               description="Investment amount requiring KYB"
               icon="📋"
             />
             <ThresholdInput
               label="Large Transaction Flag"
-              key="TXN_FLAG_LARGE"
+              thresholdKey="TXN_FLAG_LARGE"
               description="Auto-flag transactions above this"
               icon="🚩"
             />
             <ThresholdInput
               label="Very Large Transaction Flag"
-              key="TXN_FLAG_VERY_LARGE"
+              thresholdKey="TXN_FLAG_VERY_LARGE"
               description="High-risk flag threshold"
               icon="🚨"
             />
@@ -361,19 +361,19 @@ const ThresholdManagement: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ThresholdInput
               label="Structuring Threshold"
-              key="STRUCTURING_THRESHOLD"
+              thresholdKey="STRUCTURING_THRESHOLD"
               description="Per-transaction structuring detection"
               icon="🔎"
             />
             <ThresholdInput
               label="Structuring Total"
-              key="STRUCTURING_TOTAL_THRESHOLD"
+              thresholdKey="STRUCTURING_TOTAL_THRESHOLD"
               description="Cumulative structuring threshold"
               icon="📊"
             />
             <ThresholdInput
               label="Velocity Threshold"
-              key="VELOCITY_THRESHOLD_PER_HOUR"
+              thresholdKey="VELOCITY_THRESHOLD_PER_HOUR"
               description="Transactions per hour limit"
               icon="⚡"
             />

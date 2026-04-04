@@ -284,7 +284,7 @@ const OnboardingReview: React.FC = () => {
                 className="mt-1 w-4 h-4 text-green-600 rounded focus:ring-green-500"
               />
               <span className="text-sm text-gray-700">
-                I agree to the <a href="/terms" className="text-green-600 hover:underline" target="_blank">Terms of Service</a> and <a href="/privacy" className="text-green-600 hover:underline" target="_blank">Privacy Policy</a>.
+                I agree to the <a href="/investors-room/terms-of-service" className="text-green-600 hover:underline">Terms of Service</a> and <a href="/investors-room/privacy-policy" className="text-green-600 hover:underline">Privacy Policy</a>.
               </span>
             </label>
             

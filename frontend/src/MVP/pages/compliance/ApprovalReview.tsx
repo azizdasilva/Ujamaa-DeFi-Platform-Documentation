@@ -85,7 +85,7 @@ const ApprovalReview: React.FC = () => {
               <p className="text-[#8b5b3d] mt-1">{application.name}</p>
             </div>
             <div className="flex items-center gap-3">
-              <Badge variant={application.riskLevel === 'low' ? 'success' : application.riskLevel === 'medium' ? 'warning' : 'danger'} size="lg">
+              <Badge variant={application.riskLevel === 'low' ? 'success' : application.riskLevel === 'medium' ? 'warning' : 'error'} size="lg">
                 {application.riskLevel.toUpperCase()} RISK
               </Badge>
               <TestnetNotice variant="badge" />

@@ -609,7 +609,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Net APY"
               value={formatPercentage(kpis.financial.netApy)}
-              color="green"
+              color="success"
               subValue="Target: 8-12%"
             />
             <StatsCard
@@ -620,7 +620,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="NAV per Share"
               value={kpis.financial.navPerShare.toFixed(4)}
-              color="blue"
+              color="info"
               subValue="Initial: 1.0000"
             />
             <StatsCard
@@ -631,7 +631,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Yield Variance"
               value={formatPercentage(kpis.financial.yieldVariance)}
-              color="purple"
+              color="secondary"
               subValue="Target: <±0.5%"
             />
             <StatsCard
@@ -642,7 +642,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Expense Ratio"
               value={formatPercentage(kpis.financial.expenseRatio)}
-              color="amber"
+              color="warning"
               subValue="Target: <2.5%"
             />
           </div>
@@ -660,7 +660,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="TVL"
               value={formatCurrency(kpis.liquidity.tvl)}
-              color="green"
+              color="success"
               subValue="Total Value Locked"
             />
             <StatsCard
@@ -671,7 +671,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Utilization Rate"
               value={formatPercentage(kpis.liquidity.utilizationRate)}
-              color="blue"
+              color="info"
               subValue="Target: 85-92%"
             />
             <StatsCard
@@ -682,7 +682,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Cash Drag"
               value={formatPercentage(kpis.liquidity.cashDrag)}
-              color="amber"
+              color="warning"
               subValue="Target: <0.75%"
             />
             <StatsCard
@@ -693,7 +693,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Redemption Liquidity"
               value={formatCurrency(kpis.liquidity.redemptionLiquidity)}
-              color="purple"
+              color="secondary"
               subValue="5-10% of TVL"
             />
           </div>
@@ -793,7 +793,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Industrial Growth"
               value={formatPercentage(kpis.impact.industrialGrowth)}
-              color="green"
+              color="success"
               subValue="Target: >20% YoY"
             />
             <StatsCard
@@ -804,7 +804,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Value-Add Ratio"
               value={`${kpis.impact.valueAddRatio.toFixed(1)}x`}
-              color="blue"
+              color="info"
               subValue="Target: >2.5x"
             />
             <StatsCard
@@ -815,7 +815,7 @@ const PoolDashboard: React.FC = () => {
               }
               label="Job Creation"
               value={`${kpis.impact.jobsPerMillion} per €1M`}
-              color="purple"
+              color="secondary"
               subValue="Target: 50-150"
             />
           </div>
