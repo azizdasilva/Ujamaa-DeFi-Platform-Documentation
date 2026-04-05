@@ -138,7 +138,7 @@ const TestnetNotice: React.FC<TestnetNoticeProps> = ({
 
                   <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                     <p className="text-sm font-semibold text-green-800">
-                      ✅ 9 Smart Contracts and Oracles have been deployed to the blockchain.
+                      ✅ 11 Smart Contracts and Oracles have been deployed to the blockchain.
                     </p>
                   </div>
 

@@ -629,7 +629,7 @@ const DeploymentTab: React.FC = () => {
           <h3 className="font-bold text-green-800 text-sm">All Contracts Deployed Successfully</h3>
         </div>
         <p className="text-xs text-green-700">
-          All 9 smart contracts have been deployed to Polygon Amoy testnet. 
+          All 11 smart contracts have been deployed to Polygon Amoy testnet. 
           View contract addresses in the "All Contracts" tab.
         </p>
       </div>
