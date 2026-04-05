@@ -107,3 +107,4 @@ temp/
 *.md
 !README.md
 !documentation/**/*.md  
+.qwen/  
