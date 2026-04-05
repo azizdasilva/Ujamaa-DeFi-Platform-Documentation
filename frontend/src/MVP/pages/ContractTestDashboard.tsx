@@ -3,7 +3,7 @@
  * Ujamaa DeFi Platform - MVP Testnet
  *
  * Interactive UI for testing smart contract functions
- * All 9 contracts deployed on Polygon Amoy testnet
+ * All 11 contracts deployed on Polygon Amoy testnet
  */
 
 import React, { useState, useEffect } from 'react';
@@ -12,11 +12,12 @@ import { useLiquidityPool, formatPoolFamily, formatAPY, formatTokenAmount } from
 import WalletModal from '../components/WalletModal';
 
 // All deployed contract addresses (Polygon Amoy - Chain ID: 80002)
+// Deployed: April 5, 2026 - ERC-3643 Compliant + UGT Minting Enabled
 export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock EUROD',
     symbol: 'EUROD',
-    address: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43',
+    address: '0xF07938b598F6BC1C88d52197d36F68b20E955604',
     role: 'Euro-pegged stablecoin (Ondo)',
     standard: 'ERC-20',
     icon: '💶',
@@ -28,19 +29,43 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'ULPTokenizer',
     symbol: 'uLP',
-    address: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
-    role: 'Yield-bearing pool token',
+    address: '0x84fD03fF851c04D890F709BD26276eD12D62a763',
+    role: 'Yield-bearing pool token (ERC-3643)',
     standard: 'ERC-3643',
     icon: '🪙',
     category: 'Token',
     status: 'Deployed',
     description: 'Ujamaa Liquidity Provider Token. Yield-bearing ERC-3643 token representing pool shares.',
-    functions: ['mint', 'burn', 'transfer', 'getNAV', 'navPerShare'],
+    functions: ['deposit', 'redeem', 'transfer', 'getNAV', 'navPerShare'],
+  },
+  {
+    name: 'IdentityRegistry',
+    symbol: 'ID-REG',
+    address: '0x986B87102b8b0419d814840473859999E2cDa6FA',
+    role: 'ERC-3643 identity verification',
+    standard: 'ERC-3643',
+    icon: '🆔',
+    category: 'Compliance',
+    status: 'Deployed',
+    description: 'Manages investor identity verification for ERC-3643 permissioned tokens.',
+    functions: ['registerIdentity', 'verifyIdentity', 'isVerified', 'getIdentity'],
+  },
+  {
+    name: 'Compliance',
+    symbol: 'COMPLIANCE',
+    address: '0x68eEAeA566C5B17475e68Fd625844e2Acc8c2241',
+    role: 'Transfer compliance module',
+    standard: 'ERC-3643',
+    icon: '✅',
+    category: 'Compliance',
+    status: 'Deployed',
+    description: 'Enforces transfer restrictions and compliance checks for ERC-3643 tokens.',
+    functions: ['canTransfer', 'getComplianceReason', 'checkInvestorCompliance'],
   },
   {
     name: 'GuaranteeTokenizer',
     symbol: 'UJG',
-    address: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
+    address: '0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1',
     role: 'Collateral NFT (ERC-3643NFT)',
     standard: 'ERC-3643NFT',
     icon: '🛡️',
@@ -52,7 +77,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Liquidity Pool',
     symbol: 'POOL',
-    address: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec',
+    address: '0x7C666e8F82F09BAeAD68D5e6588DE89d28a4805B',
     role: 'Multi-asset pool manager',
     standard: 'Custom',
     icon: '🏊',
@@ -64,7 +89,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Industrial Gateway',
     symbol: 'GATEWAY',
-    address: '0x882071de6689eC1716BD7e162Acf50707AC68930',
+    address: '0x842254e5aBCc3dBF402979683BB8345624fEA416',
     role: 'Asset certification & UGT minting',
     standard: 'Custom',
     icon: '🏭',
@@ -76,10 +101,10 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Jurisdiction Compliance',
     symbol: 'COMPLIANCE',
-    address: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C',
+    address: '0x6B48A85E2E54224BF7C165F5f463f502fB7453B7',
     role: 'Investor jurisdiction verification',
     standard: 'Custom',
-    icon: '✅',
+    icon: '🌍',
     category: 'Compliance',
     status: 'Deployed',
     description: 'Manages jurisdiction compliance with strictest combined list (OFAC + UN + EU + FATF).',
@@ -88,7 +113,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock Escrow',
     symbol: 'ESCROW',
-    address: '0x8d446994fcD9906c573500959cDc8A8271a9485F',
+    address: '0xBfa58aad4b1b1648cDE4C74e4a5E84b352382523',
     role: 'Bank escrow simulation',
     standard: 'Custom',
     icon: '🔒',
@@ -100,7 +125,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock Fiat Ramp',
     symbol: 'FIAT',
-    address: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a',
+    address: '0x2180f53Dce716c196D6a1fA86aF7dc5BBdF0d854',
     role: 'Fiat on/off ramp',
     standard: 'Custom',
     icon: '💱',
@@ -112,7 +137,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'NAV Gateway',
     symbol: 'GATEWAY',
-    address: '0x99712f923e3519B4305CEDAd40290428299F29A0',
+    address: '0x8cf44a92b679e587d92C25bB5739cb4e850103A4',
     role: 'NAV price feed',
     standard: 'Custom',
     icon: '📊',
@@ -153,7 +178,7 @@ const ContractTestDashboard: React.FC = () => {
               🔧 Smart Contract Test Dashboard
             </h1>
             <p className="text-xs text-[#333333]">
-              MVP Testnet • Polygon Amoy (Chain ID: 80002) • 9 Contracts Deployed
+              MVP Testnet • Polygon Amoy (Chain ID: 80002) • 11 Contracts Deployed
             </p>
           </div>
 
@@ -211,7 +236,7 @@ const ContractTestDashboard: React.FC = () => {
                 : 'text-gray-600 hover:text-[#023D7A]'
             }`}
           >
-            📦 All Contracts (9)
+            📦 All Contracts (11)
           </button>
           <button
             onClick={() => setActiveTab('pools')}
@@ -292,11 +317,11 @@ const OverviewTab: React.FC<{
       {/* Summary Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-3 text-center">
-          <p className="text-2xl font-bold text-blue-700">9</p>
+          <p className="text-2xl font-bold text-blue-700">11</p>
           <p className="text-[10px] text-blue-600 mt-0.5">Total Contracts</p>
         </div>
         <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-3 text-center">
-          <p className="text-2xl font-bold text-green-700">9</p>
+          <p className="text-2xl font-bold text-green-700">11</p>
           <p className="text-[10px] text-green-600 mt-0.5">Deployed</p>
         </div>
         <div className="bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-200 rounded-xl p-3 text-center">
@@ -333,9 +358,9 @@ const OverviewTab: React.FC<{
           <p className="text-[10px] text-gray-600">Industrial, NAV</p>
         </div>
         <div className="border border-gray-200 rounded-xl p-3">
-          <div className="text-2xl mb-1">✅</div>
-          <p className="text-xs font-bold text-[#023D7A]">Compliance (1)</p>
-          <p className="text-[10px] text-gray-600">Jurisdiction</p>
+          <div className="text-2xl mb-1">🆔✅🌍</div>
+          <p className="text-xs font-bold text-[#023D7A]">Compliance (3)</p>
+          <p className="text-[10px] text-gray-600">IdentityRegistry, Compliance, Jurisdiction</p>
         </div>
         <div className="border border-gray-200 rounded-xl p-3">
           <div className="text-2xl mb-1">🔒💱</div>
@@ -399,7 +424,7 @@ const OverviewTab: React.FC<{
 };
 
 /**
- * Contracts Tab - All 9 Deployed Contracts
+ * Contracts Tab - All 11 Deployed Contracts
  */
 const ContractsTab: React.FC<{ contracts: typeof DEPLOYED_CONTRACTS }> = ({ contracts }) => {
   const [selectedContract, setSelectedContract] = useState<number | null>(null);
@@ -408,7 +433,7 @@ const ContractsTab: React.FC<{ contracts: typeof DEPLOYED_CONTRACTS }> = ({ cont
     <div>
       <h2 className="text-base font-bold text-[#023D7A] mb-1">✅ All Smart Contracts Deployed</h2>
       <p className="text-xs text-gray-600 mb-4">
-        All 9 MVP smart contracts deployed on Polygon Amoy (Chain ID: 80002)
+        All 11 MVP smart contracts deployed on Polygon Amoy (Chain ID: 80002)
       </p>
 
       <div className="space-y-2">

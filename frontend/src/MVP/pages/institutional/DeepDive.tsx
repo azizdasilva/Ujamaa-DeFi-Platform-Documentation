@@ -151,7 +151,7 @@ const DeepDive: React.FC = () => {
               <div className="mt-8 p-5 bg-gradient-to-br from-[#023D7A]/5 to-[#00A8A8]/5 rounded-2xl border border-[#48A9F0]/30">
                 <p className="text-xs font-bold text-[#023D7A] mb-3">📊 Quick Stats</p>
                 <ul className="text-xs text-[#023D7A] space-y-2">
-                  <li>• 9 Smart Contracts</li>
+                  <li>• 11 Smart Contracts</li>
                   <li>• 5 Pool Families</li>
                   <li>• 15+ API Endpoints</li>
                   <li>• 12 Blocked Jurisdictions</li>
@@ -169,7 +169,15 @@ const DeepDive: React.FC = () => {
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">GuaranteeTokenizer:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
                     <span className="text-[#333333]">LiquidityPool:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">IndustrialGateway:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -177,11 +185,27 @@ const DeepDive: React.FC = () => {
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">GuaranteeTokenizer:</span>
+                    <span className="text-[#333333]">IdentityRegistry:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#333333]">IndustrialGateway:</span>
+                    <span className="text-[#333333]">Compliance:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">MockEUROD:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">MockEscrow:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">MockFiatRamp:</span>
+                    <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#333333]">NavGateway:</span>
                     <span className="text-[#00A8A8] font-mono">Deployed ✓</span>
                   </div>
                 </div>
@@ -292,7 +316,7 @@ const DeepDive: React.FC = () => {
                           </p>
                           <p className="flex items-center gap-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                            9 Smart Contracts
+                            11 Smart Contracts
                           </p>
                           <p className="flex items-center gap-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
@@ -318,7 +342,7 @@ const DeepDive: React.FC = () => {
                         <tbody className="text-[#333333]">
                           <tr className="border-b border-[#48A9F0]/20">
                             <td className="py-4 px-4 font-semibold">Smart Contracts</td>
-                            <td className="py-4 px-4">ULPTokenizer, LiquidityPool, JurisdictionCompliance, GuaranteeTokenizer, IndustrialGateway, MockEscrow, MockFiatRamp, NavGateway, MockEUROD</td>
+                            <td className="py-4 px-4">ULPTokenizer, LiquidityPool, JurisdictionCompliance, IdentityRegistry, Compliance, GuaranteeTokenizer, IndustrialGateway, MockEscrow, MockFiatRamp, NavGateway, MockEUROD</td>
                             <td className="py-4 px-4">Solidity 0.8.20, ERC-3643, ERC-721</td>
                           </tr>
                           <tr className="border-b border-[#48A9F0]/20">
