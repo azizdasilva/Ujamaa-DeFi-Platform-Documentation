@@ -8,8 +8,8 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "./ULPToken.sol";
-import "./GuaranteeToken.sol";
+import "./ULPTokenizer.sol";
+import "./GuaranteeTokenizer.sol";
 
 /**
  * @title LiquidityPool
@@ -172,7 +172,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     /**
      * @notice uLP token contract
      */
-    ULPToken public ulpToken;
+    ULPTokenizer public ulpToken;
 
     /**
      * @notice UJEUR token contract
@@ -220,7 +220,7 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
     /**
      * @notice Guarantee Token contract (UGT)
      */
-    GuaranteeToken public guaranteeToken;
+    GuaranteeTokenizer public guaranteeToken;
 
     /**
      * @notice Financing ID to UGT token ID mapping
@@ -306,9 +306,9 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
             revert ZeroAddress();
         }
 
-        ulpToken = ULPToken(_ulpTokenAddr);
+        ulpToken = ULPTokenizer(_ulpTokenAddr);
         ujeurToken = IERC20(_ujeurToken);
-        guaranteeToken = GuaranteeToken(_guaranteeToken);
+        guaranteeToken = GuaranteeTokenizer(_guaranteeToken);
 
         // Initialize pool configurations
         _initializePools();
@@ -450,14 +450,21 @@ contract LiquidityPool is AccessControl, ReentrancyGuard {
         });
 
         // Mint UGT as collateral if certificate provided
-        // TODO: Fix guarantee token minting - requires full parameter set
-        // if (certificateId > 0 && address(guaranteeToken) != address(0)) {
-        //     try guaranteeToken.mintGuarantee(industrial, certificateId, principal, block.timestamp + (365 days), keccak256(abi.encodePacked(certificateId)), "Collateral", "Warehouse") returns (uint256 tokenId) {
-        //         financingToGuaranteeToken[financingId] = tokenId;
-        //     } catch {
-        //         // If minting fails, continue without UGT (MVP fallback)
-        //     }
-        // }
+        if (certificateId > 0 && address(guaranteeToken) != address(0)) {
+            try guaranteeToken.mintGuarantee(
+                industrial,
+                certificateId,
+                principal,
+                block.timestamp + (durationDays * 1 days),
+                keccak256(abi.encodePacked("financing-", financingId)),
+                string.concat("Collateral for financing #", _uint2str(financingId)),
+                "Warehouse"
+            ) returns (uint256 tokenId) {
+                financingToGuaranteeToken[financingId] = tokenId;
+            } catch {
+                // If minting fails, continue without UGT (MVP fallback)
+            }
+        }
 
         // Update allocations
         _updateAllocations(poolFamily, assetClass, industrial, principal);

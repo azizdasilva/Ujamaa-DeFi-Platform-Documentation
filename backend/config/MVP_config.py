@@ -102,35 +102,48 @@ class MVPConfig:
     
     # =========================================================================
     # SMART CONTRACT ADDRESSES
-    # Updated: 2026-04-02 (Polygon Amoy Testnet - Chain ID: 80002)
+    # Updated: 2026-04-05 (Polygon Amoy Testnet - Chain ID: 80002)
+    # Full redeploy with ERC-3643 + UGT Minting enabled
     # =========================================================================
 
-    CONTRACT_UPT_TOKEN: str = "0xb6062A6e63a07C3598629A65ed19021445fB3b26"
-    """UPTToken contract address (deployed on Polygon Amoy)"""
+    CONTRACT_UPT_TOKEN: str = "0x84fD03fF851c04D890F709BD26276eD12D62a763"
+    """ULPTokenizer contract address (deployed on Polygon Amoy)"""
 
-    CONTRACT_LIQUIDITY_POOL: str = "0x36e27C0b63103863a8a31a6EadEadEa0a0cDc2cfec"
-    """LiquidityPool contract address"""
+    CONTRACT_ULP_TOKENIZER: str = "0x84fD03fF851c04D890F709BD26276eD12D62a763"
+    """ULPTokenizer contract address (ERC-3643 compliant)"""
 
-    CONTRACT_MOCK_ESCROW: str = "0x8d446994fcD9906c573500959cDc8A8271a9485F"
+    CONTRACT_LIQUIDITY_POOL: str = "0x7C666e8F82F09BAeAD68D5e6588DE89d28a4805B"
+    """LiquidityPool contract address (with UGT minting enabled)"""
+
+    CONTRACT_MOCK_ESCROW: str = "0xBfa58aad4b1b1648cDE4C74e4a5E84b352382523"
     """MockEscrow contract address"""
 
-    CONTRACT_MOCK_FIAT_RAMP: str = "0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a"
+    CONTRACT_MOCK_FIAT_RAMP: str = "0x2180f53Dce716c196D6a1fA86aF7dc5BBdF0d854"
     """MockFiatRamp contract address"""
 
-    CONTRACT_JURISDICTION_COMPLIANCE: str = "0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c"
+    CONTRACT_JURISDICTION_COMPLIANCE: str = "0x6B48A85E2E54224BF7C165F5f463f502fB7453B7"
     """JurisdictionCompliance contract address"""
 
-    CONTRACT_GUARANTEE_TOKEN: str = "0x081fb064eac4597befbb2e1d36d9a78d63a33958"
-    """GuaranteeToken (UGT) contract address"""
+    CONTRACT_GUARANTEE_TOKENIZER: str = "0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1"
+    """GuaranteeTokenizer (UGT) contract address"""
 
-    CONTRACT_INDUSTRIAL_GATEWAY: str = "0x882071de6689ec1716bd7e162acf50707ac68930"
+    CONTRACT_GUARANTEE_TOKEN: str = "0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1"
+    """GuaranteeToken (UGT) contract address (legacy alias)"""
+
+    CONTRACT_INDUSTRIAL_GATEWAY: str = "0x842254e5aBCc3dBF402979683BB8345624fEA416"
     """IndustrialGateway contract address"""
 
-    CONTRACT_NAV_GATEWAY: str = "0x99712f923e3519B4305CEDAd402904299F29A0"
+    CONTRACT_NAV_GATEWAY: str = "0x8cf44a92b679e587d92C25bB5739cb4e850103A4"
     """NavGateway contract address"""
 
-    CONTRACT_MOCK_EUROD: str = "0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc"
+    CONTRACT_MOCK_EUROD: str = "0xF07938b598F6BC1C88d52197d36F68b20E955604"
     """MockEUROD (UJEUR) contract address"""
+
+    CONTRACT_IDENTITY_REGISTRY: str = "0x986B87102b8b0419d814840473859999E2cDa6FA"
+    """IdentityRegistry (ERC-3643) contract address"""
+
+    CONTRACT_COMPLIANCE: str = "0x68eEAeA566C5B17475e68Fd625844e2Acc8c2241"
+    """Compliance (ERC-3643) contract address"""
     
     # =========================================================================
     # INVESTMENT LIMITS (Testnet)

@@ -1,20 +1,22 @@
 // SPDX-License-Identifier: MIT
 // Ujamaa DeFi Platform - MVP Testnet Deployment Script
 // Network: Polygon Amoy (Chain ID: 80002)
-// Deploys ALL contracts including Oracle
+// Deploys ALL contracts including ERC-3643 infrastructure
 
 pragma solidity ^0.8.20;
 
 import "forge-std/Script.sol";
 import "../contracts/MVP/MockEUROD.sol";
-import "../contracts/MVP/ULPToken.sol";
-import "../contracts/MVP/GuaranteeToken.sol";
+import "../contracts/MVP/ULPTokenizer.sol";
+import "../contracts/MVP/GuaranteeTokenizer.sol";
 import "../contracts/MVP/LiquidityPool.sol";
 import "../contracts/MVP/IndustrialGateway.sol";
 import "../contracts/MVP/JurisdictionCompliance.sol";
 import "../contracts/MVP/MockEscrow.sol";
 import "../contracts/MVP/MockFiatRamp.sol";
 import "../contracts/MVP/NavGateway.sol";
+import "../contracts/ERC3643/IdentityRegistry.sol";
+import "../contracts/ERC3643/Compliance.sol";
 
 /**
  * MVP Testnet Deployment Script - DEPLOYS ALL CONTRACTS
@@ -27,15 +29,17 @@ import "../contracts/MVP/NavGateway.sol";
  *    forge script script/DeployMVP.s.sol:DeployMVP --rpc-url polygon_amoy --broadcast -vvvv
  *
  * Deployment Order:
- * 1. MockUJEUR (no deps)
+ * 1. MockEUROD (no deps)
  * 2. JurisdictionCompliance (no deps)
- * 3. MockEscrow (no deps)
- * 4. NavOracle (no deps)
- * 5. ULPToken (needs ujeurToken)
- * 6. GuaranteeToken (no deps)
- * 7. IndustrialGateway (needs GuaranteeToken)
- * 8. LiquidityPool (needs ulpToken, ujeurToken, guaranteeToken)
- * 9. MockFiatRamp (needs ujeurToken)
+ * 3. IdentityRegistry (no deps)
+ * 4. Compliance (no deps)
+ * 5. MockEscrow (no deps)
+ * 6. NavGateway (no deps)
+ * 7. ULPTokenizer (needs eurodToken, identityRegistry, compliance)
+ * 8. GuaranteeTokenizer (no deps)
+ * 9. IndustrialGateway (needs GuaranteeTokenizer set later)
+ * 10. LiquidityPool (needs ulpToken, eurodToken, guaranteeToken)
+ * 11. MockFiatRamp (needs eurodToken)
  */
 contract DeployMVP is Script {
     // Deployed contract addresses
@@ -49,6 +53,8 @@ contract DeployMVP is Script {
         address mockEscrow;
         address mockFiatRamp;
         address navGateway;
+        address identityRegistry;
+        address compliance;
     }
 
     function run() external returns (DeploymentOutput memory) {
@@ -74,52 +80,67 @@ contract DeployMVP is Script {
         console.log("JurisdictionCompliance deployed:", address(jurisdictionCompliance));
 
         // =====================================================================
-        // 3. Deploy MockEscrow (no dependencies)
+        // 3. Deploy IdentityRegistry (ERC-3643)
+        // =====================================================================
+        IdentityRegistry identityRegistry = new IdentityRegistry();
+        console.log("IdentityRegistry deployed:", address(identityRegistry));
+
+        // =====================================================================
+        // 4. Deploy Compliance (needs identityRegistry address)
+        // =====================================================================
+        Compliance compliance = new Compliance(address(identityRegistry));
+        console.log("Compliance deployed:", address(compliance));
+        console.log("Compliance -> IdentityRegistry linked");
+
+        // =====================================================================
+        // 5. Deploy MockEscrow (no dependencies)
         // =====================================================================
         MockEscrow mockEscrow = new MockEscrow();
         console.log("MockEscrow deployed:", address(mockEscrow));
 
         // =====================================================================
-        // 4. Deploy NavGateway (no dependencies)
+        // 6. Deploy NavGateway (no dependencies)
         // =====================================================================
         NavGateway navGateway = new NavGateway(1e18); // Initial NAV = €1.00
         console.log("NavGateway deployed:", address(navGateway));
 
         // =====================================================================
-        // 5. Deploy ULPToken (needs eurodToken)
+        // 7. Deploy ULPTokenizer (needs eurodToken, identityRegistry, compliance)
         // =====================================================================
-        ULPToken ulpToken = new ULPToken(
-            address(mockEUROD),      // eurodToken
-            200,                     // managementFeeRate (2%)
-            2000,                    // performanceFeeRate (20%)
-            500                      // hurdleRate (5%)
+        ULPTokenizer ulpToken = new ULPTokenizer(
+            address(mockEUROD),          // _ujeurToken
+            200,                         // _managementFeeRate (2%)
+            2000,                        // _performanceFeeRate (20%)
+            500,                         // _hurdleRate (5%)
+            address(identityRegistry),   // _identityRegistry (ERC-3643)
+            address(compliance)          // _compliance (ERC-3643)
         );
-        console.log("ULPToken deployed:", address(ulpToken));
+        console.log("ULPTokenizer deployed:", address(ulpToken));
 
         // =====================================================================
-        // 6. Deploy GuaranteeToken (no dependencies)
+        // 8. Deploy GuaranteeTokenizer (no dependencies)
         // =====================================================================
-        GuaranteeToken guaranteeToken = new GuaranteeToken();
-        console.log("GuaranteeToken deployed:", address(guaranteeToken));
+        GuaranteeTokenizer guaranteeToken = new GuaranteeTokenizer();
+        console.log("GuaranteeTokenizer deployed:", address(guaranteeToken));
 
         // =====================================================================
-        // 7. Deploy IndustrialGateway (needs GuaranteeToken reference)
+        // 9. Deploy IndustrialGateway (needs GuaranteeToken reference set later)
         // =====================================================================
         IndustrialGateway industrialGateway = new IndustrialGateway();
         console.log("IndustrialGateway deployed:", address(industrialGateway));
 
         // =====================================================================
-        // 8. Deploy LiquidityPool (needs ulpToken, eurodToken, guaranteeToken)
+        // 10. Deploy LiquidityPool (needs ulpToken, eurodToken, guaranteeToken)
         // =====================================================================
         LiquidityPool liquidityPool = new LiquidityPool(
-            address(ulpToken),       // ulpToken
-            address(mockEUROD),      // eurodToken
-            address(guaranteeToken)  // guaranteeToken
+            address(ulpToken),          // ulpToken
+            address(mockEUROD),         // eurodToken
+            address(guaranteeToken)     // guaranteeToken
         );
         console.log("LiquidityPool deployed:", address(liquidityPool));
 
         // =====================================================================
-        // 9. Deploy MockFiatRamp (needs eurodToken)
+        // 11. Deploy MockFiatRamp (needs eurodToken)
         // =====================================================================
         MockFiatRamp mockFiatRamp = new MockFiatRamp(address(mockEUROD));
         console.log("MockFiatRamp deployed:", address(mockFiatRamp));
@@ -128,12 +149,26 @@ contract DeployMVP is Script {
         // Initialize Contracts & Grant Roles
         // =====================================================================
 
-        // Grant roles for ULPToken
+        // Grant roles for ULPTokenizer
         ulpToken.grantRole(ulpToken.MINTER_ROLE(), deployer);
         ulpToken.grantRole(ulpToken.REDEEMER_ROLE(), deployer);
         ulpToken.grantRole(ulpToken.POOL_MANAGER_ROLE(), deployer);
 
-        // Grant roles for GuaranteeToken
+        // Grant roles for IdentityRegistry
+        identityRegistry.grantRole(identityRegistry.COMPLIANCE_OFFICER_ROLE(), deployer);
+        identityRegistry.grantRole(identityRegistry.IDENTITY_ADMIN_ROLE(), deployer);
+
+        // Grant roles for Compliance
+        compliance.grantRole(compliance.COMPLIANCE_OFFICER_ROLE(), deployer);
+
+        // Wire IdentityRegistry + Compliance into Compliance module
+        // (if Compliance needs IdentityRegistry reference)
+
+        // Wire GuaranteeTokenizer into IndustrialGateway
+        industrialGateway.setGuaranteeToken(address(guaranteeToken));
+        console.log("IndustrialGateway -> GuaranteeTokenizer linked");
+
+        // Grant roles for GuaranteeTokenizer
         guaranteeToken.grantRole(guaranteeToken.MINTER_ROLE(), deployer);
         guaranteeToken.grantRole(guaranteeToken.POOL_MANAGER_ROLE(), deployer);
 
@@ -171,7 +206,9 @@ contract DeployMVP is Script {
             jurisdictionCompliance: address(jurisdictionCompliance),
             mockEscrow: address(mockEscrow),
             mockFiatRamp: address(mockFiatRamp),
-            navGateway: address(navGateway)
+            navGateway: address(navGateway),
+            identityRegistry: address(identityRegistry),
+            compliance: address(compliance)
         });
 
         // Log deployment summary
@@ -183,20 +220,23 @@ contract DeployMVP is Script {
         console.log("----------------------------------------");
         console.log("ALL Contract Addresses:");
         console.log("MockEUROD:           ", address(mockEUROD));
-        console.log("ULPToken:            ", address(ulpToken));
-        console.log("GuaranteeToken:      ", address(guaranteeToken));
+        console.log("ULPTokenizer:        ", address(ulpToken));
+        console.log("GuaranteeTokenizer:  ", address(guaranteeToken));
         console.log("LiquidityPool:       ", address(liquidityPool));
         console.log("IndustrialGateway:   ", address(industrialGateway));
         console.log("JurisdictionCompliance:", address(jurisdictionCompliance));
+        console.log("IdentityRegistry:    ", address(identityRegistry));
+        console.log("Compliance:          ", address(compliance));
         console.log("MockEscrow:          ", address(mockEscrow));
         console.log("MockFiatRamp:        ", address(mockFiatRamp));
         console.log("NavGateway:          ", address(navGateway));
         console.log("========================================\n");
 
         console.log("Copy these addresses to:");
-        console.log("1. frontend/src/config/monitor.ts");
-        console.log("2. frontend/src/MVP/pages/ContractTestDashboard.tsx");
-        console.log("Then set USE_MOCK_DATA: false");
+        console.log("1. backend/.env");
+        console.log("2. frontend/src/config/monitor.ts");
+        console.log("3. frontend/src/MVP/pages/ContractTestDashboard.tsx");
+        console.log("Then set DEMO_MODE=False for real blockchain calls");
 
         return output;
     }
