@@ -56,11 +56,11 @@ const DocsHome: React.FC = () => {
     {
       id: 'algorithms',
       title: 'Algorithms',
-      description: 'Algorithm specifications and implementation details',
+      description: '54 algorithm specifications (27 original + 27 post-audit)',
       icon: '🧮',
       color: 'from-[#D57028] to-[#48A9F0]',
       link: '/docs/algorithms',
-      items: 5,
+      items: 6,
     },
   ];
 

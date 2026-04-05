@@ -250,8 +250,9 @@ const Navigation: React.FC = () => {
 
       {/* ─── Top Bar ─── */}
       <header className="fixed top-0 left-16 right-0 h-[120px] bg-white border-b border-gray-200 z-30 flex items-center px-6 justify-between">
-        <div className="flex items-center gap-3">
-          <img src="/assets/images/logo-transparent.png" alt="Ujamaa DeFi" className="h-[100px] w-auto" />
+        <div className="flex flex-col items-start gap-1">
+          <img src="/assets/images/logo-transparent.png" alt="Ujamaa DeFi" className="h-[80px] w-auto" />
+          <p className="text-xs text-gray-500 font-medium tracking-wide">Institutional-Grade African Real-World Asset Tokenization</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">

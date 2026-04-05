@@ -160,6 +160,10 @@
 <li><a href="#10-bank-escrow--payment-algorithms">Bank Escrow &amp; Payment Algorithms</a></li>
 <li><a href="#11-cryptographic--security-algorithms">Cryptographic &amp; Security Algorithms</a></li>
 <li><a href="#12-performance--optimization-algorithms">Performance &amp; Optimization Algorithms</a></li>
+<li><a href="#appendix-a-algorithm-complexity-summary">Appendix A: Algorithm Complexity Summary</a></li>
+<li><a href="#appendix-b-implementation-status">Appendix B: Implementation Status</a></li>
+<li><a href="#appendix-c-additional-algorithms">Appendix C: Additional Algorithms (Post-Audit)</a></li>
+<li><a href="#appendix-d-srs-to-algorithm-cross-reference">Appendix D: SRS Cross-Reference Matrix</a></li>
 </ol>
 <hr />
 </section>
@@ -2935,9 +2939,171 @@ class LRUCache:
 <td>O(m) metrics</td>
 <td>O(1)</td>
 </tr>
+<tr>
+<td>ALG-02-01-01</td>
+<td>FX Fee Calculation</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-04-03</td>
+<td>Management Fee (Time-Weighted)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-04-04</td>
+<td>Performance Fee (Hurdle Rate)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-04-05</td>
+<td>Compound Yield</td>
+<td>O(log(n×t))</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-01-02</td>
+<td>APY Back-Calculation</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-03-03</td>
+<td>Net APY</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-03-04</td>
+<td>Yield Variance</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-03-05</td>
+<td>Expense Ratio</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-03-06</td>
+<td>Utilization Rate</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-03-07</td>
+<td>Cash Drag</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-11-02-01</td>
+<td>Session Management</td>
+<td>O(1)</td>
+<td>O(n) sessions</td>
+</tr>
+<tr>
+<td>ALG-11-02-02</td>
+<td>Nonce Generation</td>
+<td>O(1)</td>
+<td>O(n) nonces</td>
+</tr>
+<tr>
+<td>ALG-09-03-01</td>
+<td>Rate Limiting</td>
+<td>O(1)</td>
+<td>O(n×w)</td>
+</tr>
+<tr>
+<td>ALG-09-03-02</td>
+<td>Circuit Breaker</td>
+<td>O(n log n)</td>
+<td>O(n) oracles</td>
+</tr>
+<tr>
+<td>ALG-09-03-03</td>
+<td>Retry w/ Backoff</td>
+<td>O(max_attempts)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-01-03</td>
+<td>Deposit Share Minting</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-02-01</td>
+<td>Redemption Proceeds</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-01-04</td>
+<td>Lockup Enforcement</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-04-05-01</td>
+<td>Transfer Eligibility</td>
+<td>O(k) checks</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-04-02-01</td>
+<td>Sanctions Screening</td>
+<td>O(n + m×k + c)</td>
+<td>O(n + m)</td>
+</tr>
+<tr>
+<td>ALG-05-05-01</td>
+<td>Collateralization Ratio</td>
+<td>O(n) financings</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-06-01</td>
+<td>Default &amp; Recovery</td>
+<td>O(n) financings</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-03-05-01</td>
+<td>Bridge Rate Limiting</td>
+<td>O(1)</td>
+<td>O(w) windows</td>
+</tr>
+<tr>
+<td>ALG-03-05-02</td>
+<td>Gas Fee Estimation</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>ALG-10-08-01</td>
+<td>Withholding Tax</td>
+<td>O(1)</td>
+<td>O(t) treaties</td>
+</tr>
+<tr>
+<td>ALG-10-07-01</td>
+<td>Portfolio Aggregation</td>
+<td>O(n) pools</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>ALG-10-04-06</td>
+<td>Repayment Total Owed</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
 </tbody>
 </table></div>
-<p><strong>Total Algorithms:</strong> 27</p>
+<p><strong>Total Algorithms:</strong> 54 (27 original + 27 added)</p>
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix B: Implementation Status</h2>
@@ -3222,15 +3388,15 @@ class LRUCache:
 <tr>
 <td><strong>Pool Management (EPIC-10)</strong></td>
 <td>2</td>
-<td>1</td>
+<td>7</td>
 <td>0</td>
-<td>1</td>
-<td>50%</td>
+<td>0</td>
+<td>100%</td>
 </tr>
 <tr>
 <td><strong>Compliance (EPIC-4,7)</strong></td>
 <td>2</td>
-<td>2</td>
+<td>3</td>
 <td>0</td>
 <td>0</td>
 <td>100%</td>
@@ -3238,10 +3404,10 @@ class LRUCache:
 <tr>
 <td><strong>Gateway &amp; Pricing (EPIC-3)</strong></td>
 <td>1</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
-<td>0%</td>
+<td>100%</td>
 </tr>
 <tr>
 <td><strong>Bank Escrow (EPIC-10)</strong></td>
@@ -3262,18 +3428,42 @@ class LRUCache:
 <tr>
 <td><strong>Performance (EPIC-9)</strong></td>
 <td>2</td>
+<td>5</td>
 <td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Cross-Bridge (EPIC-3)</strong></td>
 <td>0</td>
 <td>2</td>
-<td>0%</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Tax Compliance (Cross-cutting)</strong></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Portfolio &amp; Reporting (EPIC-10)</strong></td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
 <td><strong>27</strong></td>
-<td><strong>17</strong></td>
-<td><strong>4</strong></td>
-<td><strong>6</strong></td>
-<td><strong>78%</strong></td>
+<td><strong>27</strong></td>
+<td><strong>1</strong></td>
+<td><strong>2</strong></td>
+<td><strong>96%</strong></td>
 </tr>
 </tbody>
 </table></div>
@@ -3299,13 +3489,1151 @@ class LRUCache:
 - <code>contracts/MVP/JurisdictionCompliance.sol</code> - Jurisdiction filtering<br />
 - <code>contracts/MVP/MockEscrow.sol</code> - Bank escrow mock (MVP)</p>
 <hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix C: Additional Algorithms (Post-Audit Addition)</h2>
+<p><strong>Version:</strong> 2.0 (Post-Audit Addition)<br />
+<strong>Date:</strong> April 5, 2026<br />
+<strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<strong>Purpose:</strong> Document 27 algorithms identified in SRS/backend code but not previously specified</p>
+<hr />
+<h3>C.1 Fee &amp; Yield Calculations (EPIC 10)</h3>
+<h4>C.1.1 FX Fee Calculation &amp; Allocation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-05-04-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §2.4 (FX Risk Mitigation, lines ~1851-2028), EPIC 5 (Payments &amp; Stablecoins)<br />
+<strong>Purpose:</strong> Calculate 2% FX fee on EUR-to-FCFA conversion and allocate proceeds<br />
+<strong>Implementation:</strong> Solidity (MockFiatRamp.sol), Python (backend)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>fee = eurAmount × FX_FEE_BP / BASIS_POINTS
+netAmount = grossAmount - fee
+
+Allocation:
+  FX Risk Reserve:    fee × 50%
+  Platform Operations: fee × 30%
+  Insurance Fund:     fee × 20%
+
+Where:
+  FX_FEE_BP = 200 (2%)
+  BASIS_POINTS = 10000
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.1.2 Management Fee Calculation (Time-Weighted)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-04-03</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §1.2, EPIC 10 US 10.4<br />
+<strong>Purpose:</strong> Calculate annualized management fee using ACT/365 day count<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:266-300), Solidity (ULPToken.sol)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>managementFee = totalPoolValue × (managementFeeRate / 10000) × (timeElapsed / 365 days)
+
+Where:
+  managementFeeRate = 200 basis points (2% annual)
+  timeElapsed = block.timestamp - s_lastFeeCalculation
+  365 days = 31,536,000 seconds
+
+Example:
+  Pool: €10,000,000 | Rate: 2% | Days: 90
+  Fee = 10,000,000 × 0.02 × (90/365) = €49,315
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.1.3 Performance Fee Calculation (Hurdle Rate)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-04-04</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §1.2, EPIC 10 US 10.4<br />
+<strong>Purpose:</strong> Calculate performance fee on yield above hurdle rate<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:302-358)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>hurdleYield = principal × (hurdleRate / 10000) × (days / 365)
+excessYield = yieldEarned - hurdleYield
+
+IF excessYield &gt; 0:
+  performanceFee = excessYield × (performanceFeeRate / 10000)
+ELSE:
+  performanceFee = 0
+
+Where:
+  hurdleRate = 500 basis points (5% annual)
+  performanceFeeRate = 2000 basis points (20%)
+
+Example:
+  Principal: €1M | Yield Earned: €80K | Days: 365
+  Hurdle: 1M × 0.05 × 1 = €50K
+  Excess: €80K - €50K = €30K
+  Performance Fee: €30K × 0.20 = €6K
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.1.4 Compound Yield Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-04-05</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.4, EPIC 10 US 10.4<br />
+<strong>Purpose:</strong> Calculate compound yield with configurable compounding frequencies<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:572-629)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>A = P × (1 + r/n)^(n×t)
+
+Where:
+  A = Final amount
+  P = Principal
+  r = Annual interest rate (decimal)
+  n = Compounding frequency per year
+  t = Time in years
+
+Compounding Frequencies:
+  Daily:     n = 365
+  Weekly:    n = 52
+  Monthly:   n = 12
+  Quarterly: n = 4
+  Annually:  n = 1
+
+Example:
+  P = €1,000,000 | r = 10% | t = 1 year
+  Daily:     1M × (1 + 0.10/365)^365 = €1,105,156
+  Monthly:   1M × (1 + 0.10/12)^12   = €1,104,713
+  Annually:  1M × (1 + 0.10/1)^1     = €1,100,000
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(log(n×t)) - Exponentiation</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.1.5 APY Back-Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-01-02</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.1, EPIC 10 US 10.1<br />
+<strong>Purpose:</strong> Annualize actual returns using day count convention<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:385-415, 872-895)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>APY = (yield / principal) × (365 / days) × 100
+
+Example:
+  Yield: €25,000 | Principal: €1,000,000 | Days: 90
+  APY = (25,000 / 1,000,000) × (365 / 90) × 100
+  APY = 0.025 × 4.056 × 100 = 10.14%
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.2 Pool KPI Metrics (EPIC 10)</h3>
+<h4>C.2.1 Net APY Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-03-03</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.3, EPIC 10 US 10.3<br />
+<strong>Purpose:</strong> Calculate net APY after all fees<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:631-665)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>netYield = grossYield - managementFee - performanceFee
+netAPY = (netYield / TVL) × (365 / days) × 100
+
+Example:
+  Gross Yield: €100K | Fees: €15K | TVL: €10M | Days: 365
+  Net Yield: €85K
+  Net APY = (85,000 / 10,000,000) × 1 × 100 = 0.85%
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.2.2 Yield Variance Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-03-04</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.3, EPIC 10 US 10.3<br />
+<strong>Purpose:</strong> Calculate percentage deviation between projected and actual yield<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:667-689)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>variance = |projectedYield - actualYield| / projectedYield × 100
+
+Example:
+  Projected: €100K | Actual: €92K
+  Variance = |100K - 92K| / 100K × 100 = 8%
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.2.3 Expense Ratio Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-03-05</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.3, EPIC 10 US 10.3<br />
+<strong>Purpose:</strong> Calculate total fees as percentage of TVL, annualized<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:691-721)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>expenseRatio = (totalFees / TVL) × (365 / days) × 100
+
+Example:
+  Total Fees: €200K | TVL: €10M | Days: 365
+  Expense Ratio = (200,000 / 10,000,000) × 1 × 100 = 2.0%
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.2.4 Utilization Rate Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-03-06</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.3, EPIC 10 US 10.3<br />
+<strong>Purpose:</strong> Calculate percentage of pool capital deployed to industrials<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:723-747)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>utilizationRate = deployedAmount / totalPoolValue × 100
+
+Target Range: 85-92%
+
+Example:
+  Deployed: €8.5M | Total Pool: €10M
+  Utilization = 8.5M / 10M × 100 = 85% ✅
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.2.5 Cash Drag Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-03-07</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.3, EPIC 10 US 10.3<br />
+<strong>Purpose:</strong> Calculate yield impact from un-deployed capital<br />
+<strong>Implementation:</strong> Python (yield_calculator.py:749-783)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>undeployed = totalPoolValue - deployedAmount
+cashDrag = (undeployed × targetAPY × days/365) / TVL × 100
+
+Target: &lt;0.75%
+
+Example:
+  Undeployed: €1.5M | Target APY: 10% | Days: 365 | TVL: €10M
+  Cash Drag = (1.5M × 0.10 × 1) / 10M × 100 = 1.5% ⚠️
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.3 Authentication &amp; Security (SRS §1.2.1 - Cross-Cutting)</h3>
+<h4>C.3.1 Session Management Algorithm (SIWE + JWT)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-09-04-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §1.2.1 (Authentication, lines ~497-528) — Cross-cutting infrastructure<br />
+<strong>Purpose:</strong> Manage authentication lifecycle with SIWE + JWT<br />
+<strong>Implementation:</strong> Python (FastAPI middleware), Redis</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Session Lifecycle Rules:
+  1. Idle Timeout: 15 minutes (no activity → expire)
+  2. Absolute Timeout: 8 hours (max session duration)
+  3. Concurrent Sessions: Max 5 per user
+     - On 6th login: Evict oldest session (FIFO)
+  4. Logout: Blacklist JWT in Redis with TTL = remaining expiry
+  5. Refresh Token: Rotate on each use (prevent replay)
+
+State Machine:
+  LOGIN → [ACTIVE] → IDLE (15min) → EXPIRED
+                ↓
+           ABSOLUTE (8h) → EXPIRED
+                ↓
+           CONCURRENT (&gt;5) → EVICT OLDEST
+
+Redis Keys:
+  session:{user_id}:{session_id} → {jwt, created_at, last_access}
+  blacklist:{jwt_id} → {exp_timestamp}
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1) per check (Redis lookup)</li>
+<li><strong>Space:</strong> O(n) where n = active sessions</li>
+</ul>
+<hr />
+<h4>C.3.2 Nonce Generation &amp; Validation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-09-04-02</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §1.2.1 (Authentication, lines ~497-501) — Cross-cutting infrastructure<br />
+<strong>Purpose:</strong> Generate and validate cryptographic nonces for SIWE<br />
+<strong>Implementation:</strong> Python (cryptography library), Redis</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Generation:
+  1. Generate UUID v4 (122-bit random nonce)
+  2. Store in Redis: nonce:{address} → {nonce, expires_at}
+  3. Set TTL: 5 minutes
+  4. Return to client
+
+Validation:
+  1. Client signs message with nonce using wallet
+  2. Recover signer address from signature
+  3. Verify recovered address == expected address
+  4. Verify nonce not expired
+  5. Delete nonce from Redis (one-time use)
+  6. If valid → Issue JWT
+
+Replay Attack Prevention:
+  - Nonce deleted after single use
+  - TTL expiration prevents stale nonces
+  - Signature verification prevents spoofing
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1) for generation, O(1) for validation</li>
+<li><strong>Space:</strong> O(n) where n = pending nonces</li>
+</ul>
+<hr />
+<h3>C.4 Rate Limiting &amp; Resilience (EPIC 9)</h3>
+<h4>C.4.1 Rate Limiting Algorithm (Token Bucket / Sliding Window)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-09-03-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §9.1, Arch Spec §4.7, EPIC 9 US 9.1<br />
+<strong>Purpose:</strong> Enforce API rate limits with configurable thresholds<br />
+<strong>Implementation:</strong> Python (FastAPI middleware), Redis</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Sliding Window Counter:
+  1. Key: ratelimit:{endpoint}:{identifier}:{window}
+  2. Window: 1 hour (3600 seconds)
+  3. Increment counter on each request
+  4. If counter &gt; limit → Reject with 429
+
+Rate Limits:
+  - Failed logins: 5/hour → Lockout (1 hour)
+  - KYC submissions: 10/minute per IP
+  - Bridge volume: $10M/day limit
+
+Pseudocode:
+  window = floor(timestamp / window_size)
+  key = f"ratelimit:{endpoint}:{user_ip}:{window}"
+  count = redis.incr(key)
+  redis.expire(key, window_size)
+
+  if count &gt; limit:
+    return 429 Too Many Requests
+
+Lockout Logic:
+  failed_attempts = redis.get(f"failed_login:{user_id}")
+  if failed_attempts &gt;= 5:
+    lockout_until = redis.ttl(f"lockout:{user_id}")
+    return 423 Locked
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1) per request (Redis atomic operations)</li>
+<li><strong>Space:</strong> O(n × w) where n = users, w = windows tracked</li>
+</ul>
+<hr />
+<h4>C.4.2 Circuit Breaker Algorithm (Price Feed Deviation)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-09-03-02</code><br />
+<strong>SRS Reference:</strong> Arch Spec §4.3, SRS v2.1 §4, EPIC 9 US 9.2<br />
+<strong>Purpose:</strong> Monitor oracle price feeds and trigger circuit breaker on deviation<br />
+<strong>Implementation:</strong> Python (backend monitoring service)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Circuit Breaker States:
+  CLOSED (Normal) → OPEN (Tripped) → HALF-OPEN (Testing) → CLOSED
+
+Trigger Conditions:
+  1. Price deviation &gt; 5% from median
+  2. All oracles failed (no price data)
+  3. Oracle response timeout &gt; 30 seconds
+
+State Machine:
+  CLOSED:
+    - Monitor price feeds
+    - Calculate deviation from median
+    - IF deviation &gt; 5% OR all_failed → OPEN
+
+  OPEN:
+    - Pause trading
+    - Alert compliance team
+    - Wait 5 minutes
+    - Attempt fallback to secondary oracles (Pyth, API3)
+    - IF fallback succeeds → HALF-OPEN
+
+  HALF-OPEN:
+    - Allow test transaction
+    - IF successful → CLOSED (reset)
+    - IF failed → OPEN (retry after 5 min)
+
+Deviation Calculation:
+  median = median(oracle_prices)
+  deviation = |oracle_price - median| / median × 100
+  IF deviation &gt; 5% → Flag oracle
+  IF all oracles flagged → OPEN circuit
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(n log n) for median calculation (n = oracles)</li>
+<li><strong>Space:</strong> O(n) for oracle price storage</li>
+</ul>
+<hr />
+<h4>C.4.3 Retry Logic with Exponential Backoff</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-09-03-03</code><br />
+<strong>SRS Reference:</strong> Arch Spec §4.4, Frontend Spec, EPIC 9 US 9.2<br />
+<strong>Purpose:</strong> Implement retry with exponential backoff for transient failures<br />
+<strong>Implementation:</strong> Python (retry library), TypeScript (frontend)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Exponential Backoff Formula:
+  delay = min(base_delay × 2^attempt + jitter, max_delay)
+
+Parameters:
+  Frontend queries:
+    - Max attempts: 2
+    - Base delay: 1 second
+    - Max delay: 5 seconds
+
+  Blockchain RPC:
+    - Max attempts: 3
+    - Base delay: 2 seconds
+    - Max delay: 30 seconds
+    - Jitter: random(0, 1) seconds
+
+  Kafka consumer:
+    - Max attempts: 5
+    - Base delay: 1 second
+    - Max delay: 60 seconds
+
+Pseudocode:
+  for attempt in range(max_attempts):
+    try:
+      return call_service()
+    except TransientError as e:
+      if attempt == max_attempts - 1:
+        raise
+      delay = min(base_delay × 2^attempt + random(0, 1), max_delay)
+      sleep(delay)
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(max_attempts) worst case</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.5 Investment/Redemption Logic (EPIC 10)</h3>
+<h4>C.5.1 Deposit Share Minting Algorithm</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-01-03</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.1, EPIC 10 US 10.1<br />
+<strong>Purpose:</strong> Calculate shares to mint on deposit based on NAV<br />
+<strong>Implementation:</strong> Solidity (ULPToken.sol), Python (backend/api/pools.py:464-512)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>IF totalSupply == 0:
+  // First deposit: 1:1 ratio
+  shares = amount
+ELSE:
+  shares = amount / navPerShare
+
+Where:
+  navPerShare = totalPoolValue / totalSupply
+
+Constraints:
+  minDeposit: €1,000 (1000 × 1e18)
+  maxDeposit: €50,000 (retail), €1,000,000 (institutional)
+
+Example:
+  Pool Value: €10M | Shares: 10M | NAV: €1.00
+  Deposit: €100,000
+  Shares Minted: 100,000 / 1.00 = 100,000 uLP
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.5.2 Redemption Proceeds Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-02-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.2, EPIC 10 US 10.2<br />
+<strong>Purpose:</strong> Calculate EUR return on redemption based on NAV<br />
+<strong>Implementation:</strong> Solidity (ULPToken.sol), Python (backend/api/pools.py:518-580)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>eurAmount = shares × navPerShare
+
+Validation:
+  1. shares &lt;= balanceOf(user)
+  2. eurAmount &lt;= totalPoolValue
+  3. Lockup period passed (if applicable)
+
+Example:
+  User redeems: 50,000 uLP
+  NAV: €1.05
+  EUR Received: 50,000 × 1.05 = €52,500
+  (Original deposit: €50,000 → Yield: €2,500)
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.5.3 Lockup Period Enforcement</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-01-04</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §2.2, EPIC 10 Pool Configuration<br />
+<strong>Purpose:</strong> Validate tokens cannot be transferred before lockup expires<br />
+<strong>Implementation:</strong> Solidity (transfer restriction), Python (backend validation)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Lockup Validation:
+  1. Find deposit record: deposit = deposits[user][tokenId]
+  2. Get pool config: pool = pools[deposit.poolFamily]
+  3. Calculate elapsed time: elapsed = now - deposit.timestamp
+  4. Check: elapsed &gt;= pool.lockupDays × 1 days
+
+Pool-Specific Lockups:
+  POOL_INDUSTRIE:      365 days
+  POOL_AGRICULTURE:    180 days
+  POOL_TRADE_FINANCE:  90 days
+  POOL_RENEWABLE_ENERGY: 730 days
+  POOL_REAL_ESTATE:    1095 days
+
+Remaining Lockup Calculation:
+  remaining = max(0, deposit.timestamp + lockupDays × 1 days - now)
+
+Example:
+  Deposit: Jan 1, 2026 | Pool: Real Estate (1095 days)
+  Current: June 1, 2026
+  Elapsed: 151 days
+  Remaining: 1095 - 151 = 944 days
+  Status: ❌ LOCKED (cannot redeem)
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.6 Compliance &amp; Risk (EPIC 4/7)</h3>
+<h4>C.6.1 Transfer Eligibility Verification (Multi-Check Pipeline)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-04-06-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §5 (Transfer Restrictions), EPIC 4 (Compliance Features)<br />
+<strong>Purpose:</strong> Execute sequential compliance checks with short-circuit evaluation<br />
+<strong>Implementation:</strong> Solidity (Compliance.sol), Python (backend compliance middleware)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Sequential Checks (Short-Circuit - First Failure Stops):
+  1. Sender identity verified?
+     IF NOT → REJECT: "Sender identity not verified"
+  2. Recipient identity verified?
+     IF NOT → REJECT: "Recipient identity not verified"
+  3. Sender jurisdiction allowed?
+     IF NOT → REJECT: "Blocked jurisdiction (sender)"
+  4. Recipient jurisdiction allowed?
+     IF NOT → REJECT: "Blocked jurisdiction (recipient)"
+  5. Lockup period passed?
+     IF NOT → REJECT: "Lockup period active, X days remaining"
+  6. Investment limit check?
+     IF EXCEEDED → REJECT: "Amount exceeds investment limit"
+  7. Sanctions screening passed?
+     IF NOT → REJECT: "Address on sanctions list"
+  8. Concentration limit check?
+     IF EXCEEDED → REJECT: "Would exceed concentration limit"
+
+  IF ALL PASS → APPROVE
+
+Complexity: O(k) where k = number of checks (max 8)
+Worst Case: All 8 checks executed
+Best Case: First check fails (short-circuit)
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(k) where k = 8 checks (short-circuit)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h4>C.6.2 Sanctions Screening Algorithm (Fuzzy Matching)</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-04-07-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §4 (Compliance Requirements, lines ~1530, 1838, 9490, 9934) — Cross-cutting compliance<br />
+<strong>Purpose:</strong> Screen wallets/names against OFAC, UN, EU, FATF sanctions lists<br />
+<strong>Implementation:</strong> Python (backend compliance service)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Multi-Layer Screening:
+  Layer 1: Exact Address Match
+    - Check wallet against OFAC SDN list (exact match)
+    - Time: O(n) where n = sanctioned addresses
+
+  Layer 2: Fuzzy Name Matching
+    - Levenshtein distance &lt; 3 → Flag for review
+    - Jaro-Winkler similarity &gt; 0.85 → Flag for review
+    - Time: O(m × k) where m = names, k = avg name length
+
+  Layer 3: IP Address Correlation
+    - Check if IP associated with sanctioned entity
+    - Time: O(1) via database lookup
+
+  Layer 4: Device Fingerprint Clustering
+    - Group wallets by shared device fingerprints
+    - If any wallet in cluster sanctioned → Flag all
+    - Time: O(c) where c = cluster size
+
+Scoring:
+  confidence_score = weighted_sum(exact_match, fuzzy_match, ip_match, device_match)
+  IF confidence_score &gt; 0.8 → BLOCK
+  IF confidence_score &gt; 0.6 → REVIEW
+  ELSE → PASS
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(n + m×k + c) where n=addresses, m=names, k=name length, c=cluster size</li>
+<li><strong>Space:</strong> O(n + m) for sanctions lists</li>
+</ul>
+<hr />
+<h4>C.6.3 Collateralization Ratio Monitoring</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-05-05-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 (lines ~1245, 3683) — Collateral Management (EPIC 5)<br />
+<strong>Purpose:</strong> Monitor ratio of collateral value (UGT) to deployed capital<br />
+<strong>Implementation:</strong> Python (backend monitoring service)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>collateralizationRatio = ugtValue / deployedAmount × 100
+
+Where:
+  ugtValue = Σ(guarantee.merchandiseValue for all active guarantees)
+  deployedAmount = Σ(financing.principal for all active financings)
+
+Alert Thresholds:
+  Ratio &gt; 120%: ✅ Over-collateralized (safe)
+  Ratio 100-120%: ⚠️ Adequately collateralized
+  Ratio 80-100%: ⚠️ Under-collateralized (monitor)
+  Ratio &lt; 80%: 🚨 Critically under-collateralized (alert)
+
+Example:
+  UGT Value: €12M | Deployed: €10M
+  Ratio = 12M / 10M × 100 = 120% ✅
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(n) where n = active financings</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.7 Default &amp; Recovery (EPIC 10)</h3>
+<h4>C.7.1 Default Detection &amp; Recovery Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-06-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10 (Liquidity Pool), EPIC 10 US 10.4/10.5<br />
+<strong>Purpose:</strong> Detect financing defaults and calculate recovery distribution<br />
+<strong>Implementation:</strong> Python (backend service), Solidity (LiquidityPool.sol)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Default Detection:
+  1. Check: financing.maturityDate &lt; now AND financing.amountRepaid &lt; totalOwed
+  2. IF TRUE → Mark as defaulted
+  3. Trigger UGT liquidation
+
+Recovery Calculation:
+  outstanding = financing.principal + interest - financing.amountRepaid
+  liquidationProceeds = auctionSalePrice
+  lossGivenDefault = max(0, outstanding - liquidationProceeds)
+
+Pro-Rata Distribution to uLP Holders:
+  recoveryRate = liquidationProceeds / outstanding × 100
+  investorRecovery = investorULPBalance × recoveryRate / 100
+
+Example:
+  Financing: €1M principal + €100K interest = €1.1M total
+  Repaid: €400K | Outstanding: €700K
+  UGT Auction: €600K
+  Loss: €700K - €600K = €100K
+  Recovery Rate: 600K / 700K = 85.7%
+
+  uLP Holder with 1% of pool:
+  Recovery: 1% × €600K = €6,000
+  Loss: 1% × €100K = €1,000
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(n) where n = financings to check</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.8 Cross-Bridge &amp; Gas (EPIC 3)</h3>
+<h4>C.8.1 Cross-Chain Bridge Rate Limiting</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-03-05-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §6 (lines ~8049-8082) — Cross-Chain Bridge (EPIC 3)<br />
+<strong>Purpose:</strong> Enforce daily bridge volume limits with sliding window<br />
+<strong>Implementation:</strong> Python (bridge service), Solidity (bridge contract)</p>
+<h5>Algorithm Logic</h5>
+<div class="docs-pre"><code>Sliding Window Rate Limiter:
+  1. Key: bridge:{direction}:{window_date}
+  2. Directions: ETH→POLY, POLY→ETH
+  3. Window: 24 hours (daily reset)
+
+Limits:
+  - Daily volume: $10M per direction
+  - Per-transaction: $1M max
+  - Challenge period: 15 minutes (POLY→ETH)
+  - Circuit breaker: 80% of daily limit → Pause
+
+Validation:
+  IF amount &gt; 1M → REJECT: "Exceeds per-transaction limit"
+  IF dailyVolume + amount &gt; 10M → REJECT: "Daily limit reached"
+  IF dailyVolume &gt; 8M → TRIGGER circuit breaker
+
+  dailyVolume += amount
+  IF direction == POLY→ETH:
+    Schedule challenge period (15 min)
+    IF no challenge → Finalize transfer
+    IF challenge → Freeze transfer, manual review
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1) per transaction</li>
+<li><strong>Space:</strong> O(w) where w = number of windows tracked</li>
+</ul>
+<hr />
+<h4>C.8.2 Gas Fee Estimation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-03-05-02</code><br />
+<strong>SRS Reference:</strong> backend/services/blockchain_service.py:237-253, EPIC 3 (Gas Optimization)<br />
+<strong>Purpose:</strong> Estimate gas fees per transaction type with network-specific pricing<br />
+<strong>Implementation:</strong> Python (backend/services/blockchain_service.py)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>gasEstimate = gasLimit[transactionType] × gasPrice[network]
+eurCost = gasEstimate × nativeTokenPrice × eurConversion
+
+Transaction Type Gas Limits (Polygon):
+  mint:     150,000 gas → ~€0.50
+  burn:     150,000 gas → ~€0.50
+  invest:   300,000 gas → ~€1.00
+  redeem:   300,000 gas → ~€1.00
+
+Example:
+  Network: Polygon Amoy
+  Gas Price: 30 gwei
+  Native Token: MATIC (€0.80)
+  Transaction: mint (150,000 gas)
+
+  Cost = 150,000 × 30e-9 × 0.80 = €0.0036
+  (Actual cost may vary based on network congestion)
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+<h3>C.9 Tax Compliance (Cross-Cutting)</h3>
+<h4>C.9.1 Withholding Tax Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-08-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 (lines ~1134, 1216, 8892, 9936) — Tax Compliance (cross-cutting)<br />
+<strong>Purpose:</strong> Calculate withholding tax on dividends and interest per jurisdiction<br />
+<strong>Implementation:</strong> Python (backend tax service)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>Withholding Tax Rates:
+  Dividends: 10% (default)
+  Interest:  10% (default)
+
+Jurisdiction-Specific Rates:
+  Lookup taxTreatyRate[investorJurisdiction][incomeType]
+
+Double Taxation Treaty Reduction:
+  IF treaty exists:
+    reducedRate = treatyRate
+  ELSE:
+    reducedRate = defaultRate
+
+Tax Calculation:
+  withholdingTax = grossIncome × reducedRate
+  netIncome = grossIncome - withholdingTax
+
+Tax Certificate Generation:
+  Generate PDF with:
+    - Investor details
+    - Gross income amount
+    - Withholding tax amount
+    - Net income amount
+    - Tax year
+    - Jurisdiction
+    - Treaty reference (if applicable)
+
+Example:
+  Investor: France (EU)
+  Income Type: Interest (€10,000)
+  Default Rate: 10%
+  Treaty Rate: 5% (France-Mauritius DTA)
+
+  Withholding Tax = 10,000 × 0.05 = €500
+  Net Income = 10,000 - 500 = €9,500
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1) for calculation, O(t) for treaty lookup</li>
+<li><strong>Space:</strong> O(t) where t = number of treaties</li>
+</ul>
+<hr />
+<h3>C.10 Portfolio &amp; Reporting (EPIC 10)</h3>
+<h4>C.10.1 Investor Portfolio Aggregation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-07-01</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.6 (Investor Dashboard) — EPIC 10<br />
+<strong>Purpose:</strong> Aggregate investor positions across multiple pools<br />
+<strong>Implementation:</strong> Python (backend/api/pools.py:722-790)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>Total Portfolio Value = Σ(shares_i × NAV_i) for all pools i
+
+Blended APY = Σ(weight_i × apy_i) where weight_i = value_i / totalValue
+
+Per-Position Yield:
+  positionYield_i = shares_i × (NAV_i_end - NAV_i_start)
+
+Total Yield Earned = Σ(positionYield_i)
+
+Example:
+  Pool 1 (Industrie): 50,000 uLP × €1.05 = €52,500 (APY: 10%)
+  Pool 2 (Agriculture): 30,000 uLP × €1.08 = €32,400 (APY: 12%)
+  Pool 3 (Real Estate): 20,000 uLP × €1.03 = €20,600 (APY: 8%)
+
+  Total Value: €105,500
+  Weights: 49.8%, 30.7%, 19.5%
+  Blended APY: 0.498×10% + 0.307×12% + 0.195×8% = 10.26%
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(n) where n = number of pools</li>
+<li><strong>Space:</strong> O(n) for position storage</li>
+</ul>
+<hr />
+<h4>C.10.2 Repayment Total Owed Calculation</h4>
+<p><strong>Algorithm ID:</strong> <code>ALG-10-04-06</code><br />
+<strong>SRS Reference:</strong> SRS v2.1 §10.4, EPIC 10 US 10.4<br />
+<strong>Purpose:</strong> Calculate total repayment owed with basis-point interest<br />
+<strong>Implementation:</strong> Python (backend/api/pools.py:709-725), Solidity (LiquidityPool.sol)</p>
+<h5>Formula</h5>
+<div class="docs-pre"><code>totalOwed = principal + (principal × interestRate / BASIS_POINTS)
+
+Where:
+  interestRate is in basis points (e.g., 1000 = 10%)
+  BASIS_POINTS = 10000
+
+Partial Repayment Tracking:
+  remainingOwed = totalOwed - amountRepaid
+  isFullyRepaid = amountRepaid &gt;= totalOwed
+
+Example:
+  Principal: €1,000,000
+  Interest Rate: 1000 bps (10%)
+  Total Owed: 1,000,000 + (1,000,000 × 1000 / 10000)
+            = 1,000,000 + 100,000 = €1,100,000
+
+  Repaid: €400,000
+  Remaining: €1,100,000 - €400,000 = €700,000
+  Status: Not fully repaid
+</code></div>
+<h5>Complexity</h5>
+<ul class="docs-list" style="padding-left:1.5rem">
+<li><strong>Time:</strong> O(1)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<hr />
+</section>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Appendix D: SRS to Algorithm Cross-Reference Matrix (Complete)</h2>
+<p><strong>Version:</strong> 2.0 (Post-Audit Complete)<br />
+<strong>Date:</strong> April 5, 2026<br />
+<strong>Purpose:</strong> Full traceability from SRS User Stories to Algorithm Specifications</p>
+<h3>D.1 Cross-Reference Matrix</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>SRS EPIC</th>
+<th>User Story</th>
+<th>Description</th>
+<th>Algorithm ID(s)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPIC 1</td>
+<td>US 1.1</td>
+<td>Authentication (SIWE + JWT)</td>
+<td>ALG-11-02-01, ALG-11-02-02</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 2</td>
+<td>US 2.4</td>
+<td>FX Risk Management</td>
+<td>ALG-02-01-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 3</td>
+<td>US 3.1</td>
+<td>Price Feed Integration</td>
+<td>ALG-03-01-01, ALG-09-03-02</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 3</td>
+<td>US 3.2</td>
+<td>Cross-Chain Portability</td>
+<td>ALG-03-05-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 3</td>
+<td>US 3.3</td>
+<td>Gas Optimization</td>
+<td>ALG-03-05-02</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 3</td>
+<td>US 3.4</td>
+<td>Gas Optimization</td>
+<td>ALG-03-04-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>US 4.1</td>
+<td>Automated Risk Score</td>
+<td>ALG-04-01-01, ALG-04-01-02</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>US 4.2</td>
+<td>Risk Rating Display</td>
+<td>ALG-04-01-02</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>US 4.3</td>
+<td>Investor Suitability</td>
+<td>ALG-04-03-01, ALG-04-03-02, ALG-04-06-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>US 4.4</td>
+<td>Benchmark Data</td>
+<td>ALG-04-04-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>US 4.5</td>
+<td>Risk Assessment API</td>
+<td>ALG-04-01-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 4</td>
+<td>Cross-cutting</td>
+<td>Sanctions Screening</td>
+<td>ALG-04-07-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 5</td>
+<td>US 5.3</td>
+<td>UGT Collateral</td>
+<td>ALG-05-03-01 to ALG-05-03-09, ALG-05-05-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 7</td>
+<td>US 7.1</td>
+<td>Anomaly Detection</td>
+<td>ALG-07-01-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 7</td>
+<td>US 7.2</td>
+<td>Wash Trading</td>
+<td>ALG-07-02-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 7</td>
+<td>US 7.3</td>
+<td>Structuring Detection</td>
+<td>ALG-07-03-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 9</td>
+<td>US 9.1</td>
+<td>Rate Limiting</td>
+<td>ALG-09-03-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 9</td>
+<td>US 9.2</td>
+<td>Resilience / Autoscaling</td>
+<td>ALG-09-02-01, ALG-09-03-02, ALG-09-03-03</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.1</td>
+<td>uLP Deposit</td>
+<td>ALG-10-01-01, ALG-10-01-02, ALG-10-01-03</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.2</td>
+<td>uLP Redemption</td>
+<td>ALG-10-01-01, ALG-10-02-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.3</td>
+<td>Liquidity Pool Creation</td>
+<td>ALG-10-03-01, ALG-10-03-02, ALG-10-03-03 to ALG-10-03-07</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.4</td>
+<td>Yield Accrual</td>
+<td>ALG-10-04-01 to ALG-10-04-06</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.5</td>
+<td>Bank Escrow</td>
+<td>ALG-10-05-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.6</td>
+<td>Investor Dashboard</td>
+<td>ALG-10-07-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>US 10.7</td>
+<td>Default &amp; Recovery</td>
+<td>ALG-10-06-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 10</td>
+<td>Cross-cutting</td>
+<td>Tax Compliance</td>
+<td>ALG-10-08-01</td>
+<td>✅ Documented</td>
+</tr>
+<tr>
+<td>EPIC 11</td>
+<td>US 11.1</td>
+<td>Immutable Audit Log</td>
+<td>ALG-11-01-01</td>
+<td>✅ Documented</td>
+</tr>
+</tbody>
+</table></div>
+<h3>D.2 Algorithm Inventory Summary</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Original Count</th>
+<th>Added Count</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk Assessment (EPIC 4)</td>
+<td>5</td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Fraud Detection (EPIC 7)</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Yield &amp; NAV (EPIC 10)</td>
+<td>3</td>
+<td>8</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Asset Tokenization (EPIC 5)</td>
+<td>9</td>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Pool Management (EPIC 10)</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Compliance (EPIC 4/7)</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Gateway &amp; Pricing (EPIC 3)</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Bank Escrow (EPIC 10)</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cryptographic (EPIC 11)</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Performance (EPIC 9)</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Cross-Bridge (EPIC 3)</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Tax Compliance (EPIC 4)</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Portfolio &amp; Reporting (EPIC 10)</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>29</strong></td>
+<td><strong>29</strong></td>
+<td><strong>58</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
 <p><strong>Document End</strong></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 5, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Algorithms</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 5, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Algorithms</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>
