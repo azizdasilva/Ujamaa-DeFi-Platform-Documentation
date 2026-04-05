@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Officer Workflow: KYC Review to Identity Verification | Ujamaa DeFi Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F8F9FB;
+            color: #1A1A2E;
+            line-height: 1.7;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+        }
+
+        .gradient-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .gradient-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #E5E7EB;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        .step-1 { background: #7C3AED; color: white; }
+        .step-2 { background: #3B82F6; color: white; }
+        .step-3 { background: #F59E0B; color: white; }
+        .step-4 { background: #10B981; color: white; }
+        .step-5 { background: #EF4444; color: white; }
+        .step-6 { background: #06B6D4; color: white; }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #7C3AED;
+            margin: 1rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #EDE9FE 0%, #F3E8FF 100%);
+            border-left: 4px solid #7C3AED;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .info-box {
+            background: #EBF5FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #F1F5F9;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #7C3AED;
+            border-bottom: 2px solid #CBD5E1;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        tr:hover {
+            background: #F8FAFC;
+        }
+
+        .diagram-container {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .diagram-box {
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: #10B981;
+        }
+
+        h2 {
+            color: #7C3AED;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        h3 {
+            color: #A855F7;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-purple { background: #EDE9FE; color: #5B21B6; }
+        .badge-green { background: #D1FAE5; color: #065F46; }
+        .badge-yellow { background: #FEF3C7; color: #92400E; }
+        .badge-red { background: #FEE2E2; color: #991B1B; }
+        .badge-blue { background: #DBEAFE; color: #1E40AF; }
+    </style>
+</head>
+<body class="max-w-6xl mx-auto px-4 py-8">
+
+    <div class="gradient-header">
+        <h1>🛡️ Compliance Officer Workflow</h1>
+        <p>From KYC Review to On-Chain Identity Verification — A Complete Guide</p>
+    </div>
+
+    <div class="highlight-box">
+        <strong>📌 Purpose:</strong> This document explains how compliance officers verify investor identities, review documents, and approve/reject applications. We'll show how every compliance action is recorded both in the database (for audits) and on-chain (for ERC-3643 enforcement).
+    </div>
+
+    <h2>🎯 Who Is This For?</h2>
+    <ul class="list-disc pl-6 space-y-2 mb-8">
+        <li><strong>Compliance Officers:</strong> Teams responsible for KYC/KYB verification</li>
+        <li><strong>Auditors:</strong> Reviewing compliance processes and audit trails</li>
+        <li><strong>Regulators:</strong> Understanding how the platform enforces sanctions and identity checks</li>
+        <li><strong>Developers:</strong> Understanding the technical architecture</li>
+    </ul>
+
+    <h2>📊 High-Level Overview</h2>
+
+    <div class="diagram-container">
+        <h3 style="margin-top: 0;">Compliance Officer Journey</h3>
+        <div class="diagram-flow">
+            <div class="diagram-box">1. Review Pending Docs</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">2. Verify Identity</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">3. Approve/Reject</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">4. On-Chain Verification</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">5. Monitor Transactions</div>
+        </div>
+    </div>
+
+    <h2>📋 Phase 1: Document Review Dashboard</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-1">1</div>
+            <div>
+                <h3 style="margin-top: 0;">View Pending Documents</h3>
+                <p><strong>What happens:</strong> When an investor submits KYC/KYB documents, they appear in your compliance dashboard:</p>
+
+                <h4 class="mt-4">📊 Dashboard Shows:</h4>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>Pending documents count:</strong> How many documents await review</li>
+                    <li><strong>Overdue documents:</strong> Documents not reviewed within 24 hours (SLA breach)</li>
+                    <li><strong>Investor details:</strong> Name, jurisdiction, investor type (retail/institutional)</li>
+                    <li><strong>Document type:</strong> ID, proof of address, incorporation cert, etc.</li>
+                    <li><strong>Time remaining:</strong> Hours left before the 24h SLA expires</li>
+                </ul>
+
+                <div class="table-container mt-4">
+                    <table>
+                        <tr>
+                            <th>Document ID</th>
+                            <th>Investor</th>
+                            <th>Type</th>
+                            <th>Submitted</th>
+                            <th>Time Left</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>#1042</td>
+                            <td>John Doe (Retail)</td>
+                            <td>National ID</td>
+                            <td>2026-04-04 10:30</td>
+                            <td><span class="badge badge-green">18h 30m</span></td>
+                            <td><span class="badge badge-yellow">PENDING</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1043</td>
+                            <td>Logic Capital Ltd</td>
+                            <td>Incorporation Cert</td>
+                            <td>2026-04-04 08:00</td>
+                            <td><span class="badge badge-yellow">6h 00m</span></td>
+                            <td><span class="badge badge-yellow">PENDING</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1041</td>
+                            <td>Jane Smith (Retail)</td>
+                            <td>Proof of Address</td>
+                            <td>2026-04-03 09:00</td>
+                            <td><span class="badge badge-red">OVERDUE</span></td>
+                            <td><span class="badge badge-red">OVERDUE</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-box mt-4">
+                    <strong>📌 24-Hour SLA:</strong> Every document must be reviewed within 24 hours of submission. If not, the system automatically flags it as "OVERDUE" and notifies the compliance team. This ensures investors aren't blocked indefinitely.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-2">2</div>
+            <div>
+                <h3 style="margin-top: 0;">Review Individual Document</h3>
+                <p><strong>What happens:</strong> You click on a pending document to review its details:</p>
+
+                <h4 class="mt-4">🔍 What You See:</h4>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>Investor Profile:</strong> Full name, jurisdiction, wallet address, investor type</li>
+                    <li><strong>Document Details:</strong> File type, upload date, file hash (SHA256)</li>
+                    <li><strong>Document Preview:</strong> View the uploaded document (PDF/image)</li>
+                    <li><strong>Risk Indicators:</strong> PEP status, sanctions check, adverse media</li>
+                </ul>
+
+                <h4 class="mt-4">📝 Jurisdiction Check (Automatic):</h4>
+                <p>Before you even start reviewing, the system has already checked the investor's jurisdiction against:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><span class="badge badge-red">OFAC</span> (US Treasury sanctions)</li>
+                    <li><span class="badge badge-red">UN Security Council</span> sanctions</li>
+                    <li><span class="badge badge-red">EU Sanctions List</span></li>
+                    <li><span class="badge badge-red">FATF High-Risk Jurisdictions</span></li>
+                </ul>
+
+                <div class="table-container mt-4">
+                    <table>
+                        <tr>
+                            <th>Blocked Jurisdictions (12)</th>
+                            <th>Reason</th>
+                        </tr>
+                        <tr>
+                            <td>🇰🇵 KP, 🇮🇷 IR, 🇸🇾 SY, 🇨🇺 CU</td>
+                            <td>OFAC + UN + EU sanctions</td>
+                        </tr>
+                        <tr>
+                            <td>🇲🇲 MM, 🇧🇾 BY, 🇷🇺 RU, 🇻🇪 VE, 🇸🇩 SD</td>
+                            <td>OFAC + EU sanctions</td>
+                        </tr>
+                        <tr>
+                            <td>🇾🇪 YE</td>
+                            <td>UN arms embargo</td>
+                        </tr>
+                        <tr>
+                            <td>🇲🇱 ML, 🇧🇫 BF</td>
+                            <td>FATF High-Risk Jurisdiction</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Blocked Jurisdiction = Automatic Rejection:</strong> If the investor is from a blocked country, the system automatically rejects the application. No manual review needed.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>✅ Phase 2: Approve or Reject</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-3">3</div>
+            <div>
+                <h3 style="margin-top: 0;">Make Your Decision</h3>
+                <p><strong>What happens:</strong> After reviewing the documents, you approve or reject the application:</p>
+
+                <h4 class="mt-4">✅ Approval Flow:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Click "Approve":</strong> The system validates the document is acceptable</li>
+                    <li><strong>Database Update:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li><code>Document.verification_status</code> changes from <code>PENDING</code> to <code>APPROVED</code></li>
+                            <li><code>InvestorProfile.kyc_status</code> changes to <code>APPROVED</code></li>
+                            <li>Review timestamp and your officer ID are recorded</li>
+                        </ul>
+                    </li>
+                    <li><strong>Compliance Activity Logged:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>A <code>ComplianceActivity</code> record is created with type <code>DOCUMENT_APPROVED</code></li>
+                            <li>Includes: reviewer ID, target document ID, timestamp, notes</li>
+                        </ul>
+                    </li>
+                    <li><strong>On-Chain Identity Verification (if blockchain enabled):</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Backend calls <code>IdentityRegistry.verifyIdentity(investor_wallet_address)</code></li>
+                            <li>This writes the investor's verified status to Polygon Amoy</li>
+                            <li>The investor can now hold ERC-3643 tokens (uLP)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block mt-4">
+// What happens on-chain (IdentityRegistry.sol)
+function verifyIdentity(address investor) external {
+    require(hasRole(COMPLIANCE_OFFICER_ROLE, msg.sender));
+
+    Identity storage identity = s_identities[investor];
+    require(identity.status == IdentityStatus.PENDING);
+
+    identity.status = IdentityStatus.VERIFIED;
+    identity.verifiedAt = block.timestamp;
+    identity.verifier = msg.sender;
+
+    s_verifiedCount++;
+    emit IdentityVerified(investor);
+}
+                </div>
+
+                <div class="success-box mt-4">
+                    <strong>✅ Investor Approved!</strong> The investor's KYC status is now <code>APPROVED</code> in the database. If blockchain is enabled, their wallet is also verified on-chain via IdentityRegistry. They can now invest in liquidity pools.
+                </div>
+
+                <hr class="my-6 border-gray-200">
+
+                <h4 class="mt-4">❌ Rejection Flow:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Click "Reject":</strong> You must provide a reason (e.g., "Document unclear", "Address mismatch")</li>
+                    <li><strong>Database Update:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li><code>Document.verification_status</code> changes to <code>REJECTED</code></li>
+                            <li><code>review_notes</code> field stores your rejection reason</li>
+                            <li><code>InvestorProfile.kyc_status</code> changes to <code>REJECTED</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Investor Notification:</strong> The investor sees the rejection reason and can resubmit corrected documents</li>
+                </ol>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Rejection is Reversible:</strong> If the investor resubmits better documents, you can review again and approve. Rejection doesn't permanently ban the investor.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⛓️ Phase 3: On-Chain Identity Management</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-4">4</div>
+            <div>
+                <h3 style="margin-top: 0;">IdentityRegistry On-Chain</h3>
+                <p><strong>What happens:</strong> The IdentityRegistry smart contract maintains on-chain identity verification for all investors:</p>
+
+                <h4 class="mt-4">🔐 Identity Lifecycle on Blockchain:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Registration:</strong> <code>IdentityRegistry.registerIdentity(wallet, jurisdiction, investorType)</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Called during investor onboarding</li>
+                            <li>Sets status to <code>PENDING</code></li>
+                            <li>Stores jurisdiction and investor type on-chain</li>
+                        </ul>
+                    </li>
+                    <li><strong>Verification:</strong> <code>IdentityRegistry.verifyIdentity(wallet)</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Called after compliance officer approves KYC</li>
+                            <li>Sets status to <code>VERIFIED</code></li>
+                            <li>Records timestamp and verifier address</li>
+                        </ul>
+                    </li>
+                    <li><strong>Verification Check:</strong> <code>IdentityRegistry.isVerified(wallet)</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Called before every invest/redeem transaction</li>
+                            <li>Returns <code>true</code> if identity is verified, <code>false</code> otherwise</li>
+                            <li>If <code>false</code>, the transaction is blocked</li>
+                        </ul>
+                    </li>
+                    <li><strong>Revocation:</strong> <code>IdentityRegistry.revokeIdentity(wallet)</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Called if investor is found to be non-compliant after approval</li>
+                            <li>Sets status to <code>REVOKED</code></li>
+                            <li>Investor can no longer hold or transfer uLP tokens</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block mt-4">
+// Identity status transitions
+NONE → PENDING → VERIFIED → REVOKED
+         ↓
+      REJECTED
+
+// What happens when investor tries to invest
+require(IDENTITY_REGISTRY.isVerified(investor_wallet), "ULPTokenizer: Recipient not verified");
+// If not verified → Transaction reverts → Investment blocked
+                </div>
+
+                <div class="highlight-box mt-4">
+                    <strong>🔑 Why On-Chain Identity Matters:</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><strong>Enforcement:</strong> Even if the database says an investor is approved, the smart contract will block them if their on-chain identity isn't verified</li>
+                        <li><strong>Auditability:</strong> Anyone can verify on Polygonscan which wallets are verified and when</li>
+                        <li><strong>Regulatory Compliance:</strong> Regulators can audit the full list of verified investors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📊 Phase 4: Monitoring & Reporting</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-5">5</div>
+            <div>
+                <h3 style="margin-top: 0;">Transaction Monitoring</h3>
+                <p><strong>What happens:</strong> The compliance dashboard shows flagged transactions that require review:</p>
+
+                <h4 class="mt-4">🚩 Transaction Flags:</h4>
+                <table>
+                    <tr>
+                        <th>Trigger</th>
+                        <th>Risk Level</th>
+                        <th>Action Required</th>
+                    </tr>
+                    <tr>
+                        <td>Large redemption (€500K+)</td>
+                        <td><span class="badge badge-yellow">MEDIUM</span></td>
+                        <td>Review source of funds</td>
+                    </tr>
+                    <tr>
+                        <td>Rapid invest-redeem cycle</td>
+                        <td><span class="badge badge-yellow">MEDIUM</span></td>
+                        <td>Check for money laundering</td>
+                    </tr>
+                    <tr>
+                        <td>Investor from new jurisdiction</td>
+                        <td><span class="badge badge-blue">LOW</span></td>
+                        <td>Standard enhanced due diligence</td>
+                    </tr>
+                    <tr>
+                        <td>Multiple accounts, same wallet</td>
+                        <td><span class="badge badge-red">HIGH</span></td>
+                        <td>Investigate and potentially block</td>
+                    </tr>
+                </table>
+
+                <h4 class="mt-4">📝 Compliance Activity Log:</h4>
+                <p>Every action you take is recorded in the <code>compliance_activities</code> table:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><code>activity_type</code>: e.g., <code>DOCUMENT_APPROVED</code>, <code>IDENTITY_VERIFIED</code>, <code>TRANSACTION_REVIEWED</code></li>
+                    <li><code>user_id</code>: Your compliance officer ID</li>
+                    <li><code>target_id</code>: The document, investor, or transaction you acted on</li>
+                    <li><code>details</code>: JSON with notes, timestamps, risk scores</li>
+                    <li><code>created_at</code>: When the action occurred</li>
+                </ul>
+
+                <div class="code-block mt-4">
+-- Example compliance activity records --
+INSERT INTO compliance_activities (user_id, activity_type, target_id, target_type, details)
+VALUES (4, 'DOCUMENT_APPROVED', 1042, 'DOCUMENT', '{"investor_id": 1, "notes": "All documents verified"}');
+
+INSERT INTO compliance_activities (user_id, activity_type, target_id, target_type, details)
+VALUES (4, 'IDENTITY_VERIFIED', 1, 'INVESTOR', '{"wallet": "0x742d...", "on_chain_tx": "0xabc123..."}');
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-6">6</div>
+            <div>
+                <h3 style="margin-top: 0;">Compliance Statistics Dashboard</h3>
+                <p><strong>What you see:</strong> A summary of compliance performance metrics:</p>
+
+                <div class="table-container mt-4">
+                    <table>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Target</th>
+                        </tr>
+                        <tr>
+                            <td>Pending Documents</td>
+                            <td>12</td>
+                            <td>< 20</td>
+                        </tr>
+                        <tr>
+                            <td>Overdue Documents</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Average Review Time</td>
+                            <td>8.5 hours</td>
+                            <td>< 12 hours</td>
+                        </tr>
+                        <tr>
+                            <td>Approved Today</td>
+                            <td>5</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Rejected Today</td>
+                            <td>1</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Total Verified Investors (On-Chain)</td>
+                            <td>47</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Flagged Transactions</td>
+                            <td>3</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-box mt-4">
+                    <strong>📌 Key Performance Indicator:</strong> The primary metric compliance officers are measured on is the <strong>24-hour SLA compliance rate</strong> — the percentage of documents reviewed within 24 hours. Target: >95%.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🏗️ Technical Architecture Summary</h2>
+
+    <div class="card">
+        <h3>📊 Database Tables Involved</h3>
+        <table>
+            <tr>
+                <th>Table</th>
+                <th>Role in Compliance Workflow</th>
+            </tr>
+            <tr>
+                <td><code>users</code></td>
+                <td>Compliance officer authentication (role = COMPLIANCE_OFFICER)</td>
+            </tr>
+            <tr>
+                <td><code>investor_profiles</code></td>
+                <td>KYC/KYB status, jurisdiction, wallet address</td>
+            </tr>
+            <tr>
+                <td><code>documents</code></td>
+                <td>Uploaded KYC docs with verification status and 24h SLA tracking</td>
+            </tr>
+            <tr>
+                <td><code>compliance_activities</code></td>
+                <td>Audit log of all compliance actions (approvals, rejections, reviews)</td>
+            </tr>
+            <tr>
+                <td><code>transactions</code></td>
+                <td>Transaction records with flagging and risk level tracking</td>
+            </tr>
+            <tr>
+                <td><code>blockchain_transactions</code></td>
+                <td>On-chain identity verification tx hashes</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>⛓️ Smart Contracts Involved</h3>
+        <table>
+            <tr>
+                <th>Contract</th>
+                <th>Function Called</th>
+                <th>When</th>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>registerIdentity()</code></td>
+                <td>During investor onboarding</td>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>verifyIdentity()</code></td>
+                <td>After compliance officer approves KYC</td>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>isVerified()</code></td>
+                <td>Before every invest/redeem (automatic check)</td>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>revokeIdentity()</code></td>
+                <td>If investor is found non-compliant</td>
+            </tr>
+            <tr>
+                <td><strong>JurisdictionCompliance</strong></td>
+                <td><code>checkJurisdiction()</code></td>
+                <td>Automatic on registration (sanctions check)</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>🔒 ERC-3643 Compliance Flow</h2>
+
+    <div class="card">
+        <h3>How Compliance Enforces Token Transfers</h3>
+        <p>The ULPTokenizer contract has built-in compliance checks that prevent unauthorized transfers:</p>
+
+        <div class="code-block">
+// ULPTokenizer.sol - Transfer override
+function transfer(address to, uint256 amount) public override returns (bool) {
+    // ERC-3643: Check compliance before allowing transfer
+    require(
+        COMPLIANCE_MODULE.canTransfer(msg.sender, to, amount),
+        "ULPTokenizer: Transfer blocked - " + COMPLIANCE_MODULE.getComplianceReason(msg.sender, to, amount)
+    );
+    return super.transfer(to, amount);
+}
+
+// ComplianceModule.sol - Transfer validation
+function canTransfer(address from, address to, uint256 amount) public view returns (bool) {
+    // 1. Check sender identity
+    if (!IDENTITY_REGISTRY.isVerified(from)) return false;
+
+    // 2. Check recipient identity
+    if (!IDENTITY_REGISTRY.isVerified(to)) return false;
+
+    // 3. Check jurisdiction restrictions
+    if (BLOCKED_JURISDICTIONS[IDENTITY_REGISTRY.getJurisdiction(to)]) return false;
+
+    // 4. Check investment limits
+    if (amount > getDailyTransferLimit(from)) return false;
+
+    return true; // All checks passed
+}
+        </div>
+
+        <div class="success-box mt-4">
+            <strong>✅ Result:</strong> Even if someone tries to transfer tokens to an unverified wallet, the smart contract will automatically reject it. This is the power of ERC-3643 — compliance is built into the token itself.
+        </div>
+    </div>
+
+    <div class="highlight-box mt-8">
+        <strong>💡 Key Takeaways:</strong>
+        <ol class="list-decimal pl-6 mt-2 space-y-1">
+            <li><strong>Database + Blockchain = Double Protection:</strong> Compliance status is tracked in the database (for analytics and reporting) AND on-chain (for enforcement)</li>
+            <li><strong>24-Hour SLA:</strong> Every document must be reviewed within 24 hours — the system tracks and flags overdue items automatically</li>
+            <li><strong>IdentityRegistry is the Gatekeeper:</strong> If an investor's identity isn't verified on-chain, they cannot hold or transfer uLP tokens — no exceptions</li>
+            <li><strong>Complete Audit Trail:</strong> Every compliance action is logged with timestamp, officer ID, and details — enabling full regulatory reporting</li>
+            <li><strong>Sanctions Enforcement:</strong> Blocked jurisdictions are checked automatically — investors from sanctioned countries cannot onboard</li>
+        </ol>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Operator Workflow: Asset to Repayment | Ujamaa DeFi Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F8F9FB;
+            color: #1A1A2E;
+            line-height: 1.7;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(5, 150, 105, 0.15);
+        }
+
+        .gradient-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .gradient-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #E5E7EB;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        .step-1 { background: #059669; color: white; }
+        .step-2 { background: #3B82F6; color: white; }
+        .step-3 { background: #8B5CF6; color: white; }
+        .step-4 { background: #F59E0B; color: white; }
+        .step-5 { background: #EF4444; color: white; }
+        .step-6 { background: #06B6D4; color: white; }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #059669;
+            margin: 1rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #D1FAE5 0%, #E0F7FA 100%);
+            border-left: 4px solid #059669;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .info-box {
+            background: #EBF5FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #F1F5F9;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #059669;
+            border-bottom: 2px solid #CBD5E1;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        tr:hover {
+            background: #F8FAFC;
+        }
+
+        .diagram-container {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .diagram-box {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: #3B82F6;
+        }
+
+        h2 {
+            color: #059669;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        h3 {
+            color: #3B82F6;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-green { background: #D1FAE5; color: #065F46; }
+        .badge-blue { background: #DBEAFE; color: #1E40AF; }
+        .badge-purple { background: #EDE9FE; color: #5B21B6; }
+        .badge-yellow { background: #FEF3C7; color: #92400E; }
+    </style>
+</head>
+<body class="max-w-6xl mx-auto px-4 py-8">
+
+    <div class="gradient-header">
+        <h1>🏭 Industrial Operator Workflow</h1>
+        <p>From Asset Certification to Full Repayment — A Complete Guide</p>
+    </div>
+
+    <div class="highlight-box">
+        <strong>📌 Purpose:</strong> This document explains how industrial operators (manufacturers, farmers, traders) access financing through the Ujamaa DeFi Platform. We'll walk through every step — from asset certification to repayment — showing how collateral is tokenized as NFTs and tracked on-chain.
+    </div>
+
+    <h2>🎯 Who Is This For?</h2>
+    <ul class="list-disc pl-6 space-y-2 mb-8">
+        <li><strong>Industrial Operators:</strong> Companies seeking financing for operations, inventory, or equipment</li>
+        <li><strong>Pool Managers:</strong> Teams creating and managing financing deals</li>
+        <li><strong>GDIZ/SIPI Certifiers:</strong> Organizations verifying physical assets</li>
+        <li><strong>Developers:</strong> Understanding the technical architecture</li>
+    </ul>
+
+    <h2>📊 High-Level Overview</h2>
+
+    <div class="diagram-container">
+        <h3 style="margin-top: 0;">Industrial Financing Journey</h3>
+        <div class="diagram-flow">
+            <div class="diagram-box">1. Onboarding & KYB</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">2. Asset Certification</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">3. UGT NFT Minted</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">4. Financing Created</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">5. Funds Deployed</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">6. Repayment</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">7. UGT Returned</div>
+        </div>
+    </div>
+
+    <h2>🏢 Phase 1: Onboarding & KYB Verification</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-1">1</div>
+            <div>
+                <h3 style="margin-top: 0;">Register as Industrial Operator</h3>
+                <p><strong>What happens:</strong> You create an account and select your business type:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><span class="badge badge-green">🏭 Manufacturing</span> — Factories, production facilities (€100K-€5M, 10-12% APY)</li>
+                    <li><span class="badge badge-blue">🌱 Agricultural</span> — Farms, cooperatives (€50K-€2M, 12-15% APY)</li>
+                    <li><span class="badge badge-yellow">📦 Trading</span> — Import/export, trade finance (€50K-€3M, 8-10% APY)</li>
+                </ul>
+                <div class="mt-4">
+                    <strong>Database records created:</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><code>User</code> record with role <code>INDUSTRIAL_OPERATOR</code></li>
+                        <li><code>InvestorProfile</code> with your company details and wallet address</li>
+                        <li><code>Document</code> records for KYB (incorporation cert, tax registration, UBO declaration)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-2">2</div>
+            <div>
+                <h3 style="margin-top: 0;">Submit Asset for Certification</h3>
+                <p><strong>What happens:</strong> You describe the asset you want to use as collateral:</p>
+
+                <h4 class="mt-4">📝 Asset Types Available:</h4>
+                <table>
+                    <tr>
+                        <th>Asset Type</th>
+                        <th>Example</th>
+                        <th>Best For</th>
+                    </tr>
+                    <tr>
+                        <td>📄 <strong>INVOICE</strong></td>
+                        <td>€2M contract from ZARA</td>
+                        <td>Trading companies</td>
+                    </tr>
+                    <tr>
+                        <td>📦 <strong>INVENTORY</strong></td>
+                        <td>1,000 cotton bales in warehouse</td>
+                        <td>Manufacturers, farmers</td>
+                    </tr>
+                    <tr>
+                        <td>🏭 <strong>PRODUCTION</strong></td>
+                        <td>Monthly output of 500 tons</td>
+                        <td>Factories</td>
+                    </tr>
+                    <tr>
+                        <td>🚢 <strong>SHIPMENT</strong></td>
+                        <td>Container of goods in transit</td>
+                        <td>Exporters</td>
+                    </tr>
+                    <tr>
+                        <td>📋 <strong>CONTRACT</strong></td>
+                        <td>Service agreement with buyer</td>
+                        <td>Service providers</td>
+                    </tr>
+                </table>
+
+                <h4 class="mt-4">📝 What Information You Provide:</h4>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>Asset type:</strong> Invoice, Inventory, Production, etc.</li>
+                    <li><strong>Value:</strong> Asset value in EUROD (e.g., €500,000)</li>
+                    <li><strong>Quantity & Unit:</strong> e.g., 1,000 bales, 500 tons</li>
+                    <li><strong>Warehouse location:</strong> Where the asset is stored</li>
+                    <li><strong>Description:</strong> Detailed description of the asset</li>
+                    <li><strong>Supporting documents:</strong> Invoices, warehouse receipts, contracts</li>
+                </ul>
+
+                <div class="highlight-box mt-4">
+                    <strong>🔑 Key Point:</strong> At this stage, you're <em>not yet borrowing money</em>. You're simply declaring that you have an asset, and requesting certification from GDIZ/SIPI (the physical verification authority).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-3">3</div>
+            <div>
+                <h3 style="margin-top: 0;">GDIZ/SIPI Certifies Your Asset</h3>
+                <p><strong>What happens:</strong> A certified verifier (GDIZ/SIPI) physically inspects your asset and confirms it exists:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li>They visit your warehouse/facility</li>
+                    <li>They verify quantity, quality, and ownership</li>
+                    <li>They upload verification documents to IPFS</li>
+                    <li>They call <code>IndustrialGateway.certifyAsset()</code> on-chain</li>
+                </ul>
+
+                <div class="mt-4">
+                    <strong>On-chain action (Smart Contract):</strong>
+                    <div class="code-block">
+// IndustrialGateway.sol
+function certifyAsset(
+    address industrial,      // Your company wallet
+    string assetType,        // "INVENTORY"
+    uint256 value,           // 500,000 EUROD
+    uint256 quantity,        // 1,000
+    string unit,             // "bales"
+    string warehouseLocation,// "GDIZ Warehouse A, Lomé"
+    bytes32 stockHash,       // IPFS hash of documents
+    string description,      // "Grade A cotton bales"
+    uint256 validityDays     // 365 days
+) returns (uint256 certificateId) {
+    // Creates a Certificate struct on-chain
+    // certificateId = nextCertificateId++
+    // Certificate is auto-verified by the certifier
+}
+                    </div>
+                </div>
+
+                <div class="success-box mt-4">
+                    <strong>✅ Certificate Created!</strong> Your asset is now officially certified on the blockchain. A <code>Certificate</code> record exists on-chain with a unique ID that proves your asset exists and has been verified.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🎫 Phase 2: UGT NFT Minting</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-4">4</div>
+            <div>
+                <h3 style="margin-top: 0;">Guarantee Token (UGT) is Minted</h3>
+                <p><strong>What happens:</strong> Once your asset is certified, the system mints a <strong>Guarantee Token (UGT)</strong> — an ERC-721 NFT that represents your collateral:</p>
+
+                <h4 class="mt-4">🎫 What is a UGT?</h4>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>ERC-721 NFT:</strong> Non-fungible token representing your specific asset</li>
+                    <li><strong>Collateral:</strong> It serves as security for the financing</li>
+                    <li><strong>Metadata:</strong> Contains asset description, warehouse location, certificate ID</li>
+                    <li><strong>Restrictions:</strong> Can only be transferred between the pool, industrial, or auction winner</li>
+                </ul>
+
+                <h4 class="mt-4">🔄 How It Works:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Pool manager creates financing:</strong> <code>LiquidityPool.createFinancing(...)</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Selects pool family (e.g., POOL_INDUSTRIE)</li>
+                            <li>Sets amount (€500,000), interest rate (12%), duration (365 days)</li>
+                            <li>References your certificate ID</li>
+                        </ul>
+                    </li>
+                    <li><strong>UGT is minted automatically:</strong> The contract calls <code>GuaranteeTokenizer.mintGuarantee()</code>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Mints NFT to your wallet address</li>
+                            <li>Links it to your certificate</li>
+                            <li>Assigns it to the pool as collateral</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block mt-4">
+// GuaranteeTokenizer.sol
+function mintGuarantee(
+    address industrial,
+    uint256 certificateId,
+    uint256 value,
+    uint256 expiryDate,
+    bytes32 stockHash,
+    string description,
+    string warehouseLocation
+) returns (uint256 tokenId) {
+    _safeMint(industrial, tokenId);
+    // Stores Guarantee struct with all metadata
+    // tokenId is now your collateral NFT
+}
+                </div>
+
+                <div class="info-box mt-4">
+                    <strong>📦 UGT Lifecycle:</strong>
+                    <ol class="list-decimal pl-6 mt-2 space-y-1">
+                        <li><strong>Minted:</strong> When financing is created</li>
+                        <li><strong>Held by pool:</strong> As collateral while loan is active</li>
+                        <li><strong>Returned:</strong> When you fully repay the loan</li>
+                        <li><strong><em>OR</em> Liquidated:</strong> If you default (sold at auction)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>💰 Phase 3: Funds Deployment</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-5">5</div>
+            <div>
+                <h3 style="margin-top: 0;">Pool Deploys Funds to You</h3>
+                <p><strong>What happens:</strong> The pool manager approves the financing and transfers EUROD to your wallet:</p>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Validation:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>✅ Your UGT collateral is minted and linked to financing</li>
+                            <li>✅ Pool has sufficient available funds</li>
+                            <li>✅ Diversification limits not exceeded (max 20% per industrial, max 40% per asset class)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Funds Transfer:</strong>
+                        <div class="code-block">
+// On-chain: LiquidityPool.deployFunds(financingId, amount)
+function deployFunds(uint256 financingId, uint256 amount) external {
+    // Transfer EUROD from pool to industrial
+    ujeurToken.safeTransfer(financing.industrial, amount);
+    emit FundsDeployed(financingId, amount);
+}
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="success-box mt-4">
+                    <strong>✅ You've received the funds!</strong> The EUROD is now in your wallet. You can use it for operations, equipment purchases, inventory, etc. The UGT NFT remains as collateral until you repay.
+                </div>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Important:</strong> The financing has a defined term (e.g., 365 days). You must repay the principal + interest by the maturity date. If you don't, the financing is marked as defaulted and your UGT collateral may be liquidated.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>💳 Phase 4: Repayment</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-6">6</div>
+            <div>
+                <h3 style="margin-top: 0;">Repay the Financing</h3>
+                <p><strong>What happens:</strong> Over time, you make repayments to the pool. Each repayment is recorded on-chain:</p>
+
+                <h4 class="mt-4">📝 Repayment Flow:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Initiate Repayment:</strong> You transfer EUROD to the pool (or backend records the repayment)</li>
+                    <li><strong>Record On-Chain:</strong> Pool manager calls <code>LiquidityPool.recordRepayment(financingId, amount)</code></li>
+                    <li><strong>Tracking Updates:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li><code>financing.amountRepaid += amount</code></li>
+                            <li>Check if fully repaid: <code>amountRepaid >= principal + interest</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Yield Distribution:</strong> If your repayment includes interest, the yield portion is added to the ULPTokenizer pool, increasing NAV for all investors</li>
+                </ol>
+
+                <div class="code-block mt-4">
+// LiquidityPool.sol
+function recordRepayment(uint256 financingId, uint256 amount) returns (bool) {
+    Financing storage financing = financings[financingId];
+    financing.amountRepaid += amount;
+
+    // Check if fully repaid
+    uint256 totalOwed = financing.principal + (financing.principal * interestRate / 10000);
+    bool isFullyRepaid = financing.amountRepaid >= totalOwed;
+
+    if (isFullyRepaid) {
+        financing.isRepaid = true;
+    }
+
+    // Add yield to uLP pool
+    uint256 yieldPortion = amount > financing.principal ? amount - financing.principal : 0;
+    if (yieldPortion > 0) {
+        ulpToken.addYield(yieldPortion, "Financing #123");
+    }
+
+    return isFullyRepaid;
+}
+                </div>
+
+                <h4 class="mt-4">💡 Example Repayment Schedule:</h4>
+                <table>
+                    <tr>
+                        <th>Payment #</th>
+                        <th>Amount Paid</th>
+                        <th>Cumulative Repaid</th>
+                        <th>Remaining</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>€100,000</td>
+                        <td>€100,000</td>
+                        <td>€560,000</td>
+                        <td><span class="badge badge-yellow">REPAYING</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>€150,000</td>
+                        <td>€250,000</td>
+                        <td>€410,000</td>
+                        <td><span class="badge badge-yellow">REPAYING</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>€200,000</td>
+                        <td>€450,000</td>
+                        <td>€210,000</td>
+                        <td><span class="badge badge-yellow">REPAYING</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>€210,000</td>
+                        <td>€660,000</td>
+                        <td>€0</td>
+                        <td><span class="badge badge-green">REPAID ✓</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-6" style="background: #10B981;">7</div>
+            <div>
+                <h3 style="margin-top: 0;">UGT Returned to You</h3>
+                <p><strong>What happens:</strong> Once you've fully repaid the financing, your collateral is returned:</p>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Pool manager calls:</strong> <code>GuaranteeTokenizer.redeemGuarantee(tokenId)</code></li>
+                    <li><strong>NFT transferred back:</strong> The UGT NFT is transferred from the pool back to your wallet</li>
+                    <li><strong>Marked as redeemed:</strong> <code>guarantee.isRedeemed = true</code></li>
+                </ol>
+
+                <div class="success-box mt-4">
+                    <strong>🎉 Congratulations!</strong> You've fully repaid the financing. Your UGT collateral has been returned. You can now:
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Apply for new financing with the same collateral</li>
+                        <li>Use your assets freely (no longer encumbered)</li>
+                        <li>Build your credit history on the platform</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚠️ Default Scenario (What Happens If You Don't Repay)</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-5" style="background: #EF4444;">!</div>
+            <div>
+                <h3 style="margin-top: 0;">Liquidation Process</h3>
+                <p>If you fail to repay by the maturity date:</p>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Financing marked as defaulted:</strong> <code>LiquidityPool.markAsDefaulted(financingId)</code></li>
+                    <li><strong>UGT liquidated via auction:</strong> The collateral NFT is sold to the highest bidder</li>
+                    <li><strong>Proceeds distributed to pool investors:</strong> uLP holders receive compensation from the liquidation</li>
+                    <li><strong>Your credit is damaged:</strong> Future financing requests will be heavily scrutinized</li>
+                </ol>
+
+                <div class="code-block mt-4">
+// GuaranteeTokenizer.liquidateGuarantee()
+function liquidateGuarantee(
+    uint256 tokenId,
+    address auctionWinner,
+    uint256 liquidationAmount
+) external {
+    require(guarantee.isDefaulted, "Not liquidatable");
+    _safeTransfer(msg.sender, auctionWinner, tokenId);
+    emit GuaranteeLiquidated(tokenId, auctionWinner, liquidationAmount);
+}
+                </div>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Key Warning:</strong> Default has serious consequences. Always communicate with the pool manager if you anticipate repayment difficulties — restructuring options may be available.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🏗️ Technical Architecture Summary</h2>
+
+    <div class="card">
+        <h3>📊 Database Tables Involved</h3>
+        <table>
+            <tr>
+                <th>Table</th>
+                <th>Role in Industrial Workflow</th>
+            </tr>
+            <tr>
+                <td><code>users</code></td>
+                <td>Authentication (email, wallet address)</td>
+            </tr>
+            <tr>
+                <td><code>investor_profiles</code></td>
+                <td>Company details, KYB status, wallet address</td>
+            </tr>
+            <tr>
+                <td><code>documents</code></td>
+                <td>KYB documents (incorporation, tax, UBO)</td>
+            </tr>
+            <tr>
+                <td><code>financings</code></td>
+                <td>Individual financing records (amount, rate, term, repayment status)</td>
+            </tr>
+            <tr>
+                <td><code>pools</code></td>
+                <td>Pool configuration that funds the financing</td>
+            </tr>
+            <tr>
+                <td><code>blockchain_transactions</code></td>
+                <td>Audit trail of all on-chain actions (certify, mint, repay)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>⛓️ Smart Contracts Involved</h3>
+        <table>
+            <tr>
+                <th>Contract</th>
+                <th>Function Called</th>
+                <th>When</th>
+            </tr>
+            <tr>
+                <td><strong>IndustrialGateway</strong></td>
+                <td><code>certifyAsset(...)</code></td>
+                <td>When GDIZ/SIPI verifies your asset</td>
+            </tr>
+            <tr>
+                <td><strong>GuaranteeTokenizer</strong></td>
+                <td><code>mintGuarantee(...)</code></td>
+                <td>When financing is created (UGT NFT minted)</td>
+            </tr>
+            <tr>
+                <td><strong>LiquidityPool</strong></td>
+                <td><code>createFinancing(...)</code></td>
+                <td>When pool manager creates financing deal</td>
+            </tr>
+            <tr>
+                <td><strong>LiquidityPool</strong></td>
+                <td><code>deployFunds(financingId, amount)</code></td>
+                <td>When funds are transferred to you</td>
+            </tr>
+            <tr>
+                <td><strong>LiquidityPool</strong></td>
+                <td><code>recordRepayment(financingId, amount)</code></td>
+                <td>When you make a repayment</td>
+            </tr>
+            <tr>
+                <td><strong>GuaranteeTokenizer</strong></td>
+                <td><code>redeemGuarantee(tokenId)</code></td>
+                <td>When fully repaid (UGT returned)</td>
+            </tr>
+            <tr>
+                <td><strong>GuaranteeTokenizer</strong></td>
+                <td><code>liquidateGuarantee(tokenId, winner)</code></td>
+                <td>On default (UGT auctioned)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="highlight-box mt-8">
+        <strong>💡 Key Takeaways:</strong>
+        <ol class="list-decimal pl-6 mt-2 space-y-1">
+            <li><strong>Asset-Backed Financing:</strong> Every loan is backed by real physical assets (inventory, equipment, contracts) — not just promises</li>
+            <li><strong>UGT = Collateral NFT:</strong> Your asset is tokenized as an NFT that the pool holds as security</li>
+            <li><strong>Automatic Yield Distribution:</strong> When you repay with interest, the yield automatically goes to uLP investors</li>
+            <li><strong>Transparent Tracking:</strong> Every repayment is recorded on-chain — anyone can verify the status</li>
+            <li><strong>Default Protection:</strong> If you default, your collateral is liquidated to protect investors</li>
+        </ol>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Workflow: Subscription to Redeem | Ujamaa DeFi Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F8F9FB;
+            color: #1A1A2E;
+            line-height: 1.7;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #023D7A 0%, #00A8A8 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(2, 61, 122, 0.15);
+        }
+
+        .gradient-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .gradient-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #E5E7EB;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        .step-1 { background: #3B82F6; color: white; }
+        .step-2 { background: #10B981; color: white; }
+        .step-3 { background: #F59E0B; color: white; }
+        .step-4 { background: #8B5CF6; color: white; }
+        .step-5 { background: #EF4444; color: white; }
+        .step-6 { background: #06B6D4; color: white; }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #00A8A8;
+            margin: 1rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #EBF5FF 0%, #E0F7FA 100%);
+            border-left: 4px solid #023D7A;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #F1F5F9;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #023D7A;
+            border-bottom: 2px solid #CBD5E1;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        tr:hover {
+            background: #F8FAFC;
+        }
+
+        .diagram-container {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .diagram-box {
+            background: linear-gradient(135deg, #023D7A 0%, #00A8A8 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: #10B981;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        h2 {
+            color: #023D7A;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        h3 {
+            color: #00A8A8;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-blue { background: #DBEAFE; color: #1E40AF; }
+        .badge-green { background: #D1FAE5; color: #065F46; }
+        .badge-yellow { background: #FEF3C7; color: #92400E; }
+        .badge-purple { background: #EDE9FE; color: #5B21B6; }
+    </style>
+</head>
+<body class="max-w-6xl mx-auto px-4 py-8">
+
+    <div class="gradient-header">
+        <h1>👥 Investor Workflow</h1>
+        <p>From Subscription to Redeem — A Complete Step-by-Step Guide</p>
+    </div>
+
+    <div class="highlight-box">
+        <strong>📌 Purpose:</strong> This document explains exactly what happens when an investor subscribes to a liquidity pool on the Ujamaa DeFi Platform. We'll walk through every step — from KYC verification to earning yield and redeeming shares — showing how the database, smart contracts, and frontend work together.
+    </div>
+
+    <h2>🎯 Who Is This For?</h2>
+    <ul class="list-disc pl-6 space-y-2 mb-8">
+        <li><strong>Retail Investors:</strong> Individuals investing €1,000+ in African asset pools</li>
+        <li><strong>Institutional Investors:</strong> Funds, family offices, or corporations investing €100,000+</li>
+        <li><strong>Compliance Officers:</strong> Teams reviewing KYC/KYB applications</li>
+        <li><strong>Developers:</strong> Understanding the technical architecture</li>
+    </ul>
+
+    <h2>📊 High-Level Overview</h2>
+
+    <div class="diagram-container">
+        <h3 style="margin-top: 0;">Investor Journey</h3>
+        <div class="diagram-flow">
+            <div class="diagram-box">1. Register & KYC</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">2. Compliance Check</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">3. Fund Account</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">4. Subscribe to Pool</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">5. Earn Yield</div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-box">6. Redeem Shares</div>
+        </div>
+    </div>
+
+    <h2>🔐 Phase 1: Registration & KYC Verification</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-1">1</div>
+            <div>
+                <h3 style="margin-top: 0;">Create Your Account</h3>
+                <p><strong>What happens:</strong> You create an account on the Ujamaa platform, selecting your investor type:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><span class="badge badge-blue">RETAIL_INVESTOR</span> — Individuals (minimum €1,000)</li>
+                    <li><span class="badge badge-purple">INSTITUTIONAL_INVESTOR</span> — Companies, funds (minimum €100,000)</li>
+                </ul>
+                <div class="mt-4">
+                    <strong>What gets stored in the database:</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><code>User</code> record: email, password hash, wallet address, role</li>
+                        <li><code>InvestorProfile</code> record: jurisdiction, KYC status (initially <code>PENDING</code>), wallet address</li>
+                    </ul>
+                </div>
+                <div class="code-block mt-3">
+-- Database tables affected --
+INSERT INTO users (email, role, wallet_address) VALUES ('investor@email.com', 'RETAIL_INVESTOR', '0x742d...');
+INSERT INTO investor_profiles (user_id, jurisdiction, kyc_status) VALUES (1, 'TG', 'pending');
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-2">2</div>
+            <div>
+                <h3 style="margin-top: 0;">Submit KYC Documents</h3>
+                <p><strong>What happens:</strong> You upload required identity documents through the onboarding flow:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>Individual:</strong> National ID, proof of address, selfie with ID</li>
+                    <li><strong>Institutional:</strong> Certificate of incorporation, tax registration, UBO declaration</li>
+                </ul>
+                <div class="mt-4">
+                    <strong>Database impact:</strong> Each document creates a <code>Document</code> record with:
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><code>verification_status</code> = <code>PENDING</code></li>
+                        <li><code>deadline_at</code> = submission time + 24 hours (SLA tracking)</li>
+                        <li><code>file_hash</code> = SHA256 hash for integrity verification</li>
+                    </ul>
+                </div>
+                <div class="warning-box mt-4">
+                    <strong>⏰ 24-Hour SLA:</strong> Once you submit documents, compliance officers have 24 hours to review them. If they don't, the system flags them as "OVERDUE" automatically.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-3">3</div>
+            <div>
+                <h3 style="margin-top: 0;">Compliance Officer Reviews</h3>
+                <p><strong>What happens:</strong> A compliance officer sees your pending documents in their dashboard and reviews them:</p>
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li><strong>Approve:</strong> Your <code>kyc_status</code> changes from <code>PENDING</code> to <code>APPROVED</code></li>
+                    <li><strong>Reject:</strong> Your <code>kyc_status</code> changes to <code>REJECTED</code> with a reason noted</li>
+                </ul>
+                <div class="mt-4">
+                    <strong>On-chain action (when blockchain enabled):</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Backend calls <code>IdentityRegistry.verifyIdentity(your_wallet_address)</code> on Polygon Amoy</li>
+                        <li>This writes your verification status to the blockchain — anyone can verify it on Polygonscan</li>
+                    </ul>
+                </div>
+                <div class="success-box mt-4">
+                    <strong>✅ You're now verified!</strong> Your wallet is whitelisted to hold ERC-3643 tokens. The platform enforces this — unverified wallets cannot receive uLP tokens.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>💰 Phase 2: Subscription (Investing)</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-4">4</div>
+            <div>
+                <h3 style="margin-top: 0;">Browse Pools & Subscribe</h3>
+                <p><strong>What happens:</strong> You browse available liquidity pools and choose one to invest in:</p>
+
+                <div class="table-container mt-4">
+                    <table>
+                        <tr>
+                            <th>Pool</th>
+                            <th>Target APY</th>
+                            <th>Lock-up</th>
+                            <th>Min. Investment</th>
+                        </tr>
+                        <tr>
+                            <td>🏭 Pool Industrie</td>
+                            <td>10-12%</td>
+                            <td>365 days</td>
+                            <td>€10,000</td>
+                        </tr>
+                        <tr>
+                            <td>🌱 Pool Agriculture</td>
+                            <td>12-15%</td>
+                            <td>180 days</td>
+                            <td>€10,000</td>
+                        </tr>
+                        <tr>
+                            <td>📦 Pool Trade Finance</td>
+                            <td>8-10%</td>
+                            <td>90 days</td>
+                            <td>€10,000</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4 class="mt-4">📝 Step-by-Step Subscription Flow:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Compliance Check (Backend):</strong> Before you can invest, the backend verifies:
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>✅ Your KYC/KYB status is <code>APPROVED</code></li>
+                            <li>✅ Your jurisdiction is not blocked (sanctions check)</li>
+                            <li><strong>On-chain:</strong> <code>IdentityRegistry.isVerified(your_wallet)</code> returns <code>true</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Balance Check (Backend):</strong> Your escrow account must have sufficient funds
+                        <div class="code-block">
+-- Database check --
+SELECT balance FROM bank_accounts WHERE user_id = 1;
+-- If balance < investment_amount → Error: "Insufficient funds"
+                        </div>
+                    </li>
+                    <li><strong>Database Update (Backend):</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Deduct amount from your <code>BankAccount.balance</code></li>
+                            <li>Create <code>Investment</code> record</li>
+                            <li>Create/update <code>PoolPosition</code> with your shares</li>
+                            <li>Increase pool's <code>total_value</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Smart Contract Call (On-Chain):</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Backend calls <code>ULPTokenizer.deposit(amount)</code> on Polygon Amoy</li>
+                            <li>The contract calculates how many uLP shares you receive: <code>shares = amount / NAV</code></li>
+                            <li>At first deposit (NAV = €1.00): €10,000 → 10,000 uLP shares</li>
+                            <li>The contract mints uLP tokens to your wallet address</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="highlight-box mt-4">
+                    <strong>🧮 How uLP Shares Are Calculated:</strong><br>
+                    <code>uLP_shares = investment_amount ÷ NAV_per_share</code><br><br>
+                    If NAV = €1.00 and you invest €10,000 → You get <strong>10,000 uLP shares</strong><br>
+                    If NAV = €1.05 and you invest €10,000 → You get <strong>9,524 uLP shares</strong>
+                </div>
+
+                <div class="code-block mt-4">
+// What happens on-chain (ULPTokenizer.sol)
+function deposit(uint256 ujeurAmount) external returns (uint256) {
+    uint256 uptMinted = ujeurAmount / s_navPerShare;
+    // First deposit: 1:1 ratio
+    if (totalSupply() == 0) { uptMinted = ujeurAmount; }
+
+    s_totalPoolValue += ujeurAmount;
+    _mint(msg.sender, uptMinted);
+    // Transfer UJEUR from investor to pool
+    _transferUJEURFrom(msg.sender, address(this), ujeurAmount);
+
+    emit Deposit(msg.sender, ujeurAmount, uptMinted, s_navPerShare);
+    return uptMinted;
+}
+                </div>
+
+                <div class="success-box mt-4">
+                    <strong>✅ You now own uLP tokens!</strong> These represent your share in the pool. As industrials repay their loans with interest, the NAV per share increases — so your tokens become more valuable over time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📈 Phase 3: Earning Yield</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-5">5</div>
+            <div>
+                <h3 style="margin-top: 0;">How Your Investment Grows</h3>
+                <p><strong>The mechanism:</strong> Your uLP tokens don't increase in quantity — instead, their <em>value</em> grows through NAV appreciation.</p>
+
+                <h4 class="mt-4">🔄 The Yield Cycle:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Industrial borrows from pool:</strong> Pool deploys €500,000 to a cotton manufacturer at 12% interest</li>
+                    <li><strong>Industrial repays:</strong> After 6 months, they repay €530,000 (€500K principal + €30K interest)</li>
+                    <li><strong>Yield added to pool:</strong> The €30K interest goes into the pool, increasing total value</li>
+                    <li><strong>NAV recalculates:</strong> <code>New NAV = Total Pool Value ÷ Total Shares</code></li>
+                    <li><strong>Your share value increases:</strong> <code>Your Value = Your uLP Balance × New NAV</code></li>
+                </ol>
+
+                <div class="table-container mt-4">
+                    <table>
+                        <tr>
+                            <th>Timeline</th>
+                            <th>Pool Value</th>
+                            <th>Total uLP Shares</th>
+                            <th>NAV/Share</th>
+                            <th>Your €10K Investment</th>
+                        </tr>
+                        <tr>
+                            <td>Day 1 (Invest)</td>
+                            <td>€1,000,000</td>
+                            <td>1,000,000</td>
+                            <td>€1.0000</td>
+                            <td>€10,000</td>
+                        </tr>
+                        <tr>
+                            <td>Month 6</td>
+                            <td>€1,030,000</td>
+                            <td>1,000,000</td>
+                            <td>€1.0300</td>
+                            <td>€10,300</td>
+                        </tr>
+                        <tr>
+                            <td>Year 1</td>
+                            <td>€1,100,000</td>
+                            <td>1,000,000</td>
+                            <td>€1.1000</td>
+                            <td>€11,000</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-4">
+                    <strong>🔑 Key Insight:</strong> Unlike traditional dividends, you don't receive yield as separate payments. Instead, the NAV per share compounds automatically — similar to a mutual fund. Your uLP tokens become more valuable over time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>💸 Phase 4: Redemption (Withdrawing)</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge step-6">6</div>
+            <div>
+                <h3 style="margin-top: 0;">Redeem Your uLP Shares</h3>
+                <p><strong>What happens:</strong> You decide to exit your investment and redeem your uLP shares for EUROD.</p>
+
+                <h4 class="mt-4">📝 Step-by-Step Redemption Flow:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Validation (Backend):</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>✅ You have a position in the pool</li>
+                            <li>✅ You have enough uLP shares to redeem</li>
+                            <li>✅ Daily withdrawal limit not exceeded (€500K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Calculation:</strong>
+                        <div class="code-block">
+EUROD_received = uLP_shares × NAV_per_share
+
+Example: 10,000 uLP × €1.10 NAV = €11,000 EUROD received
+                        </div>
+                    </li>
+                    <li><strong>Database Update:</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Reduce your <code>PoolPosition.shares</code></li>
+                            <li>Reduce pool's <code>total_value</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Smart Contract Call (On-Chain):</strong>
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Backend calls <code>ULPTokenizer.redeem(shares)</code></li>
+                            <li>The contract burns your uLP tokens</li>
+                            <li>Transfers EUROD back to your wallet</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block mt-4">
+// What happens on-chain (ULPTokenizer.sol)
+function redeem(uint256 uptAmount) external returns (uint256) {
+    // Calculate EUROD to return
+    uint256 ujeurAmount = (uptAmount * s_navPerShare) / 1e18;
+
+    s_totalPoolValue -= ujeurAmount;
+    _burn(msg.sender, uptAmount);
+    _transferUJEUR(msg.sender, ujeurAmount);
+
+    emit Redemption(msg.sender, uptAmount, ujeurAmount, s_navPerShare);
+    return ujeurAmount;
+}
+                </div>
+
+                <div class="success-box mt-4">
+                    <strong>✅ Redemption Complete!</strong> You've received your initial investment plus yield. The transaction is recorded on-chain with a verifiable Polygonscan link.
+                </div>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Important Notes:</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><strong>Daily withdrawal limit:</strong> €500,000 per investor per day (configurable)</li>
+                        <li><strong>Pool liquidity:</strong> If too many investors redeem simultaneously, the pool may not have enough liquid funds</li>
+                        <li><strong>Lock-up periods:</strong> Some pools have minimum lock-up (e.g., 180 days for Agriculture)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🏗️ Technical Architecture Summary</h2>
+
+    <div class="card">
+        <h3>📊 Database Tables Involved</h3>
+        <table>
+            <tr>
+                <th>Table</th>
+                <th>Role in Investor Workflow</th>
+            </tr>
+            <tr>
+                <td><code>users</code></td>
+                <td>Authentication (email, password, wallet address)</td>
+            </tr>
+            <tr>
+                <td><code>investor_profiles</code></td>
+                <td>KYC/KYB status, jurisdiction, accreditation</td>
+            </tr>
+            <tr>
+                <td><code>documents</code></td>
+                <td>Uploaded KYC docs with 24h review SLA</td>
+            </tr>
+            <tr>
+                <td><code>bank_accounts</code></td>
+                <td>Escrow balance tracking</td>
+            </tr>
+            <tr>
+                <td><code>pools</code></td>
+                <td>Pool configuration (APY, lockup, total value)</td>
+            </tr>
+            <tr>
+                <td><code>investments</code></td>
+                <td>Individual investment records</td>
+            </tr>
+            <tr>
+                <td><code>pool_positions</code></td>
+                <td>Your shares in each pool + yield tracking</td>
+            </tr>
+            <tr>
+                <td><code>blockchain_transactions</code></td>
+                <td>Audit trail of all on-chain actions</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>⛓️ Smart Contracts Involved</h3>
+        <table>
+            <tr>
+                <th>Contract</th>
+                <th>Function Called</th>
+                <th>When</th>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>registerIdentity()</code></td>
+                <td>During onboarding</td>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>verifyIdentity()</code></td>
+                <td>After compliance approval</td>
+            </tr>
+            <tr>
+                <td><strong>IdentityRegistry</strong></td>
+                <td><code>isVerified()</code></td>
+                <td>Before every invest/redeem</td>
+            </tr>
+            <tr>
+                <td><strong>ULPTokenizer</strong></td>
+                <td><code>deposit(amount)</code></td>
+                <td>When investor subscribes</td>
+            </tr>
+            <tr>
+                <td><strong>ULPTokenizer</strong></td>
+                <td><code>redeem(shares)</code></td>
+                <td>When investor withdraws</td>
+            </tr>
+            <tr>
+                <td><strong>ULPTokenizer</strong></td>
+                <td><code>addYield(amount)</code></td>
+                <td>When industrial repays (indirectly)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="highlight-box mt-8">
+        <strong>💡 Key Takeaways:</strong>
+        <ol class="list-decimal pl-6 mt-2 space-y-1">
+            <li><strong>Compliance First:</strong> You cannot invest without KYC approval — both in the database AND on-chain via IdentityRegistry</li>
+            <li><strong>uLP = Ownership:</strong> Your uLP tokens represent a proportional share in the entire pool's value</li>
+            <li><strong>NAV Compounds:</strong> Instead of receiving separate yield payments, your tokens appreciate in value</li>
+            <li><strong>Fully Auditable:</strong> Every action is recorded in both the database (for analytics) and on-chain (for transparency)</li>
+            <li><strong>Polygonscan Verifiable:</strong> Every transaction has a real tx hash and explorer URL — anyone can verify on-chain</li>
+        </ol>
+    </div>
+
+</body>
+</html>

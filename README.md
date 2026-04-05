@@ -2,13 +2,13 @@
 
 **Institutional-Grade African Real-World Asset Tokenization**
 
-**Version:** 2.0.0 - ERC-3643 Production Ready
-**Last Updated:** April 2, 2026
-**Status:** ? Production Ready | 100% Contracts Deployed
+**Version:** 3.0.0 - Full Blockchain Integration
+**Last Updated:** April 5, 2026
+**Status:** MVP Testnet | 100% Contracts Deployed & Integrated
 
 ---
 
-## ?? Overview
+## ? Overview
 
 Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizing African real-world assets (RWA). Built on **ERC-3643 (T-REX protocol)**, we enable compliant, transparent, and efficient financing for African SMEs through liquidity pools and yield-bearing tokens.
 
@@ -18,19 +18,42 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 
 ---
 
-## ?? Key Features
+## ? Key Features
 
-### MVP Institutional Architecture
+### Smart Contracts (Deployed on Polygon Amoy)
 
-| Feature | Description | Status |
-|---------|-------------|--------|
-| **ULP Token** | Yield-bearing ERC-3643 token with identity verification | ? Deployed |
-| **ERC-3643 Compliance** | Identity registry + transfer compliance module | ? Deployed |
-| **Liquidity Pool Management** | Diversified pools (Industrial, Agriculture, Trade, Renewable, Real Estate) | ? Deployed |
-| **Mock Banking** | Testnet bank simulation (swappable for BIIC/MCB production) | ? Deployed |
-| **Institutional Dashboard** | Real-time portfolio tracking, yield statements | ? Complete |
-| **Identity Registry** | On-chain identity verification for all investors | ? Deployed |
-| **Compliance Module** | Transfer validation, jurisdiction checks, investment limits | ? Deployed |
+| Contract | Address | Status | Description |
+|----------|---------|--------|-------------|
+| **ULPTokenizer** | `0xe69569DCc219c518673318a7a34D56202CF92DE2` | ? Deployed | ERC-3643 yield-bearing pool token (uLP) |
+| **GuaranteeTokenizer** | `0x83e20a9516b82f0b1bd0ee57882ef35f9553b469` | ? Deployed | ERC-721 collateral NFT (UGT) |
+| **LiquidityPool** | `0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec` | ? Deployed | Multi-asset pool management |
+| **IndustrialGateway** | `0x882071de6689ec1716bd7e162acf50707ac68930` | ? Deployed | Asset certification & UGT minting |
+| **IdentityRegistry** | `0xB3fb5AB654FC270d10338A64fDBC1E151c223283` | ? Deployed | ERC-3643 identity verification |
+| **Compliance** | `0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2` | ? Deployed | Transfer compliance module |
+| **MockEUROD** | `0x787c5c0365829abf88a3d8404e9488d1e307ed43` | ? Deployed | Testnet EUR stablecoin |
+| **JurisdictionCompliance** | `0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c` | ? Deployed | Sanctions & jurisdiction checks |
+
+### Backend Integration (Complete)
+
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Invest ? ULPTokenizer.deposit()** | ? Integrated | Real on-chain transactions with Polygonscan verification |
+| **Redeem ? ULPTokenizer.redeem()** | ? Integrated | Burn uLP, receive EUROD on-chain |
+| **Financing ? LiquidityPool.createFinancing()** | ? Integrated | On-chain financing + UGT minting |
+| **Repayment ? LiquidityPool.recordRepayment()** | ? Integrated | On-chain repayment + yield distribution |
+| **Compliance (Database-Backed)** | ? Integrated | KYC/KYB, document review, 24h SLA |
+| **Blockchain Audit Trail** | ? Complete | All on-chain actions tracked in database |
+| **Demo Mode** | ? Available | `DEMO_MODE=True` for testing without blockchain |
+
+### Frontend (Functional)
+
+| Page | Status | Details |
+|------|--------|---------|
+| **Subscription Form** | ? Functional | Multi-step form with API submission, Polygonscan links |
+| **Investor Portfolio** | ? Functional | Real data from database + blockchain |
+| **Industrial Financings** | ? Functional | Real API integration, repayment flow |
+| **Compliance Dashboard** | ? Functional | KYC review, document management |
+| **Pool Marketplace** | ? Ready | Browse pools, initiate investments |
 
 ---
 
@@ -262,7 +285,7 @@ This repository contains proprietary technology and confidential information. Ac
 | Metric | Value |
 |--------|-------|
 | **Documentation Files** | 207 HTML + 123 MD |
-| **Last Update** | March 30, 2026 |
+| **Last Update** | April 5, 2026 |
 | **SRS Version** | v2.1 (MVP Institutional) |
 | **Status** | ?? MVP Development Complete |
 | **Design System** | Professional 2026 (Responsive) |
@@ -276,7 +299,7 @@ This repository contains proprietary technology and confidential information. Ac
 
 ---
 
-**Last Updated:** March 30, 2026
+**Last Updated:** April 5, 2026
 **Total Documentation:** 207 HTML files + 123 MD sources
 **SRS Version:** v2.1 (MVP Institutional)
-**Status:** ?? MVP Development Complete | Production Ready
+**Status:** ?? MVP Development Complete | 54 Algorithms Documented
