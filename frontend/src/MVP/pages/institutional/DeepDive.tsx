@@ -468,7 +468,7 @@ const DeepDive: React.FC = () => {
               }>
                 <div className="space-y-8">
                   <p className="text-[#333333] text-lg leading-relaxed">
-                    MVP deploys 9 smart contracts on Polygon Amoy testnet (Chain ID: 80002).
+                    MVP deploys 11 smart contracts on Polygon Amoy testnet (Chain ID: 80002).
                     All contracts implement ERC-3643 compliance primitives for identity verification
                     and transfer restrictions. Built with Solidity 0.8.20 and tested with Foundry.
                   </p>
@@ -478,54 +478,82 @@ const DeepDive: React.FC = () => {
                     <h3 className="text-lg font-bold text-[#023D7A] mb-4">Contract Hierarchy</h3>
                     <div className="space-y-3">
                       {[
-                        { 
-                          name: 'ULPTokenizer.sol', 
-                          desc: 'Yield-bearing LP token (ERC-3643)', 
-                          lines: '~628',
+                        {
+                          name: 'ULPTokenizer.sol',
+                          desc: 'Yield-bearing LP token (ERC-3643)',
+                          lines: '~720',
                           color: 'from-[#023D7A] to-[#00A8A8]',
-                          features: ['Value-accrual model', 'NAV-based pricing', 'Role-based access']
+                          features: ['Value-accrual model', 'NAV-based pricing', 'ERC-3643 transfer checks', 'Role-based access']
                         },
-                        { 
-                          name: 'LiquidityPool.sol', 
-                          desc: 'Multi-asset pool manager (5 families)', 
-                          lines: '~819',
+                        {
+                          name: 'IdentityRegistry.sol',
+                          desc: 'ERC-3643 identity management',
+                          lines: '~260',
+                          color: 'from-[#7C3AED] to-[#A855F7]',
+                          features: ['Identity registration', 'On-chain verification', 'Jurisdiction tracking']
+                        },
+                        {
+                          name: 'Compliance.sol',
+                          desc: 'Transfer compliance module',
+                          lines: '~220',
+                          color: 'from-[#A855F7] to-[#023D7A]',
+                          features: ['Transfer validation', 'Compliance reason codes', 'Identity-linked']
+                        },
+                        {
+                          name: 'LiquidityPool.sol',
+                          desc: 'Multi-asset pool manager (5 families)',
+                          lines: '~980',
                           color: 'from-[#00A8A8] to-[#48A9F0]',
-                          features: ['5 pool families', 'Diversification limits', 'Yield distribution']
+                          features: ['5 pool families', 'Diversification limits', 'UGT minting on financing', 'Yield distribution']
                         },
-                        { 
-                          name: 'JurisdictionCompliance.sol', 
-                          desc: '12 blocked jurisdictions', 
+                        {
+                          name: 'JurisdictionCompliance.sol',
+                          desc: '12 blocked jurisdictions (OFAC+UN+EU+FATF)',
                           lines: '~450',
                           color: 'from-[#48A9F0] to-[#023D7A]',
-                          features: ['OFAC + UN + EU lists', 'Real-time checks', 'Investor registration']
+                          features: ['OFAC + UN + EU + FATF lists', 'Real-time checks', 'Investor registration']
                         },
-                        { 
+                        {
                           name: 'GuaranteeTokenizer.sol',
-                          desc: 'ERC-721 NFT collateral (uGT)',
-                          lines: '~426',
+                          desc: 'ERC-721 NFT collateral (UGT)',
+                          lines: '~450',
                           color: 'from-[#D57028] to-[#F59E0B]',
                           features: ['Collateral NFTs', 'Forced transfer', 'Liquidation support']
                         },
-                        { 
-                          name: 'IndustrialGateway.sol', 
-                          desc: 'Asset certification authority', 
+                        {
+                          name: 'IndustrialGateway.sol',
+                          desc: 'Asset certification authority',
                           lines: '~384',
                           color: 'from-[#023D7A] to-[#8B5B3D]',
-                          features: ['Certificate minting', 'GDIZ (Benin) integration', 'Asset verification']
+                          features: ['Certificate minting', 'GDIZ integration', 'Asset verification', 'UGT minting']
                         },
-                        { 
-                          name: 'MockEscrow.sol', 
-                          desc: 'Simulated bank escrow', 
-                          lines: '~500',
+                        {
+                          name: 'MockEscrow.sol',
+                          desc: 'Simulated bank escrow',
+                          lines: '~750',
                           color: 'from-[#8B5B3D] to-[#023D7A]',
                           features: ['10M demo accounts', 'Wire transfer simulation', 'Factory pattern']
                         },
-                        { 
-                          name: 'MockFiatRamp.sol', 
-                          desc: 'Simulated fiat on/off ramp', 
-                          lines: '~450',
+                        {
+                          name: 'MockFiatRamp.sol',
+                          desc: 'Simulated fiat on/off ramp',
+                          lines: '~520',
                           color: 'from-[#00A8A8] to-[#D57028]',
                           features: ['EUROD simulation', 'FX conversion', 'Ondo Finance integration ready']
+                        },
+                        {
+                          name: 'MockEUROD.sol',
+                          desc: 'ERC-20 Euro-pegged stablecoin',
+                          lines: '~180',
+                          color: 'from-[#10B981] to-[#059669]',
+                          features: ['ERC-20 standard', 'Role-based minting', 'Testnet stablecoin']
+                        },
+                        {
+                          name: 'NavGateway.sol',
+                          desc: 'NAV price feed oracle',
+                          lines: '~200',
+                          color: 'from-[#3B82F6] to-[#1D4ED8]',
+                          features: ['NAV updates', 'Yield accrual', 'Historical tracking']
                         },
                       ].map((contract) => (
                         <div key={contract.name} className="p-5 bg-gradient-to-br from-white to-[#F3F8FA] rounded-2xl border border-[#48A9F0]/30 hover:shadow-lg transition-all duration-300">
