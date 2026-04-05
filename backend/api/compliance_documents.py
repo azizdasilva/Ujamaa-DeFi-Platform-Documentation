@@ -1,10 +1,10 @@
 """
-Compliance API - KYC/KYB Document Review with 24h Window
+Compliance API - KYC/KYB Document Review with 24h Window (Database-Backed)
 
 Endpoints for compliance officers to review and approve/reject documents.
 Implements 24-hour review window requirement.
 
-@notice: MVP TESTNET - Mock implementation for demo
+@notice All document data is persisted to PostgreSQL/SQLite.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, status
@@ -13,84 +13,32 @@ from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any
 import uuid
 
+from config.database import get_db
+from config.models import (
+    Document, ComplianceActivity, InvestorProfile, User,
+    ComplianceStatusEnum, DocumentTypeEnum
+)
+from sqlalchemy.orm import Session
+
 router = APIRouter(prefix="/api/v2/compliance", tags=["Compliance"])
-
-# =============================================================================
-# MOCK DATABASE (Replace with SQLAlchemy models when DB is connected)
-# =============================================================================
-
-# Mock documents storage
-documents_db: Dict[str, Dict[str, Any]] = {
-    "doc-001": {
-        "id": "doc-001",
-        "investor_id": "inv-001",
-        "investor_name": "John Doe",
-        "document_type": "kyc_id",
-        "document_name": "National ID",
-        "file_path": "/uploads/kyc/doc-001_id.pdf",
-        "file_hash": "0x" + uuid.uuid4().hex,
-        "upload_status": "uploaded",
-        "verification_status": "pending",
-        "submitted_at": datetime.utcnow().isoformat(),
-        "deadline_at": (datetime.utcnow() + timedelta(hours=24)).isoformat(),
-        "reviewed_by": None,
-        "reviewed_at": None,
-        "review_notes": None,
-    },
-    "doc-002": {
-        "id": "doc-002",
-        "investor_id": "inv-001",
-        "investor_name": "John Doe",
-        "document_type": "kyc_address",
-        "document_name": "Proof of Address",
-        "file_path": "/uploads/kyc/doc-002_address.pdf",
-        "file_hash": "0x" + uuid.uuid4().hex,
-        "upload_status": "uploaded",
-        "verification_status": "pending",
-        "submitted_at": datetime.utcnow().isoformat(),
-        "deadline_at": (datetime.utcnow() + timedelta(hours=24)).isoformat(),
-        "reviewed_by": None,
-        "reviewed_at": None,
-        "review_notes": None,
-    },
-    "doc-003": {
-        "id": "doc-003",
-        "investor_id": "inst-001",
-        "investor_name": "Logic Capital Ltd",
-        "document_type": "kyb_incorporation",
-        "document_name": "Certificate of Incorporation",
-        "file_path": "/uploads/kyb/doc-003_incorporation.pdf",
-        "file_hash": "0x" + uuid.uuid4().hex,
-        "upload_status": "uploaded",
-        "verification_status": "pending",
-        "submitted_at": (datetime.utcnow() - timedelta(hours=12)).isoformat(),
-        "deadline_at": (datetime.utcnow() + timedelta(hours=12)).isoformat(),
-        "reviewed_by": None,
-        "reviewed_at": None,
-        "review_notes": None,
-    },
-}
-
-# Mock compliance activities log
-compliance_activities_db: List[Dict[str, Any]] = []
 
 # =============================================================================
 # PYDANTIC MODELS
 # =============================================================================
 
 class DocumentResponse(BaseModel):
-    id: str
-    investor_id: str
+    id: int
+    investor_id: int
     investor_name: str
     document_type: str
     document_name: str
     file_path: str
-    file_hash: str
+    file_hash: Optional[str] = None
     upload_status: str
     verification_status: str
     submitted_at: str
-    deadline_at: str
-    reviewed_by: Optional[str] = None
+    deadline_at: Optional[str] = None
+    reviewed_by: Optional[int] = None
     reviewed_at: Optional[str] = None
     review_notes: Optional[str] = None
     time_remaining_hours: Optional[float] = None
@@ -99,13 +47,14 @@ class DocumentResponse(BaseModel):
 class ReviewRequest(BaseModel):
     action: str = Field(..., description="approve or reject")
     notes: Optional[str] = Field(None, description="Review notes")
+    reviewer_id: Optional[int] = Field(None, description="Reviewer user ID")
 
 
 class ComplianceActivityResponse(BaseModel):
-    id: str
-    user_id: str
+    id: int
+    user_id: int
     activity_type: str
-    target_id: str
+    target_id: int
     target_type: str
     details: Optional[Dict[str, Any]] = None
     created_at: str
@@ -123,25 +72,27 @@ class ComplianceStats(BaseModel):
 # HELPER FUNCTIONS
 # =============================================================================
 
-def calculate_time_remaining(deadline_at: str) -> float:
+def calculate_time_remaining(deadline_at: datetime) -> float:
     """Calculate hours remaining until deadline"""
-    deadline = datetime.fromisoformat(deadline_at)
     now = datetime.utcnow()
-    remaining = deadline - now
+    remaining = deadline_at - now
     return max(0, remaining.total_seconds() / 3600)
 
 
-def check_overdue_documents():
+def check_overdue_documents(db: Session):
     """Check and flag overdue documents"""
-    overdue = []
-    for doc_id, doc in documents_db.items():
-        if doc["verification_status"] == "pending":
-            time_remaining = calculate_time_remaining(doc["deadline_at"])
-            if time_remaining <= 0:
-                overdue.append(doc_id)
-                # Auto-flag as requiring review
-                doc["review_notes"] = f"⚠️ OVERDUE - Not reviewed within 24h window"
-    return overdue
+    now = datetime.utcnow()
+    overdue_docs = db.query(Document).filter(
+        Document.verification_status == ComplianceStatusEnum.PENDING,
+        Document.deadline_at < now
+    ).all()
+
+    for doc in overdue_docs:
+        if not doc.review_notes or "OVERDUE" not in (doc.review_notes or ""):
+            doc.review_notes = (doc.review_notes or "") + " ⚠️ OVERDUE - Not reviewed within 24h window"
+
+    db.commit()
+    return len(overdue_docs)
 
 
 # =============================================================================
@@ -150,230 +101,286 @@ def check_overdue_documents():
 
 @router.get("/documents", response_model=List[DocumentResponse])
 async def get_all_documents(
-    status: Optional[str] = None,
-    investor_id: Optional[str] = None
+    status_filter: Optional[str] = None,
+    investor_id: Optional[int] = None,
+    db: Session = Depends(get_db)
 ):
     """
     Get all documents for review.
-    
-    - **status**: Filter by verification status (pending, approved, rejected)
+
+    - **status_filter**: Filter by verification status (pending, approved, rejected)
     - **investor_id**: Filter by investor ID
-    
+
     @notice: Returns documents with 24h deadline information
     """
-    check_overdue_documents()
-    
-    filtered = []
-    for doc in documents_db.values():
-        if status and doc["verification_status"] != status:
-            continue
-        if investor_id and doc["investor_id"] != investor_id:
-            continue
-        
-        doc_response = doc.copy()
-        doc_response["time_remaining_hours"] = calculate_time_remaining(doc["deadline_at"])
-        filtered.append(doc_response)
-    
-    # Sort by submission time (oldest first - most urgent)
-    filtered.sort(key=lambda x: x["submitted_at"])
-    
-    return filtered
+    check_overdue_documents(db)
+
+    query = db.query(Document)
+
+    if status_filter:
+        query = query.filter(Document.verification_status == ComplianceStatusEnum(status_filter))
+
+    if investor_id:
+        query = query.filter(Document.investor_id == investor_id)
+
+    documents = query.order_by(Document.submitted_at.asc()).all()
+
+    result = []
+    for doc in documents:
+        investor = db.query(InvestorProfile).filter(InvestorProfile.id == doc.investor_id).first()
+        time_remaining = None
+        if doc.deadline_at and doc.verification_status == ComplianceStatusEnum.PENDING:
+            time_remaining = calculate_time_remaining(doc.deadline_at)
+
+        result.append(DocumentResponse(
+            id=doc.id,
+            investor_id=doc.investor_id,
+            investor_name=investor.full_name or investor.company_name or f"Investor #{doc.investor_id}" if investor else f"Investor #{doc.investor_id}",
+            document_type=doc.document_type.value if doc.document_type else "unknown",
+            document_name=doc.document_name,
+            file_path=doc.file_path,
+            file_hash=doc.file_hash,
+            upload_status=doc.upload_status,
+            verification_status=doc.verification_status.value if doc.verification_status else "pending",
+            submitted_at=doc.submitted_at.isoformat() if doc.submitted_at else "",
+            deadline_at=doc.deadline_at.isoformat() if doc.deadline_at else None,
+            reviewed_by=doc.reviewed_by,
+            reviewed_at=doc.reviewed_at.isoformat() if doc.reviewed_at else None,
+            review_notes=doc.review_notes,
+            time_remaining_hours=time_remaining
+        ))
+
+    return result
 
 
 @router.get("/documents/{document_id}", response_model=DocumentResponse)
-async def get_document(document_id: str):
+async def get_document(document_id: int, db: Session = Depends(get_db)):
     """
     Get a specific document by ID.
-    
+
     Returns document details including file path for viewing.
     """
-    if document_id not in documents_db:
+    doc = db.query(Document).filter(Document.id == document_id).first()
+    if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
-    
-    doc = documents_db[document_id]
-    doc_response = doc.copy()
-    doc_response["time_remaining_hours"] = calculate_time_remaining(doc["deadline_at"])
-    
-    return doc_response
+
+    investor = db.query(InvestorProfile).filter(InvestorProfile.id == doc.investor_id).first()
+    time_remaining = None
+    if doc.deadline_at and doc.verification_status == ComplianceStatusEnum.PENDING:
+        time_remaining = calculate_time_remaining(doc.deadline_at)
+
+    return DocumentResponse(
+        id=doc.id,
+        investor_id=doc.investor_id,
+        investor_name=investor.full_name or investor.company_name or f"Investor #{doc.investor_id}" if investor else f"Investor #{doc.investor_id}",
+        document_type=doc.document_type.value if doc.document_type else "unknown",
+        document_name=doc.document_name,
+        file_path=doc.file_path,
+        file_hash=doc.file_hash,
+        upload_status=doc.upload_status,
+        verification_status=doc.verification_status.value if doc.verification_status else "pending",
+        submitted_at=doc.submitted_at.isoformat() if doc.submitted_at else "",
+        deadline_at=doc.deadline_at.isoformat() if doc.deadline_at else None,
+        reviewed_by=doc.reviewed_by,
+        reviewed_at=doc.reviewed_at.isoformat() if doc.reviewed_at else None,
+        review_notes=doc.review_notes,
+        time_remaining_hours=time_remaining
+    )
 
 
 @router.post("/documents/{document_id}/review")
-async def review_document(document_id: str, review: ReviewRequest):
+async def review_document(document_id: int, review: ReviewRequest, db: Session = Depends(get_db)):
     """
     Review and approve/reject a document.
-    
+
     - **action**: "approve" or "reject"
     - **notes**: Optional review notes
-    
+
     @notice: Must be done within 24h of submission
     """
-    if document_id not in documents_db:
+    doc = db.query(Document).filter(Document.id == document_id).first()
+    if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
-    
-    doc = documents_db[document_id]
-    
+
     # Check if already reviewed
-    if doc["verification_status"] != "pending":
+    if doc.verification_status != ComplianceStatusEnum.PENDING:
         raise HTTPException(
             status_code=400,
-            detail=f"Document already {doc['verification_status']}"
+            detail=f"Document already {doc.verification_status.value}"
         )
-    
+
     # Check if overdue
-    time_remaining = calculate_time_remaining(doc["deadline_at"])
-    if time_remaining <= 0:
-        # Allow review but flag as overdue
-        doc["review_notes"] = (doc.get("review_notes") or "") + " ⚠️ Reviewed after 24h deadline"
-    
+    time_remaining = 0.0
+    if doc.deadline_at:
+        time_remaining = calculate_time_remaining(doc.deadline_at)
+        if time_remaining <= 0:
+            doc.review_notes = (doc.review_notes or "") + " ⚠️ Reviewed after 24h deadline"
+
     # Update document
-    now = datetime.utcnow().isoformat()
-    doc["verification_status"] = "approved" if review.action == "approve" else "rejected"
-    doc["reviewed_by"] = "compliance-001"  # Would come from auth context
-    doc["reviewed_at"] = now
-    doc["review_notes"] = (doc.get("review_notes") or "") + (review.notes or "")
-    
-    # Log activity
-    activity = {
-        "id": str(uuid.uuid4()),
-        "user_id": "compliance-001",
-        "activity_type": f"DOCUMENT_{review.action.upper()}",
-        "target_id": document_id,
-        "target_type": "DOCUMENT",
-        "details": {
-            "investor_id": doc["investor_id"],
-            "document_type": doc["document_type"],
+    now = datetime.utcnow()
+    new_status = ComplianceStatusEnum.APPROVED if review.action == "approve" else ComplianceStatusEnum.REJECTED
+    doc.verification_status = new_status
+    doc.reviewed_by = review.reviewer_id or 1  # Default to user 1 if not provided
+    doc.reviewed_at = now
+    doc.review_notes = (doc.review_notes or "") + (review.notes or "")
+
+    # Log compliance activity
+    activity = ComplianceActivity(
+        user_id=review.reviewer_id or 1,
+        activity_type=f"DOCUMENT_{review.action.upper()}",
+        target_id=document_id,
+        target_type="DOCUMENT",
+        details={
+            "investor_id": doc.investor_id,
+            "document_type": doc.document_type.value if doc.document_type else "unknown",
             "notes": review.notes,
             "time_remaining_hours": time_remaining,
         },
-        "created_at": now,
-    }
-    compliance_activities_db.append(activity)
-    
+        created_at=now,
+    )
+    db.add(activity)
+    db.commit()
+
     return {
         "success": True,
         "message": f"Document {review.action}d successfully",
         "document_id": document_id,
-        "status": doc["verification_status"],
+        "status": new_status.value,
         "time_remaining_hours": time_remaining,
     }
 
 
 @router.get("/documents/{document_id}/view")
-async def view_document(document_id: str):
+async def view_document(document_id: int, db: Session = Depends(get_db)):
     """
-    View document content (mock - returns metadata).
-    
+    View document metadata.
+
     In production, this would stream the actual file or return a signed URL.
     """
-    if document_id not in documents_db:
+    doc = db.query(Document).filter(Document.id == document_id).first()
+    if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
-    
-    doc = documents_db[document_id]
-    
+
+    investor = db.query(InvestorProfile).filter(InvestorProfile.id == doc.investor_id).first()
+
     # Mock document viewer URL
     viewer_url = f"https://ujamaa-defi.com/document-viewer/{document_id}?token=mock_jwt_token"
-    
+
     return {
-        "document": doc,
+        "document": {
+            "id": doc.id,
+            "investor_id": doc.investor_id,
+            "investor_name": investor.full_name or investor.company_name if investor else "Unknown",
+            "document_type": doc.document_type.value if doc.document_type else "unknown",
+            "document_name": doc.document_name,
+            "verification_status": doc.verification_status.value if doc.verification_status else "pending",
+            "submitted_at": doc.submitted_at.isoformat() if doc.submitted_at else None,
+        },
         "viewer_url": viewer_url,
         "download_url": f"/api/v2/compliance/documents/{document_id}/download",
         "file_metadata": {
             "type": "PDF",
             "size": "2.4 MB",
             "pages": 3,
-            "hash": doc["file_hash"],
+            "hash": doc.file_hash,
         }
     }
 
 
 @router.get("/stats", response_model=ComplianceStats)
-async def get_compliance_stats():
+async def get_compliance_stats(db: Session = Depends(get_db)):
     """
     Get compliance statistics.
-    
+
     Returns counts of pending, approved, rejected, and overdue documents.
     """
-    check_overdue_documents()
-    
+    check_overdue_documents(db)
+
     now = datetime.utcnow()
     today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    
-    pending = 0
-    approved_today = 0
-    rejected_today = 0
-    overdue = 0
+
+    pending_count = db.query(Document).filter(
+        Document.verification_status == ComplianceStatusEnum.PENDING
+    ).count()
+
+    overdue_count = db.query(Document).filter(
+        Document.verification_status == ComplianceStatusEnum.PENDING,
+        Document.deadline_at < now
+    ).count()
+
+    approved_today = db.query(Document).filter(
+        Document.verification_status == ComplianceStatusEnum.APPROVED,
+        Document.reviewed_at >= today_start
+    ).count()
+
+    rejected_today = db.query(Document).filter(
+        Document.verification_status == ComplianceStatusEnum.REJECTED,
+        Document.reviewed_at >= today_start
+    ).count()
+
+    # Calculate average review time for reviewed documents
+    reviewed_docs = db.query(Document).filter(
+        Document.verification_status.in_([ComplianceStatusEnum.APPROVED, ComplianceStatusEnum.REJECTED]),
+        Document.reviewed_at.isnot(None),
+        Document.submitted_at.isnot(None)
+    ).all()
+
     review_times = []
-    
-    for doc in documents_db.values():
-        if doc["verification_status"] == "pending":
-            pending += 1
-            time_remaining = calculate_time_remaining(doc["deadline_at"])
-            if time_remaining <= 0:
-                overdue += 1
-        elif doc["verification_status"] == "approved":
-            if doc["reviewed_at"]:
-                reviewed_at = datetime.fromisoformat(doc["reviewed_at"])
-                if reviewed_at >= today_start:
-                    approved_today += 1
-                    # Calculate review time
-                    submitted_at = datetime.fromisoformat(doc["submitted_at"])
-                    review_time = (reviewed_at - submitted_at).total_seconds() / 3600
-                    review_times.append(review_time)
-        elif doc["verification_status"] == "rejected":
-            if doc["reviewed_at"]:
-                reviewed_at = datetime.fromisoformat(doc["reviewed_at"])
-                if reviewed_at >= today_start:
-                    rejected_today += 1
-        
+    for doc in reviewed_docs:
+        if isinstance(doc.reviewed_at, datetime) and isinstance(doc.submitted_at, datetime):
+            review_time = (doc.reviewed_at - doc.submitted_at).total_seconds() / 3600
+            review_times.append(review_time)
+
     avg_review_time = sum(review_times) / len(review_times) if review_times else 0
-    
+
     return {
-        "pending_count": pending,
+        "pending_count": pending_count,
         "approved_today": approved_today,
         "rejected_today": rejected_today,
-        "overdue_count": overdue,
+        "overdue_count": overdue_count,
         "avg_review_time_hours": round(avg_review_time, 2),
     }
 
 
 @router.get("/activities", response_model=List[ComplianceActivityResponse])
-async def get_compliance_activities(limit: int = 50):
+async def get_compliance_activities(limit: int = 50, db: Session = Depends(get_db)):
     """
     Get compliance activity log.
-    
+
     Returns audit trail of all compliance actions.
     """
-    # Sort by creation time (newest first)
-    sorted_activities = sorted(
-        compliance_activities_db,
-        key=lambda x: x["created_at"],
-        reverse=True
-    )
-    return sorted_activities[:limit]
+    activities = db.query(ComplianceActivity).order_by(
+        ComplianceActivity.created_at.desc()
+    ).limit(limit).all()
+
+    return [
+        ComplianceActivityResponse(
+            id=a.id,
+            user_id=a.user_id,
+            activity_type=a.activity_type,
+            target_id=a.target_id,
+            target_type=a.target_type,
+            details=a.details,
+            created_at=a.created_at.isoformat() if a.created_at else ""
+        )
+        for a in activities
+    ]
 
 
 @router.post("/documents/batch-review")
-async def batch_review_documents(documents: List[Dict[str, str]]):
+async def batch_review_documents(documents: List[Dict[str, str]], db: Session = Depends(get_db)):
     """
     Review multiple documents at once.
-    
+
     Useful for bulk approvals.
-    
-    Request body:
-    ```json
-    [
-        {"document_id": "doc-001", "action": "approve", "notes": "All documents verified"},
-        {"document_id": "doc-002", "action": "reject", "notes": "Document unclear"}
-    ]
-    ```
     """
     results = []
-    
+
     for doc_review in documents:
         doc_id = doc_review.get("document_id")
         action = doc_review.get("action")
         notes = doc_review.get("notes", "")
-        
+
         if not doc_id or not action:
             results.append({
                 "document_id": doc_id,
@@ -381,22 +388,48 @@ async def batch_review_documents(documents: List[Dict[str, str]]):
                 "error": "Missing document_id or action"
             })
             continue
-        
+
         try:
+            doc_id_int = int(doc_id)
             review = ReviewRequest(action=action, notes=notes)
-            result = await review_document(doc_id, review)
+            doc = db.query(Document).filter(Document.id == doc_id_int).first()
+            if not doc:
+                results.append({
+                    "document_id": doc_id,
+                    "success": False,
+                    "error": "Document not found"
+                })
+                continue
+
+            if doc.verification_status != ComplianceStatusEnum.PENDING:
+                results.append({
+                    "document_id": doc_id,
+                    "success": False,
+                    "error": f"Document already {doc.verification_status.value}"
+                })
+                continue
+
+            now = datetime.utcnow()
+            new_status = ComplianceStatusEnum.APPROVED if action == "approve" else ComplianceStatusEnum.REJECTED
+            doc.verification_status = new_status
+            doc.reviewed_by = 1
+            doc.reviewed_at = now
+            doc.review_notes = (doc.review_notes or "") + notes
+
+            db.commit()
+
             results.append({
                 "document_id": doc_id,
                 "success": True,
-                "status": result["status"]
+                "status": new_status.value
             })
-        except HTTPException as e:
+        except Exception as e:
             results.append({
                 "document_id": doc_id,
                 "success": False,
-                "error": str(e.detail)
+                "error": str(e)
             })
-    
+
     return {
         "total": len(results),
         "successful": sum(1 for r in results if r["success"]),
@@ -411,41 +444,53 @@ async def batch_review_documents(documents: List[Dict[str, str]]):
 
 @router.post("/demo/upload-document")
 async def demo_upload_document(
-    investor_id: str,
-    investor_name: str,
+    investor_id: int,
     document_type: str,
-    document_name: str
+    document_name: str,
+    db: Session = Depends(get_db)
 ):
     """
     Demo endpoint to upload a document (for testing).
-    
-    Creates a mock document with 24h deadline.
+
+    Creates a document record with 24h deadline in the database.
     """
-    doc_id = f"doc-{str(uuid.uuid4())[:8]}"
-    now = datetime.utcnow()
-    
-    doc = {
-        "id": doc_id,
-        "investor_id": investor_id,
-        "investor_name": investor_name,
-        "document_type": document_type,
-        "document_name": document_name,
-        "file_path": f"/uploads/{document_type}/{doc_id}.pdf",
-        "file_hash": "0x" + uuid.uuid4().hex,
-        "upload_status": "uploaded",
-        "verification_status": "pending",
-        "submitted_at": now.isoformat(),
-        "deadline_at": (now + timedelta(hours=24)).isoformat(),
-        "reviewed_by": None,
-        "reviewed_at": None,
-        "review_notes": None,
+    # Verify investor exists
+    investor = db.query(InvestorProfile).filter(InvestorProfile.id == investor_id).first()
+    if not investor:
+        raise HTTPException(status_code=404, detail=f"Investor {investor_id} not found")
+
+    # Map document type string to enum
+    doc_type_map = {
+        "kyc_id": DocumentTypeEnum.KYC_ID,
+        "kyc_address": DocumentTypeEnum.KYC_ADDRESS,
+        "kyb_incorporation": DocumentTypeEnum.KYB_INCORPORATION,
+        "kyb_tax": DocumentTypeEnum.KYB_TAX,
+        "kyb_ubo": DocumentTypeEnum.KYB_UBO,
     }
-    
-    documents_db[doc_id] = doc
-    
+    doc_type = doc_type_map.get(document_type, DocumentTypeEnum.OTHER)
+
+    now = datetime.utcnow()
+    doc = Document(
+        investor_id=investor_id,
+        document_type=doc_type,
+        document_name=document_name,
+        file_path=f"/uploads/{document_type}/{uuid.uuid4().hex[:8]}.pdf",
+        file_hash="0x" + uuid.uuid4().hex,
+        upload_status="uploaded",
+        verification_status=ComplianceStatusEnum.PENDING,
+        submitted_at=now,
+        deadline_at=now + timedelta(hours=24),
+        reviewed_by=None,
+        reviewed_at=None,
+        review_notes=None,
+    )
+    db.add(doc)
+    db.commit()
+    db.refresh(doc)
+
     return {
         "success": True,
-        "document_id": doc_id,
-        "deadline_at": doc["deadline_at"],
+        "document_id": doc.id,
+        "deadline_at": doc.deadline_at.isoformat(),
         "message": "Document uploaded successfully. 24h review window started."
     }

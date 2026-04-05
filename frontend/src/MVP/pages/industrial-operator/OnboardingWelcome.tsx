@@ -11,6 +11,8 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
+import apiClient from '../../../api/client';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
@@ -19,7 +21,10 @@ import Badge from '../../components/Badge';
 
 const IndustrialOperatorWelcome: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [selectedType, setSelectedType] = useState<'manufacturer' | 'agricultural' | 'trader' | null>(null);
+  const [registering, setRegistering] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const operatorTypes = [
     {
@@ -88,23 +93,68 @@ const IndustrialOperatorWelcome: React.FC = () => {
     },
   ];
 
-  const handleContinue = () => {
-    if (selectedType) {
+  const handleContinue = async () => {
+    if (!selectedType) return;
+
+    setRegistering(true);
+    setError(null);
+
+    try {
+      // Register industrial profile with backend
+      const investorId = user?.id || 1;
+      const businessTypeMap: Record<string, string> = {
+        manufacturer: 'MANUFACTURING',
+        agricultural: 'AGRICULTURAL',
+        trader: 'TRADING',
+      };
+
+      await apiClient.post(`/compliance/investors/register`, {
+        investor_id: investorId.toString(),
+        jurisdiction: 'TG', // Default Togo - would come from profile
+        name: `${businessTypeMap[selectedType]} Company`,
+        entity_type: 'CORPORATE',
+        kyc_provider: 'MOCK_KYC_MVP',
+      });
+
+      // Also register KYB
+      await apiClient.post('/compliance/kyb/check', {
+        investor_id: investorId.toString(),
+        company_name: `${businessTypeMap[selectedType]} Company`,
+        jurisdiction: 'TG',
+        registration_number: `REG-${Date.now()}`,
+        beneficial_owners: [],
+      });
+
+      // Navigate to next step
       navigate(`/industrial-operator/onboarding/${selectedType}/company`);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to register profile. Please try again.');
+    } finally {
+      setRegistering(false);
     }
   };
 
   const handleQuickStart = (typeId: string) => {
     setSelectedType(typeId as any);
+    // Auto-continue after short delay
     setTimeout(() => {
-      navigate(`/industrial-operator/onboarding/${typeId}/company`);
-    }, 150);
+      handleContinue();
+    }, 300);
   };
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
       {/* MVP Banner */}
       <MVPBanner />
+
+      {/* Error Display */}
+      {error && (
+        <div className="max-w-7xl mx-auto px-4 mt-4">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+            {error}
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <header className="bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
@@ -184,15 +234,21 @@ const IndustrialOperatorWelcome: React.FC = () => {
             <button
               key={type.id}
               onClick={() => handleQuickStart(type.id)}
+              disabled={registering}
               className={`
                 flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition-all shadow-sm
+                ${registering ? 'opacity-50 cursor-not-allowed' : ''}
                 ${selectedType === type.id
                   ? `bg-gradient-to-r ${type.color} text-white shadow-lg scale-105`
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }
               `}
             >
-              <span className="text-xl">{type.icon}</span>
+              {registering && selectedType === type.id ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                <span className="text-xl">{type.icon}</span>
+              )}
               <span>{type.title}</span>
             </button>
           ))}

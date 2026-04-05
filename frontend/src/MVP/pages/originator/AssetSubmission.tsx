@@ -13,6 +13,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
+import apiClient from '../../../api/client';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
@@ -24,9 +26,13 @@ type AssetType = 'INVOICE' | 'INVENTORY' | 'PRODUCTION' | 'SHIPMENT' | 'CONTRACT
 
 const AssetSubmission: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [txHash, setTxHash] = useState<string | null>(null);
+  const [explorerUrl, setExplorerUrl] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     assetType: '' as AssetType,
@@ -151,23 +157,37 @@ const AssetSubmission: React.FC = () => {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate asset submission (MVP testnet)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const investorId = user?.id || 3; // Default to Green Cotton for demo
 
-    sessionStorage.setItem('submittedAsset', JSON.stringify({
-      ...formData,
-      certificateId: `CERT-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
-      submittedAt: new Date().toISOString(),
-      status: 'pending_certification',
-    }));
+      // Submit asset certification via backend (calls IndustrialGateway.certifyAsset on-chain)
+      const response = await apiClient.post('/originator/assets/certify', {
+        investor_id: investorId,
+        asset_type: formData.assetType,
+        value: parseFloat(formData.value) * 10**18, // Convert to 18 decimals
+        quantity: parseInt(formData.quantity),
+        unit: formData.unit,
+        warehouse_location: formData.warehouseLocation,
+        description: formData.description,
+        validity_days: parseInt(formData.validityDays),
+      });
 
-    setShowSuccess(true);
-    setIsSubmitting(false);
+      if (response.data.success) {
+        setTxHash(response.data.transaction_id || null);
+        setExplorerUrl(response.data.explorer_url || null);
+        setShowSuccess(true);
 
-    setTimeout(() => {
-      navigate('/originator/assets/certificates');
-    }, 2000);
+        setTimeout(() => {
+          navigate('/originator/assets/certificates');
+        }, 3000);
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Asset submission failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const canContinue = () => {
@@ -195,13 +215,27 @@ const AssetSubmission: React.FC = () => {
               </svg>
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Submission Successful!</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Asset Submitted Successfully!</h2>
           <p className="text-gray-600 mb-6">
-            Your asset has been submitted for certification. You'll receive a confirmation email shortly.
+            Your {formData.assetType} asset has been submitted for GDIZ/SIPI certification.
           </p>
+
+          {txHash && (
+            <div className="bg-white border border-green-200 rounded-lg p-4 mb-6">
+              <p className="text-sm text-gray-600 mb-1">Transaction Hash:</p>
+              <code className="text-xs bg-gray-100 px-2 py-1 rounded break-all">{txHash}</code>
+              {explorerUrl && (
+                <a href={explorerUrl} target="_blank" rel="noopener noreferrer"
+                   className="inline-flex items-center gap-2 mt-3 text-[#023D7A] hover:underline">
+                  View on Polygonscan →
+                </a>
+              )}
+            </div>
+          )}
+
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <p className="text-sm text-blue-700">
-              <strong>Next:</strong> GDIZ (Benin)/SIPI will review your asset within 24 hours
+              <strong>Next:</strong> GDIZ/SIPI will review your asset within 24 hours
             </p>
           </div>
           <Button variant="primary" size="lg" onClick={() => navigate('/originator/assets/certificates')}>
@@ -215,6 +249,16 @@ const AssetSubmission: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
       <MVPBanner />
+
+      {/* Error Display */}
+      {error && (
+        <div className="max-w-5xl mx-auto px-4 mt-4">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center justify-between">
+            <span>{error}</span>
+            <button onClick={() => setError(null)} className="text-red-500 hover:text-red-700 ml-4">✕</button>
+          </div>
+        </div>
+      )}
 
       {/* Sticky Header with Progress */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">

@@ -298,6 +298,71 @@ class ULTTransaction(Base):
     investor = relationship("InvestorProfile", back_populates="ult_transactions")
 
 
+class BlockchainActionEnum(enum.Enum):
+    """Blockchain action types"""
+    DEPOSIT = "DEPOSIT"          # ULPTokenizer.deposit()
+    REDEEM = "REDEEM"            # ULPTokenizer.redeem()
+    CREATE_FINANCING = "CREATE_FINANCING"  # LiquidityPool.createFinancing()
+    DEPLOY_FUNDS = "DEPLOY_FUNDS"          # LiquidityPool.deployFunds()
+    RECORD_REPAYMENT = "RECORD_REPAYMENT"  # LiquidityPool.recordRepayment()
+    MINT_UGT = "MINT_UGT"        # GuaranteeTokenizer.mintGuarantee()
+    REDEEM_UGT = "REDEEM_UGT"    # GuaranteeTokenizer.redeemGuarantee()
+    CERTIFY_ASSET = "CERTIFY_ASSET"        # IndustrialGateway.certifyAsset()
+    REGISTER_IDENTITY = "REGISTER_IDENTITY"  # IdentityRegistry.registerIdentity()
+    VERIFY_IDENTITY = "VERIFY_IDENTITY"    # IdentityRegistry.verifyIdentity()
+
+
+class BlockchainTransaction(Base):
+    """
+    Audit trail for all on-chain (and simulated) blockchain actions.
+
+    Tracks every smart contract interaction with both simulated and real
+    transaction hashes. Enables DB ↔ Chain reconciliation.
+    """
+    __tablename__ = 'blockchain_transactions'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+    # Action identification
+    action = Column(SQLEnum(BlockchainActionEnum), nullable=False)
+    contract_name = Column(String(100), nullable=False)  # "ULPTokenizer", "LiquidityPool", etc.
+    function_name = Column(String(100), nullable=False)  # "deposit", "redeem", etc.
+    parameters = Column(JSON, nullable=True)  # Function arguments as JSON
+
+    # Transaction hashes
+    simulated_tx_hash = Column(String(66), nullable=True, unique=True)  # Formatted mock hash
+    real_tx_hash = Column(String(66), nullable=True, unique=True)      # Actual on-chain hash
+
+    # Blockchain metadata
+    block_number = Column(Integer, nullable=True)
+    gas_used = Column(Numeric(18, 2), nullable=True)
+    gas_fee = Column(Numeric(18, 2), nullable=True)
+
+    # Status tracking
+    status = Column(SQLEnum(TransactionStatusEnum), default=TransactionStatusEnum.SIMULATED)
+    confirmation_count = Column(Integer, default=0)
+
+    # Linked entities
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='SET NULL'), nullable=True, index=True)
+    pool_id = Column(String(50), nullable=True)
+    financing_id = Column(Integer, nullable=True)
+
+    # Error handling
+    error_message = Column(Text, nullable=True)
+    retry_count = Column(Integer, default=0)
+
+    # Metadata
+    description = Column(Text, nullable=True)
+    explorer_url = Column(String(500), nullable=True)  # Polygonscan URL
+
+    # Timestamps
+    submitted_at = Column(DateTime, default=datetime.utcnow, index=True)
+    confirmed_at = Column(DateTime, nullable=True)
+
+    # Relationships
+    investor = relationship("InvestorProfile")
+
+
 # =============================================================================
 # TRANSACTION TRACKING (On-chain & Off-chain)
 # =============================================================================

@@ -6,7 +6,7 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "./GuaranteeToken.sol";
+import "./GuaranteeTokenizer.sol";
 
 /**
  * @title IndustrialGateway
@@ -88,7 +88,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
     /**
      * @notice Guarantee Token contract
      */
-    GuaranteeToken public guaranteeToken;
+    GuaranteeTokenizer public guaranteeToken;
 
     /**
      * @notice All certificates by ID
@@ -180,7 +180,7 @@ contract IndustrialGateway is AccessControl, ReentrancyGuard {
      */
     function setGuaranteeToken(address _guaranteeToken) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (_guaranteeToken == address(0)) revert InvalidIndustrial();
-        guaranteeToken = GuaranteeToken(_guaranteeToken);
+        guaranteeToken = GuaranteeTokenizer(_guaranteeToken);
     }
 
     // =========================================================================

@@ -6,59 +6,85 @@
  * Route: /compliance/approvals/:id/review
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
+import apiClient from '../../../api/client';
 
 const ApprovalReview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState<'documents' | 'identity' | 'risk'>('documents');
   const [notes, setNotes] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [investor, setInvestor] = useState<any>(null);
 
-  // Mock application data - in production, fetch from API
-  const application = {
-    id: id || 'KYC-001',
-    type: id?.startsWith('KYB') ? 'KYB' : 'KYC',
-    name: id?.startsWith('KYB') ? 'Logic Capital Ltd' : 'John Doe',
-    email: id?.startsWith('KYB') ? 'compliance@logiccapital.com' : 'john.doe@email.com',
-    jurisdiction: 'MU',
-    submittedDate: '2026-03-20',
-    status: 'pending',
-    riskLevel: 'low',
-    walletAddress: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
-    documents: [
-      { name: 'National ID / Certificate of Incorporation', status: 'verified', type: 'id', url: '#' },
-      { name: 'Proof of Address / Tax Registration', status: 'verified', type: 'address', url: '#' },
-      { name: 'Selfie with ID / UBO Declaration', status: 'pending', type: 'selfie', url: '#' },
-      { name: 'Bank Statement / Board Resolution', status: 'pending', type: 'bank', url: '#' },
-    ],
-    investmentAmount: id?.startsWith('KYB') ? 500000 : 25000,
-    sourceOfFunds: id?.startsWith('KYB') ? 'Corporate Treasury' : 'Employment Income',
-    occupation: id?.startsWith('KYB') ? 'Investment Fund' : 'Software Engineer',
-    phone: '+230 5XXX XXXX',
-    dateOfBirth: id?.startsWith('KYB') ? 'N/A' : '1990-05-15',
-    pep: false,
-    sanctions: false,
-    adverseMedia: false,
-  };
+  // Load real investor data
+  useEffect(() => {
+    const loadInvestor = async () => {
+      try {
+        setLoading(true);
+        const investorId = parseInt(id || '1');
+        const res = await apiClient.get(`/db/investors/${investorId}`);
+        setInvestor(res.data);
+      } catch (err) {
+        console.error('Failed to load investor:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadInvestor();
+  }, [id]);
 
-  const handleApprove = () => {
-    if (confirm(`Approve application ${application.id}?`)) {
-      alert(`✓ Application ${application.id} approved!\n\nIn production, this will:\n• Update IdentityRegistry smart contract\n• Grant investor permissions\n• Send confirmation email\n• Log compliance event`);
+  const handleApprove = async () => {
+    if (!investor) return;
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      // Approve KYC/KYB
+      await apiClient.post(`/compliance/investors/${investor.id}/approve`, null, {
+        params: { approved_by: 'compliance-officer' }
+      });
+
+      // Verify identity on-chain (if wallet address exists)
+      if (investor.wallet_address) {
+        await apiClient.post(`/compliance/identity/verify`, null, {
+          params: { investor_id: investor.id, verified_by: 'compliance-officer' }
+        });
+      }
+
       navigate('/compliance/kyc-review');
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Approval failed');
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  const handleReject = () => {
+  const handleReject = async () => {
+    if (!investor) return;
     const reason = prompt('Please provide a rejection reason:');
-    if (reason) {
-      alert(`✗ Application ${application.id} rejected.\n\nReason: ${reason}\n\nIn production, this will:\n• Update database status\n• Send rejection email\n• Log compliance event`);
+    if (!reason) return;
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      await apiClient.post(`/compliance/investors/${investor.id}/revoke`, null, {
+        params: { revoked_by: 'compliance-officer' }
+      });
       navigate('/compliance/kyc-review');
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Rejection failed');
+    } finally {
+      setSubmitting(false);
     }
   };
 

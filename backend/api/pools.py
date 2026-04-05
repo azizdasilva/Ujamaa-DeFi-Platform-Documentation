@@ -380,7 +380,6 @@ async def invest_in_pool(
     kyb_approved = investor.kyb_status == ComplianceStatusEnum.APPROVED
 
     if not kyc_approved and not kyb_approved:
-        # Get pending document count for helpful error message
         pending_docs = db.query(Document).filter(
             Document.investor_id == investor_id_int,
             Document.verification_status == ComplianceStatusEnum.PENDING
@@ -389,14 +388,32 @@ async def invest_in_pool(
         if pending_docs > 0:
             raise HTTPException(
                 status_code=403,
-                detail=f"Compliance review pending. You have {pending_docs} document(s) awaiting compliance officer approval. " +
-                       "Please wait for KYC/KYB verification before investing."
+                detail=f"Compliance review pending. You have {pending_docs} document(s) awaiting compliance officer approval."
             )
         else:
             raise HTTPException(
                 status_code=403,
-                detail="KYC/KYB verification required. Please upload required documents and wait for compliance approval before investing."
+                detail="KYC/KYB verification required. Please upload documents and wait for compliance approval."
             )
+
+    # =============================================================================
+    # ERC-3643 ON-CHAIN IDENTITY CHECK
+    # =============================================================================
+    from services.blockchain_service import get_blockchain_service
+
+    blockchain = get_blockchain_service()
+    on_chain_verified = True  # Default to True for demo mode
+
+    if investor.wallet_address and not blockchain.is_demo:
+        # Check on-chain identity verification
+        on_chain_verified = blockchain.is_verified(investor.wallet_address)
+        if not on_chain_verified:
+            raise HTTPException(
+                status_code=403,
+                detail=f"Wallet {investor.wallet_address} is not verified on IdentityRegistry. " +
+                       "Please complete on-chain identity verification before investing."
+            )
+    # =============================================================================
     
     # =============================================================================
     # BALANCE CHECK - Verify investor has sufficient funds
@@ -498,9 +515,78 @@ async def invest_in_pool(
         db.add(position)
     else:
         position.shares += shares_to_mint
-    
+
+    # =============================================================================
+    # BLOCKCHAIN INTEGRATION - Call ULPTokenizer.deposit()
+    # =============================================================================
+    from services.blockchain_service import get_blockchain_service
+    from config.models import BlockchainTransaction, BlockchainActionEnum, TransactionStatusEnum as TxStatus
+
+    blockchain = get_blockchain_service()
+    tx_hash = None
+    explorer_url = None
+    blockchain_status = TxStatus.SIMULATED
+
+    try:
+        # Get investor wallet address
+        investor_wallet = investor.wallet_address
+
+        if investor_wallet and not blockchain.is_demo:
+            # Real blockchain: call deposit() on ULPTokenizer
+            amount_wei = int(request.amount * 10**18)  # Convert to 18 decimals
+            tx_result = blockchain.deposit(investor_wallet, amount_wei)
+
+            tx_hash = tx_result['transaction_hash']
+            explorer_url = tx_result.get('explorer_url')
+            blockchain_status = TxStatus.CONFIRMED if tx_result['success'] else TxStatus.FAILED
+        else:
+            # Demo mode: generate properly formatted simulated hash
+            import os
+            tx_hash = '0x' + os.urandom(32).hex()
+            explorer_url = f"{blockchain.config['explorer']}/tx/{tx_hash}"
+            blockchain_status = TxStatus.SIMULATED
+
+        # Record blockchain transaction in audit trail
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.DEPOSIT,
+            contract_name="ULPTokenizer",
+            function_name="deposit",
+            parameters={"ujeurAmount": request.amount, "pool_id": pool_id},
+            simulated_tx_hash=tx_hash if blockchain.is_demo else None,
+            real_tx_hash=tx_hash if not blockchain.is_demo else None,
+            block_number=None,
+            status=blockchain_status,
+            investor_id=investor_id_int,
+            pool_id=pool_id,
+            description=f"Investment of €{request.amount:,.2f} in {pool_id}",
+            explorer_url=explorer_url,
+        )
+        db.add(blockchain_tx)
+
+    except Exception as e:
+        # Log error but don't fail the investment (DB is source of truth for MVP)
+        print(f"⚠️  Blockchain deposit failed: {e}")
+        tx_hash = f"0xERROR-{uuid.uuid4().hex[:58]}"
+        explorer_url = None
+        blockchain_status = TxStatus.FAILED
+
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.DEPOSIT,
+            contract_name="ULPTokenizer",
+            function_name="deposit",
+            parameters={"ujeurAmount": request.amount, "pool_id": pool_id},
+            simulated_tx_hash=tx_hash,
+            status=blockchain_status,
+            investor_id=investor_id_int,
+            pool_id=pool_id,
+            error_message=str(e),
+            description=f"Investment of €{request.amount:,.2f} in {pool_id} (BLOCKCHAIN FAILED)",
+        )
+        db.add(blockchain_tx)
+    # =============================================================================
+
     db.commit()
-    
+
     return {
         "success": True,
         "pool_id": pool_id,
@@ -510,7 +596,9 @@ async def invest_in_pool(
         "shares_minted": shares_to_mint,
         "shares_formatted": format_token_amount(shares_to_mint),
         "nav_per_share": 1.0,
-        "transaction_id": f"MOCK-INVEST-{uuid.uuid4().hex[:12]}",
+        "transaction_id": tx_hash or f"MOCK-INVEST-{uuid.uuid4().hex[:12]}",
+        "explorer_url": explorer_url,
+        "on_chain": not blockchain.is_demo,
         "timestamp": datetime.utcnow().isoformat(),
         "is_testnet": mvp_config.IS_MVP
     }
@@ -554,16 +642,85 @@ async def redeem_from_pool(
     
     # Calculate UJEUR to return (at NAV)
     ujeur_amount = request.shares  # Simplified: 1:1 at NAV 1.00
-    
+
     # Update pool
     if pool.total_value:
         pool.total_value -= ujeur_amount
-    
+
     # Update investor position
     position.shares -= request.shares
-    
+
+    # =============================================================================
+    # BLOCKCHAIN INTEGRATION - Call ULPTokenizer.redeem()
+    # =============================================================================
+    from services.blockchain_service import get_blockchain_service
+    from config.models import BlockchainTransaction, BlockchainActionEnum, TransactionStatusEnum as TxStatus, InvestorProfile
+
+    blockchain = get_blockchain_service()
+    tx_hash = None
+    explorer_url = None
+    blockchain_status = TxStatus.SIMULATED
+
+    try:
+        # Get investor wallet address
+        investor = db.query(InvestorProfile).filter(InvestorProfile.id == investor_id_int).first()
+        investor_wallet = investor.wallet_address if investor else None
+
+        if investor_wallet and not blockchain.is_demo:
+            # Real blockchain: call redeem() on ULPTokenizer
+            shares_wei = int(request.shares * 10**18)
+            tx_result = blockchain.redeem(investor_wallet, shares_wei)
+
+            tx_hash = tx_result['transaction_hash']
+            explorer_url = tx_result.get('explorer_url')
+            blockchain_status = TxStatus.CONFIRMED if tx_result['success'] else TxStatus.FAILED
+        else:
+            # Demo mode: generate properly formatted simulated hash
+            import os
+            tx_hash = '0x' + os.urandom(32).hex()
+            explorer_url = f"{blockchain.config['explorer']}/tx/{tx_hash}"
+            blockchain_status = TxStatus.SIMULATED
+
+        # Record blockchain transaction in audit trail
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.REDEEM,
+            contract_name="ULPTokenizer",
+            function_name="redeem",
+            parameters={"shares": request.shares, "pool_id": pool_id},
+            simulated_tx_hash=tx_hash if blockchain.is_demo else None,
+            real_tx_hash=tx_hash if not blockchain.is_demo else None,
+            block_number=None,
+            status=blockchain_status,
+            investor_id=investor_id_int,
+            pool_id=pool_id,
+            description=f"Redemption of {request.shares:,.2f} shares from {pool_id}",
+            explorer_url=explorer_url,
+        )
+        db.add(blockchain_tx)
+
+    except Exception as e:
+        print(f"⚠️  Blockchain redeem failed: {e}")
+        tx_hash = f"0xERROR-{uuid.uuid4().hex[:58]}"
+        explorer_url = None
+        blockchain_status = TxStatus.FAILED
+
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.REDEEM,
+            contract_name="ULPTokenizer",
+            function_name="redeem",
+            parameters={"shares": request.shares, "pool_id": pool_id},
+            simulated_tx_hash=tx_hash,
+            status=blockchain_status,
+            investor_id=investor_id_int,
+            pool_id=pool_id,
+            error_message=str(e),
+            description=f"Redemption of {request.shares:,.2f} shares from {pool_id} (BLOCKCHAIN FAILED)",
+        )
+        db.add(blockchain_tx)
+    # =============================================================================
+
     db.commit()
-    
+
     return {
         "success": True,
         "pool_id": pool_id,
@@ -573,7 +730,9 @@ async def redeem_from_pool(
         "ujeur_received": ujeur_amount,
         "ujeur_formatted": format_token_amount(ujeur_amount),
         "nav_per_share": 1.0,
-        "transaction_id": f"MOCK-REDEEM-{uuid.uuid4().hex[:12]}",
+        "transaction_id": tx_hash or f"MOCK-REDEEM-{uuid.uuid4().hex[:12]}",
+        "explorer_url": explorer_url,
+        "on_chain": not blockchain.is_demo,
         "timestamp": datetime.utcnow().isoformat(),
         "is_testnet": mvp_config.IS_MVP
     }
@@ -669,10 +828,86 @@ async def create_financing(
     db.add(financing)
     db.commit()
     db.refresh(financing)
-    
+
+    # =============================================================================
+    # BLOCKCHAIN INTEGRATION - Call LiquidityPool.createFinancing()
+    # =============================================================================
+    from services.blockchain_service import get_blockchain_service
+    from config.models import BlockchainTransaction, BlockchainActionEnum, TransactionStatusEnum as TxStatus
+
+    blockchain = get_blockchain_service()
+    tx_hash = None
+    explorer_url = None
+    blockchain_status = TxStatus.SIMULATED
+
+    try:
+        # Map pool_family string to enum value (0=INDUSTRIE, 1=AGRICULTURE, etc.)
+        family_map = {
+            'POOL_INDUSTRIE': 0,
+            'POOL_AGRICULTURE': 1,
+            'POOL_TRADE_FINANCE': 2,
+            'POOL_RENEWABLE_ENERGY': 3,
+            'POOL_REAL_ESTATE': 4,
+        }
+        pool_family_int = family_map.get(request.pool_family, 0)
+
+        if not blockchain.is_demo:
+            # Real blockchain: call createFinancing()
+            principal_wei = int(request.principal * 10**18)
+            interest_rate_bp = int(request.interest_rate)  # Already in basis points
+            tx_result = blockchain.create_financing(
+                pool_family=pool_family_int,
+                asset_class=request.asset_class,
+                industrial=request.industrial,
+                principal=principal_wei,
+                interest_rate=interest_rate_bp,
+                duration_days=request.duration_days,
+                certificate_id=0  # No certificate for MVP
+            )
+
+            tx_hash = tx_result['transaction_hash']
+            explorer_url = tx_result.get('explorer_url')
+            blockchain_status = TxStatus.CONFIRMED if tx_result['success'] else TxStatus.FAILED
+        else:
+            # Demo mode
+            import os
+            tx_hash = '0x' + os.urandom(32).hex()
+            explorer_url = f"{blockchain.config['explorer']}/tx/{tx_hash}"
+            blockchain_status = TxStatus.SIMULATED
+
+        # Record in audit trail
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.CREATE_FINANCING,
+            contract_name="LiquidityPool",
+            function_name="createFinancing",
+            parameters={
+                "pool_family": request.pool_family,
+                "asset_class": request.asset_class,
+                "industrial": request.industrial,
+                "principal": request.principal,
+            },
+            simulated_tx_hash=tx_hash if blockchain.is_demo else None,
+            real_tx_hash=tx_hash if not blockchain.is_demo else None,
+            status=blockchain_status,
+            financing_id=financing.id,
+            pool_id=pool_id,
+            description=f"Financing of €{request.principal:,.2f} for {request.industrial}",
+            explorer_url=explorer_url,
+        )
+        db.add(blockchain_tx)
+
+    except Exception as e:
+        print(f"⚠️  Blockchain createFinancing failed: {e}")
+    # =============================================================================
+
+    db.commit()
+
     return {
         "success": True,
         "financing_id": financing.id,
+        "transaction_id": tx_hash,
+        "explorer_url": explorer_url,
+        "on_chain": not blockchain.is_demo,
         "financing": {
             "id": financing.id,
             "pool_family": financing.pool_family,
@@ -704,29 +939,124 @@ async def record_repayment(
     financing = db.query(Financing).filter(Financing.id == financing_id).first()
     if not financing:
         raise HTTPException(status_code=404, detail=f"Financing not found: {financing_id}")
-    
+
     # Update repayment
     if financing.amount_repaid:
         financing.amount_repaid += amount
     else:
         financing.amount_repaid = amount
-    
+
     # Check if fully repaid
     total_owed = float(financing.principal) + (
         float(financing.principal) * float(financing.interest_rate) / 10000
     )
-    
-    if financing.amount_repaid >= total_owed:
+
+    is_fully_repaid = financing.amount_repaid >= total_owed
+    if is_fully_repaid:
         financing.is_repaid = True
-    
+
+    # =============================================================================
+    # BLOCKCHAIN INTEGRATION - Call LiquidityPool.recordRepayment()
+    # =============================================================================
+    from services.blockchain_service import get_blockchain_service
+    from config.models import BlockchainTransaction, BlockchainActionEnum, TransactionStatusEnum as TxStatus
+
+    blockchain = get_blockchain_service()
+    tx_hash = None
+    explorer_url = None
+    blockchain_status = TxStatus.SIMULATED
+
+    try:
+        amount_wei = int(amount * 10**18)
+
+        if not blockchain.is_demo:
+            # Real blockchain: call recordRepayment()
+            tx_result = blockchain.record_repayment(financing_id, amount_wei)
+
+            tx_hash = tx_result['transaction_hash']
+            explorer_url = tx_result.get('explorer_url')
+            blockchain_status = TxStatus.CONFIRMED if tx_result['success'] else TxStatus.FAILED
+        else:
+            # Demo mode
+            import os
+            tx_hash = '0x' + os.urandom(32).hex()
+            explorer_url = f"{blockchain.config['explorer']}/tx/{tx_hash}"
+            blockchain_status = TxStatus.SIMULATED
+
+        # Record in audit trail
+        blockchain_tx = BlockchainTransaction(
+            action=BlockchainActionEnum.RECORD_REPAYMENT,
+            contract_name="LiquidityPool",
+            function_name="recordRepayment",
+            parameters={"financing_id": financing_id, "amount": amount},
+            simulated_tx_hash=tx_hash if blockchain.is_demo else None,
+            real_tx_hash=tx_hash if not blockchain.is_demo else None,
+            status=blockchain_status,
+            financing_id=financing_id,
+            pool_id=pool_id,
+            description=f"Repayment of €{amount:,.2f} for financing #{financing_id}",
+            explorer_url=explorer_url,
+        )
+        db.add(blockchain_tx)
+
+        # If fully repaid, also add yield to ULPTokenizer pool
+        if is_fully_repaid and not blockchain.is_demo:
+            try:
+                yield_amount = float(financing.amount_repaid) - float(financing.principal)
+                if yield_amount > 0:
+                    yield_wei = int(yield_amount * 10**18)
+                    blockchain.add_yield(yield_wei, f"Financing #{financing_id}")
+            except Exception as e:
+                print(f"⚠️  Failed to add yield: {e}")
+
+    except Exception as e:
+        print(f"⚠️  Blockchain recordRepayment failed: {e}")
+    # =============================================================================
+
     db.commit()
-    
+
     return {
         "success": True,
         "financing_id": financing_id,
         "amount_repaid": amount,
         "total_repaid": float(financing.amount_repaid) if financing.amount_repaid else 0,
-        "is_fully_repaid": financing.is_repaid,
+        "is_fully_repaid": is_fully_repaid,
+        "transaction_id": tx_hash,
+        "explorer_url": explorer_url,
+        "on_chain": not blockchain.is_demo,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
+
+@router.post("/{pool_family}/financings/{financing_id}/review")
+async def review_financing(
+    pool_family: str,
+    financing_id: int,
+    action: str,  # "approve" or "reject"
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Compliance officer review for financing request.
+
+    - **action**: "approve" or "reject"
+    """
+    financing = db.query(Financing).filter(Financing.id == financing_id).first()
+    if not financing:
+        raise HTTPException(status_code=404, detail=f"Financing not found: {financing_id}")
+
+    if action == "approve":
+        financing.status = FinancingStatusEnum.ACTIVE
+    elif action == "reject":
+        financing.status = FinancingStatusEnum.CANCELLED
+    else:
+        raise HTTPException(status_code=400, detail="Action must be 'approve' or 'reject'")
+
+    db.commit()
+
+    return {
+        "success": True,
+        "financing_id": financing_id,
+        "status": financing.status.value,
         "timestamp": datetime.utcnow().isoformat()
     }
 
