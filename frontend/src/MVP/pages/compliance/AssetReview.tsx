@@ -200,7 +200,7 @@ const AssetReview: React.FC = () => {
                   <div className="flex items-center justify-between pb-4 border-b border-gray-200">
                     <div>
                       <h3 className="text-lg font-bold text-[#103b5b]">{selectedFinancing.industrial}</h3>
-                      <p className="text-sm text-[#8b5b3d]">{selectedFinancing.asset_class} • {selectedFinancing.pool_family}</p>
+                      <p className="text-sm text-[#8b5b3d]">{selectedFinancing.asset_class} • {selectedFinancing.pool_family.replace(/_/g, ' ')}</p>
                     </div>
                     <div className="text-right">
                       <Badge variant="warning" size="lg">PENDING APPROVAL</Badge>

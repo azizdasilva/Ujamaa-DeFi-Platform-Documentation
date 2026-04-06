@@ -138,7 +138,7 @@ const PoolConfigure: React.FC = () => {
                 </Button>
                 <h1 className="text-2xl font-bold text-[#103b5b]">{pool.name}</h1>
               </div>
-              <p className="text-[#8b5b3d] mt-1 ml-14">{pool.family.replace(/_/g, ' ')}</p>
+              <p className="text-[#8b5b3d] mt-1 ml-14 capitalize">{pool.name.replace('Pool ', '')}</p>
             </div>
             <Badge variant={formData.is_active ? 'success' : 'error'} size="md">
               {formData.is_active ? 'ACTIVE' : 'INACTIVE'}
@@ -294,7 +294,7 @@ const PoolConfigure: React.FC = () => {
             </div>
             <div>
               <p className="text-xs text-gray-500">Family</p>
-              <p className="text-gray-700">{pool.family.replace(/_/g, ' ')}</p>
+              <p className="text-gray-700 capitalize">{pool.name.replace('Pool ', '')}</p>
             </div>
             <div>
               <p className="text-xs text-gray-500">Current APY</p>

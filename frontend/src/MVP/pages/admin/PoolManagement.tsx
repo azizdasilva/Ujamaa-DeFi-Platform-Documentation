@@ -145,7 +145,7 @@ const PoolManagement: React.FC = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-[#103b5b]">{pool.name}</h3>
-                      <p className="text-sm text-gray-600">{pool.family.replace(/_/g, ' ')}</p>
+                      <p className="text-sm text-gray-600 capitalize">{pool.name.replace('Pool ', '')}</p>
                     </div>
                     <Badge variant={pool.is_active !== false ? 'success' : 'error'} size="md">
                       {pool.is_active !== false ? 'ACTIVE' : 'INACTIVE'}
@@ -201,7 +201,7 @@ const PoolManagement: React.FC = () => {
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Family</p>
-                          <p className="text-gray-700">{pool.family.replace(/_/g, ' ')}</p>
+                          <p className="text-gray-700 capitalize">{pool.name.replace('Pool ', '')}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Target Yield Range</p>

@@ -1101,15 +1101,15 @@ function deposit(uint256 ujeurAmount) external nonReentrant returns (uint256) {
                           </li>
                           <li className="flex items-center gap-2">
                             <svg className="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                            POOL_MANAGER_ROLE
+                            Pool Manager
                           </li>
                           <li className="flex items-center gap-2">
                             <svg className="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                            COMPLIANCE_OFFICER_ROLE
+                            Compliance Officer
                           </li>
                           <li className="flex items-center gap-2">
                             <svg className="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                            MINTER_ROLE / REDEEMER_ROLE
+                            Minter / Redeemer
                           </li>
                         </ul>
                       </div>

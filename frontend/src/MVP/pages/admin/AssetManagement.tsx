@@ -228,7 +228,7 @@ const AssetManagement: React.FC = () => {
                         <td className="py-3 px-4">
                           <Badge variant="info" size="sm">{financing.asset_class}</Badge>
                         </td>
-                        <td className="py-3 px-4 font-semibold text-[#103b5b]">{financing.pool_family}</td>
+                        <td className="py-3 px-4 font-semibold text-[#103b5b] capitalize">{financing.pool_family.replace(/_/g, ' ')}</td>
                         <td className="py-3 px-4 text-gray-600">{financing.industrial}</td>
                         <td className="py-3 px-4 font-semibold text-[#103b5b]">{formatCurrency(financing.principal)}</td>
                         <td className="py-3 px-4 font-medium text-[#103b5b]">{financing.interest_rate}%</td>
@@ -252,7 +252,7 @@ const AssetManagement: React.FC = () => {
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                               <div>
                                 <p className="text-xs text-gray-500">Pool Family</p>
-                                <p className="font-semibold text-[#103b5b]">{financing.pool_family}</p>
+                                <p className="font-semibold text-[#103b5b] capitalize">{financing.pool_family.replace(/_/g, ' ')}</p>
                               </div>
                               <div>
                                 <p className="text-xs text-gray-500">Asset Class</p>
