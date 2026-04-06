@@ -217,7 +217,7 @@ const Navigation: React.FC = () => {
                     <span className="text-lg">🇬🇧</span>
                     <div>
                       <p className="font-medium">English</p>
-                      <p className="text-[10px] text-gray-400">Production</p>
+                      <p className="text-[10px] text-gray-400">MVP</p>
                     </div>
                     {language === 'en' && <span className="ml-auto text-blue-600">✓</span>}
                   </button>
