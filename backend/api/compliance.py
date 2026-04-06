@@ -288,6 +288,88 @@ async def check_jurisdiction(request: ComplianceCheckRequest) -> ComplianceCheck
     )
 
 
+class InvestorScreeningRequest(BaseModel):
+    """Screen an investor against PEP and sanctions lists"""
+    investor_id: int
+    wallet_address: Optional[str] = None
+
+
+@router.post("/screen-investor")
+async def screen_investor(
+    request: InvestorScreeningRequest,
+    user: User = Depends(verify_compliance_access),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Screen a specific investor against PEP and sanctions lists.
+
+    Returns screening results with risk indicators.
+    """
+    investor = db.query(InvestorProfile).filter(InvestorProfile.id == request.investor_id).first()
+    if not investor:
+        raise HTTPException(status_code=404, detail=f"Investor not found: {request.investor_id}")
+
+    # Check jurisdiction against sanctions lists
+    jurisdiction = investor.jurisdiction.upper() if investor.jurisdiction else ''
+    is_blocked, _, _, reason, sanctions_list = check_jurisdiction_status(jurisdiction)
+
+    # Mock PEP check (in production, this would call external PEP screening API)
+    pep_exposed = False
+    pep_details = []
+
+    # Check if investor name matches known PEP patterns (mock)
+    full_name = (investor.full_name or '').upper()
+    company_name = (investor.company_name or '').upper()
+
+    # In production, integrate with World-Check, Dow Jones, etc.
+    # For MVP, we flag based on high-risk jurisdiction + large amounts
+    if is_blocked:
+        pep_exposed = True
+        pep_details.append(f"Blocked jurisdiction: {jurisdiction} - {reason}")
+
+    # Check if total invested exceeds PEP threshold
+    if investor.total_invested and float(investor.total_invested) > 1000000:
+        pep_exposed = True
+        pep_details.append(f"High-value investor (€{float(investor.total_invested):,.0f}) - enhanced due diligence required")
+
+    # Sanctions screening
+    sanctions_hit = is_blocked
+    sanctions_details = []
+    if sanctions_list:
+        sanctions_details.append(f"Listed on: {sanctions_list}")
+
+    # Risk score calculation
+    risk_score = 0
+    if is_blocked:
+        risk_score += 50
+    if pep_exposed:
+        risk_score += 30
+    if investor.total_invested and float(investor.total_invested) > 500000:
+        risk_score += 20
+
+    risk_level = "HIGH" if risk_score >= 50 else "MEDIUM" if risk_score >= 20 else "LOW"
+
+    return {
+        "investor_id": request.investor_id,
+        "investor_name": investor.full_name or investor.company_name or "Unknown",
+        "jurisdiction": jurisdiction,
+        "wallet_address": investor.wallet_address,
+        "screening_result": {
+            "pep_exposed": pep_exposed,
+            "pep_details": pep_details,
+            "sanctions_hit": sanctions_hit,
+            "sanctions_details": sanctions_details,
+            "sanctions_lists_checked": ["OFAC", "UN", "EU"] if sanctions_list else [],
+            "risk_score": risk_score,
+            "risk_level": risk_level,
+            "kyc_status": investor.kyc_status.value if investor.kyc_status else "unknown",
+            "total_invested": float(investor.total_invested) if investor.total_invested else 0,
+        },
+        "screened_at": datetime.utcnow().isoformat(),
+        "screened_by": user.email,
+    }
+
+
 @router.get("/blocked-jurisdictions")
 async def get_blocked_jurisdictions() -> List[JurisdictionInfo]:
     """

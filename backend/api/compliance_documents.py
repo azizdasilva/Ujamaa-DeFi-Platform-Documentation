@@ -7,7 +7,7 @@ Implements 24-hour review window requirement.
 @notice All document data is persisted to PostgreSQL/SQLite.
 """
 
-from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status, UploadFile, File, Form
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, Field
 from datetime import datetime, timedelta
@@ -557,6 +557,102 @@ async def demo_upload_document(
     return {
         "success": True,
         "document_id": doc.id,
+        "deadline_at": doc.deadline_at.isoformat(),
+        "message": "Document uploaded successfully. 24h review window started."
+    }
+
+
+@router.post("/documents/upload-file")
+async def upload_document_file(
+    investor_id: int = Form(...),
+    document_type: str = Form(...),
+    document_name: str = Form(...),
+    file: UploadFile = File(...),
+    user: User = Depends(verify_compliance_access),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Upload a KYC/KYB document file (multipart/form-data).
+
+    Accepts real file uploads, stores files to disk, and creates Document records.
+
+    - **investor_id**: Investor profile ID
+    - **document_type**: Type (kyc_id, kyc_address, kyb_incorporation, etc.)
+    - **document_name**: Human-readable document name
+    - **file**: The actual file (PDF, image, etc.)
+    """
+    import os
+    import hashlib
+
+    # Validate file type
+    allowed_types = {
+        'application/pdf': '.pdf',
+        'image/jpeg': '.jpg',
+        'image/png': '.png',
+        'image/tiff': '.tiff',
+    }
+    content_type = file.content_type or ''
+    if content_type not in allowed_types:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type: {content_type}. Allowed: PDF, JPEG, PNG, TIFF"
+        )
+
+    # Read file content and compute hash
+    file_content = await file.read()
+    file_hash = hashlib.sha256(file_content).hexdigest()
+    file_size = len(file_content)
+
+    if file_size > 10 * 1024 * 1024:  # 10MB limit
+        raise HTTPException(status_code=400, detail="File size exceeds 10MB limit")
+
+    # Store file to uploads directory
+    uploads_dir = os.path.join(os.getcwd(), 'uploads', 'documents')
+    os.makedirs(uploads_dir, exist_ok=True)
+
+    ext = allowed_types[content_type]
+    safe_filename = f"investor_{investor_id}_{document_type}_{uuid.uuid4().hex[:12]}{ext}"
+    file_path = os.path.join(uploads_dir, safe_filename)
+
+    with open(file_path, 'wb') as f:
+        f.write(file_content)
+
+    # Map document type to enum
+    doc_type_map = {
+        "kyc_id": DocumentTypeEnum.KYC_ID,
+        "kyc_address": DocumentTypeEnum.KYC_ADDRESS,
+        "kyb_incorporation": DocumentTypeEnum.KYB_INCORPORATION,
+        "kyb_tax": DocumentTypeEnum.KYB_TAX,
+        "kyb_ubo": DocumentTypeEnum.KYB_UBO,
+    }
+    doc_type = doc_type_map.get(document_type, DocumentTypeEnum.OTHER)
+
+    # Create Document record
+    now = datetime.utcnow()
+    doc = Document(
+        investor_id=investor_id,
+        document_type=doc_type,
+        document_name=document_name,
+        file_path=file_path,
+        file_hash=file_hash,
+        verification_status=ComplianceStatusEnum.PENDING,
+        upload_status='uploaded',
+        submitted_at=now,
+        deadline_at=now + timedelta(hours=24),
+        reviewed_by=None,
+        reviewed_at=None,
+        review_notes=None,
+    )
+    db.add(doc)
+    db.commit()
+    db.refresh(doc)
+
+    return {
+        "success": True,
+        "document_id": doc.id,
+        "file_path": file_path,
+        "file_hash": file_hash,
+        "file_size": file_size,
         "deadline_at": doc.deadline_at.isoformat(),
         "message": "Document uploaded successfully. 24h review window started."
     }

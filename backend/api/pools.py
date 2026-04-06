@@ -478,8 +478,20 @@ async def invest_in_pool(
             detail=f"Maximum deposit is €{max_deposit:,}"
         )
 
-    # Calculate shares to mint (1:1 at NAV)
-    shares_to_mint = request.amount  # Simplified: 1:1 at NAV 1.00
+    # Calculate shares to mint using actual NAV
+    # NAV = total_value / total_shares (from all active positions)
+    positions = db.query(PoolPosition).filter(
+        PoolPosition.pool_id == pool_id,
+        PoolPosition.is_active == True
+    ).all()
+    total_shares = sum(pos.shares for pos in positions) if positions else 0
+
+    if total_shares > 0 and pool.total_value and pool.total_value > 0:
+        nav_per_share = float(pool.total_value) / total_shares
+    else:
+        nav_per_share = 1.0  # First investor: NAV starts at 1.0
+
+    shares_to_mint = request.amount / nav_per_share
 
     # Create or update investment record
     investment = Investment(
@@ -487,34 +499,39 @@ async def invest_in_pool(
         investor_id=investor_id_int,
         amount=request.amount,
         shares=shares_to_mint,
-        nav=1.0,
+        nav=nav_per_share,
         status='completed'
     )
     db.add(investment)
-    
+
     # Update pool total value
     if pool.total_value:
         pool.total_value += request.amount
     else:
         pool.total_value = request.amount
-    
+
     # Get or create pool position
     investor_id_int = int(request.investor_id) if request.investor_id.isdigit() else 1
     position = db.query(PoolPosition).filter(
         PoolPosition.investor_id == investor_id_int,
         PoolPosition.pool_id == pool_id
     ).first()
-    
+
     if not position:
         position = PoolPosition(
             investor_id=investor_id_int,
             pool_id=pool_id,
             shares=shares_to_mint,
-            average_nav=1.0
+            average_nav=nav_per_share
         )
         db.add(position)
     else:
-        position.shares += shares_to_mint
+        # Weighted average NAV for existing position
+        old_value = position.shares * (position.average_nav or 1.0)
+        new_value = old_value + request.amount
+        total_shares_new = position.shares + shares_to_mint
+        position.average_nav = new_value / total_shares_new if total_shares_new > 0 else nav_per_share
+        position.shares = total_shares_new
 
     # =============================================================================
     # BLOCKCHAIN INTEGRATION - Call ULPTokenizer.deposit()
@@ -640,12 +657,25 @@ async def redeem_from_pool(
             detail=f"Insufficient shares: {position.shares} < {request.shares}"
         )
     
-    # Calculate UJEUR to return (at NAV)
-    ujeur_amount = request.shares  # Simplified: 1:1 at NAV 1.00
+    # Calculate UJEUR to return using actual NAV
+    positions = db.query(PoolPosition).filter(
+        PoolPosition.pool_id == pool_id,
+        PoolPosition.is_active == True
+    ).all()
+    total_shares = sum(pos.shares for pos in positions) if positions else 0
+
+    if total_shares > 0 and pool.total_value and pool.total_value > 0:
+        nav_per_share = float(pool.total_value) / total_shares
+    else:
+        nav_per_share = 1.0
+
+    ujeur_amount = request.shares * nav_per_share
 
     # Update pool
     if pool.total_value:
         pool.total_value -= ujeur_amount
+    else:
+        pool.total_value = 0
 
     # Update investor position
     position.shares -= request.shares
@@ -1122,16 +1152,72 @@ async def get_yield_statements(
     investor_id: str,
     pool_id: Optional[str] = Query(None),
     db: Session = Depends(get_db)
-) -> List[YieldStatement]:
+) -> Dict:
     """
     Get yield statements for investor.
 
-    - **investor_id**: Investor identifier
-    - **pool_id**: Optional pool filter
+    Calculates yield from pool positions and financing repayments.
+    Returns per-pool and aggregate yield data.
     """
-    # Note: This would query from YieldStatement table in production
-    # For now, return empty list as yield statements are generated periodically
-    return []
+    investor_id_int = int(investor_id) if investor_id.isdigit() else 0
+
+    # Get investor's pool positions
+    positions = db.query(PoolPosition).filter(
+        PoolPosition.investor_id == investor_id_int,
+        PoolPosition.is_active == True
+    ).all()
+
+    # Get pool info for each position
+    pool_yields = []
+    total_yield_earned = 0
+    total_value = 0
+
+    for pos in positions:
+        if pool_id and pos.pool_id != pool_id:
+            continue
+
+        pool = db.query(Pool).filter(Pool.id == pos.pool_id).first()
+        if not pool:
+            continue
+
+        current_nav = float(pool.total_value) / sum(
+            p.shares for p in db.query(PoolPosition).filter(
+                PoolPosition.pool_id == pos.pool_id,
+                PoolPosition.is_active == True
+            ).all()
+        ) if sum(p.shares for p in db.query(PoolPosition).filter(
+            PoolPosition.pool_id == pos.pool_id,
+            PoolPosition.is_active == True
+        ).all()) > 0 else 1.0
+
+        avg_nav = pos.average_nav or 1.0
+        position_value = pos.shares * current_nav
+        original_value = pos.shares * avg_nav
+        yield_earned = position_value - original_value
+
+        total_yield_earned += yield_earned
+        total_value += position_value
+
+        pool_yields.append({
+            "pool_id": pos.pool_id,
+            "pool_name": pool.name,
+            "shares": float(pos.shares),
+            "average_nav": avg_nav,
+            "current_nav": current_nav,
+            "position_value": position_value,
+            "original_value": original_value,
+            "yield_earned": yield_earned,
+            "yield_percentage": (yield_earned / original_value * 100) if original_value > 0 else 0,
+        })
+
+    return {
+        "investor_id": investor_id,
+        "total_position_value": total_value,
+        "total_yield_earned": total_yield_earned,
+        "overall_yield_percentage": (total_yield_earned / (total_value - total_yield_earned) * 100) if (total_value - total_yield_earned) > 0 else 0,
+        "pool_yields": pool_yields,
+        "generated_at": datetime.utcnow().isoformat(),
+    }
 
 
 # =============================================================================
