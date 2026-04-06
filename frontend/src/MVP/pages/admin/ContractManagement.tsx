@@ -1,98 +1,74 @@
 /**
  * Admin - Contract Management Page
  *
- * View and manage smart contract addresses and configurations.
+ * View and manage deployed smart contracts from the database registry.
  *
  * Route: /admin/contracts
- *
- * @notice All contracts deployed on Polygon Amoy Testnet (Chain ID: 80002)
- * @notice Updated: 2026-04-03
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
-import { web3Config } from '../../../config/web3';
+import { listContracts, registerContract, ContractData, ContractCreateRequest } from '../../../api/admin';
 
 const ContractManagement: React.FC = () => {
-  // All deployed contracts with latest addresses from web3Config
-  const contracts = [
-    {
-      name: 'ULPTokenizer (uLP)',
-      address: web3Config.CONTRACTS.ULP_TOKEN,
-      type: 'ERC-3643-style Token (ERC-20 + compliance)',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Yield-bearing liquidity pool token with identity verification. Implements ERC-3643-style compliance via custom checks.'
-    },
-    {
-      name: 'GuaranteeTokenizer (uGT)',
-      address: web3Config.CONTRACTS.UGT_TOKEN,
-      type: 'ERC-721 NFT + Compliance',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'NFT collateral token for industrial operator commitments. Represents certified merchandise/collateral.'
-    },
-    {
-      name: 'MockEUROD',
-      address: web3Config.CONTRACTS.MOCK_EUROD,
-      type: 'ERC-20 Stablecoin',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Mock Euro stablecoin for testnet. Represents EUROD in production.'
-    },
-    {
-      name: 'LiquidityPool',
-      address: web3Config.CONTRACTS.LIQUIDITY_POOL,
-      type: 'Pool Management',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Multi-asset liquidity pool manager for industrial financing with NAV-based yield distribution.'
-    },
-    {
-      name: 'IndustrialGateway',
-      address: web3Config.CONTRACTS.INDUSTRIAL_GATEWAY,
-      type: 'Gateway',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Certifies industrial assets/stock and mints GuaranteeTokens (uGT) as collateral.'
-    },
-    {
-      name: 'JurisdictionCompliance',
-      address: web3Config.CONTRACTS.JURISDICTION_COMPLIANCE,
-      type: 'Compliance',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Jurisdiction-based compliance with OFAC/UN/EU/FATF sanctions list enforcement.'
-    },
-    {
-      name: 'NavGateway',
-      address: web3Config.CONTRACTS.NAV_GATEWAY,
-      type: 'NAV Oracle',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Net Asset Value oracle for uLP token pricing and yield calculation.'
-    },
-    {
-      name: 'MockEscrow',
-      address: web3Config.CONTRACTS.MOCK_ESCROW,
-      type: 'Escrow',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Mock escrow for fund holding during investor transactions (testnet simulation).'
-    },
-    {
-      name: 'MockFiatRamp',
-      address: web3Config.CONTRACTS.MOCK_FIAT_RAMP,
-      type: 'Fiat Gateway',
-      status: 'deployed',
-      network: 'Polygon Amoy',
-      description: 'Mock fiat on/off ramp for testnet. Simulates bank transfers in production.'
-    },
-  ];
+  const [loading, setLoading] = useState(true);
+  const [contracts, setContracts] = useState<ContractData[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [showForm, setShowForm] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [formData, setFormData] = useState<ContractCreateRequest>({
+    name: '',
+    address: '',
+    contract_type: '',
+    description: '',
+    network: 'Polygon Amoy',
+    chain_id: 80002,
+    verified: false,
+  });
+
+  useEffect(() => { fetchContracts(); }, []);
+
+  const fetchContracts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await listContracts();
+      setContracts(data);
+    } catch (err: any) {
+      console.error('Error fetching contracts:', err);
+      setError(err.response?.data?.detail || 'Failed to load contracts');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.address || !formData.contract_type) {
+      alert('Please fill in Name, Address, and Type');
+      return;
+    }
+    if (!formData.address.startsWith('0x') || formData.address.length !== 42) {
+      alert('Invalid contract address format. Must be 0x + 40 hex characters.');
+      return;
+    }
+    try {
+      setSaving(true);
+      await registerContract(formData);
+      setShowForm(false);
+      setFormData({ name: '', address: '', contract_type: '', description: '', network: 'Polygon Amoy', chain_id: 80002, verified: false });
+      fetchContracts();
+    } catch (err: any) {
+      alert(err.response?.data?.detail || 'Failed to register contract');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const formatAddress = (addr: string) => `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
@@ -107,22 +83,15 @@ const ContractManagement: React.FC = () => {
               <p className="text-[#8b5b3d] mt-1">View and manage deployed contracts</p>
             </div>
             <div className="flex items-center gap-3">
-              <a
-                href="https://amoy.polygonscan.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#023D7A] hover:bg-[#0d3352] font-bold rounded-lg transition-colors text-sm flex items-center gap-2"
-                style={{ color: '#ffffff' }}
-              >
-                🔍 View on Explorer
-              </a>
+              <Button variant="primary" size="md" onClick={() => setShowForm(!showForm)}>
+                {showForm ? 'Cancel' : '+ Register Contract'}
+              </Button>
               <TestnetNotice variant="badge" />
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Network Info */}
         <Card className="mb-6">
@@ -133,145 +102,123 @@ const ContractManagement: React.FC = () => {
             </div>
             <div className="flex items-center gap-3">
               <Badge variant="info" size="lg">Chain ID: 80002</Badge>
-              <Badge variant="success" size="lg">Connected</Badge>
+              <Badge variant="success" size="lg">{contracts.length} Contracts</Badge>
             </div>
           </div>
         </Card>
+
+        {/* Error */}
+        {error && (
+          <Card className="mb-6 border-red-500">
+            <div className="flex items-center justify-between">
+              <p className="text-red-600 font-semibold">{error}</p>
+              <Button variant="outline" size="sm" onClick={fetchContracts} className="text-red-600 border-red-600">Retry</Button>
+            </div>
+          </Card>
+        )}
+
+        {/* Registration Form */}
+        {showForm && (
+          <Card className="mb-6 border-[#00A8A8]">
+            <h3 className="text-lg font-bold text-[#103b5b] mb-4">Register New Contract</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-[#103b5b] mb-1">Contract Name *</label>
+                <input type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00A8A8]" placeholder="e.g. ULPTokenizer" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-[#103b5b] mb-1">Contract Address *</label>
+                <input type="text" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00A8A8] font-mono text-sm" placeholder="0x..." />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-[#103b5b] mb-1">Contract Type *</label>
+                <input type="text" value={formData.contract_type} onChange={e => setFormData({...formData, contract_type: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00A8A8]" placeholder="e.g. ERC-20, Pool Management" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-[#103b5b] mb-1">Description</label>
+                <input type="text" value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00A8A8]" placeholder="Brief description" />
+              </div>
+              <div className="flex items-center gap-3">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" checked={formData.verified || false} onChange={e => setFormData({...formData, verified: e.target.checked})} />
+                  <span className="text-sm text-gray-700">Verified on Explorer</span>
+                </label>
+              </div>
+            </div>
+            <div className="flex gap-3 mt-4">
+              <Button variant="primary" onClick={handleSubmit} disabled={saving} className="flex-1">
+                {saving ? 'Registering...' : 'Register Contract'}
+              </Button>
+              <Button variant="outline" onClick={() => setShowForm(false)} className="flex-1">Cancel</Button>
+            </div>
+          </Card>
+        )}
 
         {/* Contracts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {contracts.map((contract, idx) => (
-            <Card key={idx}>
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-[#103b5b]">{contract.name}</h3>
-                  <p className="text-sm text-gray-600">{contract.type}</p>
-                  <p className="text-xs text-gray-500 mt-1">{contract.description}</p>
-                </div>
-                <Badge variant="success" size="md">{contract.status.toUpperCase()}</Badge>
-              </div>
-
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 mb-1">Contract Address</p>
-                  <div className="flex items-center gap-2">
-                    <code className="text-xs font-mono bg-gray-100 px-2 py-1 rounded break-all">{contract.address}</code>
-                    <button
-                      onClick={() => navigator.clipboard.writeText(contract.address)}
-                      className="p-1 text-[#00A8A8] hover:text-[#0D7A7A] flex-shrink-0"
-                      title="Copy address"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                    </button>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="w-16 h-16 border-4 border-[#00A8A8] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-[#103b5b] font-semibold">Loading contracts...</p>
+          </div>
+        ) : contracts.length === 0 ? (
+          <Card><div className="text-center py-12"><p className="text-gray-500 text-lg">No contracts registered yet</p></div></Card>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {contracts.map((c) => (
+              <Card key={c.id} className="hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-[#103b5b] truncate">{c.name}</h3>
+                    <p className="text-xs text-gray-500">{c.contract_type}</p>
                   </div>
+                  <Badge variant={c.verified ? 'success' : c.status === 'deployed' ? 'info' : 'warning'} size="sm">
+                    {c.verified ? 'VERIFIED' : c.status.toUpperCase()}
+                  </Badge>
                 </div>
 
-                <div>
-                  <p className="text-xs text-gray-500 mb-1">Network</p>
-                  <p className="text-sm font-semibold text-gray-700">{contract.network}</p>
-                </div>
-
-                <div className="flex gap-2 pt-4 border-t border-gray-200">
-                  <a
-                    href={`https://amoy.polygonscan.com/address/${contract.address}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 px-3 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-sm font-bold rounded transition-colors text-center"
-                    style={{ color: '#ffffff' }}
-                  >
-                    View on Explorer
+                <div className="mb-3">
+                  <p className="text-xs text-gray-500">Address</p>
+                  <a href={c.explorer_url || `https://amoy.polygonscan.com/address/${c.address}`} target="_blank" rel="noopener noreferrer"
+                    className="font-mono text-sm text-[#00A8A8] hover:underline">
+                    {formatAddress(c.address)}
                   </a>
-                  <button
-                    disabled
-                    className="flex-1 px-3 py-2 border border-gray-300 text-gray-400 text-sm font-bold rounded cursor-not-allowed"
-                    title="Coming soon — Contract read interface"
-                  >
-                    Read Contract
-                  </button>
                 </div>
+
+                {c.description && (
+                  <p className="text-xs text-gray-600 mb-3 line-clamp-3">{c.description}</p>
+                )}
+
+                <div className="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span className="text-xs text-gray-400">{c.network}</span>
+                  <a href={c.explorer_url || `https://amoy.polygonscan.com/address/${c.address}`} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-[#00A8A8] hover:underline font-medium">
+                    View on Explorer →
+                  </a>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
+
+        {/* Summary */}
+        {!loading && contracts.length > 0 && (
+          <Card className="mt-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold">Total Contracts Deployed</h3>
+                <p className="text-sm text-white/80">All contracts verified on Polygon Amoy</p>
               </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Contract Summary */}
-        <Card className="mt-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-bold">Total Contracts Deployed</h3>
-              <p className="text-sm text-white/80">All contracts verified on Polygon Amoy</p>
+              <div className="text-right">
+                <p className="text-4xl font-bold">{contracts.length}</p>
+                <p className="text-xs text-white/80">Smart Contracts</p>
+              </div>
             </div>
-            <div className="text-right">
-              <p className="text-4xl font-bold">{contracts.length}</p>
-              <p className="text-xs text-white/80">Smart Contracts</p>
-            </div>
-          </div>
-        </Card>
-
-        {/* Contract Actions */}
-        <Card className="mt-6">
-          <h3 className="text-lg font-bold text-[#103b5b] mb-4">Contract Actions</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center">
-              <Button
-                variant="primary"
-                size="lg"
-                disabled
-                className="w-full opacity-60 cursor-not-allowed"
-              >
-                ⬆️ Upgrade Contract
-              </Button>
-              <p className="text-xs text-gray-500 mt-2">Coming soon — Contract upgrade interface</p>
-            </div>
-            <div className="text-center">
-              <Button
-                variant="secondary"
-                size="lg"
-                disabled
-                className="w-full opacity-60 cursor-not-allowed"
-              >
-                ⏸️ Pause Contract
-              </Button>
-              <p className="text-xs text-gray-500 mt-2">Coming soon — Pausable pattern support</p>
-            </div>
-            <div className="text-center">
-              <Button
-                variant="danger"
-                size="lg"
-                disabled
-                className="w-full opacity-60 cursor-not-allowed"
-              >
-                🛑 Emergency Stop
-              </Button>
-              <p className="text-xs text-gray-500 mt-2">Coming soon — Circuit breaker pattern</p>
-            </div>
-          </div>
-        </Card>
-
-        {/* Deployment Info */}
-        <Card className="mt-6">
-          <h3 className="text-lg font-bold text-[#103b5b] mb-4">Deployment Information</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-gray-600 mb-2 font-semibold">Deployment Tool</p>
-              <p className="text-gray-700">Foundry (forge)</p>
-            </div>
-            <div>
-              <p className="text-gray-600 mb-2 font-semibold">Verification</p>
-              <p className="text-gray-700">Polygon Amoy Scan (verified)</p>
-            </div>
-            <div>
-              <p className="text-gray-600 mb-2 font-semibold">Last Updated</p>
-              <p className="text-gray-700">2026-04-02</p>
-            </div>
-            <div>
-              <p className="text-gray-600 mb-2 font-semibold">Network</p>
-              <p className="text-gray-700">Polygon Amoy Testnet (80002)</p>
-            </div>
-          </div>
-        </Card>
+          </Card>
+        )}
       </main>
     </div>
   );

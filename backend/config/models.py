@@ -858,6 +858,32 @@ class WhitelistedWallet(Base):
     )
 
 
+class Contract(Base):
+    """
+    Deployed smart contract registry.
+
+    Tracks all deployed contracts with their addresses, ABIs, and status.
+    """
+    __tablename__ = 'contracts'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), unique=True, nullable=False)
+    address = Column(String(42), nullable=False)  # 0x + 40 hex chars
+    contract_type = Column(String(50), nullable=False)  # ERC-20, ERC-721, Pool Management, etc.
+    network = Column(String(50), default='Polygon Amoy')
+    chain_id = Column(Integer, default=80002)
+    description = Column(Text, nullable=True)
+    status = Column(String(20), default='deployed')  # deployed, verified, paused, deprecated
+    tx_hash = Column(String(66), nullable=True)  # deployment transaction hash
+    block_number = Column(Integer, nullable=True)
+    abi_path = Column(String(255), nullable=True)
+    explorer_url = Column(String(255), nullable=True)
+    verified = Column(Boolean, default=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 # =============================================================================
 # HELPER FUNCTIONS
 # =============================================================================

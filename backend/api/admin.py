@@ -19,7 +19,8 @@ from config.models import (
     User, InvestorProfile, BankAccount, Document, ComplianceActivity,
     WhitelistedWallet, InvestorRoleEnum, ComplianceStatusEnum,
     Pool, PoolPosition, Investment, Financing, Transaction,
-    YieldStatement, GDIZFinancing, RiskMetrics, ComplianceMetrics, ImpactMetrics
+    YieldStatement, GDIZFinancing, RiskMetrics, ComplianceMetrics, ImpactMetrics,
+    Contract
 )
 
 router = APIRouter(prefix="/api/v2/admin", tags=["Admin"])
@@ -989,3 +990,172 @@ async def update_compliance_settings(
         """), {'key': key, 'value': str(value)})
     db.commit()
     return {"success": True, "message": "Compliance settings saved", "changes": req.dict(exclude_none=True)}
+
+
+# =============================================================================
+# CONTRACT MANAGEMENT
+# =============================================================================
+
+class ContractResponse(BaseModel):
+    id: int
+    name: str
+    address: str
+    contract_type: str
+    network: str
+    description: Optional[str]
+    status: str
+    verified: bool
+    explorer_url: Optional[str]
+    tx_hash: Optional[str]
+    created_at: Optional[str]
+
+class ContractCreateRequest(BaseModel):
+    name: str
+    address: str
+    contract_type: str
+    network: str = "Polygon Amoy"
+    chain_id: int = 80002
+    description: Optional[str] = None
+    tx_hash: Optional[str] = None
+    block_number: Optional[int] = None
+    explorer_url: Optional[str] = None
+    verified: bool = False
+
+
+def _seed_default_contracts(db: Session) -> None:
+    """Seed default contracts from web3 config if table is empty."""
+    if db.query(Contract).count() > 0:
+        return
+
+    from config.web3 import web3_config
+    wc = web3_config.CONTRACTS
+    defaults = [
+        {"name": "ULPTokenizer", "address": wc.ULP_TOKEN, "contract_type": "ERC-3643-style Token", "description": "Yield-bearing liquidity pool token with identity verification."},
+        {"name": "GuaranteeTokenizer", "address": wc.UGT_TOKEN, "contract_type": "ERC-721 NFT", "description": "NFT collateral token for industrial operator commitments."},
+        {"name": "MockEUROD", "address": wc.MOCK_EUROD, "contract_type": "ERC-20 Stablecoin", "description": "Mock Euro stablecoin for testnet."},
+        {"name": "LiquidityPool", "address": wc.LIQUIDITY_POOL, "contract_type": "Pool Management", "description": "Multi-asset liquidity pool manager for industrial financing."},
+        {"name": "IndustrialGateway", "address": wc.INDUSTRIAL_GATEWAY, "contract_type": "Gateway", "description": "Certifies industrial assets and mints GuaranteeTokens."},
+        {"name": "JurisdictionCompliance", "address": wc.JURISDICTION_COMPLIANCE, "contract_type": "Compliance", "description": "Jurisdiction-based compliance with OFAC/UN/EU/FATF sanctions."},
+        {"name": "NavGateway", "address": wc.NAV_GATEWAY, "contract_type": "NAV Oracle", "description": "Net Asset Value oracle for uLP token pricing."},
+        {"name": "MockEscrow", "address": wc.MOCK_ESCROW, "contract_type": "Escrow", "description": "Mock escrow for fund holding during investor transactions."},
+        {"name": "MockFiatRamp", "address": wc.MOCK_FIAT_RAMP, "contract_type": "Fiat Gateway", "description": "Mock fiat on/off ramp for testnet."},
+    ]
+    for d in defaults:
+        try:
+            c = Contract(
+                name=d["name"],
+                address=d["address"],
+                contract_type=d["contract_type"],
+                network="Polygon Amoy",
+                chain_id=80002,
+                description=d["description"],
+                status="deployed",
+                explorer_url=f"https://amoy.polygonscan.com/address/{d['address']}",
+                verified=True,
+            )
+            db.add(c)
+        except Exception:
+            pass  # skip if contract already exists
+    try:
+        db.commit()
+    except Exception:
+        db.rollback()
+
+
+@router.get("/contracts", response_model=List[ContractResponse])
+async def list_contracts(
+    admin: User = Depends(verify_admin_readonly),
+    db: Session = Depends(get_db)
+):
+    """List all deployed smart contracts. Read-only for REGULATOR/COMPLIANCE_OFFICER."""
+    _seed_default_contracts(db)
+    contracts = db.query(Contract).order_by(Contract.id).all()
+    return contracts
+
+
+@router.post("/contracts", response_model=ContractResponse)
+async def register_contract(
+    req: ContractCreateRequest,
+    admin: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+):
+    """Register a new deployed contract. ADMIN only."""
+    existing = db.query(Contract).filter(Contract.name == req.name).first()
+    if existing:
+        raise HTTPException(status_code=400, detail=f"Contract '{req.name}' already exists")
+
+    if not req.address.startswith("0x") or len(req.address) != 42:
+        raise HTTPException(status_code=400, detail="Invalid contract address format")
+
+    contract = Contract(
+        name=req.name,
+        address=req.address,
+        contract_type=req.contract_type,
+        network=req.network,
+        chain_id=req.chain_id,
+        description=req.description,
+        tx_hash=req.tx_hash,
+        block_number=req.block_number,
+        explorer_url=req.explorer_url,
+        status="deployed",
+        verified=req.verified,
+    )
+    db.add(contract)
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+@router.put("/contracts/{contract_id}", response_model=ContractResponse)
+async def update_contract(
+    contract_id: int,
+    req: ContractCreateRequest,
+    admin: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+):
+    """Update contract details. ADMIN only."""
+    contract = db.query(Contract).filter(Contract.id == contract_id).first()
+    if not contract:
+        raise HTTPException(status_code=404, detail="Contract not found")
+
+    if req.address:
+        if not req.address.startswith("0x") or len(req.address) != 42:
+            raise HTTPException(status_code=400, detail="Invalid contract address format")
+        contract.address = req.address
+    if req.contract_type:
+        contract.contract_type = req.contract_type
+    if req.description is not None:
+        contract.description = req.description
+    if req.network:
+        contract.network = req.network
+    if req.tx_hash:
+        contract.tx_hash = req.tx_hash
+    if req.block_number:
+        contract.block_number = req.block_number
+    if req.explorer_url:
+        contract.explorer_url = req.explorer_url
+    if req.verified is not None:
+        contract.verified = req.verified
+
+    contract.updated_at = datetime.utcnow()
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+@router.delete("/contracts/{contract_id}")
+async def delete_contract(
+    contract_id: int,
+    admin: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+):
+    """Delete a contract record. ADMIN only."""
+    contract = db.query(Contract).filter(Contract.id == contract_id).first()
+    if not contract:
+        raise HTTPException(status_code=404, detail="Contract not found")
+
+    db.delete(contract)
+    db.commit()
+    return {"success": True, "message": f"Contract '{contract.name}' deleted"}

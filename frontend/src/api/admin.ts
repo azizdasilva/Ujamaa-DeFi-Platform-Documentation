@@ -307,4 +307,56 @@ export default {
   getAuditLog,
   // Dashboard
   getDashboard,
+  // Contracts
+  listContracts,
+  registerContract,
+  updateContract,
+  deleteContract,
 };
+
+// =============================================================================
+// Contract Types
+// =============================================================================
+
+export interface ContractData {
+  id: number;
+  name: string;
+  address: string;
+  contract_type: string;
+  network: string;
+  description: string | null;
+  status: string;
+  verified: boolean;
+  explorer_url: string | null;
+  tx_hash: string | null;
+  created_at: string | null;
+}
+
+export interface ContractCreateRequest {
+  name: string;
+  address: string;
+  contract_type: string;
+  network?: string;
+  chain_id?: number;
+  description?: string;
+  tx_hash?: string;
+  block_number?: number;
+  explorer_url?: string;
+  verified?: boolean;
+}
+
+// =============================================================================
+// Contract API
+// =============================================================================
+
+export const listContracts = (): Promise<ContractData[]> =>
+  apiClient.get('/admin/contracts').then(r => r.data);
+
+export const registerContract = (data: ContractCreateRequest): Promise<ContractData> =>
+  apiClient.post('/admin/contracts', data).then(r => r.data);
+
+export const updateContract = (id: number, data: ContractCreateRequest): Promise<ContractData> =>
+  apiClient.put(`/admin/contracts/${id}`, data).then(r => r.data);
+
+export const deleteContract = (id: number): Promise<void> =>
+  apiClient.delete(`/admin/contracts/${id}`).then(r => r.data);
