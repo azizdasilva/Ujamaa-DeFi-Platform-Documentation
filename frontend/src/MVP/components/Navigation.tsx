@@ -253,8 +253,13 @@ const Navigation: React.FC = () => {
             {profileOpen && (
               <div className="absolute bottom-12 left-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
                 <div className="p-4 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white">
-                  <p className="font-semibold">{user?.name || 'User'}</p>
-                  <p className="text-xs text-white/60">{user?.email || ''}</p>
+                  <div className="flex items-center gap-3">
+                    <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-12 h-9 object-contain" />
+                    <div>
+                      <p className="font-semibold">{user?.name || 'User'}</p>
+                      <p className="text-xs text-white/60">{user?.email || ''}</p>
+                    </div>
+                  </div>
                   <span className="inline-block mt-2 px-2 py-0.5 bg-white/20 rounded-full text-[10px] font-semibold">{role.replace(/_/g, ' ')}</span>
                 </div>
                 <div className="p-2">
@@ -321,7 +326,7 @@ const Navigation: React.FC = () => {
           </div>
           {isAuthenticated && (
             <div className="flex items-center gap-2">
-              <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-10 h-8 object-contain" />
+              <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-20 h-16 object-contain" />
               <div className="hidden sm:block">
                 <p className="text-xs font-medium text-gray-700 leading-none">{user?.name?.split(' ')[0] || 'User'}</p>
                 <p className="text-[10px] text-gray-400 mt-0.5">{role.replace(/_/g, ' ')}</p>
