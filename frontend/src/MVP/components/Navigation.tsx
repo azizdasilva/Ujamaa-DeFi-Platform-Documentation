@@ -208,7 +208,7 @@ const Navigation: React.FC = () => {
             {langOpen && (
               <>
                 <div className="fixed inset-0 z-[99]" onClick={() => setLangOpen(false)} />
-                <div className="absolute bottom-12 right-0 w-44 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
+                <div className="absolute bottom-12 left-0 w-44 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
                   <p className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">Select Language</p>
                   <button
                     onClick={() => { setLanguage('en'); setLangOpen(false); }}
