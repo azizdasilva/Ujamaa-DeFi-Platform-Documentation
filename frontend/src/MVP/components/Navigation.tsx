@@ -33,7 +33,9 @@ const Navigation: React.FC = () => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [langOpen, setLangOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   // Mock notifications
   const [notifications, setNotifications] = useState([
@@ -198,9 +200,42 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Language */}
-          <button onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Language">
-            🌐
-          </button>
+          <div ref={langRef} className="relative">
+            <button onClick={() => setLangOpen(!langOpen)} className="flex items-center gap-1 px-2 h-10 rounded-lg text-sm font-bold text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Switch Language">
+              🌐
+              <span className={`uppercase ${language === 'en' ? 'text-blue-400' : 'text-red-400'}`}>{language}</span>
+            </button>
+            {langOpen && (
+              <>
+                <div className="fixed inset-0 z-[99]" onClick={() => setLangOpen(false)} />
+                <div className="absolute bottom-12 right-0 w-44 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
+                  <p className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">Select Language</p>
+                  <button
+                    onClick={() => { setLanguage('en'); setLangOpen(false); }}
+                    className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'en' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    <span className="text-lg">🇬🇧</span>
+                    <div>
+                      <p className="font-medium">English</p>
+                      <p className="text-[10px] text-gray-400">Production</p>
+                    </div>
+                    {language === 'en' && <span className="ml-auto text-blue-600">✓</span>}
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('fr'); setLangOpen(false); }}
+                    className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'fr' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    <span className="text-lg">🇫🇷</span>
+                    <div>
+                      <p className="font-medium">Français</p>
+                      <p className="text-[10px] text-gray-400">Production</p>
+                    </div>
+                    {language === 'fr' && <span className="ml-auto text-blue-600">✓</span>}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
           {/* Profile */}
           <div ref={profileRef} className="relative w-full">
