@@ -38,7 +38,17 @@ const Login: React.FC = () => {
         else if (email.includes('regulator')) role = 'REGULATOR';
 
         login(role);
-        navigate(`/${role.toLowerCase()}/dashboard`);
+
+        // Map role to correct dashboard route
+        const dashboardRoutes: Record<InvestorRole, string> = {
+          INSTITUTIONAL_INVESTOR: '/institutional/dashboard',
+          RETAIL_INVESTOR: '/retail/dashboard',
+          INDUSTRIAL_OPERATOR: '/originator/dashboard',
+          COMPLIANCE_OFFICER: '/compliance/dashboard',
+          ADMIN: '/admin/dashboard',
+          REGULATOR: '/regulator/dashboard',
+        };
+        navigate(dashboardRoutes[role]);
       } else {
         setError('Please enter valid credentials');
       }
@@ -52,7 +62,7 @@ const Login: React.FC = () => {
 
     // Mock wallet connection
     setTimeout(() => {
-      // In production, this would connect to actual wallet
+      // In production, this would connect to actual wallet and resolve role from backend
       login('RETAIL_INVESTOR', '0x1234...5678');
       navigate('/retail/dashboard');
       setIsLoading(false);

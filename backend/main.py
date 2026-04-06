@@ -23,6 +23,7 @@ from api.compliance_documents import router as compliance_documents_router
 from api.database_api import router as database_router
 from api.admin import router as admin_router
 from api.originator import router as originator_router
+from api.kpis import router as kpis_router
 
 # =============================================================================
 # APPLICATION INITIALIZATION
@@ -184,6 +185,7 @@ app.include_router(compliance_documents_router)
 app.include_router(database_router)
 app.include_router(admin_router)
 app.include_router(originator_router)
+app.include_router(kpis_router)
 
 
 @app.get("/")

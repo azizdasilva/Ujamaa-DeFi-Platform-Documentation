@@ -128,7 +128,15 @@ const Register: React.FC = () => {
       login(role);
 
       // Navigate to appropriate dashboard
-      navigate(`/${role.toLowerCase()}/dashboard`);
+      const dashboardRoutes: Record<InvestorRole, string> = {
+        INSTITUTIONAL_INVESTOR: '/institutional/dashboard',
+        RETAIL_INVESTOR: '/retail/dashboard',
+        INDUSTRIAL_OPERATOR: '/originator/dashboard',
+        COMPLIANCE_OFFICER: '/compliance/dashboard',
+        ADMIN: '/admin/dashboard',
+        REGULATOR: '/regulator/dashboard',
+      };
+      navigate(dashboardRoutes[role]);
       setIsLoading(false);
     }, 1500);
   };
