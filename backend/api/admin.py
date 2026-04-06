@@ -1007,7 +1007,10 @@ class ContractResponse(BaseModel):
     verified: bool
     explorer_url: Optional[str]
     tx_hash: Optional[str]
-    created_at: Optional[str]
+    created_at: Optional[datetime] = None
+
+    model_config = {"from_attributes": True}
+
 
 class ContractCreateRequest(BaseModel):
     name: str
