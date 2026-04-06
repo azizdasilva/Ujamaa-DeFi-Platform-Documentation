@@ -326,7 +326,9 @@ const Navigation: React.FC = () => {
           </div>
           {isAuthenticated && (
             <div className="flex items-center gap-2">
-              <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-20 h-16 object-contain" />
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#00A8A8] to-[#023D7A] flex items-center justify-center text-white text-xs font-bold">
+                {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
+              </div>
               <div className="hidden sm:block">
                 <p className="text-xs font-medium text-gray-700 leading-none">{user?.name?.split(' ')[0] || 'User'}</p>
                 <p className="text-[10px] text-gray-400 mt-0.5">{role.replace(/_/g, ' ')}</p>
