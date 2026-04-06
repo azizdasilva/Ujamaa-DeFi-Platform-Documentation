@@ -214,7 +214,12 @@ const Navigation: React.FC = () => {
                     onClick={() => { setLanguage('en'); setLangOpen(false); }}
                     className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'en' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
                   >
-                    <span className="text-lg">🇬🇧</span>
+                    {/* UK Flag SVG */}
+                    <svg viewBox="0 0 60 30" className="w-8 h-5 rounded-sm border border-gray-200 flex-shrink-0">
+                      <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                      <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+                      <g clipPath="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/></g>
+                    </svg>
                     <div>
                       <p className="font-medium">English</p>
                       <p className="text-[10px] text-gray-400">MVP</p>
@@ -225,7 +230,12 @@ const Navigation: React.FC = () => {
                     onClick={() => { setLanguage('fr'); setLangOpen(false); }}
                     className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'fr' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
                   >
-                    <span className="text-lg">🇫🇷</span>
+                    {/* France Flag SVG */}
+                    <svg viewBox="0 0 45 30" className="w-8 h-5 rounded-sm border border-gray-200 flex-shrink-0">
+                      <path d="M0,0 h15 v30 h-15 z" fill="#002395"/>
+                      <path d="M15,0 h15 v30 h-15 z" fill="#FFFFFF"/>
+                      <path d="M30,0 h15 v30 h-15 z" fill="#ED2939"/>
+                    </svg>
                     <div>
                       <p className="font-medium">Français</p>
                       <p className="text-[10px] text-gray-400">Production</p>
