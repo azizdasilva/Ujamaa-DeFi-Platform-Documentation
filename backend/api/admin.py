@@ -1023,7 +1023,8 @@ class ContractCreateRequest(BaseModel):
 
 
 def _seed_default_contracts(db: Session) -> None:
-    """Seed default contracts from web3 config if table is empty."""
+    """Seed default contracts from web3 config if table is empty.
+    Stores addresses as-is from config — admin can correct via UI."""
     if db.query(Contract).count() > 0:
         return
 
@@ -1031,6 +1032,7 @@ def _seed_default_contracts(db: Session) -> None:
     wc = web3_config.CONTRACTS
     defaults = [
         {"name": "ULPTokenizer", "address": wc.ULP_TOKEN, "contract_type": "ERC-3643-style Token", "description": "Yield-bearing liquidity pool token with identity verification."},
+        {"name": "UATToken", "address": wc.UAT_TOKEN, "contract_type": "ERC-20 Utility Token", "description": "Utility token for platform operations."},
         {"name": "GuaranteeTokenizer", "address": wc.UGT_TOKEN, "contract_type": "ERC-721 NFT", "description": "NFT collateral token for industrial operator commitments."},
         {"name": "MockEUROD", "address": wc.MOCK_EUROD, "contract_type": "ERC-20 Stablecoin", "description": "Mock Euro stablecoin for testnet."},
         {"name": "LiquidityPool", "address": wc.LIQUIDITY_POOL, "contract_type": "Pool Management", "description": "Multi-asset liquidity pool manager for industrial financing."},
@@ -1040,26 +1042,31 @@ def _seed_default_contracts(db: Session) -> None:
         {"name": "MockEscrow", "address": wc.MOCK_ESCROW, "contract_type": "Escrow", "description": "Mock escrow for fund holding during investor transactions."},
         {"name": "MockFiatRamp", "address": wc.MOCK_FIAT_RAMP, "contract_type": "Fiat Gateway", "description": "Mock fiat on/off ramp for testnet."},
     ]
+    seeded = 0
     for d in defaults:
         try:
+            existing = db.query(Contract).filter(Contract.name == d["name"]).first()
+            if existing:
+                continue
             c = Contract(
                 name=d["name"],
                 address=d["address"],
                 contract_type=d["contract_type"],
                 network="Polygon Amoy",
                 chain_id=80002,
-                description=d["description"],
+                description=d.get("description"),
                 status="deployed",
                 explorer_url=f"https://amoy.polygonscan.com/address/{d['address']}",
                 verified=True,
             )
             db.add(c)
-        except Exception:
-            pass  # skip if contract already exists
-    try:
-        db.commit()
-    except Exception:
-        db.rollback()
+            db.commit()
+            seeded += 1
+        except Exception as e:
+            print(f"⚠️  Seed skipped '{d['name']}': {e}")
+            db.rollback()
+    if seeded > 0:
+        print(f"✅ Seeded {seeded} default contracts")
 
 
 @router.get("/contracts", response_model=List[ContractResponse])
