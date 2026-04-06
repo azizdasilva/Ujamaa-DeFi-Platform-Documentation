@@ -35,6 +35,14 @@ const Navigation: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const profileRef = useRef<HTMLDivElement>(null);
 
+  // Mock notifications
+  const [notifications, setNotifications] = useState([
+    { id: 1, title: 'KYC Approved', message: 'Your identity verification has been approved.', time: '2h ago', unread: true },
+    { id: 2, title: 'Pool Yield Update', message: 'Pool Industrie NAV increased to €1.05', time: '5h ago', unread: true },
+    { id: 3, title: 'Investment Confirmed', message: 'Your €10,000 investment in Pool Agriculture is confirmed.', time: '1d ago', unread: false },
+    { id: 4, title: 'Document Reminder', message: 'Please upload your proof of address document.', time: '2d ago', unread: false },
+  ]);
+
   const role = user?.role || 'ADMIN';
   const myDashboard = isAuthenticated ? getDashboardForRole(role) : '/';
   const navItems = getNavItemsForRole(role);
@@ -108,13 +116,6 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
-  // Mock notifications
-  const notifications = [
-    { id: 1, title: 'Asset Certified', message: 'Your cotton bales certificate is ready', time: '2m ago', unread: true },
-    { id: 2, title: 'Financing Approved', message: 'Pool Industry approved €2M financing', time: '1h ago', unread: true },
-    { id: 3, title: 'Yield Distributed', message: '€12,500 yield distributed to your account', time: '3h ago', unread: false },
-  ];
-
   // Search results
   const allSearchResults = filteredNavItems.map(item => ({ title: item.label, href: item.href, icon: item.icon }));
   const filteredResults = searchQuery
@@ -173,15 +174,24 @@ const Navigation: React.FC = () => {
                 <div className="absolute bottom-12 left-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
                   <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                     <h3 className="font-semibold text-gray-900">Notifications</h3>
-                    <button className="text-xs text-[#00A8A8] hover:underline">Mark all read</button>
+                    <button
+                      onClick={() => setNotifications(prev => prev.map(n => ({ ...n, unread: false })))}
+                      className="text-xs text-[#00A8A8] hover:underline"
+                    >
+                      Mark all read
+                    </button>
                   </div>
-                  {notifications.map(n => (
-                    <div key={n.id} className={`px-4 py-3 border-b border-gray-50 ${n.unread ? 'bg-blue-50/50' : ''}`}>
-                      <p className="text-sm font-medium text-gray-900">{n.title}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
-                      <p className="text-xs text-gray-400 mt-1">{n.time}</p>
-                    </div>
-                  ))}
+                  {notifications.length === 0 ? (
+                    <div className="px-4 py-8 text-center text-gray-400 text-sm">No notifications</div>
+                  ) : (
+                    notifications.map(n => (
+                      <div key={n.id} className={`px-4 py-3 border-b border-gray-50 ${n.unread ? 'bg-blue-50/50' : ''}`}>
+                        <p className="text-sm font-medium text-gray-900">{n.title}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
+                        <p className="text-xs text-gray-400 mt-1">{n.time}</p>
+                      </div>
+                    ))
+                  )}
                 </div>
               </>
             )}
@@ -191,9 +201,6 @@ const Navigation: React.FC = () => {
           <button onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Language">
             🌐
           </button>
-
-          {/* Connect Wallet */}
-          {isAuthenticated && <ConnectWallet size="sm" variant="ghost" />}
 
           {/* Profile */}
           <div ref={profileRef} className="relative w-full">
@@ -250,10 +257,18 @@ const Navigation: React.FC = () => {
 
       {/* ─── Top Bar ─── */}
       <header className="fixed top-0 left-16 right-0 h-[120px] bg-white border-b border-gray-200 z-30 flex items-center px-6 justify-between">
+        {/* Left: Logo */}
         <div className="flex flex-col items-start gap-1">
           <img src="/assets/images/logo-transparent.png" alt="Ujamaa DeFi" className="h-[80px] w-auto" />
           <p className="text-xs text-gray-500 font-medium tracking-wide">Institutional-Grade African Real-World Asset Tokenization</p>
         </div>
+
+        {/* Center: Connected Wallet */}
+        <div className="flex-1 flex justify-center">
+          {isAuthenticated && <ConnectWallet size="md" variant="primary" showBalance={true} />}
+        </div>
+
+        {/* Right: Network + User */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

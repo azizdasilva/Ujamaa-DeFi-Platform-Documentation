@@ -106,13 +106,6 @@ export const navigationItems: NavItem[] = [
     category: 'invest',
   },
   {
-    label: 'Pool Management',
-    href: '/admin/pools',
-    icon: '🏛️',
-    roles: ['ADMIN'],
-    category: 'invest',
-  },
-  {
     label: 'Pool Dashboard',
     href: '/pool/dashboard',
     icon: '📈',
