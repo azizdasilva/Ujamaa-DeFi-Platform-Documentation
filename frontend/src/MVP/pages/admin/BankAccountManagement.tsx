@@ -228,14 +228,14 @@ const BankAccountManagement: React.FC = () => {
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-2">🧪 Test Mode - Mock Bank Accounts</h3>
               <p className="text-sm text-white/90 mb-3">
-                This page allows you to simulate bank account operations for testing purposes. 
-                You can increase or reduce investor escrow balances, available balances, and locked amounts.
+                This page allows you to simulate bank account operations for testing purposes.
+                You can adjust investor escrow balances, available balances, and locked amounts.
               </p>
               <ul className="text-xs text-white/80 space-y-1">
-                <li>• All changes are stored in sessionStorage (temporary)</li>
-                <li>• No real bank accounts are affected</li>
+                <li>• Changes are persisted to the database</li>
+                <li>• No real bank accounts or funds are involved</li>
                 <li>• Use this to test different balance scenarios</li>
-                <li>• Changes reset when browser cache is cleared</li>
+                <li>• Requires Admin role to make changes</li>
               </ul>
             </div>
           </div>

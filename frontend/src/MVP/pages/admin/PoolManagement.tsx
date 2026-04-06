@@ -76,7 +76,11 @@ const PoolManagement: React.FC = () => {
               <p className="text-[#8b5b3d] mt-1">Manage liquidity pools and configurations</p>
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="primary" size="md">
+              <Button
+                variant="primary"
+                size="md"
+                onClick={() => alert('Create Pool — Coming soon. Use the database directly or the Pool Configure page for existing pools.')}
+              >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>

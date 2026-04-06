@@ -8,6 +8,7 @@ All data is stored in SQLite/PostgreSQL database.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from datetime import datetime
@@ -17,9 +18,70 @@ from config.database import get_db
 from config.models import (
     User, InvestorProfile, Pool, Investment, Document,
     ULTTransaction, Transaction, ComplianceStatusEnum,
-    ComplianceActivity, Financing, PoolPosition, BankAccount, BankTransaction
+    ComplianceActivity, Financing, PoolPosition, BankAccount, BankTransaction,
+    InvestorRoleEnum
 )
 from config.MVP_config import mvp_config
+
+# Auth security
+security = HTTPBearer(auto_error=False)
+
+# Role sets
+ADMIN_ROLES = {'ADMIN'}
+WRITE_AUTH_ROLES = {'ADMIN'}
+
+def _resolve_auth_user(auth: Optional[HTTPAuthorizationCredentials], db: Session) -> User:
+    """Resolve auth token to a User object. Supports mock tokens from frontend."""
+    if not auth or not auth.credentials:
+        raise HTTPException(status_code=401, detail="Authentication required")
+
+    token = auth.credentials
+
+    # Accept hardcoded admin token for scripts
+    if token == "admin-token-mvp":
+        admin = db.query(User).filter(User.role == "ADMIN").first()
+        if not admin:
+            raise HTTPException(status_code=404, detail="No admin user found")
+        return admin
+
+    # Mock JWT token from frontend: mock-jwt-token-ROLE-timestamp
+    if token.startswith("mock-jwt-token-"):
+        parts = token.split("-")
+        if len(parts) >= 4:
+            role = parts[3]
+            all_roles = {r.value for r in InvestorRoleEnum}
+            if role in all_roles:
+                user = db.query(User).filter(User.role == role).first()
+                if not user:
+                    raise HTTPException(status_code=404, detail=f"No {role} user found")
+                return user
+            else:
+                raise HTTPException(status_code=403, detail=f"Access denied. Your role: {role}")
+
+    # Try matching by wallet address or email
+    user = db.query(User).filter(
+        (User.wallet_address == token) | (User.email == token)
+    ).first()
+    if not user:
+        raise HTTPException(status_code=403, detail="Invalid authentication token")
+
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+
+    if user_role not in WRITE_AUTH_ROLES:
+        raise HTTPException(status_code=403, detail=f"Access denied. Your role: {user_role}")
+    return user
+
+
+async def verify_admin_write(
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """Verify user has ADMIN role (for write operations)."""
+    user = _resolve_auth_user(auth, db)
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+    if user_role not in ADMIN_ROLES:
+        raise HTTPException(status_code=403, detail=f"Admin write access required. Your role: {user_role}")
+    return user
 
 # Jurisdiction configuration (in production, this would be in database)
 JURISDICTIONS_DB = {
@@ -249,6 +311,7 @@ async def get_pool_stats(pool_id: str, db: Session = Depends(get_db)):
 async def update_pool(
     pool_id: str,
     req: PoolUpdateRequest,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ):
     """
@@ -269,6 +332,21 @@ async def update_pool(
     pool.updated_at = datetime.utcnow()
     db.commit()
     db.refresh(pool)
+
+    # Log compliance activity
+    try:
+        activity = ComplianceActivity(
+            user_id=admin.id,
+            activity_type='POOL_UPDATE',
+            target_id=pool_id,
+            target_type='pool',
+            details=f'Pool configuration updated by {admin.email}',
+            created_at=datetime.utcnow(),
+        )
+        db.add(activity)
+        db.commit()
+    except Exception:
+        pass  # Don't fail the update if audit logging fails
 
     return pool
 
@@ -464,6 +542,7 @@ async def create_investment(
     investor_id: int,
     amount: float,
     ult_tokens: float,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ):
     """
@@ -646,6 +725,7 @@ class DocumentReviewRequest(BaseModel):
 @router.post("/documents")
 async def create_document(
     request: DocumentCreate,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -694,6 +774,7 @@ async def create_document(
 async def review_document(
     document_id: int,
     request: DocumentReviewRequest,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -1071,6 +1152,7 @@ async def get_flagged_transactions(
 async def review_transaction(
     transaction_id: int,
     request: TransactionReviewRequest,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -1128,6 +1210,7 @@ async def review_transaction(
 @router.post("/transactions")
 async def create_transaction(
     request: TransactionCreate,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -1340,7 +1423,10 @@ async def get_jurisdiction(code: str) -> Dict:
 
 
 @router.post("/jurisdictions")
-async def create_jurisdiction(request: JurisdictionCreate) -> Dict:
+async def create_jurisdiction(
+    request: JurisdictionCreate,
+    admin: User = Depends(verify_admin_write)
+) -> Dict:
     """
     Add a new jurisdiction.
     
@@ -1371,7 +1457,11 @@ async def create_jurisdiction(request: JurisdictionCreate) -> Dict:
 
 
 @router.put("/jurisdictions/{code}")
-async def update_jurisdiction(code: str, request: JurisdictionUpdate) -> Dict:
+async def update_jurisdiction(
+    code: str,
+    request: JurisdictionUpdate,
+    admin: User = Depends(verify_admin_write)
+) -> Dict:
     """
     Update jurisdiction status and notes.
 
@@ -1400,7 +1490,10 @@ async def update_jurisdiction(code: str, request: JurisdictionUpdate) -> Dict:
 
 
 @router.delete("/jurisdictions/{code}")
-async def delete_jurisdiction(code: str) -> Dict:
+async def delete_jurisdiction(
+    code: str,
+    admin: User = Depends(verify_admin_write)
+) -> Dict:
     """
     Remove a jurisdiction.
     

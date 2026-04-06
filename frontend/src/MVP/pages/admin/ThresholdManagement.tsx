@@ -61,11 +61,7 @@ const ThresholdManagement: React.FC = () => {
   const fetchThresholds = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.get('/admin/thresholds', {
-        headers: {
-          'Authorization': 'Bearer admin-token-mvp'
-        }
-      });
+      const response = await apiClient.get('/admin/thresholds');
       setThresholds(response.data.thresholds);
     } catch (error) {
       console.error('Error fetching thresholds:', error);
@@ -78,13 +74,9 @@ const ThresholdManagement: React.FC = () => {
 
   const handleValidate = async () => {
     try {
-      const response = await apiClient.get('/admin/thresholds/validate', {
-        headers: {
-          'Authorization': 'Bearer admin-token-mvp'
-        }
-      });
+      const response = await apiClient.get('/admin/thresholds/validate');
       setValidation(response.data);
-      
+
       if (response.data.errors.length > 0) {
         alert(`❌ Validation Errors:\n${response.data.errors.join('\n')}`);
       } else if (response.data.warnings.length > 0) {
@@ -113,10 +105,6 @@ const ThresholdManagement: React.FC = () => {
       const response = await apiClient.post('/admin/thresholds', {
         thresholds,
         reason
-      }, {
-        headers: {
-          'Authorization': 'Bearer admin-token-mvp'
-        }
       });
 
       alert(`✅ Thresholds Updated Successfully!\n\n${response.data.message}\n\nAudit Log ID: ${response.data.audit_log.changed_at}`);

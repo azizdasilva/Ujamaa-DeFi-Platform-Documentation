@@ -8,6 +8,7 @@ Implements 24-hour review window requirement.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, Field
 from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any
@@ -16,11 +17,66 @@ import uuid
 from config.database import get_db
 from config.models import (
     Document, ComplianceActivity, InvestorProfile, User,
-    ComplianceStatusEnum, DocumentTypeEnum
+    ComplianceStatusEnum, DocumentTypeEnum, InvestorRoleEnum
 )
 from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/api/v2/compliance", tags=["Compliance"])
+
+# Auth security
+security = HTTPBearer(auto_error=False)
+ADMIN_ROLES = {'ADMIN'}
+COMPLIANCE_ROLES = {'ADMIN', 'COMPLIANCE_OFFICER'}
+
+def _resolve_compliance_user(auth: Optional[HTTPAuthorizationCredentials], db: Session) -> User:
+    """Resolve auth token for compliance endpoints."""
+    if not auth or not auth.credentials:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    token = auth.credentials
+    if token == "admin-token-mvp":
+        admin = db.query(User).filter(User.role == "ADMIN").first()
+        if not admin:
+            raise HTTPException(status_code=404, detail="No admin user found")
+        return admin
+    if token.startswith("mock-jwt-token-"):
+        parts = token.split("-")
+        if len(parts) >= 4:
+            role = parts[3]
+            all_roles = {r.value for r in InvestorRoleEnum}
+            if role in COMPLIANCE_ROLES:
+                user = db.query(User).filter(User.role == role).first()
+                if not user:
+                    raise HTTPException(status_code=404, detail=f"No {role} user found")
+                return user
+            else:
+                raise HTTPException(status_code=403, detail=f"Access denied. Your role: {role}")
+    user = db.query(User).filter(
+        (User.wallet_address == token) | (User.email == token)
+    ).first()
+    if not user:
+        raise HTTPException(status_code=403, detail="Invalid authentication token")
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+    if user_role not in COMPLIANCE_ROLES:
+        raise HTTPException(status_code=403, detail=f"Compliance access denied. Your role: {user_role}")
+    return user
+
+async def verify_compliance_access(
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """Verify user has ADMIN or COMPLIANCE_OFFICER role."""
+    return _resolve_compliance_user(auth, db)
+
+async def verify_admin_write(
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """Verify user has ADMIN role only."""
+    user = _resolve_compliance_user(auth, db)
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+    if user_role not in ADMIN_ROLES:
+        raise HTTPException(status_code=403, detail=f"Admin access required. Your role: {user_role}")
+    return user
 
 # =============================================================================
 # PYDANTIC MODELS
@@ -189,7 +245,12 @@ async def get_document(document_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/documents/{document_id}/review")
-async def review_document(document_id: int, review: ReviewRequest, db: Session = Depends(get_db)):
+async def review_document(
+    document_id: int,
+    review: ReviewRequest,
+    user: User = Depends(verify_compliance_access),
+    db: Session = Depends(get_db)
+):
     """
     Review and approve/reject a document.
 
@@ -368,7 +429,11 @@ async def get_compliance_activities(limit: int = 50, db: Session = Depends(get_d
 
 
 @router.post("/documents/batch-review")
-async def batch_review_documents(documents: List[Dict[str, str]], db: Session = Depends(get_db)):
+async def batch_review_documents(
+    documents: List[Dict[str, str]],
+    user: User = Depends(verify_compliance_access),
+    db: Session = Depends(get_db)
+):
     """
     Review multiple documents at once.
 
@@ -447,6 +512,7 @@ async def demo_upload_document(
     investor_id: int,
     document_type: str,
     document_name: str,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ):
     """

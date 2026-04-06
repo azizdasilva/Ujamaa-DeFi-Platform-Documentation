@@ -27,6 +27,55 @@ from sqlalchemy.orm import Session
 router = APIRouter(prefix="/api/v2/compliance", tags=["Compliance"])
 security = HTTPBearer(auto_error=False)
 
+# Role sets
+ADMIN_ROLES = {'ADMIN'}
+COMPLIANCE_ROLES = {'ADMIN', 'COMPLIANCE_OFFICER'}
+
+async def verify_compliance_access(
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """Verify user has ADMIN or COMPLIANCE_OFFICER role."""
+    if not auth or not auth.credentials:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    token = auth.credentials
+    if token == "admin-token-mvp":
+        admin = db.query(User).filter(User.role == "ADMIN").first()
+        if not admin:
+            raise HTTPException(status_code=404, detail="No admin user found")
+        return admin
+    if token.startswith("mock-jwt-token-"):
+        parts = token.split("-")
+        if len(parts) >= 4:
+            role = parts[3]
+            if role in COMPLIANCE_ROLES:
+                user = db.query(User).filter(User.role == role).first()
+                if not user:
+                    raise HTTPException(status_code=404, detail=f"No {role} user found")
+                return user
+            else:
+                raise HTTPException(status_code=403, detail=f"Access denied. Your role: {role}")
+    user = db.query(User).filter(
+        (User.wallet_address == token) | (User.email == token)
+    ).first()
+    if not user:
+        raise HTTPException(status_code=403, detail="Invalid authentication token")
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+    if user_role not in COMPLIANCE_ROLES:
+        raise HTTPException(status_code=403, detail=f"Compliance access denied. Your role: {user_role}")
+    return user
+
+async def verify_admin_write(
+    auth: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """Verify user has ADMIN role only."""
+    user = await verify_compliance_access(auth, db)
+    user_role = user.role.value if hasattr(user.role, 'value') else user.role
+    if user_role not in ADMIN_ROLES:
+        raise HTTPException(status_code=403, detail=f"Admin access required. Your role: {user_role}")
+    return user
+
 
 # =============================================================================
 # ENUMS
@@ -442,6 +491,7 @@ async def get_investor_compliance(investor_id: str, db: Session = Depends(get_db
 async def approve_investor(
     investor_id: str,
     approved_by: str = Query(..., description="Compliance officer ID"),
+    user: User = Depends(verify_compliance_access),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -485,6 +535,7 @@ async def approve_investor(
 async def revoke_investor_approval(
     investor_id: str,
     revoked_by: str = Query(..., description="Compliance officer ID"),
+    user: User = Depends(verify_compliance_access),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -665,6 +716,7 @@ class IdentityStatus(BaseModel):
 @router.post("/identity/register")
 async def register_identity(
     request: IdentityRegistration,
+    admin: User = Depends(verify_admin_write),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
@@ -771,6 +823,7 @@ async def register_identity(
 async def verify_identity(
     investor_id: int,
     verified_by: str = Query(..., description="Compliance officer ID"),
+    user: User = Depends(verify_compliance_access),
     db: Session = Depends(get_db)
 ) -> Dict:
     """
