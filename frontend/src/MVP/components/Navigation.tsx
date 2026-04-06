@@ -33,7 +33,9 @@ const Navigation: React.FC = () => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [langOpen, setLangOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   // Mock notifications
   const [notifications, setNotifications] = useState([
@@ -198,9 +200,52 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Language */}
-          <button onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')} className="w-10 h-10 rounded-lg flex items-center justify-center text-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Language">
-            🌐
-          </button>
+          <div ref={langRef} className="relative">
+            <button onClick={() => setLangOpen(!langOpen)} className="flex items-center gap-1 px-2 h-10 rounded-lg text-sm font-bold text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Switch Language">
+              🌐
+              <span className={`uppercase ${language === 'en' ? 'text-blue-400' : 'text-red-400'}`}>{language}</span>
+            </button>
+            {langOpen && (
+              <>
+                <div className="fixed inset-0 z-[99]" onClick={() => setLangOpen(false)} />
+                <div className="absolute bottom-12 left-0 w-44 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
+                  <p className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">Select Language</p>
+                  <button
+                    onClick={() => { setLanguage('en'); setLangOpen(false); }}
+                    className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'en' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    {/* UK Flag SVG */}
+                    <svg viewBox="0 0 60 30" className="w-8 h-5 rounded-sm border border-gray-200 flex-shrink-0">
+                      <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                      <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+                      <g clipPath="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/></g>
+                    </svg>
+                    <div>
+                      <p className="font-medium">English</p>
+                      <p className="text-[10px] text-gray-400">MVP</p>
+                    </div>
+                    {language === 'en' && <span className="ml-auto text-blue-600">✓</span>}
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('fr'); setLangOpen(false); }}
+                    className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 transition-colors ${language === 'fr' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    {/* France Flag SVG */}
+                    <svg viewBox="0 0 45 30" className="w-8 h-5 rounded-sm border border-gray-200 flex-shrink-0">
+                      <path d="M0,0 h15 v30 h-15 z" fill="#002395"/>
+                      <path d="M15,0 h15 v30 h-15 z" fill="#FFFFFF"/>
+                      <path d="M30,0 h15 v30 h-15 z" fill="#ED2939"/>
+                    </svg>
+                    <div>
+                      <p className="font-medium">Français</p>
+                      <p className="text-[10px] text-gray-400">Production</p>
+                    </div>
+                    {language === 'fr' && <span className="ml-auto text-blue-600">✓</span>}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
           {/* Profile */}
           <div ref={profileRef} className="relative w-full">
@@ -208,8 +253,13 @@ const Navigation: React.FC = () => {
             {profileOpen && (
               <div className="absolute bottom-12 left-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[100]">
                 <div className="p-4 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white">
-                  <p className="font-semibold">{user?.name || 'User'}</p>
-                  <p className="text-xs text-white/60">{user?.email || ''}</p>
+                  <div className="flex items-center gap-3">
+                    <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-12 h-9 object-contain" />
+                    <div>
+                      <p className="font-semibold">{user?.name || 'User'}</p>
+                      <p className="text-xs text-white/60">{user?.email || ''}</p>
+                    </div>
+                  </div>
                   <span className="inline-block mt-2 px-2 py-0.5 bg-white/20 rounded-full text-[10px] font-semibold">{role.replace(/_/g, ' ')}</span>
                 </div>
                 <div className="p-2">
@@ -276,9 +326,7 @@ const Navigation: React.FC = () => {
           </div>
           {isAuthenticated && (
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#00A8A8] to-[#023D7A] flex items-center justify-center text-white text-xs font-bold">
-                {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
-              </div>
+              <img src="/assets/images/logo-transparent.png" alt="Ujamaa" className="w-20 h-16 object-contain" />
               <div className="hidden sm:block">
                 <p className="text-xs font-medium text-gray-700 leading-none">{user?.name?.split(' ')[0] || 'User'}</p>
                 <p className="text-[10px] text-gray-400 mt-0.5">{role.replace(/_/g, ' ')}</p>
