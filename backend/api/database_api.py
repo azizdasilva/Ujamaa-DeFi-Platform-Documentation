@@ -663,6 +663,7 @@ async def get_overview_stats(db: Session = Depends(get_db)):
         'total_investments': total_invested,
         'pending_kyc_kyb': pending_documents,
         'total_value_locked': float(total_value_locked),
+        'token_holders': db.query(PoolPosition.investor_id).distinct().count(),
         'last_updated': datetime.utcnow().isoformat(),
     }
 

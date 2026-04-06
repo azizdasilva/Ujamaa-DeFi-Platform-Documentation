@@ -5,7 +5,7 @@
  * Phase 1: Basic KPI cards with live data
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDashboardData } from './hooks/useMonitorData';
 import {
   KpiCard,
@@ -16,10 +16,19 @@ import {
   ErrorDisplay,
 } from './components/KpiCard';
 import { isMockDataEnabled } from '../../config/monitor';
+import apiClient from '../../api/client';
 
 export const MonitorDashboard: React.FC = () => {
   const { ulp, pool, guarantee, industrial, events, loading, error } = useDashboardData();
   const useMock = isMockDataEnabled();
+  const [holders, setHolders] = useState<number | null>(null);
+
+  // Fetch real holder count from DB
+  useEffect(() => {
+    apiClient.get('/db/stats/overview')
+      .then(r => setHolders(r.data.token_holders || 0))
+      .catch(() => setHolders(0));
+  }, []);
 
   // Refresh handler
   const handleRefresh = () => {
@@ -27,6 +36,9 @@ export const MonitorDashboard: React.FC = () => {
     pool.refresh();
     guarantee.refresh();
     industrial.refresh();
+    apiClient.get('/db/stats/overview')
+      .then(r => setHolders(r.data.token_holders || 0))
+      .catch(() => {});
   };
 
   if (error) {
@@ -175,8 +187,8 @@ export const MonitorDashboard: React.FC = () => {
             
             <KpiCard
               label="Total Holders"
-              value={ulp.formattedKpis.totalHolders.value}
-              formattedValue={ulp.formattedKpis.totalHolders.formattedValue}
+              value={holders !== null ? holders : ulp.formattedKpis.totalHolders.value}
+              formattedValue={holders !== null ? holders.toLocaleString() : ulp.formattedKpis.totalHolders.formattedValue}
               status="green"
               tooltip="Number of unique wallets holding uLP tokens"
               loading={ulp.loading}

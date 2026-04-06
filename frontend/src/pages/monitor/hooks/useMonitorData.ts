@@ -63,7 +63,7 @@ export const useUlpData = () => {
         totalSupply,
         navPerShare,
         lastNavUpdate,
-        totalHolders: useMock ? 47 + Math.floor(Math.random() * 5) : 47, // Mock varies, real is fixed
+        totalHolders: 0, // Will be populated from DB if available
       });
       setError(null);
     } catch (err) {
