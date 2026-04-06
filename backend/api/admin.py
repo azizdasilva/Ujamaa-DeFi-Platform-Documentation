@@ -1044,10 +1044,16 @@ def _seed_default_contracts(db: Session) -> None:
         {"name": "NavGateway", "address": wc.NAV_GATEWAY, "contract_type": "NAV Oracle", "description": "Net Asset Value oracle for uLP token pricing."},
         {"name": "MockEscrow", "address": wc.MOCK_ESCROW, "contract_type": "Escrow", "description": "Mock escrow for fund holding during investor transactions."},
         {"name": "MockFiatRamp", "address": wc.MOCK_FIAT_RAMP, "contract_type": "Fiat Gateway", "description": "Mock fiat on/off ramp for testnet."},
+        {"name": "IdentityRegistry", "address": wc.IDENTITY_REGISTRY, "contract_type": "ERC-3643 Identity", "description": "On-chain identity registry for ERC-3643 compliance."},
+        {"name": "Compliance", "address": wc.COMPLIANCE, "contract_type": "ERC-3643 Compliance", "description": "ERC-3643 compliance rules and transfer restrictions."},
     ]
     seeded = 0
     for d in defaults:
         try:
+            # Skip entries with empty/zero addresses
+            addr = d["address"].strip()
+            if not addr or addr == "0x" + "0" * 40:
+                continue
             existing = db.query(Contract).filter(Contract.name == d["name"]).first()
             if existing:
                 continue
