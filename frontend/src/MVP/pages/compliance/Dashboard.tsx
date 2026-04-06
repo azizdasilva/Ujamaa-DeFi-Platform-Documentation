@@ -312,7 +312,7 @@ const ComplianceDashboard: React.FC = () => {
                   onClick={() => navigate('/compliance/kyc-review')}
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
-                  📊 Generate Reports
+                  🔍 KYC/KYB Review Queue
                 </button>
               </div>
             </Card>

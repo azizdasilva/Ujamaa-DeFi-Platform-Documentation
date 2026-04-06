@@ -183,9 +183,10 @@ const ContractManagement: React.FC = () => {
                   >
                     View on Explorer
                   </a>
-                  <button 
-                    onClick={() => alert(`🚀 MVP TESTNET: Read Contract\n\nIn production, this will open the contract read interface for ${contract.name}.`)}
-                    className="flex-1 px-3 py-2 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] text-sm font-bold rounded transition-colors"
+                  <button
+                    disabled
+                    className="flex-1 px-3 py-2 border border-gray-300 text-gray-400 text-sm font-bold rounded cursor-not-allowed"
+                    title="Coming soon — Contract read interface"
                   >
                     Read Contract
                   </button>
@@ -213,27 +214,39 @@ const ContractManagement: React.FC = () => {
         <Card className="mt-6">
           <h3 className="text-lg font-bold text-[#103b5b] mb-4">Contract Actions</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button 
-              variant="primary" 
-              size="lg" 
-              onClick={() => alert('🚀 MVP TESTNET: Upgrade Contract\n\nIn production, this will open the contract upgrade interface with proxy pattern support.')}
-            >
-              ⬆️ Upgrade Contract
-            </Button>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              onClick={() => alert('🚀 MVP TESTNET: Pause Contract\n\nIn production, this will pause contract operations using Ownable/Pausable pattern.')}
-            >
-              ⏸️ Pause Contract
-            </Button>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              onClick={() => alert('🚀 MVP TESTNET: Emergency Stop\n\nIn production, this will trigger emergency stop procedures and circuit breaker.')}
-            >
-              🛑 Emergency Stop
-            </Button>
+            <div className="text-center">
+              <Button
+                variant="primary"
+                size="lg"
+                disabled
+                className="w-full opacity-60 cursor-not-allowed"
+              >
+                ⬆️ Upgrade Contract
+              </Button>
+              <p className="text-xs text-gray-500 mt-2">Coming soon — Contract upgrade interface</p>
+            </div>
+            <div className="text-center">
+              <Button
+                variant="secondary"
+                size="lg"
+                disabled
+                className="w-full opacity-60 cursor-not-allowed"
+              >
+                ⏸️ Pause Contract
+              </Button>
+              <p className="text-xs text-gray-500 mt-2">Coming soon — Pausable pattern support</p>
+            </div>
+            <div className="text-center">
+              <Button
+                variant="danger"
+                size="lg"
+                disabled
+                className="w-full opacity-60 cursor-not-allowed"
+              >
+                🛑 Emergency Stop
+              </Button>
+              <p className="text-xs text-gray-500 mt-2">Coming soon — Circuit breaker pattern</p>
+            </div>
           </div>
         </Card>
 

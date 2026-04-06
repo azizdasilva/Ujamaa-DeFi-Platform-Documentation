@@ -37,6 +37,7 @@ const AssetManagement: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [financings, setFinancings] = useState<Financing[]>([]);
   const [filter, setFilter] = useState<string>('all');
+  const [selectedFinancing, setSelectedFinancing] = useState<Financing | null>(null);
 
   useEffect(() => {
     fetchFinancings();
@@ -237,13 +238,49 @@ const AssetManagement: React.FC = () => {
                       </td>
                       <td className="py-3 px-4">
                         <button
-                          onClick={() => navigate(`/admin/assets/${financing.id}`)}
+                          onClick={() => setSelectedFinancing(selectedFinancing?.id === financing.id ? null : financing)}
                           className="text-[#d57028] hover:text-[#c05a1e] text-sm font-medium"
                         >
-                          View →
+                          {selectedFinancing?.id === financing.id ? 'Hide' : 'View'} →
                         </button>
                       </td>
                     </tr>
+                    {selectedFinancing?.id === financing.id && (
+                      <tr className="bg-gray-50 border-t border-gray-200">
+                        <td colSpan={7} className="py-4 px-4">
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div>
+                              <p className="text-xs text-gray-500">Pool Family</p>
+                              <p className="font-semibold text-[#103b5b]">{financing.pool_family}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">Asset Class</p>
+                              <p className="font-semibold text-[#103b5b]">{financing.asset_class}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">Duration</p>
+                              <p className="font-semibold text-[#103b5b]">{financing.duration_days} days</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">Start → Maturity</p>
+                              <p className="font-semibold text-[#103b5b]">{financing.start_date} → {financing.maturity_date}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">Amount Repaid</p>
+                              <p className="font-semibold text-[#103b5b]">{formatCurrency(financing.amount_repaid)}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">Repaid</p>
+                              <p className="font-semibold text-[#103b5b]">{financing.is_repaid ? 'Yes' : 'No'}</p>
+                            </div>
+                            <div className="col-span-2">
+                              <p className="text-xs text-gray-500">Description</p>
+                              <p className="text-[#103b5b]">{financing.description || 'No description'}</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
                   ))
                 )}
               </tbody>
