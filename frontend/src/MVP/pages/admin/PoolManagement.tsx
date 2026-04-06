@@ -7,6 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
@@ -15,9 +16,11 @@ import Button from '../../components/Button';
 import { poolsAPI, Pool } from '../../../api/pools';
 
 const PoolManagement: React.FC = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [pools, setPools] = useState<Pool[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedPool, setSelectedPool] = useState<Pool | null>(null);
 
   useEffect(() => {
     fetchPools();
@@ -165,13 +168,56 @@ const PoolManagement: React.FC = () => {
                   </div>
 
                   <div className="flex gap-2 pt-4 border-t border-gray-200">
-                    <Button variant="primary" size="md" className="flex-1">
+                    <Button
+                      variant="primary"
+                      size="md"
+                      className="flex-1"
+                      onClick={() => navigate(`/admin/pools/${pool.id}/configure`)}
+                    >
                       Configure
                     </Button>
-                    <Button variant="secondary" size="md" className="flex-1">
-                      View Details
+                    <Button
+                      variant="secondary"
+                      size="md"
+                      className="flex-1"
+                      onClick={() => setSelectedPool(selectedPool?.id === pool.id ? null : pool)}
+                    >
+                      {selectedPool?.id === pool.id ? 'Hide Details' : 'View Details'}
                     </Button>
                   </div>
+
+                  {/* Expanded Details */}
+                  {selectedPool?.id === pool.id && (
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <h4 className="font-semibold text-[#103b5b] mb-3">Pool Details</h4>
+                      <div className="grid grid-cols-2 gap-3 text-sm">
+                        <div>
+                          <p className="text-xs text-gray-500">Pool ID</p>
+                          <p className="font-mono text-gray-700">{pool.id}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Family</p>
+                          <p className="text-gray-700">{pool.family.replace(/_/g, ' ')}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Target Yield Range</p>
+                          <p className="text-gray-700">{pool.target_yield_min}% - {pool.target_yield_max}%</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Status</p>
+                          <p className="text-gray-700">{pool.is_active !== false ? 'Active' : 'Inactive'}</p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="mt-4"
+                        onClick={() => navigate(`/admin/pools/${pool.id}/configure`)}
+                      >
+                        Go to Configuration
+                      </Button>
+                    </div>
+                  )}
                 </Card>
               ))
             )}

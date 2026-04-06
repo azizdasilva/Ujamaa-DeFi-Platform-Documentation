@@ -71,6 +71,7 @@ import Jurisdictions from './MVP/pages/compliance/Jurisdictions';
 // Admin Pages
 import UserManagement from './MVP/pages/admin/UserManagement';
 import PoolManagement from './MVP/pages/admin/PoolManagement';
+import PoolConfigure from './MVP/pages/admin/PoolConfigure';
 import AssetManagement from './MVP/pages/admin/AssetManagement';
 import Settings from './MVP/pages/admin/Settings';
 import ContractManagement from './MVP/pages/admin/ContractManagement';
@@ -337,6 +338,14 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute requiredRoles={['ADMIN']}>
                   <PoolManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/pools/:id/configure"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <PoolConfigure />
                 </ProtectedRoute>
               }
             />
