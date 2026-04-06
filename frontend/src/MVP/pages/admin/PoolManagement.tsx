@@ -196,12 +196,12 @@ const PoolManagement: React.FC = () => {
                       <h4 className="font-semibold text-[#103b5b] mb-3">Pool Details</h4>
                       <div className="grid grid-cols-2 gap-3 text-sm">
                         <div>
-                          <p className="text-xs text-gray-500">Pool ID</p>
-                          <p className="font-mono text-gray-700">{pool.id}</p>
+                          <p className="text-xs text-gray-500">Pool Name</p>
+                          <p className="text-gray-700 font-medium capitalize">{pool.name}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Family</p>
-                          <p className="text-gray-700 capitalize">{pool.name.replace('Pool ', '')}</p>
+                          <p className="text-gray-700 capitalize">{pool.family.replace(/_/g, ' ')}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Target Yield Range</p>
