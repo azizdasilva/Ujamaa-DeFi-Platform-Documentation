@@ -68,9 +68,16 @@ const PoolConfigure: React.FC = () => {
       setSaving(true);
       setSuccess(null);
       setError(null);
-      // TODO: Implement PUT/PATCH API call when backend supports it
-      // await poolsAPI.updatePool(id!, formData);
-      setSuccess('Configuration saved (API endpoint not yet available)');
+      await poolsAPI.updatePool(id!, {
+        apy: formData.apy,
+        total_value: formData.total_value,
+        target_yield_min: formData.target_yield_min,
+        target_yield_max: formData.target_yield_max,
+        lockup_days: formData.lockup_days,
+        is_active: formData.is_active,
+      });
+      setSuccess('Configuration saved successfully');
+      fetchPool(); // Refresh data
     } catch (err: any) {
       console.error('Error saving pool:', err);
       setError(err.response?.data?.detail || 'Failed to save pool configuration');

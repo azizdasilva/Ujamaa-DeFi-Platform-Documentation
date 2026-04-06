@@ -87,6 +87,16 @@ class PoolResponse(BaseModel):
     lockup_days: int
 
 
+class PoolUpdateRequest(BaseModel):
+    """Request body for updating pool configuration"""
+    apy: Optional[float] = None
+    total_value: Optional[float] = None
+    target_yield_min: Optional[float] = None
+    target_yield_max: Optional[float] = None
+    lockup_days: Optional[int] = None
+    is_active: Optional[bool] = None
+
+
 class DocumentResponse(BaseModel):
     id: int
     investor_id: int
@@ -233,6 +243,34 @@ async def get_pool_stats(pool_id: str, db: Session = Depends(get_db)):
         'investor_count': investor_count,
         'utilization_rate': float(pool.total_value / (pool.total_value + 10000000) * 100),  # Mock calculation
     }
+
+
+@router.put("/pools/{pool_id}", response_model=PoolResponse)
+async def update_pool(
+    pool_id: str,
+    req: PoolUpdateRequest,
+    db: Session = Depends(get_db)
+):
+    """
+    Update pool configuration.
+
+    Admin-only endpoint to modify pool settings like APY, yield targets, lockup period, etc.
+    """
+    pool = db.query(Pool).filter(Pool.id == pool_id).first()
+
+    if not pool:
+        raise HTTPException(status_code=404, detail="Pool not found")
+
+    # Update only fields that were provided
+    update_data = req.model_dump(exclude_unset=True)
+    for field, value in update_data.items():
+        setattr(pool, field, value)
+
+    pool.updated_at = datetime.utcnow()
+    db.commit()
+    db.refresh(pool)
+
+    return pool
 
 
 # =============================================================================

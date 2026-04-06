@@ -92,6 +92,14 @@ export const poolsAPI = {
     const response = await apiClient.get(`/api/v2/pool/health?pool_id=${poolId}`);
     return response.data;
   },
+
+  /**
+   * Update pool configuration
+   */
+  updatePool: async (poolId: string, data: Partial<Pool>): Promise<Pool> => {
+    const response = await apiClient.put<Pool>(`/db/pools/${poolId}`, data);
+    return response.data;
+  },
 };
 
 export default poolsAPI;
