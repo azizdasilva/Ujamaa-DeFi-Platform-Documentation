@@ -207,14 +207,9 @@ body {
 .docs-logo-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, var(--ujamaa-accent), #D97706);
   border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: var(--text-2xl);
-  color: var(--slate-900);
+  display: block;
+  object-fit: contain;
   box-shadow: var(--shadow-md);
 }
 
