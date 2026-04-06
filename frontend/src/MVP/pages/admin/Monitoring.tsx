@@ -13,6 +13,7 @@ import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import StatsCard from '../../components/StatsCard';
 import apiClient from '../../../api/client';
+import { POLYGON_AMOY_RPC } from '../../../config/monitor';
 
 const Monitoring: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -32,6 +33,12 @@ const Monitoring: React.FC = () => {
     { name: 'Smart Contracts', status: 'operational', uptime: '100%' },
   ]);
 
+  const [blockchainInfo, setBlockchainInfo] = useState({
+    latestBlock: 'Loading...',
+    gasPrice: '...',
+    rpcStatus: 'Checking...',
+  });
+
   const [recentEvents, setRecentEvents] = useState<any[]>([]);
 
   useEffect(() => {
@@ -41,13 +48,13 @@ const Monitoring: React.FC = () => {
   const fetchMetrics = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch overview stats
       const statsResponse = await apiClient.get('/db/stats/overview');
-      
+
       // Fetch compliance stats for activity
       const complianceResponse = await apiClient.get('/db/stats/compliance');
-      
+
       // Fetch recent transactions for events
       const transactionsResponse = await apiClient.get('/db/transactions?limit=5');
 
@@ -62,7 +69,7 @@ const Monitoring: React.FC = () => {
 
       // Generate recent events from real data
       const events = [];
-      
+
       // Add compliance activities
       if (complianceResponse.data.approved_today > 0) {
         events.push({
@@ -71,7 +78,7 @@ const Monitoring: React.FC = () => {
           type: 'compliance'
         });
       }
-      
+
       // Add pending documents
       if (complianceResponse.data.pending_documents > 0) {
         events.push({
@@ -91,10 +98,44 @@ const Monitoring: React.FC = () => {
       });
 
       setRecentEvents(events);
+
+      // Fetch real blockchain info
+      await fetchBlockchainInfo();
     } catch (error) {
       console.error('Error fetching metrics:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchBlockchainInfo = async () => {
+    try {
+      // Get latest block number
+      const blockRes = await fetch(POLYGON_AMOY_RPC, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', method: 'eth_blockNumber', params: [], id: 1 }),
+      });
+      const blockData = await blockRes.json();
+      if (blockData.result) {
+        const blockNum = parseInt(blockData.result, 16);
+        setBlockchainInfo(prev => ({ ...prev, latestBlock: `#${blockNum.toLocaleString()}`, rpcStatus: 'ONLINE' }));
+      }
+
+      // Get gas price
+      const gasRes = await fetch(POLYGON_AMOY_RPC, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', method: 'eth_gasPrice', params: [], id: 2 }),
+      });
+      const gasData = await gasRes.json();
+      if (gasData.result) {
+        const gasGwei = Math.round(parseInt(gasData.result, 16) / 1e9);
+        setBlockchainInfo(prev => ({ ...prev, gasPrice: `${gasGwei} Gwei` }));
+      }
+    } catch (err) {
+      console.error('Failed to fetch blockchain info:', err);
+      setBlockchainInfo({ latestBlock: 'Error', gasPrice: 'Error', rpcStatus: 'OFFLINE' });
     }
   };
 
@@ -207,19 +248,19 @@ const Monitoring: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-500">Latest Block</p>
-              <p className="text-2xl font-bold text-[#103b5b]">#52,847,291</p>
+              <p className="text-2xl font-bold text-[#103b5b]">{blockchainInfo.latestBlock}</p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-500">Network</p>
               <p className="text-lg font-bold text-[#103b5b]">Polygon Amoy</p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-500">Chain ID</p>
-              <p className="text-2xl font-bold text-[#103b5b]">80002</p>
+              <p className="text-sm text-gray-500">Gas Price</p>
+              <p className="text-2xl font-bold text-[#103b5b]">{blockchainInfo.gasPrice}</p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-500">RPC Status</p>
-              <Badge variant="success" size="md">ONLINE</Badge>
+              <Badge variant={blockchainInfo.rpcStatus === 'ONLINE' ? 'success' : 'error'} size="md">{blockchainInfo.rpcStatus}</Badge>
             </div>
           </div>
         </Card>

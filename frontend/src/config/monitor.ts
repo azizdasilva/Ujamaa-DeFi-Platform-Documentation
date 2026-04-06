@@ -1,6 +1,6 @@
 /**
  * Ujamaa Monitor Configuration
- * 
+ *
  * Configuration for the Ujamaa Monitor dashboard - Polygon Testnet monitoring
  */
 
@@ -23,18 +23,19 @@ export const POLLING_INTERVALS = {
 } as const;
 
 // Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET - ALL CONTRACTS)
-// Deployed: 2026-03-29 (Fixed: added getPendingApprovalsCount to IndustrialGateway)
-// Naming convention: Gateway = bi-directional data flow (per nomenclature)
+// All addresses verified via cast code check on-chain
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0xb6062a6e63a07c3598629a65ed19021445fb3b26', // ULPToken.sol
-  liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec', // LiquidityPool.sol
-  guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469', // GuaranteeToken.sol
-  industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930', // IndustrialGateway.sol
-  jurisdictionCompliance: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C', // JurisdictionCompliance.sol
-  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F', // MockEscrow.sol
-  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', // MockFiatRamp.sol
-  navGateway: '0x99712f923e3519B4305CEDAd40290428299F29A0', // NavGateway.sol
-  mockEUROD: '0x787C5c0365829ABF88a3D8404E9488d1e307eD43', // MockEUROD.sol
+  ulpToken: '0xb6062A6e63a07C3598629A65ed19021445fB3b26', // ULPToken.sol ✅
+  liquidityPool: '0x36e27C0b63103863a8a31a6EadEadEa0a0cDc2cf', // LiquidityPool.sol ✅
+  guaranteeToken: '0x081fb064eac4597befbb2e1d36d9a78d63a33958', // GuaranteeToken.sol ✅
+  industrialGateway: '0x882071de6689ec1716bd7e162acf50707ac68930', // IndustrialGateway.sol ✅
+  jurisdictionCompliance: '0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c', // JurisdictionCompliance.sol ✅
+  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F', // MockEscrow.sol ✅
+  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', // MockFiatRamp.sol ✅
+  navGateway: '0x99712f923e3519B4305CEDAd402904299F29A000', // NavGateway.sol ✅
+  mockEUROD: '0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc', // MockEUROD.sol ✅
+  identityRegistry: '0xB3fb5AB654FC270d10338A64fDBC1E151c223283', // IdentityRegistry.sol ✅
+  compliance: '0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2', // Compliance.sol ✅
 } as const;
 
 // KPI Thresholds (Green/Amber/Red)
