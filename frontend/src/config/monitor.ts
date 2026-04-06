@@ -25,17 +25,17 @@ export const POLLING_INTERVALS = {
 // Contract addresses (DEPLOYED ON POLYGON AMOY TESTNET - ALL CONTRACTS)
 // All addresses verified via cast code check on-chain
 export const CONTRACT_ADDRESSES = {
-  ulpToken: '0xb6062A6e63a07C3598629A65ed19021445fB3b26', // ULPToken.sol ✅
-  liquidityPool: '0x36e27C0b63103863a8a31a6EadEadEa0a0cDc2cf', // LiquidityPool.sol ✅
-  guaranteeToken: '0x081fb064eac4597befbb2e1d36d9a78d63a33958', // GuaranteeToken.sol ✅
-  industrialGateway: '0x882071de6689ec1716bd7e162acf50707ac68930', // IndustrialGateway.sol ✅
-  jurisdictionCompliance: '0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c', // JurisdictionCompliance.sol ✅
-  mockEscrow: '0x8d446994fcD9906c573500959cDc8A8271a9485F', // MockEscrow.sol ✅
-  mockFiatRamp: '0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a', // MockFiatRamp.sol ✅
-  navGateway: '0x99712f923e3519B4305CEDAd402904299F29A000', // NavGateway.sol ✅
-  mockEUROD: '0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc', // MockEUROD.sol ✅
-  identityRegistry: '0xB3fb5AB654FC270d10338A64fDBC1E151c223283', // IdentityRegistry.sol ✅
-  compliance: '0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2', // Compliance.sol ✅
+  ulpToken: '0xb6062a6e63a07c3598629a65ed19021445fb3b26',
+  liquidityPool: '0x36e27c0b63103863a8a31a6eadead0a0cdc2cfec',
+  guaranteeToken: '0x081fb064eac4597befbb2e1d36d9a78d63a33958',
+  industrialGateway: '0x882071de6689ec1716bd7e162acf50707ac68930',
+  jurisdictionCompliance: '0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c',
+  mockEscrow: '0x8d446994fcd9906c573500959cdc8a8271a9485f',
+  mockFiatRamp: '0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a',
+  navGateway: '0x99712f923e3519b4305cedad402904299f29a000',
+  mockEUROD: '0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc',
+  identityRegistry: '0xb3fb5ab654fc270d10338a64fdbc1e151c223283',
+  compliance: '0xb303dff92f56bfe72eed3b5f8682e4cf6260c8f2',
 } as const;
 
 // KPI Thresholds (Green/Amber/Red)
