@@ -15,8 +15,8 @@ class ContractAddresses:
     MOCK_ESCROW = "0x8d446994fcD9906c573500959cDc8A8271a9485F"
     NAV_GATEWAY = "0x99712f923e3519B4305CEDAd402904299F29A000"
     MOCK_EUROD = "0xe42253d8bd95f73f1fc2fbdcc15fe498632dd4fc"
-    IDENTITY_REGISTRY = ""  # TODO: Add from Polygon Amoy deployment
-    COMPLIANCE = ""  # TODO: Add from Polygon Amoy deployment
+    IDENTITY_REGISTRY = "0xB3fb5AB654FC270d10338A64fDBC1E151c223283"
+    COMPLIANCE = "0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2"
 
 class Web3Config:
     CONTRACTS = ContractAddresses()
