@@ -42,7 +42,7 @@ const AdminDashboard: React.FC = () => {
   const fetchAdminStats = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch overview stats
       const statsResponse = await apiClient.get('/db/stats/overview');
       setStats({
@@ -52,9 +52,15 @@ const AdminDashboard: React.FC = () => {
         pendingDocuments: statsResponse.data.pending_kyc_kyb || 0,
       });
 
-      // Fetch recent users (from database API)
-      const usersResponse = await apiClient.get('/db/users');
-      setRecentUsers(usersResponse.data.slice(0, 4) || []);
+      // Fetch recent users from admin API
+      try {
+        const usersResponse = await apiClient.get('/admin/users');
+        const userList = usersResponse.data.users || usersResponse.data || [];
+        setRecentUsers(userList.slice(0, 4));
+      } catch (usersErr) {
+        console.warn('Could not fetch users, using empty list:', usersErr);
+        setRecentUsers([]);
+      }
     } catch (error) {
       console.error('Error fetching admin stats:', error);
     } finally {
