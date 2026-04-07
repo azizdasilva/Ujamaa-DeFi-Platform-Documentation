@@ -298,6 +298,12 @@ const AdminDashboard: React.FC = () => {
                   📊 Compliance Monitoring
                 </a>
                 <a
+                  href="/admin/platform-monitoring"
+                  className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
+                >
+                  🖥️ Platform Monitoring
+                </a>
+                <a
                   href="/admin/thresholds"
                   className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
                 >
@@ -339,10 +345,10 @@ const AdminDashboard: React.FC = () => {
                 ))}
               </div>
               <a
-                href="/admin/monitoring"
+                href="/admin/platform-monitoring"
                 className="block w-full mt-4 px-4 py-2 bg-[#F3F8FA] hover:bg-[#E2E8F0] text-[#023D7A] text-sm font-bold rounded-lg transition-colors text-center"
               >
-                View Monitoring →
+                View Platform Monitoring →
               </a>
             </Card>
 

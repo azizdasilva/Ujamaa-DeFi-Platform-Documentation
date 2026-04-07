@@ -463,8 +463,8 @@ const PoolDashboard: React.FC = () => {
                 <Badge variant="info" size="sm">Total: €50M</Badge>
               </div>
             }>
-              <div className="h-[400px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
+              <div className="h-[400px]" style={{ minHeight: '300px' }}>
+                <ResponsiveContainer width="100%" height={400}>
                   <PieChart>
                     <Pie
                       data={pools.filter(p => p.id !== 'all').map((pool) => {

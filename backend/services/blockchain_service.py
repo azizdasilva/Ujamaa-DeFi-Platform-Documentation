@@ -1010,7 +1010,7 @@ class BlockchainService:
         description: str,
         warehouse_location: str
     ) -> Dict[str, Any]:
-        """Mint Guarantee Token (UGT)"""
+        """Mint Guarantee Token (uGT)"""
         if self.is_demo:
             return self._simulate_transaction('mintGuarantee', industrial, value, 'GUARANTEE_TOKENIZER')
 

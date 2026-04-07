@@ -6,6 +6,7 @@
     <title>Investor Workflow: Subscription to Redeem | Ujamaa DeFi Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/styles.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -264,7 +265,7 @@
             <div class="step-badge step-1">1</div>
             <div>
                 <h3 style="margin-top: 0;">Create Your Account</h3>
-                <p><strong>What happens:</strong> You create an account on the Ujamaa platform, selecting your investor type:</p>
+                <p><strong>What happens:</strong> You create an account on the Ujamaa DeFi Platform, selecting your investor type:</p>
                 <ul class="list-disc pl-6 mt-2 space-y-1">
                     <li><span class="badge badge-blue">RETAIL_INVESTOR</span> — Individuals (minimum €1,000)</li>
                     <li><span class="badge badge-purple">INSTITUTIONAL_INVESTOR</span> — Companies, funds (minimum €100,000)</li>
@@ -414,7 +415,7 @@ SELECT balance FROM bank_accounts WHERE user_id = 1;
                     <strong>🧮 How uLP Shares Are Calculated:</strong><br>
                     <code>uLP_shares = investment_amount ÷ NAV_per_share</code><br><br>
                     If NAV = €1.00 and you invest €10,000 → You get <strong>10,000 uLP shares</strong><br>
-                    If NAV = €1.05 and you invest €10,000 → You get <strong>9,524 uLP shares</strong>
+                    If NAV = €1.05 and you invest €10,000 → You get <strong>9,523.81 uLP shares</strong> (€10,000 ÷ €1.05)
                 </div>
 
                 <div class="code-block mt-4">
@@ -666,5 +667,6 @@ function redeem(uint256 uptAmount) external returns (uint256) {
         </ol>
     </div>
 
+    <script src="../assets/app.js"></script>
 </body>
 </html>

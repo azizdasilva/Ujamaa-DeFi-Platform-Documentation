@@ -64,7 +64,7 @@ export const DEPLOYED_CONTRACTS = [
   },
   {
     name: 'GuaranteeTokenizer',
-    symbol: 'UGT',
+    symbol: 'uGT',
     address: '0x7600C0b36F73028f866081823Fa691fF4688CeE0',
     role: 'Collateral ERC-3643NFT',
     standard: 'ERC-3643NFT (ERC-721 + Compliance)',
@@ -90,12 +90,12 @@ export const DEPLOYED_CONTRACTS = [
     name: 'Industrial Gateway',
     symbol: 'GATEWAY',
     address: '0xf1119462800d2f038aF0c61D874B52521bF22459',
-    role: 'Asset certification & UGT minting',
+    role: 'Asset certification & uGT minting',
     standard: 'Custom',
     icon: '🏭',
     category: 'Gateway',
     status: 'Deployed',
-    description: 'Certifies industrial assets/stock and mints Guarantee Tokens (UGT).',
+    description: 'Certifies industrial assets/stock and mints Guarantee Tokens (uGT).',
     functions: ['createCertificate', 'mintGuarantee', 'getRegisteredIndustrialsCount', 'getPendingApprovalsCount'],
   },
   {

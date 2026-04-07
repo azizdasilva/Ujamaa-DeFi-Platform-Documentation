@@ -47,16 +47,22 @@ const Navigation: React.FC = () => {
 
   const role = user?.role || 'ADMIN';
   const myDashboard = isAuthenticated ? getDashboardForRole(role) : '/';
-  const navItems = getNavItemsForRole(role);
+  let navItems = getNavItemsForRole(role);
 
   // Filter: show only ONE dashboard link (user's own)
-  const filteredNavItems = navItems.filter(item => {
+  let filteredNavItems = navItems.filter(item => {
     if (item.category === 'dashboard') {
       // Only show the user's own dashboard
       return item.href === myDashboard;
     }
     return true;
   });
+
+  // For COMPLIANCE_OFFICER: Only show compliance-related items, hide everything else
+  if (role === 'COMPLIANCE_OFFICER') {
+    const complianceCategories = ['dashboard', 'compliance', 'docs'];
+    filteredNavItems = filteredNavItems.filter(item => complianceCategories.includes(item.category || ''));
+  }
 
   // Safety: if no dashboard matched, add the first one from navItems
   if (!filteredNavItems.some(item => item.category === 'dashboard')) {

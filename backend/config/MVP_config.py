@@ -103,7 +103,7 @@ class MVPConfig:
     # =========================================================================
     # SMART CONTRACT ADDRESSES
     # Updated: 2026-04-05 (Polygon Amoy Testnet - Chain ID: 80002)
-    # Full redeploy with ERC-3643 + UGT Minting enabled
+    # Full redeploy with ERC-3643 + uGT Minting enabled
     # =========================================================================
 
     CONTRACT_UPT_TOKEN: str = "0x84fD03fF851c04D890F709BD26276eD12D62a763"
@@ -113,7 +113,7 @@ class MVPConfig:
     """ULPTokenizer contract address (ERC-3643 compliant)"""
 
     CONTRACT_LIQUIDITY_POOL: str = "0x7C666e8F82F09BAeAD68D5e6588DE89d28a4805B"
-    """LiquidityPool contract address (with UGT minting enabled)"""
+    """LiquidityPool contract address (with uGT minting enabled)"""
 
     CONTRACT_MOCK_ESCROW: str = "0xBfa58aad4b1b1648cDE4C74e4a5E84b352382523"
     """MockEscrow contract address"""
@@ -125,10 +125,10 @@ class MVPConfig:
     """JurisdictionCompliance contract address"""
 
     CONTRACT_GUARANTEE_TOKENIZER: str = "0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1"
-    """GuaranteeTokenizer (UGT) contract address"""
+    """GuaranteeTokenizer (uGT) contract address"""
 
     CONTRACT_GUARANTEE_TOKEN: str = "0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1"
-    """GuaranteeToken (UGT) contract address (legacy alias)"""
+    """GuaranteeToken (uGT) contract address (legacy alias)"""
 
     CONTRACT_INDUSTRIAL_GATEWAY: str = "0x842254e5aBCc3dBF402979683BB8345624fEA416"
     """IndustrialGateway contract address"""

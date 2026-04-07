@@ -47,7 +47,7 @@ class PoolRiskMetrics:
     rating_distribution: Dict[str, float]  # % per rating bucket
     
     # Collateralization
-    collateralization_ratio: float  # UGT value / deployed funds
+    collateralization_ratio: float  # uGT value / deployed funds
     collateral_coverage: float  # % of exposure covered
     
     # Overall Risk
@@ -204,7 +204,7 @@ class RiskEngine:
         Target: >125%
         
         Args:
-            collateral_value: Total collateral value (UGT tokens) (18 decimals)
+            collateral_value: Total collateral value (uGT tokens) (18 decimals)
             deployed_amount: Total deployed amount (18 decimals)
             
         Returns:

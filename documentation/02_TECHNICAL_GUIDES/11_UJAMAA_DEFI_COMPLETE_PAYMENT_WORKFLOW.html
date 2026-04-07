@@ -305,7 +305,7 @@
 <td>Bank account (fiat) or USDC wallet</td>
 </tr>
 <tr>
-<td><strong>Ujamaa Platform</strong></td>
+<td><strong>Ujamaa DeFi Platform</strong></td>
 <td>Tokenizer, issuer, arranger, transfer agent, paying agent, compliance enforcer</td>
 <td>Deploys contracts, mints tokens, enforces compliance</td>
 <td>Gnosis Safe multisig (4-of-7)</td>
@@ -371,7 +371,7 @@
 │  ASSET ORIGINATOR                                                            │
 │  (Farmer, Developer, Infrastructure Owner, Factory Owner...)                │
 │          │                                                                   │
-│          │ 1. Submits asset for tokenization via Ujamaa platform            │
+│          │ 1. Submits asset for tokenization via Ujamaa DeFi Platform            │
 │          │    • Asset details (type, location, value, expected yield)       │
 │          │    • Legal documentation (title, permits, insurance)             │
 │          │    • Financial projections (3-5 year cash flow model)            │
@@ -451,7 +451,7 @@
 │          │     target met OR deadline passed                                │
 │          │                                                                   │
 │          ▼                                                                   │
-│  ASSET LISTED ON Ujamaa PLATFORM                                            │
+│  ASSET LISTED ON Ujamaa DeFi PLATFORM                                            │
 │          │                                                                   │
 │          │ 12. Asset goes live for investor subscription                    │
 │          │     • Asset page created with full disclosure                    │
@@ -725,7 +725,7 @@ function _canTransfer(
 │  INVESTOR                                                                    │
 │  (MetaMask / WalletConnect / Rainbow / Trust Wallet)                        │
 │          │                                                                   │
-│          │ 1. Connects wallet to Ujamaa platform                            │
+│          │ 1. Connects wallet to Ujamaa DeFi Platform                            │
 │          │    • WalletConnect QR code or MetaMask popup                    │
 │          │    • Wallet address captured: 0x...                              │
 │          │                                                                   │
@@ -904,7 +904,7 @@ function _canTransfer(
 │          │    • Escrow.transfer(spv_wallet, total_raised)                  │
 │          │    • Transaction hash recorded on-chain                         │
 │          │                                                                   │
-│          │ 5. Ujamaa platform fee deducted automatically                    │
+│          │ 5. Ujamaa DeFi Platform fee deducted automatically                    │
 │          │    • Fee percentage encoded in smart contract at issuance       │
 │          │    • Example: 2% issuance fee on $1M = $20,000 USDC             │
 │          │    • Fee transferred to Ujamaa treasury wallet                  │
@@ -1036,7 +1036,7 @@ async def final_aml_sweep(subscriptions):
 │          │                                             │ SMS confirmation   │
 │          │                                             │ sent               │
 │          ▼                                             ▼                    │
-│  Ujamaa PLATFORM                                                             │
+│  Ujamaa DeFi PLATFORM                                                             │
 │          │                                                                   │
 │          │ 4. Investor notified via app + SMS + email                       │
 │          │     • &quot;Round failed for [Asset Name]. Refund processed.&quot;         │
@@ -1241,7 +1241,7 @@ contract DistributionManager {
 </code></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Ujamaa Platform Fee Structure (Transparency by Design)</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Ujamaa DeFi Platform Fee Structure (Transparency by Design)</h2>
 <p><strong>CRITICAL:</strong> All Ujamaa fees are <strong>encoded in the smart contract at issuance</strong> — visible to every investor before they commit a single franc.</p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -1326,7 +1326,7 @@ FeeConfig public fees = FeeConfig({
 │  ASSET ORIGINATOR                                                            │
 │          │ Submits asset for tokenization                                   │
 │          ▼                                                                   │
-│  Ujamaa PLATFORM                                                             │
+│  Ujamaa DeFi PLATFORM                                                             │
 │  (Due diligence + SPV creation + ERC-3643 token issuance)                   │
 │          │                                                                   │
 │          │ • Legal title verified                                           │
@@ -1454,7 +1454,7 @@ FeeConfig public fees = FeeConfig({
 <td>Section 3</td>
 </tr>
 <tr>
-<td><strong>Ujamaa platform insolvency</strong></td>
+<td><strong>Ujamaa DeFi Platform insolvency</strong></td>
 <td>Investors</td>
 <td>SPV is legally isolated — Ujamaa insolvency cannot touch investor assets; bankruLPcy-remote</td>
 <td>Legal</td>

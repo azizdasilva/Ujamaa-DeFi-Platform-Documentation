@@ -999,6 +999,331 @@ p code, li code, td code {
 .docs-mb-6 { margin-bottom: var(--space-6); }
 .docs-mb-8 { margin-bottom: var(--space-8); }
 
+/* ==========================================================================
+   18. PRINT STYLES - Print-Friendly Documentation
+   ========================================================================== */
+@media print {
+  /* Page Setup */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  /* Reset all animations and transitions */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Hide non-essential elements */
+  .docs-sidebar,
+  .docs-search-box,
+  .docs-menu-toggle,
+  .docs-header,
+  .docs-breadcrumb,
+  .docs-footer,
+  .docs-nav,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset layout for print */
+  .docs-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .docs-main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .docs-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Typography for Print */
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .docs-title {
+    font-size: 24pt;
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: black;
+    margin-top: 0;
+    page-break-after: avoid;
+  }
+
+  .docs-subtitle {
+    font-size: 14pt;
+    color: #333;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    page-break-after: avoid;
+    margin-top: 18pt;
+  }
+
+  h1 { font-size: 20pt; }
+  h2 { font-size: 16pt; }
+  h3 { font-size: 14pt; }
+  h4 { font-size: 13pt; }
+  h5 { font-size: 12pt; }
+  h6 { font-size: 11pt; }
+
+  p {
+    color: black;
+    orphans: 2;
+    widows: 2;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+    border-bottom: none;
+  }
+
+  /* Show URLs for links in print */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Callouts and Alerts */
+  .docs-callout {
+    border: 2px solid #333;
+    border-left: 4px solid #333;
+    background: #f9f9f9;
+    page-break-inside: avoid;
+  }
+
+  .docs-callout-title {
+    color: black;
+  }
+
+  .docs-callout-info {
+    border-left-color: #0066cc;
+  }
+
+  .docs-callout-info .docs-callout-title {
+    color: #0066cc;
+  }
+
+  .docs-callout-success {
+    border-left-color: #009900;
+  }
+
+  .docs-callout-success .docs-callout-title {
+    color: #009900;
+  }
+
+  .docs-callout-warning {
+    border-left-color: #ff9900;
+  }
+
+  .docs-callout-warning .docs-callout-title {
+    color: #ff9900;
+  }
+
+  .docs-callout-error {
+    border-left-color: #cc0000;
+  }
+
+  .docs-callout-error .docs-callout-title {
+    color: #cc0000;
+  }
+
+  /* Code Blocks */
+  .docs-pre {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .docs-pre code {
+    color: #333;
+    font-size: 10pt;
+  }
+
+  p code, li code, td code {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+  }
+
+  /* Tables */
+  .docs-table-wrapper {
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .docs-table {
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .docs-table th,
+  .docs-table td {
+    border: 1px solid #ddd;
+    padding: 6pt;
+  }
+
+  .docs-table th {
+    background: #f0f0f0;
+    color: black;
+  }
+
+  .docs-table tr:hover {
+    background: transparent;
+  }
+
+  /* Cards and Folders */
+  .docs-folder-card {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .docs-folder-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .docs-folder-card-link {
+    text-decoration: none;
+  }
+
+  /* File and Folder Lists */
+  .docs-file-item,
+  .docs-folder-item {
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+
+  .docs-file-item:hover,
+  .docs-folder-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Badges */
+  .docs-badge {
+    border: 1px solid #999;
+    background: #f0f0f0;
+  }
+
+  .docs-badge-success {
+    color: #009900;
+  }
+
+  .docs-badge-warning {
+    color: #ff9900;
+  }
+
+  .docs-badge-error {
+    color: #cc0000;
+  }
+
+  .docs-badge-info {
+    color: #0066cc;
+  }
+
+  /* Sections */
+  .docs-section {
+    page-break-inside: avoid;
+  }
+
+  /* Lists */
+  .docs-list {
+    color: black;
+    page-break-inside: avoid;
+  }
+
+  .docs-list li {
+    color: black;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Logo */
+  .docs-logo-icon {
+    box-shadow: none;
+  }
+
+  /* Print Button */
+  .docs-print-btn {
+    display: none !important;
+  }
+
+  /* Prevent orphans and widows */
+  p, li, dt, dd {
+    orphans: 2;
+    widows: 2;
+  }
+
+  /* Ensure proper page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  pre, table, figure, img {
+    page-break-inside: avoid;
+  }
+
+  /* Add page break before major sections */
+  .docs-section[data-page-break="true"] {
+    page-break-before: always;
+  }
+}
+
+/* Print Button Styles (visible on screen, hidden in print) */
+.docs-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--ujamaa-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.docs-print-btn:hover {
+  background: var(--ujamaa-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.docs-print-btn:active {
+  transform: translateY(0);
+}
+
+.docs-print-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .docs-text-center { text-align: center; }
 .docs-text-muted { color: var(--text-muted); }
 .docs-font-mono { font-family: var(--font-mono); }

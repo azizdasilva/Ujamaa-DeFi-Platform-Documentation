@@ -92,7 +92,7 @@ const DocumentationIndex: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <DocumentLink href="/investors-room/tokenization-guide" title="How Tokenization Works" desc="Tokenization basics" />
             <DocumentLink href="/investors-room/defi-basics" title="Understanding ERC-3643" desc="Compliance token standard" />
-            <DocumentLink href="/investors-room/token-comparison-guide" title="Token Comparison Guide" desc="UAT vs uLP vs UGT" />
+            <DocumentLink href="/investors-room/token-comparison-guide" title="Token Comparison Guide" desc="UAT vs uLP vs uGT" />
           </div>
         </section>
 

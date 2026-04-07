@@ -379,7 +379,7 @@ const App: React.FC = () => {
               }
             />
             <Route
-              path="/admin/monitoring"
+              path="/admin/platform-monitoring"
               element={
                 <ProtectedRoute requiredRoles={['ADMIN']}>
                   <Monitoring />

@@ -1,9 +1,9 @@
 /**
- * UGT (Guarantee Token) Monitoring Page
+ * uGT (Guarantee Token) Monitoring Page
  *
- * Displays UGT NFT collateral status for industrial operators.
- * Each industrial sees ONLY their own UGT NFTs.
- * Admin sees ALL industrial operators' UGT NFTs.
+ * Displays uGT NFT collateral status for industrial operators.
+ * Each industrial sees ONLY their own uGT NFTs.
+ * Admin sees ALL industrial operators' uGT NFTs.
  *
  * Route: /invest/ugt-monitoring
  */
@@ -34,8 +34,8 @@ const UGTMonitoring: React.FC = () => {
       setUgtHoldings(data);
       setError(null);
     } catch (err: any) {
-      console.error('Error fetching UGT data:', err);
-      setError(err.response?.data?.detail || 'Failed to load UGT data');
+      console.error('Error fetching uGT data:', err);
+      setError(err.response?.data?.detail || 'Failed to load uGT data');
     } finally {
       setLoading(false);
     }
@@ -81,7 +81,7 @@ const UGTMonitoring: React.FC = () => {
     return (
       <div className="min-h-screen bg-[#F9F6ED] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-2xl text-[#103b5b] mb-2">Loading UGT Data...</p>
+          <p className="text-2xl text-[#103b5b] mb-2">Loading uGT Data...</p>
           <p className="text-[#8b5b3d]">Fetching guarantee token information</p>
         </div>
       </div>
@@ -97,7 +97,7 @@ const UGTMonitoring: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-[#103b5b]">UGT Collateral Monitoring</h1>
+              <h1 className="text-3xl font-bold text-[#103b5b]">uGT Collateral Monitoring</h1>
               <p className="text-[#8b5b3d] mt-1">Guarantee Token NFTs — Merchandise collateral status</p>
             </div>
             <div className="flex items-center gap-3">
@@ -176,21 +176,21 @@ const UGTMonitoring: React.FC = () => {
           </div>
         </Card>
 
-        {/* UGT Cards */}
+        {/* uGT Cards */}
         {filtered.length === 0 ? (
           <Card>
             <div className="text-center py-12 text-gray-500">
               <p className="text-xl mb-2">
-                {filter === 'all' ? 'No UGT collateral found' : `No ${filter} UGTs`}
+                {filter === 'all' ? 'No uGT collateral found' : `No ${filter} UGTs`}
               </p>
               <p className="text-sm">
-                UGT NFTs are minted when financing is created with collateral
+                uGT NFTs are minted when financing is created with collateral
               </p>
             </div>
           </Card>
         ) : (
-          filtered.map((ugt) => (
-            <Card key={ugt.id}>
+          filtered.map((uGT) => (
+            <Card key={uGT.id}>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl flex items-center justify-center text-3xl border border-amber-300">
@@ -198,22 +198,22 @@ const UGTMonitoring: React.FC = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
-                      <h3 className="text-xl font-bold text-[#103b5b]">UGT #{ugt.token_id}</h3>
-                      {ugt.certificate_id && (
-                        <span className="text-sm text-gray-500">Cert #{ugt.certificate_id}</span>
+                      <h3 className="text-xl font-bold text-[#103b5b]">uGT #{uGT.token_id}</h3>
+                      {uGT.certificate_id && (
+                        <span className="text-sm text-gray-500">Cert #{uGT.certificate_id}</span>
                       )}
                     </div>
-                    <p className="text-sm text-[#8b5b3d]">{ugt.description || 'No description'}</p>
+                    <p className="text-sm text-[#8b5b3d]">{uGT.description || 'No description'}</p>
                   </div>
                 </div>
                 <Badge
                   variant={
-                    ugt.is_defaulted ? 'error' :
-                    ugt.is_redeemed ? 'info' : 'success'
+                    uGT.is_defaulted ? 'error' :
+                    uGT.is_redeemed ? 'info' : 'success'
                   }
                   size="md"
                 >
-                  {ugt.is_defaulted ? '⚠️ Defaulted' : ugt.is_redeemed ? '✓ Redeemed' : '● Active'}
+                  {uGT.is_defaulted ? '⚠️ Defaulted' : uGT.is_redeemed ? '✓ Redeemed' : '● Active'}
                 </Badge>
               </div>
 
@@ -221,29 +221,29 @@ const UGTMonitoring: React.FC = () => {
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Merchandise Value</p>
                   <p className="text-lg font-bold text-[#103b5b]">
-                    {ugt.merchandise_value ? formatCurrency(ugt.merchandise_value) : 'N/A'}
+                    {uGT.merchandise_value ? formatCurrency(uGT.merchandise_value) : 'N/A'}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Warehouse</p>
-                  <p className="text-sm font-medium">{ugt.warehouse_location || 'N/A'}</p>
+                  <p className="text-sm font-medium">{uGT.warehouse_location || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Expiry Date</p>
-                  <p className="text-sm font-medium">{formatDate(ugt.expiry_date)}</p>
+                  <p className="text-sm font-medium">{formatDate(uGT.expiry_date)}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Pool Address</p>
-                  <p className="font-mono text-xs text-gray-600 truncate" title={ugt.pool_address || ''}>
-                    {ugt.pool_address || 'N/A'}
+                  <p className="font-mono text-xs text-gray-600 truncate" title={uGT.pool_address || ''}>
+                    {uGT.pool_address || 'N/A'}
                   </p>
                 </div>
               </div>
 
-              {ugt.stock_hash && (
+              {uGT.stock_hash && (
                 <div className="mt-4 pt-4 border-t border-gray-100">
                   <p className="text-xs text-gray-500">Stock Document Hash (IPFS)</p>
-                  <p className="font-mono text-xs text-gray-600 mt-1">{ugt.stock_hash}</p>
+                  <p className="font-mono text-xs text-gray-600 mt-1">{uGT.stock_hash}</p>
                 </div>
               )}
             </Card>

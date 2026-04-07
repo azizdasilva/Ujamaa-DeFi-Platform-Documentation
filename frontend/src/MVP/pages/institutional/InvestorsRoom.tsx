@@ -371,10 +371,10 @@ const allDocuments: Document[] = [
     id: 'DOC-024',
     title: 'Token Comparison Guide',
     category: 'educational',
-    description: 'Complete comparison of UAT, uLP, and UGT tokens - understand the differences and choose the right token.',
+    description: 'Complete comparison of UAT, uLP, and uGT tokens - understand the differences and choose the right token.',
     date: '2026-03-21',
     size: '2.8 MB',
-    tags: ['tokens', 'uat', 'ulp', 'ugt', 'comparison', 'education'],
+    tags: ['tokens', 'uat', 'ulp', 'uGT', 'comparison', 'education'],
     isFeatured: true,
   },
   {

@@ -171,6 +171,12 @@ contract DeployMVP is Script {
         // Grant roles for GuaranteeTokenizer
         guaranteeToken.grantRole(guaranteeToken.MINTER_ROLE(), deployer);
         guaranteeToken.grantRole(guaranteeToken.POOL_MANAGER_ROLE(), deployer);
+        guaranteeToken.grantRole(guaranteeToken.COMPLIANCE_OFFICER_ROLE(), deployer);
+
+        // Configure ERC-3643 compliance for GuaranteeTokenizer
+        guaranteeToken.setIdentityRegistry(address(identityRegistry));
+        guaranteeToken.setComplianceModule(address(compliance));
+        console.log("GuaranteeTokenizer -> IdentityRegistry + Compliance linked (ERC-3643NFT)");
 
         // Grant roles for IndustrialGateway
         industrialGateway.grantRole(industrialGateway.CERTIFIER_ROLE(), deployer);

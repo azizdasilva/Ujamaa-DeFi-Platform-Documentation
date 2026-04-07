@@ -1,7 +1,7 @@
 """
 Originator API - Asset Certification & Guarantee Endpoints
 
-Handles asset submission for industrial operators, UGT NFT lifecycle,
+Handles asset submission for industrial operators, uGT NFT lifecycle,
 and fund deployment. Calls IndustrialGateway.certifyAsset() on-chain.
 
 @notice MVP Testnet: Polygon Amoy
@@ -162,7 +162,7 @@ async def certify_asset(
 
 
 # =============================================================================
-# GUARANTEE & FINANCING ENDPOINTS (UGT NFT Lifecycle)
+# GUARANTEE & FINANCING ENDPOINTS (uGT NFT Lifecycle)
 # =============================================================================
 
 class CreateFinancingRequest(BaseModel):
@@ -181,12 +181,12 @@ async def create_financing(
     db: Session = Depends(get_db)
 ) -> Dict:
     """
-    Create a financing deal backed by a certified asset (UGT NFT).
+    Create a financing deal backed by a certified asset (uGT NFT).
 
     Steps:
     1. Verify the asset certificate exists (BlockchainTransaction)
     2. Create GDIZFinancing DB record
-    3. Mint UGT NFT via GuaranteeTokenizer.mintGuarantee()
+    3. Mint uGT NFT via GuaranteeTokenizer.mintGuarantee()
     4. Link financing to certificate
     """
     # Verify investor exists
@@ -222,7 +222,7 @@ async def create_financing(
     )
     db.add(financing)
 
-    # Mint UGT NFT via blockchain service
+    # Mint uGT NFT via blockchain service
     from services.blockchain_service import get_blockchain_service
 
     blockchain = get_blockchain_service()
@@ -265,17 +265,17 @@ async def create_financing(
             real_tx_hash=tx_hash if not blockchain.is_demo else None,
             status=TransactionStatusEnum.SIMULATED if blockchain.is_demo else TransactionStatusEnum.CONFIRMED,
             investor_id=request.investor_id,
-            description=f"UGT NFT minted for financing {gdiz_ref}",
+            description=f"uGT NFT minted for financing {gdiz_ref}",
             explorer_url=explorer_url,
         )
         db.add(blockchain_tx)
         db.commit()
 
     except Exception as e:
-        print(f"⚠️  UGT mint failed: {e}")
+        print(f"⚠️  uGT mint failed: {e}")
         financing.status = FinancingStatusEnum.FAILED
         db.commit()
-        raise HTTPException(status_code=500, detail=f"UGT NFT minting failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"uGT NFT minting failed: {str(e)}")
 
     return {
         "success": True,
@@ -371,7 +371,7 @@ async def deploy_funds(
 
 
 class RedeemGuaranteeRequest(BaseModel):
-    """Redeem UGT NFT after repayment"""
+    """Redeem uGT NFT after repayment"""
     financing_id: int
     ugt_token_id: int
 
@@ -382,7 +382,7 @@ async def redeem_guarantee(
     db: Session = Depends(get_db)
 ) -> Dict:
     """
-    Redeem UGT NFT after financing is fully repaid.
+    Redeem uGT NFT after financing is fully repaid.
 
     Transfers the guarantee NFT back to the industrial operator.
     """
@@ -422,7 +422,7 @@ async def redeem_guarantee(
             real_tx_hash=tx_hash if not blockchain.is_demo else None,
             status=TransactionStatusEnum.SIMULATED if blockchain.is_demo else TransactionStatusEnum.CONFIRMED,
             investor_id=financing.industrial_id,
-            description=f"UGT NFT redeemed for financing {financing.gdiz_reference}",
+            description=f"uGT NFT redeemed for financing {financing.gdiz_reference}",
             explorer_url=explorer_url,
         )
         db.add(blockchain_tx)

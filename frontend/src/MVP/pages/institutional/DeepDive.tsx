@@ -504,7 +504,7 @@ const DeepDive: React.FC = () => {
                           desc: 'Multi-asset pool manager (5 families)',
                           lines: '~980',
                           color: 'from-[#00A8A8] to-[#48A9F0]',
-                          features: ['5 pool families', 'Diversification limits', 'UGT minting on financing', 'Yield distribution']
+                          features: ['5 pool families', 'Diversification limits', 'uGT minting on financing', 'Yield distribution']
                         },
                         {
                           name: 'JurisdictionCompliance.sol',
@@ -515,7 +515,7 @@ const DeepDive: React.FC = () => {
                         },
                         {
                           name: 'GuaranteeTokenizer.sol',
-                          desc: 'ERC-721 NFT collateral (UGT)',
+                          desc: 'ERC-721 NFT collateral (uGT)',
                           lines: '~450',
                           color: 'from-[#D57028] to-[#F59E0B]',
                           features: ['Collateral NFTs', 'Forced transfer', 'Liquidation support']
@@ -525,7 +525,7 @@ const DeepDive: React.FC = () => {
                           desc: 'Asset certification authority',
                           lines: '~384',
                           color: 'from-[#023D7A] to-[#8B5B3D]',
-                          features: ['Certificate minting', 'GDIZ integration', 'Asset verification', 'UGT minting']
+                          features: ['Certificate minting', 'GDIZ integration', 'Asset verification', 'uGT minting']
                         },
                         {
                           name: 'MockEscrow.sol',

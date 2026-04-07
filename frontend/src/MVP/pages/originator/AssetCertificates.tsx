@@ -1,7 +1,7 @@
 /**
- * Asset Certificates Page - View & Mint UGT
+ * Asset Certificates Page - View & Mint uGT
  * 
- * View all certified assets and mint Ujamaa Guarantee Token (UGT) tokens as collateral.
+ * View all certified assets and mint Ujamaa Guarantee Token (uGT) tokens as collateral.
  * 
  * Route: /originator/assets/certificates
  * 
@@ -62,7 +62,7 @@ const AssetCertificates: React.FC = () => {
         description: '1000 cotton bales, Grade A, harvested 2026',
         status: 'verified',
         submittedAt: '2026-03-15T10:30:00Z',
-        ugtTokenId: 'UGT-001',
+        ugtTokenId: 'uGT-001',
         financingId: 'FIN-001',
       },
       {
@@ -75,7 +75,7 @@ const AssetCertificates: React.FC = () => {
         description: 'ZARA textile order Q2 2026',
         status: 'verified',
         submittedAt: '2026-03-10T14:20:00Z',
-        ugtTokenId: 'UGT-002',
+        ugtTokenId: 'uGT-002',
         financingId: 'FIN-002',
       },
     ];
@@ -117,10 +117,10 @@ const AssetCertificates: React.FC = () => {
   const handleMintUJG = (certificateId: string) => {
     setMintingId(certificateId);
 
-    // Simulate UGT minting (MVP testnet)
+    // Simulate uGT minting (MVP testnet)
     setTimeout(() => {
       setMintingId(null);
-      alert(`UGT minted successfully for certificate ${certificateId}!`);
+      alert(`uGT minted successfully for certificate ${certificateId}!`);
     }, 2000);
   };
 
@@ -142,7 +142,7 @@ const AssetCertificates: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Asset Certificates</h1>
-              <p className="text-gray-600 mt-1">View certified assets and mint UGT collateral</p>
+              <p className="text-gray-600 mt-1">View certified assets and mint uGT collateral</p>
             </div>
             <div className="flex items-center gap-3">
               <Button
@@ -263,7 +263,7 @@ const AssetCertificates: React.FC = () => {
                         {cert.status.toUpperCase()}
                       </Badge>
                       {cert.ugtTokenId && (
-                        <Badge variant="info" size="sm">UGT: {cert.ugtTokenId}</Badge>
+                        <Badge variant="info" size="sm">uGT: {cert.ugtTokenId}</Badge>
                       )}
                     </div>
 
@@ -312,7 +312,7 @@ const AssetCertificates: React.FC = () => {
                         onClick={() => handleMintUJG(cert.certificateId)}
                         isLoading={mintingId === cert.certificateId}
                       >
-                        Mint UGT
+                        Mint uGT
                       </Button>
                     )}
 
@@ -367,7 +367,7 @@ const AssetCertificates: React.FC = () => {
                 <p className="text-sm text-gray-700">{selectedCert.description}</p>
                 <div className="mt-4 space-y-2 text-sm">
                   <div className="flex justify-between"><span className="text-gray-500">Status</span><Badge variant={selectedCert.status === 'verified' ? 'success' : selectedCert.status === 'revoked' ? 'error' : 'warning'} size="sm">{selectedCert.status.toUpperCase()}</Badge></div>
-                  {selectedCert.ugtTokenId && <div className="flex justify-between"><span className="text-gray-500">UGT Token</span><span className="font-mono text-[#103b5b]">{selectedCert.ugtTokenId}</span></div>}
+                  {selectedCert.ugtTokenId && <div className="flex justify-between"><span className="text-gray-500">uGT Token</span><span className="font-mono text-[#103b5b]">{selectedCert.ugtTokenId}</span></div>}
                   {selectedCert.financingId && <div className="flex justify-between"><span className="text-gray-500">Financing</span><span className="font-mono text-[#103b5b]">{selectedCert.financingId}</span></div>}
                 </div>
               </div>
@@ -387,9 +387,9 @@ const AssetCertificates: React.FC = () => {
                 <li>Submit asset details for certification</li>
                 <li>GDIZ (Benin)/SIPI verifies and certifies the asset (1-2 days)</li>
                 <li>Certificate created with unique ID</li>
-                <li>Mint UGT (Ujamaa Guarantee Token) token as collateral</li>
-                <li>Use UGT to secure financing from Liquidity Pool</li>
-                <li>Repay financing → UGT returned to you</li>
+                <li>Mint uGT (Ujamaa Guarantee Token) token as collateral</li>
+                <li>Use uGT to secure financing from Liquidity Pool</li>
+                <li>Repay financing → uGT returned to you</li>
               </ol>
             </div>
           </div>

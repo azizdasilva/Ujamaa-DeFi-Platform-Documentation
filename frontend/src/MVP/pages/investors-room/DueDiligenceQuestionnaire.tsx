@@ -151,7 +151,7 @@ const DueDiligenceQuestionnaire: React.FC = () => {
           
           <h3 className="text-2xl font-bold text-[#023D7A] mb-4">Risk Categories</h3>
           <div className="space-y-4">
-            <RiskItem category="Credit Risk" level="Medium" mitigation="Diversification, collateral (UGT), rigorous due diligence" />
+            <RiskItem category="Credit Risk" level="Medium" mitigation="Diversification, collateral (uGT), rigorous due diligence" />
             <RiskItem category="Smart Contract Risk" level="Medium" mitigation="CertiK audit, bug bounty, upgradeable contracts" />
             <RiskItem category="Regulatory Risk" level="Low" mitigation="FSC licensed, compliance-first design, legal opinions" />
             <RiskItem category="Liquidity Risk" level="Medium" mitigation="180-day lock-up, secondary market development" />

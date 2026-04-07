@@ -240,7 +240,7 @@ Where:
 <tr>
 <td><strong>Asset Tokenization</strong></td>
 <td>EPIC 5</td>
-<td>UGT token, Industrial Gateway, asset certification</td>
+<td>uGT token, Industrial Gateway, asset certification</td>
 </tr>
 <tr>
 <td><strong>Pool Management</strong></td>
@@ -1125,7 +1125,7 @@ function calculateInvestorYield(
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Asset Tokenization Algorithms</h2>
-<h3>6.1 Ujamaa Guarantee Token (UGT) Specification</h3>
+<h3>6.1 Ujamaa Guarantee Token (uGT) Specification</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-01</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 1.2, 5.3<br />
 <strong>Purpose:</strong> ERC-3643NFT collateral token representing certified merchandise<br />
@@ -1145,7 +1145,7 @@ function calculateInvestorYield(
 </tr>
 <tr>
 <td><strong>Symbol</strong></td>
-<td>UGT</td>
+<td>uGT</td>
 </tr>
 <tr>
 <td><strong>Standard</strong></td>
@@ -1165,7 +1165,7 @@ function calculateInvestorYield(
 </tr>
 </tbody>
 </table></div>
-<h4>6.1.2 UGT Data Structure</h4>
+<h4>6.1.2 uGT Data Structure</h4>
 <div class="docs-pre"><code>struct Guarantee {
     uint256 certificateId;      // Industrial Gateway certificate
     uint256 merchandiseValue;   // Value in EUROD (18 decimals)
@@ -1179,37 +1179,37 @@ function calculateInvestorYield(
     string warehouseLocation;   // Warehouse location
 }
 </code></div>
-<h4>6.1.3 UGT Lifecycle</h4>
+<h4>6.1.3 uGT Lifecycle</h4>
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────┐
-│                    UGT LIFECYCLE                             │
+│                    uGT LIFECYCLE                             │
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
 │  1. Industrial receives order (e.g., ZARA €2M contract)     │
 │          ↓                                                   │
 │  2. Industrial Gateway certifies stock (GDIZ (Benin) verification)  │
 │          ↓                                                   │
-│  3. UGT minted (ERC-3643NFT with metadata + compliance)     │
+│  3. uGT minted (ERC-3643NFT with metadata + compliance)     │
 │          ↓                                                   │
 │  4. Pool deploys funds to Industrial                        │
 │          ↓                                                   │
-│  5. Pool holds UGT (collateral/security)                    │
+│  5. Pool holds uGT (collateral/security)                    │
 │          ↓                                                   │
 │  6. Industrial repays (principal + interest)                │
 │          ↓                                                   │
-│  7. UGT transferred back to Industrial (forcedTransfer)     │
+│  7. uGT transferred back to Industrial (forcedTransfer)     │
 │          ↓                                                   │
 │  8. [DEFAULT SCENARIO] If industrial defaults:              │
-│      → UGT liquidated via approved auction                  │
+│      → uGT liquidated via approved auction                  │
 │      → Proceeds distributed to uLP holders                  │
 │      → Default recorded in compliance audit trail           │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 </code></div>
 <hr />
-<h3>6.2 UGT Minting Algorithm</h3>
+<h3>6.2 uGT Minting Algorithm</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-02</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 5.3<br />
-<strong>Purpose:</strong> Mint UGT collateral token for certified assets<br />
+<strong>Purpose:</strong> Mint uGT collateral token for certified assets<br />
 <strong>Implementation:</strong> Solidity</p>
 <h4>6.2.1 Minting Function</h4>
 <p><strong>Function:</strong> <code>mintGuarantee()</code></p>
@@ -1285,10 +1285,10 @@ function calculateInvestorYield(
 }
 </code></div>
 <hr />
-<h3>6.3 UGT Redemption Algorithm</h3>
+<h3>6.3 uGT Redemption Algorithm</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-03</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 5.3<br />
-<strong>Purpose:</strong> Transfer UGT back to industrial after financing repayment<br />
+<strong>Purpose:</strong> Transfer uGT back to industrial after financing repayment<br />
 <strong>Implementation:</strong> Solidity</p>
 <h4>6.3.1 Redemption Algorithm</h4>
 <p><strong>Function:</strong> <code>redeemGuarantee()</code></p>
@@ -1308,10 +1308,10 @@ function calculateInvestorYield(
    - GuaranteeRedeemed(tokenId, industrial)
 </code></div>
 <hr />
-<h3>6.4 UGT Liquidation Algorithm</h3>
+<h3>6.4 uGT Liquidation Algorithm</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-04</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 5.3<br />
-<strong>Purpose:</strong> Auction UGT when industrial defaults<br />
+<strong>Purpose:</strong> Auction uGT when industrial defaults<br />
 <strong>Implementation:</strong> Solidity</p>
 <h4>6.4.1 Liquidation Algorithm</h4>
 <p><strong>Function:</strong> <code>liquidateGuarantee()</code></p>
@@ -1358,7 +1358,7 @@ function calculateInvestorYield(
 </tr>
 <tr>
 <td><strong>Role</strong></td>
-<td>Mints certificates → Triggers UGT minting</td>
+<td>Mints certificates → Triggers uGT minting</td>
 </tr>
 <tr>
 <td><strong>Verifiers</strong></td>
@@ -1381,7 +1381,7 @@ function calculateInvestorYield(
     string description;
     bool isVerified;
     bool isRevoked;
-    uint256 guaranteeTokenId; // Linked UGT token ID
+    uint256 guaranteeTokenId; // Linked uGT token ID
 }
 </code></div>
 <h4>6.5.3 Asset Certification Algorithm</h4>
@@ -1421,10 +1421,10 @@ function calculateInvestorYield(
 6. Return certificateId
 </code></div>
 <hr />
-<h3>6.6 Certificate to UGT Minting Algorithm</h3>
+<h3>6.6 Certificate to uGT Minting Algorithm</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-06</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 5.3<br />
-<strong>Purpose:</strong> Mint UGT collateral token for verified certificate<br />
+<strong>Purpose:</strong> Mint uGT collateral token for verified certificate<br />
 <strong>Implementation:</strong> Solidity</p>
 <h4>6.6.1 Minting from Certificate</h4>
 <p><strong>Function:</strong> <code>mintGuaranteeToken()</code></p>
@@ -1435,7 +1435,7 @@ function calculateInvestorYield(
    - isRevoked == false
    - guaranteeTokenId == 0 (not already minted)
 
-2. Mint UGT:
+2. Mint uGT:
    - tokenId = guaranteeToken.mintGuarantee(
        cert.industrial,
        certificateId,
@@ -1446,10 +1446,10 @@ function calculateInvestorYield(
        cert.warehouseLocation
    )
 
-3. Link certificate to UGT:
+3. Link certificate to uGT:
    - cert.guaranteeTokenId = tokenId
 
-4. Assign UGT to pool:
+4. Assign uGT to pool:
    - guaranteeToken.assignToPool(tokenId, msg.sender)
 
 5. Emit event:
@@ -1485,12 +1485,12 @@ function calculateInvestorYield(
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  STEP 3: UGT Minting                                        │
+│  STEP 3: uGT Minting                                        │
 │  ───────────────                                             │
 │  • Pool manager calls: mintGuaranteeToken(certificateId)    │
-│  • UGT (ERC-3643NFT) minted                                 │
-│  • UGT held by Pool as collateral                           │
-│  • Certificate linked to UGT token ID                       │
+│  • uGT (ERC-3643NFT) minted                                 │
+│  • uGT held by Pool as collateral                           │
+│  • Certificate linked to uGT token ID                       │
 │                                                              │
 │          ↓                                                   │
 │                                                              │
@@ -1498,7 +1498,7 @@ function calculateInvestorYield(
 │  ──────────────────────                                      │
 │  • LiquidityPool.createFinancing() called                   │
 │  • Funds deployed to Industrial                             │
-│  • UGT assigned to financing                                │
+│  • uGT assigned to financing                                │
 │  • financingToGuaranteeToken[financingId] = tokenId         │
 │                                                              │
 │          ↓                                                   │
@@ -1509,14 +1509,14 @@ function calculateInvestorYield(
 │  [SCENARIO A: Repayment]                                    │
 │  • Industrial repays (principal + interest)                 │
 │  • Pool calls: redeemGuarantee(tokenId)                     │
-│  • UGT transferred back to Industrial                       │
+│  • uGT transferred back to Industrial                       │
 │  • Certificate marked as redeemed                           │
 │                                                              │
 │  [SCENARIO B: Default]                                      │
 │  • Industrial defaults                                      │
-│  • Pool marks UGT as defaulted                              │
+│  • Pool marks uGT as defaulted                              │
 │  • Auction conducted                                        │
-│  • UGT liquidated to auction winner                         │
+│  • uGT liquidated to auction winner                         │
 │  • Proceeds distributed to uLP holders                      │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
@@ -1530,7 +1530,7 @@ function calculateInvestorYield(
     uint256 principal,
     uint256 interestRate,
     uint256 durationDays,
-    uint256 certificateId  // NEW: For UGT minting
+    uint256 certificateId  // NEW: For uGT minting
 ) external nonReentrant returns (uint256) {
     // ... validation ...
 
@@ -1538,12 +1538,12 @@ function calculateInvestorYield(
     uint256 financingId = nextFinancingId++;
     financings[financingId] = Financing(...);
 
-    // Mint UGT as collateral if certificate provided
+    // Mint uGT as collateral if certificate provided
     if (certificateId &gt; 0 &amp;&amp; address(guaranteeToken) != address(0)) {
         try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
             financingToGuaranteeToken[financingId] = tokenId;
         } catch {
-            // Fallback: continue without UGT (MVP)
+            // Fallback: continue without uGT (MVP)
         }
     }
 
@@ -1551,7 +1551,7 @@ function calculateInvestorYield(
 }
 </code></div>
 <hr />
-<h3>6.8 UGT Compliance &amp; Security</h3>
+<h3>6.8 uGT Compliance &amp; Security</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-08</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 1.2<br />
 <strong>Purpose:</strong> ERC-3643 compliance and transfer restrictions<br />
@@ -1576,12 +1576,12 @@ function calculateInvestorYield(
     }
 
     // Revert for unauthorized transfers
-    revert(&quot;UGT: Transfer not allowed - compliance restriction&quot;);
+    revert(&quot;uGT: Transfer not allowed - compliance restriction&quot;);
 }
 </code></div>
 <h4>6.8.2 Identity Verification</h4>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>✅ Only verified entities can hold UGT (ERC-3643)</li>
+<li>✅ Only verified entities can hold uGT (ERC-3643)</li>
 <li>✅ ONCHAINID integration required</li>
 <li>✅ Transfer validation on every transaction</li>
 <li>✅ Compliance audit trail maintained</li>
@@ -1590,7 +1590,7 @@ function calculateInvestorYield(
 <h3>6.9 MVP Testnet Utilities</h3>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-03-09</code><br />
 <strong>SRS Reference:</strong> SRS v2.0 Section 5.3<br />
-<strong>Purpose:</strong> Testnet utilities for testing UGT functionality<br />
+<strong>Purpose:</strong> Testnet utilities for testing uGT functionality<br />
 <strong>Implementation:</strong> Solidity</p>
 <h4>6.9.1 Testnet Minting</h4>
 <div class="docs-pre"><code>function mintTestGuarantee(
@@ -2842,25 +2842,25 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-01</td>
-<td>UGT Token Specification</td>
+<td>uGT Token Specification</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
 <tr>
 <td>ALG-05-03-02</td>
-<td>UGT Minting</td>
+<td>uGT Minting</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
 <tr>
 <td>ALG-05-03-03</td>
-<td>UGT Redemption</td>
+<td>uGT Redemption</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
 <tr>
 <td>ALG-05-03-04</td>
-<td>UGT Liquidation</td>
+<td>uGT Liquidation</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
@@ -2872,7 +2872,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-06</td>
-<td>Certificate to UGT</td>
+<td>Certificate to uGT</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
@@ -2884,7 +2884,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-08</td>
-<td>UGT Compliance</td>
+<td>uGT Compliance</td>
 <td>O(1)</td>
 <td>O(1)</td>
 </tr>
@@ -3205,7 +3205,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-01</td>
-<td>UGT Token Specification</td>
+<td>uGT Token Specification</td>
 <td>✅ Complete</td>
 <td><code>GuaranteeToken.sol</code></td>
 <td>90%</td>
@@ -3213,7 +3213,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-02</td>
-<td>UGT Minting</td>
+<td>uGT Minting</td>
 <td>✅ Complete</td>
 <td><code>GuaranteeToken.sol</code></td>
 <td>90%</td>
@@ -3221,7 +3221,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-03</td>
-<td>UGT Redemption</td>
+<td>uGT Redemption</td>
 <td>✅ Complete</td>
 <td><code>GuaranteeToken.sol</code></td>
 <td>90%</td>
@@ -3229,7 +3229,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-04</td>
-<td>UGT Liquidation</td>
+<td>uGT Liquidation</td>
 <td>✅ Complete</td>
 <td><code>GuaranteeToken.sol</code></td>
 <td>90%</td>
@@ -3245,7 +3245,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-06</td>
-<td>Certificate to UGT</td>
+<td>Certificate to uGT</td>
 <td>✅ Complete</td>
 <td><code>IndustrialGateway.sol</code></td>
 <td>90%</td>
@@ -3261,7 +3261,7 @@ class LRUCache:
 </tr>
 <tr>
 <td>ALG-05-03-08</td>
-<td>UGT Compliance</td>
+<td>uGT Compliance</td>
 <td>✅ Complete</td>
 <td><code>GuaranteeToken.sol</code></td>
 <td>90%</td>
@@ -3491,7 +3491,7 @@ class LRUCache:
 - <code>backend/api/compliance.py</code> - Compliance API endpoints<br />
 - <code>backend/api/pools.py</code> - Pool management API</p>
 <p><strong>Smart Contracts (Solidity):</strong><br />
-- <code>contracts/MVP/GuaranteeToken.sol</code> - UGT collateral token<br />
+- <code>contracts/MVP/GuaranteeToken.sol</code> - uGT collateral token<br />
 - <code>contracts/MVP/IndustrialGateway.sol</code> - Asset certification<br />
 - <code>contracts/MVP/uLPToken.sol</code> - Ujamaa Pool Token<br />
 - <code>contracts/MVP/LiquidityPool.sol</code> - Multi-pool manager<br />
@@ -4090,7 +4090,7 @@ Scoring:
 <h4>C.6.3 Collateralization Ratio Monitoring</h4>
 <p><strong>Algorithm ID:</strong> <code>ALG-05-05-01</code><br />
 <strong>SRS Reference:</strong> SRS v2.1 (lines ~1245, 3683) — Collateral Management (EPIC 5)<br />
-<strong>Purpose:</strong> Monitor ratio of collateral value (UGT) to deployed capital<br />
+<strong>Purpose:</strong> Monitor ratio of collateral value (uGT) to deployed capital<br />
 <strong>Implementation:</strong> Python (backend monitoring service)</p>
 <h5>Formula</h5>
 <div class="docs-pre"><code>collateralizationRatio = ugtValue / deployedAmount × 100
@@ -4106,7 +4106,7 @@ Alert Thresholds:
   Ratio &lt; 80%: 🚨 Critically under-collateralized (alert)
 
 Example:
-  UGT Value: €12M | Deployed: €10M
+  uGT Value: €12M | Deployed: €10M
   Ratio = 12M / 10M × 100 = 120% ✅
 </code></div>
 <h5>Complexity</h5>
@@ -4125,7 +4125,7 @@ Example:
 <div class="docs-pre"><code>Default Detection:
   1. Check: financing.maturityDate &lt; now AND financing.amountRepaid &lt; totalOwed
   2. IF TRUE → Mark as defaulted
-  3. Trigger UGT liquidation
+  3. Trigger uGT liquidation
 
 Recovery Calculation:
   outstanding = financing.principal + interest - financing.amountRepaid
@@ -4139,7 +4139,7 @@ Pro-Rata Distribution to uLP Holders:
 Example:
   Financing: €1M principal + €100K interest = €1.1M total
   Repaid: €400K | Outstanding: €700K
-  UGT Auction: €600K
+  uGT Auction: €600K
   Loss: €700K - €600K = €100K
   Recovery Rate: 600K / 700K = 85.7%
 
@@ -4434,7 +4434,7 @@ Example:
 <tr>
 <td>EPIC 5</td>
 <td>US 5.3</td>
-<td>UGT Collateral</td>
+<td>uGT Collateral</td>
 <td>ALG-05-03-01 to ALG-05-03-09, ALG-05-05-01</td>
 <td>✅ Documented</td>
 </tr>

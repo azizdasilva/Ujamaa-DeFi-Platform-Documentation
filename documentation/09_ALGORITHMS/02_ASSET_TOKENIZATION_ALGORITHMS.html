@@ -136,13 +136,13 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Overview</h2>
 <p>This document specifies the <strong>asset tokenization algorithms</strong> for the Ujamaa DeFi Platform, including:</p>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li><strong>Ujamaa Guarantee Token (UGT)</strong> - ERC-3643NFT collateral token</li>
+<li><strong>Ujamaa Guarantee Token (uGT)</strong> - ERC-3643NFT collateral token</li>
 <li><strong>Industrial Gateway</strong> - Asset certification contract</li>
 <li><strong>Asset Tokenization Flow</strong> - From submission to collateral</li>
 </ol>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Ujamaa Guarantee Token (UGT)</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1. Ujamaa Guarantee Token (uGT)</h2>
 <h3>1.1 Token Specification</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -158,7 +158,7 @@
 </tr>
 <tr>
 <td><strong>Symbol</strong></td>
-<td>UGT</td>
+<td>uGT</td>
 </tr>
 <tr>
 <td><strong>Standard</strong></td>
@@ -178,7 +178,7 @@
 </tr>
 </tbody>
 </table></div>
-<h3>1.2 UGT Data Structure</h3>
+<h3>1.2 uGT Data Structure</h3>
 <div class="docs-pre"><code>struct Guarantee {
     uint256 certificateId;      // Industrial Gateway certificate
     uint256 merchandiseValue;   // Value in EUROD (18 decimals)
@@ -192,33 +192,33 @@
     string warehouseLocation;   // Warehouse location
 }
 </code></div>
-<h3>1.3 UGT Lifecycle Algorithm</h3>
+<h3>1.3 uGT Lifecycle Algorithm</h3>
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────┐
-│                    UGT LIFECYCLE                             │
+│                    uGT LIFECYCLE                             │
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
 │  1. Industrial receives order (e.g., ZARA €2M contract)     │
 │          ↓                                                   │
 │  2. Industrial Gateway certifies stock (GDIZ (Benin) verification)  │
 │          ↓                                                   │
-│  3. UGT minted (ERC-3643NFT with metadata + compliance)     │
+│  3. uGT minted (ERC-3643NFT with metadata + compliance)     │
 │          ↓                                                   │
 │  4. Pool deploys funds to Industrial                        │
 │          ↓                                                   │
-│  5. Pool holds UGT (collateral/security)                    │
+│  5. Pool holds uGT (collateral/security)                    │
 │          ↓                                                   │
 │  6. Industrial repays (principal + interest)                │
 │          ↓                                                   │
-│  7. UGT transferred back to Industrial (forcedTransfer)     │
+│  7. uGT transferred back to Industrial (forcedTransfer)     │
 │          ↓                                                   │
 │  8. [DEFAULT SCENARIO] If industrial defaults:              │
-│      → UGT liquidated via approved auction                  │
+│      → uGT liquidated via approved auction                  │
 │      → Proceeds distributed to uLP holders                  │
 │      → Default recorded in compliance audit trail           │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 </code></div>
-<h3>1.4 UGT Minting Algorithm</h3>
+<h3>1.4 uGT Minting Algorithm</h3>
 <p><strong>Function:</strong> <code>mintGuarantee()</code></p>
 <p><strong>Inputs:</strong><br />
 - <code>industrial</code> - Industrial company address<br />
@@ -291,9 +291,9 @@
     return tokenId;
 }
 </code></div>
-<h3>1.5 UGT Redemption Algorithm</h3>
+<h3>1.5 uGT Redemption Algorithm</h3>
 <p><strong>Function:</strong> <code>redeemGuarantee()</code></p>
-<p><strong>Purpose:</strong> Transfer UGT back to industrial after financing repayment</p>
+<p><strong>Purpose:</strong> Transfer uGT back to industrial after financing repayment</p>
 <p><strong>Algorithm:</strong></p>
 <div class="docs-pre"><code>1. Validate:
    - Token exists
@@ -309,9 +309,9 @@
 4. Emit event:
    - GuaranteeRedeemed(tokenId, industrial)
 </code></div>
-<h3>1.6 UGT Liquidation Algorithm</h3>
+<h3>1.6 uGT Liquidation Algorithm</h3>
 <p><strong>Function:</strong> <code>liquidateGuarantee()</code></p>
-<p><strong>Purpose:</strong> Auction UGT when industrial defaults</p>
+<p><strong>Purpose:</strong> Auction uGT when industrial defaults</p>
 <p><strong>Algorithm:</strong></p>
 <div class="docs-pre"><code>1. Validate:
    - Token exists
@@ -352,7 +352,7 @@
 </tr>
 <tr>
 <td><strong>Role</strong></td>
-<td>Mints certificates → Triggers UGT minting</td>
+<td>Mints certificates → Triggers uGT minting</td>
 </tr>
 <tr>
 <td><strong>Verifiers</strong></td>
@@ -375,7 +375,7 @@
     string description;
     bool isVerified;
     bool isRevoked;
-    uint256 guaranteeTokenId; // Linked UGT token ID
+    uint256 guaranteeTokenId; // Linked uGT token ID
 }
 </code></div>
 <h3>2.3 Asset Certification Algorithm</h3>
@@ -414,9 +414,9 @@
 
 6. Return certificateId
 </code></div>
-<h3>2.4 UGT Minting from Certificate Algorithm</h3>
+<h3>2.4 uGT Minting from Certificate Algorithm</h3>
 <p><strong>Function:</strong> <code>mintGuaranteeToken()</code></p>
-<p><strong>Purpose:</strong> Mint UGT collateral token for verified certificate</p>
+<p><strong>Purpose:</strong> Mint uGT collateral token for verified certificate</p>
 <p><strong>Algorithm:</strong></p>
 <div class="docs-pre"><code>1. Validate certificate:
    - Certificate exists
@@ -424,7 +424,7 @@
    - isRevoked == false
    - guaranteeTokenId == 0 (not already minted)
 
-2. Mint UGT:
+2. Mint uGT:
    - tokenId = guaranteeToken.mintGuarantee(
        cert.industrial,
        certificateId,
@@ -435,10 +435,10 @@
        cert.warehouseLocation
    )
 
-3. Link certificate to UGT:
+3. Link certificate to uGT:
    - cert.guaranteeTokenId = tokenId
 
-4. Assign UGT to pool:
+4. Assign uGT to pool:
    - guaranteeToken.assignToPool(tokenId, msg.sender)
 
 5. Emit event:
@@ -471,12 +471,12 @@
 │                                                              │
 │          ↓                                                   │
 │                                                              │
-│  STEP 3: UGT Minting                                        │
+│  STEP 3: uGT Minting                                        │
 │  ───────────────                                             │
 │  • Pool manager calls: mintGuaranteeToken(certificateId)    │
-│  • UGT (ERC-3643NFT) minted                                 │
-│  • UGT held by Pool as collateral                           │
-│  • Certificate linked to UGT token ID                       │
+│  • uGT (ERC-3643NFT) minted                                 │
+│  • uGT held by Pool as collateral                           │
+│  • Certificate linked to uGT token ID                       │
 │                                                              │
 │          ↓                                                   │
 │                                                              │
@@ -484,7 +484,7 @@
 │  ──────────────────────                                      │
 │  • LiquidityPool.createFinancing() called                   │
 │  • Funds deployed to Industrial                             │
-│  • UGT assigned to financing                                │
+│  • uGT assigned to financing                                │
 │  • financingToGuaranteeToken[financingId] = tokenId         │
 │                                                              │
 │          ↓                                                   │
@@ -495,14 +495,14 @@
 │  [SCENARIO A: Repayment]                                    │
 │  • Industrial repays (principal + interest)                 │
 │  • Pool calls: redeemGuarantee(tokenId)                     │
-│  • UGT transferred back to Industrial                       │
+│  • uGT transferred back to Industrial                       │
 │  • Certificate marked as redeemed                           │
 │                                                              │
 │  [SCENARIO B: Default]                                      │
 │  • Industrial defaults                                      │
-│  • Pool marks UGT as defaulted                              │
+│  • Pool marks uGT as defaulted                              │
 │  • Auction conducted                                        │
-│  • UGT liquidated to auction winner                         │
+│  • uGT liquidated to auction winner                         │
 │  • Proceeds distributed to uLP holders                      │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
@@ -516,7 +516,7 @@
     uint256 principal,
     uint256 interestRate,
     uint256 durationDays,
-    uint256 certificateId  // NEW: For UGT minting
+    uint256 certificateId  // NEW: For uGT minting
 ) external nonReentrant returns (uint256) {
     // ... validation ...
 
@@ -524,12 +524,12 @@
     uint256 financingId = nextFinancingId++;
     financings[financingId] = Financing(...);
 
-    // Mint UGT as collateral if certificate provided
+    // Mint uGT as collateral if certificate provided
     if (certificateId &gt; 0 &amp;&amp; address(guaranteeToken) != address(0)) {
         try guaranteeToken.mintGuaranteeToken(certificateId) returns (uint256 tokenId) {
             financingToGuaranteeToken[financingId] = tokenId;
         } catch {
-            // Fallback: continue without UGT (MVP)
+            // Fallback: continue without uGT (MVP)
         }
     }
 
@@ -539,7 +539,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Compliance &amp; Security</h2>
-<h3>4.1 ERC-3643 Compliance (UGT)</h3>
+<h3>4.1 ERC-3643 Compliance (uGT)</h3>
 <p><strong>Transfer Restrictions:</strong></p>
 <div class="docs-pre"><code>function _update(address to, uint256 tokenId, uint256 auth) internal override returns (address) {
     address from = _ownerOf(tokenId);
@@ -560,12 +560,12 @@
     }
 
     // Revert for unauthorized transfers
-    revert(&quot;UGT: Transfer not allowed - compliance restriction&quot;);
+    revert(&quot;uGT: Transfer not allowed - compliance restriction&quot;);
 }
 </code></div>
 <h3>4.2 Identity Verification</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>✅ Only verified entities can hold UGT (ERC-3643)</li>
+<li>✅ Only verified entities can hold uGT (ERC-3643)</li>
 <li>✅ ONCHAINID integration required</li>
 <li>✅ Transfer validation on every transaction</li>
 <li>✅ Compliance audit trail maintained</li>
@@ -620,22 +620,22 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>6. Summary</h2>
 <h3>New Contracts Created:</h3>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li>✅ <strong>GuaranteeToken.sol</strong> - UGT (ERC-3643NFT collateral)</li>
+<li>✅ <strong>GuaranteeToken.sol</strong> - uGT (ERC-3643NFT collateral)</li>
 <li>✅ <strong>IndustrialGateway.sol</strong> - Asset certification</li>
-<li>✅ <strong>LiquidityPool.sol</strong> - Updated with UGT integration</li>
+<li>✅ <strong>LiquidityPool.sol</strong> - Updated with uGT integration</li>
 </ol>
 <h3>Algorithms Specified:</h3>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li>✅ UGT Minting</li>
-<li>✅ UGT Redemption</li>
-<li>✅ UGT Liquidation</li>
+<li>✅ uGT Minting</li>
+<li>✅ uGT Redemption</li>
+<li>✅ uGT Liquidation</li>
 <li>✅ Asset Certification</li>
-<li>✅ Certificate → UGT Minting</li>
+<li>✅ Certificate → uGT Minting</li>
 <li>✅ Complete Asset Tokenization Flow</li>
 </ol>
 <h3>SRS Compliance:</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>✅ SRS v2.0 Section 1.2 - Ujamaa Guarantee Token (UGT)</li>
+<li>✅ SRS v2.0 Section 1.2 - Ujamaa Guarantee Token (uGT)</li>
 <li>✅ SRS v2.0 Section 5.3 - Industrial Gateway</li>
 <li>✅ ERC-3643NFT standard compliance</li>
 <li>✅ ONCHAINID integration ready</li>

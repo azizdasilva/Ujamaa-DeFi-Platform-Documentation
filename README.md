@@ -24,14 +24,14 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 
 | Contract | Address | Status | Description |
 |----------|---------|--------|-------------|
-| **ULPTokenizer** | `0xe69569DCc219c518673318a7a34D56202CF92DE2` | ? Deployed | ERC-3643 yield-bearing pool token (uLP) |
-| **GuaranteeTokenizer** | `0x83e20a9516b82f0b1bd0ee57882ef35f9553b469` | ? Deployed | ERC-721 collateral NFT (UGT) |
-| **LiquidityPool** | `0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec` | ? Deployed | Multi-asset pool management |
-| **IndustrialGateway** | `0x882071de6689ec1716bd7e162acf50707ac68930` | ? Deployed | Asset certification & UGT minting |
-| **IdentityRegistry** | `0xB3fb5AB654FC270d10338A64fDBC1E151c223283` | ? Deployed | ERC-3643 identity verification |
-| **Compliance** | `0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2` | ? Deployed | Transfer compliance module |
-| **MockEUROD** | `0x787c5c0365829abf88a3d8404e9488d1e307ed43` | ? Deployed | Testnet EUR stablecoin |
-| **JurisdictionCompliance** | `0x4eb4c7f57e62a342ac7f322b87a31a7cd54d453c` | ? Deployed | Sanctions & jurisdiction checks |
+| **ULPTokenizer** | `0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8` | ? Deployed | ERC-3643 yield-bearing pool token (uLP) |
+| **GuaranteeTokenizer** | `0x7600C0b36F73028f866081823Fa691fF4688CeE0` | ? Deployed | ERC-721 collateral NFT (uGT) |
+| **LiquidityPool** | `0x465CCDe6d2B228278eEB5c36606058D03859F67A` | ? Deployed | Multi-asset pool management |
+| **IndustrialGateway** | `0xf1119462800d2f038aF0c61D874B52521bF22459` | ? Deployed | Asset certification & uGT minting |
+| **IdentityRegistry** | `0x085a788194625e95f8060f9B561f4358aD1b3Ed7` | ? Deployed | ERC-3643 identity verification |
+| **Compliance** | `0x11a4c694e07e14F5231cf4Db0b483B65018b2583` | ? Deployed | Transfer compliance module |
+| **MockEUROD** | `0xAf5904C33723026a5D79a1879A8455047916bd1B` | ? Deployed | Testnet EUR stablecoin |
+| **JurisdictionCompliance** | `0xB4885b421Bef3112eD15e625581bA03CA0419e4e` | ? Deployed | Sanctions & jurisdiction checks |
 
 ### Backend Integration (Complete)
 
@@ -39,7 +39,7 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 |---------|--------|---------|
 | **Invest ? ULPTokenizer.deposit()** | ? Integrated | Real on-chain transactions with Polygonscan verification |
 | **Redeem ? ULPTokenizer.redeem()** | ? Integrated | Burn uLP, receive EUROD on-chain |
-| **Financing ? LiquidityPool.createFinancing()** | ? Integrated | On-chain financing + UGT minting |
+| **Financing ? LiquidityPool.createFinancing()** | ? Integrated | On-chain financing + uGT minting |
 | **Repayment ? LiquidityPool.recordRepayment()** | ? Integrated | On-chain repayment + yield distribution |
 | **Compliance (Database-Backed)** | ? Integrated | KYC/KYB, document review, 24h SLA |
 | **Blockchain Audit Trail** | ? Complete | All on-chain actions tracked in database |

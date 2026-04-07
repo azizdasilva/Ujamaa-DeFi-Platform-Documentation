@@ -6,6 +6,7 @@
     <title>Industrial Operator Workflow: Asset to Repayment | Ujamaa DeFi Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/styles.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -230,7 +231,7 @@
     </div>
 
     <div class="highlight-box">
-        <strong>📌 Purpose:</strong> This document explains how industrial operators (manufacturers, farmers, traders) access financing through the Ujamaa DeFi Platform. We'll walk through every step — from asset certification to repayment — showing how collateral is tokenized as NFTs and tracked on-chain.
+        <strong>📌 Purpose:</strong> This document explains how industrial operators (manufacturers, farmers, traders) access financing through the Ujamaa DeFi Platform. We'll walk through every step — from asset certification to repayment — showing how collateral is tokenized as ERC-3643NFTs and tracked on-chain.
     </div>
 
     <h2>🎯 Who Is This For?</h2>
@@ -250,7 +251,7 @@
             <div class="diagram-arrow">→</div>
             <div class="diagram-box">2. Asset Certification</div>
             <div class="diagram-arrow">→</div>
-            <div class="diagram-box">3. UGT NFT Minted</div>
+            <div class="diagram-box">3. uGT ERC-3643NFT Minted</div>
             <div class="diagram-arrow">→</div>
             <div class="diagram-box">4. Financing Created</div>
             <div class="diagram-arrow">→</div>
@@ -258,7 +259,7 @@
             <div class="diagram-arrow">→</div>
             <div class="diagram-box">6. Repayment</div>
             <div class="diagram-arrow">→</div>
-            <div class="diagram-box">7. UGT Returned</div>
+            <div class="diagram-box">7. uGT Returned</div>
         </div>
     </div>
 
@@ -391,20 +392,21 @@ function certifyAsset(
         </div>
     </div>
 
-    <h2>🎫 Phase 2: UGT NFT Minting</h2>
+    <h2>🎫 Phase 2: uGT ERC-3643NFT Minting</h2>
 
     <div class="card">
         <div class="flex items-start">
             <div class="step-badge step-4">4</div>
             <div>
-                <h3 style="margin-top: 0;">Guarantee Token (UGT) is Minted</h3>
-                <p><strong>What happens:</strong> Once your asset is certified, the system mints a <strong>Guarantee Token (UGT)</strong> — an ERC-721 NFT that represents your collateral:</p>
+                <h3 style="margin-top: 0;">Guarantee Token (uGT) is Minted</h3>
+                <p><strong>What happens:</strong> Once your asset is certified, the system mints a <strong>Guarantee Token (uGT)</strong> — an <strong>ERC-3643NFT</strong> (ERC-721 + ERC-3643 compliance) that represents your collateral:</p>
 
-                <h4 class="mt-4">🎫 What is a UGT?</h4>
+                <h4 class="mt-4">🎫 What is a uGT?</h4>
                 <ul class="list-disc pl-6 mt-2 space-y-1">
-                    <li><strong>ERC-721 NFT:</strong> Non-fungible token representing your specific asset</li>
+                    <li><strong>ERC-3643NFT:</strong> Non-fungible token with ERC-3643 compliance (identity verification + transfer restrictions)</li>
                     <li><strong>Collateral:</strong> It serves as security for the financing</li>
                     <li><strong>Metadata:</strong> Contains asset description, warehouse location, certificate ID</li>
+                    <li><strong>Compliance:</strong> Only verified entities can hold or transfer uGT</li>
                     <li><strong>Restrictions:</strong> Can only be transferred between the pool, industrial, or auction winner</li>
                 </ul>
 
@@ -417,9 +419,9 @@ function certifyAsset(
                             <li>References your certificate ID</li>
                         </ul>
                     </li>
-                    <li><strong>UGT is minted automatically:</strong> The contract calls <code>GuaranteeTokenizer.mintGuarantee()</code>
+                    <li><strong>uGT is minted automatically:</strong> The contract calls <code>GuaranteeTokenizer.mintGuarantee()</code>
                         <ul class="list-disc pl-6 mt-1">
-                            <li>Mints NFT to your wallet address</li>
+                            <li>Mints ERC-3643NFT to your wallet address</li>
                             <li>Links it to your certificate</li>
                             <li>Assigns it to the pool as collateral</li>
                         </ul>
@@ -439,12 +441,12 @@ function mintGuarantee(
 ) returns (uint256 tokenId) {
     _safeMint(industrial, tokenId);
     // Stores Guarantee struct with all metadata
-    // tokenId is now your collateral NFT
+    // tokenId is now your collateral ERC-3643NFT
 }
                 </div>
 
                 <div class="info-box mt-4">
-                    <strong>📦 UGT Lifecycle:</strong>
+                    <strong>📦 uGT Lifecycle:</strong>
                     <ol class="list-decimal pl-6 mt-2 space-y-1">
                         <li><strong>Minted:</strong> When financing is created</li>
                         <li><strong>Held by pool:</strong> As collateral while loan is active</li>
@@ -467,7 +469,7 @@ function mintGuarantee(
                 <ol class="list-decimal pl-6 mt-2 space-y-2">
                     <li><strong>Validation:</strong>
                         <ul class="list-disc pl-6 mt-1">
-                            <li>✅ Your UGT collateral is minted and linked to financing</li>
+                            <li>✅ Your uGT collateral is minted and linked to financing</li>
                             <li>✅ Pool has sufficient available funds</li>
                             <li>✅ Diversification limits not exceeded (max 20% per industrial, max 40% per asset class)</li>
                         </ul>
@@ -485,11 +487,11 @@ function deployFunds(uint256 financingId, uint256 amount) external {
                 </ol>
 
                 <div class="success-box mt-4">
-                    <strong>✅ You've received the funds!</strong> The EUROD is now in your wallet. You can use it for operations, equipment purchases, inventory, etc. The UGT NFT remains as collateral until you repay.
+                    <strong>✅ You've received the funds!</strong> The EUROD is now in your wallet. You can use it for operations, equipment purchases, inventory, etc. The uGT ERC-3643NFT remains as collateral until you repay.
                 </div>
 
                 <div class="warning-box mt-4">
-                    <strong>⚠️ Important:</strong> The financing has a defined term (e.g., 365 days). You must repay the principal + interest by the maturity date. If you don't, the financing is marked as defaulted and your UGT collateral may be liquidated.
+                    <strong>⚠️ Important:</strong> The financing has a defined term (e.g., 365 days). You must repay the principal + interest by the maturity date. If you don't, the financing is marked as defaulted and your uGT collateral may be liquidated.
                 </div>
             </div>
         </div>
@@ -589,16 +591,16 @@ function recordRepayment(uint256 financingId, uint256 amount) returns (bool) {
         <div class="flex items-start">
             <div class="step-badge step-6" style="background: #10B981;">7</div>
             <div>
-                <h3 style="margin-top: 0;">UGT Returned to You</h3>
+                <h3 style="margin-top: 0;">uGT Returned to You</h3>
                 <p><strong>What happens:</strong> Once you've fully repaid the financing, your collateral is returned:</p>
                 <ol class="list-decimal pl-6 mt-2 space-y-2">
                     <li><strong>Pool manager calls:</strong> <code>GuaranteeTokenizer.redeemGuarantee(tokenId)</code></li>
-                    <li><strong>NFT transferred back:</strong> The UGT NFT is transferred from the pool back to your wallet</li>
+                    <li><strong>ERC-3643NFT transferred back:</strong> The uGT ERC-3643NFT is transferred from the pool back to your wallet</li>
                     <li><strong>Marked as redeemed:</strong> <code>guarantee.isRedeemed = true</code></li>
                 </ol>
 
                 <div class="success-box mt-4">
-                    <strong>🎉 Congratulations!</strong> You've fully repaid the financing. Your UGT collateral has been returned. You can now:
+                    <strong>🎉 Congratulations!</strong> You've fully repaid the financing. Your uGT collateral has been returned. You can now:
                     <ul class="list-disc pl-6 mt-2 space-y-1">
                         <li>Apply for new financing with the same collateral</li>
                         <li>Use your assets freely (no longer encumbered)</li>
@@ -619,7 +621,7 @@ function recordRepayment(uint256 financingId, uint256 amount) returns (bool) {
                 <p>If you fail to repay by the maturity date:</p>
                 <ol class="list-decimal pl-6 mt-2 space-y-2">
                     <li><strong>Financing marked as defaulted:</strong> <code>LiquidityPool.markAsDefaulted(financingId)</code></li>
-                    <li><strong>UGT liquidated via auction:</strong> The collateral NFT is sold to the highest bidder</li>
+                    <li><strong>uGT liquidated via auction:</strong> The collateral ERC-3643NFT is sold to the highest bidder</li>
                     <li><strong>Proceeds distributed to pool investors:</strong> uLP holders receive compensation from the liquidation</li>
                     <li><strong>Your credit is damaged:</strong> Future financing requests will be heavily scrutinized</li>
                 </ol>
@@ -696,7 +698,7 @@ function liquidateGuarantee(
             <tr>
                 <td><strong>GuaranteeTokenizer</strong></td>
                 <td><code>mintGuarantee(...)</code></td>
-                <td>When financing is created (UGT NFT minted)</td>
+                <td>When financing is created (uGT ERC-3643NFT minted)</td>
             </tr>
             <tr>
                 <td><strong>LiquidityPool</strong></td>
@@ -716,12 +718,12 @@ function liquidateGuarantee(
             <tr>
                 <td><strong>GuaranteeTokenizer</strong></td>
                 <td><code>redeemGuarantee(tokenId)</code></td>
-                <td>When fully repaid (UGT returned)</td>
+                <td>When fully repaid (uGT returned)</td>
             </tr>
             <tr>
                 <td><strong>GuaranteeTokenizer</strong></td>
                 <td><code>liquidateGuarantee(tokenId, winner)</code></td>
-                <td>On default (UGT auctioned)</td>
+                <td>On default (uGT auctioned)</td>
             </tr>
         </table>
     </div>
@@ -730,12 +732,13 @@ function liquidateGuarantee(
         <strong>💡 Key Takeaways:</strong>
         <ol class="list-decimal pl-6 mt-2 space-y-1">
             <li><strong>Asset-Backed Financing:</strong> Every loan is backed by real physical assets (inventory, equipment, contracts) — not just promises</li>
-            <li><strong>UGT = Collateral NFT:</strong> Your asset is tokenized as an NFT that the pool holds as security</li>
+            <li><strong>uGT = Collateral ERC-3643NFT:</strong> Your asset is tokenized as an ERC-3643NFT that the pool holds as security</li>
             <li><strong>Automatic Yield Distribution:</strong> When you repay with interest, the yield automatically goes to uLP investors</li>
             <li><strong>Transparent Tracking:</strong> Every repayment is recorded on-chain — anyone can verify the status</li>
             <li><strong>Default Protection:</strong> If you default, your collateral is liquidated to protect investors</li>
         </ol>
     </div>
 
+    <script src="../assets/app.js"></script>
 </body>
 </html>

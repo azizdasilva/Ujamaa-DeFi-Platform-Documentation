@@ -95,7 +95,7 @@ const Monitoring: React.FC = () => {
         events.push({
           time: new Date(tx.created_at).toLocaleTimeString(),
           event: `${tx.transaction_type} - €${tx.amount.toLocaleString()}`,
-          type: tx.type.toLowerCase()
+          type: (tx.type || tx.transaction_type || '').toLowerCase()
         });
       });
 

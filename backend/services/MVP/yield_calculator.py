@@ -76,7 +76,7 @@ class PoolYield:
     default_rate: float = 0.0  # NPL ratio
     concentration_risk: float = 0.0  # Largest exposure
     credit_rating: str = "N/A"  # Weighted avg rating
-    collateralization_ratio: float = 0.0  # UGT vs deployed
+    collateralization_ratio: float = 0.0  # uGT vs deployed
     
     # Phase 2 KPIs - Compliance (placeholders)
     kyc_coverage: float = 100.0  # % verified investors

@@ -187,15 +187,32 @@ class Document(Base):
     reviewed_at = Column(DateTime, nullable=True)
     review_notes = Column(Text, nullable=True)
 
-    # 24h window tracking
+    # Deadline tracking (configurable business days)
     submitted_at = Column(DateTime, default=datetime.utcnow)
-    deadline_at = Column(DateTime, nullable=True)  # submitted_at + 24h
+    deadline_at = Column(DateTime, nullable=True)  # Calculated deadline
+    original_deadline_at = Column(DateTime, nullable=True)  # Original deadline before extension
+    
+    # Configuration snapshot at submission time
+    deadline_config_days = Column(Integer, default=5)  # Business days from config
+    grace_period_days = Column(Integer, default=1)  # Grace period in business days
+    
+    # Auto-rejection tracking
+    auto_rejected = Column(Boolean, default=False)
+    rejection_reason = Column(String(255), nullable=True)
+    reminder_sent_at = Column(DateTime, nullable=True)  # Last reminder timestamp
+    escalation_level = Column(Integer, default=0)  # 0=none, 1=warning, 2=urgent, 3=rejected
+    
+    # Admin override tracking
+    extended_by = Column(Integer, ForeignKey('users.id'), nullable=True)
+    extended_at = Column(DateTime, nullable=True)
+    extension_reason = Column(Text, nullable=True)
 
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationships
     investor = relationship("InvestorProfile", back_populates="documents")
-    reviewer = relationship("User")
+    reviewer = relationship("User", foreign_keys=[reviewed_by])
+    extender = relationship("User", foreign_keys=[extended_by])
 
 
 class ComplianceActivity(Base):
@@ -882,6 +899,130 @@ class Contract(Base):
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+# =============================================================================
+# COMPLIANCE SETTINGS & HELPER MODELS
+# =============================================================================
+
+class ComplianceSettings(Base):
+    """Compliance system settings"""
+    __tablename__ = 'compliance_settings'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    setting_key = Column(String(50), unique=True, nullable=False)
+    setting_value = Column(Integer, nullable=False)
+    description = Column(Text, nullable=True)
+    updated_by = Column(Integer, ForeignKey('users.id'), nullable=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    # Relationship
+    updater = relationship("User", foreign_keys=[updated_by])
+
+
+class HolidayCache(Base):
+    """Cached holiday data from external API"""
+    __tablename__ = 'holiday_cache'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    country_code = Column(String(2), nullable=False)
+    holiday_date = Column(DateTime, nullable=False)
+    holiday_name = Column(String(255), nullable=True)
+    year = Column(Integer, nullable=False)
+
+    # Unique constraint
+    __table_args__ = (
+        UniqueConstraint('country_code', 'holiday_date', name='uq_country_holiday'),
+    )
+
+
+class EmailNotification(Base):
+    """Email notification tracking"""
+    __tablename__ = 'email_notifications'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    recipient_email = Column(String(255), nullable=False)
+    subject = Column(String(255), nullable=False)
+    template_name = Column(String(100), nullable=False)
+    document_id = Column(Integer, ForeignKey('documents.id'), nullable=True)
+    notification_type = Column(String(50), nullable=True)  # 'warning', 'urgent', 'rejected', 'escalation'
+    sent_at = Column(DateTime, default=datetime.utcnow)
+    status = Column(String(20), default='sent')  # 'sent', 'failed', 'bounced'
+    error_message = Column(Text, nullable=True)
+
+    # Relationship
+    document = relationship("Document", foreign_keys=[document_id])
+
+
+# =============================================================================
+# ULP / uGT TOKEN MONITORING MODELS
+# =============================================================================
+
+class ULPHolding(Base):
+    """
+    Snapshot of uLP token holdings for each investor.
+    Updated on deposit, redeem, and yield accrual events.
+    Mirrors on-chain ULPTokenizer.balanceOf() and getValue().
+    """
+    __tablename__ = 'ulp_holdings'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False, index=True)
+    wallet_address = Column(String(42), nullable=True, index=True)
+
+    # uLP token data
+    ulp_balance = Column(Numeric(26, 18), default=0)  # Raw uLP token balance (18 decimals)
+    nav_per_share = Column(Numeric(26, 18), default=1000000000000000000)  # NAV per share (1e18 = 1.00)
+    position_value = Column(Numeric(26, 18), default=0)  # balance * navPerShare / 1e18
+    total_yield_earned = Column(Numeric(26, 18), default=0)  # Total yield accrued for this investor
+    total_deposited = Column(Numeric(26, 18), default=0)  # Cumulative deposits
+    total_redeemed = Column(Numeric(26, 18), default=0)  # Cumulative redemptions
+
+    # Pool reference
+    pool_id = Column(String(50), ForeignKey('pools.id'), nullable=True)
+
+    # Tracking
+    last_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Relationships
+    investor = relationship("InvestorProfile")
+    pool = relationship("Pool")
+
+
+class UGTHolding(Base):
+    """
+    Snapshot of uGT (Guarantee Token) NFT holdings per industrial operator.
+    Each uGT represents certified merchandise/collateral backing a financing.
+    """
+    __tablename__ = 'ugt_holdings'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    investor_id = Column(Integer, ForeignKey('investor_profiles.id', ondelete='CASCADE'), nullable=False, index=True)
+    wallet_address = Column(String(42), nullable=True, index=True)
+
+    # uGT NFT data
+    token_id = Column(Integer, nullable=False)  # ERC-721 token ID
+    certificate_id = Column(Integer, nullable=True)  # Industrial Gateway certificate ID
+    merchandise_value = Column(Numeric(26, 18), nullable=True)  # Value in UJEUR (18 decimals)
+    expiry_date = Column(DateTime, nullable=True)  # When guarantee expires
+    pool_address = Column(String(42), nullable=True)  # Pool holding the collateral
+    is_redeemed = Column(Boolean, default=False)
+    is_defaulted = Column(Boolean, default=False)
+    description = Column(String(500), nullable=True)
+    warehouse_location = Column(String(255), nullable=True)
+    stock_hash = Column(String(66), nullable=True)  # IPFS hash of stock documents
+
+    # Financing linkage
+    financing_id = Column(Integer, ForeignKey('financings.id'), nullable=True)
+
+    # Tracking
+    minted_at = Column(DateTime, default=datetime.utcnow)
+    last_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    # Relationships
+    investor = relationship("InvestorProfile")
+    financing = relationship("Financing")
 
 
 # =============================================================================

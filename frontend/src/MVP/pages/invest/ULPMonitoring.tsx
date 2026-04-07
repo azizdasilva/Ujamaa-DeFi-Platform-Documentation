@@ -188,7 +188,7 @@ const ULPMonitoring: React.FC = () => {
 
               <Card>
                 <div className="text-center">
-                  <p className="text-sm text-[#8b5b3d]">UGT Collateral (Global)</p>
+                  <p className="text-sm text-[#8b5b3d]">uGT Collateral (Global)</p>
                   <p className="text-2xl font-bold text-amber-600">
                     {formatCurrency(summary.total_collateral_value)}
                   </p>
@@ -272,7 +272,7 @@ const ULPMonitoring: React.FC = () => {
               onClick={() => navigate('/invest/ugt-monitoring')}
               className="p-4 bg-white border border-[#103b5b]/20 rounded-lg hover:bg-gray-50 text-left"
             >
-              <p className="font-semibold text-[#103b5b]">🛡️ UGT Collateral</p>
+              <p className="font-semibold text-[#103b5b]">🛡️ uGT Collateral</p>
               <p className="text-sm text-[#8b5b3d] mt-1">View guarantee tokens</p>
             </button>
             <a

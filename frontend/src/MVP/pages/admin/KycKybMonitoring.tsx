@@ -30,12 +30,12 @@ import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import Button from '../../components/Button';
 
-type TabType = 'kyc' | 'kyb' | 'officers';
+type TabType = 'kyc' | 'kyb' | 'both' | 'officers';
 type Granularity = 'daily' | 'weekly' | 'monthly' | 'yearly';
 
 const KycKybMonitoring: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<TabType>('kyc');
+  const [activeTab, setActiveTab] = useState<TabType>('both');
   const [granularity, setGranularity] = useState<Granularity>('daily');
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<KycKybPeriodStat[]>([]);
@@ -51,8 +51,9 @@ const KycKybMonitoring: React.FC = () => {
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
+      const docCategory = activeTab === 'officers' ? 'all' : activeTab === 'both' ? 'all' : activeTab;
       const promises: Promise<any>[] = [
-        getKycKybStats(granularity, activeTab !== 'officers' ? activeTab : 'all'),
+        getKycKybStats(granularity, docCategory),
         getKycKybSummary(),
       ];
       if (activeTab === 'officers') {
@@ -85,6 +86,31 @@ const KycKybMonitoring: React.FC = () => {
 
   const currentSummary: KycKybSummaryStat | null = useMemo(() => {
     if (!summary) return null;
+    if (activeTab === 'both') {
+      // Combine KYC + KYB stats
+      return {
+        total_submitted: summary.kyc.total_submitted + summary.kyb.total_submitted,
+        approved: summary.kyc.approved + summary.kyb.approved,
+        rejected: summary.kyc.rejected + summary.kyb.rejected,
+        pending: summary.kyc.pending + summary.kyb.pending,
+        overdue: summary.kyc.overdue + summary.kyb.overdue,
+        approval_rate: summary.kyc.total_submitted + summary.kyb.total_submitted > 0
+          ? ((summary.kyc.approved + summary.kyb.approved) / (summary.kyc.total_submitted + summary.kyb.total_submitted) * 100).toFixed(1) as any
+          : 0,
+        rejection_rate: summary.kyc.total_submitted + summary.kyb.total_submitted > 0
+          ? ((summary.kyc.rejected + summary.kyb.rejected) / (summary.kyc.total_submitted + summary.kyb.total_submitted) * 100).toFixed(1) as any
+          : 0,
+        average_review_days: (() => {
+          const totalReviewed = (summary.kyc.approved + summary.kyc.rejected) + (summary.kyb.approved + summary.kyb.rejected);
+          if (totalReviewed === 0) return 0;
+          const weightedAvg = (
+            (summary.kyc.average_review_days * (summary.kyc.approved + summary.kyc.rejected)) +
+            (summary.kyb.average_review_days * (summary.kyb.approved + summary.kyb.rejected))
+          ) / totalReviewed;
+          return Math.round(weightedAvg * 10) / 10;
+        })(),
+      };
+    }
     return activeTab === 'kyc' ? summary.kyc : summary.kyb;
   }, [summary, activeTab]);
 
@@ -97,7 +123,7 @@ const KycKybMonitoring: React.FC = () => {
   const totalRejected = useMemo(() => stats.reduce((sum, s) => sum + s.rejected, 0), [stats]);
   const totalOverdue = useMemo(() => stats.reduce((sum, s) => sum + s.overdue, 0), [stats]);
 
-  const tabLabel = activeTab === 'kyc' ? 'KYC (Individual Investors)' : 'KYB (Corporate Investors)';
+  const tabLabel = activeTab === 'kyc' ? 'KYC (Individual Investors)' : activeTab === 'kyb' ? 'KYB (Corporate Investors)' : 'All Documents (KYC + KYB)';
 
   return (
     <div className="min-h-screen bg-[#F9F6ED]">
@@ -143,7 +169,7 @@ const KycKybMonitoring: React.FC = () => {
         <Card>
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-2">
-              {(['kyc', 'kyb', 'officers'] as TabType[]).map((tab) => (
+              {(['kyc', 'kyb', 'both', 'officers'] as TabType[]).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -153,11 +179,13 @@ const KycKybMonitoring: React.FC = () => {
                         ? 'bg-[#023D7A] text-white'
                         : tab === 'kyb'
                         ? 'bg-[#d57028] text-white'
-                        : 'bg-[#103b5b] text-white'
+                        : tab === 'both'
+                        ? 'bg-[#103b5b] text-white'
+                        : 'bg-[#6b5b3d] text-white'
                       : 'bg-white text-[#8b5b3d] hover:bg-gray-100 border border-gray-200'
                   }`}
                 >
-                  {tab === 'kyc' ? '🧑 KYC (Individuals)' : tab === 'kyb' ? '🏢 KYB (Corporates)' : '👤 Officer Performance'}
+                  {tab === 'kyc' ? '🧑 KYC (Individuals)' : tab === 'kyb' ? '🏢 KYB (Corporates)' : tab === 'both' ? '📊 Both KYC+KYB' : '👤 Officer Performance'}
                 </button>
               ))}
             </div>

@@ -7,11 +7,17 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "../ERC3643/IdentityRegistry.sol";
+import "../ERC3643/Compliance.sol";
 
 /**
- * @title GuaranteeTokenizer (UGT - Ujamaa Guarantee Token Token)
+ * @title GuaranteeTokenizer (UGT - Ujamaa Guarantee Token)
  * @notice ERC-3643NFT (ERC-721 + ERC-3643 compliance) representing certified merchandise/collateral
  * @dev Represents certified stock/merchandise backing a financing operation
+ *      Implements ERC-3643 compliance primitives:
+ *      - Identity verification via IdentityRegistry
+ *      - Transfer restrictions via Compliance module
+ *      - Only verified entities can hold or transfer UGT
  *
  * UGT Lifecycle (SRS v2.0 Section 1.2):
  * 1. Industrial receives order (e.g., ZARA €2M contract)
@@ -23,7 +29,6 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * 7. UGT transferred back to Industrial (via forcedTransfer)
  * 8. [DEFAULT] If industrial defaults: UGT liquidated via auction
  *
-
  * @notice MVP TESTNET: This is a testnet deployment. No real funds.
  */
 contract GuaranteeTokenizer is ERC721, AccessControl, ReentrancyGuard {
@@ -42,9 +47,48 @@ contract GuaranteeTokenizer is ERC721, AccessControl, ReentrancyGuard {
     bytes32 public constant POOL_MANAGER_ROLE = keccak256("POOL_MANAGER_ROLE");
 
     /**
+     * @notice Role for compliance officers (can block/unblock addresses)
+     */
+    bytes32 public constant COMPLIANCE_OFFICER_ROLE = keccak256("COMPLIANCE_OFFICER_ROLE");
+
+    /**
      * @notice MVP Testnet flag
      */
     bool public constant IS_MVP_TESTNET = true;
+
+    // =========================================================================
+    // ERC-3643 COMPLIANCE INTEGRATION
+    // =========================================================================
+
+    /**
+     * @notice Identity registry for ERC-3643 compliance
+     * @dev Used to verify that only verified entities can hold UGT
+     */
+    IdentityRegistry public identityRegistry;
+
+    /**
+     * @notice Compliance module for transfer validation
+     * @dev Enforces jurisdiction and investor restrictions
+     */
+    Compliance public complianceModule;
+
+    /**
+     * @notice Set identity registry address
+     * @param _identityRegistry IdentityRegistry contract address
+     */
+    function setIdentityRegistry(address _identityRegistry) external onlyRole(COMPLIANCE_OFFICER_ROLE) {
+        require(_identityRegistry != address(0), "UGT: Zero address");
+        identityRegistry = IdentityRegistry(_identityRegistry);
+    }
+
+    /**
+     * @notice Set compliance module address
+     * @param _complianceModule Compliance contract address
+     */
+    function setComplianceModule(address _complianceModule) external onlyRole(COMPLIANCE_OFFICER_ROLE) {
+        require(_complianceModule != address(0), "UGT: Zero address");
+        complianceModule = Compliance(_complianceModule);
+    }
 
     // =========================================================================
     // STRUCTS
@@ -380,29 +424,67 @@ contract GuaranteeTokenizer is ERC721, AccessControl, ReentrancyGuard {
     }
 
     /**
-     * @notice Override transfer to enforce compliance (MVP simplified)
-     * @dev Only Pool and Industrial Gateway can transfer
+     * @notice Override transfer to enforce ERC-3643 compliance
+     * @dev Enforces:
+     *      1. Identity verification for both sender and recipient
+     *      2. Compliance module validation
+     *      3. Only Pool, Industrial, or auction winners can receive
      */
     function _update(address to, uint256 tokenId, address auth) internal override returns (address) {
         address from = _ownerOf(tokenId);
-        
-        // Allow minting
+
+        // Allow minting (from == address(0))
         if (from == address(0)) {
+            // Verify recipient identity during minting
+            if (address(identityRegistry) != address(0)) {
+                require(
+                    identityRegistry.isVerified(to),
+                    "UGT: Recipient not verified in IdentityRegistry"
+                );
+            }
             return super._update(to, tokenId, auth);
         }
 
-        // Allow transfers to/from Pool or Industrial Gateway (simplified for MVP)
+        // For transfers, enforce ERC-3643 compliance
+        
+        // Check 1: Verify sender identity
+        if (address(identityRegistry) != address(0)) {
+            require(
+                identityRegistry.isVerified(from),
+                "UGT: Sender not verified in IdentityRegistry"
+            );
+            
+            // Check 2: Verify recipient identity
+            require(
+                identityRegistry.isVerified(to),
+                "UGT: Recipient not verified in IdentityRegistry"
+            );
+            
+            // Check 3: Validate via compliance module
+            if (address(complianceModule) != address(0)) {
+                require(
+                    complianceModule.canTransfer(from, to, tokenId),
+                    "UGT: Transfer blocked by compliance module"
+                );
+            }
+        }
+
+        // Check 4: Enforce UGT-specific transfer restrictions
+        // Only Pool, Industrial Gateway, or Pool Manager can receive
         Guarantee memory guarantee = s_guarantees[tokenId];
-        if (
-            to == guarantee.poolAddress ||
-            to == guarantee.industrial ||
-            hasRole(POOL_MANAGER_ROLE, to)
-        ) {
-            return super._update(to, tokenId, auth);
-        }
+        bool authorizedTransfer = (
+            to == guarantee.poolAddress ||              // Transfer back to pool
+            to == guarantee.industrial ||               // Return to industrial after repayment
+            hasRole(POOL_MANAGER_ROLE, to) ||           // Pool manager operations
+            hasRole(MINTER_ROLE, auth)                  // Minter (Industrial Gateway) operations
+        );
 
-        // Revert for unauthorized transfers
-        revert("UGT: Transfer not allowed - compliance restriction");
+        require(
+            authorizedTransfer,
+            "UGT: Transfer not allowed - only pool, industrial, or authorized entities"
+        );
+
+        return super._update(to, tokenId, auth);
     }
 
     // =========================================================================
@@ -411,6 +493,7 @@ contract GuaranteeTokenizer is ERC721, AccessControl, ReentrancyGuard {
 
     /**
      * @notice Check if interface is supported
+     * @dev Supports ERC721, AccessControl, and ERC-3643NFT compliance
      */
     function supportsInterface(bytes4 interfaceId)
         public
@@ -419,6 +502,81 @@ contract GuaranteeTokenizer is ERC721, AccessControl, ReentrancyGuard {
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
+    }
+
+    // =========================================================================
+    // ERC-3643NFT COMPLIANCE FUNCTIONS
+    // =========================================================================
+
+    /**
+     * @notice Check if transfer is compliant with ERC-3643
+     * @param from Sender address
+     * @param to Recipient address
+     * @param tokenId Token ID
+     * @return True if transfer is allowed
+     */
+    function canTransfer(address from, address to, uint256 tokenId) 
+        external 
+        view 
+        returns (bool) 
+    {
+        // Check identity verification
+        if (address(identityRegistry) != address(0)) {
+            if (!identityRegistry.isVerified(from)) return false;
+            if (!identityRegistry.isVerified(to)) return false;
+        }
+
+        // Check compliance module
+        if (address(complianceModule) != address(0)) {
+            if (!complianceModule.canTransfer(from, to, tokenId)) return false;
+        }
+
+        // Check UGT-specific restrictions
+        Guarantee memory guarantee = s_guarantees[tokenId];
+        return (
+            to == guarantee.poolAddress ||
+            to == guarantee.industrial ||
+            hasRole(POOL_MANAGER_ROLE, to)
+        );
+    }
+
+    /**
+     * @notice Get compliance reason if transfer is blocked
+     * @param from Sender address
+     * @param to Recipient address
+     * @param tokenId Token ID
+     * @return reason Reason why transfer is blocked
+     */
+    function getComplianceReason(address from, address to, uint256 tokenId)
+        external
+        view
+        returns (string memory reason)
+    {
+        if (address(identityRegistry) != address(0)) {
+            if (!identityRegistry.isVerified(from)) {
+                return "UGT: Sender not verified in IdentityRegistry";
+            }
+            if (!identityRegistry.isVerified(to)) {
+                return "UGT: Recipient not verified in IdentityRegistry";
+            }
+        }
+
+        if (address(complianceModule) != address(0)) {
+            if (!complianceModule.canTransfer(from, to, tokenId)) {
+                return "UGT: Transfer blocked by compliance module";
+            }
+        }
+
+        Guarantee memory guarantee = s_guarantees[tokenId];
+        if (
+            to != guarantee.poolAddress &&
+            to != guarantee.industrial &&
+            !hasRole(POOL_MANAGER_ROLE, to)
+        ) {
+            return "UGT: Recipient not authorized (only pool, industrial, or pool manager)";
+        }
+
+        return "";
     }
 
     // =========================================================================

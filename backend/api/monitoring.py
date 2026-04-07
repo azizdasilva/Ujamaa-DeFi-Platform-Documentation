@@ -781,8 +781,8 @@ def get_trend_data(db: Session, start_date: datetime, end_date: datetime, period
 # KYC/KYB SPECIFIC MONITORING (Admin Only)
 # =============================================================================
 
-KYC_DOC_TYPES = ['kyc_id', 'kyc_address', 'kyc_selfie']
-KYB_DOC_TYPES = ['kyb_incorporation', 'kyb_tax', 'kyb_ubo', 'kyb_resolution', 'kyb_license', 'kyb_aml']
+KYC_DOC_TYPES = ['KYC_ID', 'KYC_ADDRESS', 'KYC_SELFIE']
+KYB_DOC_TYPES = ['KYB_INCORPORATION', 'KYB_TAX', 'KYB_UBO', 'KYB_RESOLUTION', 'KYB_LICENSE', 'KYB_AML']
 
 
 def get_time_period_stats(db: Session, doc_types: list, granularity: str = 'daily'):
@@ -838,10 +838,10 @@ def get_time_period_stats(db: Session, doc_types: list, granularity: str = 'dail
 
         periods[key]['total_submitted'] += 1
 
-        status = doc.verification_status.value if hasattr(doc.verification_status, 'value') else doc.verification_status
-        if status == 'approved':
+        status = str(doc.verification_status).upper()
+        if status == 'APPROVED':
             periods[key]['approved'] += 1
-        elif status == 'rejected':
+        elif status == 'REJECTED':
             periods[key]['rejected'] += 1
         else:
             periods[key]['pending'] += 1
@@ -878,8 +878,8 @@ def get_kyc_kyb_summary(db: Session):
 
     def calc_stats(docs):
         total = len(docs)
-        approved = sum(1 for d in docs if (d.verification_status.value if hasattr(d.verification_status, 'value') else d.verification_status) == 'approved')
-        rejected = sum(1 for d in docs if (d.verification_status.value if hasattr(d.verification_status, 'value') else d.verification_status) == 'rejected')
+        approved = sum(1 for d in docs if str(d.verification_status).upper() == 'APPROVED')
+        rejected = sum(1 for d in docs if str(d.verification_status).upper() == 'REJECTED')
         pending = total - approved - rejected
         overdue = sum(1 for d in docs if hasattr(d, 'is_overdue') and d.is_overdue)
 

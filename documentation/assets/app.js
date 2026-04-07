@@ -650,20 +650,20 @@ style.textContent = `
       opacity: 1;
     }
   }
-  
+
   .docs-toast {
     animation: slideIn 0.3s ease-out;
   }
-  
+
   .search-match {
     animation: highlight 1s ease;
   }
-  
+
   @keyframes highlight {
     0%, 100% { background: transparent; }
     50% { background: rgba(59, 130, 246, 0.3); }
   }
-  
+
   @media (max-width: 1280px) {
     .docs-toc {
       display: none !important;
@@ -671,5 +671,44 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+/**
+ * Print Functionality - Trigger browser print dialog
+ */
+function printPage() {
+  window.print();
+}
+
+/**
+ * Create and insert a print button into the header
+ */
+function initPrintButton() {
+  // Find the header element
+  const header = document.querySelector('.docs-header');
+  if (!header) return;
+
+  // Create print button
+  const printBtn = document.createElement('button');
+  printBtn.className = 'docs-print-btn';
+  printBtn.onclick = printPage;
+  printBtn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/>
+      <circle cx="18" cy="11" r="1.5"/>
+    </svg>
+    <span>Print</span>
+  `;
+
+  // Add keyboard shortcut (Ctrl/Cmd + P already triggers print by default)
+  printBtn.title = 'Print this page (Ctrl+P)';
+
+  // Append to header
+  header.appendChild(printBtn);
+}
+
+// Initialize print button on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  initPrintButton();
+});
 
 console.log('✅ UJAMAA Documentation v2.0 loaded successfully');

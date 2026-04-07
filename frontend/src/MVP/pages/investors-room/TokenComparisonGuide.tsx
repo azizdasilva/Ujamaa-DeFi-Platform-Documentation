@@ -1,6 +1,6 @@
 /**
  * Token Comparison Guide
- * Comprehensive comparison of uLP, UAT, and UGT tokens
+ * Comprehensive comparison of uLP, UAT, and uGT tokens
  */
 
 import React from 'react';
@@ -25,18 +25,18 @@ const TokenComparisonGuide: React.FC = () => {
                   <th className="px-6 py-4 text-left">Feature</th>
                   <th className="px-6 py-4 text-left">UAT</th>
                   <th className="px-6 py-4 text-left">uLP</th>
-                  <th className="px-6 py-4 text-left">UGT</th>
+                  <th className="px-6 py-4 text-left">uGT</th>
                 </tr>
               </thead>
               <tbody>
-                <ComparisonRow feature="Full Name" uat="Ujamaa Asset Token" upt="Ujamaa Liquidity Provider Token" ugt="Ujamaa Guarantee Token" />
-                <ComparisonRow feature="Token Standard" uat="ERC-3643" upt="ERC-3643 (Fungible)" ugt="ERC-721 + ERC-3643 (NFT)" />
-                <ComparisonRow feature="What You Own" uat="Single asset" upt="Diversified pool share" ugt="Collateral (not investment)" />
-                <ComparisonRow feature="Value Model" uat="Fixed nominal value" upt="NAV appreciates over time" ugt="Collateral value" />
-                <ComparisonRow feature="Risk Level" uat="🔴 High (single asset)" upt="🟢 Low (diversified)" ugt="N/A" />
-                <ComparisonRow feature="Expected Return" uat="8-15%" upt="8-12% APR" ugt="N/A" />
-                <ComparisonRow feature="Minimum" uat="€50,000+" upt="€1,000" ugt="N/A" />
-                <ComparisonRow feature="For" uat="Sophisticated investors" upt="All investors" ugt="Originators only" />
+                <ComparisonRow feature="Full Name" uat="Ujamaa Asset Token" upt="Ujamaa Liquidity Provider Token" uGT="Ujamaa Guarantee Token" />
+                <ComparisonRow feature="Token Standard" uat="ERC-3643" upt="ERC-3643 (Fungible)" uGT="ERC-721 + ERC-3643 (NFT)" />
+                <ComparisonRow feature="What You Own" uat="Single asset" upt="Diversified pool share" uGT="Collateral (not investment)" />
+                <ComparisonRow feature="Value Model" uat="Fixed nominal value" upt="NAV appreciates over time" uGT="Collateral value" />
+                <ComparisonRow feature="Risk Level" uat="🔴 High (single asset)" upt="🟢 Low (diversified)" uGT="N/A" />
+                <ComparisonRow feature="Expected Return" uat="8-15%" upt="8-12% APR" uGT="N/A" />
+                <ComparisonRow feature="Minimum" uat="€50,000+" upt="€1,000" uGT="N/A" />
+                <ComparisonRow feature="For" uat="Sophisticated investors" upt="All investors" uGT="Originators only" />
               </tbody>
             </table>
           </div>
@@ -62,10 +62,10 @@ const TokenComparisonGuide: React.FC = () => {
             featured
           />
           <TokenCard
-            symbol="UGT"
+            symbol="uGT"
             name="Ujamaa Guarantee Token"
             description="Collateral NFT for originators"
-            example="UGT-001 → 1,000 cotton bales"
+            example="uGT-001 → 1,000 cotton bales"
             analogy="Like a warehouse receipt"
             color="from-purple-500 to-purple-600"
           />
@@ -102,7 +102,7 @@ const TokenComparisonGuide: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  <span>UGT collateral liquidations</span>
+                  <span>uGT collateral liquidations</span>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ const TokenComparisonGuide: React.FC = () => {
               featured
             />
             <RiskProfile
-              token="UGT"
+              token="uGT"
               risks={[
                 { name: 'Collateral Loss', level: 'high', reason: 'Default = lose merchandise' },
                 { name: 'Valuation', level: 'medium', reason: 'Appraisal required' },
@@ -173,8 +173,8 @@ const TokenComparisonGuide: React.FC = () => {
             />
           </div>
           <div className="mt-8 p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <h3 className="font-bold mb-2">⚠️ About UGT</h3>
-            <p>UGT is NOT an investment token. It's an NFT collateral for originators who need financing. Investors do NOT buy UGT.</p>
+            <h3 className="font-bold mb-2">⚠️ About uGT</h3>
+            <p>uGT is NOT an investment token. It's an NFT collateral for originators who need financing. Investors do NOT buy uGT.</p>
           </div>
         </section>
 
@@ -264,8 +264,8 @@ const TokenComparisonGuide: React.FC = () => {
               a="No direct conversion exists. You would need to sell UAT on the secondary market (or wait for maturity) and then use proceeds to buy uLP."
             />
             <FAQItem
-              q="Can investors buy UGT?"
-              a="No. UGT is an NFT collateral token for originators only. It's not an investment product and cannot be purchased by investors."
+              q="Can investors buy uGT?"
+              a="No. uGT is an NFT collateral token for originators only. It's not an investment product and cannot be purchased by investors."
             />
             <FAQItem
               q="Which is more liquid?"
@@ -283,12 +283,12 @@ const TokenComparisonGuide: React.FC = () => {
 };
 
 // Sub-components
-const ComparisonRow: React.FC<{ feature: string; uat: string; upt: string; ugt: string }> = ({ feature, uat, upt, ugt }) => (
+const ComparisonRow: React.FC<{ feature: string; uat: string; upt: string; uGT: string }> = ({ feature, uat, upt, uGT }) => (
   <tr className="border-b border-[#48A9F0]/20">
     <td className="px-6 py-4 font-bold text-[#023D7A]">{feature}</td>
     <td className="px-6 py-4 text-[#333333]">{uat}</td>
     <td className="px-6 py-4 text-[#333333] bg-[#F3F8FA]">{upt}</td>
-    <td className="px-6 py-4 text-[#333333]">{ugt}</td>
+    <td className="px-6 py-4 text-[#333333]">{uGT}</td>
   </tr>
 );
 

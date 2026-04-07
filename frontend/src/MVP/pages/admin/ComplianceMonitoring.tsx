@@ -29,7 +29,8 @@ import {
   DocumentTypePieChart,
   OfficerPerformanceChart,
   SLAComplianceGauge,
-  TrendSparkline
+  TrendSparkline,
+  chartColors
 } from '../../components/charts/Charts';
 import {
   exportOverdueDocuments,

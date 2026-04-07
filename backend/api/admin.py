@@ -1036,7 +1036,7 @@ def _seed_default_contracts(db: Session) -> None:
     defaults = [
         {"name": "ULPTokenizer", "address": wc.ULP_TOKEN, "contract_type": "ERC-3643-style Token", "description": "Yield-bearing liquidity pool token with identity verification."},
         {"name": "UATToken", "address": wc.UAT_TOKEN, "contract_type": "ERC-20 Utility Token", "description": "Utility token for platform operations."},
-        {"name": "GuaranteeTokenizer", "address": wc.UGT_TOKEN, "contract_type": "ERC-721 NFT", "description": "NFT collateral token for industrial operator commitments."},
+        {"name": "GuaranteeTokenizer", "address": wc.UGT_TOKEN, "contract_type": "ERC-3643NFT", "description": "ERC-3643 NFT collateral token for industrial operator commitments with identity verification and transfer restrictions."},
         {"name": "MockEUROD", "address": wc.MOCK_EUROD, "contract_type": "ERC-20 Stablecoin", "description": "Mock Euro stablecoin for testnet."},
         {"name": "LiquidityPool", "address": wc.LIQUIDITY_POOL, "contract_type": "Pool Management", "description": "Multi-asset liquidity pool manager for industrial financing."},
         {"name": "IndustrialGateway", "address": wc.INDUSTRIAL_GATEWAY, "contract_type": "Gateway", "description": "Certifies industrial assets and mints GuaranteeTokens."},

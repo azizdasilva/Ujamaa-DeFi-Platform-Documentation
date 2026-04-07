@@ -1,10 +1,11 @@
 """
-Compliance API - KYC/KYB Document Review with 24h Window (Database-Backed)
+Compliance API - KYC/KYB Document Review with Configurable Business Days Deadline
 
 Endpoints for compliance officers to review and approve/reject documents.
-Implements 24-hour review window requirement.
+Implements configurable business day review window with grace period.
 
 @notice All document data is persisted to PostgreSQL/SQLite.
+@notice Deadlines calculated using business days (Mon-Fri) excluding holidays.
 """
 
 from fastapi import APIRouter, HTTPException, Depends, status, UploadFile, File, Form
@@ -13,13 +14,17 @@ from pydantic import BaseModel, Field
 from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any
 import uuid
+import logging
 
 from config.database import get_db
 from config.models import (
-    Document, ComplianceActivity, InvestorProfile, User,
+    Document, ComplianceActivity, InvestorProfile, User, ComplianceSettings,
     ComplianceStatusEnum, DocumentTypeEnum, InvestorRoleEnum
 )
 from sqlalchemy.orm import Session
+from utils.business_days import calculate_kyc_deadline
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v2/compliance", tags=["Compliance"])
 
@@ -575,6 +580,7 @@ async def upload_document_file(
     Upload a KYC/KYB document file (multipart/form-data).
 
     Accepts real file uploads, stores files to disk, and creates Document records.
+    Deadline calculated using configurable business days + grace period.
 
     - **investor_id**: Investor profile ID
     - **document_type**: Type (kyc_id, kyc_address, kyb_incorporation, etc.)
@@ -621,14 +627,50 @@ async def upload_document_file(
     doc_type_map = {
         "kyc_id": DocumentTypeEnum.KYC_ID,
         "kyc_address": DocumentTypeEnum.KYC_ADDRESS,
+        "kyc_selfie": DocumentTypeEnum.KYC_SELFIE,
         "kyb_incorporation": DocumentTypeEnum.KYB_INCORPORATION,
         "kyb_tax": DocumentTypeEnum.KYB_TAX,
         "kyb_ubo": DocumentTypeEnum.KYB_UBO,
+        "kyb_resolution": DocumentTypeEnum.KYB_RESOLUTION,
+        "kyb_license": DocumentTypeEnum.KYB_LICENSE,
+        "kyb_aml": DocumentTypeEnum.KYB_AML,
     }
     doc_type = doc_type_map.get(document_type, DocumentTypeEnum.OTHER)
 
-    # Create Document record
+    # Get configured business days (default: 5)
+    setting = db.query(ComplianceSettings).filter(
+        ComplianceSettings.setting_key == 'kyc_review_deadline_days'
+    ).first()
+    business_days = setting.setting_value if setting else 5
+    grace_period_days = 1  # 1 business day grace period
+
+    # Get investor jurisdiction for holiday calculation
+    investor = db.query(InvestorProfile).filter(InvestorProfile.id == investor_id).first()
+    if not investor:
+        raise HTTPException(status_code=404, detail=f"Investor {investor_id} not found")
+    
+    country_code = investor.jurisdiction or "US"
+
+    # Calculate deadline using business days (async call)
+    import asyncio
     now = datetime.utcnow()
+    
+    try:
+        deadline = asyncio.get_event_loop().run_until_complete(
+            calculate_kyc_deadline(
+                submitted_at=now,
+                business_days=business_days,
+                country_code=country_code,
+                grace_period_days=grace_period_days,
+                db_session=db
+            )
+        )
+    except Exception as e:
+        logger.error(f"Error calculating deadline: {e}")
+        # Fallback to simple calculation (business_days + grace_period) * 24 hours
+        deadline = now + timedelta(days=(business_days + grace_period_days) * 1.5)
+
+    # Create Document record
     doc = Document(
         investor_id=investor_id,
         document_type=doc_type,
@@ -638,14 +680,24 @@ async def upload_document_file(
         verification_status=ComplianceStatusEnum.PENDING,
         upload_status='uploaded',
         submitted_at=now,
-        deadline_at=now + timedelta(hours=24),
+        deadline_at=deadline,
+        original_deadline_at=deadline,  # Will be adjusted if grace period is separate
+        deadline_config_days=business_days,
+        grace_period_days=grace_period_days,
         reviewed_by=None,
         reviewed_at=None,
         review_notes=None,
+        auto_rejected=False,
+        escalation_level=0,
     )
     db.add(doc)
     db.commit()
     db.refresh(doc)
+
+    logger.info(
+        f"Document uploaded: {doc.id}, Investor {investor_id}, "
+        f"Deadline: {deadline.isoformat()} ({business_days} business days + {grace_period_days} grace)"
+    )
 
     return {
         "success": True,
@@ -654,5 +706,373 @@ async def upload_document_file(
         "file_hash": file_hash,
         "file_size": file_size,
         "deadline_at": doc.deadline_at.isoformat(),
-        "message": "Document uploaded successfully. 24h review window started."
+        "business_days_configured": business_days,
+        "grace_period_days": grace_period_days,
+        "message": f"Document uploaded successfully. {business_days}-business-day review window started (plus {grace_period_days} day grace period)."
     }
+
+
+# =============================================================================
+# ADMIN SETTINGS ENDPOINTS
+# =============================================================================
+
+class UpdateDeadlineRequest(BaseModel):
+    """Request model for updating KYC review deadline"""
+    business_days: int = Field(..., ge=1, le=30, description="Number of business days (1-30)")
+    reason: str = Field(..., min_length=10, description="Reason for the change")
+
+
+class ExtendDeadlineRequest(BaseModel):
+    """Request model for extending a specific document's deadline"""
+    additional_days: int = Field(..., ge=1, le=30, description="Additional business days to add")
+    reason: str = Field(..., min_length=10, description="Reason for extension")
+
+
+@router.put("/settings/kyc-deadline")
+async def update_kyc_deadline(
+    request: UpdateDeadlineRequest,
+    user: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Update KYC/KYB review deadline (business days).
+    
+    Only affects NEW submissions. Existing documents keep their original deadline.
+    
+    **Requirements:**
+    - ADMIN role only
+    - Business days must be between 1 and 30
+    - Reason must be provided (min 10 characters)
+    
+    **Returns:**
+    - Success status
+    - Old and new values
+    - Timestamp of change
+    - Admin who made the change
+    """
+    days = request.business_days
+    
+    # Validate range
+    if days < 1 or days > 30:
+        raise HTTPException(
+            status_code=400,
+            detail="Business days must be between 1 and 30"
+        )
+    
+    # Get current setting
+    setting = db.query(ComplianceSettings).filter(
+        ComplianceSettings.setting_key == 'kyc_review_deadline_days'
+    ).first()
+    
+    old_value = setting.setting_value if setting else None
+    
+    # Upsert setting
+    if not setting:
+        setting = ComplianceSettings(
+            setting_key='kyc_review_deadline_days',
+            setting_value=days,
+            description='Business days for KYC/KYB document review SLA'
+        )
+        db.add(setting)
+    else:
+        setting.setting_value = days
+        setting.updated_by = user.id
+    
+    # Log the change
+    activity = ComplianceActivity(
+        user_id=user.id,
+        activity_type='SETTINGS_UPDATE',
+        target_id=None,
+        target_type='COMPLIANCE_SETTINGS',
+        details={
+            "setting": "kyc_review_deadline_days",
+            "old_value": old_value,
+            "new_value": days,
+            "reason": request.reason,
+            "changed_by": user.email
+        }
+    )
+    db.add(activity)
+    db.commit()
+    
+    logger.info(
+        f"KYC deadline updated: {old_value} -> {days} business days "
+        f"by {user.email} (Reason: {request.reason})"
+    )
+    
+    return {
+        "success": True,
+        "setting_key": "kyc_review_deadline_days",
+        "old_value": old_value,
+        "new_value": days,
+        "updated_by": user.email,
+        "updated_at": datetime.utcnow().isoformat(),
+        "note": "This change only affects NEW document submissions"
+    }
+
+
+@router.get("/settings/kyc-deadline")
+async def get_kyc_deadline(
+    user: User = Depends(verify_compliance_access),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Get current KYC review deadline setting.
+    
+    Accessible to all compliance officers (read-only).
+    """
+    setting = db.query(ComplianceSettings).filter(
+        ComplianceSettings.setting_key == 'kyc_review_deadline_days'
+    ).first()
+    
+    # Get change history
+    activities = db.query(ComplianceActivity).filter(
+        ComplianceActivity.activity_type == 'SETTINGS_UPDATE'
+    ).order_by(ComplianceActivity.created_at.desc()).limit(10).all()
+    
+    history = []
+    for activity in activities:
+        details = activity.details if isinstance(activity.details, dict) else {}
+        history.append({
+            "old_value": details.get("old_value"),
+            "new_value": details.get("new_value"),
+            "reason": details.get("reason"),
+            "changed_by": details.get("changed_by"),
+            "changed_at": activity.created_at.isoformat()
+        })
+    
+    return {
+        "setting_key": "kyc_review_deadline_days",
+        "current_value": setting.setting_value if setting else 5,
+        "description": setting.description if setting else "Default: 5 business days",
+        "updated_by": setting.updater.email if setting and setting.updater else None,
+        "updated_at": setting.updated_at.isoformat() if setting and setting.updated_at else None,
+        "change_history": history
+    }
+
+
+@router.post("/documents/{document_id}/extend-deadline")
+async def extend_document_deadline(
+    document_id: int,
+    request: ExtendDeadlineRequest,
+    user: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Extend deadline for a specific document (admin override).
+    
+    Adds additional business days to the document's deadline.
+    Logs the extension for audit trail.
+    
+    **Requirements:**
+    - ADMIN role only
+    - Additional days must be between 1 and 30
+    - Reason must be provided
+    
+    **Returns:**
+    - Success status
+    - Old and new deadline
+    - Extension details
+    """
+    # Get document
+    doc = db.query(Document).filter(Document.id == document_id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail=f"Document {document_id} not found")
+    
+    if doc.verification_status != ComplianceStatusEnum.PENDING:
+        raise HTTPException(
+            status_code=400,
+            detail="Can only extend deadline for pending documents"
+        )
+    
+    # Store original deadline
+    old_deadline = doc.deadline_at
+    
+    # Calculate new deadline (add business days)
+    import asyncio
+    from utils.business_days import calculate_kyc_deadline
+    
+    investor = db.query(InvestorProfile).filter(
+        InvestorProfile.id == doc.investor_id
+    ).first()
+    
+    if not investor:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    
+    country_code = investor.jurisdiction or "US"
+    
+    try:
+        # Add additional days to current deadline
+        new_deadline = asyncio.get_event_loop().run_until_complete(
+            calculate_kyc_deadline(
+                submitted_at=doc.deadline_at,  # Start from current deadline
+                business_days=request.additional_days,
+                country_code=country_code,
+                grace_period_days=0,  # No additional grace period
+                db_session=db
+            )
+        )
+    except Exception as e:
+        logger.error(f"Error extending deadline: {e}")
+        # Fallback
+        new_deadline = doc.deadline_at + timedelta(days=request.additional_days * 1.5)
+    
+    # Update document
+    doc.deadline_at = new_deadline
+    doc.extended_by = user.id
+    doc.extended_at = datetime.utcnow()
+    doc.extension_reason = request.reason
+    
+    # Log the extension
+    activity = ComplianceActivity(
+        user_id=user.id,
+        activity_type='DEADLINE_EXTEND',
+        target_id=document_id,
+        target_type='DOCUMENT',
+        details={
+            "document_id": document_id,
+            "investor_id": doc.investor_id,
+            "document_type": doc.document_type.value,
+            "old_deadline": old_deadline.isoformat(),
+            "new_deadline": new_deadline.isoformat(),
+            "additional_days": request.additional_days,
+            "reason": request.reason,
+            "extended_by": user.email
+        }
+    )
+    db.add(activity)
+    db.commit()
+    
+    logger.info(
+        f"Document {document_id} deadline extended: {old_deadline.isoformat()} -> {new_deadline.isoformat()} "
+        f"(+{request.additional_days} days) by {user.email}"
+    )
+    
+    return {
+        "success": True,
+        "document_id": document_id,
+        "old_deadline": old_deadline.isoformat(),
+        "new_deadline": new_deadline.isoformat(),
+        "additional_days": request.additional_days,
+        "extended_by": user.email,
+        "extended_at": datetime.utcnow().isoformat(),
+        "reason": request.reason
+    }
+
+
+@router.post("/documents/{document_id}/cancel-rejection")
+async def cancel_auto_rejection(
+    document_id: int,
+    user: User = Depends(verify_admin_write),
+    db: Session = Depends(get_db)
+) -> Dict:
+    """
+    Cancel auto-rejection for a document (admin override).
+    
+    Reverts document status from REJECTED back to PENDING.
+    Sets a new deadline (current time + configured business days).
+    
+    **Requirements:**
+    - ADMIN role only
+    - Document must be in auto_rejected state
+    
+    **Returns:**
+    - Success status
+    - Document details
+    - New deadline
+    """
+    # Get document
+    doc = db.query(Document).filter(Document.id == document_id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail=f"Document {document_id} not found")
+    
+    if not doc.auto_rejected:
+        raise HTTPException(
+            status_code=400,
+            detail="Document is not in auto-rejected state"
+        )
+    
+    # Revert document status
+    doc.verification_status = ComplianceStatusEnum.PENDING
+    doc.auto_rejected = False
+    doc.rejection_reason = None
+    doc.escalation_level = 0
+    
+    # Set new deadline
+    import asyncio
+    from utils.business_days import calculate_kyc_deadline
+    
+    investor = db.query(InvestorProfile).filter(
+        InvestorProfile.id == doc.investor_id
+    ).first()
+    
+    if not investor:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    
+    country_code = investor.jurisdiction or "US"
+    setting = db.query(ComplianceSettings).filter(
+        ComplianceSettings.setting_key == 'kyc_review_deadline_days'
+    ).first()
+    business_days = setting.setting_value if setting else 5
+    
+    try:
+        new_deadline = asyncio.get_event_loop().run_until_complete(
+            calculate_kyc_deadline(
+                submitted_at=datetime.utcnow(),
+                business_days=business_days,
+                country_code=country_code,
+                grace_period_days=1,
+                db_session=db
+            )
+        )
+    except Exception as e:
+        logger.error(f"Error calculating new deadline: {e}")
+        new_deadline = datetime.utcnow() + timedelta(days=(business_days + 1) * 1.5)
+    
+    doc.deadline_at = new_deadline
+    doc.submitted_at = datetime.utcnow()  # Reset submission time
+    
+    # Update investor status back to pending
+    investor_profile = db.query(InvestorProfile).filter(
+        InvestorProfile.id == doc.investor_id
+    ).first()
+    
+    if investor_profile:
+        if doc.document_type.value.startswith('kyc_'):
+            investor_profile.kyc_status = ComplianceStatusEnum.PENDING
+        elif doc.document_type.value.startswith('kyb_'):
+            investor_profile.kyb_status = ComplianceStatusEnum.PENDING
+    
+    # Log the action
+    activity = ComplianceActivity(
+        user_id=user.id,
+        activity_type='REJECTION_CANCELLED',
+        target_id=document_id,
+        target_type='DOCUMENT',
+        details={
+            "document_id": document_id,
+            "investor_id": doc.investor_id,
+            "document_type": doc.document_type.value,
+            "old_status": "rejected",
+            "new_status": "pending",
+            "new_deadline": new_deadline.isoformat(),
+            "cancelled_by": user.email
+        }
+    )
+    db.add(activity)
+    db.commit()
+    
+    logger.info(
+        f"Document {document_id} auto-rejection cancelled by {user.email}, "
+        f"new deadline: {new_deadline.isoformat()}"
+    )
+    
+    return {
+        "success": True,
+        "document_id": document_id,
+        "status": "pending",
+        "new_deadline": new_deadline.isoformat(),
+        "cancelled_by": user.email,
+        "cancelled_at": datetime.utcnow().isoformat()
+    }
+

@@ -462,15 +462,15 @@ Network: Polygon Amoy (80002)
 Deployer: 0xYourDeployerAddress
 ----------------------------------------
 ALL Contract Addresses:
-MockEUROD:            0x787C5c0365829ABF88a3D8404E9488d1e307eD43
-ULPToken:             0xb6062a6e63a07c3598629a65ed19021445fb3b26
-GuaranteeToken:       0x83e20A9516B82f0B1bd0ee57882ef35F9553B469
-LiquidityPool:        0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec
-IndustrialGateway:    0x882071de6689eC1716BD7e162Acf50707AC68930
-JurisdictionCompliance: 0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C
-MockEscrow:           0x8d446994fcD9906c573500959cDc8A8271a9485F
-MockFiatRamp:         0xDC4eFb44fED26593b54cBEEEE9F8b359BAA75A9a
-NavGateway:           0x99712f923e3519B4305CEDAd40290428299F29A0
+MockEUROD:            0xAf5904C33723026a5D79a1879A8455047916bd1B
+ULPToken:             0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8
+GuaranteeToken:       0x7600C0b36F73028f866081823Fa691fF4688CeE0
+LiquidityPool:        0x465CCDe6d2B228278eEB5c36606058D03859F67A
+IndustrialGateway:    0xf1119462800d2f038aF0c61D874B52521bF22459
+JurisdictionCompliance: 0xB4885b421Bef3112eD15e625581bA03CA0419e4e
+MockEscrow:           0xF372Aa2E48B74d584eD1A3ECfC65b93046D8Efcb
+MockFiatRamp:         0x9E3e2037C3F743a9e1527B6e52f9Bc620215f088
+NavGateway:           0x01dF9667F68505d2561d890A8314fAac54eE1073
 ========================================</code></div>
           
           <div class="docs-callout docs-callout-info">
@@ -519,10 +519,10 @@ NavGateway:           0x99712f923e3519B4305CEDAd40290428299F29A0
           <p>Using Foundry:</p>
           
           <div class="docs-pre"><code># Check ULPToken name
-cast call 0xb6062a6e63a07c3598629a65ed19021445fb3b26 "name()"
+cast call 0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8 "name()"
 
 # Check LiquidityPool total value
-cast call 0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec "totalPoolValue()"</code></div>
+cast call 0x465CCDe6d2B228278eEB5c36606058D03859F67A "totalPoolValue()"</code></div>
         </section>
         
         <section class="docs-section" data-animate="fade-in">
@@ -538,19 +538,19 @@ cast call 0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec "totalPoolValue()"</code></
 
           <div class="docs-pre"><code>export const CONTRACT_ADDRESSES = {
   // ERC-3643 Infrastructure (NEW)
-  identityRegistry: '0xB3fb5AB654FC270d10338A64fDBC1E151c223283',
-  compliance: '0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2',
+  identityRegistry: '0x085a788194625e95f8060f9B561f4358aD1b3Ed7',
+  compliance: '0x11a4c694e07e14F5231cf4Db0b483B65018b2583',
   
   // MVP Contracts (Updated)
-  ulpToken: '0xe69569DCc219c518673318a7a34D56202CF92DE2',
-  liquidityPool: '0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec',
-  guaranteeToken: '0x83e20A9516B82f0B1bd0ee57882ef35F9553B469',
-  industrialGateway: '0x882071de6689eC1716BD7e162Acf50707AC68930',
-  jurisdictionCompliance: '0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C',
+  ulpToken: '0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8',
+  liquidityPool: '0x465CCDe6d2B228278eEB5c36606058D03859F67A',
+  guaranteeToken: '0x7600C0b36F73028f866081823Fa691fF4688CeE0',
+  industrialGateway: '0xf1119462800d2f038aF0c61D874B52521bF22459',
+  jurisdictionCompliance: '0xB4885b421Bef3112eD15e625581bA03CA0419e4e',
   mockEscrow: '0x74985F48F7Bf018915af1AC706994677B2AF28BE',
-  mockFiatRamp: '0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a',
-  navGateway: '0x99712f923e3519b4305cedad40290428299f29a0',
-  mockEUROD: '0x787c5c0365829abf88a3d8404e9488d1e307ed43',
+  mockFiatRamp: '0x9E3e2037C3F743a9e1527B6e52f9Bc620215f088',
+  navGateway: '0x01dF9667F68505d2561d890A8314fAac54eE1073',
+  mockEUROD: '0xAf5904C33723026a5D79a1879A8455047916bd1B',
 } as const;
 
 // Set to false to use live data
@@ -615,7 +615,7 @@ npm run dev</code></div>
           
           <p><strong>Solution:</strong> Ensure addresses are 40 hex characters (20 bytes):</p>
           
-          <div class="docs-pre"><code>✅ Correct: 0xb6062a6e63a07c3598629a65ed19021445fb3b26
+          <div class="docs-pre"><code>✅ Correct: 0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8
 ❌ Wrong: 0x8b0715695C21853838781d4a367B8067360F84A8 (39 chars)</code></div>
           
           <h3>Getting Help</h3>
@@ -652,12 +652,12 @@ npm run dev</code></div>
                 </tr>
                 <tr>
                   <td><strong>IdentityRegistry</strong></td>
-                  <td><code>0xB3fb5AB654FC270d10338A64fDBC1E151c223283</code></td>
+                  <td><code>0x085a788194625e95f8060f9B561f4358aD1b3Ed7</code></td>
                   <td>ERC-3643</td>
                 </tr>
                 <tr>
                   <td><strong>Compliance</strong></td>
-                  <td><code>0xb303dFf92f56bFE72eeD3b5F8682E4Cf6260C8F2</code></td>
+                  <td><code>0x11a4c694e07e14F5231cf4Db0b483B65018b2583</code></td>
                   <td>ERC-3643</td>
                 </tr>
                 <tr>
@@ -665,27 +665,27 @@ npm run dev</code></div>
                 </tr>
                 <tr>
                   <td><strong>ULPToken</strong> (ERC-3643)</td>
-                  <td><code>0xe69569DCc219c518673318a7a34D56202CF92DE2</code></td>
+                  <td><code>0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8</code></td>
                   <td>ERC-3643</td>
                 </tr>
                 <tr>
                   <td><strong>GuaranteeToken</strong></td>
-                  <td><code>0x83e20A9516B82f0B1bd0ee57882ef35F9553B469</code></td>
+                  <td><code>0x7600C0b36F73028f866081823Fa691fF4688CeE0</code></td>
                   <td>ERC-3643NFT</td>
                 </tr>
                 <tr>
                   <td><strong>LiquidityPool</strong></td>
-                  <td><code>0x36e27C0b63103863a8a31a6EadEad0a0cDc2cfec</code></td>
+                  <td><code>0x465CCDe6d2B228278eEB5c36606058D03859F67A</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>IndustrialGateway</strong></td>
-                  <td><code>0x882071de6689eC1716BD7e162Acf50707AC68930</code></td>
+                  <td><code>0xf1119462800d2f038aF0c61D874B52521bF22459</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>JurisdictionCompliance</strong></td>
-                  <td><code>0x4eB4c7F57E62A342aC7F322B87a31a7cd54D453C</code></td>
+                  <td><code>0xB4885b421Bef3112eD15e625581bA03CA0419e4e</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
@@ -695,17 +695,17 @@ npm run dev</code></div>
                 </tr>
                 <tr>
                   <td><strong>MockFiatRamp</strong></td>
-                  <td><code>0xdc4efb44fed26593b54cbeeee9f8b359baa75a9a</code></td>
+                  <td><code>0x9E3e2037C3F743a9e1527B6e52f9Bc620215f088</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>NavGateway</strong></td>
-                  <td><code>0x99712f923e3519b4305cedad40290428299f29a0</code></td>
+                  <td><code>0x01dF9667F68505d2561d890A8314fAac54eE1073</code></td>
                   <td>Custom</td>
                 </tr>
                 <tr>
                   <td><strong>MockEUROD</strong></td>
-                  <td><code>0x787c5c0365829abf88a3d8404e9488d1e307ed43</code></td>
+                  <td><code>0xAf5904C33723026a5D79a1879A8455047916bd1B</code></td>
                   <td>ERC-20</td>
                 </tr>
                 <tr style="background:#F0F9FF; font-weight:bold;">

@@ -13,10 +13,11 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from config.models import (
     User, InvestorProfile, Pool, Investment, Document,
-    ULTTransaction, Transaction, PoolPosition, Financing,
+    ULTTransaction, Transaction, BlockchainTransaction, PoolPosition, Financing,
     YieldStatement, BankAccount, BankTransaction, GDIZFinancing,
     RiskMetrics, ComplianceMetrics, ImpactMetrics, WhitelistedWallet,
-    ComplianceActivity
+    ComplianceActivity, Contract, ComplianceSettings, HolidayCache, EmailNotification,
+    ULPHolding, UGTHolding
 )
 from sqlalchemy import Column, Numeric, String, Integer, Float, Boolean, DateTime, Text, JSON
 
@@ -58,6 +59,7 @@ def get_model_columns():
         'documents': Document,
         'ult_transactions': ULTTransaction,
         'transactions': Transaction,
+        'blockchain_transactions': BlockchainTransaction,
         'pool_positions': PoolPosition,
         'financings': Financing,
         'yield_statements': YieldStatement,
@@ -69,6 +71,12 @@ def get_model_columns():
         'impact_metrics': ImpactMetrics,
         'whitelisted_wallets': WhitelistedWallet,
         'compliance_activities': ComplianceActivity,
+        'contracts': Contract,
+        'compliance_settings': ComplianceSettings,
+        'holiday_cache': HolidayCache,
+        'email_notifications': EmailNotification,
+        'ulp_holdings': ULPHolding,
+        'ugt_holdings': UGTHolding,
     }
     
     model_columns = {}

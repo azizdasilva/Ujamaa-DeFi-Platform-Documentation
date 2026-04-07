@@ -755,8 +755,8 @@ const AssetSubmission: React.FC = () => {
                   { step: 1, title: 'Submit Application', desc: 'Your asset submission is sent to Industrial Gateway', icon: '📤' },
                   { step: 2, title: 'GDIZ (Benin)/SIPI Review', desc: 'Asset is reviewed and verified (24 hours)', icon: '🔍' },
                   { step: 3, title: 'Certificate Issued', desc: 'Unique certificate ID is generated', icon: '📜' },
-                  { step: 4, title: 'UGT Token Minted', desc: 'Guarantee Token created as collateral', icon: '🪙' },
-                  { step: 5, title: 'Access Financing', desc: 'Use UGT to secure financing from liquidity pools', icon: '💰' },
+                  { step: 4, title: 'uGT Token Minted', desc: 'Guarantee Token created as collateral', icon: '🪙' },
+                  { step: 5, title: 'Access Financing', desc: 'Use uGT to secure financing from liquidity pools', icon: '💰' },
                 ].map((item, idx) => (
                   <div key={item.step} className="flex items-start gap-4">
                     <div className="relative">

@@ -48,7 +48,7 @@ const InvestmentCaseStudies: React.FC = () => {
               <h4 className="font-bold text-[#023D7A] mb-2">Key Takeaways</h4>
               <ul className="space-y-2 text-[#333333]">
                 <li>• Diversification across 50+ factories reduced individual asset risk</li>
-                <li>• UGT collateral provided 120% coverage</li>
+                <li>• uGT collateral provided 120% coverage</li>
                 <li>• Quarterly distributions met investor expectations</li>
               </ul>
             </div>

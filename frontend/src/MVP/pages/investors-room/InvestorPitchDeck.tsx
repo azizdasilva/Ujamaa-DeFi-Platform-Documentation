@@ -177,7 +177,7 @@ const InvestorPitchDeck: React.FC = () => {
               featured
             />
             <TokenCard 
-              symbol="UGT"
+              symbol="uGT"
               name="Ujamaa Guarantee Token"
               desc="Collateral token (originators)"
               return="N/A"

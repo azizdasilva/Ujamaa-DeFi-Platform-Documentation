@@ -50,7 +50,7 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="What are the minimum investments?"
-              answer="uLP (Pool Token): €1,000 minimum. UAT (Single Asset): €50,000+ depending on the asset. UGT is not an investment token—it's collateral for originators."
+              answer="uLP (Pool Token): €1,000 minimum. UAT (Single Asset): €50,000+ depending on the asset. uGT is not an investment token—it's collateral for originators."
             />
             <FAQItem 
               question="How do I get started?"
@@ -80,7 +80,7 @@ const InvestorFAQ: React.FC = () => {
             />
             <FAQItem 
               question="What happens if a borrower defaults?"
-              answer="For uLP: The pool absorbs the loss; diversification protects investors. UGT collateral is liquidated to recover funds. For UAT: You bear the loss directly (higher risk, higher return)."
+              answer="For uLP: The pool absorbs the loss; diversification protects investors. uGT collateral is liquidated to recover funds. For UAT: You bear the loss directly (higher risk, higher return)."
             />
             <FAQItem 
               question="Can I reinvest my returns?"
@@ -93,12 +93,12 @@ const InvestorFAQ: React.FC = () => {
         {openCategory === 'tokens' && (
           <section className="space-y-4">
             <FAQItem 
-              question="What is the difference between UAT, uLP, and UGT?"
-              answer="UAT (Ujamaa Asset Token): Single asset investment, like buying one stock. uLP (Ujamaa Liquidity Provider Token): Diversified pool investment, like an ETF. UGT (Ujamaa Guarantee Token): Collateral token for originators, NOT an investment."
+              question="What is the difference between UAT, uLP, and uGT?"
+              answer="UAT (Ujamaa Asset Token): Single asset investment, like buying one stock. uLP (Ujamaa Liquidity Provider Token): Diversified pool investment, like an ETF. uGT (Ujamaa Guarantee Token): Collateral token for originators, NOT an investment."
             />
             <FAQItem 
               question="What blockchain are tokens on?"
-              answer="Polygon (MATIC) for low fees and fast transactions. All tokens are ERC-3643 compliant for regulatory compliance. UGT is ERC-721 + ERC-3643 (NFT)."
+              answer="Polygon (MATIC) for low fees and fast transactions. All tokens are ERC-3643 compliant for regulatory compliance. uGT is ERC-721 + ERC-3643 (NFT)."
             />
             <FAQItem 
               question="Can I transfer my tokens?"
