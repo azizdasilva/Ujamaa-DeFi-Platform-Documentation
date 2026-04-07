@@ -78,6 +78,11 @@ import ContractManagement from './MVP/pages/admin/ContractManagement';
 import Monitoring from './MVP/pages/admin/Monitoring';
 import ThresholdManagement from './MVP/pages/admin/ThresholdManagement';
 import BankAccountManagement from './MVP/pages/admin/BankAccountManagement';
+import KYCSettings from './MVP/pages/admin/KYCSettings';
+import ComplianceMonitoring from './MVP/pages/admin/ComplianceMonitoring';
+import KycKybMonitoring from './MVP/pages/admin/KycKybMonitoring';
+import ULPMonitoring from './MVP/pages/invest/ULPMonitoring';
+import UGTMonitoring from './MVP/pages/invest/UGTMonitoring';
 
 // Regulator Pages
 import ComplianceReports from './MVP/pages/regulator/ComplianceReports';
@@ -397,6 +402,30 @@ const App: React.FC = () => {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/admin/kyc-settings"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <KYCSettings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/monitoring"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN', 'COMPLIANCE_OFFICER']}>
+                  <ComplianceMonitoring />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/kyc-kyb-monitoring"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <KycKybMonitoring />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Regulator Routes - PROTECTED */}
             <Route
@@ -563,6 +592,8 @@ const App: React.FC = () => {
             <Route path="/investors-room/tokenization" element={<IRTokenizationGuide />} />
             <Route path="/investors-room/understanding-erc3643" element={<IREthereumERC3643 />} />
             <Route path="/investors-room/reinvestment-settings" element={<IRReinvestmentSettings />} />
+            <Route path="/invest/ulp-monitoring" element={<ULPMonitoring />} />
+            <Route path="/invest/uGT-monitoring" element={<UGTMonitoring />} />
             <Route path="/investors-room/risk-management" element={<IRRiskManagementGuide />} />
             <Route path="/investors-room/q1-2026-report" element={<IRQ12026QuarterlyReport />} />
             <Route path="/investors-room/annual-report-2025" element={<IRAnnualReport2025 />} />

@@ -24,6 +24,9 @@ const ALL: InvestorRole[] = ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUS
 // Global viewers (can see everything but not write-admin pages)
 const GLOBAL_VIEW: InvestorRole[] = ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'];
 
+// COMPLIANCE_OFFICER specific: ONLY compliance workflow items (not global view)
+const COMPLIANCE_ONLY: InvestorRole[] = ['COMPLIANCE_OFFICER'];
+
 /**
  * Get the correct dashboard/pools path based on user role
  */
@@ -51,28 +54,28 @@ export const navigationItems: NavItem[] = [
     label: 'My Dashboard',
     href: '/institutional/dashboard',
     icon: '📊',
-    roles: ['INSTITUTIONAL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/retail/dashboard',
     icon: '📊',
-    roles: ['RETAIL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['RETAIL_INVESTOR'],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/originator/dashboard',
     icon: '📊',
-    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
+    roles: ['INDUSTRIAL_OPERATOR'],
     category: 'dashboard',
   },
   {
     label: 'My Dashboard',
     href: '/compliance/dashboard',
     icon: '📊',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: ['COMPLIANCE_OFFICER'],
     category: 'dashboard',
   },
   {
@@ -90,12 +93,28 @@ export const navigationItems: NavItem[] = [
     category: 'dashboard',
   },
 
+  // ── uLP/uGT Monitoring (separate pages for different audiences) ──
+  {
+    label: 'uLP Monitoring',
+    href: '/invest/ulp-monitoring',
+    icon: '🪙',
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'COMPLIANCE_OFFICER'],
+    category: 'invest',
+  },
+  {
+    label: 'uGT Collateral',
+    href: '/invest/uGT-monitoring',
+    icon: '🛡️',
+    roles: ['INDUSTRIAL_OPERATOR', 'ADMIN', 'COMPLIANCE_OFFICER'],
+    category: 'invest',
+  },
+
   // ── Pool & Investment Links ──
   {
     label: 'Pool Marketplace',
     href: '/institutional/pools',
     icon: '🏛️',
-    roles: ['INSTITUTIONAL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'invest',
   },
   {
@@ -109,21 +128,21 @@ export const navigationItems: NavItem[] = [
     label: 'Pool Dashboard',
     href: '/pool/dashboard',
     icon: '📈',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'invest',
   },
   {
     label: 'My Portfolio',
     href: '/investor/portfolio',
     icon: '💼',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'invest',
   },
   {
     label: 'Returns',
     href: '/investor/returns',
     icon: '💰',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN', 'REGULATOR'],
     category: 'invest',
   },
   {
@@ -139,21 +158,21 @@ export const navigationItems: NavItem[] = [
     label: 'Submit Asset',
     href: '/originator/assets/submit',
     icon: '➕',
-    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
+    roles: ['INDUSTRIAL_OPERATOR'],
     category: 'operator',
   },
   {
     label: 'View Certificates',
     href: '/originator/assets/certificates',
     icon: '📜',
-    roles: ['INDUSTRIAL_OPERATOR', 'COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: ['INDUSTRIAL_OPERATOR'],
     category: 'operator',
   },
   {
     label: 'Financings',
     href: '/industrial-operator/financings',
     icon: '💰',
-    roles: ['INDUSTRIAL_OPERATOR', ...GLOBAL_VIEW],
+    roles: ['INDUSTRIAL_OPERATOR'],
     category: 'operator',
   },
 
@@ -162,21 +181,35 @@ export const navigationItems: NavItem[] = [
     label: 'KYC Review',
     href: '/compliance/kyc-review',
     icon: '✓',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: COMPLIANCE_ONLY,
+    category: 'compliance',
+  },
+  {
+    label: 'Approval Review',
+    href: '/compliance/approval-review',
+    icon: '✅',
+    roles: COMPLIANCE_ONLY,
+    category: 'compliance',
+  },
+  {
+    label: 'Asset Review',
+    href: '/compliance/asset-review',
+    icon: '🔍',
+    roles: COMPLIANCE_ONLY,
     category: 'compliance',
   },
   {
     label: 'Transaction Monitor',
     href: '/compliance/transactions',
-    icon: '🔍',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    icon: '📊',
+    roles: COMPLIANCE_ONLY,
     category: 'compliance',
   },
   {
     label: 'Jurisdictions',
     href: '/compliance/jurisdictions',
     icon: '🌍',
-    roles: ['COMPLIANCE_OFFICER', 'ADMIN', 'REGULATOR'],
+    roles: COMPLIANCE_ONLY,
     category: 'compliance',
   },
 
@@ -224,6 +257,13 @@ export const navigationItems: NavItem[] = [
     category: 'admin',
   },
   {
+    label: 'KYC Settings',
+    href: '/admin/kyc-settings',
+    icon: '🔒',
+    roles: ['ADMIN'],
+    category: 'admin',
+  },
+  {
     label: 'Contracts',
     href: '/admin/contracts',
     icon: '📝',
@@ -231,9 +271,16 @@ export const navigationItems: NavItem[] = [
     category: 'admin',
   },
   {
-    label: 'Monitoring',
+    label: 'Compliance Monitoring',
     href: '/admin/monitoring',
     icon: '📊',
+    roles: ['ADMIN', 'COMPLIANCE_OFFICER'],
+    category: 'admin',
+  },
+  {
+    label: 'KYC/KYB Monitoring',
+    href: '/admin/kyc-kyb-monitoring',
+    icon: '🔍',
     roles: ['ADMIN'],
     category: 'admin',
   },
@@ -280,14 +327,14 @@ export const navigationItems: NavItem[] = [
     label: 'Deep Dive',
     href: '/deep-dive',
     icon: '📚',
-    roles: ALL,
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
     category: 'docs',
   },
   {
     label: 'Investors Room',
     href: '/investors-room',
     icon: '📄',
-    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', ...GLOBAL_VIEW],
+    roles: ['INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'ADMIN'],
     category: 'docs',
   },
   {
@@ -303,7 +350,7 @@ export const navigationItems: NavItem[] = [
     label: 'Blockchain Monitoring',
     href: '/monitor',
     icon: '🔗',
-    roles: ['ADMIN', 'REGULATOR', 'COMPLIANCE_OFFICER'],
+    roles: ['ADMIN'],
     category: 'test',
   },
   {
@@ -331,9 +378,46 @@ export const canAccessPath = (role: InvestorRole, path: string): boolean => {
     return true;
   }
 
-  // Global viewers can access everything
-  if (['ADMIN', 'COMPLIANCE_OFFICER', 'REGULATOR'].includes(role)) {
+  // ADMIN and REGULATOR can access everything (except compliance-specific pages for REGULATOR)
+  if (role === 'ADMIN') {
     return true;
+  }
+  if (role === 'REGULATOR') {
+    // Regulators can't access compliance workflow pages
+    if (path.startsWith('/compliance/')) {
+      return false;
+    }
+    return true;
+  }
+
+  // COMPLIANCE_OFFICER can only access compliance-specific pages
+  if (role === 'COMPLIANCE_OFFICER') {
+    const allowedPaths = [
+      '/compliance/dashboard',
+      '/compliance/kyc-review',
+      '/compliance/approval-review',
+      '/compliance/asset-review',
+      '/compliance/transactions',
+      '/compliance/jurisdictions',
+      '/admin/monitoring',  // Compliance officers can view monitoring dashboard
+      '/invest/ulp-monitoring',  // Can view uLP/uGT monitoring
+      '/docs/glossary',
+    ];
+    return allowedPaths.some(allowedPath => path === allowedPath || path.startsWith(allowedPath + '/'));
+  }
+
+  // INVESTORS can access uLP monitoring
+  if (role === 'INSTITUTIONAL_INVESTOR' || role === 'RETAIL_INVESTOR') {
+    if (path.startsWith('/invest/ulp-monitoring')) {
+      return true;
+    }
+  }
+
+  // INDUSTRIAL_OPERATOR can access uGT monitoring
+  if (role === 'INDUSTRIAL_OPERATOR') {
+    if (path.startsWith('/invest/uGT-monitoring')) {
+      return true;
+    }
   }
 
   // Check if any nav item matches this path for this role

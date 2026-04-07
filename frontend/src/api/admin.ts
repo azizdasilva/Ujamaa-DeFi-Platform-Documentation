@@ -502,6 +502,64 @@ export const deleteContract = (id: number): Promise<void> =>
   apiClient.delete(`/admin/contracts/${id}`).then(r => r.data);
 
 // =============================================================================
+// KYC/KYB Monitoring
+// =============================================================================
+
+export interface KycKybPeriodStat {
+  period: string;
+  total_submitted: number;
+  approved: number;
+  rejected: number;
+  pending: number;
+  overdue: number;
+  average_review_days: number;
+}
+
+export interface KycKybStatsResponse {
+  doc_category: string;
+  granularity: string;
+  periods: KycKybPeriodStat[];
+  generated_at: string;
+}
+
+export interface KycKybSummaryStat {
+  total_submitted: number;
+  approved: number;
+  rejected: number;
+  pending: number;
+  overdue: number;
+  approval_rate: number;
+  rejection_rate: number;
+  average_review_days: number;
+}
+
+export interface KycKybSummaryResponse {
+  kyc: KycKybSummaryStat;
+  kyb: KycKybSummaryStat;
+  generated_at: string;
+}
+
+/**
+ * Get KYC/KYB statistics grouped by time period
+ *
+ * @param granularity - 'daily' | 'weekly' | 'monthly' | 'yearly'
+ * @param docCategory - 'kyc' | 'kyb' | 'all'
+ */
+export const getKycKybStats = (
+  granularity: string = 'daily',
+  docCategory: string = 'all'
+): Promise<KycKybStatsResponse> =>
+  apiClient.get('/compliance/monitoring/kyc-kyb-stats', {
+    params: { granularity, doc_category: docCategory },
+  }).then(r => r.data);
+
+/**
+ * Get overall KYC vs KYB summary statistics
+ */
+export const getKycKybSummary = (): Promise<KycKybSummaryResponse> =>
+  apiClient.get('/compliance/monitoring/kyc-kyb-summary').then(r => r.data);
+
+// =============================================================================
 // Default export (backward compatibility)
 // =============================================================================
 
@@ -531,6 +589,9 @@ export default {
   getOverdueReport,
   getSLATrends,
   getOfficerLeaderboard,
+  // KYC/KYB Monitoring
+  getKycKybStats,
+  getKycKybSummary,
   // Wallets
   listWhitelistedWallets,
   updateWhitelistedWallet,
