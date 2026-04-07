@@ -20,6 +20,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { databaseAPI } from '../../../api/database';
 import { investmentsAPI } from '../../../api/investments';
 import apiClient from '../../../api/client';
+import { useMintUJEUR, useDepositULP, useTransactionWait } from '../../../hooks/useContracts';
 
 interface Pool {
   id: string;
@@ -154,6 +155,14 @@ const PoolMarketplace: React.FC = () => {
   const [userPosition, setUserPosition] = useState<any>(null);
   const [showDepositModal, setShowDepositModal] = useState(false);
   const [depositAmount, setDepositAmount] = useState<number>(50000);
+  const [depositSuccess, setDepositSuccess] = useState(false);
+  const [depositError, setDepositError] = useState<string | null>(null);
+
+  // Contract hooks
+  const { mint, hash: mintHash, isPending: isMinting, error: mintError } = useMintUJEUR();
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = useTransactionWait(mintHash);
+  const { deposit, hash: depositHash, isPending: isDepositing, error: depositTxError } = useDepositULP();
+  const { isLoading: isDepositConfirming, isSuccess: isDepositConfirmed } = useTransactionWait(depositHash);
 
   // Set default deposit amount based on role
   useEffect(() => {
@@ -168,22 +177,40 @@ const PoolMarketplace: React.FC = () => {
     }
   }, [authUser]);
 
-  const handleMockDeposit = async () => {
-    if (!investor?.id || depositAmount <= 0) return;
-    try {
-      await apiClient.post('/db/bank/deposit', {
-        investor_id: investor.id,
-        amount: depositAmount,
-      });
-      // Refresh investor profile
-      const data = await databaseAPI.getInvestorProfile(investor.id);
-      setInvestor(data);
-      setShowDepositModal(false);
-      alert(`✅ Successfully deposited ${formatFullCurrency(depositAmount)} virtual funds!`);
-    } catch (error) {
-      console.error('Deposit failed:', error);
-      alert('❌ Failed to simulate deposit. Ensure backend is running.');
+  // Watch for transaction confirmation
+  useEffect(() => {
+    if (isConfirmed) {
+      setDepositSuccess(true);
+      setDepositError(null);
+      // Refresh investor profile after mint
+      if (investor?.id) {
+        databaseAPI.getInvestorProfile(investor.id).then(setInvestor).catch(console.error);
+      }
+      setTimeout(() => {
+        setShowDepositModal(false);
+        setDepositSuccess(false);
+      }, 2000);
     }
+  }, [isConfirmed]);
+
+  useEffect(() => {
+    if (mintError) {
+      setDepositError(mintError.message || 'Transaction failed');
+    }
+  }, [mintError]);
+
+  const handleMockDeposit = () => {
+    if (!isConnected) {
+      setDepositError('Please connect your wallet first');
+      return;
+    }
+    if (depositAmount <= 0) {
+      setDepositError('Invalid amount');
+      return;
+    }
+    setDepositError(null);
+    setDepositSuccess(false);
+    mint(depositAmount);
   };
 
   // Check compliance status and fetch investor profile on mount
@@ -1386,58 +1413,95 @@ const PoolMarketplace: React.FC = () => {
                   </svg>
                 </button>
               </div>
+              <p className="text-sm text-white/80 mt-1">Mint UJEUR to your wallet (Simulates Fiat On-Ramp)</p>
             </div>
             <div className="p-6 space-y-6">
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">Deposit Amount</label>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">€</span>
-                  <input
-                    type="number"
-                    value={depositAmount}
-                    onChange={(e) => setDepositAmount(Number(e.target.value))}
-                    className="w-full pl-8 pr-4 py-3 text-xl font-bold text-[#023D7A] border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00A8A8] focus:border-transparent transition-all"
-                  />
+              {/* Wallet Status */}
+              {!isConnected ? (
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-center">
+                  <p className="text-amber-800 font-medium">⚠️ Wallet Not Connected</p>
+                  <p className="text-sm text-amber-600 mt-1">Please connect MetaMask to mint test tokens</p>
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">Deposit Amount</label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">€</span>
+                      <input
+                        type="number"
+                        value={depositAmount}
+                        onChange={(e) => setDepositAmount(Number(e.target.value))}
+                        disabled={isMinting || isConfirming}
+                        className="w-full pl-8 pr-4 py-3 text-xl font-bold text-[#023D7A] border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00A8A8] focus:border-transparent transition-all disabled:bg-gray-100"
+                      />
+                    </div>
+                  </div>
 
-              {/* Presets */}
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Quick Select</label>
-                <div className="grid grid-cols-3 gap-2">
-                  {(authUser?.role === 'INSTITUTIONAL_INVESTOR' 
-                    ? [100000, 500000, 1000000] 
-                    : [10000, 50000, 100000]
-                  ).map((amt) => (
+                  {/* Presets */}
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Quick Select</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {(authUser?.role === 'INSTITUTIONAL_INVESTOR'
+                        ? [100000, 500000, 1000000]
+                        : [10000, 50000, 100000]
+                      ).map((amt) => (
+                        <button
+                          key={amt}
+                          onClick={() => setDepositAmount(amt)}
+                          disabled={isMinting || isConfirming}
+                          className={`py-2 rounded-lg text-sm font-bold transition-colors disabled:opacity-50 ${
+                            depositAmount === amt
+                              ? 'bg-[#023D7A] text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          {formatFullCurrency(amt)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Status Messages */}
+                  {depositError && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                      ❌ {depositError}
+                    </div>
+                  )}
+                  {isMinting && (
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
+                      ⏳ Please confirm transaction in MetaMask...
+                    </div>
+                  )}
+                  {isConfirming && (
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-700">
+                      🔄 Waiting for blockchain confirmation...
+                    </div>
+                  )}
+                  {depositSuccess && (
+                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
+                      ✅ Successfully minted {formatFullCurrency(depositAmount)} UJEUR!
+                    </div>
+                  )}
+
+                  <div className="flex gap-3 pt-2">
                     <button
-                      key={amt}
-                      onClick={() => setDepositAmount(amt)}
-                      className={`py-2 rounded-lg text-sm font-bold transition-colors ${
-                        depositAmount === amt
-                          ? 'bg-[#023D7A] text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
+                      onClick={() => setShowDepositModal(false)}
+                      disabled={isMinting || isConfirming}
+                      className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors disabled:opacity-50"
                     >
-                      {formatFullCurrency(amt)}
+                      Cancel
                     </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex gap-3 pt-2">
-                <button
-                  onClick={() => setShowDepositModal(false)}
-                  className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleMockDeposit}
-                  className="flex-1 py-3 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-xl transition-colors"
-                >
-                  Confirm Deposit
-                </button>
-              </div>
+                    <button
+                      onClick={handleMockDeposit}
+                      disabled={isMinting || isConfirming || depositSuccess}
+                      className="flex-1 py-3 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-xl transition-colors disabled:opacity-50"
+                    >
+                      {isMinting ? 'Confirming...' : isConfirming ? 'Processing...' : depositSuccess ? 'Minted ✓' : 'Mint UJEUR'}
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
