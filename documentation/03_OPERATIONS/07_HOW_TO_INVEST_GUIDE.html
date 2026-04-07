@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Invest - Ujamaa DeFi Platform</title>
+  <style>
+    :root {
+      --primary: #023D7A;
+      --secondary: #00A8A8;
+      --accent: #D57028;
+      --bg: #F9F6ED;
+      --text: #333333;
+      --text-light: #666666;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-radius: 0 0 20px 20px;
+    }
+    .header h1 { font-size: 2.2em; margin-bottom: 10px; }
+    .header p { font-size: 1.1em; opacity: 0.9; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      margin-top: 10px;
+    }
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .section h2 {
+      color: var(--primary);
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+    }
+    .section h3 {
+      color: var(--primary);
+      font-size: 1.2em;
+      margin: 20px 0 10px;
+    }
+    .step-card {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px 0;
+      position: relative;
+    }
+    .step-card.active {
+      border-color: var(--secondary);
+      background: #f0fdfa;
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .step-header h4 {
+      color: var(--primary);
+      font-size: 1.1em;
+      margin: 0;
+    }
+    .arrow-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: 12px;
+    }
+    .arrow-box {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      min-width: 140px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .arrow-box .icon { font-size: 2em; margin-bottom: 5px; }
+    .arrow-box .label { font-weight: bold; color: var(--primary); font-size: 0.9em; }
+    .arrow { font-size: 1.5em; color: var(--secondary); font-weight: bold; }
+    .tip {
+      background: #fef3c7;
+      border-left: 4px solid var(--warning);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+    }
+    .tip strong { color: #92400e; }
+    .warning {
+      background: #fee2e2;
+      border-left: 4px solid var(--error);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+    }
+    .warning strong { color: #991b1b; }
+    .success {
+      background: #d1fae5;
+      border-left: 4px solid var(--success);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+    }
+    .success strong { color: #065f46; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f8f9fa;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-light);
+      font-size: 0.9em;
+    }
+    .footer a { color: var(--secondary); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    ul, ol { padding-left: 20px; margin: 10px 0; }
+    li { margin: 8px 0; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🚀 How to Invest in Ujamaa Pools</h1>
+  <p>A Complete Step-by-Step Guide for Investors</p>
+  <div class="badge">🌍 Testnet Version | Polygon Amoy (Chain ID: 80002)</div>
+</div>
+
+<div class="container">
+
+  <!-- Overview Flow -->
+  <div class="section">
+    <h2>📋 Overview: The Investment Flow</h2>
+    <p>Investing in Ujamaa DeFi pools follows a clear, secure process that mirrors real-world finance:</p>
+    
+    <div class="arrow-flow">
+      <div class="arrow-box">
+        <div class="icon">🏦</div>
+        <div class="label">1. Add Virtual<br>Funds</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="arrow-box">
+        <div class="icon">🔄</div>
+        <div class="label">2. Claim to<br>Wallet</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="arrow-box">
+        <div class="icon">🔒</div>
+        <div class="label">3. Approve<br>EUROD</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="arrow-box">
+        <div class="icon">💰</div>
+        <div class="label">4. Invest &<br>Get uLP</div>
+      </div>
+    </div>
+
+    <p><strong>What you'll end up with:</strong> uLP tokens in your wallet that represent your share of the liquidity pool. These tokens earn yield automatically and can be redeemed at any time.</p>
+  </div>
+
+  <!-- Prerequisites -->
+  <div class="section">
+    <h2>✅ Before You Begin</h2>
+    <ul>
+      <li><strong>MetaMask Wallet</strong> installed (Chrome extension or mobile app)</li>
+      <li><strong>Polygon Amoy Network</strong> added to MetaMask (Chain ID: <code>80002</code>)</li>
+      <li><strong>Test POL</strong> for gas fees (get from <a href="https://faucet.polygon.technology/" target="_blank">Polygon Faucet</a>)</li>
+      <li><strong>Completed Onboarding</strong> (KYC/KYB submitted and approved by compliance)</li>
+    </ul>
+    
+    <div class="tip">
+      <strong>💡 Tip:</strong> This is a testnet demo. No real money is involved. All tokens are for testing purposes only.
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="section">
+    <h2>Step 1: Add Virtual Funds</h2>
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-number">1</span>
+        <h4>🏦 Simulate a Bank Wire to Your Virtual Account</h4>
+      </div>
+      <p><strong>What it does:</strong> Adds virtual EUR to your platform account balance. This simulates receiving a bank transfer.</p>
+      
+      <h3>How to do it:</h3>
+      <ol>
+        <li>Log in to the Ujamaa platform</li>
+        <li>Go to <strong>Pool Marketplace</strong></li>
+        <li>Click the <strong>💳 Manage Funds</strong> button in the header</li>
+        <li>In the modal, enter an amount (e.g., <code>€50,000</code>)</li>
+        <li>Click <strong>Add</strong></li>
+      </ol>
+      
+      <div class="success">
+        <strong>✅ Result:</strong> Your "Virtual Bank" balance increases. You can now use these funds to mint EUROD tokens.
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="section">
+    <h2>Step 2: Claim to Wallet</h2>
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-number">2</span>
+        <h4>🔄 Convert Virtual Balance to EUROD on the Blockchain</h4>
+      </div>
+      <p><strong>What it does:</strong> Deducts the amount from your virtual ledger and mints real EUROD test tokens to your connected MetaMask wallet.</p>
+      
+      <h3>How to do it:</h3>
+      <ol>
+        <li>In the same <strong>Manage Funds</strong> modal, ensure MetaMask is connected</li>
+        <li>Click the green <strong>🔄 Claim & Mint EUROD</strong> button</li>
+        <li>MetaMask will pop up — click <strong>Confirm</strong></li>
+        <li>Wait for the blockchain confirmation (~15 seconds on Amoy)</li>
+      </ol>
+      
+      <div class="tip">
+        <strong>💡 Why two steps?</strong> This mirrors reality: your bank account (Step 1) is separate from your crypto wallet (Step 2). The "Claim" is the bridge between traditional finance and DeFi.
+      </div>
+      
+      <div class="success">
+        <strong>✅ Result:</strong> EUROD tokens now appear in your MetaMask wallet. Your virtual bank balance decreases by the claimed amount.
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 & 4 Combined -->
+  <div class="section">
+    <h2>Step 3 & 4: Approve & Invest</h2>
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-number">3</span>
+        <h4>🔒 Grant Permission (Approve EUROD)</h4>
+      </div>
+      <p><strong>What it does:</strong> Tells the smart contract it has permission to handle your EUROD. This is a standard Web3 security step.</p>
+      
+      <h3>How to do it:</h3>
+      <ol>
+        <li>Click <strong>Invest</strong> on any pool in the marketplace</li>
+        <li>Enter the amount you want to invest</li>
+        <li>Click <strong>🔒 Approve & Invest</strong></li>
+        <li>First MetaMask popup: <strong>Approve EUROD spending</strong> → Confirm</li>
+      </ol>
+    </div>
+    
+    <div class="step-card active">
+      <div class="step-header">
+        <span class="step-number">4</span>
+        <h4>💰 Confirm Investment (Get uLP Tokens)</h4>
+      </div>
+      <p><strong>What it does:</strong> Swaps your EUROD for uLP (Liquidity Pool) tokens. These tokens represent your ownership share in the pool.</p>
+      
+      <h3>What happens next:</h3>
+      <ol>
+        <li>Second MetaMask popup: <strong>Deposit EUROD</strong> → Confirm</li>
+        <li>Wait for blockchain confirmation</li>
+        <li>You now own <strong>uLP tokens</strong> in your wallet!</li>
+      </ol>
+      
+      <div class="success">
+        <strong>✅ Result:</strong> Your EUROD is invested. You will earn yield monthly. You can redeem your uLP tokens back to EUROD at any time.
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="section">
+    <h2>📊 Complete Flow Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Action</th>
+          <th>What You Sign</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Add Virtual Funds</td>
+          <td>Nothing (Database only)</td>
+          <td>Virtual Bank balance increases</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>Claim to Wallet</td>
+          <td>Mint EUROD transaction</td>
+          <td>EUROD tokens in MetaMask</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Approve EUROD</td>
+          <td>ERC20 approve transaction</td>
+          <td>Contract can spend your EUROD</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Deposit to Pool</td>
+          <td>Deposit EUROD transaction</td>
+          <td>Receive uLP tokens in wallet</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Redeeming -->
+  <div class="section">
+    <h2>🔙 How to Redeem (Get Your Money Back)</h2>
+    <p>When you're ready to exit a pool:</p>
+    <ol>
+      <li>Go to <strong>Pool Marketplace</strong></li>
+      <li>Find the pool you invested in</li>
+      <li>Click <strong>Redeem</strong></li>
+      <li>Enter the number of uLP tokens to redeem</li>
+      <li>Confirm the transaction in MetaMask</li>
+    </ol>
+    <div class="success">
+      <strong>✅ Result:</strong> Your uLP tokens are burned and EUROD is sent back to your wallet. You can then claim it back to your virtual bank or withdraw to your personal wallet.
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="section">
+    <h2>🔧 Troubleshooting</h2>
+    
+    <h3>❌ "Insufficient virtual balance"</h3>
+    <p>You're trying to claim more than your virtual bank holds. Go back to Step 1 and add more virtual funds.</p>
+    
+    <h3>❌ "Wallet Not Connected"</h3>
+    <p>Click the <strong>Connect Wallet</strong> button in the top right and select MetaMask. Ensure you're on Polygon Amoy network.</p>
+    
+    <h3>❌ "Approval failed"</h3>
+    <p>Check that you have enough POL for gas fees. Get test POL from the <a href="https://faucet.polygon.technology/" target="_blank">Polygon Faucet</a>.</p>
+    
+    <h3>❌ "Transaction stuck"</h3>
+    <p>Amoy testnet can sometimes be slow. Wait 1-2 minutes. If it doesn't confirm, the transaction likely failed and you can retry.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2>❓ Frequently Asked Questions</h2>
+    
+    <h3>Why do I need to sign two transactions to invest?</h3>
+    <p>This is standard Web3 security. The first transaction (<code>approve</code>) gives the pool contract permission to handle your tokens. The second (<code>deposit</code>) actually moves the funds. On mainnet, you can set "unlimited approval" once and only sign the deposit for future investments.</p>
+    
+    <h3>Is my money safe?</h3>
+    <p>This is a testnet demo with no real money. On mainnet, all contracts are audited and your funds are secured by smart contracts, not a central authority.</p>
+    
+    <h3>Can I invest from multiple wallets?</h3>
+    <p>Each wallet is linked to one verified investor identity (KYC/KYB). You cannot use multiple wallets to bypass investment limits.</p>
+    
+    <h3>How is yield calculated?</h3>
+    <p>Yield accrues daily based on the pool's target APY (10-15%). It's reflected in the increasing NAV (Net Asset Value) per uLP token. When you redeem, you get more EUROD than you invested.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>📄 Document Version 1.0 | Last Updated: April 2026</p>
+  <p>Ujamaa DeFi Platform — Institutional-Grade African RWA Tokenization</p>
+  <p><a href="../index.html">← Back to Documentation Home</a></p>
+</div>
+
+</body>
+</html>
