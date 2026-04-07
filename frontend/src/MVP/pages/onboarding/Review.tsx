@@ -86,11 +86,13 @@ const OnboardingReview: React.FC = () => {
         }
       }
 
-      // Clear session storage and navigate to complete
+      // Clear onboarding data but save login credentials for the complete page
       sessionStorage.removeItem('onboardingData');
       sessionStorage.removeItem('onboardingDocs');
       sessionStorage.setItem('onboardingSubmitted', 'true');
       sessionStorage.setItem('onboardingSubmitTime', new Date().toISOString());
+      sessionStorage.setItem('onboardingEmail', email);
+      sessionStorage.setItem('onboardingPassword', password);
       navigate(`/onboarding/${type}/complete`);
     } catch (err: any) {
       console.error('Onboarding submission failed:', err);

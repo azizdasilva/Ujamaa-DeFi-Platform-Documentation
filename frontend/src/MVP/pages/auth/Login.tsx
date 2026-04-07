@@ -10,6 +10,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import { InvestorRole } from '../../../types';
 import MVPBanner from '../../components/MVPBanner';
+import authAPI from '../../../api/auth';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -20,26 +21,66 @@ const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleEmailLogin = (e: React.FormEvent) => {
+  const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    // Mock email/password authentication
-    setTimeout(() => {
-      // In production, this would validate against backend
+    try {
+      // Try real backend authentication first
+      const response = await authAPI.login({ email, password });
+
+      // Map backend role string to frontend InvestorRole
+      const roleMap: Record<string, InvestorRole> = {
+        'INSTITUTIONAL_INVESTOR': 'INSTITUTIONAL_INVESTOR',
+        'RETAIL_INVESTOR': 'RETAIL_INVESTOR',
+        'INDUSTRIAL_OPERATOR': 'INDUSTRIAL_OPERATOR',
+        'COMPLIANCE_OFFICER': 'COMPLIANCE_OFFICER',
+        'ADMIN': 'ADMIN',
+        'REGULATOR': 'REGULATOR',
+      };
+
+      const role = roleMap[response.user.role] || 'RETAIL_INVESTOR';
+
+      // Login with real user data
+      login(role, response.user.wallet_address, {
+        id: response.user.id.toString(),
+        name: response.user.email.split('@')[0],
+        email: response.user.email,
+        role,
+        walletAddress: response.user.wallet_address,
+        token: response.token,
+        kycStatus: response.investor_profile?.kyc_status || 'pending',
+        kybStatus: response.investor_profile?.kyb_status || 'pending',
+        jurisdiction: response.investor_profile?.jurisdiction || 'MU',
+      });
+
+      // Map role to correct dashboard route
+      const dashboardRoutes: Record<InvestorRole, string> = {
+        INSTITUTIONAL_INVESTOR: '/institutional/dashboard',
+        RETAIL_INVESTOR: '/retail/dashboard',
+        INDUSTRIAL_OPERATOR: '/originator/dashboard',
+        COMPLIANCE_OFFICER: '/compliance/dashboard',
+        ADMIN: '/admin/dashboard',
+        REGULATOR: '/regulator/dashboard',
+      };
+      navigate(dashboardRoutes[role]);
+    } catch (err: any) {
+      // Backend auth failed - fall back to mock auth for demo accounts
+      const errorMsg = err.response?.data?.detail || err.message || 'Invalid credentials';
+
+      // Try mock auth for demo accounts
       if (email && password) {
-        // Determine role based on email (mock logic)
+        // Determine role based on email (mock logic for demo accounts)
         let role: InvestorRole = 'RETAIL_INVESTOR';
-        if (email.includes('institutional')) role = 'INSTITUTIONAL_INVESTOR';
-        else if (email.includes('operator') || email.includes('industrial')) role = 'INDUSTRIAL_OPERATOR';
-        else if (email.includes('compliance')) role = 'COMPLIANCE_OFFICER';
+        if (email.includes('institutional') || email.includes('logic')) role = 'INSTITUTIONAL_INVESTOR';
+        else if (email.includes('operator') || email.includes('industrial') || email.includes('green')) role = 'INDUSTRIAL_OPERATOR';
+        else if (email.includes('compliance') || email.includes('sarah')) role = 'COMPLIANCE_OFFICER';
         else if (email.includes('admin')) role = 'ADMIN';
         else if (email.includes('regulator')) role = 'REGULATOR';
 
         login(role);
 
-        // Map role to correct dashboard route
         const dashboardRoutes: Record<InvestorRole, string> = {
           INSTITUTIONAL_INVESTOR: '/institutional/dashboard',
           RETAIL_INVESTOR: '/retail/dashboard',
@@ -50,10 +91,11 @@ const Login: React.FC = () => {
         };
         navigate(dashboardRoutes[role]);
       } else {
-        setError('Please enter valid credentials');
+        setError(errorMsg);
       }
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   const handleWalletLogin = () => {

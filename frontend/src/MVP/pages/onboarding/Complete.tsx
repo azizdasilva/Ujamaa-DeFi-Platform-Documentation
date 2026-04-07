@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import MVPBanner from '../../components/MVPBanner';
 import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
@@ -19,6 +19,8 @@ const OnboardingComplete: React.FC = () => {
   const navigate = useNavigate();
   const [submitTime, setSubmitTime] = useState<string>('');
   const [referenceId, setReferenceId] = useState<string>('');
+  const [loginEmail, setLoginEmail] = useState<string>('');
+  const [loginPassword, setLoginPassword] = useState<string>('');
 
   useEffect(() => {
     const time = sessionStorage.getItem('onboardingSubmitTime');
@@ -26,6 +28,12 @@ const OnboardingComplete: React.FC = () => {
       setSubmitTime(new Date(time).toLocaleString());
     }
     setReferenceId(`ONB-${Math.random().toString(36).substr(2, 9).toUpperCase()}`);
+
+    // Retrieve login credentials from onboarding submission
+    const email = sessionStorage.getItem('onboardingEmail');
+    const password = sessionStorage.getItem('onboardingPassword');
+    if (email) setLoginEmail(email);
+    if (password) setLoginPassword(password);
   }, []);
 
   const getReviewTime = () => {
@@ -157,6 +165,50 @@ const OnboardingComplete: React.FC = () => {
             </div>
           </div>
         </Card>
+
+        {/* Login Credentials */}
+        {loginEmail && loginPassword && (
+          <Card className="mb-6 bg-blue-50 border-blue-300 border-2">
+            <div className="flex items-start gap-3 mb-4">
+              <svg className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+              </svg>
+              <div>
+                <h3 className="text-lg font-bold text-blue-900">🔑 Save Your Login Credentials</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  Use these credentials to log back in after your application is approved.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm text-blue-600">Email</p>
+                <p className="font-mono font-bold text-blue-900 text-sm break-all">{loginEmail}</p>
+              </div>
+              <div>
+                <p className="text-sm text-blue-600">Password</p>
+                <p className="font-mono font-bold text-blue-900 text-sm">{loginPassword}</p>
+              </div>
+            </div>
+            <div className="mt-4 flex gap-3">
+              <Link
+                to="/login"
+                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-center text-sm transition-colors"
+              >
+                Go to Login →
+              </Link>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(`${loginEmail}\n${loginPassword}`);
+                  alert('Credentials copied to clipboard!');
+                }}
+                className="px-4 py-2 bg-white border border-blue-300 hover:bg-blue-100 text-blue-700 font-bold rounded-lg text-sm transition-colors"
+              >
+                📋 Copy
+              </button>
+            </div>
+          </Card>
+        )}
 
         {/* What Happens Next */}
         <Card className="mb-6">

@@ -110,16 +110,33 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoading(false);
   }, []);
 
-  const login = (role: InvestorRole, walletAddress?: string) => {
-    const mockUser = MOCK_USERS[role];
-    const userData = {
-      ...mockUser,
-      walletAddress: walletAddress || mockUser.walletAddress,
-      // Mock JWT token for API authentication (MVP testnet)
-      token: `mock-jwt-token-${role}-${Date.now()}`,
-    };
-    setUser(userData);
-    sessionStorage.setItem('ujamaa_user', JSON.stringify(userData));
+  const login = (role: InvestorRole, walletAddress?: string, userData?: Partial<User>) => {
+    if (userData && userData.id) {
+      // Use real user data from backend
+      const realUserData: User = {
+        id: userData.id,
+        name: userData.name || userData.email?.split('@')[0] || 'User',
+        email: userData.email || '',
+        role,
+        walletAddress: userData.walletAddress || walletAddress,
+        kycStatus: (userData.kycStatus as any) || 'pending',
+        jurisdiction: userData.jurisdiction || 'MU',
+        token: userData.token || `mock-jwt-token-${role}-${Date.now()}`,
+      };
+      setUser(realUserData);
+      sessionStorage.setItem('ujamaa_user', JSON.stringify(realUserData));
+    } else {
+      // Fall back to mock user
+      const mockUser = MOCK_USERS[role];
+      const mockUserData = {
+        ...mockUser,
+        walletAddress: walletAddress || mockUser.walletAddress,
+        // Mock JWT token for API authentication (MVP testnet)
+        token: `mock-jwt-token-${role}-${Date.now()}`,
+      };
+      setUser(mockUserData);
+      sessionStorage.setItem('ujamaa_user', JSON.stringify(mockUserData));
+    }
   };
 
   const logout = () => {
