@@ -138,7 +138,12 @@ class UserProfileResponse(BaseModel):
     total_invested: float
 
 
+from pydantic import BaseModel, Field, ConfigDict
+
+
 class PoolResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     name: str
     family: str
