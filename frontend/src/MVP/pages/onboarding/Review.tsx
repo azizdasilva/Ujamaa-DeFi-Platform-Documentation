@@ -39,22 +39,23 @@ const OnboardingReview: React.FC = () => {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    try {
-      // Map onboarding type to backend role
-      const roleMap: Record<string, string> = {
-        retail: 'RETAIL_INVESTOR',
-        institutional: 'INSTITUTIONAL_INVESTOR',
-        originator: 'INDUSTRIAL_OPERATOR',
-      };
-      const role = roleMap[type || 'retail'] || 'RETAIL_INVESTOR';
+    // Build email + password from form data (outside try block for catch block access)
+    const email = personalData.email || `onboarding-${Date.now()}@ujamaa-temp.io`;
+    const password = personalData.password || `Onboard-${Math.random().toString(36).slice(2, 10)}!`;
+    const fullName = type === 'retail'
+      ? `${personalData.firstName || ''} ${personalData.lastName || ''}`.trim()
+      : personalData.companyName || 'Onboarded Company';
+    const jurisdiction = personalData.country || personalData.nationality || 'MU';
 
-      // Build email + password from form data
-      const email = personalData.email || `onboarding-${Date.now()}@ujamaa-temp.io`;
-      const password = personalData.password || `Onboard-${Math.random().toString(36).slice(2, 10)}!`;
-      const fullName = type === 'retail'
-        ? `${personalData.firstName || ''} ${personalData.lastName || ''}`.trim()
-        : personalData.companyName || 'Onboarded Company';
-      const jurisdiction = personalData.country || personalData.nationality || 'MU';
+    // Map onboarding type to backend role
+    const roleMap: Record<string, string> = {
+      retail: 'RETAIL_INVESTOR',
+      institutional: 'INSTITUTIONAL_INVESTOR',
+      originator: 'INDUSTRIAL_OPERATOR',
+    };
+    const role = roleMap[type || 'retail'] || 'RETAIL_INVESTOR';
+
+    try {
 
       // 1. Register user via PUBLIC auth endpoint (NOT admin endpoint)
       const userResp = await authAPI.register({
@@ -68,9 +69,10 @@ const OnboardingReview: React.FC = () => {
       });
 
       const userId = userResp.user.id;
+      const investorProfileId = userResp.investor_profile?.id;
 
-      // 2. Create document records for pending KYC/KYB review
-      if (userId) {
+      // Create document records for pending KYC/KYB review
+      if (investorProfileId) {
         const docEntries = Object.entries(documents);
         for (const [docId, doc] of docEntries) {
           try {
@@ -79,7 +81,7 @@ const OnboardingReview: React.FC = () => {
               : `kyb_${docId}`;
 
             await apiClient.post('/db/documents', {
-              investor_id: userId,
+              investor_id: investorProfileId,
               document_type: docType,
               document_name: (doc as any)?.name || docId,
               verification_status: 'pending',
