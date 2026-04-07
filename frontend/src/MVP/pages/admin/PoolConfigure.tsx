@@ -54,25 +54,23 @@ const PoolConfigure: React.FC = () => {
       const data = await poolsAPI.getPoolById(id!);
       setPool(data);
 
-      // Fetch KPIs for current NAV per share
-      try {
-        const kpisResp = await apiClient.get(`/pools/kpis/${id!}`);
-        const kpis = kpisResp.data;
-        if (kpis?.financial?.nav_per_share) {
-          setCurrentNav(kpis.financial.nav_per_share);
-        }
-      } catch {
-        setCurrentNav(1.0);
-      }
-
-      // Fetch total shares for this pool
+      // Fetch total shares for this pool to compute NAV
       try {
         const portfolioResp = await apiClient.get(`/db/pools/${id!}/positions`);
         const positions = portfolioResp.data?.positions || portfolioResp.data || [];
         const shares = positions.reduce((sum: number, p: any) => sum + (p.shares || 0), 0);
         setTotalShares(shares);
+
+        // Compute NAV from actual data: total_value / total_shares
+        if (shares > 0 && data.total_value > 0) {
+          const computedNav = data.total_value / shares;
+          setCurrentNav(computedNav);
+        } else {
+          setCurrentNav(1.0);
+        }
       } catch {
         setTotalShares(0);
+        setCurrentNav(1.0);
       }
 
       const nav = totalShares > 0 ? data.total_value / totalShares : 1.0;
