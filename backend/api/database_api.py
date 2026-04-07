@@ -351,6 +351,42 @@ async def update_pool(
     return pool
 
 
+@router.get("/pools/{pool_id}/positions")
+async def get_pool_positions(
+    pool_id: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get all positions (shares) for a specific pool.
+
+    Returns total shares and list of investor positions.
+    Used by admin to calculate NAV per share.
+    """
+    positions = db.query(PoolPosition).filter(
+        PoolPosition.pool_id == pool_id,
+        PoolPosition.is_active == True
+    ).all()
+
+    total_shares = sum(pos.shares for pos in positions if pos.shares)
+    position_list = []
+    for pos in positions:
+        investor = db.query(InvestorProfile).filter(InvestorProfile.id == pos.investor_id).first()
+        position_list.append({
+            "investor_id": pos.investor_id,
+            "investor_name": investor.full_name if investor else f"Investor #{pos.investor_id}",
+            "shares": float(pos.shares),
+            "average_nav": float(pos.average_nav) if pos.average_nav else 1.0,
+            "total_yield_earned": float(pos.total_yield_earned) if pos.total_yield_earned else 0,
+        })
+
+    return {
+        "pool_id": pool_id,
+        "total_shares": total_shares,
+        "position_count": len(position_list),
+        "positions": position_list,
+    }
+
+
 # =============================================================================
 # DOCUMENT ENDPOINTS (KYC/KYB)
 # =============================================================================
@@ -960,7 +996,7 @@ async def get_investor_profile(
     
     # Get bank account balance
     bank_account = db.query(BankAccount).filter(
-        BankAccount.investor_id == investor_id,
+        BankAccount.user_id == investor.user_id,
         BankAccount.status == 'ACTIVE'
     ).first()
     
