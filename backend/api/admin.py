@@ -344,11 +344,18 @@ async def create_user(
     # Create investor profile for investor/operator roles
     investor_roles = {'INSTITUTIONAL_INVESTOR', 'RETAIL_INVESTOR', 'INDUSTRIAL_OPERATOR'}
     if req.role in investor_roles:
+        # Set KYC status for individual investors, KYB for companies
+        is_institutional = req.role == 'INSTITUTIONAL_INVESTOR'
+        is_retail = req.role == 'RETAIL_INVESTOR'
+        is_operator = req.role == 'INDUSTRIAL_OPERATOR'
+
         profile = InvestorProfile(
             user_id=user.id,
             full_name=req.full_name or req.email.split('@')[0].replace('.', ' ').title(),
             wallet_address=req.wallet_address,
-            kyc_status='PENDING',
+            jurisdiction=req.full_name.split()[-1] if req.full_name else 'MU',
+            kyc_status=ComplianceStatusEnum.PENDING if is_retail else None,
+            kyb_status=ComplianceStatusEnum.PENDING if (is_institutional or is_operator) else None,
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow(),
         )

@@ -183,8 +183,8 @@ const PoolMarketplace: React.FC = () => {
         // Set investor data with bank balance
         setInvestor(data);
 
-        // Check if KYC or KYB is approved
-        const isCompliant = data.kyc_status === 'approved' || data.kyb_status === 'approved';
+        // Check if KYC or KYB is approved (case-insensitive)
+        const isCompliant = data.kyc_status?.toLowerCase() === 'approved' || data.kyb_status?.toLowerCase() === 'approved';
 
         setComplianceStatus({
           isCompliant,
