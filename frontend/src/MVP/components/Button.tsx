@@ -17,6 +17,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   gradient?: ButtonGradient;
   isLoading?: boolean;
+  /** @deprecated Use isLoading instead */
+  loading?: boolean;
   fullWidth?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -34,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({
   rightIcon,
   className = '',
   disabled,
+  loading, // Extract 'loading' prop (common alias for isLoading) to prevent DOM warning
   children,
   ...props
 }) => {
