@@ -28,6 +28,8 @@ const OnboardingPersonal: React.FC = () => {
     phone: '',
     dateOfBirth: '',
     nationality: '',
+    password: '',
+    confirmPassword: '',
 
     // Address
     address: '',
@@ -238,6 +240,16 @@ const OnboardingPersonal: React.FC = () => {
     
     if (!formData.nationality) newErrors.nationality = 'Nationality is required';
 
+    // Password validation
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+
     // Check if nationality is blocked
     const isBlocked = blockedCountries.some(c => c.code === formData.nationality);
     if (isBlocked) {
@@ -322,6 +334,16 @@ const OnboardingPersonal: React.FC = () => {
     }
     
     if (!formData.nationality) newErrors.nationality = 'Nationality is required';
+
+    // Password validation
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
 
     // Check if nationality is blocked
     const isBlocked = blockedCountries.some(c => c.code === formData.nationality);
@@ -586,6 +608,34 @@ const OnboardingPersonal: React.FC = () => {
                   onChange={handleChange}
                   error={errors.email}
                   fullWidth
+                />
+              </div>
+
+              {/* Password - Full Width Row */}
+              <div className="md:col-span-2">
+                <Input
+                  label="Password *"
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  error={errors.password}
+                  fullWidth
+                  placeholder="At least 8 characters"
+                />
+              </div>
+
+              {/* Confirm Password - Full Width Row */}
+              <div className="md:col-span-2">
+                <Input
+                  label="Confirm Password *"
+                  name="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  error={errors.confirmPassword}
+                  fullWidth
+                  placeholder="Re-enter your password"
                 />
               </div>
 
