@@ -19,6 +19,7 @@ import Button from '../../components/Button';
 import { useAuth } from '../../../contexts/AuthContext';
 import { databaseAPI } from '../../../api/database';
 import { investmentsAPI } from '../../../api/investments';
+import apiClient from '../../../api/client';
 
 interface Pool {
   id: string;
@@ -151,6 +152,25 @@ const PoolMarketplace: React.FC = () => {
   const [isRedeeming, setIsRedeeming] = useState(false);
   const [redeemError, setRedeemError] = useState<string | null>(null);
   const [userPosition, setUserPosition] = useState<any>(null);
+  const [showDepositModal, setShowDepositModal] = useState(false);
+
+  const handleMockDeposit = async () => {
+    if (!investor?.id) return;
+    try {
+      await apiClient.post('/db/bank/deposit', {
+        investor_id: investor.id,
+        amount: 50000,
+      });
+      // Refresh investor profile
+      const data = await databaseAPI.getInvestorProfile(investor.id);
+      setInvestor(data);
+      setShowDepositModal(false);
+      alert(`✅ Successfully deposited €50,000 virtual funds!`);
+    } catch (error) {
+      console.error('Deposit failed:', error);
+      alert('❌ Failed to simulate deposit. Ensure backend is running.');
+    }
+  };
 
   // Check compliance status and fetch investor profile on mount
   useEffect(() => {
@@ -485,6 +505,12 @@ const PoolMarketplace: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowDepositModal(true)}
+                className="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg text-sm font-bold transition-colors border border-white/30"
+              >
+                🏦 Add Test Funds
+              </button>
               <TestnetNotice variant="badge" />
             </div>
           </div>
@@ -1328,6 +1354,44 @@ const PoolMarketplace: React.FC = () => {
               >
                 Proceed to Invest
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Deposit Modal */}
+      {showDepositModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+            <div className="p-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold">🏦 Simulate Deposit</h3>
+                <button onClick={() => setShowDepositModal(false)} className="text-white/80 hover:text-white">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div className="p-6 space-y-4">
+              <p className="text-gray-600">
+                This will simulate a wire transfer of <strong className="text-[#023D7A]">€50,000</strong> to your testnet account.
+                Funds will be available immediately for investing.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowDepositModal(false)}
+                  className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleMockDeposit}
+                  className="flex-1 py-3 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-xl transition-colors"
+                >
+                  Confirm Deposit
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -628,6 +628,79 @@ async def create_investment(
     }
 
 
+@router.post("/bank/deposit")
+async def mock_deposit(
+    request: Dict[str, Any],
+    db: Session = Depends(get_db)
+):
+    """
+    Mock deposit endpoint for Testnet.
+    Adds virtual funds to investor's available balance.
+    """
+    profile_id = request.get("investor_id")
+    amount = request.get("amount", 0)
+
+    if not profile_id or amount <= 0:
+        raise HTTPException(status_code=400, detail="Invalid deposit amount or investor ID")
+
+    # Find investor profile to get user_id
+    profile = db.query(InvestorProfile).filter(InvestorProfile.id == profile_id).first()
+    if not profile:
+        # Try finding by user_id directly if profile_id failed
+        user_id_check = db.query(User).filter(User.id == profile_id).first()
+        if user_id_check:
+            user_id = user_id_check.id
+        else:
+            raise HTTPException(status_code=404, detail="Investor profile not found")
+    else:
+        user_id = profile.user_id
+
+    # Find bank account for this user
+    bank = db.query(BankAccount).filter(BankAccount.user_id == user_id).first()
+    if not bank:
+        # Create one if missing (fallback for older users)
+        bank = BankAccount(
+            user_id=user_id,
+            account_id=f"BA-{user_id:04d}",
+            balance=0,
+            available_balance=0,
+            escrow_balance=0,
+            locked_amount=0,
+            currency="EUR",
+            status="ACTIVE",
+            bank_name="Testnet Bank",
+        )
+        db.add(bank)
+
+    # Update balances
+    bank.balance += amount
+    bank.available_balance += amount
+    db.commit()
+
+    return {
+        "success": True,
+        "new_balance": bank.available_balance,
+        "message": f"Successfully deposited {amount} virtual EUR"
+    }
+
+
+@router.get("/bank/balance/{investor_id}")
+async def get_balance(
+    investor_id: int,
+    db: Session = Depends(get_db)
+):
+    """Get investor bank balance."""
+    bank = db.query(BankAccount).filter(BankAccount.user_id == investor_id).first()
+    if not bank:
+        raise HTTPException(status_code=404, detail="Bank account not found")
+
+    return {
+        "available_balance": bank.available_balance,
+        "escrow_balance": bank.escrow_balance,
+        "total_balance": bank.balance,
+    }
+
+
 # =============================================================================
 # ULT TOKEN ENDPOINTS
 # =============================================================================
