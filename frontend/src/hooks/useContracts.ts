@@ -88,6 +88,38 @@ export function useDepositULP() {
 }
 
 /**
+ * Hook for approving EUROD spending
+ * Required before depositing EUROD into ULPTokenizer
+ */
+export function useApproveEUROD() {
+  const { writeContract, data: hash, isPending, error, reset } = useWriteContract();
+
+  const approve = (spender: `0x${string}`, amount: number) => {
+    if (!window.ethereum) throw new Error('No wallet connected');
+    
+    const amountWei = BigInt(Math.floor(amount * 1e18));
+    
+    writeContract({
+      address: web3Config.CONTRACTS.MOCK_EUROD as `0x${string}`,
+      abi: [{
+        inputs: [
+          { internalType: 'address', name: 'spender', type: 'address' },
+          { internalType: 'uint256', name: 'amount', type: 'uint256' },
+        ],
+        name: 'approve',
+        outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      }],
+      functionName: 'approve',
+      args: [spender, amountWei],
+    });
+  };
+
+  return { approve, hash, isPending, error, reset };
+}
+
+/**
  * Hook to check EUROD balance
  */
 export function useEURODBalance(address?: `0x${string}`) {

@@ -20,7 +20,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { databaseAPI } from '../../../api/database';
 import { investmentsAPI } from '../../../api/investments';
 import apiClient from '../../../api/client';
-import { useMintEUROD, useDepositULP, useTransactionWait } from '../../../hooks/useContracts';
+import { useMintEUROD, useDepositULP, useApproveEUROD, useTransactionWait } from '../../../hooks/useContracts';
 
 interface Pool {
   id: string;
@@ -146,6 +146,75 @@ const PoolMarketplace: React.FC = () => {
   const [investmentAmount, setInvestmentAmount] = useState('');
   const [investmentSuccess, setInvestmentSuccess] = useState(false);
   const [isInvesting, setIsInvesting] = useState(false);
+  const [investmentStep, setInvestmentStep] = useState<'idle' | 'approving' | 'approved' | 'depositing'>('idle');
+  const [investmentError, setInvestmentError] = useState<string | null>(null);
+
+  // Contract hooks for investment
+  const { approve, hash: approveHash, isPending: isApproving, error: approveError } = useApproveEUROD();
+  const { deposit, hash: depositHash, isPending: isDepositing, error: depositTxError } = useDepositULP();
+  const { isSuccess: isApproveConfirmed } = useTransactionWait(approveHash);
+  const { isSuccess: isDepositConfirmed } = useTransactionWait(depositHash);
+
+  // Track approval and deposit flow
+  useEffect(() => {
+    if (isApproveConfirmed && investmentStep === 'approving') {
+      setInvestmentStep('approved');
+      setInvestmentError(null);
+      // Auto-proceed to deposit after approval
+      if (investmentAmount && selectedPool) {
+        setTimeout(() => handleDeposit(), 1000);
+      }
+    }
+  }, [isApproveConfirmed, investmentStep]);
+
+  useEffect(() => {
+    if (isDepositConfirmed && investmentStep === 'depositing') {
+      setInvestmentSuccess(true);
+      setInvestmentStep('idle');
+      setInvestmentError(null);
+    }
+  }, [isDepositConfirmed, investmentStep]);
+
+  useEffect(() => {
+    if (approveError) {
+      setInvestmentError(`Approval failed: ${approveError.message}`);
+      setInvestmentStep('idle');
+    }
+  }, [approveError]);
+
+  useEffect(() => {
+    if (depositTxError) {
+      setInvestmentError(`Deposit failed: ${depositTxError.message}`);
+      setInvestmentStep('idle');
+    }
+  }, [depositTxError]);
+
+  const handleApproveAndInvest = () => {
+    const amount = Number(investmentAmount);
+    if (!isConnected) {
+      setInvestmentError('Please connect your wallet first');
+      return;
+    }
+    if (!selectedPool || amount <= 0) {
+      setInvestmentError('Please enter a valid amount');
+      return;
+    }
+    
+    setInvestmentError(null);
+    setInvestmentStep('approving');
+    
+    // Step 1: Approve ULPTokenizer to spend EUROD
+    approve(web3Config.CONTRACTS.ULP_TOKEN as `0x${string}`, amount);
+  };
+
+  const handleDeposit = () => {
+    const amount = Number(investmentAmount);
+    if (!amount) return;
+    
+    setInvestmentStep('depositing');
+    // Step 2: Deposit EUROD to get uLP shares
+    deposit(amount);
+  };
   
   // Redeem state
   const [redeemAmount, setRedeemAmount] = useState('');
@@ -161,8 +230,6 @@ const PoolMarketplace: React.FC = () => {
   // Contract hooks
   const { mint, hash: mintHash, isPending: isMinting, error: mintError } = useMintEUROD();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useTransactionWait(mintHash);
-  const { deposit, hash: depositHash, isPending: isDepositing, error: depositTxError } = useDepositULP();
-  const { isLoading: isDepositConfirming, isSuccess: isDepositConfirmed } = useTransactionWait(depositHash);
 
   // Set default deposit amount based on role
   useEffect(() => {
@@ -1003,33 +1070,64 @@ const PoolMarketplace: React.FC = () => {
 
             {!investmentSuccess && (
               <div className="p-6 border-t border-gray-200 bg-gray-50 rounded-b-2xl">
+                {/* Step Indicator */}
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className={`flex items-center gap-2 ${investmentStep === 'idle' || investmentStep === 'approving' ? 'text-[#023D7A] font-bold' : 'text-gray-400'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${investmentStep === 'idle' || investmentStep === 'approving' ? 'bg-[#023D7A] text-white' : 'bg-gray-200'}`}>1</div>
+                    <span className="text-sm">Approve</span>
+                  </div>
+                  <div className="w-8 h-0.5 bg-gray-200" />
+                  <div className={`flex items-center gap-2 ${investmentStep === 'approved' || investmentStep === 'depositing' ? 'text-[#00A8A8] font-bold' : 'text-gray-400'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${investmentStep === 'approved' || investmentStep === 'depositing' ? 'bg-[#00A8A8] text-white' : 'bg-gray-200'}`}>2</div>
+                    <span className="text-sm">Invest</span>
+                  </div>
+                </div>
+
+                {/* Error Message */}
+                {investmentError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                    ❌ {investmentError}
+                  </div>
+                )}
+
                 <Button
                   variant="primary"
                   fullWidth
                   size="lg"
-                  onClick={handleConfirmInvestment}
-                  disabled={!isAmountValid() || isInvesting}
+                  onClick={handleApproveAndInvest}
+                  disabled={!isAmountValid() || investmentStep === 'approving' || investmentStep === 'depositing'}
                   className={`bg-gradient-to-r from-[#023D7A] to-[#00A8A8] hover:from-[#0d3352] hover:to-[#0D7A7A] ${
-                    !isAmountValid() ? 'opacity-50 cursor-not-allowed' : ''
+                    !isAmountValid() || investmentStep === 'approving' || investmentStep === 'depositing' ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
-                  {isInvesting ? (
+                  {investmentStep === 'approving' ? (
                     <span className="flex items-center justify-center gap-2">
                       <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      Processing...
+                      🔒 Approving EUROD...
+                    </span>
+                  ) : investmentStep === 'approved' ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      💰 Investing...
                     </span>
                   ) : (
-                    'Confirm Investment'
+                    '🔒 Approve & Invest'
                   )}
                 </Button>
-                <p className="text-xs text-gray-500 mt-3 text-center flex items-center justify-center gap-1">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  🚀 MVP TESTNET: Investment is simulated
+                <p className="text-xs text-gray-500 mt-3 text-center">
+                  {investmentStep === 'idle' 
+                    ? 'Step 1: Grant permission → Step 2: Confirm investment' 
+                    : investmentStep === 'approving' 
+                    ? 'Please confirm the approval in MetaMask' 
+                    : investmentStep === 'approved' 
+                    ? 'Approval successful! Processing deposit...' 
+                    : 'Please confirm the deposit in MetaMask'}
                 </p>
               </div>
             )}
