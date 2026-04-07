@@ -153,19 +153,33 @@ const PoolMarketplace: React.FC = () => {
   const [redeemError, setRedeemError] = useState<string | null>(null);
   const [userPosition, setUserPosition] = useState<any>(null);
   const [showDepositModal, setShowDepositModal] = useState(false);
+  const [depositAmount, setDepositAmount] = useState<number>(50000);
+
+  // Set default deposit amount based on role
+  useEffect(() => {
+    if (authUser?.role) {
+      if (authUser.role === 'RETAIL_INVESTOR') {
+        setDepositAmount(50000);
+      } else if (authUser.role === 'INSTITUTIONAL_INVESTOR') {
+        setDepositAmount(500000);
+      } else {
+        setDepositAmount(50000);
+      }
+    }
+  }, [authUser]);
 
   const handleMockDeposit = async () => {
-    if (!investor?.id) return;
+    if (!investor?.id || depositAmount <= 0) return;
     try {
       await apiClient.post('/db/bank/deposit', {
         investor_id: investor.id,
-        amount: 50000,
+        amount: depositAmount,
       });
       // Refresh investor profile
       const data = await databaseAPI.getInvestorProfile(investor.id);
       setInvestor(data);
       setShowDepositModal(false);
-      alert(`✅ Successfully deposited €50,000 virtual funds!`);
+      alert(`✅ Successfully deposited ${formatFullCurrency(depositAmount)} virtual funds!`);
     } catch (error) {
       console.error('Deposit failed:', error);
       alert('❌ Failed to simulate deposit. Ensure backend is running.');
@@ -1362,10 +1376,10 @@ const PoolMarketplace: React.FC = () => {
       {/* Deposit Modal */}
       {showDepositModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
             <div className="p-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold">🏦 Simulate Deposit</h3>
+                <h3 className="text-xl font-bold">🏦 Testnet Deposit</h3>
                 <button onClick={() => setShowDepositModal(false)} className="text-white/80 hover:text-white">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1373,12 +1387,44 @@ const PoolMarketplace: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="p-6 space-y-4">
-              <p className="text-gray-600">
-                This will simulate a wire transfer of <strong className="text-[#023D7A]">€50,000</strong> to your testnet account.
-                Funds will be available immediately for investing.
-              </p>
-              <div className="flex gap-3">
+            <div className="p-6 space-y-6">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">Deposit Amount</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">€</span>
+                  <input
+                    type="number"
+                    value={depositAmount}
+                    onChange={(e) => setDepositAmount(Number(e.target.value))}
+                    className="w-full pl-8 pr-4 py-3 text-xl font-bold text-[#023D7A] border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00A8A8] focus:border-transparent transition-all"
+                  />
+                </div>
+              </div>
+
+              {/* Presets */}
+              <div>
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Quick Select</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {(authUser?.role === 'INSTITUTIONAL_INVESTOR' 
+                    ? [100000, 500000, 1000000] 
+                    : [10000, 50000, 100000]
+                  ).map((amt) => (
+                    <button
+                      key={amt}
+                      onClick={() => setDepositAmount(amt)}
+                      className={`py-2 rounded-lg text-sm font-bold transition-colors ${
+                        depositAmount === amt
+                          ? 'bg-[#023D7A] text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {formatFullCurrency(amt)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
                 <button
                   onClick={() => setShowDepositModal(false)}
                   className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors"
