@@ -280,7 +280,7 @@ const BankAccountManagement: React.FC = () => {
               <p className="text-gray-600 mb-4">{error}</p>
               <button
                 onClick={loadInvestors}
-                className="px-4 py-2 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors"
+                className="px-4 py-2 bg-white hover:bg-gray-50 text-[#023D7A] font-bold rounded-lg transition-colors border border-gray-200"
               >
                 Retry
               </button>
@@ -348,7 +348,7 @@ const BankAccountManagement: React.FC = () => {
                             setSelectedInvestor(investor);
                             setShowModal(true);
                           }}
-                          className="px-3 py-1.5 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white text-sm font-bold rounded transition-colors"
+                          className="px-3 py-1.5 bg-white hover:bg-gray-50 text-[#023D7A] text-sm font-bold rounded transition-colors border border-gray-200"
                         >
                           Adjust
                         </button>

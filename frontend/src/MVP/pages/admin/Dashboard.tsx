@@ -275,7 +275,7 @@ const AdminDashboard: React.FC = () => {
               <div className="space-y-3">
                 <a
                   href="/admin/users"
-                  className="block w-full px-4 py-3 bg-[#00A8A8] hover:bg-[#0D7A7A] text-white font-bold rounded-lg transition-colors text-center"
+                  className="block w-full px-4 py-3 bg-white hover:bg-gray-50 text-[#023D7A] font-bold rounded-lg transition-colors text-center border border-gray-200"
                 >
                   👥 Manage Users
                 </a>
