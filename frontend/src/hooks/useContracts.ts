@@ -11,12 +11,21 @@ import { web3Config } from '../config/web3';
 const MOCK_FIAT_RAMP_ABI = [
   {
     inputs: [
-      { internalType: 'address', name: 'recipient', type: 'address' },
       { internalType: 'uint256', name: 'amount', type: 'uint256' },
     ],
-    name: 'mintTestUJEUR',
+    name: 'mintTestUJEURSelf',
     outputs: [],
     stateMutability: 'nonpayable',
+    type: 'function',
+  },
+] as const;
+
+const EUROD_ABI = [
+  {
+    inputs: [{ internalType: 'address', name: 'account', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
     type: 'function',
   },
 ] as const;
@@ -29,20 +38,13 @@ const ULP_TOKENIZER_ABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
-  {
-    inputs: [{ internalType: 'address', name: 'account', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
 ] as const;
 
 /**
- * Hook for minting test UJEUR (Testnet Fiat On-Ramp simulation)
- * Mainnet equivalent: Real bank webhook minting stablecoins
+ * Hook for minting test EUROD (Testnet Fiat On-Ramp simulation)
+ * Mainnet equivalent: Real bank webhook minting EUROD
  */
-export function useMintUJEUR() {
+export function useMintEUROD() {
   const { writeContract, data: hash, isPending, error, reset } = useWriteContract();
 
   const mint = (amount: number) => {
@@ -63,7 +65,7 @@ export function useMintUJEUR() {
 }
 
 /**
- * Hook for depositing UJEUR into Liquidity Pool (Minting uLP shares)
+ * Hook for depositing EUROD into Liquidity Pool (Minting uLP shares)
  * Mainnet equivalent: Exact same contract call
  */
 export function useDepositULP() {
@@ -83,6 +85,14 @@ export function useDepositULP() {
   };
 
   return { deposit, hash, isPending, error, reset };
+}
+
+/**
+ * Hook to check EUROD balance
+ */
+export function useEURODBalance(address?: `0x${string}`) {
+  // Implementation would use useReadContract, kept simple for now
+  return { balance: 0 };
 }
 
 /**

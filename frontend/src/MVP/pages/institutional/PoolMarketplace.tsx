@@ -20,7 +20,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { databaseAPI } from '../../../api/database';
 import { investmentsAPI } from '../../../api/investments';
 import apiClient from '../../../api/client';
-import { useMintUJEUR, useDepositULP, useTransactionWait } from '../../../hooks/useContracts';
+import { useMintEUROD, useDepositULP, useTransactionWait } from '../../../hooks/useContracts';
 
 interface Pool {
   id: string;
@@ -159,7 +159,7 @@ const PoolMarketplace: React.FC = () => {
   const [depositError, setDepositError] = useState<string | null>(null);
 
   // Contract hooks
-  const { mint, hash: mintHash, isPending: isMinting, error: mintError } = useMintUJEUR();
+  const { mint, hash: mintHash, isPending: isMinting, error: mintError } = useMintEUROD();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useTransactionWait(mintHash);
   const { deposit, hash: depositHash, isPending: isDepositing, error: depositTxError } = useDepositULP();
   const { isLoading: isDepositConfirming, isSuccess: isDepositConfirmed } = useTransactionWait(depositHash);
@@ -1413,7 +1413,7 @@ const PoolMarketplace: React.FC = () => {
                   </svg>
                 </button>
               </div>
-              <p className="text-sm text-white/80 mt-1">Mint UJEUR to your wallet (Simulates Fiat On-Ramp)</p>
+              <p className="text-sm text-white/80 mt-1">Mint EUROD to your wallet (Simulates Fiat On-Ramp)</p>
             </div>
             <div className="p-6 space-y-6">
               {/* Wallet Status */}
@@ -1480,7 +1480,7 @@ const PoolMarketplace: React.FC = () => {
                   )}
                   {depositSuccess && (
                     <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
-                      ✅ Successfully minted {formatFullCurrency(depositAmount)} UJEUR!
+                      ✅ Successfully minted {formatFullCurrency(depositAmount)} EUROD!
                     </div>
                   )}
 
@@ -1497,7 +1497,7 @@ const PoolMarketplace: React.FC = () => {
                       disabled={isMinting || isConfirming || depositSuccess}
                       className="flex-1 py-3 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-xl transition-colors disabled:opacity-50"
                     >
-                      {isMinting ? 'Confirming...' : isConfirming ? 'Processing...' : depositSuccess ? 'Minted ✓' : 'Mint UJEUR'}
+                      {isMinting ? 'Confirming...' : isConfirming ? 'Processing...' : depositSuccess ? 'Minted ✓' : 'Mint EUROD'}
                     </button>
                   </div>
                 </>
