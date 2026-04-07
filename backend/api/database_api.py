@@ -682,29 +682,51 @@ async def get_ult_transactions(investor_id: int, db: Session = Depends(get_db)):
 async def get_overview_stats(db: Session = Depends(get_db)):
     """
     Get platform overview statistics.
-    
+
     Used for admin dashboard and analytics.
     """
-    # Count totals
-    total_users = db.query(User).count()
-    total_pools = db.query(Pool).filter(Pool.is_active == True).count()
-    total_invested = db.query(Investment).count()
-    pending_documents = db.query(Document).filter(
-        Document.verification_status == ComplianceStatusEnum.PENDING
-    ).count()
-    
+    try:
+        total_users = db.query(User).count()
+    except Exception:
+        total_users = 0
+
+    try:
+        total_pools = db.query(Pool).filter(Pool.is_active == True).count()
+    except Exception:
+        total_pools = 0
+
+    try:
+        total_invested = db.query(Investment).count()
+    except Exception:
+        total_invested = 0
+
+    try:
+        pending_documents = db.query(Document).filter(
+            Document.verification_status == ComplianceStatusEnum.PENDING
+        ).count()
+    except Exception:
+        pending_documents = 0
+
     # Calculate total value
-    total_value_locked = db.query(Pool).with_entities(
-        func.sum(Pool.total_value)
-    ).scalar() or 0
-    
+    try:
+        total_value_locked = db.query(Pool).with_entities(
+            func.sum(Pool.total_value)
+        ).scalar() or 0
+    except Exception:
+        total_value_locked = 0
+
+    try:
+        token_holders = db.query(PoolPosition.investor_id).distinct().count()
+    except Exception:
+        token_holders = 0
+
     return {
         'total_users': total_users,
         'total_pools': total_pools,
         'total_investments': total_invested,
         'pending_kyc_kyb': pending_documents,
         'total_value_locked': float(total_value_locked),
-        'token_holders': db.query(PoolPosition.investor_id).distinct().count(),
+        'token_holders': token_holders,
         'last_updated': datetime.utcnow().isoformat(),
     }
 
