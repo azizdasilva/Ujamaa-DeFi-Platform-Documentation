@@ -2,13 +2,13 @@
 
 **Institutional-Grade African Real-World Asset Tokenization**
 
-**Version:** 3.0.0 - Full Blockchain Integration
-**Last Updated:** April 5, 2026
+**Version:** 3.1.0 - Full Stack Monitoring & Admin
+**Last Updated:** April 7, 2026
 **Status:** MVP Testnet | 100% Contracts Deployed & Integrated
 
 ---
 
-## ? Overview
+## ?? Overview
 
 Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizing African real-world assets (RWA). Built on **ERC-3643 (T-REX protocol)**, we enable compliant, transparent, and efficient financing for African SMEs through liquidity pools and yield-bearing tokens.
 
@@ -32,6 +32,9 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 | **Compliance** | `0x11a4c694e07e14F5231cf4Db0b483B65018b2583` | ? Deployed | Transfer compliance module |
 | **MockEUROD** | `0xAf5904C33723026a5D79a1879A8455047916bd1B` | ? Deployed | Testnet EUR stablecoin |
 | **JurisdictionCompliance** | `0xB4885b421Bef3112eD15e625581bA03CA0419e4e` | ? Deployed | Sanctions & jurisdiction checks |
+| **MockEscrow** | Deployed | ? | Testnet escrow simulation |
+| **MockFiatRamp** | Deployed | ? | Testnet fiat on/off ramp |
+| **NavGateway** | Deployed | ? | NAV per share computation |
 
 ### Backend Integration (Complete)
 
@@ -41,19 +44,31 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 | **Redeem ? ULPTokenizer.redeem()** | ? Integrated | Burn uLP, receive EUROD on-chain |
 | **Financing ? LiquidityPool.createFinancing()** | ? Integrated | On-chain financing + uGT minting |
 | **Repayment ? LiquidityPool.recordRepayment()** | ? Integrated | On-chain repayment + yield distribution |
-| **Compliance (Database-Backed)** | ? Integrated | KYC/KYB, document review, 24h SLA |
+| **Compliance (Database-Backed)** | ? Integrated | KYC/KYB, document review, configurable SLA |
 | **Blockchain Audit Trail** | ? Complete | All on-chain actions tracked in database |
 | **Demo Mode** | ? Available | `DEMO_MODE=True` for testing without blockchain |
 
 ### Frontend (Functional)
 
-| Page | Status | Details |
+| Page | Access | Details |
 |------|--------|---------|
-| **Subscription Form** | ? Functional | Multi-step form with API submission, Polygonscan links |
-| **Investor Portfolio** | ? Functional | Real data from database + blockchain |
-| **Industrial Financings** | ? Functional | Real API integration, repayment flow |
-| **Compliance Dashboard** | ? Functional | KYC review, document management |
-| **Pool Marketplace** | ? Ready | Browse pools, initiate investments |
+| **Subscription Form** | Investors | Multi-step form with API submission, Polygonscan links |
+| **Investor Portfolio** | Investors | Real data from database + blockchain |
+| **Investor Returns** | Investors | Real yield data, per-pool breakdown, upcoming distributions |
+| **Industrial Financings** | Operators | Real API integration, repayment flow |
+| **Compliance Dashboard** | Compliance Officers | KYC review, document management |
+| **Pool Marketplace** | Investors | Browse pools, initiate investments |
+| **Pool Management** | Admin | Configure pools, adjust NAV per share, APY |
+| **User Management** | Admin | Full CRUD: create, edit, delete users, reset passwords |
+| **KYC/KYB Monitoring** | Admin + Compliance | Per-period stats (daily/weekly/monthly/yearly), officer performance tracking |
+| **Compliance Monitoring** | Admin + Compliance | SLA metrics, overdue documents, officer leaderboard, trends |
+| **KYC Settings** | Admin | Configure review deadlines, view change history |
+| **Contract Management** | Admin | Dynamic contract registry with add/edit/delete |
+| **Bank Accounts** | Admin | Investor bank account management |
+| **Threshold Management** | Admin | Pool threshold configuration |
+| **Settings** | Admin | Platform-wide configuration |
+| **UGT Collateral** | Operators + Admin | NFT collateral monitoring |
+| **uLP Monitoring** | Investors + Admin | Liquidity pool token holdings |
 
 ---
 
@@ -97,7 +112,7 @@ Ujamaa DeFi Platform is an institutional-grade blockchain platform for tokenizin
 
 ---
 
-## ? Quick Start
+## ?? Quick Start
 
 ### For Developers
 
@@ -124,13 +139,13 @@ cd ../frontend && npm run dev
 
 ### For Investors
 
-**Documentation:** See [`docs/08_INVESTORS_ROOM/`](docs/08_INVESTORS_ROOM/)
+**Documentation:** See [`documentation/08_INVESTORS_ROOM/`](documentation/08_INVESTORS_ROOM/)
 
 **Key Documents:**
-- [Executive Summary](docs/08_INVESTORS_ROOM/00_EXECUTIVE_SUMMARY.md)
-- [Investor Pitch Deck](docs/08_INVESTORS_ROOM/03_INVESTOR_PITCH_DECK.md)
-- [Investment Memorandum](docs/08_INVESTORS_ROOM/04_INVESTMENT_MEMORANDUM.md)
-- [White Paper](docs/08_INVESTORS_ROOM/05_WHITE_PAPER.md)
+- [Executive Summary](documentation/08_INVESTORS_ROOM/00_EXECUTIVE_SUMMARY.html)
+- [Investor Pitch Deck](documentation/08_INVESTORS_ROOM/03_INVESTOR_PITCH_DECK.html)
+- [Investment Memorandum](documentation/08_INVESTORS_ROOM/04_INVESTMENT_MEMORANDUM.html)
+- [White Paper](documentation/08_INVESTORS_ROOM/05_WHITE_PAPER.html)
 
 ---
 
@@ -138,28 +153,33 @@ cd ../frontend && npm run dev
 
 ```
 Ujamaa DeFi Platform/
-??? docs/                           # Complete documentation (MD sources)
-?   ??? 01_SPECIFICATIONS/          # SRS v2.1 + technical specs (13 docs)
-?   ??? 02_TECHNICAL_GUIDES/        # Implementation guides (17 docs)
-?   ??? 03_OPERATIONS/              # Operations & monitoring (16 docs)
-?   ??? 04_TEAM_PLAYBOOKS/          # Team workflows (41 docs)
-?   ??? 05_AUDITS/                  # Audit reports (13 docs)
-?   ??? 06_MVP_EXECUTION/           # MVP specifications (11 docs)
-?   ??? 07_PRESENTATION/            # Educational materials (2 docs)
-?   ??? 08_INVESTORS_ROOM/          # Investor docs (47 docs)
-?   ??? 09_ALGORITHMS/              # Algorithm specs (6 docs)
-?   ??? 10_DESIGN/                  # Brand assets (3 docs)
-?   ??? 11_FUTURE_ENHANCEMENTS/     # Future roadmap (2 docs)
-?   ??? 12_SPRINT_REPORTS/          # Sprint reports (8 docs)
-??? documentation/                  # HTML documentation (205 files)
+??? documentation/                  # HTML documentation (222 files)
 ?   ??? index.html                  # Documentation portal
 ?   ??? assets/                     # CSS, JS, design system
-?   ??? [All folders mirror docs/]
+?   ??? 01_SPECIFICATIONS/          # SRS v2.1 + technical specs (16 docs)
+?   ??? 02_TECHNICAL_GUIDES/        # Implementation guides (28 docs)
+?   ??? 03_OPERATIONS/              # Operations & monitoring (20 docs)
+?   ??? 04_TEAM_PLAYBOOKS/          # Team workflows (42 docs)
+?   ??? 05_AUDITS/                  # Audit reports (14 docs)
+?   ??? 06_MVP_EXECUTION/           # MVP specifications (12 docs)
+?   ??? 07_PRESENTATION/            # Educational materials (3 docs)
+?   ??? 08_INVESTORS_ROOM/          # Investor docs (14 + subfolders)
+?   ??? 09_ALGORITHMS/              # Algorithm specs (7 docs)
+?   ??? 10_DESIGN/                  # Brand assets (3 docs)
+?   ??? 11_FUTURE_ENHANCEMENTS/     # Future roadmap (5 docs)
+?   ??? 12_SPRINT_REPORTS/          # Sprint reports (9 docs)
 ??? backend/                        # Python FastAPI backend
 ?   ??? api/                        # REST API endpoints
+?   ?   ??? admin.py                # User & system management
+?   ?   ??? compliance.py           # KYC/KYB compliance
+?   ?   ??? compliance_documents.py # Document review
+?   ?   ??? database_api.py         # Database CRUD
+?   ?   ??? monitoring.py           # SLA & officer monitoring
+?   ?   ??? pools.py                # Pool & yield management
+?   ?   ??? ulp_monitoring.py       # uLP token monitoring
 ?   ??? config/                     # Configuration & models
 ?   ??? services/                   # Business logic services
-?   ??? tests/                      # Backend tests
+?   ??? migrations/                 # Database migrations
 ??? frontend/                       # React 19 + TypeScript frontend
 ?   ??? src/
 ?   ?   ??? api/                    # API client layer
@@ -168,21 +188,39 @@ Ujamaa DeFi Platform/
 ?   ?   ??? contexts/               # React contexts
 ?   ?   ??? hooks/                  # Custom hooks
 ?   ?   ??? MVP/                    # MVP pages & components
+?   ?   ?   ??? pages/
+?   ?   ?   ?   ??? admin/          # Admin dashboards & tools
+?   ?   ?   ?   ??? compliance/     # Compliance officer pages
+?   ?   ?   ?   ??? invest/         # Investment monitoring
+?   ?   ?   ?   ??? investor/       # Investor pages
+?   ?   ?   ?   ??? operator/       # Industrial operator pages
+?   ?   ?   ?   ??? pool/           # Pool dashboards
+?   ?   ?   ??? components/         # Shared components
 ?   ??? package.json
 ??? contracts/                      # Solidity smart contracts
 ?   ??? ERC3643/                    # ERC-3643 infrastructure
-?   ?   ??? IdentityRegistry.sol    # Identity management
-?   ?   ??? Compliance.sol          # Transfer compliance
-?   ??? MVP/                        # MVP contracts
-?       ??? ULPToken.sol            # ERC-3643 token
+?   ??? MVP/                        # MVP contracts (11 contracts)
+?       ??? ULPTokenizer.sol        # ERC-3643 token
 ?       ??? LiquidityPool.sol       # Pool management
-?       ??? [More contracts...]
+?       ??? GuaranteeTokenizer.sol  # uGT NFTs
+?       ??? IndustrialGateway.sol   # Asset certification
+?       ??? ...
 ??? script/                         # Deployment scripts
 ?   ??? DeployMVP.s.sol             # MVP deployment
 ?   ??? DeployERC3643.s.sol         # ERC-3643 deployment
 ??? README.md                       # This file
-??? 100_PERCENT_DEPLOYMENT_COMPLETE.md  # Deployment report
 ```
+
+---
+
+## ?? Security
+
+- ? **Role-Based Access Control** (ADMIN, COMPLIANCE_OFFICER, REGULATOR, INVESTOR, OPERATOR)
+- ? **ERC-3643 Identity Verification** (On-chain KYC/AML)
+- ? **Transfer Compliance** (Pre/post-transfer checks)
+- ? **Audit Trail** (Database-logged compliance activities)
+- ? **Smart Contract Verification** (Polygonscan verified)
+- ? **Database Authentication** (PostgreSQL with SSL)
 - ? **Rate Limiting & DDoS Protection** (Cloudflare + Nginx)
 
 ---
@@ -213,11 +251,11 @@ Ujamaa DeFi Platform/
 
 | Partner | Role | Status |
 |---------|------|--------|
-| **GDIZ** (Glo-Djigbé Industrial Zone) | Industrial network, offtake agreements | ? In discussion |
-| **BIIC** (Banque Internationale pour l'Industrie et le Commerce) | Banking escrow, fiat on/off ramp | ? Specified |
-| **MCB** (Mauritius Commercial Bank) | Banking escrow, fiat on/off ramp | ? Specified |
-| **Fireblocks** | Institutional custody | ? Specified |
-| **Ondo Finance** | EUROD tokenized Euro fund | ? Integration planned |
+| **GDIZ** (Glo-Djigbé Industrial Zone) | Industrial network, offtake agreements | ?? In discussion |
+| **BIIC** (Banque Internationale pour l'Industrie et le Commerce) | Banking escrow, fiat on/off ramp | ?? Specified |
+| **MCB** (Mauritius Commercial Bank) | Banking escrow, fiat on/off ramp | ?? Specified |
+| **Fireblocks** | Institutional custody | ?? Specified |
+| **Ondo Finance** | EUROD tokenized Euro fund | ?? Integration planned |
 
 ---
 
@@ -284,22 +322,21 @@ This repository contains proprietary technology and confidential information. Ac
 
 | Metric | Value |
 |--------|-------|
-| **Documentation Files** | 207 HTML + 123 MD |
-| **Last Update** | April 5, 2026 |
+| **Documentation Files** | 222 HTML files |
+| **Last Update** | April 7, 2026 |
 | **SRS Version** | v2.1 (MVP Institutional) |
-| **Status** | ?? MVP Development Complete |
+| **Status** | ? MVP Development Complete |
 | **Design System** | Professional 2026 (Responsive) |
-| **Search** | ? Live search (Ctrl+K) |
+| **Search** | ?? Live search (Ctrl+K) |
 | **Branding** | ? Consistent (Ujamaa DeFi Platform) |
-| **Currency** | ? EUROD (Ondo Finance) |
-| **Bank Partner** | ? BIIC (Benin) |
-| **Smart Contracts** | ? 9 contracts deployed (Polygon Amoy) |
-| **Test Coverage** | ? 93% (367 tests) |
-| **Wallet Integration** | ? wagmi v3.6.0 + SIWE |
+| **Currency** | ?? EUROD (Ondo Finance) |
+| **Bank Partner** | ?? BIIC (Benin) |
+| **Smart Contracts** | ? 11 contracts deployed (Polygon Amoy) |
+| **Wallet Integration** | ?? wagmi v3.6.0 + SIWE |
 
 ---
 
-**Last Updated:** April 5, 2026
-**Total Documentation:** 207 HTML files + 123 MD sources
+**Last Updated:** April 7, 2026
+**Total Documentation:** 222 HTML files
 **SRS Version:** v2.1 (MVP Institutional)
-**Status:** ?? MVP Development Complete | 54 Algorithms Documented
+**Status:** ? MVP Development Complete | Monitoring & Admin Fully Operational
