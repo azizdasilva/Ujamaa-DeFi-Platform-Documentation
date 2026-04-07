@@ -103,7 +103,7 @@ export const navigationItems: NavItem[] = [
   },
   {
     label: 'uGT Collateral',
-    href: '/invest/uGT-monitoring',
+    href: '/invest/ugt-monitoring',
     icon: '🛡️',
     roles: ['INDUSTRIAL_OPERATOR', 'ADMIN', 'COMPLIANCE_OFFICER'],
     category: 'invest',
@@ -281,7 +281,7 @@ export const navigationItems: NavItem[] = [
     label: 'KYC/KYB Monitoring',
     href: '/admin/kyc-kyb-monitoring',
     icon: '🔍',
-    roles: ['ADMIN'],
+    roles: ['ADMIN', 'COMPLIANCE_OFFICER'],
     category: 'admin',
   },
 
@@ -415,7 +415,7 @@ export const canAccessPath = (role: InvestorRole, path: string): boolean => {
 
   // INDUSTRIAL_OPERATOR can access uGT monitoring
   if (role === 'INDUSTRIAL_OPERATOR') {
-    if (path.startsWith('/invest/uGT-monitoring')) {
+    if (path.startsWith('/invest/ugt-monitoring')) {
       return true;
     }
   }

@@ -559,6 +559,38 @@ export const getKycKybStats = (
 export const getKycKybSummary = (): Promise<KycKybSummaryResponse> =>
   apiClient.get('/compliance/monitoring/kyc-kyb-summary').then(r => r.data);
 
+/**
+ * Get KYC/KYB statistics broken down by compliance officer
+ *
+ * @param docCategory - 'kyc' | 'kyb' | 'all'
+ */
+export interface OfficerStat {
+  officer_id: number;
+  officer_name: string;
+  officer_role: string;
+  total_reviewed: number;
+  approved: number;
+  rejected: number;
+  overdue: number;
+  approval_rate: number;
+  rejection_rate: number;
+  average_review_days: number;
+}
+
+export interface OfficerStatsResponse {
+  doc_category: string;
+  total_officers: number;
+  officers: OfficerStat[];
+  generated_at: string;
+}
+
+export const getKycKybByOfficer = (
+  docCategory: string = 'all'
+): Promise<OfficerStatsResponse> =>
+  apiClient.get('/compliance/monitoring/kyc-kyb-by-officer', {
+    params: { doc_category: docCategory },
+  }).then(r => r.data);
+
 // =============================================================================
 // Default export (backward compatibility)
 // =============================================================================
@@ -592,6 +624,7 @@ export default {
   // KYC/KYB Monitoring
   getKycKybStats,
   getKycKybSummary,
+  getKycKybByOfficer,
   // Wallets
   listWhitelistedWallets,
   updateWhitelistedWallet,

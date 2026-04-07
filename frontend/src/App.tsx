@@ -421,7 +421,7 @@ const App: React.FC = () => {
             <Route
               path="/admin/kyc-kyb-monitoring"
               element={
-                <ProtectedRoute requiredRoles={['ADMIN']}>
+                <ProtectedRoute requiredRoles={['ADMIN', 'COMPLIANCE_OFFICER']}>
                   <KycKybMonitoring />
                 </ProtectedRoute>
               }
@@ -593,7 +593,7 @@ const App: React.FC = () => {
             <Route path="/investors-room/understanding-erc3643" element={<IREthereumERC3643 />} />
             <Route path="/investors-room/reinvestment-settings" element={<IRReinvestmentSettings />} />
             <Route path="/invest/ulp-monitoring" element={<ULPMonitoring />} />
-            <Route path="/invest/uGT-monitoring" element={<UGTMonitoring />} />
+            <Route path="/invest/ugt-monitoring" element={<UGTMonitoring />} />
             <Route path="/investors-room/risk-management" element={<IRRiskManagementGuide />} />
             <Route path="/investors-room/q1-2026-report" element={<IRQ12026QuarterlyReport />} />
             <Route path="/investors-room/annual-report-2025" element={<IRAnnualReport2025 />} />

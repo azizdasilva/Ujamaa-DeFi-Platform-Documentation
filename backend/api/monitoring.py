@@ -964,3 +964,84 @@ async def get_kyc_kyb_summary_endpoint(
         **summary,
         'generated_at': datetime.utcnow().isoformat(),
     }
+
+
+@router.get("/kyc-kyb-by-officer")
+async def get_kyc_kyb_by_officer(
+    doc_category: str = Query("all", description="Document category: kyc, kyb, all"),
+    auth = None,
+    db: Session = Depends(get_db)
+):
+    """
+    Get KYC/KYB statistics broken down by compliance officer.
+
+    Shows each officer's review count, approval rate, rejection rate,
+    average review time, and overdue count for performance tracking.
+    """
+    # Determine which doc types to query
+    if doc_category == 'kyc':
+        doc_types = KYC_DOC_TYPES
+    elif doc_category == 'kyb':
+        doc_types = KYB_DOC_TYPES
+    else:
+        doc_types = KYC_DOC_TYPES + KYB_DOC_TYPES
+
+    # Get all reviewed documents matching the types
+    docs = db.query(Document).filter(
+        Document.document_type.in_(doc_types),
+        Document.reviewed_by.isnot(None)
+    ).all()
+
+    # Group by reviewer
+    officers = {}
+    for doc in docs:
+        reviewer_id = doc.reviewed_by
+        if reviewer_id not in officers:
+            # Fetch the user
+            user = db.query(User).filter(User.id == reviewer_id).first()
+            officers[reviewer_id] = {
+                'officer_id': reviewer_id,
+                'officer_name': user.email if user else f'User #{reviewer_id}',
+                'officer_role': user.role.value if user and hasattr(user.role, 'value') else (user.role if user else 'unknown'),
+                'total_reviewed': 0,
+                'approved': 0,
+                'rejected': 0,
+                'overdue': 0,
+                'review_times': [],
+            }
+
+        officers[reviewer_id]['total_reviewed'] += 1
+
+        status = doc.verification_status.value if hasattr(doc.verification_status, 'value') else doc.verification_status
+        if status == 'approved':
+            officers[reviewer_id]['approved'] += 1
+        elif status == 'rejected':
+            officers[reviewer_id]['rejected'] += 1
+
+        if hasattr(doc, 'is_overdue') and doc.is_overdue:
+            officers[reviewer_id]['overdue'] += 1
+
+        if doc.reviewed_at and doc.submitted_at:
+            review_days = (doc.reviewed_at - doc.submitted_at).total_seconds() / 86400
+            officers[reviewer_id]['review_times'].append(review_days)
+
+    # Calculate rates and averages
+    result = []
+    for officer_id in sorted(officers.keys()):
+        o = officers[officer_id]
+        times = o.pop('review_times', [])
+        total = o['total_reviewed']
+        o['approval_rate'] = round((o['approved'] / total * 100), 1) if total > 0 else 0
+        o['rejection_rate'] = round((o['rejected'] / total * 100), 1) if total > 0 else 0
+        o['average_review_days'] = round(sum(times) / len(times), 2) if times else 0
+        result.append(o)
+
+    # Sort by total_reviewed descending (most active first)
+    result.sort(key=lambda x: x['total_reviewed'], reverse=True)
+
+    return {
+        'doc_category': doc_category,
+        'total_officers': len(result),
+        'officers': result,
+        'generated_at': datetime.utcnow().isoformat(),
+    }
