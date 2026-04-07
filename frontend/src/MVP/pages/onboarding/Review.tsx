@@ -13,12 +13,14 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Badge from '../../components/Badge';
+import apiClient from '../../../api/client';
 
 const OnboardingReview: React.FC = () => {
   const { type } = useParams<{ type: 'retail' | 'institutional' | 'originator' }>();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreed, setAgreed] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const [personalData, setPersonalData] = useState<any>({});
   const [documents, setDocuments] = useState<any>({});
@@ -30,16 +32,71 @@ const OnboardingReview: React.FC = () => {
     if (savedDocs) setDocuments(JSON.parse(savedDocs));
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!agreed) return;
-    
+
     setIsSubmitting(true);
-    // Simulate submission (MVP testnet)
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      // Map onboarding type to backend role
+      const roleMap: Record<string, string> = {
+        retail: 'RETAIL_INVESTOR',
+        institutional: 'INSTITUTIONAL_INVESTOR',
+        originator: 'INDUSTRIAL_OPERATOR',
+      };
+      const role = roleMap[type || 'retail'] || 'RETAIL_INVESTOR';
+
+      // Build email + password (use investor email, default password)
+      const email = personalData.email || `onboarding-${Date.now()}@ujamaa-temp.io`;
+      const password = personalData.password || 'Onboard123!';
+      const fullName = type === 'retail'
+        ? `${personalData.firstName || ''} ${personalData.lastName || ''}`.trim()
+        : personalData.companyName || 'Onboarded Company';
+      const jurisdiction = personalData.country || personalData.nationality || 'MU';
+
+      const userResp = await apiClient.post('/admin/users', {
+        email,
+        password,
+        role,
+        full_name: fullName,
+        wallet_address: personalData.walletAddress || null,
+      });
+
+      const userId = userResp.data?.id;
+
+      // Create document records for pending KYC/KYB review
+      if (userId) {
+        const docEntries = Object.entries(documents);
+        for (const [docId, doc] of docEntries) {
+          try {
+            const docType = type === 'retail'
+              ? `kyc_${docId}`
+              : `kyb_${docId}`;
+
+            await apiClient.post('/db/documents', {
+              investor_id: userId,
+              document_type: docType,
+              document_name: (doc as any)?.name || docId,
+              verification_status: 'pending',
+            });
+          } catch (docErr) {
+            console.warn(`Failed to create document record for ${docId}:`, docErr);
+          }
+        }
+      }
+
+      // Clear session storage and navigate to complete
+      sessionStorage.removeItem('onboardingData');
+      sessionStorage.removeItem('onboardingDocs');
       sessionStorage.setItem('onboardingSubmitted', 'true');
       sessionStorage.setItem('onboardingSubmitTime', new Date().toISOString());
       navigate(`/onboarding/${type}/complete`);
-    }, 2000);
+    } catch (err: any) {
+      console.error('Onboarding submission failed:', err);
+      setSubmitError(err.response?.data?.detail || err.message || 'Failed to submit application');
+      setIsSubmitting(false);
+    }
   };
 
   const formatCurrency = (value: string) => {
@@ -301,6 +358,13 @@ const OnboardingReview: React.FC = () => {
             </label>
           </div>
         </Card>
+
+        {/* Error Message */}
+        {submitError && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+            <strong>Error:</strong> {submitError}
+          </div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex items-center justify-between">
