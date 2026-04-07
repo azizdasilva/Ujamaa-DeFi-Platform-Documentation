@@ -3,8 +3,8 @@
  * Complete terminology guide for users, investors, and stakeholders
  * 
  * @version 2.0.0-mvp
- * @description Alphabetical glossary of all terms related to DeFi, blockchain, 
- *              tokenization, African finance, and the Ujamaa platform
+ * @description Alphabetical glossary of all terms related to DeFi, blockchain,
+ *              tokenization, African finance, and the Ujamaa DeFi Platform
  */
 
 import React, { useState, useMemo } from 'react';
@@ -28,7 +28,7 @@ type Category =
   | 'Investment'
   | 'Compliance'
   | 'African Finance'
-  | 'Ujamaa Platform'
+  | 'Ujamaa DeFi Platform'
   | 'Banking'
   | 'Legal';
 
@@ -84,7 +84,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'Industrial Operator',
     partOfSpeech: 'noun',
     definition: 'An industrial company that seeks financing through asset tokenization. Industrial operators tokenize their assets (invoices, inventory, production) to access capital from investors.',
-    category: 'Ujamaa Platform',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['Borrower', 'Manufacturer', 'Producer'],
     platformContext: 'Industrial Operators on Ujamaa are African industrial companies seeking financing through tokenized pools.',
   },
@@ -588,7 +588,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'Onboarding',
     partOfSpeech: 'noun',
     definition: 'The process of integrating new users into a platform or service. In finance, onboarding includes identity verification, compliance checks, and account setup.',
-    category: 'Ujamaa Platform',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['KYC', 'KYB', 'Registration'],
     platformContext: 'Ujamaa\'s onboarding flow includes personal information, document upload, and compliance verification.',
   },
@@ -596,7 +596,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'Originator',
     partOfSpeech: 'noun',
     definition: 'See Industrial Operator. The industrial company that tokenizes assets to access financing from investors.',
-    category: 'Ujamaa Platform',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['Industrial Operator', 'Borrower', 'Manufacturer'],
   },
   // ============================================================================
@@ -606,7 +606,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'Pool',
     partOfSpeech: 'noun',
     definition: 'A collective investment vehicle where multiple investors contribute funds that are managed together for a specific purpose or investment strategy.',
-    category: 'Ujamaa Platform',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['Liquidity Pool', 'Investment Fund', 'Asset Class'],
     platformContext: 'Ujamaa offers five pool families: Industry, Agriculture, Trade Finance, Renewable Energy, and Real Estate.',
   },
@@ -614,7 +614,7 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'Pool Family',
     partOfSpeech: 'noun',
     definition: 'A category or classification of investment pools that share similar characteristics, such as asset type, risk profile, or investment strategy.',
-    category: 'Ujamaa Platform',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['Pool', 'Asset Class', 'Diversification'],
     platformContext: 'Ujamaa\'s five pool families allow investors to diversify across different African economic sectors.',
   },
@@ -851,8 +851,8 @@ const GLOSSARY_DATA: GlossaryTerm[] = [
     term: 'EUROD',
     pronunciation: 'U-J-Euro',
     partOfSpeech: 'proper noun',
-    definition: 'The Euro-backed stablecoin token used within the Ujamaa platform for investments, yield distribution, and redemptions.',
-    category: 'Ujamaa Platform',
+    definition: 'The Euro-backed stablecoin token used within the Ujamaa DeFi Platform for investments, yield distribution, and redemptions.',
+    category: 'Ujamaa DeFi Platform',
     relatedTerms: ['Stablecoin', 'Token', 'EUR'],
     platformContext: 'All Ujamaa pool investments and yields are denominated in EUROD tokens.',
   },
@@ -967,7 +967,7 @@ const CATEGORIES: (Category | 'All')[] = [
   'Investment',
   'Compliance',
   'African Finance',
-  'Ujamaa Platform',
+  'Ujamaa DeFi Platform',
   'Banking',
   'Legal',
 ];
@@ -1028,7 +1028,7 @@ const Glossary: React.FC = () => {
       'Investment': 'from-[#D57028] to-[#F59E0B]',
       'Compliance': 'from-[#023D7A] to-[#8B5B3D]',
       'African Finance': 'from-[#D57028] to-[#8B5B3D]',
-      'Ujamaa Platform': 'from-[#00A8A8] to-[#023D7A]',
+      'Ujamaa DeFi Platform': 'from-[#00A8A8] to-[#023D7A]',
       'Banking': 'from-[#023D7A] to-[#48A9F0]',
       'Legal': 'from-[#8B5B3D] to-[#023D7A]',
     };

@@ -280,6 +280,18 @@ const AdminDashboard: React.FC = () => {
                   🏊 Manage Pools
                 </a>
                 <a
+                  href="/admin/kyc-settings"
+                  className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
+                >
+                  🔒 KYC Deadline Settings
+                </a>
+                <a
+                  href="/admin/monitoring"
+                  className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
+                >
+                  📊 Compliance Monitoring
+                </a>
+                <a
                   href="/admin/thresholds"
                   className="block w-full px-4 py-3 border border-[#48A9F0]/30 hover:bg-[#F3F8FA] text-[#023D7A] font-bold rounded-lg transition-colors text-center"
                 >

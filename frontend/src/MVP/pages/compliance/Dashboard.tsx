@@ -297,6 +297,12 @@ const ComplianceDashboard: React.FC = () => {
                   ✓ Review Pending Approvals
                 </a>
                 <a
+                  href="/admin/monitoring"
+                  className="block w-full px-4 py-3 bg-[#023D7A] hover:bg-[#012a54] text-white font-bold rounded-lg transition-colors text-center"
+                >
+                  📊 Compliance Monitoring & SLA
+                </a>
+                <a
                   href="/compliance/transactions"
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >

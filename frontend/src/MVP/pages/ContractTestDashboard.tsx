@@ -12,12 +12,12 @@ import { useLiquidityPool, formatPoolFamily, formatAPY, formatTokenAmount } from
 import WalletModal from '../components/WalletModal';
 
 // All deployed contract addresses (Polygon Amoy - Chain ID: 80002)
-// Deployed: April 5, 2026 - ERC-3643 Compliant + UGT Minting Enabled
+// Deployed: April 6, 2026 - ERC-3643 Compliant + ERC-3643NFT GuaranteeTokenizer
 export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock EUROD',
     symbol: 'EUROD',
-    address: '0xF07938b598F6BC1C88d52197d36F68b20E955604',
+    address: '0xAf5904C33723026a5D79a1879A8455047916bd1B',
     role: 'Euro-pegged stablecoin (Ondo)',
     standard: 'ERC-20',
     icon: '💶',
@@ -29,7 +29,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'ULPTokenizer',
     symbol: 'uLP',
-    address: '0x84fD03fF851c04D890F709BD26276eD12D62a763',
+    address: '0x8F8615bc8ebD885Ee5212d9F3faEC2C9A560C4c8',
     role: 'Yield-bearing pool token (ERC-3643)',
     standard: 'ERC-3643',
     icon: '🪙',
@@ -41,7 +41,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'IdentityRegistry',
     symbol: 'ID-REG',
-    address: '0x986B87102b8b0419d814840473859999E2cDa6FA',
+    address: '0x085a788194625e95f8060f9B561f4358aD1b3Ed7',
     role: 'ERC-3643 identity verification',
     standard: 'ERC-3643',
     icon: '🆔',
@@ -53,7 +53,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Compliance',
     symbol: 'COMPLIANCE',
-    address: '0x68eEAeA566C5B17475e68Fd625844e2Acc8c2241',
+    address: '0x11a4c694e07e14F5231cf4Db0b483B65018b2583',
     role: 'Transfer compliance module',
     standard: 'ERC-3643',
     icon: '✅',
@@ -64,20 +64,20 @@ export const DEPLOYED_CONTRACTS = [
   },
   {
     name: 'GuaranteeTokenizer',
-    symbol: 'UJG',
-    address: '0xAF4eAe210d20373D2C4BCdAe43aD0b9478852eb1',
-    role: 'Collateral NFT (ERC-3643NFT)',
-    standard: 'ERC-3643NFT',
+    symbol: 'UGT',
+    address: '0x7600C0b36F73028f866081823Fa691fF4688CeE0',
+    role: 'Collateral ERC-3643NFT',
+    standard: 'ERC-3643NFT (ERC-721 + Compliance)',
     icon: '🛡️',
     category: 'NFT',
     status: 'Deployed',
-    description: 'Ujamaa Guarantee Token. NFT representing certified merchandise/collateral backing financing.',
-    functions: ['mintGuarantee', 'redeemGuarantee', 'transfer', 'totalSupply'],
+    description: 'Ujamaa Guarantee Token. ERC-3643 NFT representing certified merchandise/collateral with identity verification and transfer restrictions.',
+    functions: ['mintGuarantee', 'redeemGuarantee', 'liquidateGuarantee', 'canTransfer', 'getComplianceReason', 'totalSupply'],
   },
   {
     name: 'Liquidity Pool',
     symbol: 'POOL',
-    address: '0x7C666e8F82F09BAeAD68D5e6588DE89d28a4805B',
+    address: '0x465CCDe6d2B228278eEB5c36606058D03859F67A',
     role: 'Multi-asset pool manager',
     standard: 'Custom',
     icon: '🏊',
@@ -89,7 +89,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Industrial Gateway',
     symbol: 'GATEWAY',
-    address: '0x842254e5aBCc3dBF402979683BB8345624fEA416',
+    address: '0xf1119462800d2f038aF0c61D874B52521bF22459',
     role: 'Asset certification & UGT minting',
     standard: 'Custom',
     icon: '🏭',
@@ -101,7 +101,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Jurisdiction Compliance',
     symbol: 'COMPLIANCE',
-    address: '0x6B48A85E2E54224BF7C165F5f463f502fB7453B7',
+    address: '0xB4885b421Bef3112eD15e625581bA03CA0419e4e',
     role: 'Investor jurisdiction verification',
     standard: 'Custom',
     icon: '🌍',
@@ -113,7 +113,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock Escrow',
     symbol: 'ESCROW',
-    address: '0xBfa58aad4b1b1648cDE4C74e4a5E84b352382523',
+    address: '0xF372Aa2E48B74d584eD1A3ECfC65b93046D8Efcb',
     role: 'Bank escrow simulation',
     standard: 'Custom',
     icon: '🔒',
@@ -125,7 +125,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'Mock Fiat Ramp',
     symbol: 'FIAT',
-    address: '0x2180f53Dce716c196D6a1fA86aF7dc5BBdF0d854',
+    address: '0x9E3e2037C3F743a9e1527B6e52f9Bc620215f088',
     role: 'Fiat on/off ramp',
     standard: 'Custom',
     icon: '💱',
@@ -137,7 +137,7 @@ export const DEPLOYED_CONTRACTS = [
   {
     name: 'NAV Gateway',
     symbol: 'GATEWAY',
-    address: '0x8cf44a92b679e587d92C25bB5739cb4e850103A4',
+    address: '0x01dF9667F68505d2561d890A8314fAac54eE1073',
     role: 'NAV price feed',
     standard: 'Custom',
     icon: '📊',

@@ -281,6 +281,184 @@ export const getDashboard = async (): Promise<DashboardStats> => {
 };
 
 // =============================================================================
+// KYC/KYB Settings Management
+// =============================================================================
+
+export interface KYCDeadlineSetting {
+  setting_key: string;
+  current_value: number;
+  description: string;
+  updated_by: string | null;
+  updated_at: string | null;
+  change_history: Array<{
+    old_value: number | null;
+    new_value: number | null;
+    reason: string;
+    changed_by: string;
+    changed_at: string;
+  }>;
+}
+
+export interface SLAMetrics {
+  total_documents: number;
+  approved_on_time: number;
+  approved_late: number;
+  auto_rejected: number;
+  still_pending: number;
+  sla_compliance_rate: number;
+  average_review_time_business_days: number;
+  on_time_percentage: number;
+  rejection_rate: number;
+}
+
+export interface DocumentTypeBreakdown {
+  document_type: string;
+  total: number;
+  approved_on_time: number;
+  approved_late: number;
+  rejected: number;
+  pending: number;
+  average_review_days: number;
+}
+
+export interface OfficerPerformance {
+  officer_id: number;
+  officer_email: string;
+  total_reviews: number;
+  approved: number;
+  rejected: number;
+  average_response_days: number;
+  approval_rate: number;
+}
+
+export interface TrendDataPoint {
+  date: string;
+  total_submissions: number;
+  approved_count: number;
+  rejected_count: number;
+  average_review_days: number;
+}
+
+export interface MonitoringDashboard {
+  period: string;
+  start_date: string;
+  end_date: string;
+  sla_metrics: SLAMetrics;
+  current_deadline_setting: number;
+  by_document_type: DocumentTypeBreakdown[];
+  officer_performance: OfficerPerformance[];
+  trend_data: TrendDataPoint[];
+  overdue_summary: {
+    total_overdue: number;
+    in_grace_period: number;
+    past_grace_period: number;
+    by_type: Record<string, number>;
+  };
+  generated_at: string;
+}
+
+export interface OverdueDocument {
+  document_id: number;
+  investor_id: number;
+  investor_name: string;
+  investor_jurisdiction: string;
+  document_type: string;
+  document_name: string;
+  submitted_at: string | null;
+  deadline_at: string | null;
+  days_overdue: number;
+  status: 'rejected' | 'pending' | 'warning' | 'urgent';
+  escalation_level: number;
+  reviewed_at: string | null;
+  review_notes: string | null;
+  extended_by: number | null;
+  extended_at: string | null;
+  extension_reason: string | null;
+}
+
+/**
+ * Get current KYC deadline setting and change history
+ */
+export async function getKYCDeadlineSetting() {
+  const response = await apiClient.get('/compliance/settings/kyc-deadline');
+  return response.data;
+}
+
+/**
+ * Update KYC deadline setting (business days)
+ */
+export async function updateKYCDeadline(businessDays: number, reason: string) {
+  const response = await apiClient.put('/compliance/settings/kyc-deadline', {
+    business_days: businessDays,
+    reason,
+  });
+  return response.data;
+}
+
+/**
+ * Extend deadline for a specific document
+ */
+export async function extendDocumentDeadline(
+  documentId: number,
+  additionalDays: number,
+  reason: string
+) {
+  const response = await apiClient.post(`/compliance/documents/${documentId}/extend-deadline`, {
+    additional_days: additionalDays,
+    reason,
+  });
+  return response.data;
+}
+
+/**
+ * Cancel auto-rejection for a document
+ */
+export async function cancelDocumentRejection(documentId: number) {
+  const response = await apiClient.post(`/compliance/documents/${documentId}/cancel-rejection`);
+  return response.data;
+}
+
+/**
+ * Get comprehensive monitoring dashboard data
+ */
+export async function getMonitoringDashboard(period: string = '30d') {
+  const response = await apiClient.get('/compliance/monitoring/dashboard', {
+    params: { period },
+  });
+  return response.data;
+}
+
+/**
+ * Get overdue documents report
+ */
+export async function getOverdueReport(status: string = 'all', limit: number = 100) {
+  const response = await apiClient.get('/compliance/monitoring/overdue-report', {
+    params: { status, limit },
+  });
+  return response.data;
+}
+
+/**
+ * Get SLA trends over time
+ */
+export async function getSLATrends(months: number = 6) {
+  const response = await apiClient.get('/compliance/monitoring/sla-trends', {
+    params: { months },
+  });
+  return response.data;
+}
+
+/**
+ * Get compliance officer leaderboard
+ */
+export async function getOfficerLeaderboard(period: string = '30d', limit: number = 10) {
+  const response = await apiClient.get('/compliance/monitoring/officer-leaderboard', {
+    params: { period, limit },
+  });
+  return response.data;
+}
+
+// =============================================================================
 // Contract Types & API
 // =============================================================================
 
@@ -343,6 +521,16 @@ export default {
   // Documents
   listDocuments,
   reviewDocument,
+  // KYC Settings
+  getKYCDeadlineSetting,
+  updateKYCDeadline,
+  extendDocumentDeadline,
+  cancelDocumentRejection,
+  // Compliance Monitoring
+  getMonitoringDashboard,
+  getOverdueReport,
+  getSLATrends,
+  getOfficerLeaderboard,
   // Wallets
   listWhitelistedWallets,
   updateWhitelistedWallet,

@@ -12,12 +12,10 @@ import Badge from '../../components/Badge';
 import Button from '../../components/Button';
 
 type ReinvestmentOption = 'all' | 'partial' | 'cash';
-type Frequency = 'daily' | 'weekly' | 'monthly' | 'quarterly';
 
 interface ReinvestmentSettings {
   option: ReinvestmentOption;
   percentage: number;
-  frequency: Frequency;
   autoCompound: boolean;
 }
 
@@ -26,7 +24,6 @@ const ReinvestmentSettings: React.FC = () => {
   const [settings, setSettings] = useState<ReinvestmentSettings>({
     option: 'all',
     percentage: 100,
-    frequency: 'quarterly',
     autoCompound: true,
   });
   const [saved, setSaved] = useState(false);
@@ -74,7 +71,6 @@ const ReinvestmentSettings: React.FC = () => {
           
             <div className="space-y-4">
               <ReinvestmentCard
-                id="all"
                 title="Reinvest All"
                 description="Automatically reinvest 100% of yield for maximum compound growth"
                 icon="🚀"
@@ -83,7 +79,6 @@ const ReinvestmentSettings: React.FC = () => {
                 recommended
               />
               <ReinvestmentCard
-                id="partial"
                 title="Partial Reinvestment"
                 description="Reinvest a portion and receive the rest as cash distribution"
                 icon="⚖️"
@@ -91,7 +86,6 @@ const ReinvestmentSettings: React.FC = () => {
                 onSelect={() => setSettings({ ...settings, option: 'partial' })}
               />
               <ReinvestmentCard
-                id="cash"
                 title="Take Cash"
                 description="Receive all yield as cash distribution to your wallet"
                 icon="💵"
@@ -137,26 +131,17 @@ const ReinvestmentSettings: React.FC = () => {
           <Card>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Compound Frequency</h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { id: 'daily', label: 'Daily', compoundings: 365 },
-                { id: 'weekly', label: 'Weekly', compoundings: 52 },
-                { id: 'monthly', label: 'Monthly', compoundings: 12 },
-                { id: 'quarterly', label: 'Quarterly', compoundings: 4 },
-              ].map((freq) => (
-                <button
-                  key={freq.id}
-                  onClick={() => setSettings({ ...settings, frequency: freq.id as Frequency })}
-                  className={`p-4 rounded-xl border-2 transition-all ${
-                    settings.frequency === freq.id
-                      ? 'border-green-600 bg-green-50'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <p className="font-bold text-gray-900">{freq.label}</p>
-                  <p className="text-xs text-gray-600">{freq.compoundings}x/year</p>
-                </button>
-              ))}
+            <div className="p-6 bg-green-50 rounded-xl border-2 border-green-600">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-bold text-gray-900 text-lg">Quarterly</p>
+                  <p className="text-sm text-gray-600">4 compoundings per year</p>
+                </div>
+                <Badge variant="success" size="md">✓ Active</Badge>
+              </div>
+              <p className="text-xs text-gray-500 mt-3">
+                Yield is reinvested quarterly, and reinvested yield starts earning additional yield from the next quarter.
+              </p>
             </div>
 
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
@@ -173,7 +158,7 @@ const ReinvestmentSettings: React.FC = () => {
                 </label>
               </div>
               <p className="text-sm text-gray-600 mt-2 ml-8">
-                When enabled, yield is automatically reinvested at your selected frequency
+                When enabled, yield is automatically reinvested quarterly
               </p>
             </div>
           </Card>
@@ -254,11 +239,11 @@ const ReinvestmentSettings: React.FC = () => {
           <Card className="bg-blue-50 border-blue-200">
             <h3 className="font-bold text-blue-900 mb-2">ℹ️ How Reinvestment Works</h3>
             <ul className="space-y-2 text-sm text-blue-700">
-              <li>• <strong>Reinvest All:</strong> 100% of yield buys more uLP tokens at current NAV</li>
+              <li>• <strong>Reinvest All:</strong> 100% of yield is reinvested into the pool, increasing your pool share</li>
               <li>• <strong>Partial:</strong> Selected percentage reinvested, rest distributed to wallet</li>
               <li>• <strong>Cash:</strong> All yield distributed to your connected wallet</li>
-              <li>• <strong>Compound Frequency:</strong> How often reinvested yield starts earning more yield</li>
-              <li>• <strong>No Fees:</strong> Reinvestment is always free on Ujamaa Platform</li>
+              <li>• <strong>Compound Frequency:</strong> Reinvested yield starts earning additional yield each quarter</li>
+              <li>• <strong>No Fees:</strong> Reinvestment is always free on Ujamaa DeFi Platform</li>
             </ul>
           </Card>
         </div>
@@ -270,7 +255,6 @@ const ReinvestmentSettings: React.FC = () => {
 // Sub-components
 
 interface ReinvestmentCardProps {
-  id: ReinvestmentOption;
   title: string;
   description: string;
   icon: string;
@@ -280,7 +264,6 @@ interface ReinvestmentCardProps {
 }
 
 const ReinvestmentCard: React.FC<ReinvestmentCardProps> = ({
-  id,
   title,
   description,
   icon,
@@ -324,12 +307,7 @@ const ReinvestmentCard: React.FC<ReinvestmentCardProps> = ({
 function calculateProjectedReturns(settings: ReinvestmentSettings) {
   const principal = 10000;
   const rate = 0.10; // 10% APY
-  const compoundingsPerYear = {
-    daily: 365,
-    weekly: 52,
-    monthly: 12,
-    quarterly: 4,
-  }[settings.frequency];
+  const compoundingsPerYear = 4; // Always quarterly
 
   const reinvestmentRate = settings.option === 'cash' ? 0 : settings.percentage / 100;
 
