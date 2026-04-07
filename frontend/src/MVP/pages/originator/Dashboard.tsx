@@ -16,6 +16,7 @@ import Card from '../../components/Card';
 import StatsCard from '../../components/StatsCard';
 import Badge from '../../components/Badge';
 import { databaseAPI, Financing } from '../../../api/database';
+import { assetsAPI } from '../../../api/assets';
 import { useAuth } from '../../../contexts/AuthContext';
 
 // Helper function to format currency
@@ -28,19 +29,27 @@ const formatCurrency = (value: number) => {
   }).format(value);
 };
 
+interface CertifiedAsset {
+  id: string;
+  description: string;
+  value: number;
+  status: string;
+}
+
 const OriginatorDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { user: authUser } = useAuth();
   const [loading, setLoading] = useState(true);
   const [financings, setFinancings] = useState<Financing[]>([]);
+  const [certifiedAssets, setCertifiedAssets] = useState<CertifiedAsset[]>([]);
 
   useEffect(() => {
-    const fetchFinancings = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
         // Map auth user to operator profile ID
         let industrialId: number;
-        
+
         if (authUser?.id?.includes('originator')) {
           industrialId = 3; // Green Cotton - Operator
         } else if (authUser?.id?.includes('retail')) {
@@ -50,17 +59,33 @@ const OriginatorDashboard: React.FC = () => {
         } else {
           industrialId = authUser?.id ? parseInt(authUser.id) || 3 : 3;
         }
-        
-        const data = await databaseAPI.getFinancings({ industrial_id: industrialId });
-        setFinancings(data);
+
+        // Fetch financings
+        const finData = await databaseAPI.getFinancings({ industrial_id: industrialId });
+        setFinancings(finData);
+
+        // Fetch certified assets
+        try {
+          const assetData = await assetsAPI.getAssetCertificates(industrialId);
+          const mapped: CertifiedAsset[] = (assetData || []).map((a: any) => ({
+            id: a.id?.toString() || a.certificate_id || `ASSET-${a.asset_id || '?'}`,
+            description: a.asset_name || a.description || 'Asset Certificate',
+            value: a.value || a.amount || 0,
+            status: a.status || 'certified',
+          }));
+          setCertifiedAssets(mapped);
+        } catch (assetErr) {
+          console.warn('Could not fetch certified assets, using empty list:', assetErr);
+          setCertifiedAssets([]);
+        }
       } catch (error) {
-        console.error('Error fetching financings:', error);
+        console.error('Error fetching dashboard data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchFinancings();
+    fetchData();
   }, [authUser?.id]);
 
   // Calculate stats from real data
@@ -275,7 +300,7 @@ const OriginatorDashboard: React.FC = () => {
                   href="/originator/assets/certificates"
                   className="block w-full px-4 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors text-center"
                 >
-                  📜 View Certificates & Mint UGT
+                  📜 View Certificates & Mint uGT
                 </a>
                 <a
                   href="/industrial-operator/financings"
