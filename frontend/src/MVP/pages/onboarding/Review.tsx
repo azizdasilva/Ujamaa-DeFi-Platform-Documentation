@@ -13,6 +13,7 @@ import TestnetNotice from '../../components/TestnetNotice';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Badge from '../../components/Badge';
+import authAPI from '../../../api/auth';
 import apiClient from '../../../api/client';
 
 const OnboardingReview: React.FC = () => {
@@ -47,7 +48,7 @@ const OnboardingReview: React.FC = () => {
       };
       const role = roleMap[type || 'retail'] || 'RETAIL_INVESTOR';
 
-      // Build email + password (use investor email, default password)
+      // Build payload
       const email = personalData.email || `onboarding-${Date.now()}@ujamaa-temp.io`;
       const password = personalData.password || 'Onboard123!';
       const fullName = type === 'retail'
@@ -55,17 +56,20 @@ const OnboardingReview: React.FC = () => {
         : personalData.companyName || 'Onboarded Company';
       const jurisdiction = personalData.country || personalData.nationality || 'MU';
 
-      const userResp = await apiClient.post('/admin/users', {
+      // 1. Register user via PUBLIC auth endpoint (NOT admin endpoint)
+      const userResp = await authAPI.register({
         email,
         password,
-        role,
         full_name: fullName,
-        wallet_address: personalData.walletAddress || null,
+        role,
+        jurisdiction,
+        company_name: type !== 'retail' ? fullName : undefined,
+        wallet_address: personalData.walletAddress || undefined,
       });
 
-      const userId = userResp.data?.id;
+      const userId = userResp.user.id;
 
-      // Create document records for pending KYC/KYB review
+      // 2. Create document records for pending KYC/KYB review
       if (userId) {
         const docEntries = Object.entries(documents);
         for (const [docId, doc] of docEntries) {
