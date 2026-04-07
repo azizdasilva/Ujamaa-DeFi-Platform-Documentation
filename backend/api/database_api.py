@@ -684,15 +684,65 @@ async def mock_deposit(
     }
 
 
+@router.post("/bank/claim")
+async def claim_to_wallet(
+    request: Dict[str, Any],
+    db: Session = Depends(get_db)
+):
+    """
+    Claim virtual funds to wallet as EUROD tokens.
+    Deducts from DB balance and authorizes on-chain minting.
+    """
+    profile_id = request.get("investor_id")
+    amount = request.get("amount", 0)
+    wallet_address = request.get("wallet_address")
+
+    if not profile_id or amount <= 0:
+        raise HTTPException(status_code=400, detail="Invalid claim amount or investor ID")
+
+    if not wallet_address:
+        raise HTTPException(status_code=400, detail="Wallet address required")
+
+    # Get investor profile
+    profile = db.query(InvestorProfile).filter(InvestorProfile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Investor profile not found")
+
+    # Get bank account
+    bank = db.query(BankAccount).filter(BankAccount.user_id == profile.user_id).first()
+    if not bank:
+        raise HTTPException(status_code=404, detail="Bank account not found")
+
+    if bank.available_balance < amount:
+        raise HTTPException(status_code=400, detail="Insufficient virtual balance")
+
+    # Deduct from virtual ledger
+    bank.available_balance -= amount
+    bank.balance -= amount
+    db.commit()
+
+    return {
+        "success": True,
+        "claimed_amount": amount,
+        "remaining_balance": bank.available_balance,
+        "wallet_address": wallet_address,
+        "message": f"Claim authorized. Mint {amount} EUROD to wallet via smart contract."
+    }
+
+
 @router.get("/bank/balance/{investor_id}")
-async def get_balance(
+async def get_bank_balance(
     investor_id: int,
     db: Session = Depends(get_db)
 ):
-    """Get investor bank balance."""
-    bank = db.query(BankAccount).filter(BankAccount.user_id == investor_id).first()
+    """Get investor virtual bank balance."""
+    profile = db.query(InvestorProfile).filter(InvestorProfile.id == investor_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Investor not found")
+
+    bank = db.query(BankAccount).filter(BankAccount.user_id == profile.user_id).first()
     if not bank:
-        raise HTTPException(status_code=404, detail="Bank account not found")
+        return { "available_balance": 0, "escrow_balance": 0, "total_balance": 0 }
 
     return {
         "available_balance": bank.available_balance,

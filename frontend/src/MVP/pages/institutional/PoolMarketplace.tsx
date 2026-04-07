@@ -226,10 +226,22 @@ const PoolMarketplace: React.FC = () => {
   const [depositAmount, setDepositAmount] = useState<number>(50000);
   const [depositSuccess, setDepositSuccess] = useState(false);
   const [depositError, setDepositError] = useState<string | null>(null);
+  const [virtualBalance, setVirtualBalance] = useState<number>(0);
+  const [claimStep, setClaimStep] = useState<'idle' | 'claiming' | 'minting'>('idle');
+  const [claimSuccess, setClaimSuccess] = useState(false);
 
   // Contract hooks
   const { mint, hash: mintHash, isPending: isMinting, error: mintError } = useMintEUROD();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useTransactionWait(mintHash);
+
+  // Fetch virtual balance on mount
+  useEffect(() => {
+    if (investor?.id) {
+      apiClient.get(`/db/bank/balance/${investor.id}`)
+        .then(res => setVirtualBalance(res.data.available_balance || 0))
+        .catch(() => setVirtualBalance(0));
+    }
+  }, [investor]);
 
   // Set default deposit amount based on role
   useEffect(() => {
@@ -244,21 +256,17 @@ const PoolMarketplace: React.FC = () => {
     }
   }, [authUser]);
 
-  // Watch for transaction confirmation
+  // Watch for transaction confirmation (Claim -> Mint)
   useEffect(() => {
-    if (isConfirmed) {
-      setDepositSuccess(true);
+    if (isConfirmed && claimStep === 'minting') {
+      setClaimSuccess(true);
       setDepositError(null);
       // Refresh investor profile after mint
       if (investor?.id) {
         databaseAPI.getInvestorProfile(investor.id).then(setInvestor).catch(console.error);
       }
-      setTimeout(() => {
-        setShowDepositModal(false);
-        setDepositSuccess(false);
-      }, 2000);
     }
-  }, [isConfirmed]);
+  }, [isConfirmed, claimStep]);
 
   useEffect(() => {
     if (mintError) {
@@ -1498,108 +1506,140 @@ const PoolMarketplace: React.FC = () => {
         </div>
       )}
 
-      {/* Deposit Modal */}
+      {/* Manage Funds Modal */}
       {showDepositModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
             <div className="p-6 bg-gradient-to-r from-[#023D7A] to-[#00A8A8] text-white">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold">🏦 Testnet Deposit</h3>
-                <button onClick={() => setShowDepositModal(false)} className="text-white/80 hover:text-white">
+                <h3 className="text-xl font-bold">💳 Manage Funds</h3>
+                <button onClick={() => { setShowDepositModal(false); setClaimStep('idle'); setDepositError(null); setClaimSuccess(false); }} className="text-white/80 hover:text-white">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              <p className="text-sm text-white/80 mt-1">Mint EUROD to your wallet (Simulates Fiat On-Ramp)</p>
+              <p className="text-sm text-white/80 mt-1">Virtual Bank → EUROD Wallet Bridge</p>
             </div>
-            <div className="p-6 space-y-6">
-              {/* Wallet Status */}
-              {!isConnected ? (
-                <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-center">
-                  <p className="text-amber-800 font-medium">⚠️ Wallet Not Connected</p>
-                  <p className="text-sm text-amber-600 mt-1">Please connect MetaMask to mint test tokens</p>
+            <div className="p-6 space-y-4">
+              {/* Balance Overview */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
+                  <p className="text-xs text-blue-600 font-bold uppercase mb-1">🏦 Virtual Bank</p>
+                  <p className="text-xl font-bold text-blue-900">{formatFullCurrency(virtualBalance)}</p>
                 </div>
-              ) : (
-                <>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">Deposit Amount</label>
-                    <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">€</span>
-                      <input
-                        type="number"
-                        value={depositAmount}
-                        onChange={(e) => setDepositAmount(Number(e.target.value))}
-                        disabled={isMinting || isConfirming}
-                        className="w-full pl-8 pr-4 py-3 text-xl font-bold text-[#023D7A] border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00A8A8] focus:border-transparent transition-all disabled:bg-gray-100"
-                      />
-                    </div>
-                  </div>
+                <div className="p-4 bg-green-50 rounded-xl border border-green-200">
+                  <p className="text-xs text-green-600 font-bold uppercase mb-1">👛 Wallet (EUROD)</p>
+                  <p className="text-xl font-bold text-green-900">{isConnected ? 'Connected' : 'Not Connected'}</p>
+                </div>
+              </div>
 
-                  {/* Presets */}
-                  <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Quick Select</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {(authUser?.role === 'INSTITUTIONAL_INVESTOR'
-                        ? [100000, 500000, 1000000]
-                        : [10000, 50000, 100000]
-                      ).map((amt) => (
-                        <button
-                          key={amt}
-                          onClick={() => setDepositAmount(amt)}
-                          disabled={isMinting || isConfirming}
-                          className={`py-2 rounded-lg text-sm font-bold transition-colors disabled:opacity-50 ${
-                            depositAmount === amt
-                              ? 'bg-[#023D7A] text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
-                        >
-                          {formatFullCurrency(amt)}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Status Messages */}
-                  {depositError && (
-                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
-                      ❌ {depositError}
-                    </div>
-                  )}
-                  {isMinting && (
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
-                      ⏳ Please confirm transaction in MetaMask...
-                    </div>
-                  )}
-                  {isConfirming && (
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-700">
-                      🔄 Waiting for blockchain confirmation...
-                    </div>
-                  )}
-                  {depositSuccess && (
-                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
-                      ✅ Successfully minted {formatFullCurrency(depositAmount)} EUROD!
-                    </div>
-                  )}
-
-                  <div className="flex gap-3 pt-2">
-                    <button
-                      onClick={() => setShowDepositModal(false)}
-                      disabled={isMinting || isConfirming}
-                      className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors disabled:opacity-50"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={handleMockDeposit}
-                      disabled={isMinting || isConfirming || depositSuccess}
-                      className="flex-1 py-3 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-xl transition-colors disabled:opacity-50"
-                    >
-                      {isMinting ? 'Confirming...' : isConfirming ? 'Processing...' : depositSuccess ? 'Minted ✓' : 'Mint EUROD'}
-                    </button>
-                  </div>
-                </>
+              {depositError && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                  ❌ {depositError}
+                </div>
               )}
+
+              {/* Step 1: Add Virtual Funds */}
+              <div className="p-4 bg-gray-50 rounded-xl border-2 border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">Step 1: Add Virtual Funds</h4>
+                <p className="text-xs text-gray-600 mb-3">Simulates a bank wire to your virtual account</p>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    value={depositAmount}
+                    onChange={(e) => setDepositAmount(Number(e.target.value))}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium"
+                    placeholder="Amount"
+                  />
+                  <button
+                    onClick={async () => {
+                      if (!investor?.id) return;
+                      setDepositError(null);
+                      try {
+                        await apiClient.post('/db/bank/deposit', { investor_id: investor.id, amount: depositAmount });
+                        const res = await apiClient.get(`/db/bank/balance/${investor.id}`);
+                        setVirtualBalance(res.data.available_balance || 0);
+                        setDepositSuccess(true);
+                        setTimeout(() => setDepositSuccess(false), 2000);
+                      } catch (e: any) {
+                        setDepositError(e.response?.data?.detail || 'Failed to add funds');
+                      }
+                    }}
+                    className="px-4 py-2 bg-[#023D7A] hover:bg-[#0d3352] text-white font-bold rounded-lg text-sm transition-colors"
+                  >
+                    {depositSuccess ? '✓ Added' : 'Add'}
+                  </button>
+                </div>
+              </div>
+
+              {/* Step 2: Claim to Wallet */}
+              <div className={`p-4 rounded-xl border-2 transition-colors ${claimStep === 'idle' ? 'bg-gray-50 border-gray-200' : 'bg-green-50 border-green-300'}`}>
+                <h4 className="font-bold text-gray-900 mb-2">Step 2: Claim to Wallet</h4>
+                <p className="text-xs text-gray-600 mb-3">Converts virtual balance to EUROD tokens on-chain</p>
+                
+                {!isConnected ? (
+                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-center text-sm text-amber-700">
+                    ⚠️ Connect MetaMask first
+                  </div>
+                ) : claimStep === 'minting' || isMinting ? (
+                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center text-sm text-blue-700 flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
+                    Confirm mint in MetaMask...
+                  </div>
+                ) : isConfirming ? (
+                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-center text-sm text-amber-700">
+                    🔄 Waiting for blockchain confirmation...
+                  </div>
+                ) : claimSuccess ? (
+                  <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-center text-sm text-green-700">
+                    ✅ Successfully claimed {formatFullCurrency(depositAmount)} EUROD!
+                  </div>
+                ) : (
+                  <button
+                    onClick={async () => {
+                      if (virtualBalance < depositAmount) {
+                        setDepositError('Insufficient virtual balance');
+                        return;
+                      }
+                      setClaimStep('claiming');
+                      setDepositError(null);
+                      try {
+                        // Step 1: Deduct from DB
+                        await apiClient.post('/db/bank/claim', {
+                          investor_id: investor.id,
+                          amount: depositAmount,
+                          wallet_address: address,
+                        });
+                        setClaimStep('minting');
+                        setVirtualBalance(prev => prev - depositAmount);
+                        // Step 2: Mint EUROD on-chain
+                        mint(depositAmount);
+                      } catch (e: any) {
+                        setDepositError(e.response?.data?.detail || 'Claim failed');
+                        setClaimStep('idle');
+                      }
+                    }}
+                    disabled={virtualBalance < depositAmount}
+                    className={`w-full py-3 font-bold rounded-xl text-sm transition-colors ${
+                      virtualBalance < depositAmount 
+                        ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                        : 'bg-green-600 hover:bg-green-700 text-white'
+                    }`}
+                  >
+                    {virtualBalance < depositAmount ? 'Insufficient Balance' : '🔄 Claim & Mint EUROD'}
+                  </button>
+                )}
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={() => { setShowDepositModal(false); setClaimStep('idle'); setDepositError(null); setClaimSuccess(false); }}
+                  className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
