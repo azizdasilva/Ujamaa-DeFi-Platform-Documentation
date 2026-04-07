@@ -305,6 +305,54 @@ async def review_document(
         created_at=now,
     )
     db.add(activity)
+
+    # If approved, check if ALL documents for this investor are now approved
+    # and update the investor's KYC/KYB status accordingly
+    if review.action == "approve":
+        investor = db.query(InvestorProfile).filter(
+            InvestorProfile.id == doc.investor_id
+        ).first()
+
+        if investor:
+            # Get all documents for this investor
+            investor_docs = db.query(Document).filter(
+                Document.investor_id == doc.investor_id
+            ).all()
+
+            all_approved = all(
+                d.verification_status == ComplianceStatusEnum.APPROVED
+                for d in investor_docs if d.verification_status != ComplianceStatusEnum.PENDING
+            ) and len(investor_docs) > 0
+
+            # Check if there are any pending docs
+            has_pending = any(
+                d.verification_status == ComplianceStatusEnum.PENDING
+                for d in investor_docs
+            )
+
+            # Check if any rejected
+            has_rejected = any(
+                d.verification_status == ComplianceStatusEnum.REJECTED
+                for d in investor_docs
+            )
+
+            # Determine if this is KYC (retail) or KYB (institutional/operator)
+            is_kyc_doc = doc.document_type.value.startswith('kyc_') if doc.document_type else False
+            is_kyb_doc = doc.document_type.value.startswith('kyb_') if doc.document_type else False
+
+            if all_approved and not has_pending and not has_rejected:
+                # All documents approved - investor can now invest!
+                if is_kyc_doc or investor.kyc_status == ComplianceStatusEnum.PENDING:
+                    investor.kyc_status = ComplianceStatusEnum.APPROVED
+                if is_kyb_doc or investor.kyb_status == ComplianceStatusEnum.PENDING:
+                    investor.kyb_status = ComplianceStatusEnum.APPROVED
+            elif has_rejected and not has_pending:
+                # All docs reviewed, at least one rejected
+                if is_kyc_doc:
+                    investor.kyc_status = ComplianceStatusEnum.REJECTED
+                if is_kyb_doc:
+                    investor.kyb_status = ComplianceStatusEnum.REJECTED
+
     db.commit()
 
     return {

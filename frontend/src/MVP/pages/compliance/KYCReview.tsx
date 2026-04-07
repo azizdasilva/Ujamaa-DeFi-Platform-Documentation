@@ -52,7 +52,11 @@ const KYCReview: React.FC = () => {
         reviewer_id: complianceOfficerId
       });
 
-      alert(`✓ Document ${action}ed successfully!`);
+      // Show success message with clear status update
+      const successMsg = action === 'approve'
+        ? '✓ Document approved! Once all documents are approved, the investor can start investing.'
+        : '✓ Document rejected.';
+      alert(successMsg);
       setShowReviewModal(false);
       setReviewNotes('');
       setSelectedDoc(null);
