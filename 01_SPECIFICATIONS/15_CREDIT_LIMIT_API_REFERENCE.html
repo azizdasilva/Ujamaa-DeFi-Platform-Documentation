@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform - Credit Limit API Reference">
+  <title>💳 Credit Limit API Reference - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Ujamaa Logo Header -->
+<div style="text-align:center; padding:16px 0 8px 0; background:#F9F6ED; border-bottom:1px solid #e0e0e0;">
+  <a href="../index.html" style="display:inline-block;">
+    <img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" style="height:64px; width:auto; object-fit:contain;" />
+  </a>
+</div>
+<!-- /Ujamaa Logo Header -->
+
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" class="docs-logo-icon" /><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link active"><span class="docs-nav-icon">📋</span><span>Specifications</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link"><span class="docs-nav-icon">🏆</span><span>Competitive Intelligence</span><span class="docs-nav-badge">12</span></a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Credit Limit API Reference</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">💳 Credit Limit API Reference</h1>
+        <p class="docs-subtitle">Complete endpoint documentation for the Credit Limit System</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026 | <strong>Base URL:</strong> <code>/api/v2/credit-limits</code></p></div>
+
+        <h2>Table of Contents</h2>
+        <ol class="docs-list" style="padding-left:1.5rem">
+          <li><a href="#1-overview">Overview</a></li>
+          <li><a href="#2-authentication">Authentication</a></li>
+          <li><a href="#3-get-my-credit-limit">GET /me</a></li>
+          <li><a href="#4-recalculate-my-credit-limit">POST /me/recalculate</a></li>
+          <li><a href="#5-get-user-credit-limit-admin">GET /users/:id (Admin)</a></li>
+          <li><a href="#6-override-user-credit-limit-admin">PUT /users/:id (Admin)</a></li>
+          <li><a href="#7-reset-user-credit-limit-admin">POST /users/:id/reset (Admin)</a></li>
+          <li><a href="#8-calculation-formula">Calculation Formula</a></li>
+          <li><a href="#9-error-codes">Error Codes</a></li>
+        </ol>
+        <hr />
+
+        <h2 id="1-overview">1. Overview</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>The Credit Limit API provides endpoints for viewing, calculating, and managing user credit limits. Credit limits determine the maximum borrowing capacity for industrial operators on the Ujamaa DeFi Platform.</p>
+        <p><strong>Key Concepts:</strong></p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li><strong>Credit Limit</strong>: Maximum amount (in EUR/EUROD) a user can borrow at any given time</li>
+          <li><strong>Available Credit</strong>: <code>credit_limit - outstanding_loan_principal</code></li>
+          <li><strong>Verification Gate</strong>: Credit limits are only active when <strong>both</strong> KYC and KYB are <code>APPROVED</code></li>
+          <li><strong>Admin Override</strong>: Administrators can manually set credit limits, overriding automatic calculation</li>
+        </ul>
+        </section>
+
+        <h2 id="2-authentication">2. Authentication</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>All endpoints require authentication via <code>Authorization: Bearer &lt;token&gt;</code> header.</p>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Token Type</th><th>Format</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Mock JWT</td><td><code>mock-jwt-token-ROLE-timestamp</code></td><td><code>mock-jwt-token-INDUSTRIAL_OPERATOR-5-1744473600</code></td></tr>
+            <tr><td>Email</td><td>User's email address</td><td><code>user@example.com</code></td></tr>
+            <tr><td>Wallet</td><td>Ethereum wallet address</td><td><code>0x1234...5678</code></td></tr>
+            <tr><td>Admin</td><td><code>admin-token-mvp</code></td><td><code>admin-token-mvp</code></td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="3-get-my-credit-limit">3. GET /me</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p><strong>Endpoint:</strong> <code>GET /api/v2/credit-limits/me</code></p>
+        <p>Returns the current credit limit and available credit for the authenticated user.</p>
+
+        <h3>Request</h3>
+        <pre><code>GET /api/v2/credit-limits/me HTTP/1.1
+Authorization: Bearer aziz_dasilva@yahoo.fr</code></pre>
+
+        <h3>Response — Approved (200 OK)</h3>
+        <pre><code>{
+  "credit_limit": 200000.00,
+  "available_credit": 180000.00,
+  "method": "COLLATERAL_BASED",
+  "verification_gate": "APPROVED",
+  "breakdown": {
+    "tier": "TIER_2",
+    "base_limit": 50000.00,
+    "operator_type": "MANUFACTURING",
+    "total_certified_asset_value": 250000.00,
+    "collateral_factor": 0.50,
+    "collateral_credit": 125000.00,
+    "repayment_ratio": 1.0,
+    "repayment_bonus": 10000.00,
+    "raw_limit": 185000.00,
+    "global_max_limit": 500000.00,
+    "final_limit": 185000.00
+  },
+  "credit_limit_last_updated": "2026-04-11T10:30:00Z"
+}</code></pre>
+
+        <h3>Response — Pending KYB (200 OK)</h3>
+        <pre><code>{
+  "credit_limit": 0,
+  "available_credit": 0,
+  "method": null,
+  "verification_gate": "PENDING",
+  "breakdown": {
+    "kyc_status": "APPROVED",
+    "kyb_status": "PENDING",
+    "reason": "Credit limit requires KYC+KYB approval."
+  },
+  "credit_limit_last_updated": null
+}</code></pre>
+        </section>
+
+        <h2 id="4-recalculate-my-credit-limit">4. POST /me/recalculate</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p><strong>Endpoint:</strong> <code>POST /api/v2/credit-limits/me/recalculate</code></p>
+        <p>Forces a recalculation of the current user's credit limit. Useful after asset certification or KYB upgrade.</p>
+        <p>No request body required.</p>
+        <p><strong>Response:</strong> Same format as <code>GET /me</code>.</p>
+        </section>
+
+        <h2 id="5-get-user-credit-limit-admin">5. GET /users/:id (Admin)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p><strong>Endpoint:</strong> <code>GET /api/v2/credit-limits/users/{user_id}</code></p>
+        <p>View any user's credit limit details. Requires <code>ADMIN</code> role.</p>
+
+        <h3>Request</h3>
+        <pre><code>GET /api/v2/credit-limits/users/5 HTTP/1.1
+Authorization: Bearer admin-token-mvp</code></pre>
+
+        <h3>Response (200 OK)</h3>
+        <pre><code>{
+  "user_id": 5,
+  "email": "aziz_dasilva@yahoo.fr",
+  "role": "INDUSTRIAL_OPERATOR",
+  "credit_limit": 200000.00,
+  "available_credit": 180000.00,
+  "method": "COLLATERAL_BASED",
+  "admin_override": null,
+  "verification_gate": "APPROVED",
+  "breakdown": { ... },
+  "credit_limit_last_updated": "2026-04-11T10:30:00Z"
+}</code></pre>
+        </section>
+
+        <h2 id="6-override-user-credit-limit-admin">6. PUT /users/:id (Admin)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p><strong>Endpoint:</strong> <code>PUT /api/v2/credit-limits/users/{user_id}</code></p>
+        <p>Manually override a user's credit limit. Takes precedence over automatic calculation.</p>
+
+        <h3>Request</h3>
+        <pre><code>PUT /api/v2/credit-limits/users/5 HTTP/1.1
+Authorization: Bearer admin-token-mvp
+Content-Type: application/json
+
+{
+  "credit_limit": 150000,
+  "reason": "Strategic partner — Green Cotton expansion phase"
+}</code></pre>
+
+        <h3>Response (200 OK)</h3>
+        <pre><code>{
+  "success": true,
+  "message": "Credit limit overridden to 150,000.00 EUR",
+  "user_id": 5,
+  "credit_limit": 150000.00,
+  "available_credit": 150000.00,
+  "method": "ADMIN_OVERRIDE",
+  "reason": "Strategic partner — Green Cotton expansion phase"
+}</code></pre>
+        </section>
+
+        <h2 id="7-reset-user-credit-limit-admin">7. POST /users/:id/reset (Admin)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p><strong>Endpoint:</strong> <code>POST /api/v2/credit-limits/users/{user_id}/reset</code></p>
+        <p>Remove admin override and reset to auto-calculated value.</p>
+
+        <h3>Request</h3>
+        <pre><code>POST /api/v2/credit-limits/users/5/reset HTTP/1.1
+Authorization: Bearer admin-token-mvp</code></pre>
+
+        <h3>Response (200 OK)</h3>
+        <pre><code>{
+  "success": true,
+  "message": "Credit limit reset to auto-calculated value",
+  "new_credit_limit": 185000.00,
+  "method": "COLLATERAL_BASED"
+}</code></pre>
+        </section>
+
+        <h2 id="8-calculation-formula">8. Credit Limit Calculation Formula</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>The upgraded system uses a multi-factor pipeline benchmarked against Aave V3, Morpho Blue, and Basel III:</p>
+        <pre><code>Step 1: Verification Gate → KYB must be APPROVED
+Step 2: Risk-Weighted Collateral → Σ(Asset_value × Asset_class_factor)
+Step 3: 5Cs Risk Score → Weighted composite (0-100)
+Step 4: Tier Multiplier → Based on score (AAA=1.0, A=0.8, etc.)
+Step 5: Concentration → ±adjustment for diversification
+Step 6: Reputation → Compounding multiplier from repayment history
+Step 7: Global Cap → min(result, €500,000)
+
+Final = RWC × Tier_Multiplier × Concentration × Reputation</code></pre>
+
+        <h3>Risk-Weighted Collateral Factors</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Asset Class</th><th>Factor</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Receivables</td><td>75%</td><td>High liquidity, verifiable</td></tr>
+            <tr><td>Inventory</td><td>55%</td><td>Moderate liquidity, storage risk</td></tr>
+            <tr><td>Equipment</td><td>45%</td><td>Depreciation, illiquid</td></tr>
+            <tr><td>Real Estate</td><td>65%</td><td>Stable value, illiquid</td></tr>
+            <tr><td>Contracts/Other</td><td>30-35%</td><td>Counterparty risk</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Tier Ratings</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Score</th><th>Rating</th><th>Multiplier</th><th>Max LTV</th></tr></thead>
+          <tbody>
+            <tr><td>90-100</td><td>AAA</td><td>1.0</td><td>80%</td></tr>
+            <tr><td>80-89</td><td>AA</td><td>0.9</td><td>70%</td></tr>
+            <tr><td>70-79</td><td>A</td><td>0.8</td><td>60%</td></tr>
+            <tr><td>60-69</td><td>BBB</td><td>0.7</td><td>50%</td></tr>
+            <tr><td>50-59</td><td>BB</td><td>0.5</td><td>40%</td></tr>
+            <tr><td>40-49</td><td>B</td><td>0.3</td><td>30%</td></tr>
+            <tr><td>&lt;40</td><td>C</td><td>0.0</td><td>0% (denied)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Reputation System</h3>
+        <p>On-time repayment: +2% per loan (compounding, max +20%). Early repayment: +5% for 12 months. Late repayment: -5% for 6 months. Default: -50% for 24 months.</p>
+        </section>
+
+        <h2 id="9-error-codes">9. Error Codes</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Status</th><th>Condition</th></tr></thead>
+          <tbody>
+            <tr><td><code>400</code></td><td>Credit limit negative, exceeds global max, or financing exceeds available credit</td></tr>
+            <tr><td><code>401</code></td><td>Authentication required</td></tr>
+            <tr><td><code>403</code></td><td>Admin access required, or KYC/KYB not approved for financing</td></tr>
+            <tr><td><code>404</code></td><td>User or investor profile not found</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <hr />
+        <p style="color:#94A3B8; font-size:0.875rem; margin-top:2rem;">Last updated: April 12, 2026 | <a href="14_CREDIT_LIMIT_SYSTEM.html" style="color:#3B82F6;">← Credit Limit System Guide</a> | <a href="16_CREDIT_LIMIT_DEEP_DIVE.html" style="color:#3B82F6;">Deep Dive Numbers →</a></p>
+      </div>
+      <footer class="docs-footer"><p>© 2026 Ujamaa DeFi Platform · <a href="https://github.com/UjamaaDeFi">GitHub</a> · <a href="../index.html">All Docs</a></p></footer>
+    </main>
+  </div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

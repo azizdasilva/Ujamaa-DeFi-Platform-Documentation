@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,13 +130,31 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Investors Room</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Ujamaa DeFi Platform</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 17, 2026</p></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Ujamaa DeFi Platform</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>White Paper</h2>
 <p><strong>Institutional-Grade African Real-World Asset Tokenization</strong></p>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 1.0<br />
 <strong>Date:</strong> March 17, 2026<br />
 <strong>Classification:</strong> Public</p>
@@ -137,7 +162,7 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>ABSTRACT</h2>
 <p>The Ujamaa DeFi Platform is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. Built on the ERC-3643 T-REX protocol and licensed by the Mauritius Financial Services Commission (FSC) as a Category 1 CIS Manager, Ujamaa enables institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.</p>
-<p>This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the Ujamaa DeFi Platform. We introduce the uLP Token (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), Ujamaa bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.</p>
+<p>This white paper describes the technical architecture, economic model, compliance framework, and regulatory structure of the Ujamaa DeFi Platform. We introduce the uLP (ULPTokenizer) (a yield-bearing ERC-3643 token representing ownership in diversified liquidity pools) and the Guarantee Token (an ERC-3643 NFT representing certified merchandise collateral). Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody), and BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), Ujamaa bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.</p>
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>TABLE OF CONTENTS</h2>
@@ -172,7 +197,7 @@
 </ul>
 <h3>1.2 Solution Overview</h3>
 <p>Ujamaa DeFi Platform bridges this gap through blockchain-based tokenization of African industrial financing:</p>
-<p><strong>Core Innovation:</strong> Diversified liquidity pools of SME financings, represented by yield-bearing ERC-3643 tokens (uLP Tokens) accessible to institutional investors.</p>
+<p><strong>Core Innovation:</strong> Diversified liquidity pools of SME financings, represented by yield-bearing ERC-3643 tokens (uLP (ULPTokenizer)s) accessible to institutional investors.</p>
 <p><strong>Key Features:</strong><br />
 - <strong>ERC-3643 Compliance:</strong> On-chain identity verification, transfer restrictions, regulatory enforcement<br />
 - <strong>Yield-Bearing Tokens:</strong> Value accrual model (NAV increases, balance constant) for tax efficiency<br />
@@ -230,7 +255,7 @@
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Section 2:</strong> Market analysis (TAM, SAM, SOM, competitive landscape)</li>
 <li><strong>Section 3:</strong> System architecture (layers, components, integrations)</li>
-<li><strong>Section 4:</strong> Token economics (uLP Token, Guarantee Token, fee structure)</li>
+<li><strong>Section 4:</strong> Token economics (uLP (ULPTokenizer), Guarantee Token, fee structure)</li>
 <li><strong>Section 5:</strong> Smart contract design (specifications, upgrade mechanism)</li>
 <li><strong>Section 6:</strong> Compliance framework (ERC-3643, AML/KYC, regulatory)</li>
 <li><strong>Section 7:</strong> Security model (audits, custody, risk management)</li>
@@ -571,7 +596,7 @@
 │                           ▼                                     │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  SMART CONTRACT LAYER (Polygon/Ethereum)                │   │
-│  │  • uLP Token (ERC-3643, Yield-Bearing)                  │   │
+│  │  • uLP (ULPTokenizer) (ERC-3643, Yield-Bearing)                  │   │
 │  │  • Guarantee Token (ERC-3643 NFT, Collateral)           │   │
 │  │  • Liquidity Pool Manager                               │   │
 │  │  • Identity Registry (T-REX)                            │   │
@@ -697,7 +722,7 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>uLP Token</strong></td>
+<td><strong>uLP (ULPTokenizer)</strong></td>
 <td>ERC-3643 (Fungible)</td>
 <td>Yield-bearing pool ownership</td>
 </tr>
@@ -851,7 +876,7 @@
 5. ONCHAINID Claim Issuer signs verification → On-chain claim
 6. Identity Registry updated → Investor wallet verified
 7. Accreditation confirmed → Institutional status (≥€100K)
-8. Investor approved → uLP Token purchase enabled
+8. Investor approved → uLP (ULPTokenizer) purchase enabled
 </code></div>
 <h4>3.3.2 Financing Flow</h4>
 <div class="docs-pre"><code>1. Industrial applies for financing → Dashboard
@@ -871,7 +896,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. TOKEN ECONOMICS</h2>
-<h3>4.1 uLP Token (Yield-Bearing ERC-3643)</h3>
+<h3>4.1 uLP (ULPTokenizer) (Yield-Bearing ERC-3643)</h3>
 <h4>4.1.1 Token Specification</h4>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -929,7 +954,7 @@
 </table></div>
 <h4>4.1.2 Yield Mechanism</h4>
 <p><strong>Value Accrual Model:</strong></p>
-<p>Unlike traditional rebasing tokens (balance increases), uLP Tokens use a value accrual model:</p>
+<p>Unlike traditional rebasing tokens (balance increases), uLP (ULPTokenizer)s use a value accrual model:</p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Token Balance:</strong> Constant (e.g., 100,000 uLP)</li>
 <li><strong>NAV per Token:</strong> Increases over time (e.g., €1.00 → €1.10)</li>
@@ -999,7 +1024,7 @@ Total uLP Supply = Constant (after initial minting)
 <p><strong>Minting (Initial Investment):</strong></p>
 <div class="docs-pre"><code>1. Investor wires Ondo EUROD (EUROD) to BIIC (Banque Internationale pour l'Industrie et le Commerce) Escrow
 2. Smart Contract receives Ondo EUROD (EUROD)
-3. uLP Tokens minted at current NAV
+3. uLP (ULPTokenizer)s minted at current NAV
 4. uLP deposited to investor wallet
 
 uLP Minted = Ondo EUROD (EUROD) Amount / NAV per uLP
@@ -1010,7 +1035,7 @@ Example: €100,000 / €1.00 = 100,000 uLP
 <div class="docs-pre"><code>1. Investor submits redemption request (30-day notice)
 2. Smart Contract calculates redemption value
 3. Ondo EUROD (EUROD) transferred from Pool to investor
-4. uLP Tokens burned
+4. uLP (ULPTokenizer)s burned
 
 Ondo EUROD (EUROD) Received = uLP Amount × NAV per uLP
 
@@ -2632,7 +2657,7 @@ def erase_pii(investor_id):
 </tr>
 <tr>
 <td><strong>Derivatives</strong></td>
-<td>Options, futures on uLP Tokens</td>
+<td>Options, futures on uLP (ULPTokenizer)s</td>
 <td>Q2 2030</td>
 </tr>
 </tbody>
@@ -2643,7 +2668,7 @@ def erase_pii(investor_id):
 <p>The Ujamaa DeFi Platform represents a paradigm shift in African SME financing. By combining blockchain tokenization (ERC-3643), institutional custody (Fireblocks), and regulatory compliance (Mauritius FSC), Ujamaa unlocks institutional capital for productive African businesses.</p>
 <p><strong>Key Innovations:</strong></p>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li><strong>Yield-Bearing uLP Token:</strong> Value accrual model for tax-efficient yield distribution</li>
+<li><strong>Yield-Bearing uLP (ULPTokenizer):</strong> Value accrual model for tax-efficient yield distribution</li>
 <li><strong>Guarantee Token Collateral:</strong> ERC-3643 NFT representing certified merchandise</li>
 <li><strong>Diversified Liquidity Pools:</strong> Risk mitigation through 40+ financings per pool</li>
 <li><strong>Institutional Infrastructure:</strong> Fireblocks, BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, ERC-3643 compliance</li>
@@ -2685,10 +2710,10 @@ def erase_pii(investor_id):
 <p><strong>Disclaimer:</strong> This white paper is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Any such offer will be made only by means of a Private Placement Memorandum (PPM) and related subscription documents.</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Investors Room</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Investors Room</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

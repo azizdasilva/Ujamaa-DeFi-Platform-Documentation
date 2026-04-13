@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform - Credit Limit System Documentation">
+  <title>💳 Credit Limit System - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Ujamaa Logo Header -->
+<div style="text-align:center; padding:16px 0 8px 0; background:#F9F6ED; border-bottom:1px solid #e0e0e0;">
+  <a href="../index.html" style="display:inline-block;">
+    <img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" style="height:64px; width:auto; object-fit:contain;" />
+  </a>
+</div>
+<!-- /Ujamaa Logo Header -->
+
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" class="docs-logo-icon" /><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link active"><span class="docs-nav-icon">📋</span><span>Specifications</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link"><span class="docs-nav-icon">🏆</span><span>Competitive Intelligence</span><span class="docs-nav-badge">12</span></a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Credit Limit System</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">💳 Credit Limit System</h1>
+        <p class="docs-subtitle">Complete user and developer guide to credit limits on the Ujamaa DeFi Platform</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026 | <strong>Author:</strong> Ujamaa Architect Team</p></div>
+
+        <h2>Table of Contents</h2>
+        <ol class="docs-list" style="padding-left:1.5rem">
+          <li><a href="#1-what-is-a-credit-limit">What Is a Credit Limit?</a></li>
+          <li><a href="#2-how-is-it-calculated">How Is It Calculated?</a></li>
+          <li><a href="#3-the-kyc-kyb-gate">The KYC/KYB Gate</a></li>
+          <li><a href="#4-how-to-view-your-credit-limit">How to View Your Credit Limit</a></li>
+          <li><a href="#5-for-admins-how-to-override-limits">For Admins: How to Override Limits</a></li>
+          <li><a href="#6-technical-architecture">Technical Architecture</a></li>
+          <li><a href="#7-security-considerations">Security Considerations</a></li>
+          <li><a href="#8-faq">FAQ</a></li>
+        </ol>
+        <hr />
+
+        <h2 id="1-what-is-a-credit-limit">1. What Is a Credit Limit?</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>A <strong>credit limit</strong> is the maximum amount (in EUR/EUROD) an industrial operator can borrow on the Ujamaa DeFi Platform at any given time. It represents the operator's borrowing capacity and is automatically calculated based on their business profile, certified assets, and repayment history.</p>
+        <p><strong>Think of it like a credit card limit:</strong> you can draw down any amount up to your limit, and as you repay loans, that capacity becomes available again.</p>
+        </section>
+
+        <h2 id="2-how-is-it-calculated">2. How Is It Calculated?</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>The credit limit is determined by three factors:</p>
+
+        <h3>2.1 KYB Tier Base Limit</h3>
+        <p>Your company type determines a base credit tier:</p>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Business Type</th><th>Tier</th><th>Base Limit</th></tr></thead>
+          <tbody>
+            <tr><td>Farming / Agriculture</td><td>TIER_1</td><td>€10,000</td></tr>
+            <tr><td>Trading / Wholesale</td><td>TIER_1</td><td>€10,000</td></tr>
+            <tr><td>Manufacturing / Production</td><td>TIER_2</td><td>€50,000</td></tr>
+            <tr><td>Large Institutional</td><td>TIER_3</td><td>€200,000</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>2.2 Collateral Credit (Asset-Class-Specific)</h3>
+        <p>When you submit and certify assets, the system applies <strong>risk-weighted collateral factors</strong> based on asset class (benchmarked against Aave V3, Morpho Blue, and Basel III):</p>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Asset Class</th><th>Factor</th><th>Example (€100K)</th></tr></thead>
+          <tbody>
+            <tr><td>Receivables (Invoices)</td><td>75%</td><td>€75K credit</td></tr>
+            <tr><td>Inventory (Warehoused)</td><td>55%</td><td>€55K credit</td></tr>
+            <tr><td>Equipment</td><td>45%</td><td>€45K credit</td></tr>
+            <tr><td>Real Estate</td><td>65%</td><td>€65K credit</td></tr>
+            <tr><td>Contracts/Other</td><td>30-35%</td><td>€30-35K credit</td></tr>
+          </tbody>
+        </table></div>
+        <p>All factors are admin-manageable via Credit Limit Settings.</p>
+
+        <h3>2.3 5Cs Risk Scoring</h3>
+        <p>Each operator receives a composite risk score (0-100) based on:</p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li><strong>Character (20%)</strong> — KYB quality, document completeness</li>
+          <li><strong>Capacity (25%)</strong> — Cash flow, repayment history</li>
+          <li><strong>Capital (15%)</strong> — Operator equity, skin in the game</li>
+          <li><strong>Collateral (25%)</strong> — Asset quality, diversification</li>
+          <li><strong>Conditions (15%)</strong> — Sector outlook, jurisdiction risk</li>
+        </ul>
+
+        <h3>2.4 Tier Rating & Multiplier</h3>
+        <p>Based on the composite score: AAA (90-100) = 1.0×, AA = 0.9×, A = 0.8×, BBB = 0.7×, BB = 0.5×, B = 0.3×, C (&lt;40) = denied.</p>
+
+        <h3>2.5 Reputation & Concentration</h3>
+        <p>On-time repayments add +2% compounding (max +20%). Defaults subtract -50%. Concentrated collateral gets penalties; diversified gets bonuses.</p>
+
+        <h3>2.6 The Formula</h3>
+        <pre><code>Step 1: Risk-Weighted Collateral → Σ(Asset_value × Asset_class_factor)
+Step 2: 5Cs Risk Score → Weighted composite (0-100)
+Step 3: Tier Multiplier → Based on score (AAA=1.0, A=0.8, etc.)
+Step 4: Concentration → ±adjustment
+Step 5: Reputation → Compounding multiplier
+Step 6: Global Cap → min(result, €500,000)
+
+Final = RWC × Tier_Multiplier × Concentration × Reputation</code></pre>
+        </section>
+
+        <h2 id="3-the-kyc-kyb-gate">3. The KYC/KYB Gate</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-callout docs-callout-warning"><div class="docs-callout-title">⚠️ Important</div><p>Credit limits are only active when <strong>both</strong> KYC (Know Your Customer) and KYB (Know Your Business) verifications are <code>APPROVED</code>.</p></div>
+
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>KYC Status</th><th>KYB Status</th><th>Credit Limit</th><th>Can Request Financing?</th></tr></thead>
+          <tbody>
+            <tr><td>APPROVED</td><td>APPROVED</td><td>✅ Calculated</td><td>✅ Yes</td></tr>
+            <tr><td>APPROVED</td><td>PENDING</td><td>€0</td><td>❌ No</td></tr>
+            <tr><td>PENDING</td><td>PENDING</td><td>€0</td><td>❌ No</td></tr>
+            <tr><td>Any</td><td>REJECTED</td><td>€0</td><td>❌ No</td></tr>
+          </tbody>
+        </table></div>
+
+        <p>While pending, you can still:</p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>View your dashboard</li>
+          <li>Preview asset submission</li>
+          <li>View company information</li>
+        </ul>
+        <p>But you <strong>cannot</strong> request financing, deploy funds, or have a credit limit assigned.</p>
+        </section>
+
+        <h2 id="4-how-to-view-your-credit-limit">4. How to View Your Credit Limit</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>4.1 On Your Dashboard</h3>
+        <p>When logged in as an Industrial Operator, your dashboard displays:</p>
+        <pre><code>┌──────────────┬──────────────┬──────────────────┬─────────────┐
+│ Credit Limit │ Outstanding  │ Active Financings│ Fundraising │
+│   €185,000   │   €20,000    │        1         │      0      │
+└──────────────┴──────────────┴──────────────────┴─────────────┘</code></pre>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li><strong>Credit Limit</strong>: Your maximum borrowing capacity</li>
+          <li><strong>Outstanding</strong>: Amount currently borrowed (principal - repayments)</li>
+          <li><strong>Available Credit</strong>: <code>Credit Limit - Outstanding</code> (shown in the sidebar)</li>
+        </ul>
+
+        <h3>4.2 Via API</h3>
+        <pre><code># Get your credit limit
+curl -H "Authorization: Bearer your-email@example.com" \
+  http://localhost:8000/api/v2/credit-limits/me
+
+# Response includes credit_limit, available_credit, and a breakdown</code></pre>
+        </section>
+
+        <h2 id="5-for-admins-how-to-override-limits">5. For Admins: How to Override Limits</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>Administrators can manually set or reset any user's credit limit.</p>
+
+        <h3>5.1 Override a User's Limit</h3>
+        <pre><code>curl -X PUT \
+  -H "Authorization: Bearer admin-token-mvp" \
+  -H "Content-Type: application/json" \
+  -d '{"credit_limit": 150000, "reason": "Strategic partner approval"}' \
+  http://localhost:8000/api/v2/credit-limits/users/5</code></pre>
+
+        <h3>5.2 Reset to Auto-Calculated</h3>
+        <pre><code>curl -X POST \
+  -H "Authorization: Bearer admin-token-mvp" \
+  http://localhost:8000/api/v2/credit-limits/users/5/reset</code></pre>
+
+        <h3>5.3 View Any User's Credit Details</h3>
+        <pre><code>curl -H "Authorization: Bearer admin-token-mvp" \
+  http://localhost:8000/api/v2/credit-limits/users/5</code></pre>
+
+        <h3>5.4 Audit Trail</h3>
+        <p>Every credit limit change is recorded in the <code>user_credit_limits</code> table with:</p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Who changed it (reason code)</li>
+          <li>When it was changed</li>
+          <li>The detailed breakdown of the calculation</li>
+        </ul>
+        </section>
+
+        <h2 id="6-technical-architecture">6. Technical Architecture</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>6.1 Components</h3>
+        <pre><code>┌─────────────┐     ┌──────────────────────┐     ┌──────────────┐
+│  Frontend   │────▶│  Backend API (FastAPI)│────▶│  Database    │
+│  (React)    │◀────│  /credit-limits/*     │◀────│  (SQLite/    │
+│             │     │  /db/investors/me     │     │   PostgreSQL)│
+└─────────────┘     └──────────────────────┘     └──────────────┘
+                           │
+                           ▼
+                    ┌──────────────────┐
+                    │ Credit Limit     │
+                    │ Service          │
+                    │ (calculation)    │
+                    └──────────────────┘</code></pre>
+
+        <h3>6.2 Data Flow</h3>
+        <ol class="docs-list" style="padding-left:1.5rem">
+          <li><strong>User logs in</strong> → Frontend stores session in <code>sessionStorage</code></li>
+          <li><strong>Dashboard loads</strong> → Calls <code>GET /db/investors/me</code></li>
+          <li><strong>Backend calculates</strong> → <code>credit_limit_service.calculate_credit_limit()</code></li>
+          <li><strong>Response includes</strong> → <code>credit_limit</code>, <code>available_credit</code>, <code>verification_gate</code></li>
+          <li><strong>Frontend displays</strong> → Stats cards with status-aware banners</li>
+          <li><strong>Financing request</strong> → Backend checks <code>available_credit >= requested_amount</code></li>
+          <li><strong>If exceeds</strong> → Returns 400 error with message</li>
+        </ol>
+
+        <h3>6.3 Database Tables</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Table</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>investor_profiles</code></td><td>Stores current credit limit and method</td></tr>
+            <tr><td><code>users</code></td><td>Stores admin override (NULL = auto-calculate)</td></tr>
+            <tr><td><code>user_credit_limits</code></td><td>Audit trail of all changes</td></tr>
+            <tr><td><code>financings</code></td><td>Active loans that reduce available credit</td></tr>
+            <tr><td><code>asset_certifications</code></td><td>Certified assets that increase credit</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="7-security-considerations">7. Security Considerations</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>7.1 Who Can Do What</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Action</th><th>User</th><th>Admin</th><th>Compliance</th></tr></thead>
+          <tbody>
+            <tr><td>View own credit limit</td><td>✅</td><td>✅</td><td>❌</td></tr>
+            <tr><td>View any user's limit</td><td>❌</td><td>✅</td><td>❌</td></tr>
+            <tr><td>Override limit</td><td>❌</td><td>✅</td><td>❌</td></tr>
+            <tr><td>Reset to auto</td><td>❌</td><td>✅</td><td>❌</td></tr>
+            <tr><td>Request financing</td><td>✅ (if within limit)</td><td>❌</td><td>❌</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>7.2 Audit Trail</h3>
+        <p>Every credit limit change creates an immutable record in <code>user_credit_limits</code>:</p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Cannot be deleted (CASCADE on user delete only)</li>
+          <li>Includes reason code and details</li>
+          <li>Timestamped for compliance</li>
+        </ul>
+
+        <h3>7.3 Admin Privileges</h3>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Only users with <code>role = 'ADMIN'</code> can access admin endpoints</li>
+          <li>Returns <code>403 Forbidden</code> for non-admin requests</li>
+          <li>Admin overrides are logged with the admin's email in the details</li>
+        </ul>
+        </section>
+
+        <h2 id="8-faq">8. FAQ</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>My credit limit seems low — what can I do?</h3>
+        <ol class="docs-list" style="padding-left:1.5rem">
+          <li><strong>Certify more assets</strong>: Higher-quality assets (receivables at 75%) count more than lower-quality ones (equipment at 45%)</li>
+          <li><strong>Repay on time</strong>: Each on-time repayment adds +2% to your limit (compounding, max +20%)</li>
+          <li><strong>Diversify your collateral</strong>: Multiple asset classes with no single class >30% earns a +5% bonus</li>
+          <li><strong>Improve your 5Cs score</strong>: Complete KYB documentation, maintain good cash flow, demonstrate skin in the game</li>
+          <li><strong>Contact admin</strong>: For strategic partnerships, an admin can override the limit up to €500K</li>
+        </ol>
+
+        <h3>Can I increase my limit by depositing more collateral?</h3>
+        <p>Yes. The amount added depends on the asset class — receivables add 75%, inventory 55%, equipment 45%, real estate 65%. To certify an asset: go to "Submit Asset for Tokenization", fill in asset details, wait for compliance review and certification. Once certified, your credit limit recalculates automatically.</p>
+
+        <h3>Does loan repayment increase my limit immediately?</h3>
+        <p>Yes. Each on-time repayment adds +2% to your limit (compounding, max +20%). Your <code>outstanding</code> decreases and <code>available_credit</code> increases simultaneously.</p>
+
+        <h3>What happens if my KYB gets rejected?</h3>
+        <p>Your credit limit immediately becomes €0. Any pending financing requests will be blocked. You'll see a "Rejected" banner on your dashboard with contact information for the compliance team.</p>
+
+        <h3>Can I see the breakdown of how my limit was calculated?</h3>
+        <p>Yes. The API response includes a <code>breakdown</code> object with all components (tier, base limit, collateral credit, repayment bonus, etc.).</p>
+
+        <h3>Does my credit limit expire?</h3>
+        <p>No. Credit limits do not have an expiration date by default. However, they are recalculated when new assets are certified, repayments are made, KYB status changes, or an admin manually overrides.</p>
+        </section>
+
+        <hr />
+        <p style="color:#94A3B8; font-size:0.875rem; margin-top:2rem;">Last updated: April 12, 2026 | <a href="15_CREDIT_LIMIT_API_REFERENCE.html" style="color:#3B82F6;">API Reference →</a> | <a href="16_CREDIT_LIMIT_DEEP_DIVE.html" style="color:#3B82F6;">Deep Dive Numbers →</a></p>
+      </div>
+      <footer class="docs-footer"><p>© 2026 Ujamaa DeFi Platform · <a href="https://github.com/UjamaaDeFi">GitHub</a> · <a href="../index.html">All Docs</a></p></footer>
+    </main>
+  </div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

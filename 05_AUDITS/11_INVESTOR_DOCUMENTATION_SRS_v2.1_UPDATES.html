@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,8 +130,26 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>Investor Documentation - SRS v2.1 Updates (P2)</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Investor Documentation - SRS v2.1 Updates (P2)</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 | <strong>Status:</strong> ✅ Complete | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 | <strong>Status:</strong> ✅ Complete | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Investor Documentation - SRS v2.1 Updates (P2)</h1>
 <p><strong>Date:</strong> March 25, 2026<br />
@@ -156,13 +181,13 @@ This white paper describes the technical architecture, economic model, complianc
 
 **Ujamaa Pool Token (uLP)** - A yield-bearing ERC-3643 fungible token representing ownership share in diversified liquidity pools. The uLP uses a value-accrual model where the token balance remains constant while NAV (Net Asset Value) per share increases with pool yield, providing tax-efficient compounding.
 
-**Ujamaa Guarantee (UJG)** - A non-transferable ERC-3643NFT (ERC-721 + compliance) representing certified merchandise collateral held by the liquidity pool as security until repayment.
+**Ujamaa Guarantee (uGT)** - A non-transferable ERC-3643NFT (ERC-721 + compliance) representing certified merchandise collateral held by the liquidity pool as security until repayment.
 
 Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks (institutional custody with $1B+ insurance), BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB Mauritius (bank escrow), and Mobile Money providers (M-Pesa, MTN, Airtel), Ujamaa bridges traditional finance and decentralized finance to unlock institutional capital for African SME financing.
 
 **Key Innovations (v2.1):**
 - Yield-bearing uLP tokens with value-accrual (NAV increases, balance constant)
-- UJG collateral tokens (non-transferable, forced transfer only)
+- uGT collateral tokens (non-transferable, forced transfer only)
 - SIWE authentication (Sign-In with Ethereum) + JWT session management
 - RBAC authorization (10+ institutional roles)
 - Fireblocks MPC custody (platform treasury)
@@ -190,7 +215,7 @@ Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks
 │  │  • Pool Trade Finance (€10M target)                      │  │
 │  │  • Pool Renewable Energy (€5M target)                    │  │
 │  │                                                           │  │
-│  │  uLP Tokens minted → Investors                            │  │
+│  │  uLP (ULPTokenizer)s minted → Investors                            │  │
 │  │  NAV per share increases with yield                       │  │
 │  └──────────────────────────────────────────────────────────┘  │
 │         │                                                        │
@@ -203,11 +228,11 @@ Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks
 │  │  • Cooperative C (Ghana) - €1.5M @ 10% APR               │  │
 │  │  • ... (min 5 businesses per pool for diversification)   │  │
 │  │                                                           │  │
-│  │  UJG Tokens minted → Pool holds as collateral             │  │
+│  │  uGT Tokens minted → Pool holds as collateral             │  │
 │  └──────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
 </code></div>
-<p><strong>uLP Token Mechanics (Yield-Bearing):</strong></p>
+<p><strong>uLP (ULPTokenizer) Mechanics (Yield-Bearing):</strong></p>
 <p>Unlike traditional distribution-based yield, uLP tokens use a <strong>value-accrual model</strong>:</p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -252,16 +277,16 @@ Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks
 - ✅ <strong>Transparency:</strong> Real-time NAV tracking on-chain<br />
 - ✅ <strong>Flexibility:</strong> Deposit/redeem anytime (subject to lock-up period)<br />
 - ✅ <strong>Diversification:</strong> Single token represents share in 5+ businesses</p>
-<p><strong>UJG Token Mechanics (Collateral):</strong></p>
-<p>Each financing is collateralized by certified merchandise represented by UJG tokens:</p>
+<p><strong>uGT Token Mechanics (Collateral):</strong></p>
+<p>Each financing is collateralized by certified merchandise represented by uGT tokens:</p>
 <div class="docs-pre"><code>1. Business receives export order (e.g., ZARA €2M contract)
-2. GDIZ (Benin)/SIPI certifies stock → UJG minted (ERC-3643NFT)
+2. GDIZ (Benin)/SIPI certifies stock → uGT minted (ERC-3643NFT)
 3. Pool deploys funds to Business
-4. Pool holds UJG as collateral/security
+4. Pool holds uGT as collateral/security
 5. Business repays (principal + 12% interest)
-6. UJG returned to Business
+6. uGT returned to Business
 7. [DEFAULT] If Business defaults:
-   → UJG liquidated via approved auction
+   → uGT liquidated via approved auction
    → Proceeds distributed to uLP holders
    → Default recorded in compliance audit trail
 </code></div>
@@ -296,7 +321,7 @@ Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks
 <td>Value-accrual (NAV increases)</td>
 </tr>
 <tr>
-<td><strong>UJG</strong></td>
+<td><strong>uGT</strong></td>
 <td>Ujamaa Guarantee</td>
 <td>ERC-3643NFT (ERC-721 + compliance)</td>
 <td>Collateral representation</td>
@@ -313,7 +338,7 @@ Through partnerships with GDIZ (Benin) (industrial network in Benin), Fireblocks
 </tr>
 </tbody>
 </table></div>
-<p><strong>uLP Token Economics:</strong></p>
+<p><strong>uLP (ULPTokenizer) Economics:</strong></p>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li><strong>Total Supply:</strong> Dynamic (minted on deposit, burned on redemption)</li>
 <li><strong>Initial NAV:</strong> €1.00 per share</li>
@@ -544,7 +569,7 @@ Net Return: €1,000,000 × 12% - €28,000 = €92,000 (9.2%)
 <tbody>
 <tr>
 <td><strong>Security</strong></td>
-<td>uLP Token (Yield-Bearing ERC-3643)</td>
+<td>uLP (ULPTokenizer) (Yield-Bearing ERC-3643)</td>
 </tr>
 <tr>
 <td><strong>Minimum Investment</strong></td>
@@ -595,8 +620,8 @@ Net Return: €1,000,000 × 12% - €28,000 = €92,000 (9.2%)
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>2.2 Add New Section 5.5: Product &amp; Technology (v2.1 Updates)</h2>
 <h3>5.5 Institutional Architecture (v2.1)</h3>
-<p><strong>Core Innovation: Yield-Bearing uLP Tokens</strong></p>
-<p>The uLP Token represents a breakthrough in yield-bearing token design:</p>
+<p><strong>Core Innovation: Yield-Bearing uLP (ULPTokenizer)s</strong></p>
+<p>The uLP (ULPTokenizer) represents a breakthrough in yield-bearing token design:</p>
 <p><strong>Traditional Distribution Model:</strong></p>
 <div class="docs-pre"><code>Investor holds 1,000 tokens
 Quarterly distribution: 30 tokens (3% yield)
@@ -614,7 +639,7 @@ New value: 1,000 × €1.03 = €1,030
 - ✅ <strong>Compounding:</strong> Automatic reinvestment (no manual action)<br />
 - ✅ <strong>Transparency:</strong> Real-time NAV tracking on-chain<br />
 - ✅ <strong>Flexibility:</strong> Redeem anytime (after lock-up)</p>
-<p><strong>Collateral Structure: UJG Tokens</strong></p>
+<p><strong>Collateral Structure: uGT Tokens</strong></p>
 <p>Every financing is fully collateralized:</p>
 <div class="docs-pre"><code>Financing: €2,000,000
 Collateral: €2,000,000 (certified merchandise)
@@ -633,7 +658,7 @@ Recovery Rate: 80-95% (based on auction)
 <p><strong>Add new risk factors:</strong></p>
 <h3>10.5 Technology Risks</h3>
 <p><strong>Smart Contract Risk:</strong><br />
-- uLP/UJG tokens are implemented as smart contracts on Polygon blockchain<br />
+- uLP/uGT tokens are implemented as smart contracts on Polygon blockchain<br />
 - Smart contract vulnerabilities could result in loss of funds<br />
 - <strong>Mitigation:</strong> Third-party audits (CertiK, OpenZeppelin), bug bounty program, upgradeable proxy pattern with timelock</p>
 <p><strong>Authentication Risk:</strong><br />
@@ -666,7 +691,7 @@ Recovery Rate: 80-95% (based on auction)
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
 │                    INSTITUTIONAL ARCHITECTURE                    │
 │                                                                  │
-│  uLP Token (Yield-Bearing ERC-3643)                            │
+│  uLP (ULPTokenizer) (Yield-Bearing ERC-3643)                            │
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │  • Value-accrual model (NAV increases, balance constant) │  │
 │  │  • Tax-efficient compounding                             │  │
@@ -674,7 +699,7 @@ Recovery Rate: 80-95% (based on auction)
 │  │  • Min investment: €100K (KYB required)                  │  │
 │  └──────────────────────────────────────────────────────────┘  │
 │                                                                  │
-│  UJG Token (Collateral ERC-3643NFT)                            │
+│  uGT Token (Collateral ERC-3643NFT)                            │
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │  • Represents certified merchandise                      │  │
 │  │  • Non-transferable (forced transfer only)               │  │
@@ -693,7 +718,7 @@ Recovery Rate: 80-95% (based on auction)
 │  └──────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
 </code></div>
-<p><strong>Slide: uLP Token Economics</strong></p>
+<p><strong>Slide: uLP (ULPTokenizer) Economics</strong></p>
 <div class="docs-pre"><code>┌─────────────────────────────────────────────────────────────────┐
 │                    uLP TOKEN ECONOMICS                           │
 │                                                                  │
@@ -776,7 +801,7 @@ Recovery Rate: 80-95% (based on auction)
 
 **A:** Ujamaa is a blockchain-based infrastructure for tokenizing African real-world assets (RWAs) into compliant, yield-bearing digital securities. We enable institutional investors to earn 10-15% APR by providing diversified financing to productive African businesses.
 
-### Q: What is the uLP Token?
+### Q: What is the uLP (ULPTokenizer)?
 
 **A:** The Ujamaa Pool Token (uLP) is a **yield-bearing ERC-3643 token** that represents ownership share in a diversified liquidity pool. Unlike traditional tokens that distribute yield, uLP uses a **value-accrual model** where the token balance remains constant while NAV (Net Asset Value) per share increases with pool yield.
 
@@ -784,9 +809,9 @@ Recovery Rate: 80-95% (based on auction)
 - Day 0: Invest €1,000,000 → receive 1,000,000 uLP @ €1.00 NAV
 - Day 365: Still hold 1,000,000 uLP @ €1.12 NAV = €1,120,000 value (+12%)
 
-### Q: What is the UJG Token?
+### Q: What is the uGT Token?
 
-**A:** The Ujamaa Guarantee (UJG) is a **non-transferable ERC-3643NFT** that represents certified merchandise collateral held by the liquidity pool. Each financing is collateralized by UJG tokens, which are:
+**A:** The Ujamaa Guarantee (uGT) is a **non-transferable ERC-3643NFT** that represents certified merchandise collateral held by the liquidity pool. Each financing is collateralized by uGT tokens, which are:
 - Minted when stock is certified by GDIZ (Benin)/SIPI
 - Held by the pool as security until repayment
 - Returned to the business on full repayment
@@ -891,7 +916,7 @@ Contact compliance@ujamaa.io for jurisdiction eligibility.
 ### Q: How are funds protected?
 
 **A:** Multiple layers of protection:
-- **Collateralization:** 100%+ coverage (UJG tokens)
+- **Collateralization:** 100%+ coverage (uGT tokens)
 - **Diversification:** Min 5 businesses per pool, max 10% per business
 - **Insurance:** Property, business interruption
 - **Bank Escrow:** BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB segregated accounts
@@ -941,7 +966,7 @@ See Investment Memorandum Section 10 for complete risk factors.
 ### Q: What happens if a business defaults?
 
 **A:** On default (90 days past due):
-1. UJG tokens are liquidated via approved auction
+1. uGT tokens are liquidated via approved auction
 2. Proceeds distributed to uLP holders
 3. Default recorded in compliance audit trail
 4. Legal recourse against business owners (personal guarantees)
@@ -1023,8 +1048,8 @@ Use PolygonScan or Ujamaa investor dashboard for real-time tracking.
 **Q5.1.1:** What token standards are used?
 
 **A:** 
-- **uLP Token:** ERC-3643 (Fungible) + yield-bearing extensions
-- **UJG Token:** ERC-3643NFT (ERC-721 + compliance)
+- **uLP (ULPTokenizer):** ERC-3643 (Fungible) + yield-bearing extensions
+- **uGT Token:** ERC-3643NFT (ERC-721 + compliance)
 - **UAT Token:** ERC-3643 (Fungible, retail/asset-specific)
 
 **Q5.1.2:** What is the uLP token economics model?
@@ -1037,7 +1062,7 @@ Use PolygonScan or Ujamaa investor dashboard for real-time tracking.
 
 **Q5.1.3:** How is collateral managed?
 
-**A:** UJG tokens represent certified merchandise:
+**A:** uGT tokens represent certified merchandise:
 - 100% collateralization
 - Non-transferable (except forced transfer)
 - Held by pool until repayment
@@ -1125,13 +1150,13 @@ Use PolygonScan or Ujamaa investor dashboard for real-time tracking.
 
 ### 5.5 Smart Contract Risks
 
-**uLP Token Risks:**
+**uLP (ULPTokenizer) Risks:**
 - Value-accrual model relies on accurate NAV calculation
 - NAV oracle manipulation could result in incorrect pricing
 - Deposit/redeem mechanism vulnerabilities could result in fund loss
 - **Mitigation:** Chainlink Price Feeds, fallback oracles, circuit breakers, third-party audits
 
-**UJG Token Risks:**
+**uGT Token Risks:**
 - Non-transferable design relies on forced transfer mechanism
 - Auction liquidation mechanism vulnerabilities
 - Metadata storage (IPFS) availability
@@ -1195,7 +1220,7 @@ Use PolygonScan or Ujamaa investor dashboard for real-time tracking.
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>7.1 Update Investment Terms</h2>
 <div class="docs-pre"><code>## Investment Terms (v2.1)
 
-**Security Type:** uLP Token (Yield-Bearing ERC-3643)
+**Security Type:** uLP (ULPTokenizer) (Yield-Bearing ERC-3643)
 
 **Minimum Investment:** €100,000 (KYB required)
 
@@ -1244,10 +1269,10 @@ Use PolygonScan or Ujamaa investor dashboard for real-time tracking.
 <p><strong>P2 Completion:</strong> ✅ All investor documentation updated for SRS v2.1</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,13 +130,31 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Software Requirements Specification (SRS) v2.1</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Software Requirements Specification (SRS) v2.1</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">This EPIC enables Asset Originators to tokenize real-world assets as either fungible ERC-3643 tokens (representing fractional shares in securitized pools) or ERC-3643 NFTs (representing unique assets with supply=1). All tokens inherit compliance features from the T-REX protocol including on-chain identity verification, transfer restrictions, and regulatory rule enforcement. The tokenization layer supports both Ethereum (for high-value settlement) and Polygon (for low-cost issuance and trading).</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (Post-Audit Revision) | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (Post-Audit Revision) | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Software Requirements Specification (SRS) v2.1</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform Multi-Asset Securitization and Tokenization Platform</h2>
 <h3>Production Architecture - Liquidity Pool &amp; Yield-Bearing Token Model</h3>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 2.1 (Post-Audit Revision)<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Private<br />
@@ -235,7 +260,7 @@
 <p>🆕 <strong>Pool-Level Assets:</strong><br />
 - <strong>POOL_SHARE:</strong> Share in diversified liquidity pool (Ujamaa Pool Token (uLP))<br />
 - <strong>GUARANTEE_TOKEN:</strong> Token representing certified merchandise value (Industrial Gateway certification)</p>
-<h3>Ujamaa Guarantee (UJG) vs Ujamaa Pool Token (uLP) Specification</h3>
+<h3>Ujamaa Guarantee (uGT) vs Ujamaa Pool Token (uLP) Specification</h3>
 <p><strong>Token Comparison Table:</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
@@ -258,7 +283,7 @@
 <td>Yield-bearing investment token</td>
 </tr>
 <tr>
-<td><strong>Ujamaa Guarantee (UJG)</strong></td>
+<td><strong>Ujamaa Guarantee (uGT)</strong></td>
 <td>ERC-3643NFT (ERC-721 + ERC-3643 compliance)</td>
 <td>Pool's collateral representation</td>
 <td>No (forced transfer only)</td>
@@ -277,33 +302,33 @@
 - ✅ <strong>Transfer Restrictions</strong> - Enforces jurisdiction and investor limits<br />
 - ✅ <strong>Regulatory Audit Trail</strong> - All transfers logged with identity resolution</p>
 <hr />
-<h4>Ujamaa Guarantee (UJG) (Collateral NFT)</h4>
-<p><strong>Definition:</strong> The Ujamaa Guarantee (UJG) is a <strong>non-transferable ERC-3643NFT</strong> (ERC-721 base + ERC-3643 compliance modules) that represents certified merchandise/collateral backing a financing operation. It is minted by the Industrial Gateway when stock is certified and held by the Liquidity Pool until repayment.</p>
+<h4>Ujamaa Guarantee (uGT) (Collateral NFT)</h4>
+<p><strong>Definition:</strong> The Ujamaa Guarantee (uGT) is a <strong>non-transferable ERC-3643NFT</strong> (ERC-721 base + ERC-3643 compliance modules) that represents certified merchandise/collateral backing a financing operation. It is minted by the Industrial Gateway when stock is certified and held by the Liquidity Pool until repayment.</p>
 <p><strong>Why ERC-3643NFT (ERC-721 + Compliance)?</strong><br />
 - ✅ <strong>ERC-721 Base</strong> - Standard NFT for unique asset representation<br />
 - ✅ <strong>ERC-3643 Compliance Modules</strong> - Identity registry and transfer validation<br />
 - ✅ <strong>Compliance Enforcement</strong> - Only verified entities can hold Guarantee Tokens<br />
 - ✅ <strong>Identity Verification</strong> - ONCHAINID integration for Industrial Gateway and Pool<br />
 - ✅ <strong>Transfer Restrictions</strong> - Prevents unauthorized transfer; only Pool ↔ Industrial Gateway<br />
-- ✅ <strong>Regulatory Audit Trail</strong> - All Ujamaa Guarantee (UJG) movements logged with identity resolution</p>
+- ✅ <strong>Regulatory Audit Trail</strong> - All Ujamaa Guarantee (uGT) movements logged with identity resolution</p>
 <p><strong>Technical Note:</strong> ERC-3643NFT extends ERC-721 with ERC-3643 compliance primitives (identity registry, compliance module, trusted issuers). Unlike standard ERC-721, every transfer validates sender and recipient identity verification status.</p>
 <p><strong>Purpose:</strong><br />
 - ✅ <strong>Collateral Representation</strong> - Token represents physical stock in warehouse<br />
 - ✅ <strong>Proof of Existence</strong> - Industrial Gateway certifies merchandise exists<br />
-- ✅ <strong>Lien Tracking</strong> - Pool holds Ujamaa Guarantee (UJG) as security until repayment<br />
+- ✅ <strong>Lien Tracking</strong> - Pool holds Ujamaa Guarantee (uGT) as security until repayment<br />
 - ✅ <strong>Automatic Release</strong> - Token returned to industrial upon full repayment<br />
-- ✅ <strong>Default Handling</strong> - If industrial defaults: Ujamaa Guarantee (UJG) liquidated via auction; proceeds distributed to uLP holders<br />
-- ✅ <strong>Compliance</strong> - Only verified Industrial Gateway and Pool can interact with Ujamaa Guarantee (UJG)</p>
-<p><strong>Ujamaa Guarantee (UJG) Lifecycle:</strong></p>
+- ✅ <strong>Default Handling</strong> - If industrial defaults: Ujamaa Guarantee (uGT) liquidated via auction; proceeds distributed to uLP holders<br />
+- ✅ <strong>Compliance</strong> - Only verified Industrial Gateway and Pool can interact with Ujamaa Guarantee (uGT)</p>
+<p><strong>Ujamaa Guarantee (uGT) Lifecycle:</strong></p>
 <div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
 2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
-3. Ujamaa Guarantee (UJG) minted (ERC-3643NFT with metadata + compliance)
+3. Ujamaa Guarantee (uGT) minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
-5. Pool holds Ujamaa Guarantee (UJG) (collateral/security)
+5. Pool holds Ujamaa Guarantee (uGT) (collateral/security)
 6. Industrial repays (principal + interest)
-7. Ujamaa Guarantee (UJG) transferred back to Industrial (via ERC-3643 forcedTransfer)
+7. Ujamaa Guarantee (uGT) transferred back to Industrial (via ERC-3643 forcedTransfer)
 8. [DEFAULT SCENARIO] If industrial defaults:
-   → Ujamaa Guarantee (UJG) liquidated via approved auction
+   → Ujamaa Guarantee (uGT) liquidated via approved auction
    → Proceeds distributed to Ujamaa Pool Token (uLP) holders
    → Default recorded in compliance audit trail
 </code></div>
@@ -357,9 +382,9 @@ contract GuaranteeToken is ERC3643NFT {
 - SIPI/GDIZ (Benin) verification data<br />
 - Compliance status (verified/unverified)<br />
 - Default status (for liquidation tracking)</p>
-<p><strong>Relationship between Ujamaa Pool Token (uLP) and Ujamaa Guarantee (UJG):</strong><br />
+<p><strong>Relationship between Ujamaa Pool Token (uLP) and Ujamaa Guarantee (uGT):</strong><br />
 - <strong>Ujamaa Pool Token (uLP)</strong> = Investor's share in pool (yield-bearing, <strong>ERC-3643 Fungible</strong>)<br />
-- <strong>Ujamaa Guarantee (UJG)</strong> = Pool's collateral (non-transferable, <strong>ERC-3643NFT</strong>)<br />
+- <strong>Ujamaa Guarantee (uGT)</strong> = Pool's collateral (non-transferable, <strong>ERC-3643NFT</strong>)<br />
 - Multiple Guarantee Tokens back each Ujamaa Pool Token (uLP) (diversification)<br />
 - Both use same Identity Registry (unified compliance)<br />
 - Both implement ERC-3643 transfer validation (identity verification required)</p>
@@ -1321,7 +1346,7 @@ The platform specifically supports African industrial asset classes:</p>
 <p><strong>OHADA Legal Framework:</strong><br />
 - <strong>Applicable Law:</strong> OHADA Uniform Act on Commercial Companies (17 African member states)<br />
 - <strong>Contract Enforcement:</strong> Commercial contracts enforceable across OHADA zone<br />
-- <strong>Security Interest:</strong> Ujamaa Guarantee (UJG) constitutes valid security interest under OHADA law<br />
+- <strong>Security Interest:</strong> Ujamaa Guarantee (uGT) constitutes valid security interest under OHADA law<br />
 - <strong>Dispute Resolution:</strong> Arbitration in Mauritius (LCIA) for cross-border enforceability<br />
 - <strong>BankruLPcy Remote:</strong> SPV structure protects investors from industrial bankruLPcy</p>
 <p><strong>Mauritius-Africa Structure:</strong></p>
@@ -3164,7 +3189,7 @@ function invest(uint256 amount) external {
 <td>Compliance Officer places hold</td>
 <td>Affected Investor</td>
 <td>Email + In-App</td>
-<td>"Account under regulatory review. Contact compliance@ujamaa.fi. Reference: {CASE_ID}"</td>
+<td>"Account under regulatory review. Contact compliance@ujamaa.io. Reference: {CASE_ID}"</td>
 <td>T+0</td>
 </tr>
 <tr>
@@ -3358,7 +3383,7 @@ function invest(uint256 amount) external {
 </tr>
 <tr>
 <td>Sanctions match</td>
-<td>"Your name matches a sanctions list entry. Please contact compliance@ujamaa.fi for review."</td>
+<td>"Your name matches a sanctions list entry. Please contact compliance@ujamaa.io for review."</td>
 <td>Block submission, show compliance contact</td>
 </tr>
 <tr>
@@ -10824,10 +10849,10 @@ Link: &lt;https://docs.ujamaa.fi/migration/v1-to-v2&gt;; rel=&quot;deprecation&q
 <p><em>End of SRS v2.1</em></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

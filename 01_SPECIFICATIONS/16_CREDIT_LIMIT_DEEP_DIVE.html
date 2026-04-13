@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Ujamaa DeFi Platform - Credit Limit Deep Dive Numbers Reference">
+  <title>🔢 Credit Limit Deep Dive - Ujamaa Documentation</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Ujamaa Logo Header -->
+<div style="text-align:center; padding:16px 0 8px 0; background:#F9F6ED; border-bottom:1px solid #e0e0e0;">
+  <a href="../index.html" style="display:inline-block;">
+    <img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" style="height:64px; width:auto; object-fit:contain;" />
+  </a>
+</div>
+<!-- /Ujamaa Logo Header -->
+
+  <div class="docs-container">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-header"><a href="../index.html" class="docs-logo"><img src="../assets/logo-transparent.png" alt="Ujamaa DeFi" class="docs-logo-icon" /><div><div class="docs-logo-text">Ujamaa DeFi Platform</div><div class="docs-logo-subtitle">Documentation</div></div></a></div>
+      <div class="docs-search-box"><input type="text" class="docs-search-input" placeholder="🔍 Search docs... (Ctrl+K)"></div>
+      <nav class="docs-nav">
+        <div class="docs-nav-section"><div class="docs-nav-title">📖 Documentation</div><ul class="docs-nav-list">
+            <li class="docs-nav-item">
+              <a href="..//index.html" class="docs-nav-link"><span class="docs-nav-icon">🏠</span><span>Home</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//01_SPECIFICATIONS/index.html" class="docs-nav-link active"><span class="docs-nav-icon">📋</span><span>Specifications</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//02_TECHNICAL_GUIDES/index.html" class="docs-nav-link"><span class="docs-nav-icon">📖</span><span>Technical Guides</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//03_OPERATIONS/index.html" class="docs-nav-link"><span class="docs-nav-icon">⚙️</span><span>Operations</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//04_TEAM_PLAYBOOKS/index.html" class="docs-nav-link"><span class="docs-nav-icon">👥</span><span>Team Playbooks</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//05_AUDITS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🔍</span><span>Audits</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//06_MVP_EXECUTION/index.html" class="docs-nav-link"><span class="docs-nav-icon">🚀</span><span>MVP Execution</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//07_PRESENTATION/index.html" class="docs-nav-link"><span class="docs-nav-icon">📊</span><span>Presentation</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//08_INVESTORS_ROOM/index.html" class="docs-nav-link"><span class="docs-nav-icon">💼</span><span>Investors Room</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//09_ALGORITHMS/index.html" class="docs-nav-link"><span class="docs-nav-icon">🧮</span><span>Algorithms</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//10_DESIGN/index.html" class="docs-nav-link"><span class="docs-nav-icon">🎨</span><span>Design</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//11_FUTURE_ENHANCEMENTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">💡</span><span>Future Enhancements</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//12_SPRINT_REPORTS/index.html" class="docs-nav-link"><span class="docs-nav-icon">📝</span><span>Sprint Reports</span></a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link"><span class="docs-nav-icon">🏆</span><span>Competitive Intelligence</span><span class="docs-nav-badge">12</span></a>
+            </li></ul></div>
+      </nav>
+    </aside>
+    <main class="docs-main">
+      <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Credit Limit Deep Dive</span></nav></header>
+      <div class="docs-content">
+        <h1 class="docs-title">🔢 Credit Limit Deep Dive: Numbers & Parameters</h1>
+        <p class="docs-subtitle">Complete numerical reference with examples, schema, and configuration constants</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026 | <strong>Classification:</strong> Internal / Developer Reference</p></div>
+
+        <h2>Table of Contents</h2>
+        <ol class="docs-list" style="padding-left:1.5rem">
+          <li><a href="#1-default-tier-limits">1. Default Tier Limits</a></li>
+          <li><a href="#2-collateral-parameters">2. Risk-Weighted Collateral Factors</a></li>
+          <li><a href="#2b-5cs-risk-scoring">2b. 5Cs Risk Scoring</a></li>
+          <li><a href="#3-repayment-bonus-parameters">3. Tier Ratings & Multipliers</a></li>
+          <li><a href="#4-reputation-system">4. Compounding Reputation System</a></li>
+          <li><a href="#5-concentration-risk">5. Concentration Risk</a></li>
+          <li><a href="#6-global-limits">6. Global Limits</a></li>
+          <li><a href="#7-upgraded-calculation-pipeline">7. Calculation Pipeline</a></li>
+          <li><a href="#8-example-calculations">8. Example Calculations</a></li>
+          <li><a href="#9-database-schema">9. Database Schema</a></li>
+          <li><a href="#10-api-endpoints">10. API Endpoints</a></li>
+          <li><a href="#11-configuration-constants">11. Admin Management</a></li>
+        </ol>
+        <hr />
+
+        <h2 id="1-default-tier-limits">1. Default Tier Limits</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Tier</th><th>Operator Type</th><th>Base Limit (EUR)</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>TIER_1</strong></td><td>AGRICULTURAL</td><td>€10,000</td><td>Small-scale farming, commodity trading</td></tr>
+            <tr><td><strong>TIER_1</strong></td><td>TRADING</td><td>€10,000</td><td>Import/export, wholesale trading</td></tr>
+            <tr><td><strong>TIER_2</strong></td><td>MANUFACTURING</td><td>€50,000</td><td>Factory production, processing facilities</td></tr>
+            <tr><td><strong>TIER_3</strong></td><td>INSTITUTIONAL</td><td>€200,000</td><td>Large-scale industrial operations (future)</td></tr>
+            <tr><td><strong>DEFAULT</strong></td><td>Unknown/Other</td><td>€10,000</td><td>Fallback for unclassified operators</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="2-collateral-parameters">2. Risk-Weighted Collateral Factors (Asset-Class Specific)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>Instead of a flat 50%, the upgraded system uses Basel III-style haircuts per asset class, benchmarked against Aave V3, Morpho Blue, and traditional banking standards:</p>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Asset Class</th><th>Min</th><th>Default</th><th>Max</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td><strong>RECEIVABLES</strong></td><td>70%</td><td>75%</td><td>80%</td><td>Invoices — high liquidity, verifiable</td></tr>
+            <tr><td><strong>INVENTORY</strong></td><td>50%</td><td>55%</td><td>60%</td><td>Warehoused goods — moderate liquidity</td></tr>
+            <tr><td><strong>EQUIPMENT</strong></td><td>40%</td><td>45%</td><td>50%</td><td>Machinery — depreciation, illiquid</td></tr>
+            <tr><td><strong>REAL_ESTATE</strong></td><td>60%</td><td>65%</td><td>70%</td><td>Property — stable, illiquid</td></tr>
+            <tr><td><strong>CONTRACT</strong></td><td>30%</td><td>35%</td><td>40%</td><td>Offtake agreements — counterparty risk</td></tr>
+            <tr><td><strong>WORKING_CAPITAL</strong></td><td>20%</td><td>25%</td><td>30%</td><td>Intangible — no hard collateral</td></tr>
+            <tr><td><strong>PROJECT_FINANCE</strong></td><td>20%</td><td>25%</td><td>30%</td><td>Project-based — high execution risk</td></tr>
+            <tr><td><strong>OTHER</strong></td><td>20%</td><td>30%</td><td>40%</td><td>Unclassified — conservative default</td></tr>
+          </tbody>
+        </table></div>
+        <p>All factors are admin-manageable via the Credit Limit Settings page.</p>
+        </section>
+
+        <h2 id="2b-5cs-risk-scoring">2b. 5Cs Risk Scoring (0-100)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>Based on the traditional banking <strong>5 Cs of Credit</strong> framework, adapted for RWA tokenization:</p>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Dimension</th><th>Weight</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Character</strong></td><td>20%</td><td>KYB/KYC quality, document completeness, verification depth</td></tr>
+            <tr><td><strong>Capacity</strong></td><td>25%</td><td>Cash flow, repayment history, loan completion rate</td></tr>
+            <tr><td><strong>Capital</strong></td><td>15%</td><td>Operator's equity, skin in the game, total invested</td></tr>
+            <tr><td><strong>Collateral</strong></td><td>25%</td><td>Asset quality, diversification, liquidity score</td></tr>
+            <tr><td><strong>Conditions</strong></td><td>15%</td><td>Sector outlook, jurisdiction risk, commodity volatility</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Formula:</strong> <code>Score = Character×0.20 + Capacity×0.25 + Capital×0.15 + Collateral×0.25 + Conditions×0.15</code></p>
+        </section>
+
+        <h2 id="3-repayment-bonus-parameters">3. Tier Ratings & Multipliers</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Score</th><th>Rating</th><th>Multiplier</th><th>Max LTV</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>90-100</strong></td><td>AAA</td><td>1.0</td><td>80%</td><td>Prime borrower, diversified assets, strong cash flow</td></tr>
+            <tr><td><strong>80-89</strong></td><td>AA</td><td>0.9</td><td>70%</td><td>Strong borrower, minor risk factors</td></tr>
+            <tr><td><strong>70-79</strong></td><td>A</td><td>0.8</td><td>60%</td><td>Good borrower, moderate concentration risk</td></tr>
+            <tr><td><strong>60-69</strong></td><td>BBB</td><td>0.7</td><td>50%</td><td>Acceptable, some weak cash flow or collateral quality</td></tr>
+            <tr><td><strong>50-59</strong></td><td>BB</td><td>0.5</td><td>40%</td><td>Speculative, new operator or concentrated assets</td></tr>
+            <tr><td><strong>40-49</strong></td><td>B</td><td>0.3</td><td>30%</td><td>High risk, weak financials or volatile sector</td></tr>
+            <tr><td><strong>&lt;40</strong></td><td>C</td><td>0.0</td><td>0%</td><td>Too risky — deny credit</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="4-reputation-system">4. Compounding Reputation System</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Behavior</th><th>Adjustment</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td><strong>On-time repayment</strong></td><td>+2% per loan (compounding, max +20%)</td><td>Permanent</td></tr>
+            <tr><td><strong>Early repayment</strong></td><td>+5% bonus</td><td>12 months</td></tr>
+            <tr><td><strong>Late repayment (&lt;30 days)</strong></td><td>-5% penalty</td><td>6 months</td></tr>
+            <tr><td><strong>Default (&gt;90 days)</strong></td><td>-50% penalty + manual review</td><td>24 months</td></tr>
+            <tr><td><strong>No history (new operator)</strong></td><td>Neutral (1.0x)</td><td>Until first loan</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="5-concentration-risk">5. Concentration Risk</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Condition</th><th>Threshold</th><th>Adjustment</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Single Asset &gt;70%</strong></td><td>One asset dominates collateral pool</td><td>-10%</td></tr>
+            <tr><td><strong>Single Sector &gt;80%</strong></td><td>All assets same sector</td><td>-15%</td></tr>
+            <tr><td><strong>Well Diversified</strong></td><td>No single asset &gt;30%, 3+ asset classes</td><td>+5%</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="6-global-limits">6. Global Limits</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Parameter</th><th>Value (EUR)</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Global Maximum</strong></td><td>€500,000</td><td>Hard cap on all credit limits</td></tr>
+            <tr><td><strong>Minimum Credit Limit</strong></td><td>€0</td><td>For pending/rejected KYB</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="7-upgraded-calculation-pipeline">7. Upgraded Calculation Pipeline</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <pre><code>Step 1: Verification Gate → KYB must be APPROVED
+Step 2: Risk-Weighted Collateral → Σ(Asset_value × Asset_class_factor)
+Step 3: 5Cs Risk Score → Weighted composite (0-100)
+Step 4: Tier Multiplier → Based on score (AAA=1.0, A=0.8, etc.)
+Step 5: Concentration → ±adjustment for diversification
+Step 6: Reputation → Compounding multiplier from repayment history
+Step 7: Global Cap → min(result, €500,000)
+
+Final = Collateral_weighted × Tier_Multiplier × Concentration × Reputation
+        (capped at global max)</code></pre>
+        </section>
+
+        <h2 id="8-example-calculations">8. Example Calculations</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>Example 1: Green Cotton SA — Real Operator (Upgraded)</h3>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📋 Profile</div>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Role: INDUSTRIAL_OPERATOR | Operator Type: AGRICULTURAL</li>
+          <li>KYB Status: APPROVED | Certified Assets: €1,000,000 (Inventory + Receivables)</li>
+          <li>Repayment: 1 loan fully repaid on time (€250K → €270K)</li>
+        </ul></div>
+        <pre><code>Step 2: Risk-Weighted Collateral
+  Inventory (€400K × 55%) = €220K
+  Receivables (€600K × 75%) = €450K
+  → RWC = €670K (vs €500K at flat 50%)
+
+Step 3: 5Cs Risk Score
+  Character: 65 | Capacity: 100 | Capital: 30 | Collateral: 70 | Conditions: 75
+  → Composite = 65×0.20 + 100×0.25 + 30×0.15 + 70×0.25 + 75×0.15 = 71.25 → Rating: A
+
+Step 4: Tier Multiplier → 0.8× (A rating)
+  Base = €670K × 0.8 = €536K
+
+Step 5: Concentration → No penalty (diversified across 2 asset classes)
+
+Step 6: Reputation → 1 on-time repayment → +2% → 1.02×
+  €536K × 1.02 = €546.7K
+
+Step 7: Global Cap → min(€546.7K, €500K) = €500K
+
+→ Final Credit Limit: €500,000
+→ Available: €500,000 (loan fully repaid)</code></pre>
+        </section>
+
+        <h2 id="9-database-schema">9. Database Schema</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>credit_limit_parameters Table (Admin-Managed)</h3>
+        <p>Single active row with all calculation parameters: tier thresholds, 5Cs weights, reputation settings, concentration thresholds, and global limits.</p>
+
+        <h3>collateral_factors Table (Admin-Managed)</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>asset_class</code></td><td>VARCHAR(50)</td><td>Unique key: RECEIVABLES, INVENTORY, etc.</td></tr>
+            <tr><td><code>factor_min</code></td><td>NUMERIC(5,2)</td><td>Minimum allowed factor</td></tr>
+            <tr><td><code>factor_max</code></td><td>NUMERIC(5,2)</td><td>Maximum allowed factor</td></tr>
+            <tr><td><code>factor_default</code></td><td>NUMERIC(5,2)</td><td>Active factor used in calculations</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>operator_risk_scores Table (Audit Trail)</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>investor_id</code></td><td>INTEGER</td><td>FK to investor_profiles</td></tr>
+            <tr><td><code>version</code></td><td>INTEGER</td><td>Incremented on each recalculation</td></tr>
+            <tr><td><code>score_character</code></td><td>NUMERIC(5,2)</td><td>Character score (0-100)</td></tr>
+            <tr><td><code>score_capacity</code></td><td>NUMERIC(5,2)</td><td>Capacity score (0-100)</td></tr>
+            <tr><td><code>score_capital</code></td><td>NUMERIC(5,2)</td><td>Capital score (0-100)</td></tr>
+            <tr><td><code>score_collateral</code></td><td>NUMERIC(5,2)</td><td>Collateral score (0-100)</td></tr>
+            <tr><td><code>score_conditions</code></td><td>NUMERIC(5,2)</td><td>Conditions score (0-100)</td></tr>
+            <tr><td><code>composite_score</code></td><td>NUMERIC(5,2)</td><td>Weighted composite (0-100)</td></tr>
+            <tr><td><code>rating</code></td><td>VARCHAR(3)</td><td>AAA, AA, A, BBB, BB, B, C</td></tr>
+            <tr><td><code>calculated_credit_limit</code></td><td>NUMERIC(15,2)</td><td>Final calculated limit</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="10-api-endpoints">10. API Endpoints</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>See <a href="15_CREDIT_LIMIT_API_REFERENCE.html" style="color:#3B82F6;">Credit Limit API Reference</a> for complete endpoint documentation.</p>
+        <p><strong>User endpoints:</strong> GET/POST /api/v2/credit-limits/me</p>
+        <p><strong>Admin endpoints:</strong> GET/PUT/POST /api/v2/admin/credit-limits/*</p>
+        </section>
+
+        <h2 id="11-configuration-constants">11. Admin Management</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>All parameters are managed via the <strong>/admin/settings/credit-limits</strong> page in the frontend, which provides:</p>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>⚙️ Global settings and tier thresholds</li>
+          <li>⚖️ 5Cs weights (must sum to 1.0)</li>
+          <li>📊 Collateral factors per asset class (with min/max/default ranges)</li>
+          <li>⭐ Reputation system parameters (bonus/penalty percentages)</li>
+          <li>🎯 Concentration risk thresholds</li>
+          <li>🔄 Mass recalculation button for all operators</li>
+        </ul>
+        <p>Each parameter change creates a new version for audit trail. Previous versions are preserved.</p>
+        </section>
+
+        <hr />
+        <p style="color:#94A3B8; font-size:0.875rem; margin-top:2rem;">Last updated: April 12, 2026 | v2.0 — Multi-Factor Credit Limit System | <a href="15_CREDIT_LIMIT_API_REFERENCE.html" style="color:#3B82F6;">API Reference →</a> | <a href="14_CREDIT_LIMIT_SYSTEM.html" style="color:#3B82F6;">System Guide →</a></p>
+      </div>
+      <footer class="docs-footer"><p>© 2026 Ujamaa DeFi Platform · <a href="https://github.com/UjamaaDeFi">GitHub</a> · <a href="../index.html">All Docs</a></p></footer>
+    </main>
+  </div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Parameter</th><th>Value (EUR)</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Global Maximum</strong></td><td>€500,000</td><td>Hard cap on all credit limits</td></tr>
+            <tr><td><strong>Minimum Credit Limit</strong></td><td>€0</td><td>For pending/rejected KYB</td></tr>
+            <tr><td><strong>Admin Override Max</strong></td><td>€500,000</td><td>Admin cannot set above global max</td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="6-example-calculations">6. Example Calculations</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>Example 1: New Manufacturing Operator (Green Cotton SA)</h3>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📋 Profile</div>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Role: INDUSTRIAL_OPERATOR | Operator Type: MANUFACTURING</li>
+          <li>KYB Status: APPROVED</li>
+          <li>Certified Assets: €250,000 (cotton inventory, warehouse receipts)</li>
+          <li>Repayment History: None (new operator)</li>
+        </ul></div>
+        <pre><code>Base Limit (TIER_2):          €50,000
+Collateral Credit:            €250,000 × 0.50 = €125,000
+Repayment Bonus:              1.0 × €10,000 = €10,000
+                              ──────────────────────
+Raw Total:                    €185,000
+Global Max Cap:               €500,000 (not exceeded)
+                              ──────────────────────
+Final Credit Limit:           €185,000</code></pre>
+
+        <h3>Example 2: Agricultural Operator with Defaults</h3>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📋 Profile</div>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Role: INDUSTRIAL_OPERATOR | Operator Type: AGRICULTURAL | KYB: APPROVED</li>
+          <li>Certified Assets: €80,000 (crop inventory)</li>
+          <li>Repayment History: 3 out of 5 financings repaid on time (60%)</li>
+        </ul></div>
+        <pre><code>Base Limit (TIER_1):          €10,000
+Collateral Credit:            €80,000 × 0.50 = €40,000
+Repayment Bonus:              0.60 × €10,000 = €6,000
+                              ──────────────────────
+Final Credit Limit:           €56,000</code></pre>
+
+        <h3>Example 3: Pending KYB — No Credit</h3>
+        <div class="docs-callout docs-callout-warning"><div class="docs-callout-title">⚠️ No Credit Assigned</div>
+        <p>Role: INDUSTRIAL_OPERATOR | KYB: PENDING | Certified Assets: €500,000</p>
+        <p><strong>Credit Limit: €0</strong> | Available Credit: €0</p>
+        <p style="margin-top:0.5rem;">KYB approval is required before any credit can be assigned to corporate entities.</p></div>
+
+        <h3>Example 4: Admin Override</h3>
+        <p>Admin sets manual limit to €150,000 for strategic partner. Reason: "Green Cotton expansion phase — board approved".</p>
+        <pre><code>Method:          ADMIN_OVERRIDE
+Credit Limit:    €150,000
+Available:       €150,000 - outstanding principal</code></pre>
+
+        <h3>Example 5: Large Operator Hitting Global Cap</h3>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📋 Profile</div>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li>Role: INDUSTRIAL_OPERATOR | Operator Type: MANUFACTURING | KYB: APPROVED</li>
+          <li>Certified Assets: €1,200,000 | Perfect Repayment History (100%)</li>
+        </ul></div>
+        <pre><code>Base Limit (TIER_2):          €50,000
+Collateral Credit:            €1,200,000 × 0.50 = €600,000
+Repayment Bonus:              1.0 × €10,000 = €10,000
+                              ──────────────────────
+Raw Total:                    €660,000
+Global Max Cap:               €500,000 ← APPLIED
+                              ──────────────────────
+Final Credit Limit:           €500,000 (capped)</code></pre>
+        </section>
+
+        <h2 id="7-database-schema">7. Database Schema</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>investor_profiles Table</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Column</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>credit_limit</code></td><td>NUMERIC(15, 2)</td><td>0</td><td>Current calculated credit limit</td></tr>
+            <tr><td><code>credit_limit_method</code></td><td>VARCHAR(50)</td><td>NULL</td><td>'COLLATERAL_BASED', 'ADMIN_OVERRIDE', 'TIER_BASED'</td></tr>
+            <tr><td><code>credit_limit_last_updated</code></td><td>TIMESTAMP</td><td>NULL</td><td>Last recalculation timestamp</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>users Table</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Column</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>credit_limit_override</code></td><td>NUMERIC(15, 2)</td><td>NULL</td><td>Admin manual override (NULL = use auto-calc)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>user_credit_limits Table (Audit Trail)</h3>
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Column</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>SERIAL</td><td>auto</td><td>Primary key</td></tr>
+            <tr><td><code>user_id</code></td><td>INTEGER</td><td>FK → users.id</td><td>User reference</td></tr>
+            <tr><td><code>credit_limit</code></td><td>NUMERIC(15, 2)</td><td>required</td><td>Limit amount</td></tr>
+            <tr><td><code>reason</code></td><td>VARCHAR(50)</td><td>'auto_calculation'</td><td>Reason code</td></tr>
+            <tr><td><code>details</code></td><td>TEXT</td><td>NULL</td><td>JSON breakdown of calculation</td></tr>
+            <tr><td><code>created_at</code></td><td>TIMESTAMP</td><td>NOW()</td><td>Record creation time</td></tr>
+            <tr><td><code>expires_at</code></td><td>TIMESTAMP</td><td>NULL</td><td>Optional expiration</td></tr>
+          </tbody>
+        </table></div>
+
+        <h4>Valid Reason Codes</h4>
+        <ul class="docs-list" style="padding-left:1.5rem">
+          <li><code>auto_calculation</code> — System calculated from formula</li>
+          <li><code>admin_override</code> — Manual admin setting</li>
+          <li><code>kyb_upgrade</code> — KYB status changed to APPROVED</li>
+          <li><code>asset_certification</code> — New asset certified</li>
+          <li><code>repayment_bonus</code> — Repayment history updated</li>
+          <li><code>admin_reset</code> — Admin removed override</li>
+        </ul>
+        </section>
+
+        <h2 id="8-api-requestresponse-examples">8. API Request/Response Examples</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <h3>Admin Override Request</h3>
+        <pre><code>PUT /api/v2/credit-limits/users/5
+
+{
+  "credit_limit": 150000,
+  "reason": "Strategic partner — Green Cotton expansion phase"
+}</code></pre>
+
+        <h3>Error: Insufficient Credit on Financing Request</h3>
+        <pre><code>POST /api/v2/originator/financings/create
+
+{
+  "detail": "Requested amount 75,000.00 EUR exceeds available credit 56,000.00 EUR. Credit limit: 56,000.00 EUR"
+}</code></pre>
+        <p><strong>HTTP Status:</strong> 400 Bad Request</p>
+        </section>
+
+        <h2 id="9-webhook-events-future">9. Webhook Events (Future)</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <div class="docs-table-wrapper"><table class="docs-table">
+          <thead><tr><th>Event</th><th>Trigger</th><th>Payload</th></tr></thead>
+          <tbody>
+            <tr><td><code>credit_limit.updated</code></td><td>Credit limit recalculated</td><td><code>{ user_id, old_limit, new_limit, method }</code></td></tr>
+            <tr><td><code>credit_limit.exceeded_attempt</code></td><td>Financing request exceeds available credit</td><td><code>{ user_id, requested, available, limit }</code></td></tr>
+            <tr><td><code>credit_limit.kyb_approved</code></td><td>KYB status changed to APPROVED</td><td><code>{ user_id, new_limit }</code></td></tr>
+          </tbody>
+        </table></div>
+        </section>
+
+        <h2 id="10-configuration-constants">10. Configuration Constants</h2>
+        <section class="docs-section" data-animate="fade-in">
+        <p>All values are defined in <code>backend/services/credit_limit_service.py</code>:</p>
+        <pre><code>KYB_TIER_LIMITS = {
+    "TIER_1": Decimal("10000"),      # €10,000
+    "TIER_2": Decimal("50000"),      # €50,000
+    "TIER_3": Decimal("200000"),     # €200,000
+}
+
+COLLATERAL_FACTOR = Decimal("0.50")  # 50%
+MAX_REPAYMENT_BONUS = Decimal("10000")  # €10,000
+GLOBAL_MAX_LIMIT = Decimal("500000")  # €500,000
+
+DEFAULT_TIER_MAP = {
+    "MANUFACTURING": "TIER_2",
+    "AGRICULTURAL": "TIER_1",
+    "TRADING": "TIER_1",
+    None: "TIER_1",
+}</code></pre>
+        </section>
+
+        <hr />
+        <p style="color:#94A3B8; font-size:0.875rem; margin-top:2rem;">Last updated: April 12, 2026 | <a href="15_CREDIT_LIMIT_API_REFERENCE.html" style="color:#2563EB;">← API Reference</a> | <a href="14_CREDIT_LIMIT_SYSTEM.html" style="color:#2563EB;">Credit Limit System Guide →</a></p>
+      </div>
+      <footer class="docs-footer"><p>© 2026 Ujamaa DeFi Platform · <a href="https://github.com/UjamaaDeFi">GitHub</a> · <a href="../index.html">All Docs</a></p></footer>
+    </main>
+  </div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

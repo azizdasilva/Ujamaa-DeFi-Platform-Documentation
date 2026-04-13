@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -124,11 +131,11 @@
       <div class="docs-content">
         <h1 class="docs-title">API Specification</h1>
         <p class="docs-subtitle">Asset origination, tokenization, and lifecycle management</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Backend Engineers, Frontend Engineers, Integration Partners</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> April 12, 2026 | <strong>Audience:</strong> Backend Engineers, Frontend Engineers, Integration Partners</p></div>
 
         <h1>API Specification</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform REST &amp; gRPC APIs</h2>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Technical<br />
@@ -140,7 +147,7 @@
 <p><strong>New Services (SRS v2.1):</strong><br />
 - <strong>Authentication Service</strong>: SIWE (Sign-In with Ethereum) + JWT token management<br />
 - <strong>Liquidity Pools Service</strong>: Pool management, uLP deposit/redeem, NAV tracking<br />
-- <strong>Guarantee Tokens Service</strong>: UJG lifecycle (mint, redeem, liquidate)</p>
+- <strong>Guarantee Tokens Service</strong>: uGT lifecycle (mint, redeem, liquidate)</p>
 <p><strong>Updated Services:</strong><br />
 - Authentication &amp; Authorization section completely rewritten (SIWE + JWT)<br />
 - RBAC middleware for all institutional endpoints<br />
@@ -150,7 +157,7 @@
 <p><strong>New Endpoints:</strong><br />
 - <code>/api/v1/auth/*</code> - SIWE authentication (nonce, login, refresh, logout)<br />
 - <code>/api/v1/pools/*</code> - Liquidity pool operations<br />
-- <code>/api/v1/guarantees/*</code> - Guarantee token (UJG) operations<br />
+- <code>/api/v1/guarantees/*</code> - Guarantee token (uGT) operations<br />
 - <code>/api/v1/fireblocks/*</code> - Fireblocks custody operations (platform treasury)</p>
 <p><strong>SRS Reference:</strong> This specification implements <strong>SRS v2.1</strong> Section 1.2.1 (Authentication), Section 1.2.2 (Authorization), and Section 4 (External Interface Requirements).</p>
 <hr />
@@ -158,6 +165,7 @@
 <h1>Table of Contents</h1>
 <ol class="docs-list" style="padding-left:1.5rem">
 <li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#11-numbered-api-endpoints">📋 Numbered API Endpoints Reference (NEW)</a></li>
 <li><a href="#2-api-gateway-configuration">API Gateway Configuration</a></li>
 <li><a href="#3-assets-service">Assets Service</a></li>
 <li><a href="#4-investors-service">Investors Service</a></li>
@@ -170,6 +178,240 @@
 <li><a href="#11-rate-limiting">Rate Limiting</a></li>
 <li><a href="#12-webhooks--events">Webhooks &amp; Events</a></li>
 </ol>
+
+<hr />
+
+<h1 id="11-numbered-api-endpoints">📋 Numbered API Endpoints Reference (Updated April 12, 2026)</h1>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Complete Endpoint Inventory (10 API Modules - 159 Endpoints)</h2>
+<p><strong>Base URL:</strong> <code>http://localhost:8000</code> (Development) | <code>https://api.ujamaa.io</code> (Production)<br />
+<strong>API Versions:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs only)<br />
+<strong>Authentication:</strong> Email/Password + Wallet Login (whitelist-based) | <strong>No SIWE implemented</strong></p>
+</section>
+
+<h3>Module 1: Authentication (auth_api.py) - Prefix: /api/v2/auth</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>1.1</td><td><code>POST</code></td><td><code>/api/v2/auth/login</code></td><td>None</td><td>Email/password login → mock JWT token</td></tr>
+<tr><td>1.2</td><td><code>POST</code></td><td><code>/api/v2/auth/register</code></td><td>None</td><td>Register user with investor/operator profile</td></tr>
+<tr><td>1.3</td><td><code>POST</code></td><td><code>/api/v2/auth/wallet-login</code></td><td>None</td><td>Authenticate via whitelisted wallet address</td></tr>
+<tr><td>1.4</td><td><code>POST</code></td><td><code>/api/v2/auth/verify-wallet</code></td><td>JWT</td><td>Verify if wallet is authorized for user</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 2: Pools (pools.py) - Prefix: /api/v2/pools</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>2.1</td><td><code>GET</code></td><td><code>/api/v2/pools</code></td><td>JWT</td><td>List all liquidity pools (filter by family/active)</td></tr>
+<tr><td>2.2</td><td><code>GET</code></td><td><code>/api/v2/pools/redemption-breakdown</code></td><td>JWT</td><td>Per-pool redeemable vs locked shares breakdown</td></tr>
+<tr><td>2.3</td><td><code>GET</code></td><td><code>/api/v2/pools/{pool_id}</code></td><td>JWT</td><td>Get pool details by ID</td></tr>
+<tr><td>2.4</td><td><code>GET</code></td><td><code>/api/v2/pools/{pool_id}/stats</code></td><td>JWT</td><td>Get pool statistics (deployed, available, yield)</td></tr>
+<tr><td>2.5</td><td><code>GET</code></td><td><code>/api/v2/pools/{pool_id}/compliance-check</code></td><td>JWT</td><td>Check investor compliance for pool investment</td></tr>
+<tr><td>2.6</td><td><code>POST</code></td><td><code>/api/v2/pools/{pool_id}/invest</code></td><td>JWT (INVESTOR)</td><td>Invest in pool (deposit EUROD → receive uLP)</td></tr>
+<tr><td>2.7</td><td><code>POST</code></td><td><code>/api/v2/pools/{pool_id}/sync-redemption</code></td><td>JWT</td><td>Sync on-chain redemption to database</td></tr>
+<tr><td>2.8</td><td><code>POST</code></td><td><code>/api/v2/pools/{pool_id}/sync-investment</code></td><td>JWT</td><td>Sync on-chain investment to database</td></tr>
+<tr><td>2.9</td><td><code>POST</code></td><td><code>/api/v2/pools/{pool_id}/redeem</code></td><td>JWT (INVESTOR)</td><td>Redeem shares for UJEUR (with lockup checks)</td></tr>
+<tr><td>2.10</td><td><code>GET</code></td><td><code>/api/v2/pools/{pool_id}/lockup-status</code></td><td>JWT</td><td>Check lockup status for investor in pool</td></tr>
+<tr><td>2.11</td><td><code>GET</code></td><td><code>/api/v2/pools/{pool_id}/financings</code></td><td>JWT</td><td>List financings for pool with filters</td></tr>
+<tr><td>2.12</td><td><code>POST</code></td><td><code>/api/v2/pools/{pool_id}/financings</code></td><td>JWT (OPERATOR)</td><td>Create new financing with blockchain integration</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 3: Compliance (compliance.py) - Prefix: /api/v2/compliance</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>3.1</td><td><code>POST</code></td><td><code>/api/v2/compliance/check-jurisdiction</code></td><td>None</td><td>Check jurisdiction compliance (ALLOWED/BLOCKED)</td></tr>
+<tr><td>3.2</td><td><code>POST</code></td><td><code>/api/v2/compliance/screen-investor</code></td><td>JWT</td><td>Screen investor against PEP/sanctions lists</td></tr>
+<tr><td>3.3</td><td><code>GET</code></td><td><code>/api/v2/compliance/blocked-jurisdictions</code></td><td>None</td><td>Get list of blocked jurisdictions</td></tr>
+<tr><td>3.4</td><td><code>GET</code></td><td><code>/api/v2/compliance/allowed-jurisdictions</code></td><td>None</td><td>Get list of allowed jurisdictions</td></tr>
+<tr><td>3.5</td><td><code>GET</code></td><td><code>/api/v2/compliance/jurisdictions</code></td><td>None</td><td>Get all jurisdictions (blocked + allowed)</td></tr>
+<tr><td>3.6</td><td><code>POST</code></td><td><code>/api/v2/compliance/investors/register</code></td><td>None</td><td>Register investor for compliance tracking</td></tr>
+<tr><td>3.7</td><td><code>GET</code></td><td><code>/api/v2/compliance/investors/{investor_id}/compliance</code></td><td>JWT</td><td>Get investor compliance status from DB</td></tr>
+<tr><td>3.8</td><td><code>POST</code></td><td><code>/api/v2/compliance/investors/{investor_id}/approve</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Approve investor (compliance officer)</td></tr>
+<tr><td>3.9</td><td><code>POST</code></td><td><code>/api/v2/compliance/investors/{investor_id}/revoke</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Revoke investor approval</td></tr>
+<tr><td>3.10</td><td><code>POST</code></td><td><code>/api/v2/compliance/kyb/check</code></td><td>JWT</td><td>Perform Know Your Business check</td></tr>
+<tr><td>3.11</td><td><code>GET</code></td><td><code>/api/v2/compliance/stats</code></td><td>JWT</td><td>Get compliance statistics</td></tr>
+<tr><td>3.12</td><td><code>GET</code></td><td><code>/api/v2/compliance/sanctions-list</code></td><td>None</td><td>Get sanctions list breakdown by source</td></tr>
+<tr><td>3.13</td><td><code>POST</code></td><td><code>/api/v2/compliance/identity/register</code></td><td>JWT</td><td>Register investor identity for ERC-3643</td></tr>
+<tr><td>3.14</td><td><code>POST</code></td><td><code>/api/v2/compliance/identity/verify</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Verify investor identity on-chain</td></tr>
+<tr><td>3.15</td><td><code>GET</code></td><td><code>/api/v2/compliance/identity/{investor_id}/status</code></td><td>JWT</td><td>Get investor identity verification status</td></tr>
+<tr><td>3.16</td><td><code>GET</code></td><td><code>/api/v2/compliance/investor/{investor_id}/portfolio</code></td><td>JWT</td><td>Get investor portfolio for compliance review</td></tr>
+<tr><td>3.17</td><td><code>GET</code></td><td><code>/api/v2/compliance/investors/search</code></td><td>JWT</td><td>Search investors by name, email, or wallet</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 4: Compliance Documents (compliance_documents.py) - Prefix: /api/v2/compliance</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>4.1</td><td><code>GET</code></td><td><code>/api/v2/compliance/documents</code></td><td>JWT</td><td>Get all documents for review with filters</td></tr>
+<tr><td>4.2</td><td><code>GET</code></td><td><code>/api/v2/compliance/documents/pending</code></td><td>JWT</td><td>Get pending documents (optionally overdue only)</td></tr>
+<tr><td>4.3</td><td><code>GET</code></td><td><code>/api/v2/compliance/documents/{document_id}</code></td><td>JWT</td><td>Get specific document by ID</td></tr>
+<tr><td>4.4</td><td><code>POST</code></td><td><code>/api/v2/compliance/documents/{document_id}/review</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Review and approve/reject document</td></tr>
+<tr><td>4.5</td><td><code>GET</code></td><td><code>/api/v2/compliance/documents/{document_id}/view</code></td><td>JWT</td><td>View document metadata and viewer URL</td></tr>
+<tr><td>4.6</td><td><code>GET</code></td><td><code>/api/v2/compliance/stats</code></td><td>JWT</td><td>Get compliance stats (pending, approved, overdue)</td></tr>
+<tr><td>4.7</td><td><code>GET</code></td><td><code>/api/v2/compliance/activities</code></td><td>JWT</td><td>Get compliance activity log (audit trail)</td></tr>
+<tr><td>4.8</td><td><code>POST</code></td><td><code>/api/v2/compliance/documents/batch-review</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Review multiple documents at once</td></tr>
+<tr><td>4.9</td><td><code>POST</code></td><td><code>/api/v2/compliance/demo/upload-document</code></td><td>JWT</td><td>Demo endpoint for document upload (testing)</td></tr>
+<tr><td>4.10</td><td><code>POST</code></td><td><code>/api/v2/compliance/documents/upload-file</code></td><td>JWT</td><td>Upload KYC/KYB document (multipart/form-data)</td></tr>
+<tr><td>4.11</td><td><code>PUT</code></td><td><code>/api/v2/compliance/settings/kyc-deadline</code></td><td>JWT (ADMIN)</td><td>Update KYC/KYB review deadline</td></tr>
+<tr><td>4.12</td><td><code>GET</code></td><td><code>/api/v2/compliance/settings/kyc-deadline</code></td><td>JWT</td><td>Get current KYC review deadline</td></tr>
+<tr><td>4.13</td><td><code>POST</code></td><td><code>/api/v2/compliance/documents/{document_id}/extend-deadline</code></td><td>JWT (ADMIN)</td><td>Extend deadline for document (ADMIN override)</td></tr>
+<tr><td>4.14</td><td><code>POST</code></td><td><code>/api/v2/compliance/documents/{document_id}/cancel-rejection</code></td><td>JWT (ADMIN)</td><td>Cancel auto-rejection (ADMIN override)</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 5: Admin (admin.py) - Prefix: /api/v2/admin</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>5.1</td><td><code>GET</code></td><td><code>/api/v2/admin/users</code></td><td>JWT (ADMIN)</td><td>List all users with filters</td></tr>
+<tr><td>5.2</td><td><code>GET</code></td><td><code>/api/v2/admin/users/{user_id}</code></td><td>JWT (ADMIN)</td><td>Get single user details</td></tr>
+<tr><td>5.3</td><td><code>POST</code></td><td><code>/api/v2/admin/users</code></td><td>JWT (ADMIN)</td><td>Create new user</td></tr>
+<tr><td>5.4</td><td><code>PUT</code></td><td><code>/api/v2/admin/users/{user_id}</code></td><td>JWT (ADMIN)</td><td>Update user details</td></tr>
+<tr><td>5.5</td><td><code>DELETE</code></td><td><code>/api/v2/admin/users/{user_id}</code></td><td>JWT (ADMIN)</td><td>Delete user and related data</td></tr>
+<tr><td>5.6</td><td><code>POST</code></td><td><code>/api/v2/admin/users/{user_id}/reset-password</code></td><td>JWT (ADMIN)</td><td>Reset user password</td></tr>
+<tr><td>5.7</td><td><code>POST</code></td><td><code>/api/v2/admin/users/{user_id}/toggle-active</code></td><td>JWT (ADMIN)</td><td>Toggle user active/suspended status</td></tr>
+<tr><td>5.8</td><td><code>GET</code></td><td><code>/api/v2/admin/documents</code></td><td>JWT (ADMIN)</td><td>List all uploaded documents</td></tr>
+<tr><td>5.9</td><td><code>PUT</code></td><td><code>/api/v2/admin/documents/{doc_id}/review</code></td><td>JWT (ADMIN)</td><td>Review and approve/reject document</td></tr>
+<tr><td>5.10</td><td><code>GET</code></td><td><code>/api/v2/admin/whitelisted-wallets</code></td><td>JWT (ADMIN)</td><td>List all whitelisted wallets</td></tr>
+<tr><td>5.11</td><td><code>PUT</code></td><td><code>/api/v2/admin/whitelisted-wallets/{wallet_id}</code></td><td>JWT (ADMIN)</td><td>Approve/reject whitelisted wallet</td></tr>
+<tr><td>5.12</td><td><code>POST</code></td><td><code>/api/v2/admin/whitelisted-wallets</code></td><td>JWT (ADMIN)</td><td>Create new whitelist entry</td></tr>
+<tr><td>5.13</td><td><code>DELETE</code></td><td><code>/api/v2/admin/whitelisted-wallets/{wallet_id}</code></td><td>JWT (ADMIN)</td><td>Delete whitelist entry</td></tr>
+<tr><td>5.14</td><td><code>GET</code></td><td><code>/api/v2/admin/audit-log</code></td><td>JWT (ADMIN)</td><td>Get compliance audit log</td></tr>
+<tr><td>5.15</td><td><code>GET</code></td><td><code>/api/v2/admin/investors/bank-accounts</code></td><td>JWT (ADMIN)</td><td>List all investors with bank accounts</td></tr>
+<tr><td>5.16</td><td><code>POST</code></td><td><code>/api/v2/admin/investors/{investor_id}/bank-account/update</code></td><td>JWT (ADMIN)</td><td>Update investor bank balance</td></tr>
+<tr><td>5.17</td><td><code>POST</code></td><td><code>/api/v2/admin/investors/{investor_id}/status</code></td><td>JWT (ADMIN)</td><td>Update investor active/suspended status</td></tr>
+<tr><td>5.18</td><td><code>GET</code></td><td><code>/api/v2/admin/dashboard</code></td><td>JWT (ADMIN)</td><td>Get admin dashboard stats</td></tr>
+<tr><td>5.19</td><td><code>GET</code></td><td><code>/api/v2/admin/thresholds</code></td><td>JWT</td><td>Get all threshold values</td></tr>
+<tr><td>5.20</td><td><code>POST</code></td><td><code>/api/v2/admin/thresholds</code></td><td>JWT (ADMIN)</td><td>Update threshold configuration</td></tr>
+<tr><td>5.21</td><td><code>GET</code></td><td><code>/api/v2/admin/thresholds/validate</code></td><td>JWT</td><td>Validate threshold configuration</td></tr>
+<tr><td>5.22</td><td><code>GET</code></td><td><code>/api/v2/admin/thresholds/export</code></td><td>JWT (ADMIN)</td><td>Export threshold configuration</td></tr>
+<tr><td>5.23</td><td><code>POST</code></td><td><code>/api/v2/admin/thresholds/import</code></td><td>JWT (ADMIN)</td><td>Import threshold configuration</td></tr>
+<tr><td>5.24</td><td><code>GET</code></td><td><code>/api/v2/admin/settings/general</code></td><td>JWT</td><td>Get general platform settings</td></tr>
+<tr><td>5.25</td><td><code>PUT</code></td><td><code>/api/v2/admin/settings/general</code></td><td>JWT (ADMIN)</td><td>Update general platform settings</td></tr>
+<tr><td>5.26</td><td><code>GET</code></td><td><code>/api/v2/admin/settings/fees</code></td><td>JWT</td><td>Get fee configuration</td></tr>
+<tr><td>5.27</td><td><code>PUT</code></td><td><code>/api/v2/admin/settings/fees</code></td><td>JWT (ADMIN)</td><td>Update fee configuration</td></tr>
+<tr><td>5.28</td><td><code>GET</code></td><td><code>/api/v2/admin/settings/compliance</code></td><td>JWT</td><td>Get compliance configuration</td></tr>
+<tr><td>5.29</td><td><code>PUT</code></td><td><code>/api/v2/admin/settings/compliance</code></td><td>JWT (ADMIN)</td><td>Update compliance configuration</td></tr>
+<tr><td>5.30</td><td><code>GET</code></td><td><code>/api/v2/admin/settings/risk</code></td><td>JWT</td><td>Get risk configuration</td></tr>
+<tr><td>5.31</td><td><code>PUT</code></td><td><code>/api/v2/admin/settings/risk</code></td><td>JWT (ADMIN)</td><td>Update risk configuration</td></tr>
+<tr><td>5.32</td><td><code>GET</code></td><td><code>/api/v2/admin/contracts</code></td><td>JWT</td><td>List all deployed smart contracts</td></tr>
+<tr><td>5.33</td><td><code>POST</code></td><td><code>/api/v2/admin/contracts</code></td><td>JWT (ADMIN)</td><td>Register new deployed contract</td></tr>
+<tr><td>5.34</td><td><code>PUT</code></td><td><code>/api/v2/admin/contracts/{contract_id}</code></td><td>JWT (ADMIN)</td><td>Update contract details</td></tr>
+<tr><td>5.35</td><td><code>DELETE</code></td><td><code>/api/v2/admin/contracts/{contract_id}</code></td><td>JWT (ADMIN)</td><td>Delete contract record</td></tr>
+<tr><td>5.36</td><td><code>GET</code></td><td><code>/api/v2/admin/global/dashboard</code></td><td>JWT</td><td>Get global asset management dashboard</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 6: Compliance Monitoring (monitoring.py) - Prefix: /api/v2/compliance/monitoring</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>6.1</td><td><code>GET</code></td><td><code>/api/v2/compliance/monitoring/dashboard</code></td><td>JWT</td><td>Comprehensive compliance monitoring dashboard</td></tr>
+<tr><td>6.2</td><td><code>GET</code></td><td><code>/api/v2/compliance/monitoring/overdue-report</code></td><td>JWT</td><td>Detailed overdue document report</td></tr>
+<tr><td>6.3</td><td><code>GET</code></td><td><code>/api/v2/compliance/monitoring/sla-trends</code></td><td>JWT</td><td>SLA compliance trends over time (monthly)</td></tr>
+<tr><td>6.4</td><td><code>GET</code></td><td><code>/api/v2/compliance/monitoring/officer-leaderboard</code></td><td>JWT</td><td>Compliance officer performance leaderboard</td></tr>
+<tr><td>6.5</td><td><code>GET</code></td><td><code>/api/v2/compliance/monitoring/email-notifications</code></td><td>JWT</td><td>Email notification statistics</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 7: ULP/UGT Monitoring (ulp_monitoring.py) - Prefix: /api/v2/invest</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>7.1</td><td><code>GET</code></td><td><code>/api/v2/invest/ulp/dashboard</code></td><td>JWT</td><td>Get uLP monitoring dashboard data</td></tr>
+<tr><td>7.2</td><td><code>GET</code></td><td><code>/api/v2/invest/ulp/holdings</code></td><td>JWT</td><td>Get uLP holdings list (investor or admin)</td></tr>
+<tr><td>7.3</td><td><code>GET</code></td><td><code>/api/v2/invest/ugt/holdings</code></td><td>JWT</td><td>Get uGT (Guarantee Token) holdings list</td></tr>
+<tr><td>7.4</td><td><code>GET</code></td><td><code>/api/v2/invest/ulp/{investor_id}/detail</code></td><td>JWT</td><td>Get detailed uLP holdings for investor</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 8: Originator (originator.py) - Prefix: /api/v2/originator</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>8.1</td><td><code>POST</code></td><td><code>/api/v2/originator/profile/register</code></td><td>JWT</td><td>Register industrial operator profile with KYB</td></tr>
+<tr><td>8.2</td><td><code>GET</code></td><td><code>/api/v2/originator/profile/{user_id}</code></td><td>JWT</td><td>Get operator profile by user ID</td></tr>
+<tr><td>8.3</td><td><code>PUT</code></td><td><code>/api/v2/originator/profile/{user_id}</code></td><td>JWT</td><td>Update operator profile</td></tr>
+<tr><td>8.4</td><td><code>POST</code></td><td><code>/api/v2/originator/assets/certify</code></td><td>JWT (OPERATOR)</td><td>Submit asset for certification (on-chain)</td></tr>
+<tr><td>8.5</td><td><code>GET</code></td><td><code>/api/v2/originator/assets/certifications</code></td><td>JWT</td><td>Get asset certifications with filtering</td></tr>
+<tr><td>8.6</td><td><code>GET</code></td><td><code>/api/v2/originator/ugt/holdings</code></td><td>JWT</td><td>Get all minted uGT tokens</td></tr>
+<tr><td>8.7</td><td><code>POST</code></td><td><code>/api/v2/originator/assets/certifications/{cert_id}/review</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Review asset certification</td></tr>
+<tr><td>8.8</td><td><code>POST</code></td><td><code>/api/v2/originator/financings/create</code></td><td>JWT (OPERATOR)</td><td>Create financing deal (mints uGT NFT)</td></tr>
+<tr><td>8.9</td><td><code>POST</code></td><td><code>/api/v2/originator/financings/{financing_id}/deploy</code></td><td>JWT</td><td>Deploy pool funds to approved financing</td></tr>
+<tr><td>8.10</td><td><code>POST</code></td><td><code>/api/v2/originator/wallet/connect</code></td><td>JWT</td><td>Save operator's connected wallet</td></tr>
+<tr><td>8.11</td><td><code>GET</code></td><td><code>/api/v2/originator/financings</code></td><td>JWT</td><td>Get all financings for operator with status filter</td></tr>
+<tr><td>8.12</td><td><code>POST</code></td><td><code>/api/v2/originator/financings/{financing_id}/review</code></td><td>JWT (COMPLIANCE_OFFICER)</td><td>Review financing request</td></tr>
+<tr><td>8.13</td><td><code>GET</code></td><td><code>/api/v2/originator/bank/account</code></td><td>JWT</td><td>Get operator's bank account information</td></tr>
+<tr><td>8.14</td><td><code>POST</code></td><td><code>/api/v2/originator/financings/request</code></td><td>JWT (OPERATOR)</td><td>Request financing against uGT collateral (NEW)</td></tr>
+<tr><td>8.15</td><td><code>POST</code></td><td><code>/api/v2/originator/ugt/reuse</code></td><td>JWT (OPERATOR)</td><td>Reuse uGT token for another loan</td></tr>
+<tr><td>8.16</td><td><code>POST</code></td><td><code>/api/v2/originator/ugt/burn</code></td><td>JWT (OPERATOR)</td><td>Burn uGT token and withdraw collateral</td></tr>
+<tr><td>8.17</td><td><code>POST</code></td><td><code>/api/v2/originator/ugt/mint</code></td><td>JWT</td><td>Mint uGT for certified asset (on-chain)</td></tr>
+<tr><td>8.18</td><td><code>POST</code></td><td><code>/api/v2/originator/guarantees/redeem</code></td><td>JWT</td><td>Redeem uGT NFT after full repayment</td></tr>
+</tbody>
+</table></div>
+
+<h3>Module 9: KPIs (kpis.py) - Prefix: /api/v1/pool</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr><th>#</th><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>9.1</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis</code></td><td>JWT</td><td>Get all 18 KPIs for pool (all categories)</td></tr>
+<tr><td>9.2</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis/financial</code></td><td>JWT</td><td>Get Financial KPIs (4 metrics: APY, NAV, yield variance, expense)</td></tr>
+<tr><td>9.3</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis/liquidity</code></td><td>JWT</td><td>Get Liquidity KPIs (4 metrics: TVL, utilization, cash drag, redemption)</td></tr>
+<tr><td>9.4</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis/risk</code></td><td>JWT</td><td>Get Risk KPIs (4 metrics: default rate, concentration, credit, collateral)</td></tr>
+<tr><td>9.5</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis/compliance</code></td><td>JWT</td><td>Get Compliance KPIs (3 metrics: KYC coverage, wallets, jurisdictions)</td></tr>
+<tr><td>9.6</td><td><code>GET</code></td><td><code>/api/v1/pool/kpis/impact</code></td><td>JWT</td><td>Get Impact/ESG KPIs (3 metrics: growth, value add, jobs)</td></tr>
+<tr><td>9.7</td><td><code>GET</code></td><td><code>/api/v1/pool/health</code></td><td>JWT</td><td>Get overall pool health status (composite score + grade)</td></tr>
+</tbody>
+</table></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📌 Smart Contract Integration Endpoints (On-Chain)</div>
+  <p>These backend endpoints trigger on-chain transactions to Polygon Amoy:</p>
+  <ul class="docs-list" style="padding-left:1.5rem">
+    <li><strong>Invest in Pool:</strong> <code>POST /api/v2/pools/{pool_id}/invest</code> → Calls <code>ULPTokenizer.deposit()</code> at <code>0x161fab71fbD87bdE6FA20A1933b6a53a436b26a9</code></li>
+    <li><strong>Redeem uLP:</strong> <code>POST /api/v2/pools/{pool_id}/redeem</code> → Calls <code>ULPTokenizer.redeem()</code></li>
+    <li><strong>Verify Identity:</strong> <code>POST /api/v2/compliance/identity/verify</code> → Calls <code>IdentityRegistry.verifyIdentity()</code> at <code>0x085a788194625e95f8060f9B561f4358aD1b3Ed7</code></li>
+    <li><strong>Certify Asset:</strong> <code>POST /api/v2/originator/assets/certify</code> → Calls <code>IndustrialGateway.certifyAsset()</code> at <code>0xf1119462800d2f038aF0c61D874B52521bF22459</code></li>
+    <li><strong>Mint uGT:</strong> <code>POST /api/v2/originator/ugt/mint</code> → Calls <code>GuaranteeTokenizer.mintGuarantee()</code> at <code>0x673683AE87cB3640CAaba58B8414B01685a6066f</code></li>
+    <li><strong>Request Financing:</strong> <code>POST /api/v2/originator/financings/request</code> → Calls <code>CollateralManager.lockCollateral()</code> at <code>0xCeA194CbdEcff05221C009Fdf9d7e373111022A5</code></li>
+    <li><strong>Burn uGT:</strong> <code>POST /api/v2/originator/ugt/burn</code> → Calls <code>CollateralManager.releaseCollateral()</code></li>
+    <li><strong>Redeem Guarantee:</strong> <code>POST /api/v2/originator/guarantees/redeem</code> → Calls <code>GuaranteeTokenizer.redeemGuarantee()</code></li>
+  </ul>
+</div>
+
+<div class="docs-callout docs-callout-warning">
+  <div class="docs-callout-title">⚠️ Important Notes</div>
+  <ul class="docs-list" style="padding-left:1.5rem">
+    <li><strong>NO SIWE Authentication:</strong> The platform uses email/password + wallet login (whitelist-based), NOT Sign-In With Ethereum</li>
+    <li><strong>API Version:</strong> Most endpoints use <code>/api/v2</code>, only KPIs use <code>/api/v1</code></li>
+    <li><strong>Mock JWT:</strong> Authentication tokens are mock tokens for testnet (not real JWT)</li>
+    <li><strong>Wallet Login:</strong> Wallet authentication checks against whitelisted_wallets table, not on-chain signatures</li>
+    <li><strong>Total Endpoints:</strong> 159 actual endpoints across 9 modules (not 71 as previously documented)</li>
+  </ul>
+</div>
+
 <hr />
 <h1>1. Executive Summary</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.1 API Architecture</h2>
@@ -2360,10 +2602,10 @@ X-Webhook-ID: evt_abc123
 </ul>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

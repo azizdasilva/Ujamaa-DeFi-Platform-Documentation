@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,13 +130,31 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>SRS v2.1 Change Summary</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">SRS v2.1 Change Summary</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Documentation Teams, Smart Contract Developers, Backend Engineers, Compliance Officers</p></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026 | <strong>Audience:</strong> Documentation Teams, Smart Contract Developers, Backend Engineers, Compliance Officers</p></div>
 
         <h1>SRS v2.1 Change Summary</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - Software Requirements Specification v2.1</h2>
 <p><strong>Document Purpose:</strong> This document summarizes all changes introduced in SRS v2.1 and provides a migration guide for updating all related documentation.</p>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 1.0<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Internal / Engineering<br />
@@ -137,7 +162,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
-<p>SRS v2.1 introduces <strong>institutional-grade architecture</strong> with yield-bearing liquidity pool tokens (uLP), collateral representation tokens (UJG), enhanced authentication (SIWE + JWT), role-based access control (RBAC), and OWASP Top 10 mitigations.</p>
+<p>SRS v2.1 introduces <strong>institutional-grade architecture</strong> with yield-bearing liquidity pool tokens (uLP), collateral representation tokens (uGT), enhanced authentication (SIWE + JWT), role-based access control (RBAC), and OWASP Top 10 mitigations.</p>
 <p>This is a <strong>major revision</strong> from v1.3 (development) and v2.0 (initial institutional architecture). All documentation must be updated for consistency.</p>
 <hr />
 </section>
@@ -162,7 +187,7 @@
 <td>🆕 <strong>Yield-bearing via value-accrual</strong></td>
 </tr>
 <tr>
-<td><strong>Ujamaa Guarantee (UJG)</strong></td>
+<td><strong>Ujamaa Guarantee (uGT)</strong></td>
 <td>ERC-3643NFT (ERC-721 + compliance)</td>
 <td>Pool's collateral representation</td>
 <td>No (forced transfer only)</td>
@@ -179,7 +204,7 @@
 </table></div>
 <p><strong>Key Distinction:</strong><br />
 - <strong>uLP</strong> = Yield-bearing investment token (like fund shares)<br />
-- <strong>UJG</strong> = Non-transferable collateral token (like warehouse receipt)<br />
+- <strong>uGT</strong> = Non-transferable collateral token (like warehouse receipt)<br />
 - <strong>UAT</strong> = Asset-specific token (legacy/retail model)</p>
 <h3>1.2 Authentication &amp; Authorization</h3>
 <p><strong>New Authentication Method:</strong><br />
@@ -273,13 +298,13 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>01_ARCHITECTURE_SPECIFICATION.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P0</td>
-<td>Add uLP/UJG architecture, Fireblocks integration, SIWE auth flow</td>
+<td>Add uLP/uGT architecture, Fireblocks integration, SIWE auth flow</td>
 </tr>
 <tr>
 <td><strong>05_SMART_CONTRACT_SPECIFICATION.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P0</td>
-<td>Add uLP (ERC-3643) and UJG (ERC-3643NFT) contract specs, yield mechanics</td>
+<td>Add uLP (ERC-3643) and uGT (ERC-3643NFT) contract specs, yield mechanics</td>
 </tr>
 <tr>
 <td><strong>06_API_SPECIFICATION.md</strong></td>
@@ -297,7 +322,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>01_MVP_SPECIFICATION.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P0</td>
-<td>Update to reference SRS v2.1 (not v2.0), add uLP/UJG specs</td>
+<td>Update to reference SRS v2.1 (not v2.0), add uLP/uGT specs</td>
 </tr>
 </tbody>
 </table></div>
@@ -328,13 +353,13 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>05_SMART_CONTRACT_INTEGRATION_GUIDE.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P1</td>
-<td>Add uLP/UJG integration examples</td>
+<td>Add uLP/uGT integration examples</td>
 </tr>
 <tr>
 <td><strong>09_NOMENCLATURE_NAMES.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P1</td>
-<td>Update token naming (uLP, UJG, UAT)</td>
+<td>Update token naming (uLP, uGT, UAT)</td>
 </tr>
 <tr>
 <td><strong>10_SMART_CONTRACT_NAMING_CONVENTION.md</strong></td>
@@ -359,7 +384,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>05_WHITE_PAPER.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P1</td>
-<td>Update token economics (uLP yield model), add UJG explanation</td>
+<td>Update token economics (uLP yield model), add uGT explanation</td>
 </tr>
 <tr>
 <td><strong>04_INVESTMENT_MEMORANDUM.md</strong></td>
@@ -371,13 +396,13 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>03_INVESTOR_PITCH_DECK.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P2</td>
-<td>Add uLP/UJG slides</td>
+<td>Add uLP/uGT slides</td>
 </tr>
 <tr>
 <td><strong>09_INVESTOR_FAQ.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P2</td>
-<td>Add uLP yield questions, UJG collateral questions</td>
+<td>Add uLP yield questions, uGT collateral questions</td>
 </tr>
 </tbody>
 </table></div>
@@ -402,7 +427,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>05_SRS_ALGORITHM_CROSS_REFERENCE.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P2</td>
-<td>Update cross-reference for uLP/UJG</td>
+<td>Update cross-reference for uLP/uGT</td>
 </tr>
 </tbody>
 </table></div>
@@ -427,7 +452,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td><strong>02_OPERATIONAL_RUNBOOKS.md</strong></td>
 <td>⚠️ Pending</td>
 <td>P1</td>
-<td>Add uLP redemption runbook, UJG liquidation runbook</td>
+<td>Add uLP redemption runbook, uGT liquidation runbook</td>
 </tr>
 </tbody>
 </table></div>
@@ -482,7 +507,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td>SRS v2.0</td>
 </tr>
 <tr>
-<td><strong>Ujamaa Guarantee (UJG)</strong></td>
+<td><strong>Ujamaa Guarantee (uGT)</strong></td>
 <td>ERC-3643NFT representing certified merchandise collateral</td>
 <td>SRS v2.1</td>
 </tr>
@@ -534,7 +559,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 <td>P0</td>
 </tr>
 <tr>
-<td><strong>UjamaaPoolToken.sol</strong></td>
+<td><strong>ULPTokenizer.sol</strong></td>
 <td>ERC-3643 + ERC-20</td>
 <td>Yield-bearing uLP token</td>
 <td>P0</td>
@@ -560,8 +585,8 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
 </tbody>
 </table></div>
 <h3>4.2 Contract Interface Changes</h3>
-<p><strong>UjamaaPoolToken (uLP):</strong></p>
-<div class="docs-pre"><code>interface IUjamaaPoolToken {
+<p><strong>ULPTokenizer (uLP):</strong></p>
+<div class="docs-pre"><code>interface IULPTokenizer {
     // Yield-bearing: balance constant, NAV increases
     function balanceOf(address account) external view returns (uint256);
     function getNAVPerShare() external view returns (uint256);
@@ -572,7 +597,7 @@ Investor_Value(t) = uLP_Balance × NAV_per_share(t)
     function redeem(uint256 uLPAmount) external returns (uint256 Ondo EUROD (EUROD)Received);
 }
 </code></div>
-<p><strong>GuaranteeToken (UJG):</strong></p>
+<p><strong>GuaranteeTokenizer (uGT):</strong></p>
 <div class="docs-pre"><code>interface IGuaranteeToken {
     // Non-transferable (except forced)
     function mintGuarantee(address industrial, uint256 value, bytes32 stockHash) external returns (uint256 tokenId);
@@ -822,18 +847,18 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>8. Testing Requirements</h2>
 <h3>8.1 Smart Contract Tests</h3>
-<p><strong>uLP Token Tests:</strong><br />
+<p><strong>uLP (ULPTokenizer) Tests:</strong><br />
 - [ ] NAV calculation accuracy (18 decimal precision)<br />
 - [ ] Deposit mints correct uLP amount<br />
 - [ ] Redeem burns uLP and returns correct Ondo EUROD (EUROD) + yield<br />
 - [ ] Value accrual over time (simulate yield)<br />
 - [ ] ERC-3643 compliance (identity verification on transfer)<br />
 - [ ] Forced transfer (regulatory actions)</p>
-<p><strong>UJG Token Tests:</strong><br />
+<p><strong>uGT Token Tests:</strong><br />
 - [ ] Mint only by Industrial Gateway<br />
 - [ ] Transfer blocked (except forced)<br />
 - [ ] Redemption by Pool Manager only<br />
-- [ ] Liquidation flow (auction winner receives UJG)<br />
+- [ ] Liquidation flow (auction winner receives uGT)<br />
 - [ ] ERC-3643NFT compliance</p>
 <p><strong>LiquidityPool Tests:</strong><br />
 - [ ] Asset allocation limits (max 10% per industrial)<br />
@@ -866,7 +891,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 <tr>
 <td><strong>Phase 1: Smart Contracts</strong></td>
 <td>Week 1-2</td>
-<td>Implement uLP, UJG, LiquidityPool contracts; Write tests; Security audit</td>
+<td>Implement uLP, uGT, LiquidityPool contracts; Write tests; Security audit</td>
 </tr>
 <tr>
 <td><strong>Phase 2: Backend</strong></td>
@@ -904,7 +929,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Acceptance Criteria</h2>
 <p><strong>SRS v2.1 Compliance:</strong><br />
-- [ ] All documents updated with uLP/UJG terminology<br />
+- [ ] All documents updated with uLP/uGT terminology<br />
 - [ ] Authentication uses SIWE + JWT<br />
 - [ ] RBAC implemented per authorization matrix<br />
 - [ ] OWASP Top 10 mitigations verified<br />
@@ -921,7 +946,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 | Token | Standard | Yield Model | Transferable | Use Case |<br />
 |-------|----------|-------------|--------------|----------|<br />
 | <strong>uLP</strong> | ERC-3643 | Value-accrual (NAV increases) | Yes (compliance) | Institutional investment |<br />
-| <strong>UJG</strong> | ERC-3643NFT | N/A (collateral) | No (forced only) | Collateral representation |<br />
+| <strong>uGT</strong> | ERC-3643NFT | N/A (collateral) | No (forced only) | Collateral representation |<br />
 | <strong>UAT</strong> | ERC-3643 | Distribution-based | Yes (compliance) | Retail/asset-specific |</p>
 <p><strong>Auth Quick Reference:</strong><br />
 | Endpoint | Method | Auth | Rate Limit |<br />
@@ -941,10 +966,10 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 <p><strong>Document End</strong></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,8 +130,26 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>SRS v2.1 Documentation Update - ULTIMATE FINAL COMPLETION REPORT</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">SRS v2.1 Documentation Update - ULTIMATE FINAL COMPLETION REPORT</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">Author: Architecture Team</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> Final (v2.1) | <strong>Status:</strong> ✅ **100% COMPLETE** (P0 + P1 + P2) | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> Final (v2.1) | <strong>Status:</strong> ✅ **100% COMPLETE** (P0 + P1 + P2) | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>SRS v2.1 Documentation Update - ULTIMATE FINAL COMPLETION REPORT</h1>
 <p><strong>Date:</strong> March 25, 2026<br />
@@ -363,14 +388,14 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🏆 Major Achievements</h2>
 <h3>1. Complete Token Architecture (P0)</h3>
-<p><strong>uLP Token (Yield-Bearing ERC-3643):</strong><br />
+<p><strong>uLP (ULPTokenizer) (Yield-Bearing ERC-3643):</strong><br />
 - ✅ Value-accrual model: <code>NAV = Total_Pool_Value / Total_Shares</code><br />
 - ✅ Deposit mechanism: <code>uLP_minted = (deposit × 1e18) / NAV</code><br />
 - ✅ Redemption mechanism: <code>value = (uLP × NAV) / 1e18</code><br />
 - ✅ Complete Solidity implementation (150+ lines)<br />
 - ✅ NAV Oracle contract<br />
 - ✅ Example flows (Day 0, Day 30, Day 365)</p>
-<p><strong>UJG Token (Collateral ERC-3643NFT):</strong><br />
+<p><strong>uGT Token (Collateral ERC-3643NFT):</strong><br />
 - ✅ Non-transferable design (forced transfer only)<br />
 - ✅ Complete ERC-3643NFT implementation (200+ lines)<br />
 - ✅ Lifecycle: mint → hold → redeem/liquidate<br />
@@ -401,7 +426,7 @@
 - ✅ KYB threshold (€100K)<br />
 - ✅ Strictest jurisdiction list (OFAC+UN+EU+FATF)<br />
 - ✅ uLP classification (MiCA ART, SEC Reg D)<br />
-- ✅ UJG non-security classification<br />
+- ✅ uGT non-security classification<br />
 - ✅ Mauritius FSC CIS Manager License<br />
 - ✅ Regulatory reporting schedule</p>
 <h3>4. Complete Algorithm Library (P1)</h3>
@@ -422,14 +447,14 @@
 <h3>5. Comprehensive Monitoring (P1)</h3>
 <p><strong>50+ Metrics Across 6 Categories:</strong><br />
 - uLP metrics (NAV, deposits, redemptions, yield)<br />
-- UJG metrics (minting, redemption, liquidation, collateral)<br />
+- uGT metrics (minting, redemption, liquidation, collateral)<br />
 - Pool metrics (diversification, performance, fees)<br />
 - Auth metrics (SIWE, sessions, JWT)<br />
 - Fireblocks metrics (vault, transactions, multisig)<br />
 - Bank metrics (escrow, wire transfers, mobile money)</p>
 <p><strong>15+ Alert Rules:</strong><br />
 - uLP alerts (NAV deviation, stale NAV, net outflow)<br />
-- UJG alerts (expiry, default, low collateral)<br />
+- uGT alerts (expiry, default, low collateral)<br />
 - Auth alerts (failure rate, brute force, sessions)<br />
 - Fireblocks alerts (pending transactions, low balance)</p>
 <p><strong>Grafana Dashboard:</strong><br />
@@ -440,7 +465,7 @@
 2. Technology Stack Reference (SIWE, JWT, Fireblocks SDK, Redis)<br />
 3. Backend Integration Guide (SIWE implementation, RBAC, pool service)<br />
 4. Frontend Quick Start (SIWE login, uLP components)<br />
-5. Smart Contract Integration Guide (uLP/UJG hooks)</p>
+5. Smart Contract Integration Guide (uLP/uGT hooks)</p>
 <p><strong>All with:</strong><br />
 - ✅ Complete code examples (Python, TypeScript, Solidity)<br />
 - ✅ Configuration files (YAML, JSON)<br />
@@ -457,7 +482,7 @@
 7. Term Sheet (updated investment terms)</p>
 <p><strong>Key Additions:</strong><br />
 - ✅ uLP token economics (value-accrual model)<br />
-- ✅ UJG collateral explanation<br />
+- ✅ uGT collateral explanation<br />
 - ✅ SIWE authentication guide<br />
 - ✅ RBAC role descriptions<br />
 - ✅ Fireblocks custody disclosure<br />
@@ -607,8 +632,8 @@
 <li>
 <p>[x] Smart Contract Specification (v2.1)</p>
 </li>
-<li>[x] uLP Token (yield-bearing)</li>
-<li>[x] UJG Token (collateral)</li>
+<li>[x] uLP (ULPTokenizer) (yield-bearing)</li>
+<li>[x] uGT Token (collateral)</li>
 <li>[x] NAV Oracle</li>
 <li>
 <p>[x] Deposit/Redeem</p>
@@ -635,7 +660,7 @@
 </li>
 <li>[x] KYB Requirements</li>
 <li>[x] Strictest Jurisdiction List</li>
-<li>[x] uLP/UJG Compliance</li>
+<li>[x] uLP/uGT Compliance</li>
 <li>[x] Regulatory Reporting</li>
 </ul>
 <h3>P1 High Priority Documents</h3>
@@ -696,7 +721,7 @@
 - Merge content from <code>docs/05_AUDITS/06_COMPLIANCE_FRAMEWORK_SRS_v2.1_UPDATES.md</code><br />
 - Add Section 4.3 (KYB Requirements)<br />
 - Add Section 2.2 (Strictest Jurisdiction List)<br />
-- Add Sections 6.5-6.6 (uLP/UJG Compliance)<br />
+- Add Sections 6.5-6.6 (uLP/uGT Compliance)<br />
 - Update version (v2.1), date (March 25, 2026)</p>
 <h3>For Technical Guides</h3>
 <p><strong>6-10. Technical Guides (5 docs):</strong><br />
@@ -719,7 +744,7 @@
 <h3>Smart Contracts</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>[x] uLP contract implemented</li>
-<li>[x] UJG contract implemented</li>
+<li>[x] uGT contract implemented</li>
 <li>[x] LiquidityPool contract implemented</li>
 <li>[x] NAV Oracle implemented</li>
 <li>[x] All contracts compiled</li>
@@ -779,10 +804,10 @@
 <h3>Week of March 26-30, 2026</h3>
 <p><strong>Development Teams:</strong><br />
 1. <strong>Smart Contract Team</strong><br />
-   - Write unit tests (uLP, UJG, LiquidityPool, NavOracle)<br />
+   - Write unit tests (uLP, uGT, LiquidityPool, NavOracle)<br />
    - Test NAV calculation accuracy<br />
    - Test deposit/redeem flows<br />
-   - Test UJG lifecycle (mint, redeem, liquidate)<br />
+   - Test uGT lifecycle (mint, redeem, liquidate)<br />
    - Schedule security audit (CertiK, OpenZeppelin, Trail of Bits)</p>
 <ol start="2">
 <li>
@@ -812,7 +837,7 @@
 <li>
 <p><strong>Compliance Team</strong><br />
    - Review uLP regulatory classification<br />
-   - Review UJG non-security classification<br />
+   - Review uGT non-security classification<br />
    - Review KYB workflow<br />
    - Schedule external legal opinion<br />
    - Prepare Mauritius FSC CIS Manager License application</p>
@@ -947,7 +972,7 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>🎖️ Quality Assurance - Final</h2>
 <h3>Consistency Checks</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>[x] Token names consistent (uLP, UJG, UAT)</li>
+<li>[x] Token names consistent (uLP, uGT, UAT)</li>
 <li>[x] Authentication flow consistent (SIWE + JWT)</li>
 <li>[x] RBAC roles consistent across all docs</li>
 <li>[x] NAV formula consistent</li>
@@ -967,12 +992,12 @@
 <li>[x] No undocumented changes</li>
 <li>[x] Version numbers consistent (v2.1)</li>
 <li>[x] Dates consistent (March 25, 2026)</li>
-<li>[x] Author attribution consistent (Aziz Da Silva)</li>
+<li>[x] Author attribution consistent (Ujamaa Architect Team)</li>
 </ul>
 <h3>Investor Disclosure</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>[x] uLP token economics fully disclosed</li>
-<li>[x] UJG collateral mechanism explained</li>
+<li>[x] uGT collateral mechanism explained</li>
 <li>[x] Fee structure transparent (2%/20%)</li>
 <li>[x] Risk factors comprehensive (technology, regulatory, custody)</li>
 <li>[x] Lock-up terms clear (180-365 days)</li>
@@ -991,7 +1016,7 @@
 <li>
 <p><strong>Token Architecture:</strong><br />
    - uLP (yield-bearing, value-accrual)<br />
-   - UJG (non-transferable collateral)<br />
+   - uGT (non-transferable collateral)<br />
    - Complete Solidity implementations</p>
 </li>
 <li>
@@ -1059,7 +1084,7 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>📞 Contact &amp; Support</h2>
 <p><strong>Documentation Owner:</strong> Architecture Team<br />
-<strong>Lead Author:</strong> Aziz Da Silva<br />
+<strong>Lead Author:</strong> Ujamaa Architect Team<br />
 <strong>Email:</strong> aziz@ujamaa.io<br />
 <strong>Documentation Repository:</strong> <code>docs/</code> folder<br />
 <strong>Audit Trail:</strong> <code>docs/05_AUDITS/</code>  </p>
@@ -1084,10 +1109,10 @@
 <p><strong>Document End</strong></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

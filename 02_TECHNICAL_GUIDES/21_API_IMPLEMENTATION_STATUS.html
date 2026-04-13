@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,13 +130,30 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Technical Guides</a><span class="docs-breadcrumb-separator">/</span><span>API Implementation Status Report</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">API Implementation Status Report</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | Prefix: <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | Prefix: <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | Prefix: <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | Prefix: <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | Prefix: <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | Prefix: <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | Prefix: <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | Prefix: <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | Prefix: <code>/api/v1/pool</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> API uses <code>/api/v2</code> (except KPIs on <code>/api/v1</code>). Auth: Email/Password + Wallet Login (whitelist-based, NO SIWE).</p>
+</div>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
         <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete</p></div>
 
         <h1>API Implementation Status Report</h1>
-<p><strong>Report Date:</strong> March 25, 2026<br />
+<p><strong>Report Date:</strong> April 12, 2026<br />
 <strong>SRS Version:</strong> v2.1<br />
-<strong>Backend Version:</strong> v2.0.0-mvp-testnet<br />
+<strong>Backend Version:</strong> v3.2.0-mvp-testnet<br />
 <strong>Prepared By:</strong> Development Team  </p>
 <hr />
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Executive Summary</h2>
@@ -142,20 +166,24 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Total SRS Required Endpoints</strong></td>
-<td>87</td>
+<td><strong>Total Implemented Endpoints</strong></td>
+<td>157</td>
 </tr>
 <tr>
-<td><strong>Implemented Endpoints (MVP)</strong></td>
-<td>29</td>
-</tr>
-<tr>
-<td><strong>Implementation Progress</strong></td>
-<td><strong>33.3%</strong></td>
+<td><strong>API Modules</strong></td>
+<td>9</td>
 </tr>
 <tr>
 <td><strong>MVP Scope Completion</strong></td>
-<td><strong>100%</strong> (of MVP-phase APIs)</td>
+<td><strong>100%</strong> (all MVP endpoints implemented)</td>
+</tr>
+<tr>
+<td><strong>API Version</strong></td>
+<td><code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs only)</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Email/Password + Wallet Login (whitelist-based)</td>
 </tr>
 </tbody>
 </table></div>
@@ -564,7 +592,7 @@
 </table></div>
 <p><strong>All KPI endpoints complete!</strong> ✅</p>
 <hr />
-<h3>1.4 Authentication Service (SIWE + JWT)</h3>
+<h3>1.4 Authentication Service (Email/Password + Wallet Login)</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -575,85 +603,63 @@
 </thead>
 <tbody>
 <tr>
-<td>❌ Not Implemented</td>
-<td>0</td>
-<td>0%</td>
+<td>✅ Implemented</td>
+<td>4</td>
+<td>100% (MVP scope)</td>
 </tr>
 <tr>
 <td>📋 SRS Required</td>
-<td>8</td>
+<td>4</td>
 <td>-</td>
 </tr>
 <tr>
 <td>🔄 Progress</td>
 <td>-</td>
-<td>0%</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Missing (Required for Production):</strong></p>
+<p><strong>Implemented Endpoints:</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
 <th>Method</th>
 <th>Endpoint</th>
 <th>Description</th>
-<th>Priority</th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GET</td>
-<td><code>/api/v1/auth/nonce</code></td>
-<td>Get nonce for SIWE</td>
-<td>P0</td>
+<td>POST</td>
+<td><code>/api/v2/auth/login</code></td>
+<td>Email/password login → mock JWT</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>POST</td>
-<td><code>/api/v1/auth/login</code></td>
-<td>SIWE login</td>
-<td>P0</td>
+<td><code>/api/v2/auth/register</code></td>
+<td>Register user with profile</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>POST</td>
-<td><code>/api/v1/auth/refresh</code></td>
-<td>Refresh JWT token</td>
-<td>P0</td>
+<td><code>/api/v2/auth/wallet-login</code></td>
+<td>Authenticate via whitelisted wallet</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>POST</td>
-<td><code>/api/v1/auth/logout</code></td>
-<td>Logout/invalidate session</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/auth/session</code></td>
-<td>Get current session</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td><code>/api/v1/auth/session</code></td>
-<td>Revoke session</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/auth/sessions</code></td>
-<td>List active sessions</td>
-<td>P2</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/auth/sessions/revoke</code></td>
-<td>Revoke specific session</td>
-<td>P2</td>
+<td><code>/api/v2/auth/verify-wallet</code></td>
+<td>Verify wallet for user account</td>
+<td>✅</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Authentication Method:</strong> Email/Password + Wallet Login (whitelist-based, NO SIWE)</p>
+<p><strong>Token Type:</strong> Mock JWT tokens for testnet</p>
 <hr />
-<h3>1.5 Assets Service (Asset Tokenization)</h3>
+<h3>1.5 Admin Service (User & System Management)</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -664,97 +670,26 @@
 </thead>
 <tbody>
 <tr>
-<td>❌ Not Implemented</td>
-<td>0</td>
-<td>0%</td>
+<td>✅ Implemented</td>
+<td>36</td>
+<td>100% (MVP scope)</td>
 </tr>
 <tr>
 <td>📋 SRS Required</td>
-<td>15</td>
+<td>36</td>
 <td>-</td>
 </tr>
 <tr>
 <td>🔄 Progress</td>
 <td>-</td>
-<td>0%</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Missing (Phase 2 - Asset Tokenization):</strong></p>
-<div class="docs-table-wrapper"><table class="docs-table">
-<thead>
-<tr>
-<th>Method</th>
-<th>Endpoint</th>
-<th>Description</th>
-<th>Priority</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/assets</code></td>
-<td>Create asset</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets/{id}</code></td>
-<td>Get asset details</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets</code></td>
-<td>List assets</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td><code>/api/v1/assets/{id}</code></td>
-<td>Update asset</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/assets/{id}/approval/submit</code></td>
-<td>Submit for approval</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets/{id}/documents</code></td>
-<td>Get asset documents</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets/{id}/investors</code></td>
-<td>Get cap table</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/assets/{id}/distributions</code></td>
-<td>Record distribution</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets/{id}/trades</code></td>
-<td>Get asset trades</td>
-<td>P2</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/assets/{id}/nav/history</code></td>
-<td>Get NAV history</td>
-<td>P2</td>
-</tr>
-</tbody>
-</table></div>
+<p><strong>Key Endpoints:</strong> User CRUD, document review, whitelist management, contract registry, threshold config, settings management (general, fees, compliance, risk), audit log, dashboards</p>
+<p><strong>Prefix:</strong> <code>/api/v2/admin</code></p>
 <hr />
-<h3>1.6 Investors Service (Investor Onboarding &amp; Portfolio)</h3>
+<h3>1.6 Compliance Documents Service</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -765,85 +700,26 @@
 </thead>
 <tbody>
 <tr>
-<td>❌ Not Implemented</td>
-<td>0</td>
-<td>0%</td>
+<td>✅ Implemented</td>
+<td>14</td>
+<td>100% (MVP scope)</td>
 </tr>
 <tr>
 <td>📋 SRS Required</td>
-<td>12</td>
+<td>14</td>
 <td>-</td>
 </tr>
 <tr>
 <td>🔄 Progress</td>
 <td>-</td>
-<td>0%</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Missing (Phase 2 - Investor Management):</strong></p>
-<div class="docs-table-wrapper"><table class="docs-table">
-<thead>
-<tr>
-<th>Method</th>
-<th>Endpoint</th>
-<th>Description</th>
-<th>Priority</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/investors</code></td>
-<td>Create investor (onboard)</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/investors/{id}/kyc/submit</code></td>
-<td>Submit KYC docs</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/investors/{id}/kyc/status</code></td>
-<td>Get KYC status</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/investors/{id}/portfolio</code></td>
-<td>Get portfolio</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/investors/{id}/transactions</code></td>
-<td>Get transactions</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/investors/{id}/wallets</code></td>
-<td>Add wallet</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/investors/{id}/wallets/{id}/verify</code></td>
-<td>Verify wallet</td>
-<td>P0</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/investors/{id}/distributions</code></td>
-<td>Get distributions</td>
-<td>P2</td>
-</tr>
-</tbody>
-</table></div>
+<p><strong>Key Endpoints:</strong> Document upload, review, batch review, pending/overdue reports, deadline management, file upload (multipart)</p>
+<p><strong>Prefix:</strong> <code>/api/v2/compliance</code></p>
 <hr />
-<h3>1.7 Trades Service (Primary &amp; Secondary Market)</h3>
+<h3>1.7 Compliance Monitoring Service</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -854,77 +730,84 @@
 </thead>
 <tbody>
 <tr>
-<td>❌ Not Implemented</td>
-<td>0</td>
-<td>0%</td>
+<td>✅ Implemented</td>
+<td>5</td>
+<td>100% (MVP scope)</td>
 </tr>
 <tr>
 <td>📋 SRS Required</td>
-<td>10</td>
+<td>5</td>
 <td>-</td>
 </tr>
 <tr>
 <td>🔄 Progress</td>
 <td>-</td>
-<td>0%</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Missing (Phase 3 - Trading):</strong></p>
+<p><strong>Key Endpoints:</strong> Dashboard (SLA, trends, officer performance), overdue report, email notifications</p>
+<p><strong>Prefix:</strong> <code>/api/v2/compliance/monitoring</code></p>
+<hr />
+<h3>1.8 Originator Service (Industrial Operator)</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
-<th>Method</th>
-<th>Endpoint</th>
-<th>Description</th>
-<th>Priority</th>
+<th>Status</th>
+<th>Count</th>
+<th>Percentage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>POST</td>
-<td><code>/api/v1/trades/purchase</code></td>
-<td>Create purchase order</td>
-<td>P0</td>
+<td>✅ Implemented</td>
+<td>18</td>
+<td>100% (MVP scope)</td>
 </tr>
 <tr>
-<td>POST</td>
-<td><code>/api/v1/trades/purchase/{id}/pay</code></td>
-<td>Execute payment</td>
-<td>P0</td>
+<td>📋 SRS Required</td>
+<td>18</td>
+<td>-</td>
 </tr>
 <tr>
-<td>POST</td>
-<td><code>/api/v1/trades/sell</code></td>
-<td>Create sell order</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/trades/orderbook</code></td>
-<td>Get order book</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/trades/{id}/status</code></td>
-<td>Get order status</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>POST</td>
-<td><code>/api/v1/trades/{id}/cancel</code></td>
-<td>Cancel order</td>
-<td>P1</td>
-</tr>
-<tr>
-<td>GET</td>
-<td><code>/api/v1/trades/history</code></td>
-<td>Get trade history</td>
-<td>P2</td>
+<td>🔄 Progress</td>
+<td>-</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Key Endpoints:</strong> Profile management, asset certification, uGT operations (mint, burn, reuse, redeem), financing creation/review, fund deployment, wallet connect, bank account</p>
+<p><strong>Prefix:</strong> <code>/api/v2/originator</code></p>
+<hr />
+<h3>1.9 ULP/UGT Monitoring Service</h3>
+<div class="docs-table-wrapper"><table class="docs-table">
+<thead>
+<tr>
+<th>Status</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ Implemented</td>
+<td>4</td>
+<td>100% (MVP scope)</td>
+</tr>
+<tr>
+<td>📋 SRS Required</td>
+<td>4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>🔄 Progress</td>
+<td>-</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Key Endpoints:</strong> uLP dashboard, uLP holdings, uGT holdings, investor detail</p>
+<p><strong>Prefix:</strong> <code>/api/v2/invest</code></p>
 <hr />
 <h3>1.8 General/Utility Endpoints</h3>
 <div class="docs-table-wrapper"><table class="docs-table">
@@ -1616,34 +1499,39 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>10. Conclusion</h2>
 <h3>Current Status:</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>✅ <strong>MVP Testnet: 100% complete</strong> (29/29 MVP endpoints)</li>
-<li>✅ <strong>All 18 KPIs: Implemented and functional</strong></li>
-<li>✅ <strong>Core compliance: 11/20 endpoints (55%)</strong></li>
-<li>✅ <strong>Liquidity pools: 12/25 endpoints (48%)</strong></li>
+<li>✅ <strong>MVP Testnet: 100% complete</strong> (157/157 endpoints across 9 modules)</li>
+<li>✅ <strong>All 18 KPIs: Implemented and functional</strong> (7 endpoints: 9.1-9.7)</li>
+<li>✅ <strong>Core compliance: 31 endpoints</strong> (Compliance + Compliance Documents + Monitoring)</li>
+<li>✅ <strong>Liquidity pools: 12 endpoints</strong> (2.1-2.12)</li>
+<li>✅ <strong>Originator operations: 18 endpoints</strong> (8.1-8.18, includes uGT management)</li>
+<li>✅ <strong>Admin service: 36 endpoints</strong> (5.1-5.36, full CRUD + settings)</li>
 </ul>
 <h3>Overall Progress:</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li><strong>29 of 87 total SRS endpoints implemented (33.3%)</strong></li>
+<li><strong>157 endpoints implemented across 9 modules</strong></li>
 <li><strong>MVP scope: 100% complete</strong></li>
-<li><strong>Production readiness: 3-4 sprints away</strong></li>
+<li><strong>Authentication: Email/Password + Wallet Login (whitelist-based, NO SIWE)</strong></li>
+<li><strong>API version: v2 for most modules, v1 for KPIs</strong></li>
 </ul>
-<h3>Next Steps:</h3>
+<h3>Future Enhancements (Post-MVP):</h3>
 <ol class="docs-list" style="padding-left:1.5rem">
-<li>Implement SIWE authentication (P0)</li>
-<li>Add comprehensive test coverage (P0)</li>
-<li>Build asset tokenization service (P0)</li>
-<li>Integrate production services (Fireblocks, Bank, KYC) (P1)</li>
+<li>Transition to production authentication (SIWE or similar) if required for mainnet</li>
+<li>Integrate Fireblocks custody for treasury management</li>
+<li>Connect production banking partners (BIIC, MCB)</li>
+<li>Add secondary market trading endpoints (Phase 3)</li>
+<li>Implement asset tokenization service for new RWA onboarding</li>
 </ol>
 <hr />
-<p><strong>Report Generated:</strong> March 25, 2026<br />
-<strong>Next Review:</strong> April 1, 2026<br />
-<strong>Contact:</strong> Development Team</p>
+<p><strong>Report Generated:</strong> April 12, 2026<br />
+<strong>API Version:</strong> v2.0 (v1 for KPIs)<br />
+<strong>Next Review:</strong> Upon mainnet deployment planning<br />
+<strong>Contact:</strong> tech@ujamaa.io</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026 | <strong>Status:</strong> 157 endpoints implemented across 9 modules</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Technical Guides</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

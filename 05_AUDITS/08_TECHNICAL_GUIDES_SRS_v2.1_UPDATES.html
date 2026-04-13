@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,8 +130,26 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>Technical Guides - SRS v2.1 Updates</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Technical Guides - SRS v2.1 Updates</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Complete | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Technical Guides - SRS v2.1 Updates</h1>
 <p><strong>Date:</strong> March 25, 2026<br />
@@ -286,9 +311,9 @@
                  key: biic-client-id</code></li>
 </ol>
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 New Section: uLP/UJG Contract Deployment</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>1.3 New Section: uLP/uGT Contract Deployment</h2>
 <h3>5.5 Institutional Contract Deployment</h3>
-<p><strong>Deploy uLP Token Contract:</strong></p>
+<p><strong>Deploy uLP (ULPTokenizer) Contract:</strong></p>
 <div class="docs-pre"><code># 1. Compile contracts
 ape compile
 
@@ -300,11 +325,11 @@ ape run scripts/institutional/deploy_ulp.py \
   --liquidity-pool 0xabcdef1234567890
 
 # 3. Verify on Etherscan
-ape etherscan-verify UjamaaPoolToken \
+ape etherscan-verify ULPTokenizer \
   --address 0xNewContractAddress \
   --network polygon-amoy
 </code></div>
-<p><strong>Deploy UJG Token Contract:</strong></p>
+<p><strong>Deploy uGT Token Contract:</strong></p>
 <div class="docs-pre"><code># Deploy GuaranteeToken
 ape run scripts/institutional/deploy_ujg.py \
   --network polygon-amoy \
@@ -312,7 +337,7 @@ ape run scripts/institutional/deploy_ujg.py \
   --gateway-address 0xIndustrialGatewayAddress
 
 # Expected output:
-# GuaranteeToken deployed at: 0xUJGContractAddress
+# GuaranteeToken deployed at: 0xuGTContractAddress
 </code></div>
 <p><strong>Deploy LiquidityPool Contract:</strong></p>
 <div class="docs-pre"><code># Deploy LiquidityPool
@@ -348,14 +373,14 @@ POOL_CONFIG = {
 <h3>6.4 Institutional Architecture Environment Variables</h3>
 <div class="docs-pre"><code># .env.production (institutional features)
 
-# uLP Token Configuration
+# uLP (ULPTokenizer) Configuration
 ULP_TOKEN_ADDRESS=&quot;0x...&quot;
 ULP_NAV_ORACLE_ADDRESS=&quot;0x...&quot;
 ULP_LIQUIDITY_POOL_ADDRESS=&quot;0x...&quot;
 
-# UJG Token Configuration
-UJG_TOKEN_ADDRESS=&quot;0x...&quot;
-UJG_INDUSTRIAL_GATEWAY_ADDRESS=&quot;0x...&quot;
+# uGT Token Configuration
+uGT_TOKEN_ADDRESS=&quot;0x...&quot;
+uGT_INDUSTRIAL_GATEWAY_ADDRESS=&quot;0x...&quot;
 
 # Fireblocks Configuration
 FIREBLOCKS_ENABLED=true
@@ -403,7 +428,7 @@ STRICTEST_JURISDICTION_LIST=&quot;CU,IR,KP,SY,YE,MM&quot;
 <li>[ ] Bank escrow accounts opened (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB)</li>
 <li>[ ] MockEscrow contract deployed (MVP testnet)</li>
 <li>[ ] uLP token contract deployed</li>
-<li>[ ] UJG token contract deployed</li>
+<li>[ ] uGT token contract deployed</li>
 <li>[ ] LiquidityPool contract deployed</li>
 <li>[ ] NAV oracle configured</li>
 <li>[ ] SIWE authentication tested</li>
@@ -631,13 +656,13 @@ def is_jwt_blacklisted(jti: str) -&gt; bool:
 </thead>
 <tbody>
 <tr>
-<td><strong>uLP Token</strong></td>
+<td><strong>uLP (ULPTokenizer)</strong></td>
 <td>ERC-3643 + ERC-20</td>
 <td>@tokeny/erc3643</td>
 <td>3.x</td>
 </tr>
 <tr>
-<td><strong>UJG Token</strong></td>
+<td><strong>uGT Token</strong></td>
 <td>ERC-3643NFT (ERC-721 + compliance)</td>
 <td>@tokeny/erc3643</td>
 <td>3.x</td>
@@ -1145,10 +1170,10 @@ export function ULPDeposit({ poolId }: { poolId: string }) {
 <h1>5. Smart Contract Integration Guide Updates 🆕</h1>
 <p><strong>Target:</strong> <code>docs/02_TECHNICAL_GUIDES/05_SMART_CONTRACT_INTEGRATION_GUIDE.md</code><br />
 <strong>Version Update:</strong> v1.0 → v2.1  </p>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 New Section: uLP Token Integration</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.1 New Section: uLP (ULPTokenizer) Integration</h2>
 <h3>Add as Section 4.5:</h3>
-<h3>4.5 uLP Token Integration</h3>
-<p><strong>Interacting with uLP Token:</strong></p>
+<h3>4.5 uLP (ULPTokenizer) Integration</h3>
+<p><strong>Interacting with uLP (ULPTokenizer):</strong></p>
 <div class="docs-pre"><code>// hooks/useULPToken.ts
 import { useContractRead, useContractWrite } from 'wagmi';
 import { parseEther, formatEther } from 'viem';
@@ -1192,14 +1217,14 @@ export function useULPToken(contractAddress: string) {
 }
 </code></div>
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 New Section: UJG Token Integration</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>5.2 New Section: uGT Token Integration</h2>
 <h3>Add as Section 4.6:</h3>
-<h3>4.6 UJG Token Integration</h3>
-<p><strong>Minting UJG:</strong></p>
-<div class="docs-pre"><code>// hooks/useUJGToken.ts
+<h3>4.6 uGT Token Integration</h3>
+<p><strong>Minting uGT:</strong></p>
+<div class="docs-pre"><code>// hooks/useuGTToken.ts
 import { useContractWrite } from 'wagmi';
 
-export function useUJGToken(contractAddress: string) {
+export function useuGTToken(contractAddress: string) {
   const { write: mintGuarantee } = useContractWrite({
     address: contractAddress,
     abi: GUARANTEE_TOKEN_ABI,
@@ -1234,10 +1259,10 @@ export function useUJGToken(contractAddress: string) {
 5. Verify cross-references</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

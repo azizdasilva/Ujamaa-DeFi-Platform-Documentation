@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,12 +130,30 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Smart Contract Specification</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Smart Contract Specification</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Smart Contract Developers, Security Auditors</p></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> April 12, 2026 | <strong>Audience:</strong> Smart Contract Developers, Security Auditors</p></div>
 
         <h1>Smart Contract Specification</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform Tokenization Contracts</h2>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Technical<br />
@@ -138,14 +163,14 @@
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Updates Summary (v2.1)</h2>
 <h3>Institutional Architecture Additions</h3>
 <p><strong>New Contracts (SRS v2.1):</strong><br />
-- <strong>UjamaaPoolToken (uLP)</strong>: Yield-bearing ERC-3643 token for liquidity pool shares<br />
-- <strong>GuaranteeToken (UJG)</strong>: ERC-3643NFT (ERC-721 + compliance) for collateral representation<br />
+- <strong>ULPTokenizer (uLP)</strong>: Yield-bearing ERC-3643 token for liquidity pool shares<br />
+- <strong>GuaranteeTokenizer (uGT)</strong>: ERC-3643NFT (ERC-721 + compliance) for collateral representation<br />
 - <strong>LiquidityPool</strong>: Pool management with multi-asset financing<br />
 - <strong>NavOracle</strong>: NAV price feed for yield calculation</p>
 <p><strong>Updated Contracts:</strong><br />
 - Contract inventory expanded to include institutional architecture<br />
 - Token standards updated with ERC-3643NFT specification<br />
-- Compliance modules extended for uLP/UJG</p>
+- Compliance modules extended for uLP/uGT</p>
 <p><strong>SRS Reference:</strong> This specification implements <strong>SRS v2.1</strong> Section 5 (System Architecture) and Section 7 (Security Requirements).</p>
 <hr />
 </section>
@@ -187,14 +212,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>UjamaaPoolToken (uLP)</code></td>
+<td><code>ULPTokenizer (uLP)</code></td>
 <td>ERC-3643 + ERC-20</td>
 <td>Ethereum, Polygon</td>
 <td><strong>Yield-bearing</strong> LP token 🆕</td>
 <td>P0</td>
 </tr>
 <tr>
-<td><code>GuaranteeToken (UJG)</code></td>
+<td><code>GuaranteeTokenizer (uGT)</code></td>
 <td>ERC-3643NFT (ERC-721 + compliance)</td>
 <td>Ethereum, Polygon</td>
 <td><strong>Collateral NFT</strong> 🆕</td>
@@ -451,7 +476,7 @@
 │  ┌─────────────────────────────────────────────────────────────────────────┐│
 │  │                      TOKEN CONTRACTS                                      ││
 │  │  ┌──────────────────────────┐  ┌──────────────────────────┐             ││
-│  │  │   Ujamaa Pool Token (uLP)            │  │   Ujamaa Deed (UJDEED)              │             ││
+│  │  │   Ujamaa Pool Token (uLP)            │  │   IndustrialGateway (UJDEED)              │             ││
 │  │  │   (ERC-3643 + ERC-20)    │  │   (ERC-3643 + ERC-721)   │             ││
 │  │  └───────────┬──────────────┘  └───────────┬──────────────┘             ││
 │  └──────────────┼─────────────────────────────┼──────────────────────────────┘│
@@ -483,7 +508,7 @@
 ├── UUPSUpgradeable (OpenZeppelin)
 └── AccessControlEnumerable (OpenZeppelin)
 
-Ujamaa Deed (UJDEED)
+IndustrialGateway (UJDEED)
 ├── ERC3643NFT (Tokeny)
 │   ├── ERC721 (OpenZeppelin)
 │   ├── IERC3643 (Tokeny)
@@ -864,7 +889,7 @@ event TransferWithCompliance(
 </code></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.5 Yield-Bearing uLP Token Specification 🆕 (SRS v2.1)</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.5 Yield-Bearing uLP (ULPTokenizer) Specification 🆕 (SRS v2.1)</h2>
 <h3>4.5.1 Value-Accrual Model</h3>
 <p>The Ujamaa Pool Token (uLP) implements a <strong>value-accrual model</strong> where:<br />
 - Token balance remains constant<br />
@@ -1026,9 +1051,9 @@ contract NavOracle {
 </code></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.6 Guarantee Token (UJG) Specification 🆕 (SRS v2.1)</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4.6 Guarantee Token (uGT) Specification 🆕 (SRS v2.1)</h2>
 <h3>4.6.1 Purpose and Design</h3>
-<p>The Ujamaa Guarantee (UJG) is a <strong>non-transferable ERC-3643NFT</strong> (ERC-721 base + ERC-3643 compliance) that represents certified merchandise/collateral backing a financing operation.</p>
+<p>The Ujamaa Guarantee (uGT) is a <strong>non-transferable ERC-3643NFT</strong> (ERC-721 base + ERC-3643 compliance) that represents certified merchandise/collateral backing a financing operation.</p>
 <p><strong>Key Properties:</strong><br />
 - ✅ <strong>ERC-721 Base</strong>: Standard NFT for unique asset representation<br />
 - ✅ <strong>ERC-3643 Compliance</strong>: Identity registry and transfer validation<br />
@@ -1043,7 +1068,7 @@ import &quot;@tokeny/erc3643/contracts/ERC3643NFT.sol&quot;;
 import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
 
 /**
- * @title GuaranteeToken (UJG)
+ * @title GuaranteeTokenizer (uGT)
  * @notice ERC-3643NFT representing certified merchandise collateral
  * @dev Non-transferable except via forcedTransfer (Pool Manager only)
  */
@@ -1086,7 +1111,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
     );
 
     /**
-     * @notice Mint Guarantee Token (UJG) for certified merchandise
+     * @notice Mint Guarantee Token (uGT) for certified merchandise
      * @param industrial Address of industrial (must be verified)
      * @param certificateId Industrial Gateway certificate ID
      * @param value Merchandise value in EUROD
@@ -1123,7 +1148,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
     }
 
     /**
-     * @notice Redeem Guarantee Token (UJG) upon full repayment
+     * @notice Redeem Guarantee Token (uGT) upon full repayment
      * @param tokenId Token ID to redeem
      */
     function redeemGuarantee(uint256 tokenId) external onlyRole(POOL_MANAGER_ROLE) {
@@ -1140,7 +1165,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
     }
 
     /**
-     * @notice Liquidate defaulted Guarantee Token (UJG) via auction
+     * @notice Liquidate defaulted Guarantee Token (uGT) via auction
      * @param tokenId Token ID to liquidate
      * @param auctionWinner Auction winner address
      */
@@ -1164,10 +1189,10 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
 
     /**
      * @notice Override transfer to prevent unauthorized transfers
-     * @dev UJG is non-transferable except via forcedTransfer
+     * @dev uGT is non-transferable except via forcedTransfer
      */
     function transfer(address, uint256) public pure override returns (bool) {
-        revert(&quot;UJG is non-transferable; use forcedTransfer&quot;);
+        revert(&quot;uGT is non-transferable; use forcedTransfer&quot;);
     }
 
     /**
@@ -1178,7 +1203,7 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
         address to,
         uint256 tokenId
     ) public override {
-        revert(&quot;UJG is non-transferable; use forcedTransfer&quot;);
+        revert(&quot;uGT is non-transferable; use forcedTransfer&quot;);
     }
 
     /**
@@ -1236,16 +1261,16 @@ contract GuaranteeToken is ERC3643NFT, AccessControlEnumerableUpgradeable {
     }
 }
 </code></div>
-<h3>4.6.3 UJG Lifecycle</h3>
+<h3>4.6.3 uGT Lifecycle</h3>
 <div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
 2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
-3. UJG minted (ERC-3643NFT with metadata + compliance)
+3. uGT minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
-5. Pool holds UJG (collateral/security)
+5. Pool holds uGT (collateral/security)
 6. Industrial repays (principal + interest)
-7. UJG redeemed → transferred back to Industrial
+7. uGT redeemed → transferred back to Industrial
 8. [DEFAULT SCENARIO] If industrial defaults:
-   → UJG liquidated via approved auction
+   → uGT liquidated via approved auction
    → Proceeds distributed to uLP holders
    → Default recorded in compliance audit trail
 </code></div>
@@ -1261,12 +1286,12 @@ import &quot;@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol
 import &quot;@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol&quot;;
 
 /**
- * @title Ujamaa Deed (UJDEED)
+ * @title IndustrialGateway (UJDEED)
  * @notice ERC-3643 compliant NFT for unique asset tokenization
  * @dev Each NFT represents ownership of a single unique asset
  *      (real estate deed, artwork, single invoice)
  */
-contract Ujamaa Deed (UJDEED) is ERC3643NFT, UUPSUpgradeable, AccessControlEnumerableUpgradeable {
+contract IndustrialGateway (UJDEED) is ERC3643NFT, UUPSUpgradeable, AccessControlEnumerableUpgradeable {
 
     // Roles
     bytes32 public constant MINTER_ROLE = keccak256(&quot;MINTER_ROLE&quot;);
@@ -1927,8 +1952,8 @@ function freezeAddress(address addr) external onlyRole(COMPLIANCE_ADMIN) {
 3. Deploy ComplianceModule (Ethereum + Polygon)
 4. Deploy Ujamaa Pool Token (uLP) implementation (Ethereum + Polygon)
 5. Deploy Ujamaa Pool Token (uLP) proxy (Ethereum + Polygon)
-6. Deploy Ujamaa Deed (UJDEED) implementation (Ethereum + Polygon)
-7. Deploy Ujamaa Deed (UJDEED) proxy (Ethereum + Polygon)
+6. Deploy IndustrialGateway (UJDEED) implementation (Ethereum + Polygon)
+7. Deploy IndustrialGateway (UJDEED) proxy (Ethereum + Polygon)
 8. Deploy UjamaaBridge (Ethereum + Polygon)
 9. Deploy DistributionManager (Polygon only)
 10. Configure Gnosis Safe multisigs
@@ -2006,10 +2031,10 @@ solidity:
 <li><code>07_MONITORING_SPECIFICATION.md</code> - Blockchain and smart contract monitoring</li>
 </ul>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

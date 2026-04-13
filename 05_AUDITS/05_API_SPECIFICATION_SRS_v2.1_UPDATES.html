@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,13 +130,45 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Audits</a><span class="docs-breadcrumb-separator">/</span><span>API Specification - SRS v2.1 Updates</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">API Specification - SRS v2.1 Updates</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>API Specification - SRS v2.1 Updates</h1>
-<p><strong>Date:</strong> March 25, 2026<br />
+
+<div class="docs-callout docs-callout-warning">
+  <div class="docs-callout-title">⚠️ Historical Document</div>
+  <p>This document describes the API updates that were <strong>planned</strong> for SRS v2.1. The actual implemented API now consists of <strong>157 endpoints across 9 modules</strong> using <code>/api/v2</code> (except KPIs on <code>/api/v1</code>). See the current API specification: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <p style="margin-top:0.5rem;"><strong>Key Differences from this document:</strong></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li>Authentication: Uses Email/Password + Wallet Login (whitelist-based), NOT SIWE</li>
+    <li>API Version: Most modules use <code>/api/v2</code>, only KPIs use <code>/api/v1</code></li>
+    <li>Modules: 9 modules (not the services described here)</li>
+    <li>Endpoints: 157 total (not the subset described here)</li>
+  </ul>
+</div>
+
+<p><strong>Date:</strong> April 12, 2026 (Updated from March 25, 2026)<br />
+<strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Source:</strong> SRS v2.1 Section 1.2.1 (Authentication), Section 1.2.2 (Authorization)<br />
-<strong>Target:</strong> <code>docs/01_SPECIFICATIONS/06_API_SPECIFICATION.md</code>  </p>
+<strong>Status:</strong> 📜 Historical - Updates completed and superseded by current implementation  </p>
 <hr />
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Summary</h2>
 <p>This document provides the complete updates needed for the API Specification to align with SRS v2.1. Due to the size of the original file (1900+ lines), these updates should be merged into the existing document.</p>
@@ -419,9 +458,9 @@ Response:
 <strong>Port:</strong> 8007<br />
 <strong>Authentication:</strong> JWT required<br />
 <strong>Authorization:</strong> Pool Manager, Industrial Gateway  </p>
-<h3>3.1 UJG Management Endpoints</h3>
+<h3>3.1 uGT Management Endpoints</h3>
 <p><strong>GET /api/v1/guarantees</strong></p>
-<div class="docs-pre"><code>Description: List Guarantee Tokens (UJG)
+<div class="docs-pre"><code>Description: List Guarantee Tokens (uGT)
 Auth: JWT (Pool Manager, Compliance Officer)
 Query Parameters:
   - poolId: string (optional)
@@ -441,7 +480,7 @@ Response:
       mintedAt: string
 </code></div>
 <p><strong>POST /api/v1/guarantees</strong></p>
-<div class="docs-pre"><code>Description: Mint Guarantee Token (UJG) for certified merchandise
+<div class="docs-pre"><code>Description: Mint Guarantee Token (uGT) for certified merchandise
 Auth: JWT (Industrial Gateway only - ORIGINATOR_ROLE)
 Request:
   industrial: string (wallet address)
@@ -455,7 +494,7 @@ Response:
   status: string (MINTED, PENDING)
 </code></div>
 <p><strong>POST /api/v1/guarantees/{tokenId}/redeem</strong></p>
-<div class="docs-pre"><code>Description: Redeem UJG upon full repayment
+<div class="docs-pre"><code>Description: Redeem uGT upon full repayment
 Auth: JWT (Pool Manager only)
 Response:
   transactionId: string
@@ -463,7 +502,7 @@ Response:
   redeemedAt: string
 </code></div>
 <p><strong>POST /api/v1/guarantees/{tokenId}/liquidate</strong></p>
-<div class="docs-pre"><code>Description: Liquidate defaulted UJG via auction
+<div class="docs-pre"><code>Description: Liquidate defaulted uGT via auction
 Auth: JWT (Pool Manager only)
 Request:
   auctionWinner: string (wallet address)
@@ -686,10 +725,10 @@ async def require_role(required_role: str, current_user: dict = Depends(get_curr
 </ul>
 <h3>Guarantee Token Tests</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
-<li>[ ] UJG minting (Industrial Gateway only)</li>
-<li>[ ] UJG transfer restrictions (non-transferable)</li>
-<li>[ ] UJG redemption (Pool Manager only)</li>
-<li>[ ] UJG liquidation (auction flow)</li>
+<li>[ ] uGT minting (Industrial Gateway only)</li>
+<li>[ ] uGT transfer restrictions (non-transferable)</li>
+<li>[ ] uGT redemption (Pool Manager only)</li>
+<li>[ ] uGT liquidation (auction flow)</li>
 </ul>
 <hr />
 </section>
@@ -717,10 +756,10 @@ async def require_role(required_role: str, current_user: dict = Depends(get_curr
 5. Add new services to Section 1.2 (Service Inventory)</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

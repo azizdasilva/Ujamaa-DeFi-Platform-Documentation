@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -124,7 +131,7 @@
       <div class="docs-content">
         <h1 class="docs-title">Algorithm Specifications & Monitoring - SRS v2.1 Updates</h1>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Ready for Implementation | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Ready for Implementation | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Algorithm Specifications &amp; Monitoring - SRS v2.1 Updates</h1>
 <p><strong>Date:</strong> March 25, 2026<br />
@@ -509,7 +516,7 @@ def check_jurisdiction_eligibility(
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>13. Institutional Architecture Metrics 🆕</h2>
-<h3>13.1 uLP Token Metrics</h3>
+<h3>13.1 uLP (ULPTokenizer) Metrics</h3>
 <p><strong>NAV Metrics:</strong></p>
 <div class="docs-pre"><code># HELP ulp_nav_per_share Current NAV per uLP share
 # TYPE gauge
@@ -566,30 +573,30 @@ ulp_apr_current{pool_id=&quot;pool_industrie_001&quot;} 0.1234
 ulp_yield_investor_total{investor=&quot;0x742d...&quot;} 52345.67
 </code></div>
 <hr />
-<h3>13.2 UJG Token Metrics</h3>
+<h3>13.2 uGT Token Metrics</h3>
 <p><strong>Minting Metrics:</strong></p>
-<div class="docs-pre"><code># HELP ujg_total_minted Total UJG tokens minted
+<div class="docs-pre"><code># HELP ujg_total_minted Total uGT tokens minted
 # TYPE counter
 ujg_total_minted 15
 
-# HELP ujg_total_value_minted Total value of UJG minted (EUR)
+# HELP ujg_total_value_minted Total value of uGT minted (EUR)
 # TYPE counter
 ujg_total_value_minted 30000000.00
 
-# HELP ujg_outstanding_count UJG tokens currently outstanding (not redeemed)
+# HELP ujg_outstanding_count uGT tokens currently outstanding (not redeemed)
 # TYPE gauge
 ujg_outstanding_count 10
 
-# HELP ujg_outstanding_value Total value of outstanding UJG (EUR)
+# HELP ujg_outstanding_value Total value of outstanding uGT (EUR)
 # TYPE gauge
 ujg_outstanding_value 20000000.00
 </code></div>
 <p><strong>Redemption/Liquidation Metrics:</strong></p>
-<div class="docs-pre"><code># HELP ujg_total_redeemed Total UJG tokens redeemed
+<div class="docs-pre"><code># HELP ujg_total_redeemed Total uGT tokens redeemed
 # TYPE counter
 ujg_total_redeemed 5
 
-# HELP ujg_total_liquidated Total UJG tokens liquidated (default)
+# HELP ujg_total_liquidated Total uGT tokens liquidated (default)
 # TYPE counter
 ujg_total_liquidated 0
 
@@ -610,7 +617,7 @@ ujg_collateral_value 20000000.00
 # TYPE gauge
 ujg_collateral_coverage 2.0
 
-# HELP ujg_expiry_soon Count of UJG expiring within 30 days
+# HELP ujg_expiry_soon Count of uGT expiring within 30 days
 # TYPE gauge
 ujg_expiry_soon 2
 </code></div>
@@ -797,7 +804,7 @@ mobile_money_transaction_success_rate 0.98
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>14. Alert Rules 🆕</h2>
-<h3>14.1 uLP Token Alerts</h3>
+<h3>14.1 uLP (ULPTokenizer) Alerts</h3>
 <div class="docs-pre"><code># alerts/ulp_alerts.yaml
 groups:
   - name: ulp_token
@@ -832,32 +839,32 @@ groups:
           summary: &quot;Large net outflow from pool&quot;
           description: &quot;Pool {{ $labels.pool_id }} experiencing outflows&quot;
 </code></div>
-<h3>14.2 UJG Token Alerts</h3>
+<h3>14.2 uGT Token Alerts</h3>
 <div class="docs-pre"><code># alerts/ujg_alerts.yaml
 groups:
   - name: ujg_token
     rules:
-      - alert: UJGExpiringSoon
+      - alert: uGTExpiringSoon
         expr: |
           ujg_expiry_soon &gt; 0
         for: 1h
         labels:
           severity: warning
         annotations:
-          summary: &quot;UJG tokens expiring within 30 days&quot;
-          description: &quot;{{ $value }} UJG tokens expiring soon&quot;
+          summary: &quot;uGT tokens expiring within 30 days&quot;
+          description: &quot;{{ $value }} uGT tokens expiring soon&quot;
 
-      - alert: UJGDefaultDetected
+      - alert: uGTDefaultDetected
         expr: |
           rate(ujg_total_liquidated[1d]) &gt; 0
         for: 0m
         labels:
           severity: critical
         annotations:
-          summary: &quot;UJG default/liquidation detected&quot;
-          description: &quot;{{ $value }} UJG tokens liquidated&quot;
+          summary: &quot;uGT default/liquidation detected&quot;
+          description: &quot;{{ $value }} uGT tokens liquidated&quot;
 
-      - alert: UJGCollateralCoverageLow
+      - alert: uGTCollateralCoverageLow
         expr: |
           ujg_collateral_coverage &lt; 1.5
         for: 1h
@@ -967,7 +974,7 @@ groups:
         ]
       },
       {
-        &quot;title&quot;: &quot;UJG Outstanding&quot;,
+        &quot;title&quot;: &quot;uGT Outstanding&quot;,
         &quot;targets&quot;: [
           {
             &quot;expr&quot;: &quot;ujg_outstanding_count&quot;
@@ -997,10 +1004,10 @@ groups:
 6. Deploy Prometheus alert rules</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

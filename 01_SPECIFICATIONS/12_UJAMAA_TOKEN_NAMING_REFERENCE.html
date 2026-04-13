@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,12 +130,12 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa Token Naming Reference</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Ujamaa Token Naming Reference</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 18, 2026</p></div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Ujamaa Token Naming Reference</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Official Token Nomenclature Standard</h2>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Document Type:</strong> Reference Standard<br />
 <strong>Version:</strong> 1.0<br />
 <strong>Date:</strong> March 18, 2026<br />
@@ -193,12 +200,12 @@
 <tr>
 <td><strong>Guarantee NFT</strong></td>
 <td>Ujamaa Guarantee - [Commodity]</td>
-<td><code>UJG-XXX-###</code></td>
-<td><code>UJG-COTTON-001</code></td>
+<td><code>uGT-XXX-###</code></td>
+<td><code>uGT-COTTON-001</code></td>
 </tr>
 <tr>
 <td><strong>Property NFT</strong></td>
-<td>Ujamaa Deed - [Location]</td>
+<td>IndustrialGateway - [Location]</td>
 <td><code>UJDEED-XXX-###</code></td>
 <td><code>UJDEED-LGS-001</code></td>
 </tr>
@@ -227,8 +234,8 @@
 │                                                                 │
 │  NON-FUNGIBLE TOKENS (ERC-3643NFT)                              │
 │  ───────────────────────────────────                            │
-│  🔵 UJG-XXX-###  = Ujamaa Guarantee - [Commodity] - [ID]        │
-│  🔵 UJDEED-XXX-### = Ujamaa Deed - [Location] - [ID]            │
+│  🔵 uGT-XXX-###  = Ujamaa Guarantee - [Commodity] - [ID]        │
+│  🔵 UJDEED-XXX-### = IndustrialGateway - [Location] - [ID]            │
 │  🔵 UJINV-###    = Ujamaa Invoice - [ID]                        │
 │  🔵 UJART-###    = Ujamaa Art Certificate - [ID]                │
 │  🔵 UJWH-###     = Ujamaa Warehouse Receipt - [ID]              │
@@ -277,7 +284,7 @@
 ❌ <strong>Incorrect:</strong> <code>Industrial Pool Token</code></p>
 <h4>Principle 2: Type Clarity</h4>
 <p><strong>The token type is immediately obvious</strong> from the name.</p>
-<p>✅ <strong>Correct:</strong> <code>Ujamaa Deed - Lagos</code> (clearly a property deed)<br />
+<p>✅ <strong>Correct:</strong> <code>IndustrialGateway - Lagos</code> (clearly a property deed)<br />
 ❌ <strong>Incorrect:</strong> <code>Ujamaa Lagos Token</code> (ambiguous type)</p>
 <h4>Principle 3: Symbol Consistency</h4>
 <p><strong>Symbols follow a predictable pattern</strong> for easy recognition.</p>
@@ -311,9 +318,9 @@
 </tr>
 <tr>
 <td>Guarantee NFTs</td>
-<td><code>UJG-</code></td>
+<td><code>uGT-</code></td>
 <td>Commodity + ID</td>
-<td><code>UJG-COTTON-001</code></td>
+<td><code>uGT-COTTON-001</code></td>
 </tr>
 <tr>
 <td>Deed NFTs</td>
@@ -325,7 +332,7 @@
 </table></div>
 <h4>Principle 4: Scalability</h4>
 <p><strong>The naming system scales</strong> to hundreds of tokens without confusion.</p>
-<p>✅ <strong>Scalable:</strong> <code>UJG-COTTON-001</code>, <code>UJG-COTTON-002</code>, ... <code>UJG-COTTON-999</code><br />
+<p>✅ <strong>Scalable:</strong> <code>uGT-COTTON-001</code>, <code>uGT-COTTON-002</code>, ... <code>uGT-COTTON-999</code><br />
 ❌ <strong>Not Scalable:</strong> <code>Cotton Guarantee 1</code>, <code>Cotton Guarantee 2</code> (no structure)</p>
 <hr />
 </section>
@@ -611,7 +618,7 @@
 <hr />
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. Non-Fungible Tokens (ERC-3643NFT)</h2>
-<h3>4.1 Ujamaa Guarantee Tokens (UJG Series)</h3>
+<h3>4.1 Ujamaa Guarantee Tokens (uGT Series)</h3>
 <p><strong>Purpose:</strong> Represent certified merchandise/collateral backing financing operations.</p>
 <p><strong>Token Standard:</strong> ERC-3643NFT (ERC-721 + ERC-3643 compliance)<br />
 <strong>Transferability:</strong> Non-transferable (forced transfer only for repayment/default)<br />
@@ -629,38 +636,38 @@
 <tr>
 <td><strong>Cotton</strong></td>
 <td>Ujamaa Guarantee - Cotton</td>
-<td><code>UJG-COTTON-###</code></td>
-<td><code>UJG-COTTON-001</code></td>
+<td><code>uGT-COTTON-###</code></td>
+<td><code>uGT-COTTON-001</code></td>
 </tr>
 <tr>
 <td><strong>Soy Beans</strong></td>
 <td>Ujamaa Guarantee - Soy</td>
-<td><code>UJG-SOY-###</code></td>
-<td><code>UJG-SOY-042</code></td>
+<td><code>uGT-SOY-###</code></td>
+<td><code>uGT-SOY-042</code></td>
 </tr>
 <tr>
 <td><strong>Coffee</strong></td>
 <td>Ujamaa Guarantee - Coffee</td>
-<td><code>UJG-COFFEE-###</code></td>
-<td><code>UJG-COFFEE-118</code></td>
+<td><code>uGT-COFFEE-###</code></td>
+<td><code>uGT-COFFEE-118</code></td>
 </tr>
 <tr>
 <td><strong>Cashews</strong></td>
 <td>Ujamaa Guarantee - Cashew</td>
-<td><code>UJG-CASHEW-###</code></td>
-<td><code>UJG-CASHEW-007</code></td>
+<td><code>uGT-CASHEW-###</code></td>
+<td><code>uGT-CASHEW-007</code></td>
 </tr>
 <tr>
 <td><strong>Electronics</strong></td>
 <td>Ujamaa Guarantee - Goods</td>
-<td><code>UJG-GOODS-###</code></td>
-<td><code>UJG-GOODS-023</code></td>
+<td><code>uGT-GOODS-###</code></td>
+<td><code>uGT-GOODS-023</code></td>
 </tr>
 </tbody>
 </table></div>
 <h4>Token Metadata</h4>
 <div class="docs-pre"><code>{
-  &quot;tokenId&quot;: &quot;UJG-COTTON-001&quot;,
+  &quot;tokenId&quot;: &quot;uGT-COTTON-001&quot;,
   &quot;name&quot;: &quot;Ujamaa Guarantee - Cotton #001&quot;,
   &quot;description&quot;: &quot;Certified cotton bales collateral for industrial financing&quot;,
   &quot;attributes&quot;: {
@@ -689,30 +696,30 @@
 │  2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)  │
 │         │                                                        │
 │         ▼                                                        │
-│  3. UJG-COTTON-001 minted (ERC-3643NFT)                          │
+│  3. uGT-COTTON-001 minted (ERC-3643NFT)                          │
 │         │                                                        │
 │         ▼                                                        │
 │  4. Pool deploys funds to Industrial                             │
 │         │                                                        │
 │         ▼                                                        │
-│  5. Pool holds UJG-COTTON-001 (collateral/security)              │
+│  5. Pool holds uGT-COTTON-001 (collateral/security)              │
 │         │                                                        │
 │         ▼                                                        │
 │  6. Industrial repays (principal + interest)                     │
 │         │                                                        │
 │         ▼                                                        │
-│  7. UJG-COTTON-001 transferred back to Industrial                │
+│  7. uGT-COTTON-001 transferred back to Industrial                │
 │         │                                                        │
 │         ▼                                                        │
 │  [DEFAULT SCENARIO]                                              │
-│  8. UJG-COTTON-001 liquidated via approved auction               │
+│  8. uGT-COTTON-001 liquidated via approved auction               │
 │         │                                                        │
 │         ▼                                                        │
 │  9. Proceeds distributed to uLP token holders                    │
 └─────────────────────────────────────────────────────────────────┘
 </code></div>
 <hr />
-<h3>4.2 Ujamaa Deed Tokens (UJDEED Series)</h3>
+<h3>4.2 IndustrialGateway Tokens (UJDEED Series)</h3>
 <p><strong>Purpose:</strong> Tokenized ownership of real estate properties (unique NFTs).</p>
 <p><strong>Token Standard:</strong> ERC-3643NFT<br />
 <strong>Transferability:</strong> Transferable (with compliance)<br />
@@ -729,25 +736,25 @@
 <tbody>
 <tr>
 <td><strong>Commercial</strong></td>
-<td>Ujamaa Deed - [Location] Commercial</td>
+<td>IndustrialGateway - [Location] Commercial</td>
 <td><code>UJDEED-[LOC]COM-###</code></td>
 <td><code>UJDEED-LGSCOM-001</code> (Lagos Commercial)</td>
 </tr>
 <tr>
 <td><strong>Residential</strong></td>
-<td>Ujamaa Deed - [Location] Residential</td>
+<td>IndustrialGateway - [Location] Residential</td>
 <td><code>UJDEED-[LOC]RES-###</code></td>
 <td><code>UJDEED-NSBRES-042</code> (Nairobi Suburban)</td>
 </tr>
 <tr>
 <td><strong>Industrial</strong></td>
-<td>Ujamaa Deed - [Location] Industrial</td>
+<td>IndustrialGateway - [Location] Industrial</td>
 <td><code>UJDEED-[LOC]IND-###</code></td>
 <td><code>UJDEED-TEMIND-007</code> (Tema Industrial)</td>
 </tr>
 <tr>
 <td><strong>Retail</strong></td>
-<td>Ujamaa Deed - [Location] Retail</td>
+<td>IndustrialGateway - [Location] Retail</td>
 <td><code>UJDEED-[LOC]RET-###</code></td>
 <td><code>UJDEED-ACCRA-RET-001</code></td>
 </tr>
@@ -756,7 +763,7 @@
 <h4>Token Metadata</h4>
 <div class="docs-pre"><code>{
   &quot;tokenId&quot;: &quot;UJDEED-LGSCOM-001&quot;,
-  &quot;name&quot;: &quot;Ujamaa Deed - Lagos Commercial #001&quot;,
+  &quot;name&quot;: &quot;IndustrialGateway - Lagos Commercial #001&quot;,
   &quot;description&quot;: &quot;Prime commercial property in Lagos CBD&quot;,
   &quot;attributes&quot;: {
     &quot;propertyType&quot;: &quot;Commercial Office Building&quot;,
@@ -991,35 +998,35 @@
 </tr>
 <tr>
 <td><strong>Guarantee NFTs</strong></td>
-<td><code>UJG-COTTON-###</code></td>
+<td><code>uGT-COTTON-###</code></td>
 <td>Ujamaa Guarantee - Cotton</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
-<td><code>UJG-SOY-###</code></td>
+<td><code>uGT-SOY-###</code></td>
 <td>Ujamaa Guarantee - Soy</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
-<td><code>UJG-COFFEE-###</code></td>
+<td><code>uGT-COFFEE-###</code></td>
 <td>Ujamaa Guarantee - Coffee</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
-<td><code>UJG-CASHEW-###</code></td>
+<td><code>uGT-CASHEW-###</code></td>
 <td>Ujamaa Guarantee - Cashew</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
-<td><code>UJG-GOODS-###</code></td>
+<td><code>uGT-GOODS-###</code></td>
 <td>Ujamaa Guarantee - Goods</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
@@ -1027,21 +1034,21 @@
 <tr>
 <td><strong>Deed NFTs</strong></td>
 <td><code>UJDEED-[LOC]COM-###</code></td>
-<td>Ujamaa Deed - Commercial</td>
+<td>IndustrialGateway - Commercial</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
 <td><code>UJDEED-[LOC]RES-###</code></td>
-<td>Ujamaa Deed - Residential</td>
+<td>IndustrialGateway - Residential</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
 <tr>
 <td></td>
 <td><code>UJDEED-[LOC]IND-###</code></td>
-<td>Ujamaa Deed - Industrial</td>
+<td>IndustrialGateway - Industrial</td>
 <td>NFT</td>
 <td>ERC-3643NFT</td>
 </tr>
@@ -1143,7 +1150,7 @@
 <tr>
 <td><code>GuaranteeToken.sol</code></td>
 <td>NFT</td>
-<td><code>UJG-XXX-###</code></td>
+<td><code>uGT-XXX-###</code></td>
 </tr>
 <tr>
 <td><code>UjamaaNFT.sol</code></td>
@@ -1242,7 +1249,7 @@
 </tr>
 <tr>
 <td><strong>Verify collateral</strong></td>
-<td><code>UJG-XXX-###</code></td>
+<td><code>uGT-XXX-###</code></td>
 <td>Check Guarantee Token metadata</td>
 </tr>
 <tr>
@@ -1342,7 +1349,7 @@
 <div class="docs-pre"><code>// Import token ABIs
 import uLP_ABI from '@/abis/ULPToken.json';
 import UAT_ABI from '@/abis/UjamaaAssetToken.json';
-import UJG_ABI from '@/abis/GuaranteeToken.json';
+import uGT_ABI from '@/abis/GuaranteeToken.json';
 import UJDEED_ABI from '@/abis/UjamaaNFT.json';
 
 // Token addresses (update after deployment)
@@ -1358,7 +1365,7 @@ const TOKEN_ADDRESSES = {
 function getTokenType(symbol: string): TokenType {
   if (symbol.startsWith('uLP-')) return 'POOL';
   if (symbol.startsWith('UAT-')) return 'ASSET';
-  if (symbol.startsWith('UJG-')) return 'GUARANTEE_NFT';
+  if (symbol.startsWith('uGT-')) return 'GUARANTEE_NFT';
   if (symbol.startsWith('UJDEED-')) return 'DEED_NFT';
   if (symbol.startsWith('UJINV-')) return 'INVOICE_NFT';
   if (symbol === 'EUROD' || symbol === 'UJUSD') return 'STABLECOIN';
@@ -1396,15 +1403,15 @@ uLPContract.on('Transfer', (from, to, amount, event) =&gt; {
   console.log(`uLP-IND transferred: ${from} → ${to}, Amount: ${amount}`);
 });
 
-// Listen for UJG NFT minting
+// Listen for uGT NFT minting
 const ujgContract = new Contract(
-  TOKEN_ADDRESSES['UJG-COTTON-001'],
-  UJG_ABI,
+  TOKEN_ADDRESSES['uGT-COTTON-001'],
+  uGT_ABI,
   provider
 );
 
 ujgContract.on('AssetMinted', (tokenId, owner, metadata, event) =&gt; {
-  console.log(`UJG NFT minted: Token ID ${tokenId}, Owner: ${owner}`);
+  console.log(`uGT NFT minted: Token ID ${tokenId}, Owner: ${owner}`);
 });
 </code></div>
 <h3>8.3 Error Handling</h3>
@@ -1589,12 +1596,12 @@ A: Platform maintains insurance fund. Individual tokens not separately insured.<
 <td>GuaranteeToken</td>
 <td>Ujamaa Guarantee</td>
 <td><code>GUARANTEE-XXX</code></td>
-<td><code>UJG-XXX</code></td>
+<td><code>uGT-XXX</code></td>
 <td>Auto-migrate</td>
 </tr>
 <tr>
 <td>UjamaaNFT (RE)</td>
-<td>Ujamaa Deed</td>
+<td>IndustrialGateway</td>
 <td><code>NFT-RE-XXX</code></td>
 <td><code>UJDEED-XXX</code></td>
 <td>Auto-migrate</td>
@@ -1681,7 +1688,7 @@ A: Platform maintains insurance fund. Individual tokens not separately insured.<
 <tr>
 <td><strong>Dhamana</strong></td>
 <td>Guarantee, collateral</td>
-<td><code>UJG</code> = dhamana token</td>
+<td><code>uGT</code> = dhamana token</td>
 </tr>
 <tr>
 <td><strong>Hati</strong></td>
@@ -1772,10 +1779,10 @@ A: Platform maintains insurance fund. Individual tokens not separately insured.<
 <em>"Ujamaa" - Familyhood, Community, Cooperative Economics</em></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

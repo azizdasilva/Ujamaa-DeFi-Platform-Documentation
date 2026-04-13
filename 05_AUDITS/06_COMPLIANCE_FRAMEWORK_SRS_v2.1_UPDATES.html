@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -124,7 +131,7 @@
       <div class="docs-content">
         <h1 class="docs-title">Compliance Framework - SRS v2.1 Updates</h1>
         <p class="docs-subtitle">Ujamaa DeFi Platform Documentation</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Required for Production | <strong>Last Updated:</strong> March 25, 2026</p></div>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Status:</strong> ✅ Required for Production | <strong>Last Updated:</strong> April 12, 2026</p></div>
 
         <h1>Compliance Framework - SRS v2.1 Updates</h1>
 <p><strong>Date:</strong> March 25, 2026<br />
@@ -315,7 +322,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 </thead>
 <tbody>
 <tr>
-<td><strong>uLP Tokens (Institutional)</strong></td>
+<td><strong>uLP (ULPTokenizer)s (Institutional)</strong></td>
 <td>Tier 3 + Tier 4</td>
 </tr>
 <tr>
@@ -330,9 +337,9 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 </table></div>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. New Section: uLP Token Compliance 🆕</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>3. New Section: uLP (ULPTokenizer) Compliance 🆕</h2>
 <h3>3.1 Regulatory Classification</h3>
-<p><strong>uLP Token Classification:</strong></p>
+<p><strong>uLP (ULPTokenizer) Classification:</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -381,7 +388,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 - Form D filing within 15 days of first sale<br />
 - Blue sky filings (state-level)</p>
 <h3>3.2 Investor Suitability</h3>
-<p><strong>uLP Token Investor Requirements:</strong></p>
+<p><strong>uLP (ULPTokenizer) Investor Requirements:</strong></p>
 <div class="docs-table-wrapper"><table class="docs-table">
 <thead>
 <tr>
@@ -433,14 +440,14 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 - All equity owners are accredited investors</p>
 <hr />
 </section>
-<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. New Section: UJG Token Compliance 🆕</h2>
+<section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>4. New Section: uGT Token Compliance 🆕</h2>
 <h3>4.1 Collateral Token Regulatory Treatment</h3>
-<p><strong>UJG Token Classification:</strong><br />
+<p><strong>uGT Token Classification:</strong><br />
 - <strong>NOT a security</strong> (no investment contract, no expectation of profit)<br />
 - <strong>Digital warehouse receipt</strong> representing certified merchandise<br />
 - <strong>Non-transferable</strong> by design (except forced transfer)</p>
 <p><strong>Regulatory Rationale:</strong><br />
-- UJG represents physical collateral, not investment<br />
+- uGT represents physical collateral, not investment<br />
 - No yield or profit expectation<br />
 - Non-transferable prevents secondary market trading<br />
 - Forced transfer only for redemption/liquidation (contractual, not market)</p>
@@ -555,7 +562,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 </tr>
 </tbody>
 </table></div>
-<p><strong>Red Flags for uLP Tokens:</strong><br />
+<p><strong>Red Flags for uLP (ULPTokenizer)s:</strong><br />
 - Rapid deposit/redemption cycles (potential layering)<br />
 - Multiple small deposits just below KYB threshold (structuring)<br />
 - Redemption to different wallet than deposit (potential money laundering)<br />
@@ -729,7 +736,7 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 <li>[ ] Transfer restriction enforcement (ERC-3643)</li>
 <li>[ ] MiCA Article 22 report generation</li>
 </ul>
-<h3>UJG Compliance</h3>
+<h3>uGT Compliance</h3>
 <ul class="docs-list" style="padding-left:1.5rem">
 <li>[ ] Industrial Gateway certification validation</li>
 <li>[ ] Collateral valuation tracking</li>
@@ -785,16 +792,16 @@ def is_jurisdiction_allowed(country_code: str) -&gt; bool:
 <p><strong>Merge Instructions:</strong><br />
 1. Add Section 4.3 (KYB Requirements) after existing KYC section<br />
 2. Add Section 2.2 (Strictest Jurisdiction List) to Regulatory Landscape<br />
-3. Add Section 6.5 (uLP Token Compliance) to MiCA Compliance<br />
-4. Add Section 6.6 (UJG Token Compliance) to MiCA Compliance<br />
+3. Add Section 6.5 (uLP (ULPTokenizer) Compliance) to MiCA Compliance<br />
+4. Add Section 6.6 (uGT Token Compliance) to MiCA Compliance<br />
 5. Update Section 2.2 (Licensing) with Mauritius FSC CIS Manager<br />
 6. Add Section 9.5 (Regulatory Reporting) to Regulator Audit Trails</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Audits</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

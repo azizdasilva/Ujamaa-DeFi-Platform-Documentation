@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,14 +130,32 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">MVP Execution</a><span class="docs-breadcrumb-separator">/</span><span>MVP Specification: Institutional Architecture Prototype</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">MVP Specification: Institutional Architecture Prototype</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Development Team, Investors, Stakeholders</p></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> April 12, 2026 | <strong>Audience:</strong> Development Team, Investors, Stakeholders</p></div>
 
         <h1>MVP Specification: Institutional Architecture Prototype</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Ujamaa DeFi Platform - Second Iteration</h2>
 <p><strong>IMPORTANT:</strong> This MVP Specification is an <strong>EXTRACTION</strong> from the master <strong>SRS v2.1</strong> document. <strong>SRS v2.1</strong> is the <strong>PRODUCTION BASELINE</strong> and authoritative specification. MVP contains only the subset of SRS v2.1 features required for the institutional architecture prototype (testnet).</p>
 <p><strong>Source Document:</strong> <code>docs/01_SPECIFICATIONS/01_SOFTWARE_REQUIREMENTS_SPECIFICATION.md</code> (SRS v2.1 - 7,386 lines)</p>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Internal / Development<br />
@@ -139,21 +164,21 @@
 </section>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Document Updates Summary (v2.1)</h2>
 <p><strong>Updated to align with SRS v2.1:</strong><br />
-- ✅ uLP Token specification (yield-bearing, value-accrual model)<br />
-- ✅ UJG Token specification (collateral ERC-3643NFT)<br />
+- ✅ uLP (ULPTokenizer) specification (yield-bearing, value-accrual model)<br />
+- ✅ uGT Token specification (collateral ERC-3643NFT)<br />
 - ✅ SIWE authentication (replacing ad-hoc wallet signature)<br />
 - ✅ RBAC authorization matrix (10+ roles)<br />
 - ✅ Fireblocks custody integration (platform treasury)<br />
 - ✅ Bank escrow integration (BIIC (Banque Internationale pour l'Industrie et le Commerce)/MCB, mock for MVP)<br />
 - ✅ KYB threshold (€100K enhanced due diligence)</p>
 <p><strong>New Sections:</strong><br />
-- Section 4.4: UJG Token (Guarantee Token) specification<br />
+- Section 4.4: uGT Token (Guarantee Token) specification<br />
 - Section 6.4: SIWE Authentication architecture<br />
 - Section 6.5: RBAC implementation<br />
 - Section 8.3: Fireblocks mock service<br />
 - Section 8.4: Bank escrow mock service</p>
 <p><strong>SRS Traceability:</strong><br />
-- SRS v2.1 Section 1.2 (uLP, UJG, Fireblocks, Bank Escrow)<br />
+- SRS v2.1 Section 1.2 (uLP, uGT, Fireblocks, Bank Escrow)<br />
 - SRS v2.1 Section 1.2.1 (Authentication Specification)<br />
 - SRS v2.1 Section 1.2.2 (Authorization Matrix)<br />
 - SRS v2.1 Section 3 (System Features - EPIC 10: Liquidity Pool)</p>
@@ -379,7 +404,7 @@
 <td>Production</td>
 </tr>
 <tr>
-<td><strong>Ujamaa Guarantee (UJG) Auction</strong></td>
+<td><strong>Ujamaa Guarantee (uGT) Auction</strong></td>
 <td>Default scenario complex</td>
 <td>Production (optional mock)</td>
 </tr>
@@ -1753,10 +1778,10 @@ npm run build
 - <code>docs/13_NEXT/06_DEMO_IMPLEMENTATION_PLAN.md</code> - Original demo plan</p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">MVP Execution</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>

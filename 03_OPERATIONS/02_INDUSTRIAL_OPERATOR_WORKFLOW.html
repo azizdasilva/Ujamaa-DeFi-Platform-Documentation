@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -602,7 +602,179 @@ function recordRepayment(uint256 financingId, uint256 amount) returns (bool) {
                 <div class="success-box mt-4">
                     <strong>🎉 Congratulations!</strong> You've fully repaid the financing. Your uGT collateral has been returned. You can now:
                     <ul class="list-disc pl-6 mt-2 space-y-1">
-                        <li>Apply for new financing with the same collateral</li>
+                        <li>Apply for new financing using the same collateral</li>
+                        <li>Use the uGT as proof of your successful repayment history</li>
+                        <li>Build your reputation score for better rates in the future</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🔥 Phase 5: uGT Burning (Alternative to Return)</h2>
+
+    <div class="card">
+        <div class="flex items-start">
+            <div class="step-badge" style="background: #EF4444;">8</div>
+            <div>
+                <h3 style="margin-top: 0;">When uGT Gets Burned Instead of Returned</h3>
+                <p><strong>What happens:</strong> In certain scenarios, the uGT collateral is <em>burned</em> rather than returned:</p>
+
+                <h4 class="mt-4">🔥 Scenarios Where uGT is Burned:</h4>
+                <ol class="list-decimal pl-6 mt-2 space-y-2">
+                    <li><strong>Default & Liquidation:</strong> If you fail to repay the financing
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Pool manager calls <code>CollateralManager.liquidateCollateral(tokenId, auctionWinner)</code></li>
+                            <li>The uGT is transferred to the auction winner (who pays the outstanding debt)</li>
+                            <li>After auction, the uGT may be burned if the collateral is forfeited</li>
+                        </ul>
+                    </li>
+                    <li><strong>Asset Depreciation:</strong> If the underlying asset loses significant value
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>CollateralManager detects LTV ratio breach (<code>loanValue / collateralValue > maxLTV</code>)</li>
+                            <li>Margin call issued; if not met, collateral is liquidated</li>
+                        </ul>
+                    </li>
+                    <li><strong>Regulatory Action:</strong> If compliance issues arise
+                        <ul class="list-disc pl-6 mt-1">
+                            <li>Compliance Officer flags the collateral</li>
+                            <li>Regulatory authority orders asset freeze or liquidation</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block mt-4">
+// CollateralManager.sol - Liquidation Flow
+function liquidateCollateral(uint256 tokenId, address liquidator) external onlyRole(POOL_MANAGER_ROLE) {
+    require(collateralState[tokenId] == CollateralState.LOCKED, "Collateral not locked");
+    
+    // Transfer collateral to liquidator
+    guaranteeTokenizer.safeTransferFrom(address(this), liquidator, tokenId);
+    
+    // Update state
+    collateralState[tokenId] = CollateralState.LIQUIDATED;
+    liquidationDetails[tokenId] = Liquidation({
+        liquidator: liquidator,
+        timestamp: block.timestamp,
+        recoveryAmount: _calculateRecoveryAmount(tokenId)
+    });
+    
+    emit CollateralLiquidated(tokenId, liquidator, block.timestamp);
+}
+                </div>
+
+                <div class="warning-box mt-4">
+                    <strong>⚠️ Important:</strong> If your uGT is liquidated, your reputation score is significantly impacted. This affects your ability to secure future financing and may result in higher interest rates.
+                </div>
+
+                <h4 class="mt-6">🔄 uGT Lifecycle Summary:</h4>
+                <div class="diagram-container">
+                    <div class="diagram-flow">
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #059669 0%, #10B981 100%);">1. Asset Certified</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);">2. uGT Minted</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);">3. Collateral Locked</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);">4. Financing Active</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #10B981 0%, #34D399 100%);">5a. Repaid → uGT Returned ✓</div>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <span style="font-size: 1.5rem; color: #EF4444;">OR</span>
+                    </div>
+                    <div class="diagram-flow" style="margin-top: 1rem;">
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);">4. Financing Active</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box" style="background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);">5b. Default → uGT Liquidated 🔥</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📊 CollateralManager Integration (NEW April 11, 2026)</h2>
+
+    <div class="card">
+        <h3>🔐 What is CollateralManager?</h3>
+        <p>The <strong>CollateralManager</strong> contract (<code>0xCeA194CbdEcff05221C009Fdf9d7e373111022A5</code>) is the centralized risk management layer for all uGT collateral:</p>
+
+        <h4 class="mt-4">📋 Key Functions:</h4>
+        <table>
+            <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+                <th>When Called</th>
+            </tr>
+            <tr>
+                <td><code>lockCollateral(tokenId, financingId)</code></td>
+                <td>Locks uGT as collateral for a specific financing</td>
+                <td>When financing is created</td>
+            </tr>
+            <tr>
+                <td><code>releaseCollateral(tokenId)</code></td>
+                <td>Releases uGT back to operator after full repayment</td>
+                <td>When financing is fully repaid</td>
+            </tr>
+            <tr>
+                <td><code>liquidateCollateral(tokenId, liquidator)</code></td>
+                <td>Transfers uGT to liquidator on default</td>
+                <td>On default or margin call breach</td>
+            </tr>
+            <tr>
+                <td><code>getCollateralRatio(tokenId)</code></td>
+                <td>Returns current LTV ratio</td>
+                <td>Anytime (view function)</td>
+            </tr>
+            <tr>
+                <td><code>isCollateralHealthy(tokenId)</code></td>
+                <td>Checks if LTV is within acceptable range</td>
+                <td>Monitoring dashboards</td>
+            </tr>
+        </table>
+
+        <div class="highlight-box mt-4">
+            <strong>🎯 LTV Calculation:</strong><br>
+            <code>LTV Ratio = (Loan Value ÷ Collateral Value) × 100%</code><br><br>
+            <strong>Example:</strong> If you borrow €500K against inventory worth €750K:<br>
+            <code>LTV = (500,000 ÷ 750,000) × 100% = 66.67%</code><br><br>
+            <strong>Max LTV Threshold:</strong> 75% (configurable per asset class)<br>
+            If LTV exceeds 75%, a margin call is triggered.
+        </div>
+
+        <div class="code-block mt-4">
+// CollateralManager.sol - LTV Validation
+function validateLTV(uint256 tokenId, uint256 loanAmount) public view returns (bool) {
+    uint256 collateralValue = _getCollateralValue(tokenId);
+    uint256 currentLTV = (loanAmount * 10000) / collateralValue; // Basis points
+    uint256 maxLTV = assetClassMaxLTV[_getAssetClass(tokenId)];
+    
+    return currentLTV <= maxLTV;
+}
+
+// Margin call check
+function checkMarginCall(uint256 tokenId) public view returns (bool marginCallRequired) {
+    uint256 collateralValue = _getCollateralValue(tokenId);
+    uint256 outstandingDebt = _getOutstandingDebt(tokenId);
+    uint256 currentLTV = (outstandingDebt * 10000) / collateralValue;
+    uint256 marginCallThreshold = 7000; // 70% in basis points
+    
+    return currentLTV > marginCallThreshold;
+}
+        </div>
+    </div>
+
+    <div class="highlight-box mt-8">
+        <strong>💡 Key Takeaways:</strong>
+        <ol class="list-decimal pl-6 mt-2 space-y-1">
+            <li><strong>Asset-Backed Financing:</strong> Every loan is backed by real physical assets (inventory, equipment, contracts) — not just promises</li>
+            <li><strong>uGT = Collateral ERC-3643NFT:</strong> Your asset is tokenized as an ERC-3643NFT that the pool holds as security</li>
+            <li><strong>CollateralManager:</strong> Centralized risk management with LTV validation, margin calls, and liquidation (NEW April 11, 2026)</li>
+            <li><strong>Automatic Yield Distribution:</strong> When you repay with interest, the yield automatically goes to uLP investors</li>
+            <li><strong>Transparent Tracking:</strong> Every repayment is recorded on-chain — anyone can verify the status</li>
+            <li><strong>Two Outcomes:</strong> Repay → uGT returned ✓ | Default → uGT liquidated 🔥</li>
+        </ol>
+    </div>y for new financing with the same collateral</li>
                         <li>Use your assets freely (no longer encumbered)</li>
                         <li>Build your credit history on the platform</li>
                     </ul>

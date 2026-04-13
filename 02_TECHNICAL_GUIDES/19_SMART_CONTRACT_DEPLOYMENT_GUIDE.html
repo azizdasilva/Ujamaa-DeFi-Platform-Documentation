@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -115,6 +115,13 @@
                 <span>Sprint Reports</span>
               </a>
             </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -132,17 +139,35 @@
       </header>
       <div class="docs-content">
         <h1 class="docs-title">Smart Contract Deployment Guide</h1>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
         <p class="docs-subtitle">Step-by-step guide for deploying Ujamaa smart contracts to Polygon Amoy testnet</p>
         
         <div class="docs-callout docs-callout-info">
           <div class="docs-callout-title">📖 Document Info</div>
-          <p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> March 29, 2026 | <strong>Network:</strong> Polygon Amoy (Chain ID: 80002)</p>
+          <p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> April 12, 2026 | <strong>Network:</strong> Polygon Amoy (Chain ID: 80002)</p>
         </div>
 
         <h1>Smart Contract Deployment Guide - Polygon Amoy Testnet</h1>
         
         <p><strong>Version:</strong> 1.0<br />
-        <strong>Last Updated:</strong> March 29, 2026<br />
+        <strong>Last Updated:</strong> April 12, 2026<br />
         <strong>Author:</strong> Ujamaa DeFi Platform Team<br />
         <strong>Network:</strong> Polygon Amoy Testnet (Chain ID: 80002)</p>
         
@@ -464,7 +489,7 @@ Deployer: 0xYourDeployerAddress
 ALL Contract Addresses:
 MockEUROD:            0xAf5904C33723026a5D79a1879A8455047916bd1B
 ULPToken:             0x161fab71fbD87bdE6FA20A1933b6a53a436b26a9
-GuaranteeToken:       0x7600C0b36F73028f866081823Fa691fF4688CeE0
+GuaranteeToken:       0x673683AE87cB3640CAaba58B8414B01685a6066f
 LiquidityPool:        0x465CCDe6d2B228278eEB5c36606058D03859F67A
 IndustrialGateway:    0xf1119462800d2f038aF0c61D874B52521bF22459
 JurisdictionCompliance: 0xB4885b421Bef3112eD15e625581bA03CA0419e4e
@@ -544,7 +569,7 @@ cast call 0x465CCDe6d2B228278eEB5c36606058D03859F67A "totalPoolValue()"</code></
   // MVP Contracts (Updated)
   ulpToken: '0x161fab71fbD87bdE6FA20A1933b6a53a436b26a9',
   liquidityPool: '0x465CCDe6d2B228278eEB5c36606058D03859F67A',
-  guaranteeToken: '0x7600C0b36F73028f866081823Fa691fF4688CeE0',
+  guaranteeToken: '0x673683AE87cB3640CAaba58B8414B01685a6066f',
   industrialGateway: '0xf1119462800d2f038aF0c61D874B52521bF22459',
   jurisdictionCompliance: '0xB4885b421Bef3112eD15e625581bA03CA0419e4e',
   mockEscrow: '0x74985F48F7Bf018915af1AC706994677B2AF28BE',
@@ -670,7 +695,7 @@ npm run dev</code></div>
                 </tr>
                 <tr>
                   <td><strong>GuaranteeToken</strong></td>
-                  <td><code>0x7600C0b36F73028f866081823Fa691fF4688CeE0</code></td>
+                  <td><code>0x673683AE87cB3640CAaba58B8414B01685a6066f</code></td>
                   <td>ERC-3643NFT</td>
                 </tr>
                 <tr>
@@ -771,7 +796,7 @@ npm run dev</code></div>
         
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
           <p style="font-size:0.875rem;color:#64748B">
-            <strong>Last Updated:</strong> March 29, 2026<br />
+            <strong>Last Updated:</strong> April 12, 2026<br />
             <strong>Document Version:</strong> 1.0<br />
             <strong>Maintained By:</strong> Ujamaa DeFi Platform Team
           </p>
@@ -781,7 +806,7 @@ npm run dev</code></div>
         <div class="docs-footer-content">
           <div class="docs-footer-text">
             <strong>Ujamaa DeFi Platform</strong> - Documentation<br />
-            <span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 29, 2026 | © 2026 Ujamaa DeFi Platform</span>
+            <span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span>
           </div>
           <div class="docs-footer-links">
             <a href="#" class="docs-footer-link">Top</a>

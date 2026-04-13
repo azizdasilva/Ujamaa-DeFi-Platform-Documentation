@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -116,6 +116,13 @@
                 <span class="docs-nav-icon">📝</span>
                 <span>Sprint Reports</span>
               </a>
+            </li>
+            <li class="docs-nav-item">
+              <a href="..//13_COMPETITIVE_INTELLIGENCE/index.html" class="docs-nav-link">
+                <span class="docs-nav-icon">🏆</span>
+                <span>Competitive Intelligence</span>
+                <span class="docs-nav-badge">12</span>
+              </a>
             </li></ul></div>
       </nav>
     </aside>
@@ -123,12 +130,30 @@
       <header class="docs-header"><button class="docs-menu-toggle">☰</button><nav class="docs-breadcrumb"><a href="../index.html" class="docs-breadcrumb-link">📚 Docs</a><span class="docs-breadcrumb-separator">/</span><a href="index.html" class="docs-breadcrumb-link">Specifications</a><span class="docs-breadcrumb-separator">/</span><span>Ujamaa DeFi Platform Architecture</span></nav></header>
       <div class="docs-content">
         <h1 class="docs-title">Ujamaa DeFi Platform Architecture</h1>
-        <p class="docs-subtitle">Author: Aziz Da Silva - Lead Architect</p>
-        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> March 25, 2026 | <strong>Audience:</strong> Technical Teams, System Architects, Engineering Leaders</p></div>
+
+<div class="docs-callout docs-callout-info">
+  <div class="docs-callout-title">📋 API Endpoints Reference (Updated April 12, 2026)</div>
+  <p><strong>10 API Modules</strong> | <strong>162 Numbered Endpoints</strong> | See full reference: <a href="../01_SPECIFICATIONS/06_API_SPECIFICATION.html#11-numbered-api-endpoints" style="color:#3B82F6">API Specification → Numbered Endpoints</a></p>
+  <ul style="margin-top:0.5rem; padding-left:1.5rem;">
+    <li><strong>Module 1:</strong> Authentication (4 endpoints: 1.1-1.4) | <code>/api/v2/auth</code></li>
+    <li><strong>Module 2:</strong> Pools (12 endpoints: 2.1-2.12) | <code>/api/v2/pools</code></li>
+    <li><strong>Module 3:</strong> Compliance (17 endpoints: 3.1-3.17) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 4:</strong> Compliance Documents (14 endpoints: 4.1-4.14) | <code>/api/v2/compliance</code></li>
+    <li><strong>Module 5:</strong> Admin (36 endpoints: 5.1-5.36) | <code>/api/v2/admin</code></li>
+    <li><strong>Module 6:</strong> Compliance Monitoring (5 endpoints: 6.1-6.5) | <code>/api/v2/compliance/monitoring</code></li>
+    <li><strong>Module 7:</strong> ULP/UGT Monitoring (4 endpoints: 7.1-7.4) | <code>/api/v2/invest</code></li>
+    <li><strong>Module 8:</strong> Originator (18 endpoints: 8.1-8.18) | <code>/api/v2/originator</code></li>
+    <li><strong>Module 9:</strong> KPIs (7 endpoints: 9.1-9.7) | <code>/api/v1/pool</code></li>
+    <li><strong>Module 10:</strong> Credit Limits (5 endpoints: 10.1-10.5) | <code>/api/v2/credit-limits</code></li>
+  </ul>
+  <p style="margin-top:0.5rem;"><strong>Note:</strong> <code>/api/v2</code> (most modules), <code>/api/v1</code> (KPIs). Auth: Email/Password + Wallet Login.</p>
+</div>
+        <p class="docs-subtitle">Author: Ujamaa Architect Team</p>
+        <div class="docs-callout docs-callout-info"><div class="docs-callout-title">📖 Document Info</div><p><strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture) | <strong>Last Updated:</strong> April 12, 2026 | <strong>Audience:</strong> Technical Teams, System Architects, Engineering Leaders</p></div>
 
         <h1>Ujamaa DeFi Platform Architecture</h1>
 <section class="docs-section" data-animate="fade-in"><h2 class="docs-section-title"><span class="docs-section-title-icon">📄</span>Technical Architecture Deep Dive</h2>
-<p><strong>Author:</strong> Aziz Da Silva - Lead Architect<br />
+<p><strong>Author:</strong> Ujamaa Architect Team<br />
 <strong>Version:</strong> 2.1 (SRS v2.1 Institutional Architecture)<br />
 <strong>Date:</strong> March 25, 2026<br />
 <strong>Classification:</strong> Public<br />
@@ -150,7 +175,7 @@
 <tr>
 <td><strong>Token Model</strong></td>
 <td>Ujamaa Asset Token (UAT) only</td>
-<td><strong>uLP (Ujamaa Pool Token)</strong> + <strong>UJG (Ujamaa Guarantee)</strong> + UAT</td>
+<td><strong>uLP (Ujamaa Pool Token)</strong> + <strong>uGT (Ujamaa Guarantee)</strong> + UAT</td>
 <td>Institutional liquidity pool architecture</td>
 </tr>
 <tr>
@@ -186,7 +211,7 @@
 <tr>
 <td><strong>Collateral</strong></td>
 <td>Asset-specific</td>
-<td><strong>UJG (ERC-3643NFT)</strong></td>
+<td><strong>uGT (ERC-3643NFT)</strong></td>
 <td>Tokenized merchandise collateral</td>
 </tr>
 </tbody>
@@ -194,8 +219,8 @@
 <h3>New Architecture Components</h3>
 <p><strong>Added:</strong><br />
 - Liquidity Pool layer with multi-asset financing<br />
-- uLP Token (yield-bearing ERC-3643)<br />
-- UJG Token (non-transferable collateral ERC-3643NFT)<br />
+- uLP (ULPTokenizer) (yield-bearing ERC-3643)<br />
+- uGT Token (non-transferable collateral ERC-3643NFT)<br />
 - SIWE authentication service<br />
 - RBAC middleware<br />
 - Fireblocks custody integration<br />
@@ -203,7 +228,7 @@
 - NAV calculation engine<br />
 - Yield accrual system</p>
 <p><strong>Updated:</strong><br />
-- Smart contract architecture (uLP, UJG, LiquidityPool contracts)<br />
+- Smart contract architecture (uLP, uGT, LiquidityPool contracts)<br />
 - API authentication (SIWE + JWT replacing ad-hoc wallet signature)<br />
 - Authorization model (RBAC with 10+ roles)<br />
 - Compliance framework (KYB threshold €100K, strictest jurisdiction list)</p>
@@ -930,7 +955,7 @@ function transferWithCompliance(address to, uint256 amount) external returns (bo
 │  │  └──────────────────────────────────────────────────────────────────┘  │  │
 │  │                                                                         │  │
 │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-│  │  │  uLP Token (ERC-3643 Fungible, Yield-Bearing)                    │  │  │
+│  │  │  uLP (ULPTokenizer) (ERC-3643 Fungible, Yield-Bearing)                    │  │  │
 │  │  │                                                                   │  │  │
 │  │  │  • Represents ownership share in pool                            │  │  │
 │  │  │  • Value-accrual model (balance constant, NAV increases)         │  │  │
@@ -940,7 +965,7 @@ function transferWithCompliance(address to, uint256 amount) external returns (bo
 │  │  └──────────────────────────────────────────────────────────────────┘  │  │
 │  │                                                                         │  │
 │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-│  │  │  UJG Tokens (ERC-3643NFT, Collateral)                            │  │  │
+│  │  │  uGT Tokens (ERC-3643NFT, Collateral)                            │  │  │
 │  │  │                                                                   │  │  │
 │  │  │  • Token represents certified merchandise                        │  │  │
 │  │  │  • Non-transferable (except forced transfer)                     │  │  │
@@ -957,11 +982,11 @@ function transferWithCompliance(address to, uint256 amount) external returns (bo
 │  │  NAV per Share: €1.00 (at inception)                                   │  │
 │  │                                                                        │  │
 │  │  Asset Allocation:                                                     │  │
-│  │  ├─ Factory A (Côte d'Ivoire): €2,000,000 (20%) ──→ UJG #1           │  │
-│  │  ├─ Factory B (Benin): €2,000,000 (20%) ──→ UJG #2                   │  │
-│  │  ├─ Factory C (Senegal): €2,000,000 (20%) ──→ UJG #3                 │  │
-│  │  ├─ Factory D (Togo): €2,000,000 (20%) ──→ UJG #4                    │  │
-│  │  └─ Factory E (Mali): €2,000,000 (20%) ──→ UJG #5                    │  │
+│  │  ├─ Factory A (Côte d'Ivoire): €2,000,000 (20%) ──→ uGT #1           │  │
+│  │  ├─ Factory B (Benin): €2,000,000 (20%) ──→ uGT #2                   │  │
+│  │  ├─ Factory C (Senegal): €2,000,000 (20%) ──→ uGT #3                 │  │
+│  │  ├─ Factory D (Togo): €2,000,000 (20%) ──→ uGT #4                    │  │
+│  │  └─ Factory E (Mali): €2,000,000 (20%) ──→ uGT #5                    │  │
 │  │                                                                        │  │
 │  │  Yield Accrual (after 30 days, 12% APR):                              │  │
 │  │  ├─ Interest Earned: €100,000                                          │  │
@@ -971,7 +996,7 @@ function transferWithCompliance(address to, uint256 amount) external returns (bo
 │  └────────────────────────────────────────────────────────────────────────┘  │
 └──────────────────────────────────────────────────────────────────────────────┘
 </code></div>
-<h3>4.2.2 uLP Token Mechanics (Yield-Bearing ERC-3643)</h3>
+<h3>4.2.2 uLP (ULPTokenizer) Mechanics (Yield-Bearing ERC-3643)</h3>
 <p><strong>Value-Accrual Model:</strong></p>
 <p>Unlike traditional distribution-based yield (where tokens are minted and distributed), uLP uses a <strong>value-accrual model</strong>:</p>
 <div class="docs-pre"><code>NAV Calculation:
@@ -1010,8 +1035,8 @@ Day 365 (12% APR, 1 year):
 └─ Investor A value: 1,000,000 × €1.12 = €1,120,000 (+12%)
 </code></div>
 <p><strong>Technical Implementation:</strong></p>
-<div class="docs-pre"><code>// UjamaaPoolToken.sol - Yield-Bearing ERC-3643
-contract UjamaaPoolToken is ERC3643 {
+<div class="docs-pre"><code>// ULPTokenizer.sol - Yield-Bearing ERC-3643
+contract ULPTokenizer is ERC3643 {
     // Value-accrual: balance constant, NAV increases
     function balanceOf(address account) external view returns (uint256) {
         return s_balances[account]; // Constant balance
@@ -1044,19 +1069,19 @@ contract UjamaaPoolToken is ERC3643 {
     }
 }
 </code></div>
-<h3>4.2.3 UJG Token Mechanics (Collateral ERC-3643NFT)</h3>
+<h3>4.2.3 uGT Token Mechanics (Collateral ERC-3643NFT)</h3>
 <p><strong>Purpose:</strong><br />
-The Ujamaa Guarantee (UJG) token represents <strong>certified merchandise</strong> held as collateral by the liquidity pool.</p>
+The Ujamaa Guarantee (uGT) token represents <strong>certified merchandise</strong> held as collateral by the liquidity pool.</p>
 <p><strong>Lifecycle:</strong></p>
 <div class="docs-pre"><code>1. Industrial receives order (e.g., ZARA €2M contract)
 2. Industrial Gateway certifies stock (SIPI/GDIZ (Benin) verification)
-3. UJG minted (ERC-3643NFT with metadata + compliance)
+3. uGT minted (ERC-3643NFT with metadata + compliance)
 4. Pool deploys funds to Industrial
-5. Pool holds UJG (collateral/security)
+5. Pool holds uGT (collateral/security)
 6. Industrial repays (principal + interest)
-7. UJG transferred back to Industrial (via ERC-3643 forcedTransfer)
+7. uGT transferred back to Industrial (via ERC-3643 forcedTransfer)
 8. [DEFAULT SCENARIO] If industrial defaults:
-   → UJG liquidated via approved auction
+   → uGT liquidated via approved auction
    → Proceeds distributed to uLP holders
    → Default recorded in compliance audit trail
 </code></div>
@@ -1100,7 +1125,7 @@ contract GuaranteeToken is ERC3643NFT {
     function transfer(address to, uint256 tokenId) 
         public override returns (bool) 
     {
-        revert(&quot;UJG is non-transferable; use forcedTransfer&quot;);
+        revert(&quot;uGT is non-transferable; use forcedTransfer&quot;);
     }
 
     function forcedTransfer(address from, address to, uint256 tokenId)
@@ -1135,7 +1160,7 @@ contract LiquidityPool {
             &quot;Would exceed 10% per industrial&quot;
         );
 
-        // Deploy capital, mint UJG as collateral
+        // Deploy capital, mint uGT as collateral
         guaranteeToken.mintGuarantee(industrial, certificateId, amount, expiryDate, stockHash);
     }
 }
@@ -1154,8 +1179,8 @@ contract LiquidityPool {
 │  INSTITUTIONAL CONTRACTS (NEW in v2.1):                              │
 │  ┌────────────────────────────────────────────────────────────────┐  │
 │  │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐ │  │
-│  │  │  LiquidityPool   │  │  UjamaaPoolToken │  │ GuaranteeToken│ │  │
-│  │  │                  │  │  (uLP)           │  │  (UJG)       │ │  │
+│  │  │  LiquidityPool   │  │  ULPTokenizer │  │ GuaranteeToken│ │  │
+│  │  │                  │  │  (uLP)           │  │  (uGT)       │ │  │
 │  │  │  • Pool mgmt     │  │  • Yield-bearing │  │  • Collateral│ │  │
 │  │  │  • Asset alloc   │  │  • ERC-3643      │  │  • ERC-3643NFT│ │  │
 │  │  │  • NAV calc      │  │  • Value-accrual │  │  • Non-xfer  │ │  │
@@ -3083,10 +3108,10 @@ async def get_asset(asset_id: UUID):
 <p><em>This document is classified as Public and may be shared with technical teams, auditors, and engineering candidates.</em></p>
 </section>
         <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E2E8F0">
-          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> March 27, 2026</p>
+          <p style="font-size:0.875rem;color:#64748B"><strong>Last Updated:</strong> April 12, 2026</p>
         </div>
       </div>
-      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: March 27, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
+      <footer class="docs-footer"><div class="docs-footer-content"><div class="docs-footer-text"><strong>Ujamaa DeFi Platform</strong> - Documentation<br><span style="font-size:0.75rem;color:#94A3B8">Last Updated: April 12, 2026 | © 2026 Ujamaa DeFi Platform</span></div><div class="docs-footer-links"><a href="#" class="docs-footer-link">Top</a><a href="index.html" class="docs-footer-link">Specifications</a><a href="../index.html" class="docs-footer-link">Home</a></div></div></footer>
     </main>
   </div>
       <script src="../assets/app.js"></script>
